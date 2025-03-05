@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup as BS
 import requests
 
 
-r = requests.get("https://www.eviews.com/help/helpintro.html")
+r = requests.get("https://www.eviews.com/help/helpintro.html")#
 #r = requests.get("https://webscraper.io/test-sites/e-commerce/allinone")
 
 base_url = "https://www.eviews.com/help/"
