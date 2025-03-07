@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Structuring a Panel Workfile</title>
+    <link rel="StyleSheet" href="css/panelwf.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="panelwf-Working_with_Panel_Data.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="panelwf-Panel_Workfile_Display.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="panelwf-Working_with_Panel_Data.html">Working with Panel Data</a> : Structuring a Panel Workfile</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="188399">Structuring a Panel Workfile</a></div>
+      <div class="Body_Text"><a name="188400">The first step in panel data analysis is to define the panel structure of your data. By defining a panel structure for your data, you perform the dual tasks of identifying the cross-section associated with each observation in your stacked data, and of defining the way that lags and leads operate in your workfile. </a></div>
+      <div class="Body_Text"><a name="188401">While the procedures for structuring a panel workfile outlined below are described in greater detail elsewhere, an abbreviated review may prove useful (for additional detail, see </a><span class="Link"><a href="workfile-Creating_a_Workfile.html#100675" title="Creating a Workfile">&#8220;Describing a Balanced Panel Workfile&#8221;</a></span>, <span class="Link"><a href="workadv-Structuring_a_Workfile.html#101871" title="Structuring a Workfile">&#8220;Dated Panels&#8221;</a></span>, and <span class="Link"><a href="workadv-Structuring_a_Workfile.html#101924" title="Structuring a Workfile">&#8220;Undated Panels&#8221;</a></span> ).</div>
+      <div class="Picture"><a name="188417"><img class="Default" src="images/panelwf.067.2.1.jpg" width="100%" style="left: 0.0pt; max-height: 369px; max-width: 465px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188418">There are two basic ways to create a panel structured workfile. First, you may create a </a><span class="Emphasis">new</span> workfile that has a simple balanced panel structure. Simply select <span class="Menu_Item">File/New/Workfile...</span> from the main EViews menu to open the <span class="Menu_Item">Workfile Create</span> dialog. Next, select <span class="Menu_Item">Balanced Panel</span> from the <span class="Menu_Item">Workfile structure type</span> dropdown menu, and fill out the dialog as desired. Here, we create a balanced quarterly panel (ranging from 1970Q1 to 2020Q4) with 200 cross-sections. We also enter &#8220;Quarterly&#8221; in the <span class="Menu_Item">Page</span> name edit field.</div>
+      <div class="Picture"><a name="188422"><img class="Default" src="images/panelwf.067.2.2.jpg" width="100%" style="left: 0.0pt; max-height: 307px; max-width: 428px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188423">When you click on </a><span class="Menu_Item">OK</span>, EViews will create an appropriately structured workfile with 40,800 observations (51 years, 4 quarters, 200 cross-sections). You may then enter or import the data into the workfile.</div>
+      <div class="Body_Text"><a name="188424">More commonly, you will use the second method of structuring a panel workfile, in which you first read stacked data into an unstructured workfile, and then apply a structure to the workfile. While there are a number of issues involved with this operation, let us consider a simple, illustrative example of the basic method.</a></div>
+      <div class="Picture"><a name="188428"><img class="Default" src="images/panelwf.067.2.3.jpg" width="100%" style="left: 0.0pt; max-height: 339px; max-width: 466px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188429">Suppose that we have data for the job training example considered by Wooldridge (2002), using data from Holzer, </a><span class="Emphasis">et al.</span> (1993), which are provided in &#8220;Jtrain.WF1&#8221;.</div>
+      <div class="Body_Text"><a name="188430">These data form a balanced panel of 3 annual observations on 157 firms. The data are first read into a 471 observation, unstructured EViews workfile. The values of the series YEAR and FCODE may be used to identify the date and cross-section, respectively, for each observation.</a></div>
+      <div class="Body_Text"><a name="188431">To apply a panel structure to this workfile, simply double click on the &#8220;Range:&#8221; line at the top of the workfile window, or select </a><span class="Menu_Item">Proc/Structure/Resize Current Page...</span> to open the <span class="Menu_Item">Workfile structure</span> dialog. Select <span class="Menu_Item">Dated Panel</span> as our <span class="Menu_Item">Workfile structure type</span>.</div>
+      <div class="Picture"><a name="188435"><img class="Default" src="images/panelwf.067.2.4.jpg" width="100%" style="left: 0.0pt; max-height: 341px; max-width: 502px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188436">Next, enter YEAR as the </a><span class="Menu_Item">Date series</span> and FCODE as the <span class="Menu_Item">Cross-section ID series</span>. Since our data form a simple balanced dated panel, we need not concern ourselves with the remaining settings, so we may simply click on <span class="Menu_Item">OK</span>.</div>
+      <div class="Body_Text"><a name="188437">EViews will analyze the data in the specified </a><span class="Menu_Item">Date series</span> and <span class="Menu_Item">Cross-section ID series</span> to determine the appropriate structure for the workfile. The data in the workfile will be sorted by cross-section ID series, and then by date, and the panel structure will be applied to the workfile.</div>
+      <div class="Picture"><a name="188441"><img class="Default" src="images/panelwf.067.2.5.jpg" width="100%" style="left: 0.0pt; max-height: 331px; max-width: 464px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

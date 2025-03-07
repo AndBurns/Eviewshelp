@@ -1,0 +1,516 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Views and Procs of ARDL</title>
+    <link rel="StyleSheet" href="css/ardl.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="ardl-Estimating_ARDL_Models_in_EViews.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="ardl-Examples.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="ardl-ARDL_and_Quantile_ARDL.html">ARDL and Quantile ARDL</a> : Views and Procs of ARDL</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="281551">Views and Procs of ARDL</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281553">Model Selection Summary</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281556">Error Correction Output View</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281606">Cointegrating Relation View</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281640">Bounds Test View</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281822">Symmetry Test View</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281879">Dynamic Multipliers View</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#281890">Background</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#288251">Dynamic Multiplier View</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281942">ARDL Equation Procs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#281943">Make Regressor Group Proc</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#281944">Make Cointegrating Relationship Proc</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="281552">Since ARDL and NARDL models are estimated by simple least squares, all of the views and procedures available to equation objects estimated by least squares are also available for ARDL models. There there are a few ARDL specific issues, view, and procs that require additional discussion.</a></div>
+      <div class="Heading_4"><a name="281553">Model Selection Summary</a></div>
+      <div class="Body_Text"><a name="281554">The </a><span class="Menu_Item">Model Selection Summary </span>item on the <span class="Menu_Item">View</span> menu allows you to view either a <span class="Menu_Item">Criteria Graph</span> or a <span class="Menu_Item">Criteria Table</span>. The graph shows the model selection value for the twenty &#8220;best&#8221; models. If you use either the Akaike Information Criterion (AIC), the Schwarz Criterion (BIC), or the Hannan-Quinn (HQ) criterion, the graph will show the twenty models with the lowest criterion value. If you choose the Adjusted R-squared as the model selection criteria, the graph will show the twenty models with the highest Adjusted R-squared. The table form of the view shows the log-likelihood value, the AIC, BIC and HQ values, and the Adjusted R-squareds of the top twenty models in tabular form.</div>
+      <div class="Heading_4"><a name="281556">Error Correction Output View</a></div>
+      <div class="Body_Text"><a name="281557">The Conditional Error Correction (CEC) and Error Correction (EC) representations of the ARDL specification (</a><span class="Link"><a href="ardl-Background.html#281255" title="Background">Equation&nbsp;(29.5)</a></span> and <span class="Link"><a href="ardl-Background.html#281303" title="Background">Equation&nbsp;(29.10)</a></span>) offer easy-to-interpret representations of the cointegrating relationship between the dependent variable and the explanatory variables. </div>
+      <div class="Body_Text"><a name="281564">By default, linear ARDL estimation results are displayed using the IDT representation </a><span class="Link"><a href="ardl-Background.html#281184" title="Background">Equation&nbsp;(29.1)</a></span> while by default nonlinear ARDL estimates are displayed using the Conditional Error Correction (CEC) and Error Correction (EC) form <span class="Link"><a href="ardl-Background.html#281255" title="Background">Equation&nbsp;(29.5)</a></span>. </div>
+      <div class="Body_Text"><a name="281571">The </a><span class="Menu_Item">Error Correction Output</span> view displays the estimation results in the error corrections forms. Select <span class="Menu_Item">View/ARDL Diagnostics/Error Correction Output</span> from the menu of an estimated ARDL equation. EViews displays a spool with two tables. </div>
+      <div class="Body_Text"><a name="281572">The first node in the spool corresponds to the Conditional Error Correction </a>(CEC) representation (<span class="Link"><a href="ardl-Background.html#281255" title="Background">Equation&nbsp;(29.5)</a></span> or <span class="Link"><a href="ardl-Background.html#281430" title="Background">Equation&nbsp;(29.17)</a></span>) of the equation:</div>
+      <div class="Picture"><a name="281582"><img class="Default" src="images/ardl.039.4.001.jpg" width="100%" style="left: 0.0pt; max-height: 774px; max-width: 702px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281583">The second node in the spool corresponds to results for the Error Correction (EC) representation of the equation (</a><span class="Link"><a href="ardl-Background.html#281303" title="Background">Equation&nbsp;(29.10)</a></span> or <span class="Link"><a href="ardl-Background.html#281461" title="Background">Equation&nbsp;(29.20)</a></span>), highlighting the speed of adjustment to equilibrium in the cointegrating relationship. The results show the least squares estimates for the equation which employs the equilibrium error correction term in place of the individual cointegrating series:</div>
+      <div class="Picture"><a name="281593"><img class="Default" src="images/ardl.039.4.002.jpg" width="100%" style="left: 0.0pt; max-height: 682px; max-width: 701px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281603">Here, the error correction term <img class="Default EquationGraphic" src="images/ardl.039.4.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 34px; top: 0.0pt" alt="" /> given by </a><span class="Link"><a href="ardl-Background.html#281294" title="Background">Equation&nbsp;(29.9)</a></span> and <span class="Link"><a href="ardl-Background.html#281452" title="Background">Equation&nbsp;(29.19)</a></span> is included among the regressors and is denoted as &#8220;COINTEQ&#8221;. The coefficient associated with this regressor is the speed of adjustment to equilibrium in each period. If variables are indeed cointegrated, we typically expect this coefficient to be negative and highly significant.</div>
+      <div class="Body_Text"><a name="281604">Note that the name of the lag of the dependent variable and the COINTEQ term in these two tables are always followed by a single asterisk, The single asterisk indicates that the </a><span class="In-line_math">p</span>-value associated with the variable is incompatible with the <span class="In-line_math">t</span>-Bounds distribution in Theorem 3.2 in PSS(2001). </div>
+      <div class="Body_Text"><a name="281605">The names of other variables may be followed by a double asterisk. A double asterisk indicates that the variable is a dynamic regressor with an optimal lag of zero so that EViews does not include lags and differences of the variables in the specification. </a></div>
+      <div class="Heading_4"><a name="281606">Cointegrating Relation View</a></div>
+      <div class="Body_Text"><a name="281610">The </a><span class="Menu_Item">Cointegrating Relation </span>view displays information about the error correction term <img class="Default EquationGraphic" src="images/ardl.039.4.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 34px; top: 0.0pt" alt="" /> representing the cointegrating relation. Select <span class="Menu_Item">View/ARDL Diagnostics/Cointegrating Relation</span> from the menu of an estimated ARDL equation to display a spool containing two tables and a graph.</div>
+      <div class="Picture"><a name="281614"><img class="Default" src="images/ardl.039.4.005.jpg" width="100%" style="left: 0.0pt; max-height: 651px; max-width: 699px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="281615">The </a><span class="Menu_Item">Cointegrating Specification</span> table shows the assumptions underlying the estimate of the cointegrating relationship, and the equation specification for <img class="Default EquationGraphic" src="images/ardl.039.4.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 34px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="281619">The </a><span class="Menu_Item">Cointegrating Coefficients</span> table shows coefficient estimates for the underlying variables inside the cointegrating relationship. These are the <img class="Default EquationGraphic" src="images/ardl.039.4.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 43px; top: 0.0pt" alt="" /> coefficients in <span class="Link"><a href="ardl-Background.html#281288" title="Background">Equation&nbsp;(29.8)</a></span> and the <img class="Default EquationGraphic" src="images/ardl.039.4.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 47px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 44px; top: 0.0pt" alt="" /> coefficients in <span class="Link"><a href="ardl-Background.html#281446" title="Background">Equation&nbsp;(29.18)</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="281638">The </a><span class="Menu_Item">Cointegrating Series</span> graph displays the values of the <img class="Default EquationGraphic" src="images/ardl.039.4.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 34px; top: 0.0pt" alt="" /> (<span class="Link"><a href="ardl-Background.html#281294" title="Background">Equation&nbsp;(29.9)</a></span> or <span class="Link"><a href="ardl-Background.html#281452" title="Background">Equation&nbsp;(29.19)</a></span>) for every observation in the estimation sample.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_4"><a name="281640">Bounds Test View</a></div>
+      <div class="Body_Text"><a name="281641">The traditional cointegration tests of Engle (1987), Phillips (1990), or Johansen (1995) require all variables in a VAR system to be <img class="Default EquationGraphic" src="images/ardl.039.4.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />. This requirement not only requires pre-testing for the presence of unit roots in each of the endogenous variables, but is also subject to misclassification. </a></div>
+      <div class="Body_Text"><a name="281645">In contrast, Pesaran (2001) proposes a test for cointegration that is robust to whether variables of interest are <img class="Default EquationGraphic" src="images/ardl.039.4.012.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/ardl.039.4.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, or mutually cointegrated. These </a><span class="Definition">bounds tests</span> are formulated as standard <span class="In-line_math">F</span>-test or Wald tests of parameter significance in the cointegrating relationship of the CEC model <span class="Link"><a href="ardl-Background.html#281288" title="Background">Equation&nbsp;(29.8)</a></span>,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.014.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="281663">Once the bounds test statistic is computed, the value is compared to two asymptotic critical values corresponding to the polar cases of all variables being <img class="Default EquationGraphic" src="images/ardl.039.4.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, or all variables being <img class="Default EquationGraphic" src="images/ardl.039.4.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />. When the test statistic is below the lower critical value, we fail to reject the null and conclude that cointegration is not possible. Alternately, when the test statistic is above the upper critical value, we reject the null and conclude that cointegration is possible. In either case, knowledge of the cointegrating rank is not necessary. If the statistic falls between the lower and upper critical values, the test is inconclusive.</a></div>
+      <div class="Body_Text"><a name="281673">When the hypothesis in </a><span class="Link"><a href="#281662" title="Views and Procs of ARDL">Equation&nbsp;(29.28)</a></span> is rejected so that cointegration is possible, we proceed to perform a <span class="In-line_math">t</span>-test of significance of the error correction parameter <img class="Default EquationGraphic" src="images/ardl.039.4.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> in <span class="Link"><a href="ardl-Background.html#281303" title="Background">Equation&nbsp;(29.10)</a></span>. As in the case of Augmented Dickey-Fuller unit-root tests, critical values for the test statistic are non-standard. If the null hypothesis of <img class="Default EquationGraphic" src="images/ardl.039.4.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" /> is not rejected, there is no long run relationship. Alternatively, should we reject <img class="Default EquationGraphic" src="images/ardl.039.4.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" /> but be unable to reject the sub-hypothesis <img class="Default EquationGraphic" src="images/ardl.039.4.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 119px; top: 0.0pt" alt="" />, the cointegrating relationship is degenerate. Otherwise, cointegration exists.</div>
+      <div class="Body_Text"><a name="281692">When deterministics contribute to the error correction term, they are implicitly projected onto the span of the cointegrating vector. If the ARDL model in </a><span class="Link"><a href="ardl-Background.html#281184" title="Background">Equation&nbsp;(29.1)</a></span> includes a constant and a trend, say <img class="Default EquationGraphic" src="images/ardl.039.4.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 57px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 55px; top: 0.0pt" alt="" />, the constants and trend coefficients must respect the restrictions implied by the expressions for <img class="Default EquationGraphic" src="images/ardl.039.4.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />. These restrictions translate into slight modifications of the null and alternative hypotheses in <span class="Link"><a href="#281662" title="Views and Procs of ARDL">Equation&nbsp;(29.28)</a></span>.</div>
+      <div class="Body_Text"><a name="281711">We may outline five alternate specifications of the CEC model that are distinguished by whether deterministic terms are included into the error correction term (Pesaran, 2001). The five cases, which closely follow VEC literature (Johansen, 1995), are summarized as follows:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="281718">Case 1 &#8211; No constant, no trend: and <img class="Default EquationGraphic" src="images/ardl.039.4.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 89px; top: 0.0pt" alt="" /> which implies that <img class="Default EquationGraphic" src="images/ardl.039.4.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 105px; top: 0.0pt" alt="" />. There is no change to the </a><span class="Link"><a href="#281662" title="Views and Procs of ARDL">Equation&nbsp;(29.28)</a></span> bounds test hypothesis.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="281728">Case 2 &#8211; Restricted constant and no trend: <img class="Default EquationGraphic" src="images/ardl.039.4.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />, so the restrictions <img class="Default EquationGraphic" src="images/ardl.039.4.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 95px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 59px; top: 0.0pt" alt="" /> are assumed to hold:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.031.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="281745">Case 3 &#8211; Unrestricted constant and no trend: <img class="Default EquationGraphic" src="images/ardl.039.4.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />, and the restrictions <img class="Default EquationGraphic" src="images/ardl.039.4.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 49px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 59px; top: 0.0pt" alt="" /> are assumed to hold. There is no change to the </a><span class="Link"><a href="#281662" title="Views and Procs of ARDL">Equation&nbsp;(29.28)</a></span> bounds test hypothesis. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="281761">Case 4 &#8211; Unrestricted constant and restricted trend: <img class="Default EquationGraphic" src="images/ardl.039.4.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" />, and the restrictions <img class="Default EquationGraphic" src="images/ardl.039.4.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 49px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 95px; top: 0.0pt" alt="" /> are assumed hold:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.040.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="281778">Case 5 &#8211; Unrestricted constant and unrestricted trend: <img class="Default EquationGraphic" src="images/ardl.039.4.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> and the restrictions <img class="Default EquationGraphic" src="images/ardl.039.4.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 49px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.044.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 49px; top: 0.0pt" alt="" /> are assumed hold. There is no change to the </a><span class="Link"><a href="#281662" title="Views and Procs of ARDL">Equation&nbsp;(29.28)</a></span> bounds test hypothesis.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="281788">To perform the bounds test, click on </a><span class="Menu_Item">View/ARDL Diagnostics/Bounds Test</span>. The results are presented in a spool. Below the table of long run coefficient estimates are two additional tables, respectively titled as the <img class="Default EquationGraphic" src="images/ardl.039.4.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />-Bounds Test and the <img class="Default EquationGraphic" src="images/ardl.039.4.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-Bounds Test.</div>
+      <div class="Picture"><a name="281798"><img class="Default" src="images/ardl.039.4.047.jpg" width="100%" style="left: 0.0pt; max-height: 471px; max-width: 654px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281805">These tables respectively display the <img class="Default EquationGraphic" src="images/ardl.039.4.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />- and <img class="Default EquationGraphic" src="images/ardl.039.4.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />- statistics along with their associated I(0) (lower) and I(1) (upper) critical value bounds for the null hypotheses of no levels relationship between the dependent variable and the regressors in the CEC model. The critical values are provided for significance levels 10%, 5%, 2.5%, and 1%, respectively. The <img class="Default EquationGraphic" src="images/ardl.039.4.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-Bounds test in particular is a parameter significance test on the lagged value of the dependent variable. Since the distribution of this test is non-standard, the <img class="Default EquationGraphic" src="images/ardl.039.4.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-value provided in the regression output of the CEC regression is not compatible with this distribution, although the <img class="Default EquationGraphic" src="images/ardl.039.4.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-statistic is valid. Accordingly, any inference must be conducted using the <img class="Default EquationGraphic" src="images/ardl.039.4.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-Bounds test critical values provided.</a></div>
+      <div class="Body_Text"><a name="281821">We also mention here that the <img class="Default EquationGraphic" src="images/ardl.039.4.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />- critical value tables now present the critical values computed under an asymptotic regime (sample size equal to 1000) and referenced from PSS(2001), in addition to providing critical values for finite sample regimes (sample sizes running from 30 to 80 in increments of 5) and referenced from Narayan (2005).</a></div>
+      <div class="Heading_4"><a name="281822">Symmetry Test View</a></div>
+      <div class="Body_Text"><a name="281826">Recall that the NARDL CEC representation in </a><span class="Link"><a href="ardl-Background.html#281461" title="Background">Equation&nbsp;(29.20)</a></span> is quite general and can accommodate asymmetries in different combinations of short and long-run dynamics. In particular, consider the following two sets of symmetry restrictions:</div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="281833">Long-run Symmetry: Restricts <img class="Default EquationGraphic" src="images/ardl.039.4.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 113px; top: 0.0pt" alt="" /> for all <img class="Default EquationGraphic" src="images/ardl.039.4.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 93px; top: 0.0pt" alt="" /> so that the CEC reduces to</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.057.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="281844">Short-run Symmetry: Restricts <img class="Default EquationGraphic" src="images/ardl.039.4.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 110px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 133px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/ardl.039.4.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 93px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 124px; top: 0.0pt" alt="" />, so the CEC reduces to </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.062.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="281855">Imposing either set of restrictions leads to one of the previous two representations. Imposing both restrictions reduces the NARDL CEC representation to the classical ARDL CEC representation in </a><span class="Link"><a href="ardl-Background.html#281288" title="Background">Equation&nbsp;(29.8)</a></span></div>
+      <div class="Body_Text"><a name="281859">And of course, it is possible to generate even more complex dynamics by imposing symmetry on other subsets of the long-run and short run regressors.</a></div>
+      <div class="Body_Text"><a name="281866">Naturally, one can test for symmetry formally by performing the usual </a><span class="In-line_math">t</span>-test or <span class="In-line_math">F</span>-test of parameter equality. For example, testing for symmetry for a specific long-run (LR) variable, say <img class="Default EquationGraphic" src="images/ardl.039.4.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />, is equivalent to the following hypothesis:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.064.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="281874">To perform the symmetry test, select </a><span class="Menu_Item">View/ARDL Diagnostics/Symmetry Test</span> from the menu of a nonlinear asymmetric NARDL equation:</div>
+      <div class="Picture"><a name="281878"><img class="Default" src="images/ardl.039.4.065.jpg" width="100%" style="left: 0.0pt; max-height: 621px; max-width: 492px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="281879">Dynamic Multipliers View</a></div>
+      <div class="Body_Text"><span class="Definition"><a name="281880">Dynamic multipliers </a></span>(DM) are a familiar concept which measures the marginal contribution of an explanatory variable to the dependent variable. A natural extension of the concept for time series analysis is the idea of <span class="Definition">cumulative dynamic multipliers</span> (CDM). This is the cumulative sum of dynamic multipliers at each point in time, starting with a point in time <img class="Default EquationGraphic" src="images/ardl.039.4.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> and running through <img class="Default EquationGraphic" src="images/ardl.039.4.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" /> for horizon length <img class="Default EquationGraphic" src="images/ardl.039.4.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" />.</div>
+      <div class="Heading_5"><a name="281890">Background</a></div>
+      <div class="Body_Text"><a name="288313">For standard ARDL models, CDMs are defined for each long-run distributed-lag variable using the partial derivatives:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.069.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="281898">for <img class="Default EquationGraphic" src="images/ardl.039.4.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 93px; top: 0.0pt" alt="" />. Note that as <img class="Default EquationGraphic" src="images/ardl.039.4.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 52px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/ardl.039.4.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 122px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="281899">For nonlinear ARDL models, CDMs are derived for any long-run asymmetric distributed-lag variables using the partial derivatives s for both the positive and negative partial sum regressors:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.073.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.35)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="286350">where <img class="Default EquationGraphic" src="images/ardl.039.4.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 126px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 123px; top: 0.0pt" alt="" />. We may employ the absolute difference between the two derivatives, <img class="Default EquationGraphic" src="images/ardl.039.4.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 139px; top: 0.0pt" alt="" />, as a measure of nonlinearity.</a></div>
+      <div class="Body_Text"><a name="283942">Following convention, we will measure the adjustments of the dependent variable <img class="Default EquationGraphic" src="images/ardl.039.4.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 36px; top: 0.0pt" alt="" /> to unit shocks in the respective regressors, <img class="Default EquationGraphic" src="images/ardl.039.4.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 39px; top: 0.0pt" alt="" />, or <img class="Default EquationGraphic" src="images/ardl.039.4.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 39px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 39px; top: 0.0pt" alt="" />. Conceptually, for a given regressor, a single positive unitary shock is introduced at <img class="Default EquationGraphic" src="images/ardl.039.4.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 78px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/ardl.039.4.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is the end of the estimation sample, holding all other regressors constant. The dynamic evolution of the dependent variable is then computed from <img class="Default EquationGraphic" src="images/ardl.039.4.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> to <img class="Default EquationGraphic" src="images/ardl.039.4.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> and compared to baseline dynamic forecasts.</a></div>
+      <div class="Body_Text"><a name="285812">The adjusted in-sample dynamic forecasts are given by first shocking the <img class="Default EquationGraphic" src="images/ardl.039.4.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 78px; top: 0.0pt" alt="" /> value of the target regressor,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.086.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="288424">and</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.087.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="289275">for shocks <img class="Default EquationGraphic" src="images/ardl.039.4.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 60px; top: 0.0pt" alt="" />, and then forming the </a><span class="Emphasis">dynamic forecasts</span> of <img class="Default EquationGraphic" src="images/ardl.039.4.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />from <img class="Default EquationGraphic" src="images/ardl.039.4.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> to <img class="Default EquationGraphic" src="images/ardl.039.4.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> using the estimated equation, actual regressors, and the substituted modified regressor:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="287070">in the symmetric case we substitute in <img class="Default EquationGraphic" src="images/ardl.039.4.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 29px; top: 0.0pt" alt="" /> for the initial value <img class="Default EquationGraphic" src="images/ardl.039.4.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 29px; top: 0.0pt" alt="" /> and use this value to obtain the forecasts <img class="Default EquationGraphic" src="images/ardl.039.4.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 101px; top: 0.0pt" alt="" /></a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="286977">in the asymmetric case, we compute two forecasts using the actual regressors with a single substitution; first substituting in <img class="Default EquationGraphic" src="images/ardl.039.4.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 29px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/ardl.039.4.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 29px; top: 0.0pt" alt="" /> to obtain the forecasts <img class="Default EquationGraphic" src="images/ardl.039.4.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 37px; max-width: 101px; top: 0.0pt" alt="" />, and then substituting in <img class="Default EquationGraphic" src="images/ardl.039.4.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 29px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/ardl.039.4.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 29px; top: 0.0pt" alt="" /> to obtain the forecasts <img class="Default EquationGraphic" src="images/ardl.039.4.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 37px; max-width: 101px; top: 0.0pt" alt="" /></a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="285709">Then the discrete dynamic multipliers are given by the accumulated differences between the modified, and the original dynamic forecasts:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.101.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.38)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="283944">and </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/ardl.039.4.102.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(29.39)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="281920">where <img class="Default EquationGraphic" src="images/ardl.039.4.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 36px; top: 0.0pt" alt="" /> is the unmodified in-sample dynamic forecast from the estimated equation.</a></div>
+      <div class="Body_Text"><a name="290249">There are two conventions for defining the unit shocks <img class="Default EquationGraphic" src="images/ardl.039.4.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 60px; top: 0.0pt" alt="" /> in </a><span class="Link"><a href="#287466" title="Views and Procs of ARDL">Equation&nbsp;(29.36)</a></span> and <span class="Link"><a href="#288439" title="Views and Procs of ARDL">Equation&nbsp;(29.37)</a></span>:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="288360">the </a><span class="Definition">Dynamic Multiplier Evolution</span> convention, sets <img class="Default EquationGraphic" src="images/ardl.039.4.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 136px; top: 0.0pt" alt="" />. Here, the unit changes in <span class="Link"><a href="#288439" title="Views and Procs of ARDL">Equation&nbsp;(29.37)</a></span> produce an increase in the cumulated symmetric and positive differences and a <span class="Emphasis">reduction</span> in the cumulated negative difference.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="290575">the </a><span class="Definition">Shock Evolutio</span>n convention, sets <img class="Default EquationGraphic" src="images/ardl.039.4.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 93px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/ardl.039.4.107.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 66px; top: 0.0pt" alt="" />. Here, we define the impulses so that there is an increase in the cumulated symmetric and positive differences, and an <span class="Emphasis">increase</span> in the cumulated negative difference.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="290857">While the dynamic multiplier evolution framework is reasonable from a technical perspective, it is not ideal if we wish to study the properties of the models under parallel unit increases in the absolute amount of positive and negative asymmetry, as in when determining whether an increase in positive asymmetry has the same effect as an increase in negative asymmetry.</a></div>
+      <div class="Heading_5"><a name="288251">Dynamic Multiplier View</a></div>
+      <div class="Body_Text"><a name="288351">To display CDM graphs for each of the explanatory variables, click on </a><span class="Menu_Item">View/ARDL Diagnostics/Dynamic Multiplier Graph...</span> EViews will open a dialog containing display and computation settings:</div>
+      <div class="Picture"><a name="281924"><img class="Default" src="images/ardl.039.4.108.jpg" width="100%" style="left: 0.0pt; max-height: 337px; max-width: 215px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="282868">You may enter the horizon length <img class="Default EquationGraphic" src="images/ardl.039.4.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> (number of periods to compute the multipliers) in the </a></span><span class="Menu_Item">Horizon</span> edit field. The multiplier graphs will be produced for the period from <img class="Default EquationGraphic" src="images/ardl.039.4.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> to <img class="Default EquationGraphic" src="images/ardl.039.4.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/ardl.039.4.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is the end of the estimation sample.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="282878">You may select whether to display a CDM graph based on the evolution of shocks or on the dynamic multiplier. This distinction does not matter for symmetric models, but the graph types do differ in their asymmetric negative response curves.</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="282879">The shock evolution CDM graph displays the response to a one unit positive change in the symmetric and positive asymmetric cumulated differences, and the response to </a></span><span class="Emphasis">a one unit negative change</span> in cumulated differences in the negative asymmetric case. Note that in this case, the graphswill converge to the theoretical cumulative dynamic multiplier long-run values.</div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="282880">The dynamic multiplier CDM graph shows the response to a one unit positive change in symmetric and asymmetric cumulated differences, but in contrast to shock evolution, models an &#8220;improvement&#8221; producing a </a></span><span class="Emphasis">one unit positive increase (reduction of one unit of negative change) </span>in the negative cumulative differences.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="282881">For NARDL models, you will be offered the opportunity to display confidence intervals for the computed absolute difference between the positive and negative components for a given regressor. CIs are not available for linear ARDL specifications.</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="282882">You may check the </a></span><span class="Menu_Item">Show CI</span> to display the CIs, and <span class="Menu_Item">Shade CI band</span> to display the CIs as bands instead of lines. The <span class="Menu_Item">Level</span> edit field controls the size of the CI, and the <span class="Menu_Item">Replications</span> governs how many replications to use in resampling for computing the CI.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="282883">Click on </a><span class="Menu_Item">OK</span> to continue. EViews will open a spool view, with each node in the spool containing the CDM graph corresponding to one of the explanatory variables. </div>
+      <div class="Body_Text"><a name="282884">For symmetric linear models, each shock evolution graph contains a CDM. In case of the dynamic multiplier evolution curves, there is an additional dashed horizontal line denoting the long-run value.</a></div>
+      <div class="Picture"><a name="281936"><img class="Default" src="images/ardl.039.4.113.jpg" width="100%" style="left: 0.0pt; max-height: 513px; max-width: 652px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="282902">For asymmetric nonlinear models, each graph will show the positive and negative responses, along with a line showing the absolute value of the difference between the two, and if requested, a CI for the absolute difference:</a></div>
+      <div class="Picture"><a name="281941"><img class="Default" src="images/ardl.039.4.114.jpg" width="100%" style="left: 0.0pt; max-height: 507px; max-width: 648px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="281942">ARDL Equation Procs</a></div>
+      <div class="Body_Text"><a name="282940">Most of the procs for an ARDL equation are familiar from other estimation methods. Some procs require a bit of additional discussion.</a></div>
+      <div class="Heading_5"><a name="281943">Make Regressor Group Proc</a></div>
+      <div class="Body_Text"><a name="283247">Displays a group containing the regressors for the estimated specification.</a></div>
+      <div class="Body_Text"><a name="283808">For all models, this group will include the specified or selected number of lags of the dependent variable and dynamic regressors, along with any fixed variables. </a></div>
+      <div class="Body_Text"><a name="283872">For the asymmetric ARDL specifications, the group will also contain the regressors formed using the cumulative positive and negative functions </a><span class="In-line_command">@cumdp</span> and <span class="In-line_command">@cumdn</span>, and the accumulation differences <span class="In-line_command">@dcumd</span>p and <span class="In-line_command">@dcumdn</span>.</div>
+      <div class="Heading_5"><a name="281944">Make Cointegrating Relationship Proc</a></div>
+      <div class="Body_Text"><a name="283043">The </a><span class="Menu_Item">Make Cointegrating Relation </span>proc makes a series in the workfile containing the cointegrating series, which contains <img class="Default EquationGraphic" src="images/ardl.039.4.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 34px; top: 0.0pt" alt="" /> (<span class="Link"><a href="ardl-Background.html#281294" title="Background">Equation&nbsp;(29.9)</a></span> or <span class="Link"><a href="ardl-Background.html#281452" title="Background">Equation&nbsp;(29.19)</a></span>) for every observation in the estimation sample.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

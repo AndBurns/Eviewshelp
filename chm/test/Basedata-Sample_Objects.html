@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Sample Objects</title>
+    <link rel="StyleSheet" href="css/Basedata.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="Basedata-Samples.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="Basedata-Importing_Data.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="Basedata-Basic_Data_Handling.html">Basic Data Handling</a> : Sample Objects</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="231754">Sample Objects</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#234195">Creating a Sample Object</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#479">Using a Sample Object</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="464">As you have seen, it is possible to develop quite elaborate selection rules for the workfile sample. However, it can become quite cumbersome and time-consuming to re-enter these rules if you change samples frequently. Fortunately, EViews provides you with a method of saving sample information in an object which can then be referred to by name. If you work with many well-defined subsets of your data, you will soon find sample objects to be indispensable.</a></div>
+      <div class="Heading_4"><a name="234195">Creating a Sample Object</a></div>
+      <div class="Body_Text"><a name="234196">To create a sample object, select</a><span class="Menu_Item"> Object/New Object&#8230;</span> from the main menu or the workfile toolbar. When the <span class="Menu_Item">New Object</span> dialog appears, select <span class="Menu_Item">Sample</span> and, optionally provide a name. If you do not provide a name, EViews will automatically assign one for you (sample objects may not be untitled). Click on <span class="Menu_Item">OK</span> and EViews will open the sample object specification dialog:</div>
+      <div class="Picture"><a name="11527"><img class="Default" src="images/Basedata.010.04.1.jpg" width="100%" style="left: 0.0pt; max-height: 277px; max-width: 366px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="473">Here is a partially filled-in sample object dialog for SMPL1. Notice that while this dialog looks very similar to the one we described above for setting the sample, there are minor cosmetic differences: the name of the sample object appears in the title bar, and there is a check box for setting the workfile sample equal to this sample object. </a></div>
+      <div class="Body_Text"><a name="475">These cosmetic differences reflect the two distinct purposes of the dialog: (1) to define the sample object, and (2) to set the workfile sample. Since EViews separates the act of defining the sample object from the act of setting the workfile sample, you can define the object without changing the workfile sample, and vice versa.</a></div>
+      <div class="Body_Text"><a name="477">To define the sample object, you should fill out this dialog as described before and click on </a><span class="Menu_Item">OK</span>. The sample object now appears in the workfile directory with a double-arrow icon.</div>
+      <div class="Body_Text"><a name="231787">To declare a sample object using a command, simply issue the </a><span class="In-line_input">sample</span> declaration, followed by the name to be given to the sample object, and then the sample string:</div>
+      <div class="Input"><a name="231788">sample mysample 1955m1 1958m12 if rc&gt;3.6</a></div>
+      <div class="Body_Text"><a name="232185">EViews will create the sample object MYSAMPLE which will use observations between 1955:01 and 1958:12, where the value of the RC series is greater than 3.6.</a></div>
+      <div class="Heading_4"><a name="479">Using a Sample Object</a></div>
+      <div class="Body_Text"><a name="231691">You may use a previously defined sample object directly to set the workfile sample. Simply open a sample object by double clicking on the name or icon. This will reopen the sample dialog. If you wish to change the sample object, you may edit the sample specification; otherwise, simply click the </a><span class="Menu_Item">Set workfile sample</span> check box and click on <span class="Menu_Item">OK</span>.</div>
+      <div class="Body_Text"><a name="231802">Or, you may set the workfile sample using the sample object, by entering the </a><span class="In-line_command">smpl</span> command, followed by the sample object name. For example, the command:</div>
+      <div class="Input"><a name="231803">smpl mysample</a></div>
+      <div class="Body_Text"><a name="231804">will set the workfile sample according to the rules contained in the sample object MYSAMPLE.</a></div>
+      <div class="Body_Text"><a name="231672">For many purposes, you may also use a named sample object as though it were an ordinary EViews series containing the values 1 and 0, for observations that are and are not included, respectively. Thus, if SMP2 is a named sample object, you may use it as though it were a series in any EViews expressions (see </a><span class="Link"><a href="workdata-Numeric_Expressions.html#160551" title="Numeric Expressions">&#8220;Series Expressions&#8221;</a></span>). For example:</div>
+      <div class="Input"><a name="231698">y1*(smp2=0) + 3*y2*(smp2=1)</a></div>
+      <div class="Body_Text"><a name="481">is a valid EViews expression, evaluating to the value of 3*Y2 if an observation is in SMP2, and Y1, otherwise.</a></div>
+      <div class="Body_Text"><a name="231887">You may also, for example, create a new series that is equal to a sample object, and then examine the values of the series to see which observations do and do not satisfy the sample criterion.</a></div>
+      <div class="Body_Text"><a name="231746">Additionally, one important consequence of this treatment of sample objects is that you may use sample objects in the construction of other sample objects. For example, if you create a sample object FEMALE containing observations for individuals who are females,</a></div>
+      <div class="Input"><a name="231813">sample female @all if gender="female"</a></div>
+      <div class="Body_Text"><a name="231814">and a second sample object HIGHINC if INCOME is greater than 25000:</a></div>
+      <div class="Input"><a name="231825">sample highinc @all if income&gt;25000</a></div>
+      <div class="Body_Text"><a name="231826">You may set the sample to observations where individuals are low income females using:</a></div>
+      <div class="Input"><a name="231827">smpl @all if female and not highinc</a></div>
+      <div class="Body_Text"><a name="231845">where we use the NOT keyword to take the complement of the observations in HIGHINC. To create a sample object HIGHFEMALE using this sample, use the command:</a></div>
+      <div class="Input"><a name="231846">sample highfemale @all if female and not highinc</a></div>
+      <div class="Body_Text"><a name="231740">Alternatively, we could have used the equivalent expression</a></div>
+      <div class="Input"><a name="231880">sample highfemale @all if female and highinc=0</a></div>
+      <div class="Body_Text"><a name="231879">More generally, we may use any expression involving sample objects and the keywords &#8220;AND&#8221;, &#8220;OR&#8221;, and &#8220;NOT&#8221;, as in</a></div>
+      <div class="Input"><a name="231865">smpl 1950 1980 if female or not highinc</a></div>
+      <div class="Body_Text"><a name="231890">which sets the sample to those observations from 1950 to 1980 that are also in the sample FEMALE, but not in the sample HIGHINC.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

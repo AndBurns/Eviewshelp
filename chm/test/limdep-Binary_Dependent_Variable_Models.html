@@ -1,0 +1,597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Binary Dependent Variable Models</title>
+    <link rel="StyleSheet" href="css/limdep.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="limdep-Discrete_and_Limited_Dependent_Variable_Models.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="limdep-Ordered_Dependent_Variable_Models.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="limdep-Discrete_and_Limited_Dependent_Variable_Models.html">Discrete and Limited Dependent Variable Models</a> : Binary Dependent Variable Models</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="36980">Binary Dependent Variable Models</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#36983">Background</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37071">Estimating Binary Models in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37243">Estimation Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#37255">Optimization</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#188338">Coefficient Covariances</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#188358">Starting Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37266">Estimation Problems</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37282">Views of Binary Equations</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#177708">Dependent Variable Frequencies</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37286">Categorical Regressor Stats </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37291">Expectation-Prediction (Classification) Table </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37389">Goodness-of-Fit Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37428">Procedures for Binary Equations</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37432">Forecast</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37469">Make Residual Series </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37513">Demonstrations</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37517">Plotting Probability Response Curves</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37557">Testing for Heteroskedasticity</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="36981">In this class of models, the dependent variable, <img class="Default EquationGraphic" src="images/limdep.041.2.001.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> may take on only two values&#8212; <img class="Default EquationGraphic" src="images/limdep.041.2.002.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> might be a dummy variable representing the occurrence of an event, or a choice between two alternatives. For example, you may be interested in modeling the employment status of each individual in your sample (whether employed or not). The individuals differ in age, educational attainment, race, marital status, and other observable characteristics, which we denote as <img class="Default EquationGraphic" src="images/limdep.041.2.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. The goal is to quantify the relationship between the individual characteristics and the probability of being employed.</a></div>
+      <div class="Heading_4"><a name="36983">Background</a></div>
+      <div class="Body_Text"><a name="36984">Suppose that a binary dependent variable, <img class="Default EquationGraphic" src="images/limdep.041.2.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, takes on values of zero and one. A simple linear regression of <img class="Default EquationGraphic" src="images/limdep.041.2.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/limdep.041.2.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is not appropriate, since among other things, the implied model of the conditional mean places inappropriate restrictions on the residuals of the model. Furthermore, the fitted value of <img class="Default EquationGraphic" src="images/limdep.041.2.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> from a simple linear regression is not restricted to lie between zero and one. </a></div>
+      <div class="Body_Text"><a name="36985">Instead, we adopt a specification that is designed to handle the specific requirements of binary dependent variables. Suppose that we model the probability of observing a value of one as: </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.008.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="173438">where <img class="Default EquationGraphic" src="images/limdep.041.2.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is a continuous, strictly increasing function that takes a real value and returns a value ranging from zero to one. In this, and the remaining discussion in this chapter follows we adopt the standard simplifying convention of assuming that the index specification is linear in the parameters so that it takes the form <img class="Default EquationGraphic" src="images/limdep.041.2.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 33px; top: 0.0pt" alt="" />. Note, however, that EViews allows you to estimate models with nonlinear index specifications.</a></div>
+      <div class="Body_Text"><a name="173436">The choice of the function <img class="Default EquationGraphic" src="images/limdep.041.2.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> determines the type of binary model. It follows that:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.012.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="36995">Given such a specification, we can estimate the parameters of this model using the method of maximum likelihood. The likelihood function is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.013.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.3)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37002">The first order conditions for this likelihood are nonlinear so that obtaining parameter estimates requires an iterative solution. By default, EViews uses a second derivative method for iteration and computation of the covariance matrix of the parameter estimates. As discussed below, EViews allows you to override these defaults using the Options dialog (see </a><span class="Link"><a href="optimize-Optimization_Algorithms.html#137163" title="Optimization Algorithms">&#8220;Second Derivative Methods&#8221;</a></span> for additional details on the estimation methods). </div>
+      <div class="Body_Text"><a name="37009">There are two alternative interpretations of this specification that are of interest. First, the binary model is often motivated as a latent variables specification. Suppose that there is an unobserved latent variable <img class="Default EquationGraphic" src="images/limdep.041.2.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 26px; top: 0.0pt" alt="" /> that is linearly related to <img class="Default EquationGraphic" src="images/limdep.041.2.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.016.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.4)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37021">where <img class="Default EquationGraphic" src="images/limdep.041.2.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is a random disturbance. Then the observed dependent variable is determined by whether <img class="Default EquationGraphic" src="images/limdep.041.2.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 26px; top: 0.0pt" alt="" /> exceeds a threshold value:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.019.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="172042">In this case, the threshold is set to zero, but the choice of a threshold value is irrelevant, so long as a constant term is included in <img class="Default EquationGraphic" src="images/limdep.041.2.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />. Then:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.021.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="172069">where <img class="Default EquationGraphic" src="images/limdep.041.2.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is the cumulative distribution function of <img class="Default EquationGraphic" src="images/limdep.041.2.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. Common models include probit (standard normal), logit (logistic), and gompit (extreme value) specifications for the <img class="Default EquationGraphic" src="images/limdep.041.2.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> function.</a></div>
+      <div class="Body_Text"><a name="37044">In principle, the coding of the two numerical values of <img class="Default EquationGraphic" src="images/limdep.041.2.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is not critical since each of the binary responses only represents an event. Nevertheless, EViews requires that you code <img class="Default EquationGraphic" src="images/limdep.041.2.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> as a zero-one variable. This restriction yields a number of advantages. For one, coding the variable in this fashion implies that expected value of <img class="Default EquationGraphic" src="images/limdep.041.2.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is simply the probability that <img class="Default EquationGraphic" src="images/limdep.041.2.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />: </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.029.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37052">This convention provides us with a second interpretation of the binary specification: as a conditional mean specification. It follows that we can write the binary model as a regression model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.030.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37063">where <img class="Default EquationGraphic" src="images/limdep.041.2.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 16px; top: 0.0pt" alt="" /> is a residual representing the deviation of the binary <img class="Default EquationGraphic" src="images/limdep.041.2.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> from its conditional mean. Then:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.033.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37068">We will use the conditional mean interpretation in our discussion of binary model residuals (see </a><span class="Link"><a href="#37469" title="Binary Dependent Variable Models">&#8220;Make Residual Series&#8221;</a></span>).</div>
+      <div class="Heading_4"><a name="37071">Estimating Binary Models in EViews</a></div>
+      <div class="Body_Text"><a name="37072">To estimate a binary dependent variable model, choose </a><span class="Menu_Item">Object/New Object&#8230;</span> from the main menu and select the <span class="Dialog_Item">Equation</span> object from the main menu. From the <span class="Menu_Item">Equation Specification</span> dialog, select the <span class="Dialog_Item">BINARY - Binary Choice (Logit, Probit, Extreme Value) </span>estimation method. The dialog will change to reflect your choice. Alternately, enter the keyword <span class="In-line_command">binary</span> in the command line and press ENTER.</div>
+      <div class="Body_Text"><a name="37073">There are two parts to the binary model specification. First, in the </a><span class="Dialog_Item">Equation Specification</span> field, you may type the name of the binary dependent variable followed by a list of regressors or you may enter an explicit expression for the index. Next, select from among the three distributions for your error term: </div>
+      <div class="Table"><a name="147522">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 326.88pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 82.08pt">
+            <div class="Table_Text"><a name="147493">Probit</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 244.8pt">
+            <div class="Table_Multi-Line_Equation"><a name="147498"><img class="Default EquationGraphic" src="images/limdep.041.2.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 319px; top: 0.0pt" alt="" /></a></div>
+            <div class="Table_Text"><a name="147502">where <img class="Default EquationGraphic" src="images/limdep.041.2.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is the cumulative distribution function of the standard normal distribution.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="147505">Logit</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="147510"><img class="Default EquationGraphic" src="images/limdep.041.2.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 69px; max-width: 311px; top: 0.0pt" alt="" /></a></div>
+            <div class="Table_Text"><a name="147511">which is based upon the cumulative distribution function for the logistic distribution.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="147513">Extreme value (Gompit)</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="147520"><img class="Default EquationGraphic" src="images/limdep.041.2.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 69px; max-width: 300px; top: 0.0pt" alt="" /></a></div>
+            <div class="Table_Text"><a name="147521">which is based upon the CDF for the Type-I extreme value distribution. Note that this distribution is skewed.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="172958">For example, consider the probit specification example described in Greene (2008, p. 781-783) where we analyze the effectiveness of teaching methods on grades. The variable GRADE represents improvement on grades following exposure to the new teaching method PSI (the data are provided in the workfile &#8220;Binary.WF1&#8221;). Also controlling for alternative measures of knowledge (GPA and TUCE), we have the specification:</a></div>
+      <div class="Picture"><a name="172959"><img class="Default" src="images/limdep.041.2.038.jpg" width="100%" style="left: 0.0pt; max-height: 427px; max-width: 540px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="172960">Once you have specified the model, click </a><span class="Menu_Item">OK</span>. EViews estimates the parameters of the model using iterative procedures, and will display information in the status line. EViews requires that the dependent variable be coded with the values zero-one with all other observations dropped from the estimation.</div>
+      <div class="Body_Text"><a name="147661">Following estimation, EViews displays results in the equation window. The top part of the estimation output is given by:</a></div>
+      <div class="Table"><a name="147665"><img class="Default" src="images/limdep.041.2.039.jpg" width="100%" style="left: 0.0pt; max-height: 298px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="147666">The header contains basic information regarding the estimation technique (ML for maximum likelihood) and the sample used in estimation, as well as information on the number of iterations required for convergence, and on the method used to compute the coefficient covariance matrix.</a></div>
+      <div class="Body_Text"><a name="37125">Displayed next are the coefficient estimates, asymptotic standard errors, </a><span class="In-line_math">z</span>-statistics and corresponding <span class="In-line_math">p</span>-values. </div>
+      <div class="Body_Text"><a name="37127">Interpretation of the coefficient values is complicated by the fact that estimated coefficients from a binary model cannot be interpreted as the marginal effect on the dependent variable. The marginal effect of <img class="Default EquationGraphic" src="images/limdep.041.2.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> on the conditional probability is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.041.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="177863">where <img class="Default EquationGraphic" src="images/limdep.041.2.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 135px; top: 0.0pt" alt="" /> is the density function corresponding to <img class="Default EquationGraphic" src="images/limdep.041.2.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. Note that <img class="Default EquationGraphic" src="images/limdep.041.2.044.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is weighted by a factor <img class="Default EquationGraphic" src="images/limdep.041.2.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> that depends on the values of </a><span class="Emphasis">all</span> of the regressors in <img class="Default EquationGraphic" src="images/limdep.041.2.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. The <span class="Emphasis">direction</span> of the effect of a change in <img class="Default EquationGraphic" src="images/limdep.041.2.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> depends only on the sign of the <img class="Default EquationGraphic" src="images/limdep.041.2.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> coefficient. Positive values of <img class="Default EquationGraphic" src="images/limdep.041.2.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> imply that increasing <img class="Default EquationGraphic" src="images/limdep.041.2.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> will increase the probability of the response; negative values imply the opposite.</div>
+      <div class="Body_Text"><a name="177885">While marginal effects calculation is not provided as a built-in view or procedure, in </a><span class="Link"><a href="#37432" title="Binary Dependent Variable Models">&#8220;Forecast&#8221;</a></span>, we show you how to use EViews to compute the marginal effects.</div>
+      <div class="Body_Text"><a name="37159">An alternative interpretation of the coefficients results from noting that the ratios of coefficients provide a measure of the relative changes in the probabilities:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.051.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.11)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="147671">In addition to the summary statistics of the dependent variable, EViews also presents the following summary statistics:</a></div>
+      <div class="Table"><a name="147675"><img class="Default" src="images/limdep.041.2.052.jpg" width="100%" style="left: 0.0pt; max-height: 199px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="147676">First, there are several familiar summary descriptive statistics: the mean and standard deviation of the dependent variable, standard error of the regression, and the sum of the squared residuals. The latter two measures are computed in the usual fashion using the ordinary residuals:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.053.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.12)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37174">Additionally, there are several likelihood based statistics:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="37178">Log likelihood</a></span> is the maximized value of the log likelihood function <img class="Default EquationGraphic" src="images/limdep.041.2.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 23px; max-width: 34px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="37184">Avg. log likelihood</a></span> is the log likelihood <img class="Default EquationGraphic" src="images/limdep.041.2.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 23px; max-width: 34px; top: 0.0pt" alt="" /> divided by the number of observations <img class="Default EquationGraphic" src="images/limdep.041.2.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="37187">Restr. log likelihood</a></span> is the maximized log likelihood value, when all slope coefficients are restricted to zero, <img class="Default EquationGraphic" src="images/limdep.041.2.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 34px; top: 0.0pt" alt="" />. Since the constant term is included, this specification is equivalent to estimating the unconditional mean probability of &#8220;success&#8221;.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37192">The </a><span class="Dialog_Item">LR statistic</span> tests the joint null hypothesis that all slope coefficients except the constant are zero and is computed as <img class="Default EquationGraphic" src="images/limdep.041.2.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 112px; top: 0.0pt" alt="" />. This statistic, which is only reported when you include a constant in your specification, is used to test the overall significance of the model. The degrees of freedom is one less than the number of coefficients in the equation, which is the number of restrictions under test.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="37196">Probability(LR stat)</a></span> is the <span class="In-line_math">p</span>-value of the LR test statistic. Under the null hypothesis, the LR test statistic is asymptotically distributed as a <img class="Default EquationGraphic" src="images/limdep.041.2.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />variable, with degrees of freedom equal to the number of restrictions under test. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="37208">McFadden R-squared</a></span> is the likelihood ratio index computed as <img class="Default EquationGraphic" src="images/limdep.041.2.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 101px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/limdep.041.2.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 34px; top: 0.0pt" alt="" /> is the restricted log likelihood. As the name suggests, this is an analog to the <img class="Default EquationGraphic" src="images/limdep.041.2.062.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> reported in linear regression models. It has the property that it always lies between zero and one.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37212">The various information criteria are detailed in </a><span class="Link"><a href="infoapp-Information_Criteria.html#150778" title="Information Criteria">Appendix&nbsp;E. &#8220;Information Criteria&#8221;</a></span>. For additional discussion, see Grasa (1989). </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="37243">Estimation Options</a></div>
+      <div class="Body_Text"><a name="37244">The iteration limit, convergence criterion, and coefficient name may be set in the usual fashion by clicking on the </a><span class="Menu_Item">Options</span> tab in the <span class="Menu_Item">Equation Estimation</span> dialog. In addition, there are options that are specific to binary models. These options are described below.</div>
+      <div class="Heading_6"><a name="37255">Optimization</a></div>
+      <div class="Body_Text"><a name="37256">By default, EViews uses Newton-Raphson with Marquardt steps to obtain parameter estimates.</a></div>
+      <div class="Body_Text"><a name="37257">If you wish, you can use the </a><span class="Menu_Item">Optimization method</span> dropdown menu to select a different method. In addition to <span class="Menu_Item">Newton-Raphson</span>, you may select <span class="Menu_Item">BFGS</span>, <span class="Menu_Item">OPG - BHHH</span>, or <span class="Menu_Item">EViews legacy</span>. </div>
+      <div class="Body_Text"><a name="190554">For non-legacy estimation, the </a><span class="Menu_Item">Step method</span> may be chosen between Marquardt, Dogleg, and Line search. For legacy estimation the <span class="Menu_Item">Legacy method</span> is set to the default <span class="Menu_Item">Quadratic hill climbing</span> (Marquardt steps) or <span class="Menu_Item">BHHH</span> (line search). </div>
+      <div class="Body_Text"><a name="179796">Note that for legacy estimation, the default optimization algorithm does influence the default method of computing coefficient covariances.</a></div>
+      <div class="Body_Text"><a name="188788">See </a><span class="Link"><a href="optimize-Setting_Estimation_Options.html#146519" title="Setting Estimation Options">&#8220;Optimization Method&#8221;</a></span> and <span class="Link"><a href="limdep-Technical_Notes.html#38646" title="Technical Notes">&#8220;Technical Notes&#8221;</a></span> for discussion.</div>
+      <div class="Heading_6"><a name="188338">Coefficient Covariances</a></div>
+      <div class="Body_Text"><a name="188339">For binary dependent variable models, EViews allows you to estimate the standard errors using the default (inverse of the estimated information matrix), quasi-maximum likelihood (</a><span class="Dialog_Item">Huber/White</span>), cluster quasi-ML (<span class="Menu_Item">Cluster-robust</span>), or generalized linear model (<span class="Dialog_Item">GLM</span>) methods. Note that in this setting, the quasi-ML standard errors are associated with misspecified models.</div>
+      <div class="Body_Text"><a name="190569">In addition, for ordinary and GLM covariances, you may choose to compute the information matrix estimate using the outer-product of the gradients (</a><span class="Menu_Item">OPG)</span> or using the negative of the matrix of log-likelihood second derivatives (<span class="Menu_Item">Hessian - observed</span>).</div>
+      <div class="Body_Text"><a name="188852">You may elect to compute your covariances with or without a </a><span class="Menu_Item">d.f. Adjustment</span>.</div>
+      <div class="Body_Text"><a name="188818">Note that for legacy estimation, the default algorithm does influence the default method of computing coefficient covariances.</a></div>
+      <div class="Body_Text"><a name="188838">See </a><span class="Link"><a href="limdep-Technical_Notes.html#38646" title="Technical Notes">&#8220;Technical Notes&#8221;</a></span> for discussion.</div>
+      <div class="Heading_6"><a name="188358">Starting Values</a></div>
+      <div class="Body_Text"><a name="188359">As with other estimation procedures, EViews allows you to specify starting values. In the options menu, select one of the items from the dropdown menu. You can use the default EViews values, or you can choose a fraction of those values, zero coefficients, or user supplied values. To employ the latter, enter the coefficients in the C coefficient vector, and select </a><span class="Dialog_Item">User Supplied</span> in the dropdown menu.</div>
+      <div class="Body_Text"><a name="188360">The EViews default values are selected using a algorithm that is specialized for each type of binary model. Unless there is a good reason to choose otherwise, we recommend that you use the default values.</a></div>
+      <div class="Heading_5"><a name="37266">Estimation Problems</a></div>
+      <div class="Body_Text"><a name="37267">In general, estimation of binary models is quite straightforward, and you should experience little difficulty in obtaining parameter estimates. There are a few situations, however, where you may experience problems.</a></div>
+      <div class="Body_Text"><a name="37268">First, you may get the error message &#8220;Dependent variable has no variance.&#8221; This error means that there is no variation in the dependent variable (the variable is always one or zero for all valid observations). This error most often occurs when EViews excludes the entire sample of observations for which <img class="Default EquationGraphic" src="images/limdep.041.2.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> takes values other than zero or one, leaving too few observations for estimation.</a></div>
+      <div class="Body_Text"><a name="37269">You should make certain to recode your data so that the binary indicators take the values zero and one. This requirement is not as restrictive at it may first seem, since the recoding may easily be done using auto-series. Suppose, for example, that you have data where <img class="Default EquationGraphic" src="images/limdep.041.2.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> takes the values 1000 and 2000. You could then use the boolean auto-series, &#8220;</a><span class="In-line_input">y=1000</span>&#8221;, or perhaps, &#8220;<span class="In-line_input">y&lt;1500</span>&#8221;, as your dependent variable.</div>
+      <div class="Body_Text"><a name="37270">Second, you may receive an error message of the form &#8220;[xxxx] perfectly predicts binary response [success/failure]&#8221;, where xxxx is a sample condition. This error occurs when one of the regressors contains a separating value for which all of the observations with values below the threshold are associated with a single binary response, and all of the values above the threshold are associated with the alternative response. In this circumstance, the method of maximum likelihood breaks down.</a></div>
+      <div class="Body_Text"><a name="37277">For example, if all values of the explanatory variable <img class="Default EquationGraphic" src="images/limdep.041.2.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> are associated with <img class="Default EquationGraphic" src="images/limdep.041.2.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />, then <img class="Default EquationGraphic" src="images/limdep.041.2.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a perfect predictor of the dependent variable, and EViews will issue an error message and stop the estimation procedure.</a></div>
+      <div class="Body_Text"><a name="37278">The only solution to this problem is to remove the offending variable from your specification. Usually, the variable has been incorrectly entered in the model, as when a researcher includes a dummy variable that is identical to the dependent variable (for discussion, see Greene, 2008).</a></div>
+      <div class="Body_Text"><a name="37279">Thirdly, you may experience the error, &#8220;Non-positive likelihood value observed for observation [xxxx].&#8221; This error most commonly arises when the starting values for estimation are poor. The default EViews starting values should be adequate for most uses. You may wish to check the Options dialog to make certain that you are not using user specified starting values, or you may experiment with alternative user-specified values.</a></div>
+      <div class="Body_Text"><a name="146456">Lastly, the error message &#8220;Near-singular matrix&#8221; indicates that EViews was unable to invert the matrix required for iterative estimation. This will occur if the model is not identified. It may also occur if the current parameters are far from the true values. If you believe the latter to be the case, you may wish to experiment with starting values or the estimation algorithm. The BHHH and quadratic hill-climbing algorithms are less sensitive to this particular problem than is Newton-Raphson.</a></div>
+      <div class="Heading_4"><a name="37282">Views of Binary Equations</a></div>
+      <div class="Body_Text"><a name="37283">EViews provides a number of standard views and procedures for binary models. For example, you can easily perform Wald or likelihood ratio tests by selecting </a><span class="Menu_Item">View/Coefficient Diagnostics</span>, and then choosing the appropriate test. In addition, EViews allows you to examine and perform tests using the residuals from your model. The ordinary residuals used in most calculations are described above&#8212;additional residual types are defined below. Note that some care should be taken in interpreting test statistics that use these residuals since some of the underlying test assumptions may not be valid in the current setting.</div>
+      <div class="Picture"><a name="178703"><img class="Default" src="images/limdep.041.2.068.jpg" width="100%" style="left: 0.0pt; max-height: 360px; max-width: 343px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="178696">There are a number of additional specialized views and procedures which allow you to examine the properties and performance of your estimated binary model.</a></div>
+      <div class="Heading_5"><a name="177708">Dependent Variable Frequencies</a></div>
+      <div class="Body_Text"><a name="177713">This view displays a frequency and cumulative frequency table for the dependent variable in the binary model.</a></div>
+      <div class="Heading_5"><a name="37286">Categorical Regressor Stats </a></div>
+      <div class="Body_Text"><a name="37287">This view displays descriptive statistics (mean and standard deviation) for each regressor. The descriptive statistics are computed for the whole sample, as well as the sample broken down by the value of the dependent variable <img class="Default EquationGraphic" src="images/limdep.041.2.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />:</a></div>
+      <div class="Picture"><a name="178732"><img class="Default" src="images/limdep.041.2.070.jpg" width="100%" style="left: 0.0pt; max-height: 457px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_5"><a name="37291">Expectation-Prediction (Classification) Table </a></div>
+      <div class="Body_Text"><a name="178690">This view displays <img class="Default EquationGraphic" src="images/limdep.041.2.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> tables of correct and incorrect classification based on a user specified prediction rule, and on expected value calculations. Click on </a><span class="Menu_Item">View/Expectation-Prediction Table</span>. EViews opens a dialog prompting you to specify a prediction cutoff value, <img class="Default EquationGraphic" src="images/limdep.041.2.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, lying between zero and one. Each observation will be classified as having a predicted probability that lies above or below this cutoff. </div>
+      <div class="Body_Text"><a name="147699">After you enter the cutoff value and click on </a><span class="Dialog_Item">OK</span>, EViews will display four (bordered) <img class="Default EquationGraphic" src="images/limdep.041.2.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> tables in the equation window. Each table corresponds to a contingency table of the predicted response classified against the observed dependent variable. The top two tables and associated statistics depict the classification results based upon the specified cutoff value:</div>
+      <div class="Table"><a name="147706"><img class="Default" src="images/limdep.041.2.074.jpg" width="100%" style="left: 0.0pt; max-height: 369px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="147707">In the left-hand table, we classify observations as having predicted probabilities <img class="Default EquationGraphic" src="images/limdep.041.2.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 136px; top: 0.0pt" alt="" />that are above or below the specified cutoff value (here set to the default of 0.5). In the upper right-hand table, we classify observations using <img class="Default EquationGraphic" src="images/limdep.041.2.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, the sample proportion of <img class="Default EquationGraphic" src="images/limdep.041.2.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations. This probability, which is constant across individuals, is the value computed from estimating a model that includes only the intercept term, C.</a></div>
+      <div class="Body_Text"><a name="37315">&#8220;Correct&#8221; classifications are obtained when the predicted probability is less than or equal to the cutoff and the observed <img class="Default EquationGraphic" src="images/limdep.041.2.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />, or when the predicted probability is greater than the cutoff and the observed <img class="Default EquationGraphic" src="images/limdep.041.2.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />. In the example above, 18 of the Dep=0 observations and 8 of the Dep=1 observations are correctly classified by the estimated model.</a></div>
+      <div class="Body_Text"><a name="37322">It is worth noting that in the statistics literature, what we term the expectation-prediction table is sometimes referred to as the </a><span class="Definition">classification table</span>. The fraction of <img class="Default EquationGraphic" src="images/limdep.041.2.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations that are correctly predicted is termed the <span class="Definition">sensitivity</span>, while the fraction of <img class="Default EquationGraphic" src="images/limdep.041.2.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations that are correctly predicted is known as <span class="Definition">specificity</span>. In EViews, these two values, expressed in percentage terms, are labeled &#8220;% Correct&#8221;. Overall, the estimated model correctly predicts 81.25% of the observations (85.71% of the Dep=0 and 72.73% of the Dep=1 observations).</div>
+      <div class="Body_Text"><a name="37333">The gain in the number of correct predictions obtained in moving from the right table to the left table provides a measure of the predictive ability of your model. The gain measures are reported in both absolute percentage increases (</a><span class="Dialog_Item">Total Gain</span>), and as a percentage of the incorrect classifications in the constant probability model (<span class="Dialog_Item">Percent Gain</span>). In the example above, the restricted model predicts that all 21 individuals will have Dep=0. This prediction is correct for the 21 <img class="Default EquationGraphic" src="images/limdep.041.2.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations, but is incorrect for the 11 <img class="Default EquationGraphic" src="images/limdep.041.2.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations. </div>
+      <div class="Body_Text"><a name="37340">The estimated model improves on the Dep=1 predictions by 72.73 percentage points, but does more poorly on the Dep=0 predictions (-14.29 percentage points). Overall, the estimated equation is 15.62 percentage points better at predicting responses than the constant probability model. This change represents a 45.45 percent improvement over the 65.62 percent correct prediction of the default model.</a></div>
+      <div class="Body_Text"><a name="147754">The bottom portion of the equation window contains analogous prediction results based upon expected value calculations:</a></div>
+      <div class="Table"><a name="147758"><img class="Default" src="images/limdep.041.2.084.jpg" width="100%" style="left: 0.0pt; max-height: 249px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="147765">In the left-hand table, we compute the expected number of <img class="Default EquationGraphic" src="images/limdep.041.2.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/limdep.041.2.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations in the sample. For example, </a><span class="Dialog_Item">E(# of Dep=0)</span> is computed as:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.087.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.13)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37357">where the cumulative distribution function <img class="Default EquationGraphic" src="images/limdep.041.2.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is for the normal, logistic, or extreme value distribution. </a></div>
+      <div class="Body_Text"><a name="37364">In the lower right-hand table, we compute the expected number of <img class="Default EquationGraphic" src="images/limdep.041.2.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/limdep.041.2.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations for a model estimated with only a constant. For this restricted model, </a><span class="Dialog_Item">E(# of Dep=0)</span> is computed as <img class="Default EquationGraphic" src="images/limdep.041.2.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 64px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/limdep.041.2.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is the sample proportion of <img class="Default EquationGraphic" src="images/limdep.041.2.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations. EViews also reports summary measures of the total gain and the percent (of the incorrect expectation) gain.</div>
+      <div class="Body_Text"><a name="37380">Among the 21 individuals with <img class="Default EquationGraphic" src="images/limdep.041.2.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />, the expected number of <img class="Default EquationGraphic" src="images/limdep.041.2.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations in the estimated model is 16.89. Among the 11 observations with <img class="Default EquationGraphic" src="images/limdep.041.2.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />, the expected number of <img class="Default EquationGraphic" src="images/limdep.041.2.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations is 6.86. These numbers represent roughly a 19.32 percentage point (42.82 percent) improvement over the constant probability model.</a></div>
+      <div class="Heading_5"><a name="37389">Goodness-of-Fit Tests</a></div>
+      <div class="Body_Text"><a name="37393">This view allows you to perform Pearson <img class="Default EquationGraphic" src="images/limdep.041.2.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />-type tests of goodness-of-fit. EViews carries out two goodness-of-fit tests: Hosmer-Lemeshow (1989) and Andrews (1988a, 1988b). The idea underlying these tests is to compare the fitted expected values to the actual values </a><span class="Emphasis">by group</span>. If these differences are &#8220;large&#8221;, we reject the model as providing an insufficient fit to the data.</div>
+      <div class="Picture"><a name="69647"><img class="Default" src="images/limdep.041.2.099.jpg" width="100%" style="left: 0.0pt; max-height: 362px; max-width: 329px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="37399">Details on the two tests are described in the </a><span class="Link"><a href="limdep-Technical_Notes.html#38646" title="Technical Notes">&#8220;Technical Notes&#8221;</a></span>. Briefly, the tests differ in how the observations are grouped and in the asymptotic distribution of the test statistic. The Hosmer-Lemeshow test groups observations on the basis of the predicted probability that <img class="Default EquationGraphic" src="images/limdep.041.2.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />. The Andrews test is a more general test that groups observations on the basis of any series or series expression.</div>
+      <div class="Body_Text"><a name="37403">To carry out the test, select</a><span class="Menu_Item"> View/Goodness-of-Fit Test&#8230; </span></div>
+      <div class="Body_Text"><a name="69640">You must first decide on the grouping variable. You can select Hosmer-Lemeshow (predicted probability) grouping by clicking on the corresponding radio button, or you can select series grouping, and provide a series to be used in forming the groups. </a></div>
+      <div class="Body_Text"><a name="37409">Next, you need to specify the grouping rule. EViews allows you to group on the basis of either distinct values or quantiles of the grouping variable. </a></div>
+      <div class="Body_Text"><a name="37410">If your grouping variable takes relatively few distinct values, you should choose the </a><span class="Menu_Item">Distinct values</span> grouping. EViews will form a separate group for each distinct value of the grouping variable. For example, if your grouping variable is TUCE, EViews will create a group for each distinct TUCE value and compare the expected and actual numbers of <img class="Default EquationGraphic" src="images/limdep.041.2.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> observations in each group. By default, EViews limits you to 100 distinct values. If the distinct values in your grouping series exceeds this value, EViews will return an error message. If you wish to evaluate the test for more than 100 values, you must explicitly increase the maximum number of distinct values. </div>
+      <div class="Body_Text"><a name="37414">If your grouping variable takes on a large number of distinct values, you should select </a><span class="Menu_Item">Quantiles</span>, and enter the number of desired bins in the edit field. If you select this method, EViews will group your observations into the number of specified bins, on the basis of the ordered values of the grouping series. For example, if you choose to group by TUCE, select <span class="Menu_Item">Quantiles</span>, and enter 10, EViews will form groups on the basis of TUCE deciles.</div>
+      <div class="Body_Text"><a name="37415">If you choose to group by quantiles and there are ties in the grouping variable, EViews may not be able to form the exact number of groups you specify unless tied values are assigned to different groups. Furthermore, the number of observations in each group may be very unbalanced. Selecting the </a><span class="Dialog_Item">randomize ties</span> option randomly assigns ties to adjacent groups in order to balance the number of observations in each group. </div>
+      <div class="Body_Text"><a name="37417">Since the properties of the test statistics require that the number of observations in each group is &#8220;large&#8221;, some care needs to be taken in selecting a rule so that you do not end up with a large number of cells, each containing small numbers of observations.</a></div>
+      <div class="Body_Text"><a name="37418">By default, EViews will perform the test using Hosmer-Lemeshow grouping. The default grouping method is to form deciles. The test result using the default specification is given by:</a></div>
+      <div class="Table"><a name="69650">&nbsp;</a></div>
+      <div class="Table"><a name="37422"><img class="Default" src="images/limdep.041.2.102.jpg" width="100%" style="left: 0.0pt; max-height: 500px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="37423">The columns labeled &#8220;Quantiles of Risk&#8221; depict the high and low value of the predicted probability for each decile. Also depicted are the actual and expected number of observations in each group, as well as the contribution of each group to the overall Hosmer-Lemeshow (H-L) statistic&#8212;large values indicate large differences between the actual and predicted values for that decile. </a></div>
+      <div class="Body_Text"><a name="37427">The <img class="Default EquationGraphic" src="images/limdep.041.2.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />statistics are reported at the bottom of the table. Since grouping on the basis of the fitted values falls within the structure of an Andrews test, we report results for both the H-L and the Andrews test statistic. The </a><span class="In-line_math">p</span>-value for the HL test is large while the value for the Andrews test statistic is small, providing mixed evidence of problems. Furthermore, the relatively small sample sizes suggest that caution is in order in interpreting the results.</div>
+      <div class="Heading_4"><a name="37428">Procedures for Binary Equations</a></div>
+      <div class="Body_Text"><a name="37429">In addition to the usual procedures for equations, EViews allows you to forecast the dependent variable and linear index, or to compute a variety of residuals associated with the binary model.</a></div>
+      <div class="Heading_5"><a name="37432">Forecast</a></div>
+      <div class="Body_Text"><a name="37437">EViews allows you to compute either the fitted probability, <img class="Default EquationGraphic" src="images/limdep.041.2.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 136px; top: 0.0pt" alt="" />, or the fitted values of the index <img class="Default EquationGraphic" src="images/limdep.041.2.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 33px; top: 0.0pt" alt="" />. From the equation toolbar select </a><span class="Menu_Item">Proc/Forecast (Fitted Probability/Index)&#8230;</span>, and then click on the desired entry.</div>
+      <div class="Body_Text"><a name="37441">As with other estimators, you can select a forecast sample, and display a graph of the forecast. If your explanatory variables, <img class="Default EquationGraphic" src="images/limdep.041.2.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />, include lagged values of the binary dependent variable <img class="Default EquationGraphic" src="images/limdep.041.2.107.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />, forecasting with the </a><span class="Dialog_Item">Dynamic</span> option instructs EViews to use the fitted values <img class="Default EquationGraphic" src="images/limdep.041.2.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 37px; top: 0.0pt" alt="" />, to derive the forecasts, in contrast with the <span class="Dialog_Item">Static</span> option, which uses the actual (lagged) <img class="Default EquationGraphic" src="images/limdep.041.2.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="178753">Neither forecast evaluations nor automatic calculation of standard errors of the forecast are currently available for this estimation method. The latter can be computed using the variance matrix of the coefficients obtained by displaying the covariance matrix view using </a><span class="Menu_Item">View/Covariance Matrix</span> or using the <span class="In-line_input">@covariance</span> member function.</div>
+      <div class="Body_Text"><a name="178757">You can use the fitted index in a variety of ways, for example, to compute the marginal effects of the explanatory variables. Simply forecast the fitted index and save the results in a series, say XB. Then the auto-series </a><span class="In-line_input">@dnorm(-xb)</span>, <span class="In-line_input">@dlogistic(-xb)</span>, or <span class="In-line_input">@dextreme(-xb)</span> may be multiplied by the coefficients of interest to provide an estimate of the derivatives of the expected value of <img class="Default EquationGraphic" src="images/limdep.041.2.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> with respect to the <span class="In-line_math">j</span>-th variable in <img class="Default EquationGraphic" src="images/limdep.041.2.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.112.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_5"><a name="37469">Make Residual Series </a></div>
+      <div class="Body_Text"><span class="Menu_Item"><a name="37470">Proc/Make Residual Series</a></span> gives you the option of generating one of the following three types of residuals:</div>
+      <div class="Table"><a name="37499">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 223.2pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 79.2pt">
+            <div class="Table_Text"><a name="37475">Ordinary</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 144pt">
+            <div class="Table_Multi-line__0028Left_0029"><a name="37480"><img class="Default EquationGraphic" src="images/limdep.041.2.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 96px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="37484">Standardized</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="37489"><img class="Default EquationGraphic" src="images/limdep.041.2.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 55px; max-width: 132px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="37493">Generalized</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="37498"><img class="Default EquationGraphic" src="images/limdep.041.2.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 53px; max-width: 168px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37503">where <img class="Default EquationGraphic" src="images/limdep.041.2.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 136px; top: 0.0pt" alt="" /> is the fitted probability, and the distribution and density functions <img class="Default EquationGraphic" src="images/limdep.041.2.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/limdep.041.2.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, depend on the specified distribution.</a></div>
+      <div class="Body_Text"><a name="37504">The ordinary residuals have been described above. The standardized residuals are simply the ordinary residuals divided by an estimate of the theoretical standard deviation. The generalized residuals are derived from the first order conditions that define the ML estimates. The first order conditions may be regarded as an orthogonality condition between the generalized residuals and the regressors <img class="Default EquationGraphic" src="images/limdep.041.2.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />.</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.120.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37509">This property is analogous to the orthogonality condition between the (ordinary) residuals and the regressors in linear regression models.</a></div>
+      <div class="Body_Text"><a name="37510">The usefulness of the generalized residuals derives from the fact that you can easily obtain the score vectors by multiplying the generalized residuals by each of the regressors in <img class="Default EquationGraphic" src="images/limdep.041.2.121.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. These scores can be used in a variety of LM specification tests (see Chesher, Lancaster and Irish (1985), and Gourieroux, Monfort, Renault, and Trognon (1987)). We provide an example below.</a></div>
+      <div class="Heading_4"><a name="37513">Demonstrations</a></div>
+      <div class="Body_Text"><a name="37514">You can easily use the results of a binary model in additional analysis. Here, we provide demonstrations of using EViews to plot a probability response curve and to test for heteroskedasticity in the residuals.</a></div>
+      <div class="Heading_5"><a name="37517">Plotting Probability Response Curves</a></div>
+      <div class="Body_Text"><a name="37518">You can use the estimated coefficients from a binary model to examine how the predicted probabilities vary with an independent variable. To do so, we will use the EViews built-in modeling features. (The following discussion skims over many of the useful features of EViews models. Those wishing greater detail should consult </a><span class="Link"><a href="models-Models.html#51026" title="Models">&#8220;Models&#8221;</a></span>.)</div>
+      <div class="Body_Text"><a name="37519">For the probit example above, suppose we are interested in the effect of teaching method (PSI) on educational improvement (GRADE). We wish to plot the fitted probabilities of GRADE improvement as a function of GPA for the two values of PSI, fixing the values of other variables at their sample means.</a></div>
+      <div class="Picture"><a name="160287"><img class="Default" src="images/limdep.041.2.122.jpg" width="100%" style="left: 0.0pt; max-height: 312px; max-width: 527px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="160290">First, we create a model out of the estimated equation by selecting </a><span class="Menu_Item">Proc/Make Model</span> from the equation toolbar. EViews will create an untitled model object linked to the estimated equation and will open the model window.</div>
+      <div class="Body_Text"><a name="160323">What we will do is to use the model to solve for values of the probabilities for various values of GPA, with TUCE equal to the mean value, and PSI equal to 0 in one case, and PSI equal to 1 in a second case. We will define scenarios in the model so that calculations are performed using the desired values. Click on the </a><span class="Menu_Item">Scenarios</span> button on the model toolbar to display the <span class="Menu_Item">Scenario Specification</span> dialog and click on <span class="Menu_Item">Scenario 1</span> to define the settings for that scenario.</div>
+      <div class="Picture"><a name="178848"><img class="Default" src="images/limdep.041.2.123.jpg" width="100%" style="left: 0.0pt; max-height: 412px; max-width: 487px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="178969">The </a><span class="Menu_Item">Scenario Specification</span> dialog allows us to define a set of assumptions under which we will solve the model. Click on the <span class="Menu_Item">Overrides</span> tab and enter &#8220;GPA PSI TUCE&#8221;. Defining these overrides tells EViews to use the values in the series GPA_1, PSI_1, and TUCE_1 instead of the original GPA, PSI, and TUCE when solving for GRADE under Scenario 1. </div>
+      <div class="Body_Text"><a name="183194">Having defined the first scenario, we must create the series GPA_1, PSI_1 and TUCE_1 in our workfile. We wish to use these series to evaluate the GRADE probabilities for various values of GPA holding TUCE equal to its mean value and PSI equal to 0. </a></div>
+      <div class="Body_Text"><a name="183315">First, we will use the command line to fill GPA_1 with a grid of values ranging from 2 to 4. The easiest way to do this is to use the </a><span class="In-line_input">@trend</span> function:</div>
+      <div class="Input"><a name="183195">series gpa_1 = 2+</a><span class="In-line_input">(4-2)*@trend/(@obs(@trend)-1)</span></div>
+      <div class="Body_Text"><a name="183196">Recall that </a><span class="In-line_input">@trend</span> creates a series that begins at 0 in the first observation of the sample, and increases by 1 for each subsequent observation, up through <span class="In-line_command">@obs-1</span>. </div>
+      <div class="Body_Text"><a name="183197">Next we create series TUCE_1 containing the mean values of TUCE and a series PSI_1 which we set to zero:</a></div>
+      <div class="Multi-line_Input"><a name="183198">series tuce_1 = @mean(tuce)</a></div>
+      <div class="Multi-line_Input"><a name="183199">series psi_1 = 0</a></div>
+      <div class="Body_Text"><a name="190702">Having prepared our data for the first scenario, we will now use the model object to define an alternate scenario where PSI=1. Return to the </a><span class="Menu_Item">Select Scenario</span> tab, select <span class="Menu_Item">Copy Scenario</span>, then select <span class="Menu_Item">Scenario 1</span> as the <span class="Menu_Item">Source</span>, and <span class="Menu_Item">New Scenario</span> as the <span class="Menu_Item">Destination</span>. Copying Scenario 1 creates a new scenario, Scenario 2, that instructs EViews to use the values in the series GPA_2, PSI_2, and TUCE_2 when solving for GRADE. These values are initialized from the corresponding Scenario 1 series defined previously. We then set PSI_2 equal to 1 by issuing the command</div>
+      <div class="Input"><a name="190703">series psi_2 = 1</a></div>
+      <div class="Body_Text"><a name="190704">We are now ready to solve the model under the two scenarios. Click on the </a><span class="Menu_Item">Solve</span> button and set the <span class="Menu_Item">Active</span> solution scenario to <span class="Menu_Item">Scenario 1</span> and the <span class="Menu_Item">Alternate</span> solution scenario to <span class="Menu_Item">Scenario 2</span>. Be sure to click on the checkbox <span class="Menu_Item">Solve for Alternate along with Active </span>so that EViews knows to solve for both. You can safely ignore the remaining solution settings and simply click on <span class="Menu_Item">OK</span>.</div>
+      <div class="Body_Text"><a name="179164">EViews will report that your model has solved successfully and will place the solutions in the series GRADE_1 and GRADE_2, respectively. To display the results, select </a><span class="Menu_Item">Object/New Object.../Group</span>, and enter:</div>
+      <div class="Input"><a name="37532"> </a><span class="In-line_input">gpa_1</span> <span class="In-line_input">grade_1 grade_2</span></div>
+      <div class="Body_Text"><a name="37533">EViews will open an untitled group window containing these three series. Select </a><span class="Menu_Item">View/Graph/XY line</span> to display a graph of the fitted GRADE probabilities plotted against GPA for those with PSI=0 (GRADE_1) and with PSI=1 (GRADE_2), both computed with TUCE evaluated at means.</div>
+      <div class="Picture"><a name="147827"><img class="Default" src="images/limdep.041.2.124.jpg" width="100%" style="left: 0.0pt; max-height: 431px; max-width: 513px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="147828">We have annotated the graph slightly so that you can better judge the effect of the new teaching methods (PSI) on the probability of grade improvement for various values of the student&#8217;s GPA. </a></div>
+      <div class="Heading_5"><a name="37557">Testing for Heteroskedasticity</a></div>
+      <div class="Body_Text"><a name="37558">As an example of specification tests for binary dependent variable models, we carry out the LM test for heteroskedasticity using the artificial regression method described by Davidson and MacKinnon (1993, section 15.4). We test the null hypothesis of homoskedasticity against the alternative of heteroskedasticity of the form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.125.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37566">where <img class="Default EquationGraphic" src="images/limdep.041.2.126.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is an unknown parameter. In this example, we take PSI as the only variable in <img class="Default EquationGraphic" src="images/limdep.041.2.127.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. The test statistic is the explained sum of squares from the regression:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.2.128.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37574">which is asymptotically distributed as a <img class="Default EquationGraphic" src="images/limdep.041.2.129.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />with degrees of freedom equal to the number of variables in <img class="Default EquationGraphic" src="images/limdep.041.2.130.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> (in this case 1).</a></div>
+      <div class="Body_Text"><a name="37581">To carry out the test, we first retrieve the fitted probabilities <img class="Default EquationGraphic" src="images/limdep.041.2.131.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 18px; top: 0.0pt" alt="" /> and fitted index <img class="Default EquationGraphic" src="images/limdep.041.2.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 33px; top: 0.0pt" alt="" />. Click on the </a><span class="Menu_Item">Forecast</span> button and first save the fitted probabilities as P_HAT and then the index as XB (you will have to click <span class="Menu_Item">Forecast</span> twice to save the two series). </div>
+      <div class="Body_Text"><a name="37582">Next, the dependent variable in the test regression may be obtained as the standardized residual. Select </a><span class="Menu_Item">Proc/Make Residual Series&#8230;</span> and select <span class="Menu_Item">Standardized Residual</span>. We will save the series as BRMR_Y.</div>
+      <div class="Body_Text"><a name="37583">Lastly, we will use the built-in EViews functions for evaluating the normal density and cumulative distribution function to create a group object containing the independent variables:</a></div>
+      <div class="Multi-line_Input"><a name="37584">series fac=@dnorm(-xb)/@sqrt(p_hat*(1-p_hat))</a></div>
+      <div class="Multi-line_Input"><a name="37585">group brmr_x fac (gpa*fac) (tuce*fac) (psi*fac)</a></div>
+      <div class="Body_Text"><a name="70086">Then run the artificial regression by clicking on </a><span class="Menu_Item">Quick/Estimate Equation&#8230;, </span>selecting <span class="Dialog_Item">Least Squares</span><span class="Menu_Item">,</span> and entering:</div>
+      <div class="Multi-line_Input"><a name="70088">brmr_y brmr_x (psi*(-xb)*fac)</a></div>
+      <div class="Body_Text"><a name="37588">You can obtain the fitted values by clicking on the </a><span class="Menu_Item">Forecast</span> button in the equation toolbar of this artificial regression. The LM test statistic is the sum of squares of these fitted values. If the fitted values from the artificial regression are saved in BRMR_YF, the test statistic can be saved as a scalar named LM_TEST:</div>
+      <div class="Input"><a name="37589">scalar lm_test=@sumsq(brmr_yf) </a></div>
+      <div class="Body_Text"><a name="37590">which contains the value 1.5408. You can compare the value of this test statistic with the critical values from the chi-square table with one degree of freedom. To save the </a><span class="In-line_math">p</span>-value as a scalar, enter the command:</div>
+      <div class="Input"><a name="37591">scalar p_val=1-@cchisq(lm_test,1)</a></div>
+      <div class="Body_Text"><a name="37592">To examine the value of LM_TEST or P_VAL, double click on the name in the workfile window; the value will be displayed in the status line at the bottom of the EViews window. The </a><span class="In-line_math">p</span>-value in this example is roughly 0.21, so we have little evidence against the null hypothesis of homoskedasticity. </div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

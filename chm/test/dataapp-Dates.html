@@ -1,0 +1,1616 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Dates</title>
+    <link rel="StyleSheet" href="css/dataapp.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="dataapp-Strings.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-EViews_Programming.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="dataapp-Strings_and_Dates.html">Strings and Dates</a> : Dates</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="130279">Dates</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#92680">Date Strings</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#92709">Date Numbers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#92716">Date Formats</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#92727">Date Format Components</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92730">Years</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92735">Semi-Annual</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92738">Quarters</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92742">Months</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92747">Weeks</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92750">Days</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92759">Time (Hours/Minutes/Seconds)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92767">Delimiters</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#92774">Translating between Date Strings and Date Numbers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#92797">Free-format Conversion</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92804">Converting Unambiguous Date Strings to Numbers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92827">Converting Ambiguous Date Strings to Numbers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#92847">Converting Date Numbers to Strings</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#92864">Formatted Conversion</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#92909">Translating Ordinary Numbers into Date Numbers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#92975">Manipulating Date Numbers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#92978">Date Operators</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#92988">Functions for Manipulating Dates</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#93017">Extracting Information from Date Numbers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#93029">Special Date Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#93046">Free-format Conversion Formats</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#93049">Day, month, year</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#93059">Month in year</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#93065">Period in year</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#93069">Whole year</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#93074">Free-format Conversion Details</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#93076">Dates and Date Intervals</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#93081">Incomplete Date Numbers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#112466">Two-digit Years</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#93095">Implicit Period Notation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#93097">American vs. European dates</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#93099">Time of Day</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#144071">Time Zones</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="92668">There are a variety of places in EViews where you may work with calendar dates. For most purposes, users need not concern themselves with the intricacies of working with dates. Simply enter your dates in familiar text notation and EViews will automatically interpret the string for you.</a></div>
+      <div class="Body_Text"><a name="92669">Those of you who wish to perform more sophisticated operations with dates will, however, need to understand some basic concepts.</a></div>
+      <div class="Body_Text"><a name="92670">In most settings, you may simply use text representations of dates, or </a><span class="Definition">date strings</span>. For example, an EViews sample can be set to include only observations falling between two dates specified using date strings such as &#8220;May 11, 1997&#8221;, &#8220;1/10/1990&#8221; or &#8220;2001q1&#8221;. In these settings, EViews understands that you are describing a date and will interpret the string accordingly.</div>
+      <div class="Body_Text"><a name="92671">Date information may also be provided in the form of a </a><span class="Definition">date number</span>. A date number is a numeric value with special interpretation in EViews as a calendar date. EViews allows you to convert date strings into date numbers which may be manipulated using a variety of tools. These tools allow you to perform standard calendar operations such as finding the number of days or weeks between two dates, the day of the week associated with a given day, or the day and time 36 hours from now.</div>
+      <div class="Body_Text"><a name="92672">The remainder of this section summarizes the use of dates in EViews. (See </a><span class="Link"><a href="dataapp-Strings_and_Dates.html#129155" title="Strings and Dates">&#8220;Strings and Dates&#8221;</a></span> for reference material.) There are several tasks that are central to working with dates:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92673">Translating between date strings and date numbers.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92674">Translating ordinary numbers into date numbers.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92675">Manipulating date numbers using operators and functions.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92676">Extracting information from date numbers.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="92677">Before turning to these tasks, we must first provide a bit of background on the characteristics of date strings, date numbers, and a special class of strings called </a><span class="Definition">date formats</span>, which are sometimes employed when translating between the former.</div>
+      <div class="Heading_4"><a name="92680">Date Strings</a></div>
+      <div class="Body_Text"><span class="Definition"><a name="92681">Date strings</a></span> are simply text representations of dates and/or times. Most of the conventional ways of representing days, weeks, months, years, hours, minutes, <span class="Emphasis">etc</span>., as text are valid date strings.</div>
+      <div class="Body_Text"><a name="92682">To be a bit more concrete, the following are valid date strings in EViews:</a></div>
+      <div class="Multi-line_Input"><a name="92683">"December 1, 2001"</a></div>
+      <div class="Multi-line_Input"><a name="92684">"12/1/2001"</a></div>
+      <div class="Multi-line_Input"><a name="92685">"Dec/01/01 12am"</a></div>
+      <div class="Multi-line_Input"><a name="92686">"2001-12-01 00:00"</a></div>
+      <div class="Multi-line_Input"><a name="92687">"2001qIV&#8221;</a></div>
+      <div class="Body_Text"><a name="92688">As you can see, EViews is able to handle a wide variety of representations of your dates and times. You may use everything from years represented in 1, 2, and 4-digit Arabic form (&#8220;1&#8221;, &#8220;01&#8221;, &#8220;99&#8221;, &#8220;1999&#8221;), to month names and abbreviations (&#8220;January&#8221;, &#8220;jan&#8221;, &#8220;Jan&#8221;), to quarter designations in Roman numerals (&#8220;I&#8221; to &#8220;IV&#8221;), to weekday names and abbreviations (&#8220;Monday&#8221;, &#8220;Mon&#8221;), to 12 or 24-hour representations of time (&#8220;11:12 pm&#8221;, &#8220;23:12&#8221;). A full list of the recognized date string components is provided in </a><span class="Link"><a href="#92716" title="Dates">&#8220;Date Formats&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="92692">It is worth noting that date string representations may be divided up into those that are </a><span class="Definition">unambiguous</span> and those that are <span class="Definition">ambiguous</span>. Unambiguous date strings have but a single interpretation as a date, while ambiguous date strings may be interpreted in multiple ways.</div>
+      <div class="Body_Text"><a name="92693">For example, the following dates may reasonably be deemed unambiguous:</a></div>
+      <div class="Multi-line_Input"><a name="92694">"March 3rd, 1950"</a></div>
+      <div class="Multi-line_Input"><a name="92695">"1980Q3"</a></div>
+      <div class="Multi-line_Input"><a name="92696">"9:52PM"</a></div>
+      <div class="Body_Text"><a name="92697">while the following dates are clearly ambiguous:</a></div>
+      <div class="Multi-line_Input"><a name="92698">"2/3/4"</a></div>
+      <div class="Multi-line_Input"><a name="92699">"1980:2"</a></div>
+      <div class="Multi-line_Input"><a name="92700">"02:04"</a></div>
+      <div class="Body_Text"><a name="92701">The first date string in the latter set is ambiguous because we cannot tell which of the three fields is the year, which is the month, and which is the day, since different countries of the world employ different orderings. The second string is ambiguous since we cannot determine the period frequency within the year. The &#8220;2&#8221; in the string could, for example, refer to the second quarter, month, or even semi-annual in the year. The final string is ambiguous since it could be an example of a time of day in &#8220;hour:minute&#8221; format (2:04 am), or a date in &#8220;year:period&#8221; notation (</a><span class="Emphasis">i.e.,</span> the fourth month of the year 2002) or &#8220;period:year&#8221; notation (<span class="Emphasis">i.e.</span>, the second month of 2004).</div>
+      <div class="Body_Text"><a name="92702">In settings where date input is required, EViews will generally accept date string values without requiring you to provide formatting information. It is here that the importance of the distinction between ambiguous and unambiguous date strings is seen. If the date string is unambiguous, the free-format interpretation of the string as a date will produce identical results in all settings. On the other hand, if the date string is ambiguous, EViews will use the context in which the date is being used to determine the most likely interpretation of the string. You may find that ambiguous date strings are neither interpreted consistently nor as desired.</a></div>
+      <div class="Body_Text"><a name="92703">These issues, and methods of getting around the problem of ambiguity, are explored in greater detail in </a><span class="Link"><a href="#92774" title="Dates">&#8220;Translating between Date Strings and Date Numbers&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="92709">Date Numbers</a></div>
+      <div class="Body_Text"><a name="92710">Date information is often held in EViews in the form of a </a><span class="Definition">date number</span>. A date number is a double precision number corresponding to an instance in time, with the integer portion representing a specific day, and the decimal fraction representing time during the day. </div>
+      <div class="Body_Text"><a name="92711">The integer portion of a date number represents the number of days in the Gregorian proleptic calendar since Monday, January 1, A.D. 0001 (a &#8220;proleptic&#8221; calendar is a calendar that is applied to dates both before and after the calendar was historically adopted). The first representable day, January 1, A.D. 1 has an integer value of 0, while the last representable day, December 31, A.D. 9999, has an integer value of 3652058.</a></div>
+      <div class="Body_Text"><a name="92712">The fractional portion of the date number represents a fraction of the day, with resolution to the millisecond. The fractional values range from 0 (12 midnight) up to (but not including) 1 (12 midnight). A value of 0.25, for example, corresponds to one-quarter of the day, or 6:00 a.m. </a></div>
+      <div class="Body_Text"><a name="92713">It is worth noting that the time of day in an EViews date number is accurate up to a particular millisecond within the day, although it can always be displayed at a lower &#8220;precision&#8221; (larger unit of time). When date numbers are formatted to lower precisions, they are always rounded down to the requested precision and never rounded up. Thus, when displaying the week or month associated with a date number, EViews always rounds down to the beginning of the week or month.</a></div>
+      <div class="Heading_4"><a name="92716">Date Formats</a></div>
+      <div class="Body_Text"><a name="122763">A </a><span class="Emphasis">date format string </span>(or <span class="Definition">date format</span>, for short) is a string made up of text expressions that describe how components of a date and time may be encoded in a date string. Date formats are used to provide an explicit description of a date string representation, and may be employed when converting between strings or numbers and date numbers.</div>
+      <div class="Body_Text"><a name="92718">Before describing date formats in some detail, we consider a simple example. Suppose that we wish to use the date string &#8220;5/11/1997&#8221; to represent the date May 11, 1997. The date format corresponding to this text representation is </a></div>
+      <div class="Input"><a name="92719">"mm/dd/yyyy"</a></div>
+      <div class="Body_Text"><a name="92720">which indicates that we have, in order, the following components: a one or two-digit month identifier, a &#8220;/&#8221; separator, a one or two-digit day identifier, a &#8220;/&#8221; separator, and a 4-digit year identifier. </a></div>
+      <div class="Body_Text"><a name="92721">Alternatively, we might wish to use the string &#8220;1997-May-11&#8221; to represent the same date. The date format for this string is</a></div>
+      <div class="Input"><a name="92722">"yyyy-Month-dd"</a></div>
+      <div class="Body_Text"><a name="92723">since we have a four-digit year, followed by the full name of the month (with first letter capitalized), and the one or two-digit day identifier, all separated by dashes.</a></div>
+      <div class="Body_Text"><a name="92724">Similarly, the ISO 8601 representation for 10 seconds past 1:57 p.m. on this date is &#8220;1997-05-11 13:57:10&#8221;. The corresponding format is</a></div>
+      <div class="Input"><a name="92725">"yyyy-MM-DD HH:mi:ss"</a></div>
+      <div class="Body_Text"><a name="92726">Here, we have used the capitalized forms of &#8220;MM&#8221;, &#8220;DD&#8221;, and &#8220;HH&#8221; to ensure that we have the required leading zeros.</a></div>
+      <div class="Body_Text"><a name="122772">A full description of the components of a date format is provided below. Some of the more commonly used examples of date formats are listed in the options for the </a><span class="In-line_command">setformat</span> object commands (see, for example, <span class="In-line_command_link"><a href="tablecmd-setformat.html#254929" title="setformat">Table::setformat</a></span>). </div>
+      <div class="Heading_5"><a name="92727">Date Format Components</a></div>
+      <div class="Body_Text"><a name="92728">A date format may contain one or more of the following string fragments corresponding to various date components. In most cases, there are various upper and lowercase forms of the format component, corresponding either to the presence or absence of leading zeros, or to the case of the string identifiers.</a></div>
+      <div class="Body_Text"><a name="92729">The following format strings are the basic components of a date format:</a></div>
+      <div class="Heading_6"><a name="92730">Years</a></div>
+      <div class="Body_Text"><a name="92731">Year formats use either two or four digit years, with or without leading zeros. The corresponding date format strings are:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92732">&#8220;yyyy&#8221; or &#8220;YYYY&#8221;: four digit year without/with leading zeros.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92733">&#8220;yy&#8221; or &#8220;YY&#8221;: two digit year without/with leading zeros.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92734">&#8220;year&#8221; or &#8220;YEAR&#8221;: synonym for &#8220;yyyy&#8221; and &#8220;YYYY&#8221;, respectively.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="92735">Semi-Annual</a></div>
+      <div class="Body_Text"><a name="92736">The semi-annual format corresponds to a single digit representing the period in the year:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92737">&#8220;s&#8221; or &#8220;S&#8221;: one digit half-year (1 or 2).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="92738">Quarters</a></div>
+      <div class="Body_Text"><a name="92739">Quarter formats allow for values entered in either standard (Arabic) or Roman numbers:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92740">&#8220;q&#8221; or &#8220;Q&#8221;: quarter number, always without leading zeros (1 to 4).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="122785">&#8220;qr&#8221; or &#8220;QR&#8221;: quarter in Roman numerals following the case of the format string (&#8220;i&#8221; to &#8220;iv&#8221; or &#8220;I&#8221; to &#8220;IV&#8221;.)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="92742">Months</a></div>
+      <div class="Body_Text"><a name="92743">Month formats may represent two-digit month values with or without leading zeros, three-letter abbreviations for the month, or the full month name. The text identifiers may be all lowercase, all uppercase or &#8220;namecase&#8221; in which we capitalize the first letter of the month identifier. The corresponding format strings are given by:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92744">&#8220;mm&#8221; or &#8220;MM&#8221;: two-digit month without/with leading zeros.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92745">&#8220;mon&#8221;, &#8220;Mon&#8221;, or &#8220;MON&#8221;: three-letter form of month, following the case of the format string(&#8220;jan&#8221;, &#8220;Feb&#8221;, &#8220;MAR&#8221;).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92746">&#8220;month&#8221;, &#8220;Month&#8221;, or &#8220;MONTH&#8221;: full month name, following the case of the format string (&#8220;january&#8221;, &#8220;February&#8221;, &#8220;MARCH&#8221;).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="92747">Weeks</a></div>
+      <div class="Body_Text"><a name="92748">Week of the year formats may be specified with or without leading zeros:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92749">&#8220;ww&#8221; or &#8220;WW&#8221;: week of year (with first week starting from Jan 1st) without/with leading zeros.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="92750">Days</a></div>
+      <div class="Body_Text"><a name="92751">Day formats correspond to day of the year, business day of the year, day of the month, or day of the week, in various numeric and text representations.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92752">&#8220;ddd&#8221; or &#8220;DDD&#8221;: day of year without/with leading zeros.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92753">&#8220;bbb&#8221; or &#8220;BBB&#8221;: business day of year without/with leading zeros (only counting Monday-Friday).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92754">&#8220;dd&#8221; or &#8220;DD&#8221;: day of month without/with leading zeros.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92755">&#8220;day&#8221; or &#8220;DAY&#8221;: day of month with suffix, following the case of the format string (&#8220;1st&#8221;, &#8220;2nd&#8221;, &#8220;3RD&#8221;).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92756">&#8220;w&#8221; or &#8220;W&#8221;: weekday number (1-7) where 1 is Monday.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92757">&#8220;wdy&#8221;, &#8220;Wdy&#8221;, or &#8220;WDY&#8221;: three-letter weekday abbreviation, following the case of the format string (&#8220;Mon&#8221;, &#8220;Tue&#8221;, &#8220;WED&#8221;).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92758">&#8220;weekday&#8221;, &#8220;Weekday&#8221;, or &#8220;WEEKDAY&#8221;: full weekday name, following the case of the format string (&#8220;monday&#8221;, &#8220;Tuesday&#8221;, &#8220;WEDNESDAY&#8221;).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="92759">Time (Hours/Minutes/Seconds)</a></div>
+      <div class="Body_Text"><a name="92760">The time formats correspond to hours (in 12 or 24 hour format), minutes, seconds, and fractional sections, with or without leading zeros and with or without the AM/PM indicator where appropriate.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92761">&#8220;hh&#8221; or &#8220;HH&#8221;: hour in 24-hour format without/with leading zeros.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92762">&#8220;hm&#8221; or &#8220;HM&#8221;: hour in 12-hour format without/with leading zeros.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92763">&#8220;am&#8221; or &#8220;AM&#8221;: two letter AM/PM indicator for 12-hour format, following the case of the format string.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92764">&#8220;a&#8221; or &#8220;A&#8221;: single letter AM/PM indicator for 12-hour format, following the case of the format string.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92765">&#8220;mi&#8221; or &#8220;MI&#8221;: minute, always with leading zeros.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92766">&#8220;ss.s&#8221;, &#8220;ss.s&#8221;, &#8220;ss.ss&#8221;, or &#8220;ss.sss&#8221;: seconds and tenths, hundreths, and thousandths-of-a-second, with leading zeros. The capitalized forms of these formats (&#8220;SS&#8221;, &#8220;SS.S&#8221;, ...) yield identical results.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="92767">Delimiters</a></div>
+      <div class="Body_Text"><a name="92768">You may use text to delimit the date format components:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92769">&#8220;f&#8221; or &#8220;F&#8221;: use frequency delimiter taken from the active, regular frequency workfile page. The delimiter corresponds to the letter associated with the current workfile frequency (&#8220;a&#8221;, &#8220;m&#8221;, &#8220;q&#8221;, ..., &#8220;A&#8221;, &#8220;M&#8221;, &#8220;Q&#8221;, ...), following the case of the format string, or the colon (&#8220;:&#8221;), as determined by the Global Options setting (</a><span class="Menu_Item">Options/General Options.../Date representation</span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92770">&#8220;?&#8221;: when used in an input date format, skips a single character of the input string. In an output date format &#8220;?&#8221; will be passed to the output string. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="145205">On input, the&#8221;?&#8221; delimiter is useful for ignoring part of a date string or where a delimiter may be variable. For example, an input string "02:83" could be interpreted using the format "MM:YY" to capture both month and year, or the format "??:YY" to capture just the year.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92771">Other alphabetical characters are errors unless they are enclosed in square brackets </a><span class="Emphasis">e.g.</span> &#8220;[Q]&#8221;, in which case they are passed through to the output (for example, the &#8220;standard-EViews&#8221; quarterly format is &#8220;YYYY[Q]Q&#8221;, where we use a four digit year identifier, followed by a &#8220;Q&#8221; delimiter/identifier, followed by a single digit for the quarter &#8220;1990Q2&#8221;).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92772">All other characters (</a><span class="Emphasis">e.g.</span>, punctuation) are passed through to the input or output without special interpretation.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_4"><a name="92774">Translating between Date Strings and Date Numbers</a></div>
+      <div class="Body_Text"><a name="92775">There are times when it is convenient to work with date strings, and times when it is easier to work with date numbers. </a></div>
+      <div class="Body_Text"><a name="92776">For example, when we are describing or viewing a specific date, it is easier to use a &#8220;human readable&#8221; date string such as &#8220;2002-Mar-20&#8221;, &#8220;3/20/2002&#8221;, or &#8220;March 20, 2002 12:23 pm&#8221; than the date number 730928.515972. </a></div>
+      <div class="Body_Text"><a name="92777">Alternatively, since date strings are merely text representations of dates, working with date numbers is essential when manipulating calendar dates to find elapsed days, months or years, or to find a specific date and time 31 days and 36 hours from now.</a></div>
+      <div class="Body_Text"><a name="92778">Accordingly, translating between string representations of dates and date numbers is one of the more important tasks when performing advanced operations with dates in EViews. These translations occur in many places in EViews, ranging from the interpretation of date strings in sample processing, to the spreadsheet display of series containing date numbers, to the import and export of data from foreign sources.</a></div>
+      <div class="Body_Text"><a name="92779">In most settings, the translations take place automatically, without user involvement. For example, when you enter a sample command of the form</a></div>
+      <div class="Input"><a name="92780">smpl 1990q1 2000q4</a></div>
+      <div class="Body_Text"><a name="92781">EViews automatically converts the date strings into a range of date numbers. Similarly, when you edit a series that contains date numbers, you typically will enter your data in the form of a date string such as</a></div>
+      <div class="Input"><a name="92782">"2002-Mar-20"</a></div>
+      <div class="Body_Text"><a name="92783">which EViews will automatically translate into a date number.</a></div>
+      <div class="Body_Text"><a name="92784">In other cases, you will specifically request a translation by using the built-in EViews functions </a><span class="In-line_command">@datestr</span> (to convert a date number to a string) and <span class="In-line_command">@dateval</span> (to convert a date string to a date number). </div>
+      <div class="Body_Text"><a name="92785">For example, the easiest way to identify the date 1,000 days after May 1, 2000 is first to convert the string value &#8220;May 1, 2000&#8221; into a date number using </a><span class="In-line_command">@dateval</span>, to manipulate the date number to find the value 1000 days after the original date, and finally to convert the resulting date number back into a string using <span class="In-line_command_link"><a href="functionref_d-@datestr.html#1226479" title="@datestr">@datestr</a></span>. See also <span class="Link"><a href="#92864" title="Dates">&#8220;Formatted Conversion&#8221;</a></span> and <span class="Link"><a href="#92975" title="Dates">&#8220;Manipulating Date Numbers&#8221;</a></span> for additional details.</div>
+      <div class="Body_Text"><a name="92792">All translations between dates strings and date numbers involve one of two methods:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92793">First, EViews may perform a </a><span class="Emphasis">free-format conversion</span> in which the date format is inferred from the string values, in some cases other contextual information. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92794">Second, EViews may perform a </a><span class="Definition">formatted conversion</span> in which the string representation of the dates is provided explicitly via a date format.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="92795">For the most part, you should find that free-format conversion is sufficient for most needs. Nevertheless, in some cases the automatic handling of dates by EViews may not produce the desired results. If this occurs, you should either modify any ambiguous date formats, or specify an explicit formatted conversion to generate date numbers as necessary.</a></div>
+      <div class="Heading_5"><a name="92797">Free-format Conversion</a></div>
+      <div class="Body_Text"><a name="92798">EViews will perform free-format conversions between date strings and numbers whenever: (1) there is an automatic translation between strings and numbers, or (2) when you use one of the translation functions without an explicit date format. </a></div>
+      <div class="Body_Text"><a name="92799">When converting from strings to numbers, EViews will produce a date number using the &#8220;most likely&#8221; interpretation of the date string. For the most part, you need not concern yourself with the details of the conversion, but if you require additional detail on specific topics (</a><span class="Emphasis">e.g</span>., handling of date intervals, the implicit century cutoff for 2-digit years) see <span class="Link"><a href="#93074" title="Dates">&#8220;Free-format Conversion Details&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="92803">When converting from date numbers to strings, EViews will use the global default settings to determine the default date format, and will display all significant information in the date number.</a></div>
+      <div class="Heading_6"><a name="92804">Converting Unambiguous Date Strings to Numbers</a></div>
+      <div class="Body_Text"><a name="92808">The free-format conversion of unambiguous date strings (see </a><span class="Link"><a href="#92680" title="Dates">&#8220;Date Strings&#8221;</a></span>), to numbers will produce identical results in all settings. The date string:</div>
+      <div class="Multi-line_Input"><a name="92809">"March 3rd, 1950"</a></div>
+      <div class="Body_Text"><a name="92810">will be interpreted as the third day of the third month of the year A.D. 1950, and will yield the date value 711918.0. Note that the date value is the smallest associated with the given date, corresponding to 12 midnight.</a></div>
+      <div class="Body_Text"><a name="92811">Similarly, the date string:</a></div>
+      <div class="Multi-line_Input"><a name="92812">"1980Q3"</a></div>
+      <div class="Body_Text"><a name="92813">is interpreted as the first instance in the third quarter of 1980. EViews will convert this string into the date number representing the smallest date value in that quarter, 722996.0 (12 midnight on July 1, 1980).</a></div>
+      <div class="Body_Text"><a name="92814">If we specify a time string without a corresponding day,</a></div>
+      <div class="Multi-line_Input"><a name="92815">"9:52PM"</a></div>
+      <div class="Body_Text"><a name="92816">the day portion of the date is set to 0 (effectively, January 1, A.D. 1), yielding a value of 0.91111111 (see </a><span class="Link"><a href="#93081" title="Dates">&#8220;Incomplete Date Numbers&#8221;</a></span>) for details.</div>
+      <div class="Body_Text"><a name="92821">Consider also the following </a><span class="Emphasis">ambiguous</span> date string:</div>
+      <div class="Multi-line_Input"><a name="92822">"1 May 03"</a></div>
+      <div class="Body_Text"><a name="92823">While this entry may appear to be ambiguous since the &#8220;03&#8221; may reasonably refer to either 1903 or 2003, EViews resolves the ambiguity by assuming that if the two-digit year is greater than or equal to 30, the year is assumed to be from the twentieth century, otherwise the year is assumed to be from the twenty first century (see </a><span class="Link"><a href="#112466" title="Dates">&#8220;Two-digit Years&#8221;</a></span> for discussion). Consequently free-format conversion of two-digit years will produce consistent results in all settings.</div>
+      <div class="Heading_6"><a name="92827">Converting Ambiguous Date Strings to Numbers</a></div>
+      <div class="Body_Text"><a name="92828">Converting from ambiguous date strings will yield context sensitive results. In cases involving ambiguity, EViews will determine the most likely translation format by examining surrounding data or applicable settings for clues as to how the date strings should be interpreted.</a></div>
+      <div class="Body_Text"><a name="92829">The following contextual information is used in interpreting ambiguous free-form dates:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92830">For implicit period notation (</a><span class="Emphasis">e.g., </span>&#8220;1990:3&#8221;) the current workfile frequency is used to determine the period.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92831">Choosing between ambiguous &#8220;mm/dd&#8221; or &#8220;dd/mm&#8221; formats is determined by examining the values of related date strings (</a><span class="Emphasis">i.e.</span>, those in the same series), user-specified date/time display formats for a series or column of a spreadsheet, or by examining the EViews global setting for date display, (<span class="Menu_Item">Options/General Options.../Date representation</span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="92832">To fix ideas, we consider a few simple examples of the use of contextual information.</a></div>
+      <div class="Body_Text"><a name="92833">If you specify an ambiguous sample string, EViews will use the context in which the sample is used, the frequency of the workfile, to determine the relevant period. For example, given the sample statement</a></div>
+      <div class="Input"><a name="92834">smpl 90:1 03:3</a></div>
+      <div class="Body_Text"><a name="92835">and a quarterly workfile, the sample will be set from 1990q1 to 2003q3. If the workfile is monthly, the sample will be set from January 1990 to March 2003.</a></div>
+      <div class="Body_Text"><a name="92836">Suppose instead that you are editing a series spreadsheet where your date numbers are </a><span class="Emphasis">displayed</span> as dates strings using a specified format. In this setting, EViews allows you to enter your values as date strings, instead of having to enter the underlying date numbers. In this context, it is natural for EViews to use the current display format as a hint in interpreting ambiguous data. For example, if the current display format is set to &#8220;Month dd, YYYY&#8221; then an input of &#8220;2/3/4&#8221; or &#8220;@dateval("2/3/4")&#8221; will be interpreted as February the 3rd, 2004. On the other hand, if the current display format is set to &#8220;YYYY-MM-DD&#8221; then the same input will be interpreted as the March the 4th, 2002. </div>
+      <div class="Body_Text"><a name="92837">In settings where an entire series is provided to an EViews procedure, EViews is able to use all of the values in the series to aid in determining the underlying data format. For example, when an alpha series is provided as a date identifier for restructuring a workfile, EViews will first scan all the values of the series in order to decide on the most likely format of all of the data before converting the string in each element into a date number. If the first observation of the series is an ambiguous &#8220;2/3/4&#8221; but a later observation is &#8220;3/20/95&#8221; then the &#8220;2/3/4&#8221; will be interpreted as the 3rd of February 2004 since that is the only order of year, month and day that is consistent with the &#8220;3/20/95&#8221; observation.</a></div>
+      <div class="Picture"><a name="92841"><img class="Default" src="images/dataapp.086.3.1.jpg" width="100%" style="left: 0.0pt; max-height: 421px; max-width: 604px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="92842">Conversely, when generating new series values with a </a><span class="In-line_command">genr</span> or series assignment statement, EViews processes observation individually and is therefore unable to obtain contextual information to aid in interpreting ambiguous date strings. In this case, EViews will use the global workfile setting for the <span class="Menu_Item">Month/Day order in dates</span> to determine the ordering of the days and months in the string. </div>
+      <div class="Body_Text"><a name="92843">For example, when the expression </a></div>
+      <div class="Input"><a name="92844">series dnums = @dateval("2/3/4")</a></div>
+      <div class="Body_Text"><a name="92845">is used to generate a series containing date values, EViews will interpret the value as February 3, 2004, if the global setting is </a><span class="Menu_Item">Month/Day/Year</span>, and March 2, 2004, if the global setting is <span class="Menu_Item">Day/Month/Year</span>.</div>
+      <div class="Heading_6"><a name="92847">Converting Date Numbers to Strings</a></div>
+      <div class="Body_Text"><a name="92848">EViews provides the </a><span class="In-line_command_link"><a href="functionref_d-@datestr.html#1226479" title="@datestr">@datestr</a></span> function to translate a date number to a date string. We describe the function in detail in <span class="Link"><a href="#92864" title="Dates">&#8220;Formatted Conversion&#8221;</a></span>, but for now, simply note that <span class="In-line_command">@datestr</span> takes an optional argument describing the date format to be used when exporting the string. If the optional argument is not provided, EViews will perform a free-format conversion.</div>
+      <div class="Body_Text"><a name="92852">In performing the free-format conversion, EViews examines two pieces of information. First, the global default settings for the </a><span class="Menu_Item">Month/Day order in dates</span> will be used to determine the ordering of days and months in the string. Next, EViews examines the date values to be translated and looks for relevant time-of-day information. </div>
+      <div class="Body_Text"><a name="92853">If there is no relevant time-of-day information in the date numbers (</a><span class="Emphasis">e.g.</span>, the non-integer portions are all zero), EViews writes the string corresponding to the date using either the date format</div>
+      <div class="Input"><a name="92854">"dd/mm/yyyy"</a></div>
+      <div class="Body_Text"><a name="92855">or </a></div>
+      <div class="Input"><a name="92856">"mm/dd/yyyy&#8221;</a></div>
+      <div class="Body_Text"><a name="92857">with preference given to the order favored in the global settings.</a></div>
+      <div class="Body_Text"><a name="92858">If there is relevant time-of-day information, EViews will extend the date format accordingly. Thus, if days are favored in the ordering, and relevant hours (but not minutes and seconds) information is present, EViews will use</a></div>
+      <div class="Input"><a name="92859">"dd/mm/yyyy hh"</a></div>
+      <div class="Body_Text"><a name="92860">while if hours-minutes are present, the format will be</a></div>
+      <div class="Input"><a name="92861">"dd/mm/yyyy hh:mi"</a></div>
+      <div class="Body_Text"><a name="92862">and so forth.</a></div>
+      <div class="Heading_5"><a name="92864">Formatted Conversion</a></div>
+      <div class="Body_Text"><a name="92865">While the free-format conversions will generally produce the desired results, there may be times when you want to exercise precise control over the conversion. EViews will perform a formatted conversion between date strings and date numbers whenever you use the </a><span class="In-line_command_link"><a href="functionref_d-@dateval.html#1226546" title="@dateval">@dateval</a></span> or <span class="In-line_command_link"><a href="functionref_d-@datestr.html#1226479" title="@datestr">@datestr</a></span> functions <span class="Emphasis">with</span> the optional second argument specifying an explicit date format.</div>
+      <div class="Body_Text"><a name="92867">To convert a date string into a date number using a date format, you should use the </a><span class="In-line_command">@dateva</span>l function with two arguments. The first argument must be a valid date string, and the second must be the corresponding date format string. If you omit the optional second argument, EViews will perform a free-format conversion.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="92868">@dateval</a></span>(<span class="Argument">str[, fmt]</span>): takes the string <span class="Argument">str</span> and evaluates it to a date number using the optional date format string, <span class="Argument">fmt</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="150082">See </a><span class="In-line_command_link"><a href="functionref_d-@dateval.html#1226546" title="@dateval">@dateval</a></span>.</div>
+      <div class="Body_Text"><a name="92869">A few simple examples will illustrate the wide range of string to date number conversions that are possible using </a><span class="In-line_command">@dateval</span> and a date format. The simplest format strings involve the standard month/day/year date descriptions:</div>
+      <div class="Input"><a name="92870">@dateval("12/1/1999", "mm/dd/yyyy") </a></div>
+      <div class="Body_Text"><a name="92871">will return the date number for December 1, 1999 (730088),</a></div>
+      <div class="Input"><a name="92872">@dateval("12/1/1999", "dd/mm/yyyy") </a></div>
+      <div class="Body_Text"><a name="92873">returns the date number for January 12, 1999 (729765). Here we have changed the interpretation of the date string from &#8220;American&#8221; to &#8220;European&#8221; by reversing the order of the parts of the format string.</a></div>
+      <div class="Body_Text"><a name="92874">Likewise, we may find the first date value associated with a given period</a></div>
+      <div class="Input"><a name="92875">@dateval("1999", "yyyy")</a></div>
+      <div class="Body_Text"><a name="92876">returns the value 729754.0 corresponding to 12 midnight on January 1, 1999, the first date value for the year 1999.</a></div>
+      <div class="Body_Text"><a name="92877">Conversion of an broad range of date strings is possible by putting together various date format string components. For example,</a></div>
+      <div class="Input"><a name="92878">@dateval("January 12, 1999", "Month dd, yyyy")</a></div>
+      <div class="Body_Text"><a name="92879">returns the date number for 12 midnight on January 12, 1999 (729765), while</a></div>
+      <div class="Input"><a name="92880">@dateval("99 January 12, 9:37 pm", "yy Month dd, hm:mi am")</a></div>
+      <div class="Body_Text"><a name="92881">yields the value 729765.900694 corresponding to the same date, but at 9:37 in the evening. In this example, the &#8220;hm:mi&#8221; corresponds to hours (in a 12 hour format, with no leading 0&#8217;s) and minutes, and the &#8220;am&#8221; indicates that there is an indicator for &#8220;am&#8221; and &#8220;pm&#8221;. See </a><span class="Link"><a href="#92680" title="Dates">&#8220;Date Strings&#8221;</a></span> and <span class="Link"><a href="#92716" title="Dates">&#8220;Date Formats&#8221;</a></span> for additional details.</div>
+      <div class="Body_Text"><a name="92889">To translate a date number to a date string using a date format, you should use the </a><span class="In-line_command">@datestr</span> function with two arguments. The first argument must be a valid date number, and the second must be a date format string describing a string representation of the date.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="92890">@datestr</a></span>(<span class="Argument">date_val[, fmt]</span>): converts the date number into a string, using the optional date format <span class="Argument">fmt</span>. If a format is not provided, EViews will use a default method (see <span class="Link"><a href="#92847" title="Dates">&#8220;Converting Date Numbers to Strings&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="150110">See </a><span class="In-line_command_link"><a href="functionref_d-@datestr.html#1226479" title="@datestr">@datestr</a></span>.</div>
+      <div class="Body_Text"><a name="92894">For example,</a></div>
+      <div class="Input"><a name="92895">@datestr(730088,"mm/dd/yy") </a></div>
+      <div class="Body_Text"><a name="92896">will return &#8220;12/1/99&#8221;,</a></div>
+      <div class="Input"><a name="92897">@datestr(730088,"DD/mm/yyyy") </a></div>
+      <div class="Body_Text"><a name="92898">will return &#8220;01/12/1999&#8221;, and</a></div>
+      <div class="Input"><a name="92899">@datestr(730088,"Month dd, yyyy")</a></div>
+      <div class="Body_Text"><a name="92900">will return &#8220;December 1, 1999&#8221;, and </a></div>
+      <div class="Input"><a name="92901">@datestr(730088,"w")</a></div>
+      <div class="Body_Text"><a name="92902">will produce the string &#8220;3&#8221;, representing the weekday number for December 1, 1999. See </a><span class="Link"><a href="#92709" title="Dates">&#8220;Date Numbers&#8221;</a></span> and <span class="Link"><a href="#92716" title="Dates">&#8220;Date Formats&#8221;</a></span> for additional details.</div>
+      <div class="Heading_4"><a name="92909">Translating Ordinary Numbers into Date Numbers</a></div>
+      <div class="Body_Text"><a name="92910">While date information is most commonly held in the form of date strings or date numbers, one will occasionally encounter data in which a date is encoded as a (non-EViews format) numeric value or values. For example, the first quarter of 1991 may be given the numeric representation of 1991.1, or the date &#8220;August 15, 2001&#8221; may be held in the single number 8152001, or in three numeric values 8, 15, and 2001.</a></div>
+      <div class="Body_Text"><a name="92912">The </a><span class="In-line_command">@makedate</span> function is used to translate ordinary numbers into date numbers. It is similar to <span class="In-line_command">@dateval</span> but is designed for cases in which your dates are encoded in one or more numeric values instead of date strings:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="92913">@makedate</a></span>(<span class="Argument">arg1[, arg2[,arg3]]</span>, <span class="Argument">fmt</span>): takes the numeric values given by the arguments <span class="Argument">arg1</span>, and optionally, <span class="Argument">arg2</span>, etc. and returns a date number using the required format string, <span class="Argument">fmt.</span> Only a subset of all date formats are supported by <span class="In-line_command">@makedate</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue"><a name="92914">If more than one argument is provided, the arguments must be listed from the lowest frequency to the highest, with the first field representing either the year or the hour.</a></div>
+      <div class="List_Continue"><a name="150138">See </a><span class="In-line_command_link"><a href="functionref_m-@makedate.html#1227255" title="@makedate">@makedate</a></span>.</div>
+      <div class="Body_Text"><a name="92915">The simplest form of </a><span class="In-line_command">@makedate</span> involves converting a single number into a date or a time. The following are the supported formats for converting a single number into a date value:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92916">&#8220;yy&#8221; or &#8220;yyyy&#8221;: two or four-digit years.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92917">&#8220;yys&#8221; or &#8220;yyyys&#8221;: year*10 + half-year.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92918">&#8220;yy.s&#8221; or &#8220;yyyy.s&#8221;: year + half-year/10.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92919">&#8220;yyq&#8221; or &#8220;yyyyq&#8221;: year*10 + quarter.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92920">&#8220;yy.q&#8221; or &#8220;yyyy.q&#8221;: year + quarter/10.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92921">&#8220;yymm&#8221; or &#8220;yyyymm&#8221;: year*10 + month.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92922">&#8220;yy.mm&#8221; or &#8220;yyyy.mm&#8221;: year + month/10.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92923">&#8220;yyddd&#8221; or &#8220;yyyyddd&#8221;: year*1000 + day in year.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92924">&#8220;yy.ddd&#8221; or &#8220;yyyy.ddd&#8221;: year + day in year/1000.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92925">&#8220;yymmdd&#8221; or &#8220;yyyymmdd&#8221;: year*10000 + month*100 + day in month.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92926">&#8220;mmddyy&#8221;: month*10000 + day in month*100 + two-digit year.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92927">&#8220;mmddyyyy&#8221;: month*100000 + day in month*10000 + four-digit year.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92928">&#8220;ddmmyy&#8221;: day in month*10000 + month*100 + two-digit year.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92929">&#8220;ddmmyyyy&#8221;: day in month*1000000 + month*10000 + four-digit year.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="92930">The following formats are supported for converting a single number into intraday values:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92931">&#8220;hh&#8221;: hour in day (in 24 hour units)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92932">&#8220;hhmi&#8221;: hour*100 + minute.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92933">&#8220;hhmiss&#8221;: hour*10000 + minute*100 + seconds.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="92934">Note that the </a><span class="In-line_command">@makedate</span> format strings are not case sensitive, since the function requires that <span class="Emphasis">all</span> non-leading fields must have leading zeros where appropriate. For example, when using the format &#8220;YYYYMMDD&#8221;, the date March 1, 1992 must be encoded as 19920301, and not 199231, 1992031, or 1992301.</div>
+      <div class="Body_Text"><a name="92935">Let us consider some specific examples of </a><span class="In-line_command">@makedate</span> conversion of a single number. You may convert a numeric value for the year into a date number using a format string to describe the year. The expressions:</div>
+      <div class="Multi-line_Input"><a name="92936">@makedate(1999, "yyyy")</a></div>
+      <div class="Multi-line_Input"><a name="92937">@makedate(99, "yy")</a></div>
+      <div class="Body_Text"><a name="92938">both return the date number 729754.0 corresponding to 12 midnight on January 1, 1999. Similarly, you may convert a numeric value into the number of hours in a day using expressions of the form,</a></div>
+      <div class="Multi-line_Input"><a name="92939">@makedate(12, "hh")</a></div>
+      <div class="Body_Text"><a name="92940">Here, EViews will return the date value 0.5 corresponding to 12 noon on January 1, A.D. 1. While this particular date value is not intrinsically of interest, it may be combined with other date values to obtain the value for a specific hour in a particular day. For example using date arithmetic, we may add the 0.5 to the 729754.0 value (12 midnight, January 1, 1999) obtained above, yielding the date value for 12 noon on January 1, 1999. We consider these sorts of operations in greater detail in </a><span class="Link"><a href="#92975" title="Dates">&#8220;Manipulating Date Numbers&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="92944">If your number contains &#8220;packed&#8221; date information, you may interpret the various components using </a><span class="In-line_command">@makedate</span> with an appropriate format string. For example,</div>
+      <div class="Multi-line_Input"><a name="92945">@makedate(199003, "yyyymm")</a></div>
+      <div class="Multi-line_Input"><a name="92946">@makedate(1990.3, "yyyy.mm")</a></div>
+      <div class="Multi-line_Input"><a name="92947">@makedate(1031990, "ddmmyyyy")</a></div>
+      <div class="Multi-line_Input"><a name="92948">@makedate(30190, "mmddyy")</a></div>
+      <div class="Body_Text"><a name="92949">all return the value 726526.0, representing March 1, 1990. </a></div>
+      <div class="Body_Text"><a name="92950">Cases where </a><span class="In-line_command">@makedate</span> is used to convert more than one argument into a date or time are more limited and slightly more complex. The arguments must be listed from the lowest frequency to the highest, with the first field representing either the year or the hour, and the remaining fields representing sub-periods. The valid date format strings for the multiple argument <span class="In-line_command">@makedate</span> are a subset of the date format strings, with components applied sequentially to the numeric arguments:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92951">&#8220;yy s&#8221; or &#8220;yyyy s&#8221;: two or four-digit year and half-year.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92952">&#8220;yy q&#8221; or &#8220;yyyy q&#8221;: year and quarter.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92953">&#8220;yy mm&#8221; or &#8220;yyyy mm&#8221;: year and month.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92954">&#8220;yy ddd&#8221; or &#8220;yyyy ddd&#8221;: year and day in year.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92955">&#8220;yy mm dd&#8221; or &#8220;yyyy mm dd&#8221;: year, month, and day in month.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="142052">Similarly, the valid formats for converting multiple numeric values into a time are:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92957">&#8220;hh mi&#8221;: hour*100 + minute.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="92958">&#8220;hh mi ss&#8221;: hour*10000 + minutes*100 + seconds.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="92959">For convenience, the non-space-delimited forms of these format strings are also supported (</a><span class="Emphasis">e.g.</span>, &#8220;yymm&#8221;, and &#8220;hhmi&#8221;).</div>
+      <div class="Body_Text"><a name="92960">For example, the expressions, </a></div>
+      <div class="Input"><a name="92961">@makedate(97, 12, 3, "yy mm dd")</a></div>
+      <div class="Input"><a name="92962">@makedate(1997, 12, 3, "yyyymmdd")</a></div>
+      <div class="Body_Text"><a name="92963">will return the value 729360.0 corresponding to midnight on December 3, 1997. You may provide a subset of this information so that </a></div>
+      <div class="Input"><a name="92964">@makedate(97, 12, "yymm")</a></div>
+      <div class="Body_Text"><a name="92965">returns the value 729358.0 representing the earliest date and time in December of 1997 (12 midnight, December 1, 1997). Likewise,</a></div>
+      <div class="Input"><a name="92966">@makedate(1997, 37, "yyyy ddd") </a></div>
+      <div class="Body_Text"><a name="92967">yields the value 729060.0 (February 6, 1997, the 37th day of the year) and</a></div>
+      <div class="Input"><a name="92968">@makedate(14, 25, 10, "hh mi ss")</a></div>
+      <div class="Body_Text"><a name="92969">returns the value 0.600810185 corresponding to 2:25:10 pm on January 1, A.D. 1.</a></div>
+      <div class="Body_Text"><a name="92970">It is worth pointing out that in the examples above, the numeric arguments are entered from lowest frequency to high, as required. The following example, in which days appear before months and years, is </a><span class="Emphasis">not</span> a legal specification</div>
+      <div class="Input"><a name="92971">@makedate(7, 10, 98, "dd mm yy") </a></div>
+      <div class="Body_Text"><a name="92972">and will generate an error reporting a &#8220;Bad date format&#8221;.</a></div>
+      <div class="Body_Text"><a name="92973">Lastly, we note that limitations on the date formats supported by </a><span class="In-line_command">@makedate</span> imply that in some cases, you are better off working with strings and the <span class="In-line_command">@dateval</span> function. In cases, where <span class="In-line_command">@makedate</span> does not support a desired conversion, you should consider converting your numbers into strings, performing string concatenation, and then using the richer set of <span class="In-line_command">@dateval</span> conversions to obtain the desired date values.</div>
+      <div class="Heading_4"><a name="92975">Manipulating Date Numbers</a></div>
+      <div class="Body_Text"><a name="92976">One of the most important reasons for holding your date information in the form of date numbers is so that you may perform sophisticated calendar operations. </a></div>
+      <div class="Heading_5"><a name="92978">Date Operators</a></div>
+      <div class="Body_Text"><a name="92979">Since date values are simply double precision numbers, you may perform standard mathematical operations using these values. While many operations such as division and multiplication do not preserve the notion of a date number, you may find addition and subtraction and relational comparison of date values to be useful tools.</a></div>
+      <div class="Body_Text"><a name="92980">If, for example, you add 7 to a valid date number, you get a value corresponding to the same time exactly seven days later. Adding 0.25 adds one-quarter of a day (6 hours) to the current time. Likewise, subtracting 1 gives the previous day, while subtracting 0.5 gives the date value 12 hours earlier. Taking the difference between two date values yields the number of days between the two values. </a></div>
+      <div class="Body_Text"><a name="92981">While using the addition and subtraction operators is valid, we strongly encourage you to use the EViews specialized date functions since they allow you to perform arithmetic at various frequencies (other than days), while taking account of irregularities in the calendar (see </a><span class="Link"><a href="#92988" title="Dates">&#8220;Functions for Manipulating Dates&#8221;</a></span>). </div>
+      <div class="Body_Text"><a name="92985">Similarly, while you may round a date number down to the nearest integer to obtain the first instance in the day, or you may round down to a given precision to find the first instance in a month, quarter or year, the built-in functions provide a set of simple, yet powerful tools for working with dates.</a></div>
+      <div class="Body_Text"><a name="92986">Note further that all of the relational operators are valid for comparing date numbers. Thus, if two date numbers are equal, the &#8220;=&#8221;, &#8220;&gt;=&#8221;, and &#8220;&lt;=&#8221; relational operators all return a 1, while the &#8220;&lt;&gt;&#8221;, &#8220;&gt;&#8221;, and &#8220;&lt;&#8221; comparison operators return a 0. If two date numbers are not equal, &#8220;&lt;&gt;&#8221; returns a 1 and &#8220;=&#8221; returns a 0. If the first date number is less than a second date number, the corresponding first date precedes the second in calendar time.</a></div>
+      <div class="Heading_5"><a name="92988">Functions for Manipulating Dates</a></div>
+      <div class="Body_Text"><a name="92989">EViews provides several functions for manipulating dates that take date numbers as input and return numeric values that are also date numbers. These functions may be used when you wish to find a new date value associated with a given date number, for example, a date number 3 months before or 37 weeks after a given date and time.</a></div>
+      <div class="Body_Text"><a name="92990">The functions described below all take a </a><span class="Definition">time unit string</span> as an argument. As the name suggests, a time unit string is a character representation for a unit of time, such as a month or a year. The valid time unit string values are: &#8220;A&#8221; or &#8220;Y&#8221; (annual), &#8220;S&#8221; (semi-annual), &#8220;Q&#8221; (quarters), &#8220;MM&#8221; (months), &#8220;WW&#8221; (weeks), &#8220;DD&#8221; (days), &#8220;B&#8221; (business days), &#8220;HH&#8221; (hours), &#8220;MI&#8221; (minutes), &#8220;SS&#8221; (seconds).</div>
+      <div class="Body_Text"><a name="92991">There are three primary functions for manipulating a date number:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="92992">@dateadd</a></span>(<span class="Argument">date1</span>, <span class="Argument">offset[</span><span class="In-line_option">, </span><span class="Argument" style="font-weight: normal">u]</span>): returns the date number given by <span class="Argument">date1</span> offset by <span class="Argument">offset</span> time units as specified by the time unit string <span class="Argument">u. </span>If no time unit is specified, EViews will use the workfile regular frequency, if available.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue"><a name="92993">Suppose that the value of </a><span class="Argument">date1</span> is 730088.0 (midnight, December 1, 1999). Then we can add and subtract 10 days from the date by using the functions</div>
+      <div class="List_Indent_Input"><a name="92994">@dateadd(</a><span class="In-line_input">730088.0</span>, 10, "dd")</div>
+      <div class="List_Indent_Input"><a name="92995">@dateadd(</a><span class="In-line_input">730088.0</span>, -10, "dd")</div>
+      <div class="List_Continue"><a name="92996">which return 730098.0 (December 11, 1999) and (730078.0) (November 21, 1999). Note that these results could have been obtained by taking the original numeric value plus or minus 10.</a></div>
+      <div class="List_Continue"><a name="92997">The </a><span class="In-line_command">@dateadd</span> function allows for date offsets specified in various units of time. For example, to add 5 weeks to the existing date, simply specify &#8220;W&#8221; or &#8220;WW&#8221; as the time unit string, as in</div>
+      <div class="List_Indent_Input"><a name="92998">@dateadd(</a><span class="In-line_input">730088.0</span>, 5, "ww")</div>
+      <div class="List_Continue"><a name="92999">which returns 730123.0 (January 5, 2000).</a></div>
+      <div class="List_Continue"><a name="150163">See </a><span class="In-line_command_link"><a href="functionref_d-@dateadd.html#1226144" title="@dateadd">@dateadd</a></span>.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="93000">@datediff</a></span>(<span class="Argument">date1</span>, <span class="Argument">date2[</span><span class="In-line_option">, </span><span class="Argument" style="font-weight: normal">u]</span>): returns the number of time units between <span class="Argument">date1</span> and <span class="Argument">date2</span>, as specified by the time unit string <span class="Argument">u</span>. If no time unit is specified, EViews will use the workfile regular frequency, if available.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue"><a name="93001">Suppose that </a><span class="Argument">date1</span> is 730088.0 (December 1, 1999) and <span class="Argument">date2</span> is 729754.0 (January 1, 1999), then, </div>
+      <div class="List_Indent_Input"><a name="93002">@datediff(</a><span class="In-line_input">730088.0</span>, <span class="In-line_input">729754.0</span>, "dd") </div>
+      <div class="List_Continue"><a name="93003">returns 334 for the number of days between the two dates. Note that this is result is simply the difference between the two numbers.</a></div>
+      <div class="List_Continue"><a name="93004">The </a><span class="In-line_command">@datediff</span> function is more powerful in that it allows us to calculate differences in various units of time. For example, the expressions</div>
+      <div class="List_Indent_Input"><a name="93005">@datediff(</a><span class="In-line_input">730088.0</span>, <span class="In-line_input">729754.0</span>, "mm")</div>
+      <div class="List_Indent_Input"><a name="93006">@datediff(</a><span class="In-line_input">730088.0</span>, <span class="In-line_input">729754.0</span>, "ww") </div>
+      <div class="List_Continue"><a name="112268">return 11 and 47 for the number of months and weeks between the dates.</a></div>
+      <div class="List_Continue"><a name="150195">See </a><span class="In-line_command_link"><a href="functionref_d-@datediff.html#1226216" title="@datediff">@datediff</a></span>.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="143425">@datefloor</a></span>(<span class="Argument">date1</span>, <span class="Argument">u[, step]</span>): finds the first possible date number in the given time unit, as in the first possible date value in the current quarter, with an optional step offset.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue"><a name="143433">If </a><span class="Argument">step</span> is omitted, the frequency will use a step of 1 so that by default, <span class="In-line_command">@datefloor</span> will find the beginning of the period defined by the time unit.</div>
+      <div class="List_Continue"><a name="143427">Suppose that </a><span class="Argument">date1</span> is 730110.5 (12 noon, December 23, 1999). Then the <span class="In-line_command">@datefloor</span> values</div>
+      <div class="List_Indent_Input"><a name="93010">@datefloor(730110.5, "dd")</a></div>
+      <div class="List_Indent_Input"><a name="93011">@datefloor(</a><span class="In-line_input">730110.5</span>, "mm")</div>
+      <div class="List_Continue"><a name="93012">yield 730110.0 (midnight, December 23, 1999) and 730088.0 (midnight, December 1, 1999), since those are the first possible date values in the current day and month. Note that the first value is simply the integer portion of the original date number, but that the latter required more complex analysis of the calendar.</a></div>
+      <div class="List_Continue"><a name="122797">Likewise, we can find the start of any corresponding period by using different time units:</a></div>
+      <div class="List_Indent_Input"><a name="122798">@datefloor(</a><span class="In-line_input">730098.5</span>, "q")</div>
+      <div class="List_Indent_Input"><a name="122799">@datefloor(730110.5, "y", 1)</a></div>
+      <div class="List_Continue"><a name="122800">returns 730027.0 (midnight, October 1, 1999), and 729754.0 (midnight, January 1, 1999. Notice that since the latter example used an offset value of 1, the result corresponds to the first date value for the year 1999, which is the start of the year following the actual value.</a></div>
+      <div class="List_Continue"><a name="150232">See </a><span class="In-line_command_link"><a href="functionref_d-@datefloor.html#1226336" title="@datefloor">@datefloor</a></span>.</div>
+      <div class="Heading_4"><a name="93017">Extracting Information from Date Numbers</a></div>
+      <div class="Body_Text"><a name="93018">Given a date number you may wish to extract numeric values associated with a portion of the value. For example, you might wish to know the value of the month, the year, or the day in the year associated with a given date value. EViews provides the </a><span class="In-line_command">@datepart</span> function to allow you to extract the desired information.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="93019">@datepart</a></span>(<span class="Argument">date1</span>, <span class="Argument">u</span>): returns a numeric part of a date value given by <span class="Argument">u</span>, where <span class="Argument">u </span>is a time unit string. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="150262">See </a><span class="In-line_command_link"><a href="functionref_d-@datepart.html#1226439" title="@datepart">@datepart</a></span>.</div>
+      <div class="Body_Text"><a name="93020">Consider the </a><span class="Argument">date1</span> date value 730110.5 (noon, December 23, 1999). The <span class="In-line_command">@datepart</span> values for</div>
+      <div class="List_Indent_Input"><a name="93021">@datepart(730110.5, "dd")</a></div>
+      <div class="List_Indent_Input"><a name="93022">@datepart(730110.5, "w")</a></div>
+      <div class="List_Indent_Input"><a name="93023">@datepart(730110.5, "ww")</a></div>
+      <div class="List_Indent_Input"><a name="93024">@datepart(</a><span class="In-line_input">730110.5</span>, "mm")</div>
+      <div class="List_Indent_Input"><a name="93025">@datepart(</a><span class="In-line_input">730110.5</span>, "yy")</div>
+      <div class="Body_Text"><a name="93026">are 23 (day of the month), 1 (day in the week), 52 (week in the year), 12 (month in the year), and 99 (year), respectively.</a></div>
+      <div class="Body_Text"><a name="93027">Note that the numeric values returned from </a><span class="In-line_command">@datepart</span> are not themselves date values, but may be used with <span class="In-line_command">@makedate</span> to create date values.</div>
+      <div class="Heading_4"><a name="93029">Special Date Functions</a></div>
+      <div class="Body_Text"><a name="93030">In addition to the functions that convert strings or numbers into date values, EViews provides the following special ways to obtain one or more date values of interest.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="93033">@now</a></span>: returns the date number associated with the current time.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="142060">The remaining functions return information for each observation in the current workfile.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="93035">@date</a></span>: returns the date number corresponding to every observation in the current workfile.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="112329">@year</a></span>: returns the four digit year in which the current observation begins. It is equivalent to <span class="In-line_input">@datepart(@date, "YYYY")</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="112331">@quarter</a></span>: returns the quarter of the year in which the current observation begins. It is equivalent to <span class="In-line_input">@datepart(@date, "Q")</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="112333">@month</a></span>: returns the month of the year in which the current observation begins. It is equivalent to <span class="In-line_input">@datepart(@date, "MM")</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="112335">@day</a></span>: returns the day of the month in which the current observation begins. It is equivalent to <span class="In-line_input">@datepart(@date, "DD")</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="112337">@weekday</a></span>: returns the day of the week in which the current observation begins, where Monday is given the number 1 and Sunday is given the number 7. It is equivalent to <span class="In-line_input">@datepart(@date, "W")</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="131239">@hour</a></span>: returns the current observation hour as an integer. For example, 9:30AM returns 9, and 5:15PM returns 17.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="131266">@minute</a></span>: returns the current observation minute as an integer. For example, 9:30PM returns 30.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="131271">@second</a></span>: returns the current observation second as an integer.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="131276">@hourf</a></span>: returns the current observation time as a floating point hour. For example, 9:30AM returns 9.5, and 5:15PM returns 17.25.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="93037">@strdate</a></span>(<span class="Argument">fmt</span>): returns the set of workfile row dates as strings, using the date format string <span class="Argument">fmt. </span>See <span class="Link"><a href="#92716" title="Dates">&#8220;Date Formats&#8221;</a></span> for a discussion of date format strings. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="93041">The </a><span class="In-line_command">@date</span> function will generally be used to create a series containing the date value associated with every observation, or as part of a series expression involving date manipulation. For example:</div>
+      <div class="Multi-line_Input"><a name="93042">series y = @date</a></div>
+      <div class="Multi-line_Input"><a name="93043">series x = @dateadd(@date, 12, "ww")</a></div>
+      <div class="Body_Text"><a name="93044">which generates a series containing the date values for every observation, and the date values for every observation 12 weeks from the current values.</a></div>
+      <div class="Body_Text"><span class="In-line_command"><a name="93045">@strdate</a></span> should be used when you wish to obtain the date string associated with every observation in the workfile&#8212;for example, to be used as input to an alpha series. It is equivalent to using the <span class="In-line_command">@datestr </span>function on the date number associated with every observation in the workfile.</div>
+      <div class="Body_Text"><a name="150296">Additional series functions involving dates may be listed in </a><span class="Link"><a href="functionref_home-Function_Summaries.html#1296849" title="Function Summaries">&#8220;Workfile Functions&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="93046">Free-format Conversion Formats</a></div>
+      <div class="Body_Text"><a name="93047">EViews supports the free-format conversion of a wide variety of date strings in which the string is analyzed for the most likely corresponding date.</a></div>
+      <div class="Body_Text"><a name="93048">Any of the following date string types are allowed:</a></div>
+      <div class="Heading_5"><a name="93049">Day, month, year</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="112430">&#8220;"YYYY-MM-DD"&#8221; (IEEE, with the date enclosed in double quotes)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93050">&#8220;dd/mm/yy&#8221; (if American, &#8220;mm/dd/yy&#8221; instead)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93051">&#8220;dd/mm/yyyy&#8221; (if American, &#8220;mm/dd/yyyy&#8221; instead)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93052">&#8220;yyyy/mm/dd&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93053">&#8220;dd/mon/yy&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93054">&#8220;dd/mon/yyyy&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93055">&#8220;yyyy/mon/dd&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93056">&#8220;ddmmyy&#8221; (if American, &#8220;mmddyy&#8221;)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93057">&#8220;ddmmyyyy&#8221; (if American, &#8220;mmddyyyy&#8221;)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="93058">The resulting date values correspond to the first instance in the day (12 midnight).</a></div>
+      <div class="Heading_5"><a name="93059">Month in year</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93060">&#8220;mon/yy&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93061">&#8220;mon/yyyy&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93062">&#8220;yy/mon&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93063">&#8220;yyyy/mon&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="93064">The results are rounded to the first instance in the month (12 midnight of the first day of the month).</a></div>
+      <div class="Heading_5"><a name="93065">Period in year</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93066">&#8220;yyyy[S|Q|M|W|B|D|T|F|:]period&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="106623">&#8220;yy[S|Q|M|W|B|D|T|F|:]period&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="93068">The date value is rounded to the first instance in the period in the year</a></div>
+      <div class="Heading_5"><a name="93069">Whole year</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93070">&#8220;yyyy[A]&#8221;. The &#8220;A&#8221; is generally optional, but required if current WF is undated.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="93071">&#8220;yy[A]&#8221;. The &#8220;A&#8221; is generally optional, but required if current WF is undated.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="93072">The date value is rounded to the first instance in the year (12 midnight on January 1).</a></div>
+      <div class="Heading_4"><a name="93074">Free-format Conversion Details</a></div>
+      <div class="Body_Text"><a name="93075">Note that the following conventions may be used in interpreting ambiguous free-form dates.</a></div>
+      <div class="Heading_5"><a name="93076">Dates and Date Intervals</a></div>
+      <div class="Body_Text"><a name="93077">A date in EViews is generally taken to represent a single point in calendar time. In some contexts, however, a date specification is used to refer to a range of values contained in a time, which can be referred to as an interval.</a></div>
+      <div class="Body_Text"><a name="93078">When a date specification is treated as an interval, the precision with which the date is specified is used to determine the duration of the interval. For example, if a full day specification is provided, such as &#8220;Oct 11 1980&#8221;, then the interval is taken to run from midnight at the beginning of the day to just before midnight at the end of the day. If only a year is specified, such as &#8220;1963&#8221;, then the interval is taken to run from midnight on the 1st of January of the year to just before midnight on the 31st of December at the end of the year.</a></div>
+      <div class="Body_Text"><a name="93079">An example where this is used is in setting the sample for a workfile. In this context, pairs of dates are provided to specify which observations in the workfile should be included in the sample. The pairs of dates are provided are processed as intervals, and the sample is defined to run from the start of the first interval to the end of the second interval. As an example, if the sample &#8220;1980q2 1980q2&#8221; is specified for a daily file, the sample will include all observations from April 1st 1980 to June 30th 1980 inclusive.</a></div>
+      <div class="Heading_5"><a name="93081">Incomplete Date Numbers</a></div>
+      <div class="Body_Text"><a name="93082">An EViews date number can be used to represent both a particular calendar day, and a particular time of day within that day. If no time of day is specified, the time of day is set to midnight at the beginning of the day. </a></div>
+      <div class="Body_Text"><a name="112461">When no date is specified, the day portion of a date is effectively set to 1st Jan A.D. 1. For example, the date string &#8220;12 p.m.&#8221; will be translated to the date value 0.5 representing 12 noon on January 1, A.D. 1. While this particular date value is probably not of intrinsic interest, it may be combined with other information to obtain meaningful values. See </a><span class="Link"><a href="#92975" title="Dates">&#8220;Manipulating Date Numbers&#8221;</a></span></div>
+      <div class="Heading_5"><a name="112466">Two-digit Years</a></div>
+      <div class="Body_Text"><a name="93091">In general, EViews interprets years containing only two digits as belonging to either the twentieth or twenty-first centuries, depending on the value of the year. If the two digit year is greater than or equal to 30, the year is assumed to be from the twentieth century and a century prefix of &#8220;19&#8221; is added to form a four digit year. If the number is less than 30, the year is assumed to be from the twenty first century and a century prefix of &#8220;20&#8221; is added to form a four digit year.</a></div>
+      <div class="Body_Text"><a name="93092">Note that if you wish to refer to a year after 2029 or a year before 1930, you must use the full four-digit year identifier.</a></div>
+      <div class="Body_Text"><a name="93093">Because this conversion to four digit years is generally performed automatically, it is not possible to specify years less than A.D. 100 using two digit notation. Should the need ever arise to represent these dates, such two digit years can be input directly by specifying the year as a four digit year with leading zeros. For example, the 3rd of April in the year A.D. 23 can be input as &#8220;April 3rd 0023&#8221;.</a></div>
+      <div class="Heading_5"><a name="93095">Implicit Period Notation</a></div>
+      <div class="Body_Text"><a name="93096">In implicit period notation (</a><span class="Argument">e.g.</span>, &#8220;1990:3&#8221;), the current workfile frequency is used to determine the period.</div>
+      <div class="Heading_5"><a name="93097">American vs. European dates</a></div>
+      <div class="Body_Text"><a name="132612">When performing a free-format conversion in the absence of contextual information sufficient to identify whether data are provided in &#8220;mm/dd&#8221; or &#8220;dd/mm&#8221; format, the global workfile setting for the </a><span class="Menu_Item">Options/Dates &amp; Frequency Conversion.../Month/Day order in dates</span> (<span class="Link"><a href="globalapp-The_Options_Menu.html#143198" title="The Options Menu">&#8220;Date Representation&#8221;</a></span>) will be used to determine the ordering of the days and months in the string. </div>
+      <div class="Body_Text"><a name="112351">For example, the order of the months and years is ambiguous in the date pair:</a></div>
+      <div class="Input"><a name="112355">1/3/91 7/5/95</a></div>
+      <div class="Body_Text"><a name="112356">so EViews will use the default date settings to determine the desired ordering. We caution you, however, that using default settings to define the interpretation of date strings is not a good idea since a given date string may be interpreted in different ways at different times if your settings change. You may instead use the IEEE standard format, &#8220;YYYY-MM-DD&#8221; to ensure consistent interpretation of your daily date strings. The presence of a dash in the format means that you must enclose the date in quotes for EViews to accept this format. For example:</a></div>
+      <div class="Input"><a name="112357">smpl "1991-01-03" "1995-07-05"</a></div>
+      <div class="Body_Text"><a name="112360">will always set the sample to run from January 3, 1991 and July 5, 1995.</a></div>
+      <div class="Heading_5"><a name="93099">Time of Day</a></div>
+      <div class="Body_Text"><a name="93100">Free-format dates can also contain optional trailing time of day information which must follow the pattern:</a></div>
+      <div class="Input"><a name="93101">hh[[[[[:mi:]ss].s]s]s][am|AM|pm|PM]</a></div>
+      <div class="Body_Text"><a name="93102">where &#8220;[]&#8221; encloses optional portions or the format and &#8220;|&#8221; indicates one of a number of possibilities. In addition, either the &#8220;am&#8221; or &#8220;pm&#8221; field or an explicit minute field must be provided for the input to be recognized as a time. An hour by itself is generally not sufficient.</a></div>
+      <div class="Body_Text"><a name="93103">The time of day in an EViews date is accurate up to a particular millisecond within the day, although any date can always be displayed at a lower precision. When displaying times at a lower precision, the displayed times are always rounded down to the requested precision, and never rounded up.</a></div>
+      <div class="Body_Text"><a name="93104">When both a day and a time of day are specified as part of a date, the two can generally be provided one after the other with the two fields separated by one or more spaces. If, however, the date is being used in a context where EViews does not permit spaces between input fields, a single letter &#8220;t&#8221; can also be used to separate the day and time so that the entire date can be contained in a single word, </a><span class="Argument">e.g.</span> &#8220;1990-Jan-03T09:53&#8221;.</div>
+      <div class="Heading_4"><a name="144071">Time Zones</a></div>
+      <div class="Body_Text"><a name="144089">There are a related set of functions that you may use that provide information on time-zones: </a><span class="In-line_command_link"><a href="functionref_l-@localt.html#1227063" title="@localt">@localt</a></span>, <span class="In-line_command_link"><a href="functionref_t-@tz.html#1228461" title="@tz">@tz</a></span>, <span class="In-line_command_link"><a href="functionref_t-@tzlist.html#1228509" title="@tzlist">@tzlist</a></span>, <span class="In-line_command_link"><a href="functionref_t-@tzspec.html#1228547" title="@tzspec">@tzspec</a></span>, and <span class="In-line_command_link"><a href="functionref_u-@utc.html#1228691" title="@utc">@utc</a></span>.</div>
+      <div class="Body_Text"><a name="144085">&nbsp;</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Technical Details</title>
+    <link rel="StyleSheet" href="css/optimize_cr.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="optimize_cr-Examples.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="optimize_cr-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="optimize_cr-User-Defined_Optimization.html">User-Defined Optimization</a> : Technical Details</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="239437">Technical Details</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239487">Hessian Approximation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#239489">Numeric Hessian</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#239493">Broyden-Fletcher-Goldfarb-Shanno (BFGS)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#239498">Outer-product of Gradients (OPG)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239505">Step Method</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#239507">Marquardt</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#239509">Dogleg</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#239511">Line-search</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239515">Scaling</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239519">Optimization Termination</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="239438">The optimization procedure uses a Newton (or quasi-Newton) based approach to optimization. In this approach, the first and second derivatives of the objective are used to form a local quadratic approximation to the objective function around the current value of the control parameters. The procedure then calculates the change in the control values that would maximize (or minimize) the objective if the objective function were to exactly follow the local approximation.</a></div>
+      <div class="Body_Text"><a name="239442">Mathematically, if the local approximation of the objective <img class="Default EquationGraphic" src="images/optimize_cr.091.5.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> around the control values <img class="Default EquationGraphic" src="images/optimize_cr.091.5.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 58px; top: 0.0pt" alt="" /> is:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize_cr.091.5.03.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(10.4)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="239459">where <img class="Default EquationGraphic" src="images/optimize_cr.091.5.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />is the objective function, <img class="Default EquationGraphic" src="images/optimize_cr.091.5.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the gradient, and <img class="Default EquationGraphic" src="images/optimize_cr.091.5.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is the Hessian, then the first-order conditions for a maximum give the following expression for the Newton step:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize_cr.091.5.07.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(10.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="239464">Note that this local approximation may become quite inaccurate as we move away from the current parameter values. At the full Newton step, the objective may improve by much less than the approximation suggests, or may even worsen. To deal with this possibility, the optimization procedure uses a trust region approach (More and Sorensen, 1983). In the trust region approach, the local quadratic approximation is only maximized within a limited neighborhood of the current control values, so that the change in control values at each step is not allowed to exceed a current maximum step size. We then evaluate the objective at the new proposed parameter values. If the local approximation appears to be accurate, the maximum allowed step size is increased. If the local approximation appears to be inaccurate, the maximum allowed step size is decreased. A step is only accepted when it results in a sufficiently large reduction in the objective relative to the reduction that was predicted by the local approximation.</a></div>
+      <div class="Body_Text"><a name="239465">Mathematically the constrained step can be written as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize_cr.091.5.08.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(10.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="239473">where <img class="Default EquationGraphic" src="images/optimize_cr.091.5.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the trust region maximum step size. In the case where the maximum step constraint is binding, typically the step has a solution</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize_cr.091.5.10.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(10.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="239484">where <img class="Default EquationGraphic" src="images/optimize_cr.091.5.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is chosen so that |<img class="Default EquationGraphic" src="images/optimize_cr.091.5.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="239485">Note that the Newton approach will work best when the objective can be fitted reasonably well by a local quadratic approximation. This will not be the case if the function is discontinuous or has discontinuous first or second derivatives. In these cases, the procedure may be slow to find an optimum, and the final parameter values may end up adjacent to a discontinuity so that the results will need to be interpreted with caution.</a></div>
+      <div class="Heading_4"><a name="239487">Hessian Approximation</a></div>
+      <div class="Body_Text"><a name="239488">In the discussion above we assumed that the Hessian matrix of second derivatives of the objective with respect to the control parameters are readily available. In practice these derivatives will need to be approximated. The </a><span class="In-line_command">optimize</span> procedure provides three different methods: numeric Hessian, Broyden-Fletcher-Goldfarb-Shanno (BFGS), outer-product of the gradients (OPG).</div>
+      <div class="Heading_5"><a name="239489">Numeric Hessian</a></div>
+      <div class="Body_Text"><a name="239490">The numeric Hessian approach approximates the Hessian using numeric derivatives. If analytic gradients are provided, the Hessian is based on taking numeric first derivatives of the analytic gradients. If analytic gradients are not provided, the Hessian is based on numeric second derivatives of the objective function. </a></div>
+      <div class="Body_Text"><a name="239491">You may specify the use of numeric Hessians by including the option &#8220;hess=numeric&#8221; option in the </a><span class="In-line_command">optimize</span> command.</div>
+      <div class="Body_Text"><a name="239492">Note that calculating numeric second derivatives may require many evaluations of the objective function. In the case of numeric second derivatives, each Hessian approximation will require additional evaluations proportional to the square of the number of control parameters in the problem. For a large number of control parameters, this method may be quite slow.</a></div>
+      <div class="Heading_5"><a name="239493">Broyden-Fletcher-Goldfarb-Shanno (BFGS)</a></div>
+      <div class="Body_Text"><a name="239494">The Broyden-Fletcher-Goldfarb-Shanno (BFGS) method approximates the Hessian using an updating scheme where the previous iteration's approximation to the Hessian is adjusted after each step based on the observed change in the gradients.</a></div>
+      <div class="Body_Text"><a name="239495">The BFGS update makes as small a change as possible to the existing Hessian approximation so that it is compatible with the observed change in gradients, while ensuring that the approximation to the Hessian remains positive definite. (See Chapter 9 of Dennis and Schnabel (1983) for a detailed discussion.)</a></div>
+      <div class="Body_Text"><a name="239496">To specify the BFGS method, use the </a><span class="In-line_command">optimize</span> command with the &#8220;hess=bfgs&#8221; option.</div>
+      <div class="Body_Text"><a name="239497">BFGS requires fewer objective function evaluations per step than computing a numeric Hessian, but may take more iterations to converge. Note that the BFGS approximation need not converge to the true Hessian at the optimized control parameter values, so it cannot be used for calculating the coefficient covariances in statistical problems. Note also that the iterations are started from a diagonal approximation to the Hessian.</a></div>
+      <div class="Heading_5"><a name="239498">Outer-product of Gradients (OPG)</a></div>
+      <div class="Body_Text"><a name="239499">For certain statistical problems, the Hessian can be approximated by a multiple of the sum of the outer products of the gradients (OPG) of individual contributions to the total objective with respect to the coefficients. In the case of least squares problems, this method is commonly referred to as the Gauss-Newton method. In maximum likelihood settings, this method is often referred to as the BHHH (Berndt, Hall, Hall, and Hausman, 1974) method. </a></div>
+      <div class="Body_Text"><a name="239500">In both settings, the approximations are based on the statistical idea that the expected value of the Hessian at the optimized parameter values is equal to a multiple of the expected value of the sum of the outer product of gradients and that the two will converge as the sample size becomes large. The asymptotic equivalence implies that these OPG approximations will be closer to the true Hessian when working with medium to large sample sizes and when coefficients are close to the true coefficient values. </a></div>
+      <div class="Body_Text"><a name="239501">You may select the OPG approximation using the &#8220;hess=opg&#8221; option.</a></div>
+      <div class="Body_Text"><a name="239502">Note that the OPG method may only be used when the objective is a set of least squares residuals (specified using the &#8220;ls&#8221; option) or a set of maximum likelihood contributions (specified using the &#8220;ml&#8221; option), since there is no reason to believe the approximation is valid for an arbitrary maximization or minimization objective. </a></div>
+      <div class="Body_Text"><a name="239503">OPG uses the same number of objective evaluations per step as BFGS, which is less than the number required for evaluating the numeric Hessian.</a></div>
+      <div class="Heading_4"><a name="239505">Step Method</a></div>
+      <div class="Body_Text"><a name="239506">Different step methods are supported by </a><span class="In-line_command">optimize</span>, with each following a trust region approach, where the full Newton step is taken whenever the step is less than the current maximum step size, and a constrained step is taken when the full Newton step exceeds the current maximum step size. The methods differ in how the constrained step is taken. Note that in most cases, the choice of step method is less important than the selection of Hessian approximation.</div>
+      <div class="Heading_5"><a name="239507">Marquardt</a></div>
+      <div class="Body_Text"><a name="239508">The default Marquardt option closely follows the method outlined above where the constrained step is calculated by an iterative procedure that searches for a diagonal adjustment to the Hessian that makes the step size equal to the maximum allowed step size. The Marquardt step has the highest computational cost, although since for most statistical estimation most computation time is spent evaluating the objective rather than calculating an optimal step, this is unlikely to matter unless the number of controls is fairly large and the objective can be evaluated cheaply. </a></div>
+      <div class="Heading_5"><a name="239509">Dogleg</a></div>
+      <div class="Body_Text"><a name="239510">The dogleg method is a cheaper approximation to the trust region problem where the constrained step is calculated by combining a Newton step with a Cauchy step (a step in the direction of the scaled gradients that minimizes the local quadratic approximation to the objective). For both the Marquardt and dogleg steps, the direction of the step shifts away from the direction of the Newton step towards the direction of steepest descent as the trust region contracts, but the dogleg step uses a simple linear combination of the two steps to achieve this. When the dogleg step is used with a BFGS Hessian (the </a><span class="In-line_option">hess=bfgs</span> option) approximation, the calculations required per iteration are proportional to the square rather than the cube of the number of parameters. This makes the dogleg step attractive if the number of control variables is very large and the objective can be evaluated cheaply.</div>
+      <div class="Heading_5"><a name="239511">Line-search</a></div>
+      <div class="Body_Text"><a name="239512">The line-search method is the simplest approach in which the constrained step is formed by proportionally scaling down the Newton step until it satisfies the maximum step size constraint. With this method, only the length of the step is changed as the trust region contracts, but not its direction. The line-search method is the cheapest method in terms of calculational cost but may be less robust, particularly when used with poor initial values.</a></div>
+      <div class="Body_Text"><a name="239513">Note that for both the dogleg and line-search algorithms, an adjustment will be made to the diagonal of the Hessian to ensure positive definiteness before calculating the Newton step. There is also special handling for non-positive definite matrices in the Marquardt step following the method outlined in More and Sorensen (1983).</a></div>
+      <div class="Heading_4"><a name="239515">Scaling</a></div>
+      <div class="Body_Text"><a name="239516">The Newton step is theoretically invariant to both the scale of the objective and the scale of the control variables since any changes to the gradients and the Hessian cancel each other out in the expression for the Newton step. In practice, numerical issues may cause the equivalence to be inexact. Additionally, the constrained trust region steps do not have the invariance property unless scaling is applied to the control variables when calculating a constrained step.</a></div>
+      <div class="Body_Text"><a name="239517">By default, the optimization procedure scales automatically using the square root of the maximum observed value of the second derivative (curvature) of each control parameter. This makes the procedure theoretically invariant to the scaling of the variables. </a></div>
+      <div class="Body_Text"><a name="239518">In most cases you should leave the default scaling turned on, but in cases where the Hessian approximation may be unreliable, scaling may be switched off using the &#8220;scale=none&#8221; option. When scaling is switched off, you may wish to define your objective so that equal size changes to each control variable will have a similar order of magnitude of impact on the objective.</a></div>
+      <div class="Heading_4"><a name="239519">Optimization Termination</a></div>
+      <div class="Body_Text"><a name="239520">The optimization process will terminate immediately if the initial control parameters contain missing values, the objective function, or if provided, the analytical gradients cannot be evaluated at the starting parameter values.</a></div>
+      <div class="Body_Text"><a name="239521">Once the optimization procedure begins, it will proceed even if numerical errors (such as taking the log of a negative number) prevent the objective function from being evaluated at a trial step. An objective with missing values will be taken as indicating that the control values are invalid, and the optimization will step back from the problematic values. </a></div>
+      <div class="Body_Text"><a name="239522">Note that you should always define the objective to return NA values for bad control values since returning an arbitrary value may make numeric derivatives unreliable at points close to the invalid region.</a></div>
+      <div class="Body_Text"><a name="239523">The optimization procedure will terminate when:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239524">An unconstrained Newton step improved the objective and the length of the step was less than the specified convergence tolerance.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239525">A constrained step failed to improve the objective and the maximum allowed step size for the next iteration was decreased to become less than the specified convergence tolerance.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239526">The maximum number of iterations (successful steps) was reached without one of the above criteria being met.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="239527">When the procedure terminates for a condition other than the maximum iterations being reached, the procedure checks the gradients and curvature of the objective to see whether the first and second order conditions for an optimum appear to be satisfied. If the conditions are not met, the optimization will be considered to have failed. There are a variety of reasons that failure may occur:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239528">The objective may have no optimum value, but just gradually flatten out as a control variable becomes very large or small.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239529">The objective may not be defined for some values of the control parameters but may improve as we approach these values. This will cause the optimization to stall with control variables very close to the invalid region, but with non-zero gradients at the final control values.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239530">There may be values for some controls which make other controls included in the optimization have little or no impact on the objective, so that both the gradients and the elements of the Hessian corresponding to the variables gradually become zero as the optimization progresses. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239531">The control variables may 'collapse' so that two or more controls are serving the same role in the objective and their individual effect cannot be separated. This will result in a Hessian that is numerically singular since changes in one control can be exactly offset by changes in one or more of the other controls without changing the objective. (For statistical problems, this implies that the coefficients are unidentified).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="239532">In all these cases, a useful approach is to carefully consider starting values so that the initial values for the controls are as close as possible to what you believe the optimum values might be. You should also avoid starting values that are close to any regions in which the objective function cannot be evaluated. If the optimization continues to report problems from a wide range of starting values, this may indicate that your optimization problem is not well defined.</a></div>
+      <div class="Body_Text"><a name="239533">Successful convergence does not guarantee that the optimization procedure has found the global optimum of the function. The optimization procedure only tests whether the final point appears to satisfy the conditions necessary for a local optimum. In cases where more than one local optimum may exist, the optimization procedure may converge to different final values depending on what starting values are used. </a></div>
+      <div class="Body_Text"><a name="239534">Note that when the optimization completes successfully (no error is reported) the last call to the subroutine that calculates the objective will always be with the control parameters set to the optimized values. (An additional final call to the subroutine will be made in situations where this is not already the case). This guarantees that any intermediate results saved inside the subroutine will also be left at their optimized results after the optimization is complete.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

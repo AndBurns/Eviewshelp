@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Limitations</title>
+    <link rel="StyleSheet" href="css/loglike.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="loglike-Troubleshooting.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="loglike-Examples.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="loglike-The_Log_Likelihood_(LogL)_Object.html">The Log Likelihood (LogL) Object</a> : Limitations</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="578">Limitations</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#590">Simple One-Sided Restrictions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#600">Simple Two-Sided Restrictions</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="580">The likelihood object can be used to estimate parameters that maximize (or minimize) a variety of objective functions. Although the main use of the likelihood object will be to specify a log likelihood, you can specify least squares and minimum distance estimation problems with the likelihood object as long as the objective function is additive over the sample.</a></div>
+      <div class="Body_Text"><a name="582">You should be aware that the algorithm used in estimating the parameters of the log likelihood is not well suited to solving arbitrary maximization or minimization problems. The algorithm forms an approximation to the Hessian of the log likelihood, based on the sum of the outer product of the derivatives of the likelihood contributions. This approximation relies on both the functional form and statistical properties of maximum likelihood objective functions, and may not be a good approximation in general settings. Consequently, you may or may not be able to obtain results with other functional forms. Furthermore, the standard error estimates of the parameter values will only have meaning if the series describing the log likelihood contributions are (up to an additive constant) the individual contributions to a correctly specified, well-defined theoretical log likelihood.</a></div>
+      <div class="Body_Text"><a name="584">Currently, the expressions used to describe the likelihood contribution must follow the rules of EViews series expressions. This restriction implies that we do not allow matrix operations in the likelihood specification. In order to specify likelihood functions for multiple equation models, you may have to write out the expression for the determinants and quadratic forms. Although possible, this may become tedious for models with more than two or three equations. See the multivariate GARCH sample programs for examples of this approach.</a></div>
+      <div class="Body_Text"><a name="216597">Additionally, the logl object does not directly handle optimization subject to general inequality constraints. There are, however, a variety of well-established techniques for imposing simple inequality constraints. We provide examples below. The underlying idea is to apply a monotonic transformation to the coefficient so that the new coefficient term takes on values only in the desired range. The commonly used transformations are the </a><span class="In-line_input">@exp</span> for one-sided restrictions and the <span class="In-line_input">@logit</span> and <span class="In-line_input">@atan</span> for two-sided restrictions.</div>
+      <div class="Body_Text"><a name="216598">You should be aware of the limitations of the transformation approach. First, the approach only works for relatively simple inequality constraints. If you have several cross-coefficient inequality restrictions, the solution will quickly become intractable. Second, in order to perform hypothesis tests on the untransformed coefficient, you will have to obtain an estimate of the standard errors of the associated expressions. Since the transformations are generally nonlinear, you will have to compute linear approximations to the variances yourself (using the delta method). Lastly, inference will be poor near the boundary values of the inequality restrictions.</a></div>
+      <div class="Heading_4"><a name="590">Simple One-Sided Restrictions</a></div>
+      <div class="Body_Text"><a name="592">Suppose you would like to restrict the estimate of the coefficient of X to be no larger than 1. One way you could do this is to specify the corresponding subexpression as follows: </a></div>
+      <div class="Multi-line_Input"><a name="594">' restrict coef on x to not exceed 1</a></div>
+      <div class="Multi-line_Input"><a name="596">res1 = y - c(1) - (1-exp(c(2)))*x</a></div>
+      <div class="Body_Text"><a name="598">Note that EViews will report the point estimate and the standard error for the parameter C(2), not the coefficient of X. To find the standard error of the expression </a><span class="In-line_input">1-exp(c(2))</span>, you will have to use the delta method; see for example Greene (2008).</div>
+      <div class="Heading_4"><a name="600">Simple Two-Sided Restrictions</a></div>
+      <div class="Body_Text"><a name="602">Suppose instead that you want to restrict the coefficient for X to be between -1 and 1. Then you can specify the expression as:</a></div>
+      <div class="Multi-line_Input"><a name="604">' restrict coef on x to be between -1 and 1</a></div>
+      <div class="Multi-line_Input"><a name="606">res1 = y - c(1) - (2*@logit(c(2))-1)*x</a></div>
+      <div class="Body_Text"><a name="608">Again, EViews will report the point estimate and standard error for the parameter C(2). You will have to use the delta method to compute the standard error of the transformation expression </a><span class="In-line_input">2*@logit(c(2))-1</span>.</div>
+      <div class="Body_Text"><a name="610">More generally, if you want to restrict the parameter to lie between L and H, you can use the transformation:</a></div>
+      <div class="Input"><a name="612">(H-L)*@logit(c(1)) + L</a></div>
+      <div class="Body_Text"><a name="614">where C(1) is the parameter to be estimated. In the above example, L=-1 and H=1.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

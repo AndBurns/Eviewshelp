@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/ardl.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="ardl-Views_and_Procs_of_ARDL.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="ardl-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="ardl-ARDL_and_Quantile_ARDL.html">ARDL and Quantile ARDL</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="281945">Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281947">Example 1: Symmetric ARDL (Automatic Lag Selection)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281972">Example 2: Symmetric ARDL(3,3)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#282001">Example 3: Symmetric ARDL(1,1)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#298565">Example 4: Asymmetric ARDL(1,1,1)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#298626">Example 5: Asymmetric ARDL(1,1,1,1)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#298679">Example 6: Asymmetric ARDL(1,1,1,1,1)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#298718">Example 7: Quantile ARDL(1,1)</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="281946">We demonstrate ARDL estimation using a dataset from Greene (2008, page 685). This dataset consists of a number of quarterly US macroeconomic variables between 1950 and 2000. The data are in the workfile &#8220;Ardl_ex.WF1&#8221;</a></div>
+      <div class="Heading_4"><a name="281947">Example 1: Symmetric ARDL (Automatic Lag Selection)</a></div>
+      <div class="Body_Text"><a name="295064">Here we start with a classical (symmetric) ARDL model using the log of real consumption as the dependent variable, and the log of real GDP as a single regressor (along with a constant). We can open the data with the following EViews command:</a></div>
+      <div class="Input"><a name="295081">wfopen http://www.stern.nyu.edu/~wgreene/Text/Edition7/TableF5-2.txt</a></div>
+      <div class="Body_Text"><a name="295082">Next, bring up the estimation dialog and ensure that the </a><span style="font-weight: bold">Method</span> dropdown under the <span style="font-weight: bold">Estimation specification</span> is <span style="font-weight: bold">Least-squares</span>. Next, enter</div>
+      <div class="Input"><a name="295084">log(realcons) log(realgdp)</a></div>
+      <div class="Body_Text"><a name="295085">into the </a><span style="font-weight: bold">Linear dynamic specification</span>. Select <span style="font-weight: bold">Automatic selection</span> with a maximum of 8 lags (two years) for both the dependent variable and dynamic regressors. We will also include a full set of quarterly dummies as fixed regressors. In particular, we will restrict the constant to the cointegrating relationship, whereas the remaining quarterly dummies are treated as short-run regressors. To achieve this, we include the long-run constant by choosing <span style="font-weight: bold">Rest. Constant</span> from the <span style="font-weight: bold">Trend specification</span> dropdown, and write</div>
+      <div class="Input"><a name="295711">@expand(@quarter, @droplast)</a></div>
+      <div class="Body_Text"><a name="295076">into the </a><span style="font-weight: bold">Fixed regressors</span> box.</div>
+      <div class="Picture"><a name="298199"><img class="Default" src="images/ardl.039.5.01.jpg" width="100%" style="left: 0.0pt; max-height: 623px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298269">We do not make any changes to the </a><span class="Menu_Item">Options</span> tab, leaving all settings at their default value. The results are shown below:</div>
+      <div class="Picture"><a name="298273"><img class="Default" src="images/ardl.039.5.02.jpg" width="100%" style="left: 0.0pt; max-height: 753px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="295127">The first part of the output gives a summary of the settings used during estimation. Here we see that automatic selection (using the Akaike Information Criterion) was used with a maximum of 8 lags of both the dependent variable and the regressor. Out of the 72 models evaluated, the procedure has selected an ARDL(5,1) model - 5 lags of the dependent variable, LOG(REALCONS), and a single lag (along with the level value) of LOG(REALGDP).</a></div>
+      <div class="Body_Text"><a name="298285">The rest of the output is standard least squares output for the selected model. Note that each of the regressors (with the exception of the quarterly dummies) is significant, and that the coefficient on the one period lag of the dependent variable, LOG(REALCONS), is quite high, at 0.85.</a></div>
+      <div class="Body_Text"><a name="298216">To view the relative superiority of the selected model against alternatives, we click on </a><span style="font-weight: bold">View/Model Selection Summary/Criteria Graph</span> to view a graph of the AIC of the top twenty models.</div>
+      <div class="Picture"><a name="298220"><img class="Default" src="images/ardl.039.5.03.jpg" width="100%" style="left: 0.0pt; max-height: 452px; max-width: 483px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298221">The selected ARDL(5,1) model was only slightly better than an ARDL(5,3) model, which was in turn only slightly better than an ARDL(5,2). It is notable that the top three models all use five lags of the dependent variable.</a></div>
+      <div class="Heading_4"><a name="281972">Example 2: Symmetric ARDL(3,3)</a></div>
+      <div class="Body_Text"><a name="295170">Rather than using automatic selection to choose the best model, Greene (Example 20.4) also analyzes</a></div>
+      <div class="Body_Text"><a name="295171">these data with a fixed ARDL(3,3) model. We can replicate this by pressing the </a><span style="font-weight: bold">Estimate</span> button to bring up the estimation dialog again. Again, ensure that the <span style="font-weight: bold">Method</span> dropdown under the <span style="font-weight: bold">Estimation specification</span> is <span style="font-weight: bold">Least-squares</span>. This time, we change the number of lags on both dependent and regressors to 3, and then select the <span style="font-weight: bold">Fixed</span> radio button to switch off automatic lag selection.</div>
+      <div class="Picture"><a name="296378"><img class="Default" src="images/ardl.039.5.04.jpg" width="100%" style="left: 0.0pt; max-height: 623px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="295185">The results of this estimation are:</a></div>
+      <div class="Picture"><a name="296390"><img class="Default" src="images/ardl.039.5.05.jpg" width="100%" style="left: 0.0pt; max-height: 755px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="296388">The one-period lag on the dependent variable remains high, at 0.72, and again all coefficients are significant (with the exception of the dummies).</a></div>
+      <div class="Body_Text"><a name="298365">We may examine the CEC and EC forms of the estimates by selecting </a><span class="Menu_Item">View/ARDL Diagnostics/Error Correction Results</span>. EViews will display long-run output in the form of a spool with two tables showing the <span class="Menu_Item">Conditional Error Correction</span> regression results, and the <span class="Menu_Item">Error Correction</span> results. The first table displays the estimation results in the CEC form:</div>
+      <div class="Picture"><a name="296393"><img class="Default" src="images/ardl.039.5.06.jpg" width="100%" style="left: 0.0pt; max-height: 780px; max-width: 701px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298378">The EC results, which are displayed click on the </a><span class="Menu_Item">Error Correction</span> node, show that the speed of adjustment coefficient is negative (-11.89) and statistically significant,</div>
+      <div class="Picture"><a name="298382"><img class="Default" src="images/ardl.039.5.07.jpg" width="100%" style="left: 0.0pt; max-height: 777px; max-width: 746px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298383">Clicking on </a><span class="Menu_Item">View/ARDL Diagnostics/Cointegrating Relations</span> shows the specification and coefficient results for the cointegrating relationship:</div>
+      <div class="Picture"><a name="298387"><img class="Default" src="images/ardl.039.5.08.jpg" width="100%" style="left: 0.0pt; max-height: 645px; max-width: 699px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="282001">Example 3: Symmetric ARDL(1,1)</a></div>
+      <div class="Body_Text"><a name="295240">As a final symmetric ARDL example, we will consider Greene&#8217;s Example 20.5 which estimates an ARDL(1,1) model. Again, from the ARDL equation object, bring up the estimation dialog by clicking on the </a><span style="font-weight: bold">Estimate</span> button and change the number of lags to 1 for both dependent and regressors, remove the quarterly dummies, and then click <span style="font-weight: bold">OK</span>.</div>
+      <div class="Picture"><a name="296396"><img class="Default" src="images/ardl.039.5.09.jpg" width="100%" style="left: 0.0pt; max-height: 624px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="295254">The results of this estimation are:</a></div>
+      <div class="Picture"><a name="296399"><img class="Default" src="images/ardl.039.5.10.jpg" width="100%" style="left: 0.0pt; max-height: 605px; max-width: 492px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="295273">Following estimation, we can perform bounds test for cointegration by clicking on </a><span style="font-weight: bold">View/ARDL Diagnostics/Bounds Test</span> to bring up the cointegrating relationship view</div>
+      <div class="Picture"><a name="296402"><img class="Default" src="images/ardl.039.5.11.jpg" width="100%" style="left: 0.0pt; max-height: 470px; max-width: 651px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="295289">The bounds statistic is 17.25. We can compare this to the critical values listed in the second table. Clearly the statistic is larger than the I(1) bound critical value at all significance levels. We therefore reject the null hypothesis of no levels relationship and conclude that LOG(REALGDP) are LOG(REALCONS) cointegrated.</a></div>
+      <div class="Body_Text"><a name="295310">We can also evaluate the dynamic multiplier of LOG(REALGDP) on LOG(REALCONS). To do so, click on </a><span style="font-weight: bold">View/ARDL Diagnostics/Dynamic Multiplier Graph...</span> to bring up the dynamic multiplier dialog.</div>
+      <div class="Picture"><a name="296405"><img class="Default" src="images/ardl.039.5.12.jpg" width="100%" style="left: 0.0pt; max-height: 337px; max-width: 215px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="295326">Put 30 as the horizon length and click on </a><span style="font-weight: bold">OK</span>. Note that confidence interval settings are not available for purely symmetric ARDL models.</div>
+      <div class="Picture"><a name="296408"><img class="Default" src="images/ardl.039.5.13.jpg" width="100%" style="left: 0.0pt; max-height: 529px; max-width: 635px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="295342">Here we see that LOG(REALGDP) approaches its long-run value of 1.06 as the horizon length increases. Moreover, it does so at a diminishing pace.</a></div>
+      <div class="Heading_4"><a name="298565">Example 4: Asymmetric ARDL(1,1,1)</a></div>
+      <div class="Body_Text"><a name="298566">Here we will continue from the previous example, but consider the NARDL(1,1,1) model of LOG(REALCONS) on LOG(REALGDP) and LOG(REALGOVT). In particular, we will treat LOG(REALGOVT) as an asymmetric variable which is asymmetric in both the short-run and the long-run. To estimate this model, bring up the estimation dialog by clicking on the </a><span style="font-weight: bold">Estimate</span> button. Next, type</div>
+      <div class="Input"><a name="298567">log(reagovt)</a></div>
+      <div class="Body_Text"><a name="298568">into the </a><span style="font-weight: bold">Long-run and short-run</span> edit field under the <span style="font-weight: bold">Asymmetric dynamic specification</span> group, and click on <span style="font-weight: bold">OK</span>.</div>
+      <div class="Picture"><a name="298572"><img class="Default" src="images/ardl.039.5.14.jpg" width="100%" style="left: 0.0pt; max-height: 623px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298573">The results of this estimation are:</a></div>
+      <div class="Picture"><a name="298577"><img class="Default" src="images/ardl.039.5.15.jpg" width="100%" style="left: 0.0pt; max-height: 743px; max-width: 556px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298578">Notice that LOG(REALGOVT) is now split into two variables corresponding to the positive and negative cumulative sums, prefaced respectively as POS_ and NEG_.</a></div>
+      <div class="Body_Text"><a name="298579">NOTE: It is extremely important to notice that unlike the case of purely symmetric ARDL models which display the estimation of </a><span class="Link"><a href="ardl-Background.html#281184" title="Background">Equation&nbsp;(29.1)</a></span> as the default output, the default estimation output for NARDL models is always the CEC equation <span class="Link"><a href="ardl-Background.html#281430" title="Background">Equation&nbsp;(29.17)</a></span>. This is due to the fact that partial asymmetry (as in Example 5 below) is specified in the context of a NARDL CEC model in <span class="Link"><a href="ardl-Background.html#281430" title="Background">Equation&nbsp;(29.17)</a></span>, and CEC models naturally distinguish between long- and short- variables. Accordingly, the conversion of partial asymmetry from <span class="Link"><a href="ardl-Background.html#281430" title="Background">Equation&nbsp;(29.17)</a></span> into <span class="Link"><a href="ardl-Background.html#281414" title="Background">Equation&nbsp;(29.16)</a></span> becomes difficult and sometimes leads to unidentifiability.</div>
+      <div class="Body_Text"><a name="298595">We can also test whether the asymmetric assumption on LOG(REALGOVT) is valid by testing each asymmetric variable for symmetry. To do so, click on </a><span style="font-weight: bold">View/ARDL Diagnostics/Symmetry Test</span>.</div>
+      <div class="Picture"><a name="298599"><img class="Default" src="images/ardl.039.5.16.jpg" width="100%" style="left: 0.0pt; max-height: 616px; max-width: 482px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298600">The result is a table for symmetry in both the long-run and short-run scope. As the null hypothesis of these test is symmetry, we will reject the null hypothesis in the long-run scope, but fail to reject it in the short-run scope.</a></div>
+      <div class="Body_Text"><a name="298601">Let&#8217;s also derive the dynamic multiplier curves. Click on </a><span style="font-weight: bold">View/ARDL Diagnostics/Dynamic Multiplier Graph...</span> to bring up the dynamic multiplier dialog.</div>
+      <div class="Picture"><a name="298605"><img class="Default" src="images/ardl.039.5.17.jpg" width="100%" style="left: 0.0pt; max-height: 337px; max-width: 215px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298606">Notice that the options for confidence intervals is now available. This is because dynamic multiplier CIs are derived for the absolute difference in paths resulting from the positive and negative asymmetric components of a given regressor. Moreover, CIs are derived by resampling methods, and therefore the </a><span style="font-weight: bold">Replications</span> textbox governs how many replications are used to derive a CI.</div>
+      <div class="Body_Text"><a name="298607">To proceed, put 30 as the horizon length and leave everything at else at its default values. Click on </a><span style="font-weight: bold">OK</span>.</div>
+      <div class="Picture"><a name="298611"><img class="Default" src="images/ardl.039.5.18.jpg" width="100%" style="left: 0.0pt; max-height: 896px; max-width: 615px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298612">Notice that all paths approach their long-run values, which are indicated by dashed horizontal lines in the plots. Furthermore, since LOG(REALGOVT) is asymmetric in both the long-run and short-run, we expect the dynamic multiplier curves to diverge in both the long-run and short-run. This is evidenced by the fact that the absolute difference between these paths (indicated as the red curve) never approaches zero. Furthermore, notice the gray shaded area which displays the desired confidence interval the absolute asymmetry.</a></div>
+      <div class="Heading_4"><a name="298626">Example 5: Asymmetric ARDL(1,1,1,1)</a></div>
+      <div class="Body_Text"><a name="298627">Continuing with the previous example, we will now add a partially symmetric variable to the list of distributed-lag regressors. In particular, we will treat REALINVS &#8211; real investments &#8211; as a variable which is asymmetric in the long-run, but symmetric in the short run. Again, bring up the estimation dialog by clicking on the </a><span style="font-weight: bold">Estimate</span> button. Next, type</div>
+      <div class="Input"><a name="298628">log(realinvs)</a></div>
+      <div class="Body_Text"><a name="298629">into the </a><span style="font-weight: bold">Long-run only</span> edit field, and press <span style="font-weight: bold">OK</span>.</div>
+      <div class="Picture"><a name="298633"><img class="Default" src="images/ardl.039.5.19.jpg" width="100%" style="left: 0.0pt; max-height: 623px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298634">The results of this estimation are:</a></div>
+      <div class="Picture"><a name="298638"><img class="Default" src="images/ardl.039.5.20.jpg" width="100%" style="left: 0.0pt; max-height: 786px; max-width: 551px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298639">Note that in contrast to LOG(REALGOVT) which is asymmetric in both the long-run and shortrun, LOG(REALINVS) is split into its positive and negative cumulative sums in the long-run, but remains symmetric in the short-run. We can study the CEC form further by clicking on </a><span style="font-weight: bold">Views/ARDL Diagnostics/Conditional Error Correction (Long Run) Form</span>.</div>
+      <div class="Picture"><a name="298643"><img class="Default" src="images/ardl.039.5.21.jpg" width="100%" style="left: 0.0pt; max-height: 749px; max-width: 726px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298644">We see here that both LOG(REALGOVT) and LOG(REALINVS) now enter the cointegrating relationship.</a></div>
+      <div class="Body_Text"><a name="298645">We can also conduct a symmetry test by proceeding to </a><span style="font-weight: bold">View/ARDL Diagnostics/Symmetry Test</span>.</div>
+      <div class="Picture"><a name="298649"><img class="Default" src="images/ardl.039.5.22.jpg" width="100%" style="left: 0.0pt; max-height: 682px; max-width: 492px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298650">Here, since LOG(REALGOVT) is a fully asymmetric variable, it is tested for symmetry among both the long-run and short-run regressors. In particular, we fail to reject symmetry for LOG(REALGOVT) in both the long-run and short-run scopes. Nevertheless, since LOG(REALINVS) is asymmetric in the long-run and symmetric in the short-run, the test for asymmetry is only available in the long-run. Here in fact, we will reject the null of symmetry at any meaningful p-value.</a></div>
+      <div class="Body_Text"><a name="298651">To derive the dynamic multiplier curves we again click on </a><span style="font-weight: bold">View/ARDL Diagnostics/Dynamic Multiplier Graph...</span> to bring up the dynamic multiplier dialog.</div>
+      <div class="Picture"><a name="298655"><img class="Default" src="images/ardl.039.5.23.jpg" width="100%" style="left: 0.0pt; max-height: 337px; max-width: 215px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298656">Here we will generate the curves without displaying confidence intervals. As before, put 30 as the horizon length, click on the </a><span style="font-weight: bold">Show CI</span> checkbox to deselect it, click on <span style="font-weight: bold">OK</span>.</div>
+      <div class="Picture"><a name="298660"><img class="Default" src="images/ardl.039.5.24.jpg" width="100%" style="left: 0.0pt; max-height: 934px; max-width: 639px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298661">Of particular interest here is the final curve associated with LOG(REALINVS). Recall that the latter is asymmetric in the long-run, but is symmetric in the short-run. This is also clearly seen by noting the absolute asymmetry curve which starts off at zero, but the then diverges in the long-run.</a></div>
+      <div class="Heading_4"><a name="298679">Example 6: Asymmetric ARDL(1,1,1,1,1)</a></div>
+      <div class="Body_Text"><a name="298680">Adding further to the previous example, we now add another partially symmetric variable to the list of distributed-lag regressors. In particular, we will treat LOG(TBILRATE) &#8211; treasury bill rate &#8211; as a variable which is asymmetric in the short-run, but symmetric in the long-run. Again, bring up the estimation dialog by clicking on the </a><span style="font-weight: bold">Estimate</span> button. Next, type</div>
+      <div class="Input"><a name="298681">log(tbilrate)</a></div>
+      <div class="Body_Text"><a name="298682">into the </a><span style="font-weight: bold">Short-run only</span> textbox, and press <span style="font-weight: bold">OK</span>.</div>
+      <div class="Picture"><a name="298686"><img class="Default" src="images/ardl.039.5.25.jpg" width="100%" style="left: 0.0pt; max-height: 623px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298687">The estimation results are:</a></div>
+      <div class="Picture"><a name="298691"><img class="Default" src="images/ardl.039.5.26.jpg" width="100%" style="left: 0.0pt; max-height: 828px; max-width: 565px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298693">Note that LOG(TBILRATE) now appears among the long-run regressors, and that @DCUMDP(TBILRATE) and @DCUMDN(TBILRATE), the asymmetric components of LOG(TBILRATE), only appear among the short-run regressors.</a></div>
+      <div class="Body_Text"><a name="299991">Let&#8217;s derive the dynamic multipliers for the constituent regressors here as well. Proceed to </a><span style="font-weight: bold">View/ARDL Diagnostics/Dynamic Multiplier Graph...</span> to bring up the dynamic multiplier dialog. Put 30 as the horizon length and deselect the <span style="font-weight: bold">Show CI</span> checkbox. Click on <span style="font-weight: bold">OK</span>.</div>
+      <div class="Picture"><a name="298697"><img class="Default" src="images/ardl.039.5.27.jpg" width="100%" style="left: 0.0pt; max-height: 845px; max-width: 585px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298698">As in the previous example, our focus is on the final curve. In particular, LOG(TBILRATE) is asymmetric in the short-run, but symmetric in the long-run. Accordingly, absolute asymmetry is above zero at the start of the evolution, but then settles to zero as we approach the long-run.</a></div>
+      <div class="Heading_4"><a name="298718">Example 7: Quantile ARDL(1,1)</a></div>
+      <div class="Body_Text"><a name="298719">In this example, we will estimate a simple quantile ARDL model at the median quantile. To estimate, bring up the estimation dialog and type</a></div>
+      <div class="Input"><a name="298720">log(realcons) log(realgdp)</a></div>
+      <div class="Body_Text"><a name="298721">into the </a><span style="font-weight: bold">Linear dynamic specification</span>. Since we&#8217;re estimating a QARDL model, select <span style="font-weight: bold">Quantile</span> under the <span style="font-weight: bold">Method</span> dropdown in the <span style="font-weight: bold">Estimation specification</span> group. Lastly, leave the <span style="font-weight: bold">Quantile to estimate</span> at its default 0.5 (median) value, and press <span style="font-weight: bold">OK</span>.</div>
+      <div class="Picture"><a name="298725"><img class="Default" src="images/ardl.039.5.28.jpg" width="100%" style="left: 0.0pt; max-height: 623px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298726">Estimation results are:</a></div>
+      <div class="Picture"><a name="298730"><img class="Default" src="images/ardl.039.5.29.jpg" width="100%" style="left: 0.0pt; max-height: 649px; max-width: 491px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298731">The output is analogous to the classical ARDL model output. In particular, the output produces the inter-temporal ARDL form, estimated using quantile regression. Moreover, the summary above the results table provides additional information relevant to quantile estimation, such as sparsity and bandwidth specifications.</a></div>
+      <div class="Body_Text"><a name="298732">We can now visualize the error-correction quantile process. Click on </a><span style="font-weight: bold">View/ARDL Diagnostics/Quantile Error-Correction Results Process...</span>. This produces a dialog where we can specify which quantiles we&#8217;d like to consider in deriving the process.</div>
+      <div class="Picture"><a name="298736"><img class="Default" src="images/ardl.039.5.30.jpg" width="100%" style="left: 0.0pt; max-height: 318px; max-width: 365px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298737">We can leave the </a><span style="font-weight: bold">Specification</span> tab at its default, which will produce the process for 10 equally spaced quantile values. Alternatively, if a set of specific quantiles is desired, they can be specified by clicking on the <span style="font-weight: bold">User-specified quantiles</span> and supplying a space-delimited list in the textbox.</div>
+      <div class="Body_Text"><a name="298738">If you&#8217;d like to write the process (quantiles, coefficients, and covariances) to the workfile, you can click on the </a><span style="font-weight: bold">Output</span> tab and provide output names for the quantile vector and the coefficient and covariance matrices. Note that since this view derives the process for both the CEC and the EC forms, output objects will be differentiated by an automatic suffix ("_CEC" or "_EC") appended to the output names provided for the coefficient and covariance matrices.</div>
+      <div class="Body_Text"><a name="298739">The default output here is a plot of the quantile process of the coefficients associated with the CEC form.</a></div>
+      <div class="Picture"><a name="298743"><img class="Default" src="images/ardl.039.5.31.jpg" width="100%" style="left: 0.0pt; max-height: 523px; max-width: 793px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298744">To display the quantile process for the coefficients of the EC form, click on the </a><span style="font-weight: bold">Process Plot</span> node beneath the <span style="font-weight: bold">Summary: Error-Correction Process</span> parent in the navigation tree to the left.</div>
+      <div class="Picture"><a name="298748"><img class="Default" src="images/ardl.039.5.32.jpg" width="100%" style="left: 0.0pt; max-height: 524px; max-width: 797px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298749">If you prefer, you can also display the table version of these plots. Simply click on </a><span style="font-weight: bold">Process Table</span> nodes in the navigation tree to the left.</div>
+      <div class="Picture"><a name="298753"><img class="Default" src="images/ardl.039.5.33.jpg" width="100%" style="left: 0.0pt; max-height: 691px; max-width: 703px; top: 0.0pt" alt="" /></a></div>
+      <div class="Picture"><a name="298757"><img class="Default" src="images/ardl.039.5.34.jpg" width="100%" style="left: 0.0pt; max-height: 589px; max-width: 703px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298758">If you prefer to inspect the CEC or EC estimation tables at any specific quantile value, click on the </a><span style="font-weight: bold">Conditional Error Correction</span> or <span style="font-weight: bold">Error Correction</span> nodes beneath the appropriate quantile value (tau) parents in the navigation tree.</div>
+      <div class="Body_Text"><a name="298759">We can produce similar outputs for the quantile process associated with the cointegrating relation. To do so, navigate to </a><span style="font-weight: bold">View/ARDL Diagnostics/Quantile Cointegrating Relation Process</span>. A dialog similar to the quantile error-correction process appears. We&#8217;ll stick with the defaults so click on <span style="font-weight: bold">OK</span>.</div>
+      <div class="Body_Text"><a name="298760">The output produced is a set of cointegrating relation series at each quantile value superimposed on a single plot, with additional options to generate the corresponding table, or even look at the process coefficients and plots at each individual quantile value.</a></div>
+      <div class="Picture"><a name="298764"><img class="Default" src="images/ardl.039.5.35.jpg" width="100%" style="left: 0.0pt; max-height: 613px; max-width: 795px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298765">If instead you&#8217;d like to inspect the plot as table, click on the </a><span style="font-weight: bold">Process Table</span> node beneath the <span style="font-weight: bold">Summary</span> parent in the navigation tree.</div>
+      <div class="Picture"><a name="298769"><img class="Default" src="images/ardl.039.5.36.jpg" width="100%" style="left: 0.0pt; max-height: 541px; max-width: 798px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298770">Alternatively, you can inspect the specification, long-run coefficients, or even the cointegrating relation plot at any specific quantile value. Simply click on the </a><span style="font-weight: bold">Specification</span>, <span style="font-weight: bold">Coefficients</span>, or <span style="font-weight: bold">Plot</span> nodes beneath the appropriate quantile value (tau) parents in the navigation tree.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

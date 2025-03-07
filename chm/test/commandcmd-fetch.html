@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>fetch</title>
+    <link rel="StyleSheet" href="css/commandcmd.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="commandcmd-factest.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="commandcmd-fit.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : Command Reference</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Command_Title_Box"><a name="2019483">&nbsp;</a></div>
+      <table class="Command_Heading" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 108pt">
+            <div class="Command_Name"><a name="2019478">fetch</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 252pt">
+            <div class="Command_Header"><span class="Command_Header_link"><a href="commandcmd-Command_Reference.html#2023547" title="Command Reference" name="2019482">Object Container, Data, and File Commands</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Description"><a name="2019484">Fetch objects from databases or databank files into the workfile. </a></div>
+      <div class="Body_Text"><span class="In-line_command"><a name="2019485">fetch</a></span> reads one or more objects from EViews databases or databank files into the active workfile. The objects are loaded into the workfile using the object in the database or using the databank file name. </div>
+      <div class="Body_Text"><a name="2027611">If you fetch a series into a workfile with a different frequency, EViews will automatically apply the frequency conversion method attached to the series by </a><span class="In-line_command">setconvert</span>. If the series does not have an attached conversion method, EViews will use the method set by <span class="Menu_Item">Options/Date-Frequency</span> in the main menu. You can override the conversion method by specifying an explicit conversion method option.</div>
+      <div class="Command_Section"><a name="2019488">Syntax</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2019489">fetch</a></span><span class="Argument" style="font-weight: normal">(options)</span> <span class="Argument">object_list</span></div>
+      <div class="Body_Text"><a name="2019491">The </a><span class="In-line_command">fetch</span> command keyword is followed by a list of object names separated by spaces. The default behavior is to fetch the objects from the default database (<span class="Emphasis">this is a change from versions of EViews prior to EViews 3.x where the default was to fetch from individual databank files).</span></div>
+      <div class="Body_Text"><a name="2019492">You can precede the object name with a database name and the double colon &#8220;::&#8221; to indicate a specific database source. If you specify the database name as an option in parentheses (see below), all objects without an explicit database prefix will be fetched from the specified database. You may optionally fetch from individual databank files or search among registered databases. </a></div>
+      <div class="Body_Text"><a name="2019493">You may use wild card characters, &#8220;?&#8221; (to match a single character) or &#8220;*&#8221; (to match zero or more characters), in the object name list. All objects with names matching the pattern will be fetched.</a></div>
+      <div class="Body_Text"><a name="2019494">To fetch from individual databank files that are not in the default path, you should include an explicit path. If you have more than one object with the same file name (for example, an equation and a series named </a><span class="EViews_Name">CONS</span>), then you should supply the full object file name including identifying extensions.</div>
+      <div class="Command_Section"><a name="2019495">Options</a></div>
+      <div class="Table"><a name="2019509">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 72pt">
+            <div class="Table_Text"><a name="2709501">d=</a><span class="Argument_Opt">db_name</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2709503">Fetch from specified database.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709505">d</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709507">Fetch all registered databases in registry order.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709509">i</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709511">Fetch from individual databank files.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709513">link</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709515">Fetch as a database link.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709517">notifyillegal</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709519">When in a program, report illegal EViews object names. By default, objects with illegal names are automatically renamed. (Has no effect in the command window.)</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709521">p=</a><span class="Argument_Opt">prefix</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709523">Specify a naming prefix that will be prepended to the listed names to be fetched.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709525">s=</a><span class="Argument_Opt">suffix</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709527">Specify a naming suffix that will be appended to the listed names to be fetched.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709529">pi=</a><span class="Argument_Opt">prefix</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709531">Specify a naming prefix that will be removed from the name of the source objects once fetched into the workfile.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709533">si=</a><span class="Argument_Opt">suffix</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709535">Specify a naming suffix that will be removed from the name of the source objects once fetched into the workfile.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709537">tr=</a><span class="Argument_Opt">integer</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709539">Truncate long series names to </a><span class="Emphasis_Table">integer</span><span class="Argument_Opt"> </span><span class="Body_Text">characters</span>. The default value of <span class="Emphasis_Table">integer</span> is 24.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2019510">The following options are available for fetch of group objects:</a></div>
+      <div class="Table"><a name="2019516">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 72pt">
+            <div class="Table_Text"><a name="2197575">g=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2197577">Group fetch options: &#8220;b&#8221; (fetch both group definition and series), &#8220;d&#8221; (fetch only the series in the group), &#8220;l&#8221; (fetch only the group definition).</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2019517">The database specified by the double colon &#8220;::&#8221; takes precedence over the database specified by the &#8220;</a><span class="In-line_option">d=</span>&#8221; option.</div>
+      <div class="Body_Text"><a name="2514375">The following options control the frequency conversion method when copying series and group objects into a workfile page and converting from </a><span class="Emphasis">low</span> to <span class="Emphasis">high</span> frequency:</div>
+      <div class="Table"><a name="2514385">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 81.36pt">
+            <div class="Table_Text"><a name="2514378">c=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2634440">Low to high conversion methods: &#8220;r&#8221; or &#8220;repeata&#8221; (constant match average), &#8220;d&#8221; or &#8220;repeats&#8221; (constant match sum), &#8220;q&#8221; or &#8220;quada&#8221; (quadratic match average), &#8220;t&#8221; or &#8220;quads&#8221; (quadratic match sum), &#8220;linearf&#8221; (linear match first), &#8220;i&#8221; or &#8220;linearl&#8221; (linear match last), &#8220;cubicf&#8221; (cubic match first), &#8220;c&#8221; or &#8220;cubicl&#8221; (cubic match last), &#8220;pointf&#8221; (point first), &#8220;pointl&#8221; (point last).</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2523002">The following options control the frequency conversion method when copying series and group objects to a workfile, converting from </a><span class="Emphasis">high</span> to <span class="Emphasis">low</span> frequency:</div>
+      <div class="Table"><a name="2019532">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 72pt">
+            <div class="Table_Text"><a name="2197583">c=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><span class="Emphasis_Table"><a name="2197585">High to low conversion methods removing NAs:</a></span> &#8220;a&#8221; (average of the nonmissing observations), &#8220;s&#8221; (sum of the nonmissing observations), &#8220;f&#8221; (first nonmissing observation), &#8220;l&#8221; (last nonmissing observation), &#8220;x&#8221; (maximum nonmissing observation), &#8220;m&#8221; (minimum nonmissing observation).</div>
+            <div class="Table_Text"><span class="Emphasis_Table"><a name="2197586">High to low conversion methods propagating NAs:</a></span> &#8220;an&#8221; or &#8220;na&#8221; (average, propagating missings), &#8220;sn&#8221; or &#8220;ns&#8221; (sum, propagating missings), &#8220;fn&#8221; or &#8220;nf&#8221; (first, propagating missings), &#8220;ln&#8221; or &#8220;nl&#8221; (last, propagating missings), &#8220;xn&#8221; or &#8220;nx&#8221; (maximum, propagating missings), &#8220;mn&#8221; or &#8220;nm&#8221; (minimum, propagating missings).</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2019533">If no conversion method is specified, the series-specific or global default conversion method will be employed.</a></div>
+      <div class="Command_Section"><a name="2019534">Examples</a></div>
+      <div class="Body_Text"><a name="2019535">To fetch </a><span class="EViews_Name">M1</span>, <span class="EViews_Name">GDP</span>, and <span class="EViews_Name">UNEMP</span> from the default database, use:</div>
+      <div class="Input"><a name="2019536">fetch m1 gdp unemp</a></div>
+      <div class="Body_Text"><a name="2019537">To fetch </a><span class="EViews_Name">M1</span> and <span class="EViews_Name">GDP</span> from the <span class="EViews_Name">US1</span> database and <span class="EViews_Name">UNEMP</span> from the <span class="EViews_Name">MACRO</span> database, use the command:</div>
+      <div class="Input"><a name="2019538">fetch(d=us1) m1 gdp macro::unemp</a></div>
+      <div class="Body_Text"><a name="2019539">You can fetch all objects with names starting with &#8220;</a><span class="EViews_Name">SP&#8221;</span> by searching all registered databases in the search order. The &#8220;<span class="In-line_option">c=f</span>&#8221; option uses the first (nonmissing) observation to convert the frequency of any matching series with a higher frequency than the destination workfile frequency:</div>
+      <div class="Input"><a name="2019540">fetch(d,c=f) sp*</a></div>
+      <div class="Body_Text"><a name="2019541">You can fetch </a><span class="EViews_Name">M1</span> and <span class="EViews_Name">UNEMP</span> from individual databank files using: </div>
+      <div class="Input"><a name="2019542">fetch(i) m1 c:\data\unemp </a></div>
+      <div class="Body_Text"><a name="2019543">To fetch all objects with names starting with &#8220;</a><span class="EViews_Name">CONS&#8221;</span> from the two databases <span class="EViews_Name">USDAT</span> and UKDAT, use the command:</div>
+      <div class="Input"><a name="2019544">fetch usdat::cons* ukdat::cons*</a></div>
+      <div class="Body_Text"><a name="2019545">The command:</a></div>
+      <div class="Input"><a name="2019546">fetch a?income</a></div>
+      <div class="Body_Text"><a name="2019547">will fetch all series beginning with the letter &#8220;A&#8221;, followed by any single character, and ending with the string &#8220;income&#8221;.</a></div>
+      <div class="Body_Text"><a name="2709905">Use the &#8220;notifyillegal&#8221; option to display a dialog when fetching the series MYILLEG@LNAME that will suggest a valid name and give you to opportunity to name the object before it is inserted into a workfile:</a></div>
+      <div class="Input"><a name="2709906">fetch(notifyillegal) myilleg@lname</a></div>
+      <div class="Body_Text"><a name="2505422">The command:</a></div>
+      <div class="Input"><a name="2505418">fetch(p=us_) gdp inv cons</a></div>
+      <div class="Body_Text"><a name="2505487">Fetches the series US_GDP, US_INV and US_CONS into workfile series with the same names.</a></div>
+      <div class="Input"><a name="2505594">fetch(si=&#8221; us equity&#8221;) ibm msft</a></div>
+      <div class="Body_Text"><a name="2505595">Fetches the database series IBM US EQUITY, and MSFT US EQUITY into workfile series with names IBM and MSFT.</a></div>
+      <div class="Body_Text"><a name="2709675">Specifying the &#8220;tr&#8221; option causes EViews 10 to truncate long series names to 24 characters (by default) instead of 300. This will let programs written for EViews 9 continue to work with EViews 10:</a></div>
+      <div class="Input"><a name="2709794">fetch(d=eia, link, tr) coal.average_employees.al-tot.a</a></div>
+      <div class="Body_Text"><a name="2709818">The &#8220;tr&#8221; option can also be set to a number between 0 and 300:</a></div>
+      <div class="Input"><a name="2709795">fetch(d=eia, link, tr=20) coal.average_employees.al-tot.a</a></div>
+      <div class="Command_Section"><a name="2709796">Cross-references</a></div>
+      <div class="Body_Text"><a name="2019555">See </a><span class="Link"><a href="database-EViews_Databases.html#36960" title="EViews Databases">&#8220;EViews Databases&#8221;</a></span> for a discussion of databases, databank files, and frequency conversion. <span class="Link"><a href="wildcards-Wildcards.html#92046" title="Wildcards">Appendix&nbsp;A. &#8220;Wildcards&#8221;</a></span> describes the use of wildcard characters.</div>
+      <div class="Body_Text"><a name="2206659">See also </a><span class="In-line_command_link"><a href="commandcmd-store.html#2038778" title="store">store</a></span>, and <span class="In-line_command_link"><a href="commandcmd-copy.html#2081738" title="copy">copy</a></span>.</div>
+      <div class="Body_Text"><a name="2019571">See </a><span class="In-line_command_link"><a href="seriescmd-setconvert.html#203756" title="setconvert">Series::setconvert</a></span> for information on default conversion settings.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

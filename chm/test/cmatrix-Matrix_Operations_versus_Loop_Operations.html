@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Matrix Operations versus Loop Operations</title>
+    <link rel="StyleSheet" href="css/cmatrix.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cmatrix-Matrix_Views_and_Procs.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="wffunctions-Workfile_Functions.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cmatrix-Matrix_Language.html">Matrix Language</a> : Matrix Operations versus Loop Operations</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="95876">Matrix Operations versus Loop Operations</a></div>
+      <div class="Body_Text"><a name="69031">You may perform matrix operations using element operations and loops instead of the built-in functions and commands. For example, the inner product of two vectors may be computed by evaluating the vectors element-by-element:</a></div>
+      <div class="Multi-line_Input"><a name="69032">scalar inprod1 = 0</a></div>
+      <div class="Multi-line_Input"><a name="69033">for !i = 1 to @rows(vec1)</a></div>
+      <div class="Multi-line_Input"><a name="69034">	inprod1 = inprod1 + vec1(!i)*vec2(!i)</a></div>
+      <div class="Multi-line_Input"><a name="69035">next</a></div>
+      <div class="Body_Text"><a name="69036">This approach will, however, generally be much slower than using the built-in function:</a></div>
+      <div class="Input"><a name="69037">scalar inprod2 = @inner(vec1, vec2)</a></div>
+      <div class="Body_Text"><a name="69038">You should use the built-in matrix operators rather than loop operators whenever you can. The matrix operators are always much faster than the equivalent loop operations. </a></div>
+      <div class="Body_Text"><a name="69039">Similarly, suppose, for example, that you wish to subtract the column mean from each element of a matrix. Such a calculation might be useful in constructing a fixed effects regression estimator. First, consider a slow method involving only loops and element operations:</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69040">matrix x = @convert(mygrp1)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69041">scalar xsum</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69042">for !i = 1 to @columns(x)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69043">	xsum = 0</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69044">	for !j = 1 to @rows(x)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69045">		xsum = xsum+x(!j,!i)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69046">	next</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69047">	xsum = xsum/@rows(x)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69048">	for !j = 1 to @rows(x)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69049">		x(!j,!i) = x(!j,!i)-xsum</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69050">	next</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="69051">next</a></div>
+      <div class="Body_Text"><a name="69052">The loops are used to compute a mean for each column of data in X, and then to subtract the value of the mean from each element of the column. A faster method for subtracting column means uses the built-in operators and functions:</a></div>
+      <div class="Multi-line_Input"><a name="69053">matrix x = @convert(mygrp1)</a></div>
+      <div class="Multi-line_Input"><a name="69054">vector xmean = @cmeans(x)</a></div>
+      <div class="Multi-line_Input"><a name="148215">x = x - @scale(@ones(@rows(x), @columns(x)),@transpose(xmean))</a></div>
+      <div class="Body_Text"><a name="69059">The first line converts the data in MYGRP1 into the matrix X. The second line computes the column means of X and saves the results in XMEAN. The last line subtracts the matrix of column means from X. Note that we first create a temporary matrix of ones, then use the </a><span class="In-line_input">@scale</span> function to scale each column using the element in the corresponding column of the transpose of XMEAN.</div>
+      <div class="Body_Text"><a name="171914">&nbsp;</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

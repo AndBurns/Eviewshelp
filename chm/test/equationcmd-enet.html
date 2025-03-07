@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>enet</title>
+    <link rel="StyleSheet" href="css/equationcmd.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="equationcmd-endogtest.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="equationcmd-equation_2.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cobjpreface.html">Object Reference</a> : Object View and Procedure Reference : <a class="WebWorks_Breadcrumb_Link" href="cobjects.html">Object View and Procedure Reference</a> : Equation</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Command_Title_Box"><a name="737472">&nbsp;</a></div>
+      <table class="Command_Heading" style="margin-bottom: 9.15pt; padding-left: 2pt; padding-top: 3pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 3pt; vertical-align: middle; width: 108pt">
+            <div class="Command_Name"><a name="737466">enet</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 3pt; vertical-align: middle; width: 252pt">
+            <div class="Command_Header"><span class="Command_Header_link"><a href="equationcmd-Equation.html#178361" title="Equation" name="737471">Equation Methods</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="Command_Summary"><a name="737473">Estimation of an elastic net model, including options for Lasso and ridge regression.</a></span></div>
+      <div class="Command_Section"><a name="737474">Syntax</a></div>
+      <div class="Command_Types" style="margin-top: 2.0pt; text-indent: -28.800000000000004pt"><a name="737475">equation_name</a><span class="Command_Summary">.enet</span><span class="Argument" style="font-weight: normal">(options)</span> <span class="Argument">y x1</span> <span class="Argument">[x2 x3 ...] [@vw(...)]</span></div>
+      <div class="Body_Text"><a name="737476">List the dependent variable first, followed by a list of the independent variables. Use a &#8220;</a><span class="EViews_Name">C&#8221;</span> if you wish to include an unpenalized intercept term.</div>
+      <div class="Body_Text"><a name="737477">Note that PDL and ARMA terms are not permitted in elastic net specifications.</a></div>
+      <div class="Body_Text"><a name="737484">If you wish to specify regressors with an individual penalty weight <img class="Default EquationGraphic" src="images/equationcmd.131.049.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />, or to place inequality restrictions on the coefficient values, you may do so using special expressions of the form:</a></div>
+      <div class="Indented"><span class="Command_Summary"><a name="737485">@vw</a></span>(<span class="Argument">series_name</span>, <span class="Argument">weight_value)</span></div>
+      <div class="Body_Text"><a name="737486">or</a></div>
+      <div class="Indented"><span class="Command_Summary"><a name="737487">@vw(</a></span><span class="Argument" style="font-weight: normal">series_name[, </span><span class="Command_Summary">wgt=</span><span class="Argument" style="font-weight: normal">weight_value,</span> <span class="Command_Summary">cmin=</span><span class="Argument" style="font-weight: normal">coef_min, </span><span class="Command_Summary">cmax=</span><span class="Argument" style="font-weight: normal">coef_max]</span>)</div>
+      <div class="Body_Text"><a name="737488">where </a><span class="Argument">weight_value</span> is a non-negative value, <span class="Argument">coef_min </span>is a non-positive minimum coefficient value, and <span class="Argument">coef_max </span>is a non-negative maximum coefficient value. </div>
+      <div class="Body_Text"><a name="737489">There are two forms of the special expression.</a></div>
+      <div class="Body_Text"><a name="737490">In the abbreviated form, you specify the variable name followed by the penalty weight value.</a></div>
+      <div class="Body_Text"><a name="737491">In the more general form, you specify the variable name followed by one or more keyword expressions in arbitrary order, with the &#8220;</a><span class="In-line_command">wgt=</span>&#8221; argument specifying the penalty weight, &#8220;<span class="In-line_command">cmin=</span>&#8221; with a non-positive minimum coefficient value, and &#8220;<span class="Index_command">cmax=</span>&#8221; with a non-negative maximum coefficient value.</div>
+      <div class="Body_Text"><a name="737492">When specifying individual regressor behavior using </a>@vw, keep in mind that:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="737493">The special intercept variable &#8220;C&#8221; is always non-penalized and has an implicit weight <img class="Default EquationGraphic" src="images/equationcmd.131.049.2.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="737497">Individual penalty weights may be also specified using a vector in the </a><span class="Menu_Item">Individual lambda wgts. vector</span> edit field on the <span class="Menu_Item">Penalty</span> dialog page (or using the command estimation option &#8220;<span class="Command_Summary">lambdawgt=</span><span class="Argument" style="font-weight: normal">vector_name</span>&#8221;). If the vector weights are specified and individual weights are specified using the @vw keyword, the vector weights will be applied first, followed by the individual variable weights.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="737498">Individual coefficient limit values may also be specified using vectors in the </a><span class="Menu_Item">Min values vector</span> and <span class="Menu_Item">Max values vector</span> edit fields on the <span class="Menu_Item">Options</span> dialog page (or the command estimation options &#8220;<span class="Command_Summary">coefmin=</span><span class="Argument" style="font-weight: normal">vector_name</span>&#8221; and &#8220;<span class="Command_Summary">coefmax=</span><span class="Argument" style="font-weight: normal">vector_name</span>&#8221;). If vector coefficient limits are specified and individual regressor limits are specified using the @vw keyword, the vector limits will be applied first, followed by the individual limits weights.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="737499">EViews will normalize the individual penalty weights so that they sum to the number of coefficients.</a></div>
+      <div class="Command_Section"><a name="737500">Options</a></div>
+      <div class="Command_Subsection"><a name="737501">Specification Options</a></div>
+      <div class="Table"><a name="737516">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text"><a name="737504">penalty=</a><span class="Argument_Opt">arg (default</span>=&#8220;el&#8221;)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 223.2pt">
+            <div class="Table_Text"><a name="737506">Type of threshold estimation: &#8220;enet&#8221; (elastic net), &#8220;ridge&#8221; (ridge), &#8220;lasso&#8221; (Lasso).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737508">alpha=</a><span class="Argument_Opt">arg (default</span>=&#8220;.5&#8221;)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737510">Value of the mixing parameter. Must be a value from zero to one.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737512">lambda=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737514">Value(s) of the penalty parameter. Can be one or more numbers or vector objects.Values must be zero or greater.</a></div>
+            <div class="Table_Text"><a name="737515">If left blank (default) EViews will generate a list.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="737517">Penalty Options</a></div>
+      <div class="Table"><a name="737578">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text"><a name="737520">ytrans=</a><span class="Argument_Opt">arg (default</span>=&#8220;none&#8221;)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 223.2pt">
+            <div class="Table_Text"><a name="737522">Scaling of the dependent variable: &#8220;none&#8221; (none), &#8220;L1&#8221; (L1), &#8220;L2&#8221; (L2), &#8220;stdsmpl&#8221; (sample standard deviation), &#8220;stdpop&#8221; (population standard deviation), &#8220;minmax&#8221; (min-max).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737524">xtrans=</a><span class="Argument_Opt">arg (default</span>=&#8220;stdpop&#8221;)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737526">Scaling of the regressor variables: &#8220;none&#8221; (none), &#8220;L1&#8221; (L1 norm), &#8220;L2&#8221; (L2 norm), &#8220;stdsmpl&#8221; (sample standard deviation), &#8220;stdpop&#8221; (population standard deviation), &#8220;minmax&#8221; (min-max).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737528">nlambdas=</a><span class="Argument_Opt">integer (default=100)</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737530">Number of penalty values for EViews-supplied list.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737532">lambdaratio=</a><span class="Argument_Opt">arg</span> </div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737534">Ratio of minimum to maximum lambda for EViews-supplied list.</a></div>
+            <div class="Table_Text"><a name="737535">You may specify a value for the ratio parameter, or you may leave the edit field blank to let EViews specify a default value based on the number of observations <img class="Default EquationGraphic" src="images/equationcmd.131.049.3.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> and the number of potential regressors <img class="Default EquationGraphic" src="images/equationcmd.131.049.4.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />.</a></div>
+            <div class="Table_Text"><a name="737542">By default, EViews will set the ratio to 0.001. </a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737544">lambdawgt= </a><span class="Argument_Opt">vector_name</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737546">Vector of individual penalty weights, containing non-negative values sized to and matching the order of the variables in the specification.</a></div>
+            <div class="Table_Text"><a name="737547">If a vector is provided and individual weights are specified using one or more </a><span class="In-line_command">@vw</span> regressors, the vector weights will be applied first, then overwritten by the individual variable weights.</div>
+            <div class="Table_Text"><a name="737548">For comparability purposes, we normalize the final weights so that they sum to <img class="Default EquationGraphic" src="images/equationcmd.131.049.5.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 22px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/equationcmd.131.049.6.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 22px; top: 0.0pt" alt="" /> the number of non-zero <img class="Default EquationGraphic" src="images/equationcmd.131.049.7.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />. </a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737559">nlambdamin=</a><span class="Argument_Opt">integer (default=5)</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737561">Minimum number of lambda values in the path before applying stopping rules.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737563">minddev=</a><span class="Argument_Opt">arg (default=</span>1e-05<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737565">Minimum change in deviance fraction to continue estimation. Truncate path estimation if relative change in deviance is smaller than this value.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737567">maxedev=</a><span class="Argument_Opt">arg (default=</span>0.99<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737569">Maximum of deviance explained fraction attained to terminate estimation. Truncate path estimation if fraction of null deviance explained is larger than this value.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737571">maxvars=</a><span class="Argument_Opt">arg </span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737573">Maximum number of regressors in the model. Truncate path estimation if the number of coefficients (including those for non-penalized variables like the intercept) reaches this value.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737575">maxvarsratio=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737577">Maximum number of regressors in the model as a fraction of the number of observations. Truncate path estimation if the number of coefficients (including those for non-penalized variables like the intercept) divided by the number of observations reaches this value.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="737579">Cross Validation Options</a></div>
+      <div class="Table"><a name="737634">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text"><a name="737582">cvmethod=</a><span class="Argument_Opt">arg (default</span>=&#8220;kfold_cv&#8221;)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 223.2pt">
+            <div class="Table_Text"><a name="737584">Cross-validation method: &#8220;kfold&#8221; (k-fold), &#8220;simple&#8221; (simple split), &#8220;mcarlo&#8221; (Monte Carlo), &#8220;leavepout&#8221; (leave-P-out), &#8220;leave1out&#8221; (leave-1-out), &#8220;rolling&#8221; (rolling window), &#8220;expanding&#8221; (expanding window).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737586">cvmeasure=</a><span class="Argument_Opt">arg (default</span>=&#8220;mse&#8221;)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737588">Cross-validation fit measure: &#8220;mse&#8221; (mean-squared error), &#8220;r2&#8221; (R&#8209;squared), &#8220;mae&#8221; (mean absolute error), &#8220;mape&#8221; (mean absolute percentage error), &#8220;smape&#8221; (symmetric mean absolute percentage error).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737590">cvnfolds=</a><span class="Argument_Opt">arg (default</span>=5)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737592">Number of folds for K-fold cross-validation.</a></div>
+            <div class="Table_Text"><a name="737593">For &#8220;cvmethod=kfold&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737595">cvftrain=</a><span class="Argument_Opt">arg (default</span>=0.8)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737597">Proportion of data for split and Monte Carlo methods.</a></div>
+            <div class="Table_Text"><a name="737598">For &#8220;cvmethod=simple&#8221; and &#8220;cvmethod=mcarlo&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737600">cvnreps=</a><span class="Argument_Opt">arg (default</span>=1)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737602">Number of Monte Carlo method repetitions.</a></div>
+            <div class="Table_Text"><a name="737603">For &#8220;cvmethod=mcarlo&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737605">cvleaveout=</a><span class="Argument_Opt">arg (default</span>=2)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737607">Number of data points left out for leave-p-out method.</a></div>
+            <div class="Table_Text"><a name="737608">For &#8220;cvmethod=leavepout&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737610">cvnwindows=</a><span class="Argument_Opt">arg (default</span>=4)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737612">Number of windows for rolling window cross-validation method.</a></div>
+            <div class="Table_Text"><a name="737613">For &#8220;cvmethod=rolling&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737615">cvinitial=</a><span class="Argument_Opt">arg (default</span>=12)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737617">Number of initial data points in the training set for expanding cross-validation.</a></div>
+            <div class="Table_Text"><a name="737618">For &#8220;cvmethod=expanding&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737620">cvpregap=</a><span class="Argument_Opt">arg (default</span>=0)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737622">Number of observations between end of training set and beginning of test set.</a></div>
+            <div class="Table_Text"><a name="737623">For &#8220;cvmethod=simple&#8221;, &#8220;cvmethod=rolling&#8221; and &#8220;cvmethod=expanding&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737625">cvhorizon=</a><span class="Argument_Opt">arg (default</span>=1)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737627">Number of observation in the test set.</a></div>
+            <div class="Table_Text"><a name="737628">For &#8220;cvmethod=rolling&#8221; and &#8220;cvmethod=expanding&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737630">cvpostgap=</a><span class="Argument_Opt">arg (default</span>=0)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737632">Number of observations between end of test set and beginning of next training set for rolling window or between end of test set and end of next training set for expanding window.</a></div>
+            <div class="Table_Text"><a name="737633">For &#8220;cvmethod=rolling&#8221; and &#8220;cvmethod=expanding&#8221;</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="737635">Random Number Options</a></div>
+      <div class="Table"><a name="737652">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text"><a name="737638">seed=</a><span class="Argument_Opt">positive_integer </span>from 0 to 2,147,483,647</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 223.2pt">
+            <div class="Table_Text"><a name="737640">Seed the random number generator.</a></div>
+            <div class="Table_Text"><a name="737641">If not specified, EViews will seed random number generator with a single integer draw from the default global random number generator.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737643">rnd=</a><span class="Argument_Opt">arg</span><span class="Argument"> </span><span class="Argument_Opt">(default=</span>&#8220;kn&#8221; or method previously set using <span class="In-line_command_link"><a href="commandcmd-rndseed.html#2016917" title="rndseed">rndseed</a></span><span class="Argument_Opt" style="font-weight: normal">)</span>.</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737651">Type of random number generator: improved Knuth generator (&#8220;kn&#8221;), improved Mersenne Twister (&#8220;mt&#8221;), Knuth&#8217;s (1997) lagged Fibonacci generator used in EViews 4 (&#8220;kn4&#8221;) L&#8217;Ecuyer&#8217;s (1999) combined multiple recursive generator (&#8220;le&#8221;), Matsumoto and Nishimura&#8217;s (1998) Mersenne Twister used in EViews 4 (&#8220;mt4&#8221;).</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="737653">Other Options</a></div>
+      <div class="Table"><a name="737700">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text"><a name="737656">coefmin= </a><span class="Argument_Opt">vector_name, number</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 223.2pt">
+            <div class="Table_Text"><a name="737658">Vector of individual coefficient minimum values, containing negative or missing values sized to and matching the order of the variables in the specification, or a negative value for the minimum for all coefficients. </a></div>
+            <div class="Table_Text"><a name="737659">Missing values in the vector should be used to indicate that the coefficient is unrestricted.</a></div>
+            <div class="Table_Text"><a name="737660">If a vector of values is provided and individual minimums are specified using one or more </a><span class="In-line_command">@vw</span> regressors, the vector values will be applied first, then overwritten by the individual values.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737662">coefmax= </a><span class="Argument_Opt">vector_name, number</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737664">Vector of individual coefficient maximum values, containing positive or missing values sized to and matching the order of the variables in the specification, or a positive value for the maximum for all coefficients.</a></div>
+            <div class="Table_Text"><a name="737665">Missing values in the vector should be used to indicate that the coefficient is unrestricted.</a></div>
+            <div class="Table_Text"><a name="737666">If a vector of values is provided and individual maximums are specified using one or more </a><span class="In-line_command">@vw</span> regressors, the vector values will be applied first, then overwritten by the individual values.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737668">maxit=</a><span class="Argument_Opt">integer</span> </div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737670">Maximum number of iterations.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737672">conv=</a><span class="Argument_Opt">scalar</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737674">Set convergence criterion. The criterion is based upon the maximum of the percentage changes in the scaled estimates. The criterion will be set to the nearest value between 1e-24 and 0.2.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737676">w=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737678">Weight series or expression.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737680">wtype=</a><span class="Argument_Opt">arg</span><span class="Argument"> </span><span class="Argument_Opt">(default=</span>&#8220;istdev&#8221;<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737682">Weight specification type: inverse standard deviation (&#8220;istdev&#8221;), inverse variance (&#8220;ivar&#8221;), standard deviation (&#8220;stdev&#8221;), variance (&#8220;var&#8221;).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737684">wscale=</a><span class="Argument_Opt">arg </span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737686">Weight scaling: EViews default (&#8220;eviews&#8221;), average (&#8220;avg&#8221;), none (&#8220;none&#8221;).</a></div>
+            <div class="Table_Text"><a name="737687">The default setting depends upon the weight type: &#8220;eviews&#8221; if &#8220;wtype=istdev&#8221;, &#8220;avg&#8221; for all others.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737689">showopts / &#8209;showopts</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737691">[Do / do not] display estimation options in the output.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737693">prompt</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737695">Force the dialog to appear from within a program.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737697">p</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="737699">Print basic results view after estimation.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Section"><a name="737701">Examples</a></div>
+      <div class="Body_Text"><a name="737702">The command</a></div>
+      <div class="Input"><a name="737703">equation enet1.enet(xtrans=none, lambdaratio=.0001, cvseed=513255899) lpsa c lcavol lweight age lbph svi lcp gleason pgg45</a></div>
+      <div class="Body_Text"><a name="737707">estimates an elastic net model with <img class="Default EquationGraphic" src="images/equationcmd.131.049.8.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> equal to the default of 0.9, no regressor or dependent variable scaling, automatically determined 100-element lambda path with minimum lambda of 0.0001 times the maximum value, using the default K-fold cross-validation with 5 folds with an MSE objective and a random generator seed of 513255899 to determine the optimal value.</a></div>
+      <div class="Body_Text"><a name="737708">Similarly,</a></div>
+      <div class="Input"><a name="737709">equation lasso1.enet(penalty=lasso, lambdaratio=.0001, cvseed=513255899) lpsa c lcavol lweight age lbph svi lcp gleason pgg45</a></div>
+      <div class="Body_Text"><a name="737710">estimates a Lasso model with regressor population standard deviation scaling, with the remaining settings as before, while </a></div>
+      <div class="Input"><a name="737711">equation ridge1.enet(penalty=ridge, lambdaratio=.0001, cvseed=513255899) lpsa c lcavol lweight age lbph svi lcp gleason pgg45</a></div>
+      <div class="Body_Text"><a name="737712">estimates the equivalent ridge regression specification.</a></div>
+      <div class="Body_Text"><a name="737713">The command</a></div>
+      <div class="Input"><a name="737714">equation enet2.enet(alpha=0.75, lambdaratio=.0001, cvmethod=rolling, cvmeasure=smape) lpsa c lcavol lweight age_s lbph svi lcp gleason pgg45</a></div>
+      <div class="Body_Text"><a name="737718">estimates an elastic net model with <img class="Default EquationGraphic" src="images/equationcmd.131.049.9.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> equal to the 0.75 using rolling window cross-validation and SMAPE cross-validation.</a></div>
+      <div class="Body_Text"><a name="737719">We may use the </a><span class="In-line_command">@vw</span> specifications to assign individual penalties and coefficient restrictions</div>
+      <div class="Input"><a name="737720">equation enet3.enet(alpha=0.75, lambdaratio=.0001, cvmethod=rolling, cvseed=513255899) lpsa c @vw(lcavol, cmax=.4) lweight age lbph svi lcp gleason @vw(pgg45, cmax=0.075, w=1.2)</a></div>
+      <div class="Body_Text"><a name="737721">estimates an elastic net model with the coefficient of LCAVOL restricted to be less than or equal to 0.4, and the coefficient of PGG45 having a relative penalty weight of 1.2, and a maximum value of 0.075.</a></div>
+      <div class="Body_Text"><a name="737722">Identical specifications may be estimated using vectors of penalty weights and coefficient restrictions,</a></div>
+      <div class="Multi-line_Input"><a name="737723">vector(9) cmax = na</a></div>
+      <div class="Multi-line_Input"><a name="737724">cmax(2) = 0.4</a></div>
+      <div class="Multi-line_Input"><a name="737725">cmax(9) = 1.2</a></div>
+      <div class="Multi-line_Input"><a name="737726">vector(9) lwgt = 1</a></div>
+      <div class="Multi-line_Input"><a name="737727">lwgt(9) = 1.2</a></div>
+      <div class="Multi-line_Input"><a name="737728">equation enet4.enet(alpha=0.75, coefmax=cmax, lambdawgt=lwgt, lambdaratio=.0001, cvmethod=rolling, cvseed=513255899) lpsa c lcavol lweight age lbph svi lcp gleason pgg45</a></div>
+      <div class="Body_Text"><a name="737729">and</a></div>
+      <div class="Multi-line_Input"><a name="737730">vector(9) cmax = na</a></div>
+      <div class="Multi-line_Input"><a name="737731">cmax(2) = 0.4</a></div>
+      <div class="Multi-line_Input"><a name="737732">vector(9) lwgt = 1</a></div>
+      <div class="Multi-line_Input"><a name="737733">lwgt(9) = 50</a></div>
+      <div class="Multi-line_Input"><a name="737734">equation enet5.enet(alpha=0.75, coefmax=cmax, lambdawgt=lwgt, lambdaratio=.0001, cvmethod=rolling, cvseed=513255899) lpsa c lcavol lweight age lbph svi lcp gleason @vw(pgg45, cmax=0.075, w=1.2)</a></div>
+      <div class="Body_Text"><a name="737735">since the penalty weight for PGG45 in the vector is overwritten by the individual weight specified using the </a><span class="In-line_command">@vw</span>.</div>
+      <div class="Body_Text"><a name="737736">Note that in neither case is the intercept penalized, even though the corresponding element of LWGT is equal to 1 since the specification of &#8220;C&#8221; is always implicitly treated as &#8220;@VW(C, 0)&#8221;.</a></div>
+      <div class="Command_Section"><a name="737737">Cross-references</a></div>
+      <div class="Body_Text"><a name="176036">See </a><span class="Link"><a href="enet-Elastic_Net_and_Lasso.html#439556" title="Elastic Net and Lasso">&#8220;Elastic Net and Lasso&#8221;</a></span> for a discussion of elastic net, ridge regression, and Lasso models.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

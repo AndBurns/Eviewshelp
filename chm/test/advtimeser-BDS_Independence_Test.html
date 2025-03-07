@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>BDS Independence Test</title>
+    <link rel="StyleSheet" href="css/advtimeser.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="advtimeser-Variance_Ratio_Test.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="advtimeser-Wavelet_Analysis.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_univar.html">Advanced Univariate Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="advtimeser-Univariate_Time_Series_Analysis.html">Univariate Time Series Analysis</a> : BDS Independence Test</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="186369">BDS Independence Test</a></div>
+      <div class="Body_Text"><a name="186370">This series view carries out the BDS test for independence as described in Brock, Dechert, Scheinkman and LeBaron (1996).</a></div>
+      <div class="Body_Text"><a name="186371">The BDS test is a portmanteau test for time based dependence in a series. It can be used for testing against a variety of possible deviations from independence including linear dependence, non-linear dependence, or chaos.</a></div>
+      <div class="Body_Text"><a name="186372">The test can be applied to a series of estimated residuals to check whether the residuals are independent and identically distributed (</a><span class="Emphasis">iid</span>). For example, the residuals from an ARMA model can be tested to see if there is any non-linear dependence in the series after the linear ARMA model has been fitted.</div>
+      <div class="Body_Text"><a name="186376">The idea behind the test is fairly simple. To perform the test, we first choose a distance, <img class="Default EquationGraphic" src="images/advtimeser.053.11.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. We then consider a pair of points. If the observations of the series truly are </a><span class="Emphasis">iid</span>, then for any pair of points, the probability of the distance between these points being less than or equal to epsilon will be constant. We denote this probability by <img class="Default EquationGraphic" src="images/advtimeser.053.11.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="186380">We can also consider sets consisting of multiple pairs of points. One way we can choose sets of pairs is to move through the consecutive observations of the sample in order. That is, given an observation <img class="Default EquationGraphic" src="images/advtimeser.053.11.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, and an observation <img class="Default EquationGraphic" src="images/advtimeser.053.11.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> of a series </a><span class="EViews_Name">X</span>, we can construct a set of pairs of the form:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.11.05.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.116)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186394">where <img class="Default EquationGraphic" src="images/advtimeser.053.11.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> is the number of consecutive points used in the set, or </a><span class="Definition">embedding dimension</span>. We denote the joint probability of every pair of points in the set satisfying the epsilon condition by the probability <img class="Default EquationGraphic" src="images/advtimeser.053.11.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="186398">The BDS test proceeds by noting that under the assumption of independence, this probability will simply be the product of the individual probabilities for each pair. That is, if the observations are independent,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.11.08.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.117)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186409">When working with sample data, we do not directly observe <img class="Default EquationGraphic" src="images/advtimeser.053.11.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> or <img class="Default EquationGraphic" src="images/advtimeser.053.11.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" />. We can only estimate them from the sample. As a result, we do not expect this relationship to hold exactly, but only with some error. The larger the error, the less likely it is that the error is caused by random sample variation. The BDS test provides a formal basis for judging the size of this error.</a></div>
+      <div class="Body_Text"><a name="186410">To estimate the probability for a particular dimension, we simply go through all the possible sets of that length that can be drawn from the sample and count the number of sets which satisfy the <img class="Default EquationGraphic" src="images/advtimeser.053.11.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> condition. The ratio of the number of sets satisfying the condition divided by the total number of sets provides the estimate of the probability. Given a sample of <img class="Default EquationGraphic" src="images/advtimeser.053.11.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> observations of a series X, we can state this condition in mathematical notation,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.11.13.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.118)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186424">where <img class="Default EquationGraphic" src="images/advtimeser.053.11.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> is the indicator function:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.11.15.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.119)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186432">Note that the statistics <img class="Default EquationGraphic" src="images/advtimeser.053.11.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> are often referred to as </a><span class="Definition">correlation integrals</span>.</div>
+      <div class="Body_Text"><a name="186433">We can then use these sample estimates of the probabilities to construct a test statistic for independence:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.11.17.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.120)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186441">where the second term discards the last <img class="Default EquationGraphic" src="images/advtimeser.053.11.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 45px; top: 0.0pt" alt="" /> observations from the sample so that it is based on the same number of terms as the first statistic. </a></div>
+      <div class="Body_Text"><a name="186442">Under the assumption of independence, we would expect this statistic to be close to zero. In fact, it is shown in Brock </a><span class="Emphasis">et al.</span> (1996) that</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.11.19.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.121)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186447">where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.11.20.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.122)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186461">and where <img class="Default EquationGraphic" src="images/advtimeser.053.11.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> can be estimated using <img class="Default EquationGraphic" src="images/advtimeser.053.11.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 33px; top: 0.0pt" alt="" />. <img class="Default EquationGraphic" src="images/advtimeser.053.11.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the probability of any triplet of points lying within <img class="Default EquationGraphic" src="images/advtimeser.053.11.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> of each other, and is estimated by counting the number of sets satisfying the sample condition:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.11.25.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.123)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186469">To calculate the BDS test statistic in EViews, simply open the series you would like to test in a window, and choose </a><span class="Menu_Item">View/BDS Independence Test...</span>. A dialog will appear prompting you to input options.</div>
+      <div class="Picture"><a name="186473"><img class="Default" src="images/advtimeser.053.11.26.jpg" width="100%" style="left: 0.0pt; max-height: 272px; max-width: 358px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186477">To carry out the test, we must choose <img class="Default EquationGraphic" src="images/advtimeser.053.11.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, the distance used for testing proximity of the data points, and the dimension <img class="Default EquationGraphic" src="images/advtimeser.053.11.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />, the number of consecutive data points to include in the set.</a></div>
+      <div class="Body_Text"><a name="186481">The dialog provides several choices for how to specify <img class="Default EquationGraphic" src="images/advtimeser.053.11.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186488">Fraction of pairs</a></span>: <img class="Default EquationGraphic" src="images/advtimeser.053.11.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is calculated so as to ensure a certain fraction of the total number of pairs of points in the sample lie within <img class="Default EquationGraphic" src="images/advtimeser.053.11.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> of each other.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186495">Fixed value</a></span>: <img class="Default EquationGraphic" src="images/advtimeser.053.11.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is fixed at a raw value specified in the units as the data series.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186499">Standard deviations</a></span>: <img class="Default EquationGraphic" src="images/advtimeser.053.11.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is calculated as a multiple of the standard deviation of the series.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186503">Fraction of range</a></span>: <img class="Default EquationGraphic" src="images/advtimeser.053.11.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is calculated as a fraction of the range (the difference between the maximum and minimum value) of the series.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="186507">The default is to specify <img class="Default EquationGraphic" src="images/advtimeser.053.11.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> as a fraction of pairs, since this method is most invariant to different distributions of the underlying series.</a></div>
+      <div class="Body_Text"><a name="186511">You must also specify the value used in calculating <img class="Default EquationGraphic" src="images/advtimeser.053.11.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. The meaning of this value varies based on the choice of method. The default value of 0.7 provides a good starting point for the default method when testing shorter dimensions. For testing longer dimensions, you should generally increase the value of <img class="Default EquationGraphic" src="images/advtimeser.053.11.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> to improve the power of the test.</a></div>
+      <div class="Body_Text"><a name="186515">EViews also allows you to specify the maximum correlation dimension for which to calculate the test statistic. EViews will calculate the BDS test statistic for all dimensions from 2 to the specified value, using the same value of <img class="Default EquationGraphic" src="images/advtimeser.053.11.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> or each dimension. Note the same <img class="Default EquationGraphic" src="images/advtimeser.053.11.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is used only because of calculational efficiency. It may be better to vary <img class="Default EquationGraphic" src="images/advtimeser.053.11.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> with the correlation dimension to maximize the power of the test.</a></div>
+      <div class="Body_Text"><a name="186525">In small samples or in series that have unusual distributions, the distribution of the BDS test statistic can be quite different from the asymptotic normal distribution. To compensate for this, EViews offers you the option of calculating bootstrapped </a><span class="In-line_math">p</span>-values for the test statistic. To request bootstrapped <span class="In-line_math">p</span>-values, simply check the <span class="Dialog_Item">Use bootstrap</span> box, then specify the number of repetitions in the field below. A greater number of repetitions will provide a more accurate estimate of the <span class="In-line_math">p</span>-values, but the procedure will take longer to perform.</div>
+      <div class="Body_Text"><a name="186538">When bootstrapped </a><span class="In-line_math">p</span>-values are requested, EViews first calculates the test statistic for the data in the order in which it appears in the sample. EViews then carries out a set of repetitions where for each repetition a set of observations is randomly drawn with replacement from the original data. Also note that the set of observations will be of the same size as the original data. For each repetition, EViews recalculates the BDS test statistic for the randomly drawn data, then compares the statistic to that obtained from the original data. When all the repetitions are complete, EViews forms the final estimate of the bootstrapped <span class="In-line_math">p</span>-value by dividing the lesser of the number of repetitions above or below the original statistic by the total number of repetitions, then multiplying by two (to account for the two tails).</div>
+      <div class="Body_Text"><a name="186542">As an example of a series where the BDS statistic will reject independence, consider a series generated by the non-linear moving average model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.11.41.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.124)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186550">where <img class="Default EquationGraphic" src="images/advtimeser.053.11.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is a normal random variable. On simulated data, the correlogram of this series shows no statistically significant correlations, yet the BDS test strongly rejects the hypothesis that the observations of the series are independent (note that the </a><span class="In-line_math">Q</span>-statistics on the squared levels of the series also reject independence).</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

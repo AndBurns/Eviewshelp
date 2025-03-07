@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Views and Procs of a VAR</title>
+    <link rel="StyleSheet" href="css/VAR.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="VAR-VARs_With_Linear_Constraints.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="VAR-Data_Members_of_a_VAR.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="VAR-Vector_Autoregression_(VAR)_Models.html">Vector Autoregression (VAR) Models</a> : Views and Procs of a VAR</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="254251">Views and Procs of a VAR</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#255240">Residual Views</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#256423">Diagnostic Views</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#78304">Lag Structure</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#208644">AR Roots Table/Graph</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#78257">Pairwise Granger Causality Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#78266">Lag Exclusion Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#78271">Lag Length Criteria</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#203767">Residual Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#208699">Correlograms</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#56661">Portmanteau Autocorrelation Test </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#56664">Autocorrelation LM Test </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#78470">Normality Test </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#56688">White Heteroskedasticity Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#208770">Cointegration Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#56702">Notes on System Comparability</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37080">Impulse Responses</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37177">Variance Decomposition</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#258645">Historical Decomposition</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#260234">Procs of a VAR</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#260052">Forecasting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#260069">Make System</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#260074">Estimate Structural Factorization</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="269600">Once you have estimated a VAR, EViews provides various views and procs to work with the estimated VAR.</a></div>
+      <div class="Picture"><a name="233280"><img class="Default" src="images/VAR.056.4.01.jpg" width="100%" style="left: 0.0pt; max-height: 365px; max-width: 232px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="209209">In this section, we discuss views that are specific to VARs. For other views and procedures, see the general discussion of system views in </a><span class="Link"><a href="system-System_Estimation.html#36959" title="System Estimation">&#8220;System Estimation&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="255240">Residual Views</a></div>
+      <div class="Body_Text"><a name="255275">You may use the entries under the </a><span class="Menu_Item">Residuals</span> and <span class="Menu_Item">Structural Residuals</span> menus to examine the residuals of the estimated VAR in graph or spreadsheet form, or you may examine the covariance and correlation matrix of those residuals.</div>
+      <div class="Body_Text"><a name="255465">The views listed under </a><span class="Menu_Item">Residuals</span> will display results using the raw residuals from the estimated VAR. </div>
+      <div class="Body_Text"><a name="261533">Alternately, you may display the </a><span class="Menu_Item">Structural Residuals</span> views to examine the these transformed estimated residuals. If the <img class="Default EquationGraphic" src="images/VAR.056.4.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 17px; top: 0.0pt" alt="" /> are the ordinary residuals, we may plot the structural residuals <img class="Default EquationGraphic" src="images/VAR.056.4.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 19px; top: 0.0pt" alt="" /> based on factor loadings <img class="Default EquationGraphic" src="images/VAR.056.4.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.4.05.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="261550">or based on weights <img class="Default EquationGraphic" src="images/VAR.056.4.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 22px; top: 0.0pt" alt="" />,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.4.07.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="256167">When producing results for the </a><span class="Menu_Item">Structural Residuals</span> views, you will be prompted to choose a transformation.</div>
+      <div class="Picture"><a name="256297"><img class="Default" src="images/VAR.056.4.08.jpg" width="100%" style="left: 0.0pt; max-height: 381px; max-width: 316px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="256420">Note that there is a corresponding procs which will save the residuals series in the workfile (</a><span class="Menu_Item">Proc/Make Residuals</span> and <span class="Menu_Item">Proc/Make Structural Residuals...</span>).</div>
+      <div class="Heading_4"><a name="256423">Diagnostic Views</a></div>
+      <div class="Body_Text"><a name="78231">A set of diagnostic views are provided under the menus </a><span class="Menu_Item">View/Lag Structure</span> and <span class="Menu_Item">View/Residual Tests</span> in the VAR window. These views should help you check the appropriateness of the estimated VAR.</div>
+      <div class="Heading_5"><a name="78304">Lag Structure</a></div>
+      <div class="Body_Text"><a name="208749">EViews offers several views for investigating the lag structure of your equation.</a></div>
+      <div class="Picture"><a name="56659"><img class="Default" src="images/VAR.056.4.09.jpg" width="100%" style="left: 0.0pt; max-height: 136px; max-width: 529px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_6"><a name="208644">AR Roots Table/Graph</a></div>
+      <div class="Body_Text"><a name="173250">Reports the </a><span class="Emphasis">inverse</span> roots of the characteristic AR polynomial; see Lütkepohl (1991). The estimated VAR is stable (stationary) if all roots have modulus less than one and lie inside the unit circle. If the VAR is not stable, certain results (such as impulse response standard errors) are not valid. There will be <img class="Default EquationGraphic" src="images/VAR.056.4.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 23px; top: 0.0pt" alt="" /> roots, where <img class="Default EquationGraphic" src="images/VAR.056.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the number of endogenous variables and <img class="Default EquationGraphic" src="images/VAR.056.4.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is the largest lag. If you estimated a VEC with <img class="Default EquationGraphic" src="images/VAR.056.4.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> cointegrating relations, <img class="Default EquationGraphic" src="images/VAR.056.4.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" /> roots should be equal to unity.</div>
+      <div class="Heading_6"><a name="78257">Pairwise Granger Causality Tests</a></div>
+      <div class="Body_Text"><a name="173257">Carries out pairwise Granger causality tests and tests whether an endogenous variable can be treated as exogenous. For each equation in the VAR, the output displays <img class="Default EquationGraphic" src="images/VAR.056.4.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />(Wald) statistics for the joint significance of each of the other lagged endogenous variables in that equation. The statistic in the last row (</a><span class="Dialog_Item">All</span>) is the <img class="Default EquationGraphic" src="images/VAR.056.4.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />-statistic for joint significance of all other lagged endogenous variables in the equation. </div>
+      <div class="Body_Text" style="color: #000000; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="Emphasis"><a name="78348">Warning: if you have estimated a VEC, the lagged variables that are tested for exclusion are only those that are first differenced. The lagged level terms in the cointegrating equations (the error correction terms) are not tested.</a></span></div>
+      <div class="Body_Text"><a name="256430">Note: for VAR models with linear restrictions, EViews will only perform tests involving endogenous variable lags for which there are no restrictions.</a></div>
+      <div class="Heading_6"><a name="78266">Lag Exclusion Tests</a></div>
+      <div class="Body_Text"><a name="173267">Carries out lag exclusion tests for each lag in the VAR. For each lag, the <img class="Default EquationGraphic" src="images/VAR.056.4.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />(Wald) statistic for the joint significance of all endogenous variables at that lag is reported for each equation separately and jointly (last column).</a></div>
+      <div class="Body_Text"><a name="256606">Note: for VAR models with linear restrictions, EViews will only perform tests involving endogenous variable lags for which there are no restrictions.</a></div>
+      <div class="Heading_6"><a name="78271">Lag Length Criteria</a></div>
+      <div class="Body_Text"><a name="173274">Computes various criteria to select the lag order of an unrestricted VAR. You will be prompted to specify the maximum lag to &#8220;test&#8221; for. The table displays various information criteria for all lags up to the specified maximum. (If there are no exogenous variables in the VAR, the lag starts at 1; otherwise the lag starts at 0.) The table indicates the selected lag from each column criterion by an asterisk &#8220;*&#8221;. For columns 4&#8211;7, these are the lags with the smallest value of the criterion.</a></div>
+      <div class="Body_Text"><a name="78273">All the criteria are discussed in Lütkepohl (1991, Section 4.3). The sequential modified likelihood ratio (LR) test is carried out as follows. Starting from the maximum lag, test the hypothesis that the coefficients on lag <img class="Default EquationGraphic" src="images/VAR.056.4.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> are jointly zero using the <img class="Default EquationGraphic" src="images/VAR.056.4.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />statistics:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.4.20.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="203760">where <img class="Default EquationGraphic" src="images/VAR.056.4.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> is the number of parameters per equation under the alternative. Note that we employ Sims&#8217; (1980) small sample modification which uses (<img class="Default EquationGraphic" src="images/VAR.056.4.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 49px; top: 0.0pt" alt="" />) rather than <img class="Default EquationGraphic" src="images/VAR.056.4.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />. We compare the modified LR statistics to the 5% critical values starting from the maximum lag, and decreasing the lag one at a time until we first get a rejection. The alternative lag order from the first rejected test is marked with an asterisk (if no test rejects, the minimum lag will be marked with an asterisk). It is worth emphasizing that even though the individual tests have size 0.05, the overall size of the test will not be 5%; see the discussion in Lütkepohl (1991, p. 125&#8211;126).</a></div>
+      <div class="Body_Text"><a name="256627">Note: for VAR models with linear restrictions, EViews perform lag length tests using models in which the VAR linear restrictions are not applied.</a></div>
+      <div class="Heading_5"><a name="203767">Residual Tests</a></div>
+      <div class="Body_Text"><a name="208753">You may use these views to examine the properties of the residuals from your estimated VAR.</a></div>
+      <div class="Picture"><a name="203768"><img class="Default" src="images/VAR.056.4.24.jpg" width="100%" style="left: 0.0pt; max-height: 204px; max-width: 537px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_6"><a name="208699">Correlograms</a></div>
+      <div class="Body_Text"><a name="78406">Displays the pairwise cross-correlograms (sample autocorrelations) for the estimated residuals in the VAR for the specified number of lags. The cross-correlograms can be displayed in three different formats. There are two tabular forms, one ordered by variables (</a><span class="Dialog_Item">Tabulate by Variable</span>) and one ordered by lags (<span class="Dialog_Item">Tabulate by Lag</span>). The <span class="Dialog_Item">Graph</span> form displays a matrix of pairwise cross-correlograms. The dotted line in the graphs represent plus or minus two times the approximate asymptotic standard errors of the lagged correlations (ignoring coefficient estimation and computed as <img class="Default EquationGraphic" src="images/VAR.056.4.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 50px; top: 0.0pt" alt="" />).</div>
+      <div class="Heading_6"><a name="56661">Portmanteau Autocorrelation Test </a></div>
+      <div class="Body_Text"><a name="250856">Computes the multivariate Box-Pierce/Ljung-Box </a><span class="In-line_math">Q</span>-statistics for residual serial correlation up to the specified order (see Lütkepohl, 1991, 4.4.21 &amp; 4.4.23 for details). We report both the <span class="In-line_math">Q</span>-statistics and the adjusted <span class="In-line_math">Q</span>-statistics (with a small sample correction). Under the null hypothesis of no serial correlation up to lag <img class="Default EquationGraphic" src="images/VAR.056.4.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, both statistics are <span class="Emphasis">approximately</span> distributed <img class="Default EquationGraphic" src="images/VAR.056.4.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />with degrees of freedom <img class="Default EquationGraphic" src="images/VAR.056.4.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 70px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/VAR.056.4.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is the VAR lag order if there are no coefficient restrictions, and <img class="Default EquationGraphic" src="images/VAR.056.4.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 54px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/VAR.056.4.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> contains adjustments for the restrictions. </div>
+      <div class="Body_Text"><a name="256929">The asymptotic distribution is approximate in the sense that it requires the MA coefficients to be zero for lags <img class="Default EquationGraphic" src="images/VAR.056.4.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 64px; top: 0.0pt" alt="" />. Therefore, this approximation will be poor if the roots of the AR polynomial are close to one and <img class="Default EquationGraphic" src="images/VAR.056.4.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is small. In fact, the degrees of freedom becomes negative for <img class="Default EquationGraphic" src="images/VAR.056.4.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="257755">Note that adjustments are made to the computation of the </a><span class="In-line_math">p</span>-value of these statistics when the model is a VECM (Brüggemann, Lütkepohl, and Saikkonen, 2006).</div>
+      <div class="Heading_6"><a name="56664">Autocorrelation LM Test </a></div>
+      <div class="Body_Text"><a name="78432">Reports the multivariate LM test statistics for residual serial correlation up to the specified order. A Breusch-Godfrey test statistic for autocorrelation at lag order <img class="Default EquationGraphic" src="images/VAR.056.4.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is computed by running an auxiliary regression of the residuals <img class="Default EquationGraphic" src="images/VAR.056.4.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> on the original right-hand regressors and the lagged residual <img class="Default EquationGraphic" src="images/VAR.056.4.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" />, where the missing first <img class="Default EquationGraphic" src="images/VAR.056.4.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> values of <img class="Default EquationGraphic" src="images/VAR.056.4.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> are filled with zeros.</a></div>
+      <div class="Body_Text"><a name="257716">See Johansen (1995, p. 22) for the formula of the LR version of this LM test. The form of this statistic employs the Edgeworth expansion correction (Edgerton and Shukur 1999). Under the null hypothesis of no serial correlation of order <img class="Default EquationGraphic" src="images/VAR.056.4.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, the LM statistic is asymptotically distributed <img class="Default EquationGraphic" src="images/VAR.056.4.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />with <img class="Default EquationGraphic" src="images/VAR.056.4.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> degrees of freedom. </a></div>
+      <div class="Body_Text"><a name="257140">A variant of this test tests for autocorrelation for lags 1 to <img class="Default EquationGraphic" src="images/VAR.056.4.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. The test modifies the LM statistic above by including all of the modified lagged residual regressors from <img class="Default EquationGraphic" src="images/VAR.056.4.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 93px; top: 0.0pt" alt="" />. Under the null hypothesis, the LM statistic is asymptotically <img class="Default EquationGraphic" src="images/VAR.056.4.45.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />with <img class="Default EquationGraphic" src="images/VAR.056.4.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 29px; top: 0.0pt" alt="" /> degrees of freedom.</a></div>
+      <div class="Body_Text"><a name="257706">In addition to the LR version of the test, EViews computes the Rao F-test version of the LM statistic as described Edgerton and Shukur (1999) since their simulations suggest it performs best among the many variants they consider.</a></div>
+      <div class="Heading_6"><a name="78470">Normality Test </a></div>
+      <div class="Body_Text"><a name="78442">This view reports the multivariate extensions of the Jarque-Bera residual normality test, which compares the third and fourth moments of the residuals to those from the normal distribution. For the multivariate test, you must choose a factorization of the <img class="Default EquationGraphic" src="images/VAR.056.4.47.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> residuals that are orthogonal to each other (see </a><span class="Link"><a href="#37080" title="Views and Procs of a VAR">&#8220;Impulse Responses&#8221;</a></span> for additional discussion of the need for orthogonalization).</div>
+      <div class="Body_Text"><a name="56668">Let <img class="Default EquationGraphic" src="images/VAR.056.4.48.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> be a <img class="Default EquationGraphic" src="images/VAR.056.4.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> factorization matrix such that:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.4.50.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="56670">where <img class="Default EquationGraphic" src="images/VAR.056.4.51.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is the demeaned residuals. Define the third and fourth moment vectors <img class="Default EquationGraphic" src="images/VAR.056.4.52.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 135px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/VAR.056.4.53.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 35px; max-width: 135px; top: 0.0pt" alt="" />. Then:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.4.54.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="56676">under the null hypothesis of normal distribution. Since each component is independent of each other, we can form a <img class="Default EquationGraphic" src="images/VAR.056.4.55.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />-statistic by summing squares of any of these third and fourth moments.</a></div>
+      <div class="Body_Text"><a name="56677">EViews provides you with choices for the factorization matrix <img class="Default EquationGraphic" src="images/VAR.056.4.56.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="56678">Cholesky</a></span> (Lütkepohl 1991, p. 155-158): <img class="Default EquationGraphic" src="images/VAR.056.4.57.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is the inverse of the lower triangular Cholesky factor of the residual covariance matrix. The resulting test statistics depend on the ordering of the variables in the VAR.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="56679">Inverse Square Root of Residual Correlation Matrix</a></span> (Doornik and Hansen 1994): <img class="Default EquationGraphic" src="images/VAR.056.4.58.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 23px; max-width: 127px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/VAR.056.4.59.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is a diagonal matrix containing the eigenvalues of the residual correlation matrix on the diagonal, <img class="Default EquationGraphic" src="images/VAR.056.4.60.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is a matrix whose columns are the corresponding eigenvectors, and <img class="Default EquationGraphic" src="images/VAR.056.4.61.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is a diagonal matrix containing the inverse square root of the residual variances on the diagonal. This <img class="Default EquationGraphic" src="images/VAR.056.4.62.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is essentially the inverse square root of the residual correlation matrix. The test is invariant to the ordering and to the scale of the variables in the VAR. As suggested by Doornik and Hansen (1994), we perform a small sample correction to the transformed residuals <img class="Default EquationGraphic" src="images/VAR.056.4.63.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> before computing the statistics.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="69641">Inverse Square Root of Residual Covariance Matrix</a></span> (Urzua 1997): <img class="Default EquationGraphic" src="images/VAR.056.4.64.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 23px; max-width: 116px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/VAR.056.4.65.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is the diagonal matrix containing the eigenvalues of the residual covariance matrix on the diagonal and <img class="Default EquationGraphic" src="images/VAR.056.4.66.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is a matrix whose columns are the corresponding eigenvectors. This test has a specific alternative, which is the quartic exponential distribution. According to Urzua, this is the &#8220;most likely&#8221; alternative to the multivariate normal with finite fourth moments since it can approximate the multivariate Pearson family &#8220;as close as needed.&#8221; As recommended by Urzua, we make a small sample correction to the transformed residuals <img class="Default EquationGraphic" src="images/VAR.056.4.67.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> before computing the statistics. This small sample correction differs from the one used by Doornik and Hansen (1994); see Urzua (1997, Section D).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="69668">Factorization from Identified (Structural) VAR</a></span>: <img class="Default EquationGraphic" src="images/VAR.056.4.68.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 23px; max-width: 84px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/VAR.056.4.69.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/VAR.056.4.70.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> are estimated from the structural VAR model. This option is available only if you have estimated the factorization matrices <img class="Default EquationGraphic" src="images/VAR.056.4.71.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/VAR.056.4.72.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> using the structural VAR (see <span class="Link"><a href="VAR-Structural_(Identified)_VARs.html#260081" title="Structural (Identified) VARs">(here)</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="259872">EViews reports test statistics for each orthogonal component (labeled RESID1, RESID2, and so on) and for the joint test. For individual components, the estimated skewness <img class="Default EquationGraphic" src="images/VAR.056.4.73.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" /> and kurtosis <img class="Default EquationGraphic" src="images/VAR.056.4.74.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" />are reported in the first two columns together with the </a><span class="In-line_math">p</span>-values from the <img class="Default EquationGraphic" src="images/VAR.056.4.75.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 44px; top: 0.0pt" alt="" /> distribution (in square brackets). The Jarque-Bera column reports:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.4.76.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="259895">with </a><span class="In-line_math">p</span>-values from the <img class="Default EquationGraphic" src="images/VAR.056.4.77.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 44px; top: 0.0pt" alt="" /> distribution. <span class="Emphasis">Note: in contrast to the Jarque-Bera statistic computed in the series view, this statistic is not computed using a degrees of freedom correction.</span></div>
+      <div class="Body_Text"><a name="56685">For the joint tests, we will generally report:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.4.78.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="57114">If, however, you choose Urzua&#8217;s (1997) test, <img class="Default EquationGraphic" src="images/VAR.056.4.79.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> will not only use the sum of squares of the               &#8220;pure&#8221; third and fourth moments but will also include the sum of squares of all </a><span class="Emphasis">cross</span> third and fourth moments. In this case, <img class="Default EquationGraphic" src="images/VAR.056.4.80.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is asymptotically distributed as a <img class="Default EquationGraphic" src="images/VAR.056.4.81.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />with <img class="Default EquationGraphic" src="images/VAR.056.4.82.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 191px; top: 0.0pt" alt="" /> degrees of freedom.</div>
+      <div class="Heading_6"><a name="56688">White Heteroskedasticity Test</a></div>
+      <div class="Body_Text"><a name="56689">These tests are the extension of White&#8217;s (1980) test to systems of equations as discussed by Kelejian (1982) and Doornik (1995). The test regression is run by regressing each cross product of the residuals on the cross products of the regressors and testing the joint significance of the regression. The </a><span class="Dialog_Item">No Cross Terms</span> option uses only the levels and squares of the original regressors, while the <span class="Dialog_Item">With Cross Terms</span> option includes all non-redundant cross-products of the original regressors in the test equation. The test regression always includes a constant term as a regressor.</div>
+      <div class="Body_Text"><a name="56690">The first part of the output displays the joint significance of the regressors excluding the constant term for each test regression. You may think of each test regression as testing the constancy of each element in the residual covariance matrix separately. Under the null of no heteroskedasticity or (no misspecification), the non-constant regressors should not be jointly significant.</a></div>
+      <div class="Body_Text"><a name="56691">The last line of the output table shows the LM chi-square statistics for the joint significance of all regressors in the system of test equations (see Doornik, 1995, for details). The system LM statistic is distributed as a <img class="Default EquationGraphic" src="images/VAR.056.4.83.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />with degrees-of-freedom <img class="Default EquationGraphic" src="images/VAR.056.4.84.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 29px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/VAR.056.4.85.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 126px; top: 0.0pt" alt="" /> is the number of cross-products of the residuals in the system and <img class="Default EquationGraphic" src="images/VAR.056.4.86.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is the number of the common set of right-hand side variables in the test regression.</a></div>
+      <div class="Heading_5"><a name="208770">Cointegration Test</a></div>
+      <div class="Body_Text"><a name="208771">This view performs the Johansen cointegration test for the variables in your VAR. Note that Johansen cointegration tests may also be performed from a Group object.</a></div>
+      <div class="Body_Text"><a name="284096">To perform the test, select </a><span class="Menu_Item">Views/Cointegration Test... </span>from an estimated VAR object window using. In the latter case, the test dialog will be pre-filled with information from the VAR (or VEC) specification:</div>
+      <div class="Picture"><a name="284067"><img class="Default" src="images/VAR.056.4.87.jpg" width="100%" style="left: 0.0pt; max-height: 419px; max-width: 584px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="284068">Enter the lag specification and exogenous variables specifications in the appropriate edit fields, and specify the deterministic trend specifications using the dropdown. The </a><span class="Menu_Item">Summarize all deterministic case assumptions</span> checkbox may be used to compute the test statistic for all of the deterministic trend cases.</div>
+      <div class="Body_Text"><a name="284383">See </a><span class="Link"><a href="coint-Johansen_Cointegration_Test.html#189915" title="Johansen Cointegration Test">&#8220;Johansen Cointegration Test&#8221;</a></span> for a description of the basic test methodology and test settings. See also <span class="Link"><a href="vecm-Background.html#272915" title="Background">&#8220;The VECM Specification&#8221;</a></span> and <span class="Link"><a href="vecm-Estimating_VEC_Models_in_EViews.html#274094" title="Estimating VEC Models in EViews">&#8220;Estimating VEC Models in EViews&#8221;</a></span> for a discussion of VEC specifications.</div>
+      <div class="Body_Text"><a name="284898">Bear in mind that the </a><span class="Menu_Item">Lag intervals</span> lag specification for is for the error correction form of the VEC model, not the levels of a VAR. If performing the test on a specification in levels as in an ordinary VAR, the lag structure will differ in the test equation.</div>
+      <div class="Body_Text"><a name="285224">Similarly, note that exogenous variables in a VAR will be placed in the </a><span class="Menu_Item">Short-run (outside cointegrating equation) </span>edit field, which may not be the desired test specification in the error correction form of the VEC.</div>
+      <div class="Picture"><a name="284072"><img class="Default" src="images/VAR.056.4.88.jpg" width="100%" style="left: 0.0pt; max-height: 648px; max-width: 648px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_5"><a name="56702">Notes on System Comparability</a></div>
+      <div class="Body_Text"><a name="56703">Many of the diagnostic tests given above may be computed &#8220;manually&#8221; by estimating the VAR using a system object and selecting </a><span class="Menu_Item">View/Wald Coefficient Tests...</span> We caution you that the results from the system may not match those from the VAR diagnostic views for various reasons:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="56704">The system object will, in general, use the maximum possible observations for each equation in the system. By contrast, VAR objects force a balanced sample across equations in cases where there are missing values.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="56705">The estimates of the weighting matrix used in system estimation do not contain a degrees of freedom correction (the residual sums-of-squares are divided by <img class="Default EquationGraphic" src="images/VAR.056.4.89.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> rather than by <img class="Default EquationGraphic" src="images/VAR.056.4.90.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 43px; top: 0.0pt" alt="" />), while the VAR estimates do perform this adjustment. Even though estimated using comparable specifications and yielding identifiable coefficients, the test statistics from system SUR and the VARs will show small (asymptotically insignificant) differences.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_4"><a name="37080">Impulse Responses</a></div>
+      <div class="Body_Text"><a name="291170">Interpreting VAR results can be difficult due to the complex interdependence between variables, their lags, and the large number of coefficients in the model. Notably, a shock to the </a><span style="font-style: italic">i</span>-th variable not only directly affects the <span style="font-style: italic">i</span>-th variable but is also transmitted to all of the other endogenous variables through the dynamic (lag) structure of the VAR.</div>
+      <div class="Body_Text"><a name="291171">A primary method of examining the properties of a VAR or VEC is impulse response (IR) analysis, which traces the impact of a shock to a single variable on the current and future values of all of the endogenous variables. </a></div>
+      <div class="Body_Text"><a name="291189">EViews offers a wide range of options for computing impulse-responses, estimating the precision of those estimates, and displaying the results. </a><span class="Link"><a href="vimprsp-Impulse_Response_Analysis.html#279532" title="Impulse Response Analysis">&#8220;Impulse Response Analysis&#8221;</a></span> offers background and a description of these tools.</div>
+      <div class="Heading_4"><a name="37177">Variance Decomposition</a></div>
+      <div class="Body_Text"><a name="57634">While impulse response functions trace the effects of a shock to one endogenous variable on to the other variables in the VAR, </a><span class="Definition">variance decomposition</span> separates the variation in an endogenous variable into the component shocks to the VAR. Thus, the variance decomposition provides information about the relative importance of each random innovation in affecting the variables in the VAR.</div>
+      <div class="Picture"><a name="57635"><img class="Default" src="images/VAR.056.4.91.jpg" width="100%" style="left: 0.0pt; max-height: 349px; max-width: 484px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="261427">To obtain the variance decomposition, select </a><span class="Menu_Item">View/Variance Decomposition...</span> from the VAR object toolbar. You should provide the same information as for impulse responses above.</div>
+      <div class="Body_Text"><a name="261438">Note that since non-orthogonal factorization will yield decompositions that do not satisfy an adding up property, your choice of factorization is limited to the </a><span class="Menu_Item">Cholesky Decomposition</span> and the <span class="Menu_Item">Structural Decomposition</span>, the latter if available.</div>
+      <div class="Body_Text"><a name="260111">The table format displays a separate variance decomposition for each endogenous variable. The second column, labeled &#8220;S.E.&#8221;, contains the forecast error of the variable at the given forecast horizon. The source of this forecast error is the variation in the current and future values of the innovations to each endogenous variable in the VAR. The remaining columns give the percentage of the forecast variance due to each innovation, with each row adding up to 100.</a></div>
+      <div class="Body_Text"><a name="70762">As with the impulse responses, the variance decomposition based on the Cholesky factor can change dramatically if you alter the ordering of the variables in the VAR. For example, the first period decomposition for the first variable in the VAR ordering is completely due to its own innovation.</a></div>
+      <div class="Body_Text"><a name="70760">Factorization based on structural orthogonalization is available only if you have estimated the structural factorization matrices as explained in </a><span class="Link"><a href="VAR-Structural_(Identified)_VARs.html#260081" title="Structural (Identified) VARs">&#8220;Structural (Identified) VARs&#8221;</a></span>. Note that the forecast standard errors should be identical to those from the Cholesky factorization <span class="Emphasis">if the structural VAR is just identified</span>. For over-identified structural VARs, the forecast standard errors may differ in order to maintain the adding up property.</div>
+      <div class="Picture"><a name="272903"><img class="Default" src="images/VAR.056.4.92.jpg" width="100%" style="left: 0.0pt; max-height: 518px; max-width: 620px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="272923">As with the output for impulse responses (</a><span class="Link"><a href="#37080" title="Views and Procs of a VAR">&#8220;Impulse Responses&#8221;</a></span>), the resulting output is interactive. You may click on any of the <span class="Menu_Item">Output Views</span> node entries to change the display type. Here we see a <span class="Menu_Item">Stacked graphs</span> representation of the decomposition.</div>
+      <div class="Body_Text"><a name="273186">Similarly, you may click on the </a><span class="Menu_Item">Decompositions</span> node under <span class="Menu_Item">Variables</span> and toggle on the variable names to show or hide the display of the decomposition of specific variables.</div>
+      <div class="Heading_4"><a name="258645">Historical Decomposition</a></div>
+      <div class="Body_Text"><a name="260044">An alternative method of innovation accounting is to decompose the observed series into the components corresponding to each structural shock. Burbridge and Harrison (1985) propose transforming observed residuals to structural residuals, and then for each observation beyond some point in the estimation sample, computing the contribution of the different accumulated structural shocks to each observed variable.</a></div>
+      <div class="Body_Text"><a name="260172">To obtain the historical decomposition, select </a><span class="Menu_Item">View/Historical Decomposition...</span> from the VAR object toolbar. You should provide the same information as for impulse responses and variance decomposition above.</div>
+      <div class="Picture"><a name="260125"><img class="Default" src="images/VAR.056.4.93.jpg" width="100%" style="left: 0.0pt; max-height: 388px; max-width: 549px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="260045">In addition, you may use the </a><span class="Menu_Item">Include baseline in decomposition</span> to choose whether to include the base projection in the decomposition, or whether to plot only the stochastic accumulations and total.</div>
+      <div class="Body_Text"><a name="260854">Lastly, you may use the edit fields to specify an optional </a><span class="Menu_Item">Start</span> and <span class="Menu_Item">End</span> period to the decomposition. Both periods must be within the range of the original estimation period. If you leave the fields blank, EViews will perform the decomposition from the start to the end of the full estimation period.</div>
+      <div class="Picture"><a name="273504"><img class="Default" src="images/VAR.056.4.94.jpg" width="100%" style="left: 0.0pt; max-height: 580px; max-width: 774px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="260234">Procs of a VAR</a></div>
+      <div class="Body_Text"><a name="260046">Most of the procedures available for a VAR are common to those available for a system object (see </a><span class="Link"><a href="system-Working_With_Systems.html#37211" title="Working With Systems">&#8220;System Procs&#8221;</a></span>). Here, we discuss only those procedures that are unique to the VAR object.</div>
+      <div class="Heading_5"><a name="260052">Forecasting</a></div>
+      <div class="Body_Text"><a name="260053">You may produce forecasts directly from an estimated VAR object by clicking on the </a><span class="Menu_Item">Forecast</span> button or by selecting <span class="Menu_Item">Proc/Forecast</span>. EViews will display the forecast dialog:</div>
+      <div class="Picture"><a name="260057"><img class="Default" src="images/VAR.056.4.95.jpg" width="100%" style="left: 0.0pt; max-height: 394px; max-width: 451px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="260058">Most of the dialog should be familiar from the standard equation forecast dialog. There are, however, a few minor differences.</a></div>
+      <div class="Body_Text"><a name="260059">First, the fields in which you enter the forecast name and optional S.E. series names now refer to the </a><span class="Emphasis">character suffix</span> which you will use to form output series names. By default, as depicted here, EViews will append the letter &#8220;f&#8221; to the end of the original series names to form the output series names. If necessary, the original name will be converted into a valid EViews series name.</div>
+      <div class="Body_Text"><a name="260060">Second, if you choose to compute standard errors of the forecast, EViews will obtain those values via simulation. You will be prompted for the number of </a><span class="Menu_Item">Simulation repetitions</span>, and the &#8220;<span class="Menu_Item">% failed reps before halting</span>&#8221; the simulation setting.</div>
+      <div class="Body_Text"><a name="260061">Lastly, in addition to a </a><span class="Menu_Item">Forecast evaluation</span>, you are given a choice of whether to display the output graphs as <span class="Menu_Item">Individual graphs</span>, as <span class="Menu_Item">Multiple graphs</span>, or both.</div>
+      <div class="Body_Text"><a name="260062">Clicking on </a><span class="Menu_Item">OK</span> instructs EViews to perform the forecast and, if appropriate to display the output:</div>
+      <div class="Picture"><a name="260066"><img class="Default" src="images/VAR.056.4.96.jpg" width="100%" style="left: 0.0pt; max-height: 480px; max-width: 660px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="260067">In this case, the output consists of a spool containing the forecast evaluation of the series in the VAR, along with individual graphs of the forecasts and the corresponding actuals series.</a></div>
+      <div class="Heading_5"><a name="260069">Make System</a></div>
+      <div class="Body_Text"><a name="260070">This proc creates a system object that contains an equivalent VAR specification. If you want to estimate a non-standard VAR, you may use this proc as a quick way to specify a VAR in a system object which you can then modify to meet your needs. For example, while the VAR object requires each equation to have the same lag structure, you may want to relax this restriction. To estimate a VAR with unbalanced lag structure, use the </a><span class="Menu_Item">Proc/Make System</span> procedure to create a VAR system with a balanced lag structure and edit the system specification to meet the desired lag specification.</div>
+      <div class="Body_Text"><a name="260071">The </a><span class="Menu_Item">By Variable</span> option creates a system whose specification (and coefficient number) is ordered by variables. Use this option if you want to edit the specification to exclude lags of a specific variable from some of the equations. The <span class="Menu_Item">By Lag</span> option creates a system whose specification (and coefficient number) is ordered by lags. Use this option if you want to edit the specification to exclude certain lags from some of the equations.</div>
+      <div class="Body_Text"><a name="260072">For vector error correction (VEC) models, treating the coefficients of the cointegrating vector as additional unknown coefficients will make the resulting system unidentified. In this case, EViews will create a system object where the coefficients for the cointegrating vectors are fixed at the estimated values from the VEC. If you want to estimate the coefficients of the cointegrating vector in the system, you may edit the specification, but you should make certain that the resulting system is identified.</a></div>
+      <div class="Body_Text"><a name="260073">You should also note that while the standard VAR can be estimated efficiently by equation-by-equation OLS, this is generally not the case for the modified specification. You may wish to use one of the system-wide estimation methods (</a><span class="Emphasis">e.g.,</span> SUR) when estimating non-standard VARs using the system object.</div>
+      <div class="Heading_5"><a name="260074">Estimate Structural Factorization</a></div>
+      <div class="Body_Text"><a name="260075">This procedure is used to estimate the factorization matrices for a structural (or identified) VAR. The details for this procedure are provided in </a><span class="Link"><a href="VAR-Structural_(Identified)_VARs.html#260081" title="Structural (Identified) VARs">&#8220;Structural (Identified) VARs&#8221;</a></span> below. You must first estimate the structural factorization matrices using this proc in order to use the structural options in impulse responses and variance decompositions.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

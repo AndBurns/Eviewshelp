@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Working with a GLM Equation</title>
+    <link rel="StyleSheet" href="css/glm.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="glm-Examples.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="glm-Technical_Details.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="glm-Generalized_Linear_Models.html">Generalized Linear Models</a> : Working with a GLM Equation</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="313292">Working with a GLM Equation</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#315696">Residuals</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#313761">Forecasting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#313762">Testing</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="312505">EViews offers various views and procedures for a estimated GLM equation. Some, like the </a><span class="Menu_Item">Gradient Summary</span> or the coefficient <span class="Menu_Item">Covariance Matrix</span> view are self-explanatory. In this section, we offer relevant comment on the remaining views.</div>
+      <div class="Heading_4"><a name="315696">Residuals</a></div>
+      <div class="Body_Text"><a name="315697">The main equation output offers summary statistics for the sum-of-squared response residuals (&#8220;Sum squared resid&#8221;), and the sum-of-squared Pearson residuals (&#8220;Pearson SSR&#8221;).</a></div>
+      <div class="Body_Text"><a name="315715">The </a><span class="Menu_Item">Actual, Fitted, Residual</span> views and <span class="Menu_Item">Residual Diagnostics</span> allow you to examine properties of your residuals. The <span class="Menu_Item">Actual, Fitted, Residual Table</span> and <span class="Menu_Item">Graph</span>, show the fit of the unweighted data. As the name suggests, the <span class="Menu_Item">Standardized Residual Graph</span> displays the standardized (scaled Pearson) residuals.</div>
+      <div class="Body_Text"><a name="315742">The </a><span class="Menu_Item">Residual Diagnostics</span> show <span class="Menu_Item">Histograms</span> of the standardized residuals and <span class="Menu_Item">Correlograms</span> of the standardized residuals and the squared standardized residuals.</div>
+      <div class="Picture"><a name="315759"><img class="Default" src="images/glm.042.5.01.jpg" width="100%" style="left: 0.0pt; max-height: 221px; max-width: 272px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="315760">The </a><span class="Menu_Item">Make Residuals</span> proc allows you to save the <span class="Menu_Item">Ordinary</span> (response), <span class="Menu_Item">Standardized</span> (scaled Pearson), or <span class="Menu_Item">Generalized</span> (score) residuals into the workfile. The latter may be useful for constructing test statistics (note, however, that in some cases, it may be more useful to compute the gradients of the model directly using <span class="Menu_Item">Proc/Make Gradient Group</span>).</div>
+      <div class="Body_Text"><a name="316569">Given standardized residuals SRES for equation EQ1, the unscaled Pearson residuals may be obtained using the command</a></div>
+      <div class="Input"><a name="316572">series pearson = sres * @sqrt(eq1.@dispersion)</a></div>
+      <div class="Heading_4"><a name="313761">Forecasting</a></div>
+      <div class="Body_Text"><a name="315850">EViews offers built-in tools for producing in and out-of-sample forecasts (fits) from your GLM estimated equation. Simply click on the </a><span class="Menu_Item">Forecast</span> button on your estimated equation to bring up the forecast dialog, then enter the desired settings.</div>
+      <div class="Picture"><a name="315856"><img class="Default" src="images/glm.042.5.02.jpg" width="100%" style="left: 0.0pt; max-height: 402px; max-width: 450px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="315835">You should first use the radio buttons to specify whether you wish to forecast the expected dependent variable <img class="Default EquationGraphic" src="images/glm.042.5.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> or the linear index <img class="Default EquationGraphic" src="images/glm.042.5.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="315867">Next, enter the name of the series to hold the forecast output, and set the forecast sample.</a></div>
+      <div class="Body_Text"><a name="315917">Lastly, specify whether you wish to produce a forecast graph and whether you wish to fill non-forecast values in the workfile with actual values or to fill them with NAs. For most cross-section applications, we recommend that you uncheck this box.</a></div>
+      <div class="Body_Text"><a name="315918">Click on </a><span class="Menu_Item">OK</span> to produce the forecast.</div>
+      <div class="Body_Text"><a name="315916">Note that while EViews does not presently offer a menu item for saving the fitted GLM variances or scaled variances, you can easily obtain results by saving the ordinary and standardized residuals and taking ratios (</a><span class="Link"><a href="glm-Technical_Details.html#315945" title="Technical Details">&#8220;Residuals&#8221;</a></span>). If ORESID are the ordinary and SRESID are the standardized residuals for equation EQ1, then the commands</div>
+      <div class="Input"><a name="315839">series glmsvar = (oresid / sresid)^2</a></div>
+      <div class="Input"><a name="315840">series glmvar = glmvar * eq1.@dispersion</a></div>
+      <div class="Body_Text"><a name="315841">produce the scaled variance and unscaled variances, respectively.</a></div>
+      <div class="Body_Text"><a name="315922">Lastly, you should use </a><span class="Menu_Item">Proc/Make Model</span> to create a model object for more complicated simulation from your GLM equation.</div>
+      <div class="Heading_4"><a name="313762">Testing</a></div>
+      <div class="Body_Text"><a name="316141">You may perform Wald tests of coefficient restrictions. Simply select </a><span class="Menu_Item">View/Coefficient Diagnostics/Wald - Coefficient Restrictions</span>, then enter your restrictions in the edit field. For the Papke-Wooldridge example above with Huber-White robust covariances, we may use a Wald test to evaluate the joint significance of AGE^2 and SOLE by entering the restriction &#8220;C(5)=C(6)=0&#8221; and clicking on OK to perform the test.</div>
+      <div class="Table"><a name="316142"><img class="Default" src="images/glm.042.5.05.jpg" width="100%" style="left: 0.0pt; max-height: 362px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="316143">The test results show joint-significance at just above the 5% level. The </a><span class="Menu_Item">Confidence Intervals</span> and <span class="Menu_Item">Confidence Ellipses...</span> views will also employ the robust covariance matrix estimates.</div>
+      <div class="Body_Text"><a name="316082">The </a><span class="Menu_Item">Omitted Variables...</span> and <span class="Menu_Item">Redundant Variables...</span> views and the <span class="Menu_Item">Ramsey RESET Test...</span> views are likelihood ratio based tests. Note that the RESET test is a special case of an omitted variables test where the omitted variables are powers of the fitted values from the original equation. </div>
+      <div class="Body_Text"><a name="316219">We illustrate these tests by performing the RESET test on the first Papke-Wooldridge QMLE equation with GLM covariances. Select </a><span class="Menu_Item">View/Stability Diagnostics/Ramsey Reset Test...</span> and change the default to include 2 fitted terms in the test equation.</div>
+      <div class="Table"><a name="316226"><img class="Default" src="images/glm.042.5.06.jpg" width="100%" style="left: 0.0pt; max-height: 458px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="316213">The top portion of the output shows the test settings, and the test summaries. The bottom portion of the output shows the estimated test equation. The results show little evidence of nonlinearity.</a></div>
+      <div class="Body_Text"><a name="316243">Notice that in contrast to LR tests in most other equation views, the likelihood ratio test statistics in GLM equations are obtained from analysis of the deviances or quasi-deviances. Suppose <img class="Default EquationGraphic" src="images/glm.042.5.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> is the unscaled deviance under the null and <img class="Default EquationGraphic" src="images/glm.042.5.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> is the corresponding statistic under the alternative hypothesis. The usual asymptotic <img class="Default EquationGraphic" src="images/glm.042.5.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> likelihood ratio test statistic may be written in terms of the difference of deviances with common scaling, </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/glm.042.5.10.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(32.4)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="315996">as <img class="Default EquationGraphic" src="images/glm.042.5.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 56px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/glm.042.5.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is an estimate of the dispersion and <img class="Default EquationGraphic" src="images/glm.042.5.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is the fixed number of restrictions imposed by the null hypothesis. <img class="Default EquationGraphic" src="images/glm.042.5.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is either a specified fixed value or an estimate under the alternative hypothesis using the specified dispersion method. When <img class="Default EquationGraphic" src="images/glm.042.5.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/glm.042.5.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> contain the quasi-deviances, the resulting statistic is the quasi-likelihood ratio (QLR) statistic (Wooldridge, 1997).</a></div>
+      <div class="Body_Text"><a name="316012">If <img class="Default EquationGraphic" src="images/glm.042.5.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is estimated, we may also employ the </a><span class="In-line_math">F</span>-statistic variant of the test statistic:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/glm.042.5.18.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(32.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="316024">where <img class="Default EquationGraphic" src="images/glm.042.5.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> is the degrees-of-freedom under the alternative and <img class="Default EquationGraphic" src="images/glm.042.5.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is an estimate of the dispersion. EViews will estimate <img class="Default EquationGraphic" src="images/glm.042.5.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> under the alternative hypothesis using the method specified in your equation.</a></div>
+      <div class="Body_Text"><a name="316244">We point out that the Ramsey test results (and all other GLM LR test statistics) presented here may be problematic since they rely on the GLM variance assumption, Papke and Wooldridge offer a robust LM formulation for the Ramsey RESET test. This test is not currently built-into EViews, but which may be constructed with some effort using auxiliary results provided by EViews (see Papke and Wooldridge, p. 625 for details on the test construction).</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

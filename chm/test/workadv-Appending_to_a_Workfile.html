@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Appending to a Workfile</title>
+    <link rel="StyleSheet" href="css/workadv.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="workadv-Resizing_a_Workfile.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="workadv-Contracting_a_Workfile.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="workadv-Advanced_Workfiles.html">Advanced Workfiles</a> : Appending to a Workfile</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="113382">Appending to a Workfile</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#153963">Selecting Data to Append</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#114945">Handling Name Collision</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#114848">Creating Identifier Series</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="113645">One method of combining two workfile pages is to append observations from a source workfile page to the end of a target workfile page. When appending data, EViews first removes any structure from the target page, then expands its range to encompass the combined range of the original page and the appended data. The data from the source page are then copied to the expanded part of the target workfile range, either in existing series or alpha objects, or in newly created objects.</a></div>
+      <div class="Body_Text"><a name="127565">When appending, you should first make certain that the workfiles containing both the source and target page are open in EViews. In some cases (for example, concatenating a workfile page with itself), you only need to have a single open workfile since the source and target workfiles are the same.</a></div>
+      <div class="Body_Text"><a name="153962">To open the </a><span class="Menu_Item">Workfile Append</span> dialog, click on the <span class="Menu_Item">Proc</span> button on the target workfile toolbar and select <span class="Menu_Item">Append to Current Page...</span>, or select <span class="Menu_Item">Proc/Append to Current Page...</span> from the main menu.</div>
+      <div class="Picture"><a name="153971"><img class="Default" src="images/workadv.014.04.1.jpg" width="100%" style="left: 0.0pt; max-height: 429px; max-width: 528px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="153963">Selecting Data to Append</a></div>
+      <div class="Body_Text"><a name="153948">You should begin by selecting a workfile page containing data to be appended to the target page. The first dropdown menu contains a list of all workfiles currently in memory from which you should select the source workfile; in the second dropdown menu, you should choose a page from those in the workfile you have selected. Here, we have instructed EViews to append data from the ANNUAL page in the workfile LINK_SALES.</a></div>
+      <div class="Body_Text"><a name="113947">Next, you should specify a sample of observations in the source page to be appended; any valid EViews sample may be provided. Here, we have specified the default sample &#8220;@ALL&#8221;, which ensures that we use all of the observations in the source page.</a></div>
+      <div class="Body_Text"><a name="114944">If you wish, you may use the </a><span class="Menu_Item">Objects to append</span> settings to specify the objects to be appended or copied. By default (<span class="Menu_Item">All series &amp; alpha</span>), EViews will append all series and alphas (and links) from the source page into the destination page. If you select <span class="Menu_Item">All objects,</span> EViews will append all series and alphas, and will copy all other objects into the destination. Alternatively, choosing <span class="Menu_Item">Listed objects</span> allows you to specify the individual objects to be copied by name, using wildcards if convenient. To append only those data objects that exist in both pages, you should select <span class="Menu_Item">Series &amp; alpha that exist in both workfiles</span>. If this setting is selected, a series or numeric link Y in the source page will only be appended if a series Y exists in the active page, and an alpha or alpha link X in the source will only be appended if an alpha series X exists in the destination.</div>
+      <div class="Heading_4"><a name="114945">Handling Name Collision</a></div>
+      <div class="Body_Text"><a name="114946">The settings in </a><span class="Menu_Item">Name collision</span> control the method EViews uses to append data when a source object name is present in the target page. To understand the effects of the various settings, consider the three possible scenarios that may occur when appending from an object into a workfile page:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="114590">there is no object with the same name in the target page.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="114160">an object with the same name exists in the target, but the object type is not compatible.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="114599">an object with the same name exists in the target, and the object type is compatible with the source object.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="114607">In saying that the source and destination objects are compatible, we indicate that the source data may be added to the end of the existing object. Series and numeric link data may only be added to the end of series objects, while alpha and alpha link data may only be added to the end of alpha objects. All other combinations of objects are said to be incompatible.</a></div>
+      <div class="Body_Text"><a name="114560">Suppose that we wish to append the source series X or numeric link to the target page. If there is no object with the same name in the target page, EViews will create a new series, X, containing NA values for the original target page observations, and the values of the source series X for observations in the expanded part of the range.</a></div>
+      <div class="Body_Text"><a name="114693">If there is an incompatible matching object, a new object will be created with a name formed from the original name and the text specified in the </a><span class="Menu_Item">Suffix to apply to renamed objects </span>edit field. If, for example, the target page contains an incompatible X (<span class="Emphasis">e.g.</span>, it contains the equation X), EViews will create a new series using the original name, and the specified suffix, for example, &#8220;X_A&#8221; (using the default suffix, &#8220;_A&#8221;).</div>
+      <div class="Body_Text"><a name="114507">If there is a compatible matching object, EViews will examine your dialog settings to determine the appropriate behavior. By default, EViews will append the data from a compatible source object to the end of the existing object. Thus, data from the series or numeric link X will be copied to the expanded part of the range of the target series X, and data from the alpha or alpha link Y will be copied to the end of the alpha series Y. You may override this default so that EViews creates a new object even when the matching objects are compatible, by unselecting the </a><span class="Menu_Item">Merge series</span> or <span class="Menu_Item">Merge alpha</span> checkboxes.</div>
+      <div class="Heading_4"><a name="114848">Creating Identifier Series</a></div>
+      <div class="Body_Text"><a name="114870">The optional </a><span class="Menu_Item">Created series</span> settings in the dialog allow you to save series containing information about each observation in the combined workfile. </div>
+      <div class="Body_Text"><a name="114879">To save a series containing the date or observation ID associated with each observation in the combined workfile, you should enter a unique name in the edit field labeled </a><span class="Menu_Item">Date/Obs ID</span>. The specified series will be created in the target page, and will contain the observation or cell identifiers given by the structures associated with the source and the original target pages. Saving the IDs is particularly useful since appending to a workfile removes the existing page structure.</div>
+      <div class="Body_Text"><a name="114814">The optional </a><span class="Menu_Item">Workfile ID</span> series identifies the source of the observation in the combined workfile: observations in the original target page are assigned the value 0, while observations in the appended portion of the target will be given the value 1.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

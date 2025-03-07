@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Cross-validation Settings</title>
+    <link rel="StyleSheet" href="css/enet.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="enet-Examples.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="enet-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="enet-Elastic_Net_and_Lasso.html">Elastic Net and Lasso</a> : Cross-validation Settings</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="492162">Cross-validation Settings</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#478823">Methods</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#457093">K-Fold</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#480201">Simple Split</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#478845">Monte Carlo</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#478859">Leave-One-Out</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#478874">Leave-P-Out</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#478888">Rolling Window</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#484857">Expanding Window</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#490301">Fit Statistics</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="489783">We may use cross-validation model selection techniques to identify a preferred value of <img class="Default EquationGraphic" src="images/enet.047.6.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> from the path.</a></div>
+      <div class="Body_Text"><a name="489787">Cross-validation involves partitioning the data into training and test sets, estimating the <img class="Default EquationGraphic" src="images/enet.047.6.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> path using the training set, and using the coefficients and the test set to compute evaluation statistics. Some cross-validation methods involve only a single partition, but others produce multiple training and test set partitions.</a></div>
+      <div class="Body_Text"><a name="490083">To specify a cross-validation procedure you must specify both a cross-validation method, and a cross-validation statistic.</a></div>
+      <div class="Heading_4"><a name="478823">Methods</a></div>
+      <div class="Heading_5"><a name="457093">K-Fold</a></div>
+      <div class="Body_Text"><a name="479974">In K-fold cross-validation, the dataset is randomly divided into <img class="Default EquationGraphic" src="images/enet.047.6.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> (roughly) evenly sized groups (&#8220;folds&#8221;). One fold is held out as the test set while the remaining <img class="Default EquationGraphic" src="images/enet.047.6.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 45px; top: 0.0pt" alt="" /> folds are combined into a training set. The model is estimated (&#8220;trained&#8221;) using the training set and the selection statistic is computed using the observations in the corresponding test set. This training and test step is repeated, with each fold acting as the test set. The selection statistics are averaged over the <img class="Default EquationGraphic" src="images/enet.047.6.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> values to obtain a final value.</a></div>
+      <div class="Picture"><a name="479910"><img class="Default" src="images/enet.047.6.06.jpg" width="100%" style="left: 0.0pt; max-height: 325px; max-width: 544px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="482397">The number of folds <img class="Default EquationGraphic" src="images/enet.047.6.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is specified in the </a><span class="Menu_Item">Number of folds </span>edit field. </div>
+      <div class="Body_Text"><a name="483433">The randomization procedure is governed by the specified </a><span class="Menu_Item">Random generator</span> and the random <span class="Menu_Item">Seed</span> fields. You may the leave the <span class="Menu_Item">Seed</span> field blank, in which case EViews will use the clock to obtain a seed at the time of estimation, or you may provide an integer from 0 to 2,147,483,647.</div>
+      <div class="Heading_5"><a name="480201">Simple Split</a></div>
+      <div class="Body_Text"><a name="480279">In simple split cross-validation, the dataset is divided into a training and test set. A pre-test gap allows for additional separation (oftentimes temporal) between the training and the corresponding test samples.</a></div>
+      <div class="Body_Text"><a name="492860">The model is estimated for the observation in the training set and the selection statistic is computed using the test set.</a></div>
+      <div class="Picture"><a name="480339"><img class="Default" src="images/enet.047.6.08.jpg" width="100%" style="left: 0.0pt; max-height: 325px; max-width: 543px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="480561">The simple split method is parameterized using the </a><span class="Menu_Item">Training fraction</span> parameter <img class="Default EquationGraphic" src="images/enet.047.6.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, where the training set is the first <img class="Default EquationGraphic" src="images/enet.047.6.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 70px; top: 0.0pt" alt="" /> set of observations, the <span class="Menu_Item">Pre-test gap obs</span> of <img class="Default EquationGraphic" src="images/enet.047.6.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" />, and the test set is comprised of the remaining <img class="Default EquationGraphic" src="images/enet.047.6.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 133px; top: 0.0pt" alt="" /> observations.</div>
+      <div class="Heading_5"><a name="478845">Monte Carlo</a></div>
+      <div class="Body_Text"><a name="478944">Monte Carlo cross-validation repeatedly splits the sample into a random training set of <img class="Default EquationGraphic" src="images/enet.047.6.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 70px; top: 0.0pt" alt="" /> observations, and a test set containing the remaining <img class="Default EquationGraphic" src="images/enet.047.6.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 100px; top: 0.0pt" alt="" /> observations. </a></div>
+      <div class="Body_Text"><a name="482047">Monte Carlo cross-validation can be thought of as a repeated simple split computation on randomly ordered data. Estimation and evaluation of the selection statistic are computed using each of the training and corresponding test sets, and the results are averaged to obtain a final selection statistic value.</a></div>
+      <div class="Picture"><a name="482004"><img class="Default" src="images/enet.047.6.15.jpg" width="100%" style="left: 0.0pt; max-height: 326px; max-width: 543px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="482251">The training/test split is parameterized using the </a><span class="Menu_Item">Training faction</span> parameter <img class="Default EquationGraphic" src="images/enet.047.6.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. The number of Monte Carlo random splits is specified in the <span class="Menu_Item">Repetitions </span>edit field. </div>
+      <div class="Body_Text"><a name="483426">The randomization procedure is governed by the specified </a><span class="Menu_Item">Random generator</span> and the random <span class="Menu_Item">Seed</span> fields. You may the leave the <span class="Menu_Item">Seed</span> field blank, in which case EViews will use the clock to obtain a seed at the time of estimation, or you may provide an integer from 0 to 2,147,483,647.</div>
+      <div class="Heading_5"><a name="478859">Leave-One-Out</a></div>
+      <div class="Body_Text"><a name="482875">In Leave-One-Out cross-validation, a single observation is held out as a test set, and the remaining <img class="Default EquationGraphic" src="images/enet.047.6.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> observations are combined into a training set. This procedure is repeated <img class="Default EquationGraphic" src="images/enet.047.6.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> times, with each observation acting once as the test set. The resulting statistics are averaged to obtain a final selection statistic value.</a></div>
+      <div class="Body_Text"><a name="482529">Since a separate model is estimated for each observation in the sample, Leave-One-Out cross-validation is typically employed in settings with relatively small numbers of observations. </a></div>
+      <div class="Body_Text"><a name="484109">Note that Leave-One-Out cross-validation is equivalent to K-Fold cross-validation with the number of folds equal to the number of observations.</a></div>
+      <div class="Picture"><a name="482418">&nbsp;</a></div>
+      <div class="Heading_5"><a name="478874">Leave-P-Out</a></div>
+      <div class="Body_Text"><a name="483405">In Leave-P-Out cross-validation, <img class="Default EquationGraphic" src="images/enet.047.6.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> observations are held out as a test set, and the remaining <img class="Default EquationGraphic" src="images/enet.047.6.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 47px; top: 0.0pt" alt="" /> observations are combined into a training set. This procedure is repeated for all distinct sets of <img class="Default EquationGraphic" src="images/enet.047.6.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> observations in the original sample. The resulting statistics are averaged to obtain a final selection statistic value.</a></div>
+      <div class="Body_Text"><a name="483442">Since the number of models to estimate increases combinatorially with the sample size, Leave-P-Out cross-validation is typically employed in settings with relatively small numbers of observations. We strongly urge caution in using this method even with moderate numbers of observations and <img class="Default EquationGraphic" src="images/enet.047.6.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Picture"><a name="482434"><img class="Default" src="images/enet.047.6.23.jpg" width="100%" style="left: 0.0pt; max-height: 325px; max-width: 541px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="483449">The number of leave-out observations <img class="Default EquationGraphic" src="images/enet.047.6.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is specified in the </a><span class="Menu_Item">Leave-out </span>edit field. </div>
+      <div class="Heading_5"><a name="478888">Rolling Window</a></div>
+      <div class="Body_Text"><a name="484490">The Rolling Window cross-validation method is a time-series oriented approach in which the full sample is divided into non-overlapping windows, and each window in turn divided into a training sample, followed by pre-test gap and a fixed number of test sample observations. </a></div>
+      <div class="Body_Text"><a name="487731">Central to this rolling window approach is a maintaining of all temporal relationships, with all observations ordered sequentially with respect to time, and with the test sample following the training sample.</a></div>
+      <div class="Body_Text"><a name="486461">The pre-test gap allows for additional temporal separation between the training and the corresponding test samples, and the post-test gap provides separation between a test sample and the subsequent training sample.</a></div>
+      <div class="Picture"><a name="482459"><img class="Default" src="images/enet.047.6.25.jpg" width="100%" style="left: 0.0pt; max-height: 325px; max-width: 544px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="484833">To specify your settings, fill in the </a><span class="Menu_Item">Number of Windows</span> edit field, then specify the number of <span class="Menu_Item">Pre-test gap obs</span> and<span class="Menu_Item"> Post-test gap obs</span>, and enter the test sample size in the <span class="Menu_Item">Test horizon</span> edit field. The size of the training samples will be determined from the number of observations and the remaining settings.</div>
+      <div class="Heading_5"><a name="484857">Expanding Window</a></div>
+      <div class="Body_Text"><a name="486625">The Expanding Window cross-validation method is a time-series oriented approach in which we start with an initial training sample, a pre-test gap, and a fixed number of observations in a test sample. </a></div>
+      <div class="Body_Text"><a name="487229">Subsequent cross-validation samples are obtained by expanding the training sample to include the previous employed observations along with a post-test gap, and repeating the training and test procedures. </a></div>
+      <div class="Body_Text"><a name="487489">All temporal relationships are maintained with this approach, with all observations ordered sequentially with respect to time, and with the test sample following the training sample. </a></div>
+      <div class="Picture"><a name="482494"><img class="Default" src="images/enet.047.6.26.jpg" width="100%" style="left: 0.0pt; max-height: 324px; max-width: 545px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="482496">You should enter the size of the initial training sample in the </a><span class="Menu_Item">Initial training obs</span> edit field, then specify the number of <span class="Menu_Item">Pre-test gap obs</span> and<span class="Menu_Item"> Post-test gap obs</span>, and enter the test sample size in the <span class="Menu_Item">Test horizon</span> edit field. </div>
+      <div class="Heading_4"><a name="490301">Fit Statistics</a></div>
+      <div class="Body_Text"><a name="490694">Given estimation using a cross-validation training sample, we evaluate a measure of fit for the corresponding test sample. EViews offers several different choices for the cross-validation fit statistic. Suppose that we define the fitted value obtained using the coefficients <img class="Default EquationGraphic" src="images/enet.047.6.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 15px; top: 0.0pt" alt="" /> from the training sample estimates:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.6.28.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="491166">Then the fit statistics are defined for the <img class="Default EquationGraphic" src="images/enet.047.6.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> observations in the test sample as:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="490330">Mean-square error</a></span> (MSE)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.6.30.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none"><span class="Menu_Item"><a name="490332">R-squared</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.6.31.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="491265">where <img class="Default EquationGraphic" src="images/enet.047.6.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> is the test sample mean if the model includes an intercept, and <img class="Default EquationGraphic" src="images/enet.047.6.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 58px; top: 0.0pt" alt="" /> if it does not.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="490506">Mean-abs Error</a></span> (MAE &#8211; Mean absolute error)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.6.34.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.18)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="490523">Mean-abs % Error</a></span> (MAPE &#8211; Mean absolute percentage error)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.6.35.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="492956">Note that cases where <img class="Default EquationGraphic" src="images/enet.047.6.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 60px; top: 0.0pt" alt="" /> are removed from the computation and <img class="Default EquationGraphic" src="images/enet.047.6.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is adjusted accordingly.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="490542">Symmetric MAPE</a></span> (SMAPE &#8211; Symmetric mean absolute percentage error)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.6.38.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="491678">Note that cases where <img class="Default EquationGraphic" src="images/enet.047.6.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 114px; top: 0.0pt" alt="" /> are removed from the computation and <img class="Default EquationGraphic" src="images/enet.047.6.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is adjusted accordingly.</a></div>
+      <div class="Body_Text"><a name="489983">If a cross-validation method produces only a single training and test set, the cross-validation statistic is the single value of <img class="Default EquationGraphic" src="images/enet.047.6.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="489792">If the cross-validation method produces multiple training and test sets, there will be multiple sets of evaluation statistics, one for each training-test set pair. The cross-validation statistic will be the average value of the <img class="Default EquationGraphic" src="images/enet.047.6.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. Further we may compute the standard deviation of the mean of <img class="Default EquationGraphic" src="images/enet.047.6.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> which may be used to provide additional guidance in selecting an optimal <img class="Default EquationGraphic" src="images/enet.047.6.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

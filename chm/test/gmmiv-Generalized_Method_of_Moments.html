@@ -1,0 +1,539 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Generalized Method of Moments</title>
+    <link rel="StyleSheet" href="css/gmmiv.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="gmmiv-Limited_Information_Maximum_Likelihood_and_K-Cla.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="gmmiv-IV_Diagnostics_and_Tests.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="gmmiv-Instrumental_Variables_and_GMM.html">Instrumental Variables and GMM</a> : Generalized Method of Moments</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="168446">Generalized Method of Moments</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#178287">The GMM Estimator</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#178436">Choice of Weighting Matrix</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#178507">Weighting Matrix Iteration</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#178576">Linear Equation Weight Updating</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#178586">Non-linear Equation Weight Updating</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#178599">Coefficient Covariance Calculation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#178604">Conventional Estimators</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#178670">Windmeijer Estimator</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#178849">Weighted GMM</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#178878">Estimation by GMM in EViews</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="178286">We offer here a brief description of the Generalized Method of Moments (GMM) estimator, paying particular attention to issues of weighting matrix estimation and coefficient covariance calculation. Or treatment parallels the excellent discussion in Hayashi (2000). Those interested in additional detail are encouraged to consult one of the many comprehensive surveys of the subject.</a></div>
+      <div class="Heading_4"><a name="178287">The GMM Estimator</a></div>
+      <div class="Body_Text"><a name="178291">The starting point of GMM estimation is the assumption that there are a set of <img class="Default EquationGraphic" src="images/gmmiv.032.6.001.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> moment conditions that the <img class="Default EquationGraphic" src="images/gmmiv.032.6.002.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />-dimensional parameters of interest, <img class="Default EquationGraphic" src="images/gmmiv.032.6.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> should satisfy. These moment conditions can be quite general, and often a particular model has more specified moment conditions than parameters to be estimated. Thus, the vector of <img class="Default EquationGraphic" src="images/gmmiv.032.6.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 47px; top: 0.0pt" alt="" /> moment conditions may be written as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.005.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178306">In EViews (as in most econometric applications), we restrict our attention to moment conditions that may be written as an orthogonality condition between the residuals of an equation, <img class="Default EquationGraphic" src="images/gmmiv.032.6.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 153px; top: 0.0pt" alt="" />, and a set of <img class="Default EquationGraphic" src="images/gmmiv.032.6.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> instruments <img class="Default EquationGraphic" src="images/gmmiv.032.6.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.009.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178321">The traditional Method of Moments estimator is defined by replacing the moment conditions in </a><span class="Link"><a href="#178305" title="Generalized Method of Moments">Equation&nbsp;(23.24)</a></span> with their sample analog:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.010.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178336">and finding the parameter vector <img class="Default EquationGraphic" src="images/gmmiv.032.6.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> which solves this set of <img class="Default EquationGraphic" src="images/gmmiv.032.6.012.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> equations.</a></div>
+      <div class="Body_Text"><a name="178340">When there are more moment conditions than parameters (<img class="Default EquationGraphic" src="images/gmmiv.032.6.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 47px; top: 0.0pt" alt="" />), the system of equations given in </a><span class="Link"><a href="#178329" title="Generalized Method of Moments">Equation&nbsp;(23.26)</a></span> may not have an exact solution. Such as system is said to be <span class="Definition">overidentified</span>. Though we cannot generally find an exact solution for an overidentified system, we can reformulate the problem as one of choosing a <img class="Default EquationGraphic" src="images/gmmiv.032.6.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> so that the sample moment <img class="Default EquationGraphic" src="images/gmmiv.032.6.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 52px; top: 0.0pt" alt="" /> is as &#8220;close&#8221; to zero as possible, where &#8220;close&#8221; is defined using the quadratic form:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.016.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178358">as a measure of distance. The possibly random, symmetric and positive-definite <img class="Default EquationGraphic" src="images/gmmiv.032.6.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 45px; top: 0.0pt" alt="" /> matrix <img class="Default EquationGraphic" src="images/gmmiv.032.6.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 31px; top: 0.0pt" alt="" /> is termed the </a><span class="Definition">weighting matrix</span> since it acts to weight the various moment conditions in constructing the distance measure. The <span class="Emphasis">Generalized</span> Method of Moments estimate is defined as the <img class="Default EquationGraphic" src="images/gmmiv.032.6.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> that minimizes <span class="Link"><a href="#178354" title="Generalized Method of Moments">Equation&nbsp;(23.27)</a></span>.</div>
+      <div class="Body_Text"><a name="189384">As with other instrumental variable estimators, for the GMM estimator to be identified, there must be at least as many instruments as there are parameters in the model. In models where there are the same number of instruments as parameters, the value of the optimized objective function is zero. If there are more instruments than parameters, the value of the optimized objective function will be greater than zero. In fact, the value of the objective function, termed the </a><span class="In-line_math">J</span>-statistic, can be used as a test of over-identifying moment conditions. </div>
+      <div class="Body_Text"><a name="189390">Under suitable regularity conditions, the GMM estimator is consistent and <img class="Default EquationGraphic" src="images/gmmiv.032.6.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 29px; top: 0.0pt" alt="" /> asymptotically normally distributed,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.021.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178383">The asymptotic covariance matrix <img class="Default EquationGraphic" src="images/gmmiv.032.6.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> of <img class="Default EquationGraphic" src="images/gmmiv.032.6.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 87px; top: 0.0pt" alt="" /> is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.024.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178389">for </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.025.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178400">where <img class="Default EquationGraphic" src="images/gmmiv.032.6.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is both the asymptotic variance of <img class="Default EquationGraphic" src="images/gmmiv.032.6.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 77px; top: 0.0pt" alt="" /> and the long-run covariance matrix of the vector process<img class="Default EquationGraphic" src="images/gmmiv.032.6.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 78px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="178407">In the leading case where the <img class="Default EquationGraphic" src="images/gmmiv.032.6.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 43px; top: 0.0pt" alt="" /> are the residuals from a linear specification so that <img class="Default EquationGraphic" src="images/gmmiv.032.6.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 135px; top: 0.0pt" alt="" />, the GMM objective function is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.031.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178418">and the GMM estimator yields the unique solution <img class="Default EquationGraphic" src="images/gmmiv.032.6.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 244px; top: 0.0pt" alt="" />. The asymptotic covariance matrix is given by </a><span class="Link"><a href="#178354" title="Generalized Method of Moments">Equation&nbsp;(23.27)</a></span>, with </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.033.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178426">It can be seen from this formation that both two-stage least squares and ordinary least squares estimation are both special cases of GMM estimation. The two-stage least squares objective is simply the GMM objective function multiplied by <img class="Default EquationGraphic" src="images/gmmiv.032.6.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> using weighting matrix <img class="Default EquationGraphic" src="images/gmmiv.032.6.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 141px; top: 0.0pt" alt="" />. Ordinary least squares is equivalent to two-stage least squares objective with the instruments set equal to the derivatives of <img class="Default EquationGraphic" src="images/gmmiv.032.6.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 43px; top: 0.0pt" alt="" />, which in the linear case are the regressors.</a></div>
+      <div class="Heading_4"><a name="178436">Choice of Weighting Matrix</a></div>
+      <div class="Body_Text"><a name="178437">An important aspect of specifying a GMM estimator is the choice of the weighting matrix, <img class="Default EquationGraphic" src="images/gmmiv.032.6.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 31px; top: 0.0pt" alt="" />. While any sequence of symmetric positive definite weighting matrices <img class="Default EquationGraphic" src="images/gmmiv.032.6.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 31px; top: 0.0pt" alt="" /> will yield a consistent estimate of <img class="Default EquationGraphic" src="images/gmmiv.032.6.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, </a><span class="Link"><a href="#178388" title="Generalized Method of Moments">Equation&nbsp;(23.29)</a></span> implies that the choice of <img class="Default EquationGraphic" src="images/gmmiv.032.6.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 31px; top: 0.0pt" alt="" /> affects the asymptotic variance of the GMM estimator. Hansen (1992) shows that an <span class="Definition">asymptotically efficient</span>, or <span class="Definition">optimal</span> GMM estimator of <img class="Default EquationGraphic" src="images/gmmiv.032.6.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> may be obtained by choosing <img class="Default EquationGraphic" src="images/gmmiv.032.6.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 31px; top: 0.0pt" alt="" /> so that it converges to the inverse of the long-run covariance matrix <img class="Default EquationGraphic" src="images/gmmiv.032.6.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.044.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178466">Intuitively, this result follows since we naturally want to assign less weight to the moment conditions that are measured imprecisely. For a GMM estimator with an optimal weighting matrix, the asymptotic covariance matrix of <img class="Default EquationGraphic" src="images/gmmiv.032.6.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 15px; top: 0.0pt" alt="" /> is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.046.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178477">Implementation of optimal GMM estimation requires that we obtain estimates of <img class="Default EquationGraphic" src="images/gmmiv.032.6.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 28px; top: 0.0pt" alt="" />. EViews offers four basic methods for specifying a weighting matrix:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="178478">Two-stage least squares</a></span>: the two-stage least squares weighting matrix is given by <img class="Default EquationGraphic" src="images/gmmiv.032.6.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 141px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/gmmiv.032.6.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> is an estimator of the residual variance based on an initial estimate of <img class="Default EquationGraphic" src="images/gmmiv.032.6.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. The estimator for the variance will be <img class="Default EquationGraphic" src="images/gmmiv.032.6.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 19px; top: 0.0pt" alt="" /> or the no d.f. corrected equivalent, depending on your settings for the coefficient covariance calculation.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="178488">White</a></span>: the White weighting matrix is a heteroskedasticity consistent estimator of the long-run covariance matrix of <img class="Default EquationGraphic" src="images/gmmiv.032.6.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 78px; top: 0.0pt" alt="" /> based on an initial estimate of <img class="Default EquationGraphic" src="images/gmmiv.032.6.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="178495">HAC - Newey-West</a></span>: the HAC weighting matrix is a heteroskedasticity and autocorrelation consistent estimator of the long-run covariance matrix of <img class="Default EquationGraphic" src="images/gmmiv.032.6.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 78px; top: 0.0pt" alt="" /> based on an initial estimate of <img class="Default EquationGraphic" src="images/gmmiv.032.6.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="178502">User-specified</a></span>: this method allows you to provide your own weighting matrix (specified as a sym matrix containing a scaled estimate of the long-run covariance <img class="Default EquationGraphic" src="images/gmmiv.032.6.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 69px; top: 0.0pt" alt="" />).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="178503">For related discussion of the </a><span class="Menu_Item">White</span> and <span class="Menu_Item">HAC - Newey West</span> robust standard error estimators, see <span class="Link"><a href="Regress2-Robust_Standard_Errors.html#265803" title="Robust Standard Errors">&#8220;Robust Standard Errors&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="178507">Weighting Matrix Iteration</a></div>
+      <div class="Body_Text"><a name="178508">As noted above, both the White and HAC weighting matrix estimators require an initial consistent estimate of <img class="Default EquationGraphic" src="images/gmmiv.032.6.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. (Technically, the two-stage least squares weighting matrix also requires an initial estimate of <img class="Default EquationGraphic" src="images/gmmiv.032.6.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, though these values are irrelevant since the resulting <img class="Default EquationGraphic" src="images/gmmiv.032.6.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> does not affect the resulting estimates).</a></div>
+      <div class="Body_Text"><a name="178515">Accordingly, computation of the optimal GMM estimator with White or HAC weights often employs a variant of the following procedure:</a></div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="178519">Calculate initial parameter estimates <img class="Default EquationGraphic" src="images/gmmiv.032.6.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" /> using TSLS</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="178526">Use the <img class="Default EquationGraphic" src="images/gmmiv.032.6.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" /> estimates to form residuals <img class="Default EquationGraphic" src="images/gmmiv.032.6.062.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 50px; top: 0.0pt" alt="" /></a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="178533">Form an estimate of the long-run covariance matrix of <img class="Default EquationGraphic" src="images/gmmiv.032.6.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 84px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/gmmiv.032.6.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 55px; top: 0.0pt" alt="" />, and use it to compute the optimal weighting matrix <img class="Default EquationGraphic" src="images/gmmiv.032.6.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 109px; top: 0.0pt" alt="" /></a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">4.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="178540">Minimize the GMM objective function with weighting matrix <img class="Default EquationGraphic" src="images/gmmiv.032.6.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 109px; top: 0.0pt" alt="" /></a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.067.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.35)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List_Continue"><a name="178549">with respect to <img class="Default EquationGraphic" src="images/gmmiv.032.6.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> to form updated parameter estimates. </a></div>
+      <div class="Body_Text"><a name="178553">We may generalize this procedure by repeating steps 2 through 4 using <img class="Default EquationGraphic" src="images/gmmiv.032.6.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> as our initial parameter estimates, producing updated estimates <img class="Default EquationGraphic" src="images/gmmiv.032.6.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" />. This iteration of weighting matrix and coefficient estimation may be performed a fixed number of times, or until the coefficients converge so that <img class="Default EquationGraphic" src="images/gmmiv.032.6.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 80px; top: 0.0pt" alt="" /> to a sufficient degree of precision.</a></div>
+      <div class="Body_Text"><a name="178560">An alternative approach due to Hansen, Heaton and Yaron (1996) notes that since the optimal weighting matrix is dependent on the parameters, we may rewrite the GMM objective function as</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.072.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178569">where the weighting matrix is a direct function of the <img class="Default EquationGraphic" src="images/gmmiv.032.6.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> being estimated. The estimator which minimizes </a><span class="Link"><a href="#178565" title="Generalized Method of Moments">Equation&nbsp;(23.36)</a></span> with respect to <img class="Default EquationGraphic" src="images/gmmiv.032.6.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> has been termed the <span class="Definition">Continuously Updated Estimator </span>(CUE).</div>
+      <div class="Heading_5"><a name="178576">Linear Equation Weight Updating</a></div>
+      <div class="Body_Text"><a name="178577">For equations that are linear in their coefficients, EViews offers three weighting matrix updating options: the </a><span class="Menu_Item">N-step Iterative</span>, the <span class="Menu_Item">Iterate to Convergence</span>, and the <span class="Menu_Item">Continuously Updating</span> method. </div>
+      <div class="Body_Text"><a name="178581">As the names suggests, the </a><span class="Menu_Item">N-Step Iterative</span> method repeats steps 2-5 above <img class="Default EquationGraphic" src="images/gmmiv.032.6.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> times, while the <span class="Menu_Item">Iterate to Convergence</span> repeats the steps until the parameter estimates converge. The <span class="Menu_Item">Continuously Updating</span> approach is based on <span class="Link"><a href="#178565" title="Generalized Method of Moments">Equation&nbsp;(23.36)</a></span>.</div>
+      <div class="Body_Text"><a name="178585">Somewhat confusingly, the </a><span class="Menu_Item">N-Step Iterative method</span> with a single weight step is sometimes referred to in the literature as the 2-step GMM estimator, the first step being defined as the initial TSLS estimation. EViews views this as a 1-step estimator since there is only a single optimal weight matrix computation.</div>
+      <div class="Heading_5"><a name="178586">Non-linear Equation Weight Updating</a></div>
+      <div class="Body_Text"><a name="178587">For equations that are non-linear in their coefficients, EViews offers five different updating algorithms: </a><span class="Menu_Item">Sequential N-Step Iterative</span>, <span class="Menu_Item">Sequential Iterate to Convergence</span>, <span class="Menu_Item">Simultaneous Iterate to Convergence</span>, <span class="Menu_Item">1-Step Weight Plus 1 Iteration</span>, and <span class="Menu_Item">Continuously Updating</span>. The methods for non-linear specifications are generally similar to their linear counterparts, with differences centering around the fact that the parameter estimates for a given weighting matrix in step 4 must now be calculated using a non-linear optimizer, which itself involves iteration.</div>
+      <div class="Body_Text"><a name="178591">All of the non-linear weighting matrix update methods begin with <img class="Default EquationGraphic" src="images/gmmiv.032.6.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" /> obtained from two-stage least squares estimation in which the coefficients have been iterated to convergence.</a></div>
+      <div class="Body_Text"><a name="178592">The </a><span class="Menu_Item">Sequential N-Step Iterative</span> procedure is analogous to the linear <span class="Menu_Item">N-Step Iterative</span> procedure outlined above, but with the non-linear optimization for the parameters in each step 4 iterated to convergence. Similarly, the <span class="Menu_Item">Sequential Iterate to Convergence</span> method follows the same approach as the <span class="Menu_Item">Sequential N-Step Iterative</span> method, with full non-linear optimization of the parameters in each step 4. </div>
+      <div class="Body_Text"><a name="178593">The </a><span class="Menu_Item">Simultaneous Iterate to Convergence</span> method differs from <span class="Menu_Item">Sequential Iterate to Convergence</span> in that only a single iteration of the non-linear optimizer, rather than iteration to convergence, is conducted in step 4. The iterations are therefore simultaneous in the sense that each weight iteration is paired with a coefficient iteration.</div>
+      <div class="Body_Text"><span class="Menu_Item"><a name="178594">1-Step Weight Plus 1 Iteration </a></span>performs a single weight iteration after the initial two-stage least squares estimates, and then a single iteration of the non-linear optimizer based on the updated weight matrix.</div>
+      <div class="Body_Text"><a name="178598">The </a><span class="Menu_Item">Continuously Updating</span> approach is again based on <span class="Link"><a href="#178565" title="Generalized Method of Moments">Equation&nbsp;(23.36)</a></span>.</div>
+      <div class="Heading_4"><a name="178599">Coefficient Covariance Calculation</a></div>
+      <div class="Body_Text"><a name="178600">Having estimated the coefficients of the model, all that is left is to specify a method of computing the coefficient covariance matrix. We will consider two basic approaches, one based on a family of estimators of the asymptotic covariance given in </a><span class="Link"><a href="#178388" title="Generalized Method of Moments">Equation&nbsp;(23.29)</a></span>, and a second, due to Windmeijer (2000, 2005), which employs a bias-corrected estimator which take into account the variation of the initial parameter estimates.</div>
+      <div class="Heading_5"><a name="178604">Conventional Estimators</a></div>
+      <div class="Body_Text"><a name="178608">Using </a><span class="Link"><a href="#178388" title="Generalized Method of Moments">Equation&nbsp;(23.29)</a></span> and inserting estimators and sample moments, we obtain an estimator for the asymptotic covariance matrix of <img class="Default EquationGraphic" src="images/gmmiv.032.6.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" />:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.078.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178617">where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.079.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.38)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178628">Notice that the estimator depends on both the final coefficient estimates <img class="Default EquationGraphic" src="images/gmmiv.032.6.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" /> and the <img class="Default EquationGraphic" src="images/gmmiv.032.6.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" /> used to form the estimation weighting matrix, as well as an additional estimate of the long-run covariance matrix <img class="Default EquationGraphic" src="images/gmmiv.032.6.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 23px; top: 0.0pt" alt="" />. For weight update methods which iterate the weights until the coefficients converge the two sets of coefficients will be identical.</a></div>
+      <div class="Body_Text"><a name="178632">EViews offers a number of different covariance specifications of this form, </a><span class="Menu_Item">Estimation default</span>, <span class="Menu_Item">Estimation updated</span>, <span class="Menu_Item">Two-stage Least Squares</span>, <span class="Menu_Item">White</span>, <span class="Menu_Item">HAC (Newey-West)</span>, <span class="Menu_Item">Windmeijer</span>, <span class="Menu_Item">Cluster-robust</span>, and <span class="Menu_Item">User defined</span>, each corresponding to a different estimator for <img class="Default EquationGraphic" src="images/gmmiv.032.6.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 23px; top: 0.0pt" alt="" />. </div>
+      <div class="Body_Text"><a name="178636">Of these, </a><span class="Menu_Item">Estimation default</span> and <span class="Menu_Item">Estimation update</span> are the most commonly employed coefficient covariance methods. Both methods compute <img class="Default EquationGraphic" src="images/gmmiv.032.6.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 23px; top: 0.0pt" alt="" /> using the estimation weighting matrix specification (<span class="Emphasis">i.e.</span> if <span class="Menu_Item">White</span> was chosen as the estimation weighting matrix, then <span class="Menu_Item">White</span> will also be used for estimating <img class="Default EquationGraphic" src="images/gmmiv.032.6.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 23px; top: 0.0pt" alt="" />).</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="178643">Estimation default</a></span> uses the previously computed estimate of the long-run covariance matrix to form <img class="Default EquationGraphic" src="images/gmmiv.032.6.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 105px; top: 0.0pt" alt="" />. The asymptotic covariance matrix simplifies considerably in this case so that <img class="Default EquationGraphic" src="images/gmmiv.032.6.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 105px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="178650">Estimation updated</a></span> performs one more step 3 in the iterative estimation procedure, computing an estimate of the long-run covariance using the final coefficient estimates to obtain <img class="Default EquationGraphic" src="images/gmmiv.032.6.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 105px; top: 0.0pt" alt="" />. Since this method relies on the iterative estimation procedure, it is not available for equations estimated by CUE.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="178654">In cases, where the weighting matrices are iterated to convergence, these two approaches will yield identical results.</a></div>
+      <div class="Body_Text"><a name="178661">The remaining specifications compute estimates of <img class="Default EquationGraphic" src="images/gmmiv.032.6.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 23px; top: 0.0pt" alt="" /> at the final parameters <img class="Default EquationGraphic" src="images/gmmiv.032.6.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" /> using the indicated long-run covariance method. You may use these methods to estimate your equation using one set of assumptions for the weighting matrix <img class="Default EquationGraphic" src="images/gmmiv.032.6.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 109px; top: 0.0pt" alt="" />, while you compute the coefficient covariance using a different set of assumptions for <img class="Default EquationGraphic" src="images/gmmiv.032.6.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 105px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="178668">The primary application for this mixed weighting approach is in computing robust standard errors. Suppose, for example, that you want to estimate your equation using TSLS weights, but with robust standard errors. Selecting </a><span class="Menu_Item">Two-stage least squares</span> for the estimation weighting matrix and <span class="Menu_Item">White </span>for the covariance calculation method will instruct EViews to compute TSLS estimates with White coefficient covariances and standard errors. Similarly, estimating with <span class="Menu_Item">Two-stage least squares</span> estimation weights and <span class="Menu_Item">HAC - Newey-West</span> covariance weights produces TSLS estimates with HAC coefficient covariances and standard errors.</div>
+      <div class="Body_Text"><a name="178669">Note that it is possible to choose combinations of estimation and covariance weights that, while reasonable, are not typically employed. You may, for example, elect to use White estimation weights with HAC covariance weights, or perhaps HAC estimation weights using one set of HAC options and HAC covariance weights with a different set of options. It is also possible, though not recommended, to construct odder pairings such as HAC estimation weights with TSLS covariance weights.</a></div>
+      <div class="Heading_5"><a name="178670">Windmeijer Estimator</a></div>
+      <div class="Body_Text"><a name="178671">Various Monte Carlo studies (</a><span class="Emphasis">e.g.</span> Arellano and Bond 1991) have shown that the above covariance estimators can produce standard errors that are downward biased in small samples. Windmeijer (2000, 2005) observes that part of this downward bias is due to extra variation caused by the initial weight matrix estimation being itself based on consistent estimates of the equation parameters.</div>
+      <div class="Body_Text"><a name="178672">Following this insight it is possible to calculate bias-corrected standard error estimates which take into account the variation of the initial parameter estimates. Windmeijer provides two forms of bias corrected standard errors; one for GMM models estimated in a one-step (one optimal GMM weighting matrix) procedure, and one for GMM models estimated using an iterate-to-convergence procedure. </a></div>
+      <div class="Body_Text"><a name="178673">The Windmeijer corrected variance-covariance matrix of the one-step estimator is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.093.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.39)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178678">where:</a></div>
+      <div class="List_Text"><a name="178682"><img class="Default EquationGraphic" src="images/gmmiv.032.6.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 78px; top: 0.0pt" alt="" />, the estimation default covariance estimator</a></div>
+      <div class="List_Text"><a name="178686"><img class="Default EquationGraphic" src="images/gmmiv.032.6.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 116px; top: 0.0pt" alt="" />, the updated weighting matrix (at final parameter estimates)</a></div>
+      <div class="List_Text"><a name="178693"><img class="Default EquationGraphic" src="images/gmmiv.032.6.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 117px; top: 0.0pt" alt="" />, the estimation updated covariance estimator where <img class="Default EquationGraphic" src="images/gmmiv.032.6.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 105px; top: 0.0pt" alt="" /></a></div>
+      <div class="List_Text"><a name="178697"><img class="Default EquationGraphic" src="images/gmmiv.032.6.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 116px; top: 0.0pt" alt="" />, the estimation weighting matrix (at initial parameter estimates)</a></div>
+      <div class="List_Text"><a name="178701"><img class="Default EquationGraphic" src="images/gmmiv.032.6.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 148px; top: 0.0pt" alt="" />, the initial weighting matrix</a></div>
+      <div class="List_Text"><a name="178705"><img class="Default EquationGraphic" src="images/gmmiv.032.6.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 147px; top: 0.0pt" alt="" /></a></div>
+      <div class="List_Text"><a name="178715"><img class="Default EquationGraphic" src="images/gmmiv.032.6.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 32px; top: 0.0pt" alt="" /> is a matrix whose <img class="Default EquationGraphic" src="images/gmmiv.032.6.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />th column is given by <img class="Default EquationGraphic" src="images/gmmiv.032.6.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 42px; top: 0.0pt" alt="" />:</a></div>
+      <div class="Multi-line_Eq_No_Number"><a name="178719"><img class="Default EquationGraphic" src="images/gmmiv.032.6.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 376px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="178720">The Windmeijer iterate-to-convergence variance-covariance matrix is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.105.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.40)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178725">where:</a></div>
+      <div class="List_Text"><a name="178729"><img class="Default EquationGraphic" src="images/gmmiv.032.6.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 235px; top: 0.0pt" alt="" />, the estimation default covariance estimator</a></div>
+      <div class="List_Text"><a name="178845"><img class="Default EquationGraphic" src="images/gmmiv.032.6.107.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 112px; top: 0.0pt" alt="" />, the GMM weighting matrix at converged parameter estimates</a></div>
+      <div class="Heading_4"><a name="178849">Weighted GMM</a></div>
+      <div class="Body_Text"><a name="178850">Weights may also be used in GMM estimation. The objective function for weighted GMM is,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.108.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.41)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178868">where <img class="Default EquationGraphic" src="images/gmmiv.032.6.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 24px; top: 0.0pt" alt="" /> is the long-run covariance of <img class="Default EquationGraphic" src="images/gmmiv.032.6.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 57px; top: 0.0pt" alt="" /> where we now use <img class="Default EquationGraphic" src="images/gmmiv.032.6.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> to indicate the diagonal matrix with observation weights <img class="Default EquationGraphic" src="images/gmmiv.032.6.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 29px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="178869">The default reported standard errors are based on the covariance matrix estimate given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.113.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.42)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178877">where <img class="Default EquationGraphic" src="images/gmmiv.032.6.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 85px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_4"><a name="178878">Estimation by GMM in EViews</a></div>
+      <div class="Body_Text"><a name="189215">To estimate an equation by GMM, either create a new equation object by selecting </a><span class="Menu_Item">Object/New Object.../Equation</span>, or press the <span class="Menu_Item">Estimate</span> button in the toolbar of an existing equation. From the <span class="Menu_Item">Equation Specification</span> dialog choose <span class="Dialog_Item">Estimation Method: GMM</span>. The estimation specification dialog will change as depicted below.</div>
+      <div class="Picture"><a name="189219"><img class="Default" src="images/gmmiv.032.6.115.jpg" width="100%" style="left: 0.0pt; max-height: 483px; max-width: 486px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189220">To obtain GMM estimates in EViews, you need to write the moment condition as an orthogonality condition between an expression including the parameters and a set of instrumental variables. There are two ways you can write the orthogonality condition: with and without a dependent variable. </a></div>
+      <div class="Body_Text"><a name="178741">If you specify the equation either by listing variable names or by an expression with an equal sign, EViews will interpret the moment condition as an orthogonality condition between the instruments and the residuals defined by the equation. If you specify the equation by an expression without an equal sign, EViews will orthogonalize that expression to the set of instruments. </a></div>
+      <div class="Body_Text"><a name="178742">You must also list the names of the instruments in the </a><span class="Dialog_Item">Instrument list</span> edit box. For the GMM estimator to be identified, there must be at least as many instrumental variables as there are parameters to estimate. EViews will, by default, add a constant to the instrument list. If you do not wish a constant to be added to the instrument list, the <span class="Menu_Item">Include a constant </span>check box should be unchecked.</div>
+      <div class="Body_Text"><a name="178743">For example, if you type,</a></div>
+      <div class="Command_Types"><a name="178744">Equation spec:	</a><span class="In-line_input">y c x</span></div>
+      <div class="Command_Types"><a name="178745">Instrument list:	</a><span class="In-line_input">c z w</span></div>
+      <div class="Body_Text"><a name="178746">the orthogonality conditions are given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.116.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.43)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="178751">If you enter the specification,</a></div>
+      <div class="Command_Types"><a name="178752">Equation spec:	</a><span class="In-line_input">c(1)*log(y)+x^c(2)</span></div>
+      <div class="Command_Types"><a name="178753">Instrument list:	</a><span class="In-line_input">c z z(-1)</span></div>
+      <div class="Body_Text"><a name="178754">the orthogonality conditions are:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/gmmiv.032.6.117.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(23.44)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="181238">Beneath the </a><span class="Menu_Item">Instrument list </span>box there are two dropdown menus that let you set the <span class="Menu_Item">Estimation weighting matrix</span> and the <span class="Menu_Item">Weight updating</span>. </div>
+      <div class="Body_Text"><a name="189141">The </a><span class="Menu_Item">Estimation weight matrix</span> dropdown specifies the type of GMM weighting matrix that will be used during estimation. You can choose from <span class="Menu_Item">Two-stage least squares</span>, <span class="Menu_Item">White</span>, <span class="Menu_Item">HAC (Newey-West)</span>, and <span class="Menu_Item">User-specified</span>. If you select <span class="Menu_Item">HAC (Newey West) </span>then a button appears that lets you set the weighting matrix computation options. If you select <span class="Menu_Item">Cluster-robust</span>, you will be prompted for a cluster series. If you select <span class="Menu_Item">User-specified </span>you must enter the name of a symmetric matrix in the workfile containing an estimate of the weighting matrix (long-run covariance) scaled by the number of observations <img class="Default EquationGraphic" src="images/gmmiv.032.6.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 69px; top: 0.0pt" alt="" />). Note that the matrix must have as many columns as the number of instruments specified.</div>
+      <div class="Body_Text"><a name="189323">The <img class="Default EquationGraphic" src="images/gmmiv.032.6.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 18px; top: 0.0pt" alt="" /> matrix can be retrieved from any equation estimated by GMM using the </a><span class="In-line_command">@instwgt</span> data member (see <span class="Link"><a href="equationcmd-Equation.html#178713" title="Equation">&#8220;Equation Data Members&#8221;</a></span>). <span class="In-line_command">@instwgt</span> returns <img class="Default EquationGraphic" src="images/gmmiv.032.6.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 18px; top: 0.0pt" alt="" /> which is an implicit estimator of the long-run covariance scaled by the number of observations. </div>
+      <div class="Body_Text"><a name="189331">For example, for GMM equations estimated using the </a><span class="Menu_Item">Two-stage least squares</span> weighting matrix, will contain <img class="Default EquationGraphic" src="images/gmmiv.032.6.121.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 62px; top: 0.0pt" alt="" /> (where the estimator for the variance will use <img class="Default EquationGraphic" src="images/gmmiv.032.6.122.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 19px; top: 0.0pt" alt="" /> or the no d.f. corrected equivalent, depending on your options for coefficient covariance calculation). Equations estimated with a <span class="Menu_Item">White</span> weighting matrix will return <img class="Default EquationGraphic" src="images/gmmiv.032.6.123.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 78px; top: 0.0pt" alt="" />. </div>
+      <div class="Body_Text"><a name="189347">Storing the user weighting matrix from one equation, and using it during the estimation of a second equation may prove useful when computing diagnostics that involve comparing </a><span class="In-line_math">J</span>-statistics between two different equations.</div>
+      <div class="Body_Text"><a name="178760">The </a><span class="Menu_Item">Weight updating </span>dropdown menu lets you set the estimation algorithm type. For linear equations, you can choose between <span class="Menu_Item">N-Step Iterative</span>, <span class="Menu_Item">Iterate to Convergence</span>, and <span class="Menu_Item">Continuously Updating</span>. For non-linear equations, the choice is between <span class="Menu_Item">Sequential N-Step Iterative</span>, <span class="Menu_Item">Sequential Iterate to Convergence</span>, <span class="Menu_Item">Simultaneous Iterate to Convergence,</span> <span class="Menu_Item">1-Step Weight Plus 1 Iteration</span>, and <span class="Menu_Item">Continuously Updating</span>.</div>
+      <div class="Body_Text"><a name="178761">To illustrate estimation of GMM models in EViews, we estimate the same Klein model introduced in </a><span class="Link"><a href="gmmiv-Limited_Information_Maximum_Likelihood_and_K-Cla.html#178247" title="Limited Information Maximum Likelihood and K-Class Estimation">&#8220;Estimating LIML and K-Class in EViews&#8221;</a></span>, as again replicated by Greene 2008 (p. 385). We again estimate the Consumption equation, where consumption (CONS) is regressed on a constant, private profits (Y), lagged private profits (Y(-1)), and wages (W) using data in &#8220;Klein.WF1&#8221;. The instruments are a constant, lagged corporate profits (P(-1)), lagged capital stock (K(-1)), lagged GNP (X(-1)), a time trend (TM), Government wages (WG), Government spending (G) and taxes (T). Greene uses the <span class="Menu_Item">White</span> weighting matrix, and an <span class="Menu_Item">N-Step Iterative</span> updating procedure, with <span class="Menu_Item">N</span> set to 2. The results of this estimation are shown below:</div>
+      <div class="Picture"><a name="178768"><img class="Default" src="images/gmmiv.032.6.124.jpg" width="100%" style="left: 0.0pt; max-height: 488px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="178769">The EViews output header shows a summary of the estimation type and settings, along with the instrument specification. Note that in this case the header shows that the equation was linear, with a 2 step iterative weighting update performed. It also shows that the weighing matrix type was White, and this weighting matrix was used for the covariance matrix, with no degree of freedom adjustment.</a></div>
+      <div class="Body_Text"><a name="178773">Following the header the standard coefficient estimates, standard errors, </a><span class="In-line_math">t</span>-statistics and associated <span class="In-line_math">p</span>-values are shown. Below that information are displayed the summary statistics. Apart from the standard statistics shown in an equation, the instrument rank (the number of linearly independent instruments used in estimation) is also shown (8 in this case), and the <span class="In-line_math">J</span>-statistic and associated <span class="In-line_math">p</span>-value is also shown.</div>
+      <div class="Body_Text"><a name="178780">As a second example, we also estimate the equation for Investment. Investment (I) is regressed on a constant, private profits (Y), lagged private profits (Y(-1)) and lagged capital stock (K-1)). The instruments are again a constant, lagged corporate profits (P(-1)), lagged capital stock (K(-1)), lagged GNP (X(-1)), a time trend (TM), Government wages (WG), Government spending (G) and taxes (T).</a></div>
+      <div class="Body_Text"><a name="179330">Unlike Greene, we will use a </a><span class="Menu_Item">HAC</span> weighting matrix, with pre-whitening (fixed at 1 lag), a Tukey-Hanning kernel with Andrews Automatic Bandwidth selection. We will also use the <span class="Menu_Item">Continuously Updating </span>weighting updating procedure. The output from this equation is show below:</div>
+      <div class="Picture"><a name="179334"><img class="Default" src="images/gmmiv.032.6.125.jpg" width="100%" style="left: 0.0pt; max-height: 518px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="179335">Note that the header information for this equation shows slightly different information from the previous estimation. The inclusion of the </a><span class="Menu_Item">HAC</span> weighting matrix yields information on the prewhitening choice (lags = 1), and on the kernel specification, including the bandwidth that was chosen by the Andrews procedure (2.1803). Since the <span class="Menu_Item">CUE</span> procedure is used, the number of optimization iterations that took place is reported (39).</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

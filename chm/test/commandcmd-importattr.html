@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>importattr</title>
+    <link rel="StyleSheet" href="css/commandcmd.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="commandcmd-import.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="commandcmd-importmat.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : Command Reference</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Command_Title_Box"><a name="2489445">&nbsp;</a></div>
+      <table class="Command_Heading" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 108pt">
+            <div class="Command_Name"><a name="2489439">importattr</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 252pt">
+            <div class="Command_Header"><span class="Command_Header_link"><a href="commandcmd-Command_Reference.html#2023547" title="Command Reference" name="2489444">Object Container, Data, and File Commands</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Description"><a name="2489446">Imports observation values stored inside one or more series in a second workfile page into the attribute fields of objects within the current workfile page.</a></div>
+      <div class="Command_Section"><a name="2489447">Syntax</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2489448">importattr</a></span><span class="Argument" style="font-weight: normal">(options) </span><span class="Argument_Opt" style="font-weight: normal">source_page</span><span class="Argument" style="font-weight: normal">  [</span><span class="Command_Summary">@keep</span><span class="Argument" style="font-weight: normal"> keeplist </span><span class="Command_Summary">@drop</span><span class="Argument" style="font-weight: normal"> droplist]</span></div>
+      <div class="Body_Text"><a name="2489449">The source page should contain one series whose values are the names of the objects into which the attributes should be imported, and one or more additional series containing the values of each attribute to be imported. By default, the procedure will assume there is an alpha series called NAME in the source page that contains the object names. The &#8220;name=&#8221; option can be used to specify that a different series in the source page contains the object names.</a></div>
+      <div class="Body_Text"><a name="2489450">Values in the name column will always be converted into legal EViews names before matching to object names in the current workfile. (For example, any spaces will be replaced by underscores.)</a></div>
+      <div class="Body_Text"><a name="2489451">Typically, the name of the series in the source workfile will be used as the attribute name inside the current workfile. However, if an object in the source workfile has a display name set, this value will be used for the attribute name instead. Display names must be used to specify attribute names if your attribute names contain spaces since spaces are not allowed within EViews object names.</a></div>
+      <div class="Body_Text"><a name="2489452">For numeric series, attribute values will be imported using the formatting currently set for the series spreadsheet view of the source series.</a></div>
+      <div class="Body_Text"><a name="2489453">By default, all series in the source page will be used as attribute values (except the series containing object names). To import only a subset of series as attributes, name patterns can be provided in the </a><span class="Command_Summary">@keep</span> and <span class="Command_Summary">@drop</span> arguments to restrict which series will be used.</div>
+      <div class="Body_Text"><span class="In-line_command"><a name="2489724">importattr</a></span> is most often useful when importing custom attributes from an external file. It is common for foreign data files, such as Excel files, to have one file (or sheet in Excel) containing the data, and a separate file (or sheet) containing the attributes, or meta-data, of each series. In such cases the <span class="In-line_command">pageload</span> command can be used to read in the attribute file as a separate page in your workfile, and then <span class="In-line_command">importattr</span> can be used to assign them to the data page.</div>
+      <div class="Command_Section"><a name="2489454">Options</a></div>
+      <div class="Table"><a name="2489464">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text"><a name="2489457">mode=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2489459">Specify how the procedure treats existing attribute values in the current workfile page. </a><span class="Argument">arg</span> may be "o" or "overwrite" (clears all existing attribute values in the object before applying the imported attribute value), &#8220;u&#8221; or &#8220;update&#8221; (clears existing attribute values only for the attributes that are being imported), &#8220;m&#8221; or &#8220;merge&#8221; (keeps existing values if the imported value of the attribute is empty), &#8220;md&#8221; (keeps all existing non-empty values. only empty values will be replaced with the imported values).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2503077">trim=</a><span class="Argument_Opt">string</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2503079">Remove </a><span class="Argument_Opt">string</span> from the start and end of the attribute name.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2489461">name=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2489463">Specify the name of the alpha series in the source page containing the names of objects in the target page.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Section"><a name="2489465">Examples</a></div>
+      <div class="Input"><a name="2489466">importattr(name=objnames) attributes @keep attr1 attr2</a></div>
+      <div class="Body_Text"><a name="2489467">Imports values from series ATTR1 and ATTR2 in the page &#8220;Attributes&#8221; into attributes &#8220;attr1&#8221; and &#8220;attr2&#8221; of objects in the current workfile. The series OBJNAMES in the page &#8220;Attributes&#8221; specifies which objects in the current workfile should have their attribute values updated.</a></div>
+      <div class="Input"><a name="2503172">importattr(name=objnames, trim=":") attributes @keep attr1 attr2</a></div>
+      <div class="Body_Text"><a name="2503202">removes the &#8220;:&#8221; from the start and end of the attribute name, if present, since EViews adds that character in the label view.</a></div>
+      <div class="Command_Section"><a name="2489468">Cross-references</a></div>
+      <div class="Body_Text"><a name="2503371">See </a><span class="Link"><a href="workfile-The_Workfile_Window.html#149555" title="The Workfile Window">&#8220;Workfile Details Display&#8221;</a></span> and <span class="Link"><a href="series-Label.html#132712" title="Label">&#8220;Label&#8221;</a></span>for a discussion of the workfile details display and, for example, the series object label view.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

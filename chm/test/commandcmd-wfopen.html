@@ -1,0 +1,1397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>wfopen</title>
+    <link rel="StyleSheet" href="css/commandcmd.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="commandcmd-wffilter.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="commandcmd-wforder.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="commandcmd-Command_Reference.html">Command Reference</a> : <a class="WebWorks_Breadcrumb_Link" href="#2872547">wfopen</a> : Examples : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Command_Title_Box"><a name="2872553">&nbsp;</a></div>
+      <table class="Command_Heading" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 108pt">
+            <div class="Command_Name"><a name="2872547">wfopen</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 252pt">
+            <div class="Command_Header"><span class="Command_Header_link"><a href="commandcmd-Command_Reference.html#2023547" title="Command Reference" name="2872552">Object Container, Data, and File Commands</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Description"><a name="2872555">Open a workfile. Reads in a previously saved workfile from disk, or reads the contents of a foreign data source into a new workfile.</a></div>
+      <div class="Body_Text"><a name="2872556">The opened workfile becomes the default workfile; existing workfiles in memory remain on the desktop but become inactive.</a></div>
+      <div class="Command_Section"><a name="2872557">Syntax</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872558">wfopen</a></span> <span class="Argument">[path\]source_name</span></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872559">wfopen</a></span><span class="Argument" style="font-weight: normal">(options) source_description [table_description] [variables_description]</span></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872560">wfopen</a></span><span class="Argument" style="font-weight: normal">(options) source_description [table_description] [dataset_modifiers] </span></div>
+      <div class="Body_Text"><a name="2872561">where </a><span class="Argument">path</span> is an optional local path or URL.</div>
+      <div class="Body_Text"><a name="2872562">There are three basic forms of the </a><span class="Command_Summary">wfopen</span> command: </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872566">the first form is used by EViews native (</a><span class="Link"><a href="#2872779" title="wfopen">&#8220;EViews and MicroTSP&#8221;</a></span>) and time series database formats (<span class="Link"><a href="#2872794" title="wfopen">&#8220;Time Series Formats&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872570">the second form used for raw data files&#8212;Excel, Lotus, ASCII text, and binary files (</a><span class="Link"><a href="#2872818" title="wfopen">&#8220;Raw Data Formats&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872574">the third form is used with the remaining source formats, which we term </a><span class="Definition">dataset formats,</span> since the data have already been arranged in named variables (<span class="Link"><a href="#2872947" title="wfopen">&#8220;Datasets&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2872581">(See </a><span class="Link"><a href="#2872594" title="wfopen">&#8220;Options&#8221;</a></span> for a description of the supported source formats and corresponding types.)</div>
+      <div class="Body_Text"><a name="2872582">In all three cases, the workfile or external data source should be specified as the first argument following the command keyword and options.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872583">In most cases, the external data source is a file, so the </a><span class="Argument">source_description</span> will be the description of the file (including local path or URL information, if necessary). Alternatively, the external data source may be the output from a web server, in which case the URL should be provided. Similarly, when reading from an ODBC query, the ODBC DSN (data source name) should be used as the <span class="Argument">source_description</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue"><a name="2872584">If the </a><span class="Argument">source_description</span> contains spaces, it must be enclosed in (double) quotes.</div>
+      <div class="Body_Text"><a name="2872585">For raw and dataset formats, you may use </a><span class="Argument">table_description</span> to provide additional information about the data to be read:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872586">Where there is more than one table that could be formed from the specified external data source, a </a><span class="Argument">table_description</span> may be provided to select the desired table. For example, when reading from an Excel file, an optional cell range may be provided to specify which data are to be read from the spreadsheet. When reading from an ODBC data source, a SQL query or table name must be used to specify the table of data to be read. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872587">In raw data formats, the </a><span class="Argument">table_description</span> allows you to provide additional information regarding names and descriptions for variables to be read, missing values codes, settings for automatic format, and data range subsetting.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872588">When working with text or binary files, the </a><span class="Argument">table_description</span> must be used to describe how to break up the file into columns and rows.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2872589">For raw and non-EViews dataset formats, you may use the </a><span class="Emphasis">dataset_modifiers</span> specification to select the set of variables, maps (value labels), and observations to be read from the source data. The <span class="Definition">dataset_modifiers</span> consists of the following keyword delimited lists:</div>
+      <div class="Command_Types"><span class="Argument"><a name="2872590">[</a></span><span class="Command_Summary">@keep</span> <span class="Argument">keep_list]</span> <span class="Argument">[</span><span class="Command_Summary">@drop</span> <span class="Argument">drop_list]</span> <span class="Argument">[</span><span class="Command_Summary">@keepmap</span> <span class="Argument">keepmap_list] [</span><span class="Command_Summary">@dropmap</span> <span class="Argument">dropmap_list]</span> <span class="Argument">[</span><span class="Command_Summary">@selectif</span> <span class="Argument">condition]</span></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872591">The </a><span class="Command_Summary">@keep</span> and <span class="Command_Summary">@drop</span> keywords, followed by a list of names and patterns, are used to specify variables to be retain or dropped. Similarly, the <span class="Command_Summary">@keepmap</span> and <span class="Command_Summary">@dropmap</span> keywords followed by lists of name patterns controls the reading of value labels. The keyword <span class="Command_Summary">@selectif</span>, followed by an if condition (e.g., &#8220;if age&gt;30 and gender=1&#8221;) may be used to select a subset of the observations in the original data. By default, all variables, value labels, and observations are read.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2872592">By default, all variables, maps and observations in the source file will be read.</a></div>
+      <div class="Command_Section"><a name="2872594">Options</a></div>
+      <div class="Table"><a name="2872617">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text"><a name="2872597">type=</a><span class="Argument_Opt">arg</span>, t=<span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2872599">Optional type specification: </a><span class="Emphasis_Table">(see table below)</span>.</div>
+            <div class="Table_Text"><a name="3088878">ODBC support is not provided in EViews Standard Edition.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872602">link</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872604">Link the object to the source data so that the values can be refreshed at a later time.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872606">wf=</a><span class="Argument_Opt">wf_name</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872608">Optional name for the new workfile.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872610">page=</a><span class="Argument_Opt">page_name</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872612">Optional name for the page in the new workfile.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872614">prompt</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872616">Force the dialog to appear from within a program.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2872618">For the most part, you should not need to specify a &#8220;type=&#8221; option as EViews will automatically determine the type from the filename.</a></div>
+      <div class="Body_Text"><a name="2872619">The following table summaries the various source formats and types, along with the corresponding &#8220;type=&#8221; keywords:</a></div>
+      <div class="Table"><a name="2872777">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 309.6pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 108pt">
+            <div class="Table_Text"><a name="2872622">&nbsp;</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 108pt">
+            <div class="Table_Text_Header"><a name="2872624">Source Type</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text_Header"><a name="2872626"> Option Keywords</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872628">Access</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872630">dataset</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872632">&#8220;access&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872634">Aremos-TSD</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872636">time series database</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872638">&#8220;a&#8221;, &#8220;aremos&#8221;, &#8220;tsd&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872640">Binary</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872642">raw data</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872644">&#8220;binary&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872646">dBASE</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872648">dataset</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872650">&#8220;dbase&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872652">Excel (through 2003)</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872654">raw data</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872656">&#8220;excel&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872658">Excel 2007 (xml)</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872660">raw data</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872662">&#8220;excelxml&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872664">EViews Workfile</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872666">native</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872668">---</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872670">Gauss Dataset</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872672">dataset</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872674">&#8220;gauss&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872676">GiveWin/PcGive</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872678">time series database</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872680">&#8220;g&#8221;, &#8220;give&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872682">HTML</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872684">raw data</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872686">&#8220;html&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872688">Lotus 1-2-3</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872690">raw data</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872692">&#8220;lotus&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872694">ODBC Dsn File</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872696">dataset</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872698">&#8220;dsn&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872700">ODBC Query File</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872702">dataset</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872704">&#8220;msquery&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872706">ODBC Data Source</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872708">dataset</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872710">&#8220;odbc&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872712">MicroTSP Workfile</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872714">native</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872716">&#8220;dos&#8221;, &#8220;microtsp&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872718">MicroTSP Mac Workfile</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872720">native</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872722">&#8220;mac&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872724">RATS 4.x</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872726">time series database</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872728">&#8220;r&#8221;, &#8220;rats&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872730">RATS Portable / TROLL</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872732">time series database</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872734">&#8220;l&#8221;, &#8220;trl&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872736">SAS Program</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872738">dataset</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872740">&#8220;sasprog&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872742">SAS Transport</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872744">dataset</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872746">&#8220;sasxport&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872748">SPSS</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872750">dataset</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872752">&#8220;spss&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872754">SPSS Portable</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872756">dataset</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872758">&#8220;spssport&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872760">Stata</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872762">dataset</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872764">&#8220;stata&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872766">Text / ASCII</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872768">raw data</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872770">&#8220;text&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2872772">TSP Portable</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872774">time series database</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2872776">&#8220;t&#8221;, &#8220;tsp&#8221;</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Section"><a name="2872779">EViews and MicroTSP</a></div>
+      <div class="Body_Text"><a name="2872780">The syntax for EViews and MicroTSP files is:</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872781">wfopen</a></span> <span class="Argument">[path\]workfile_name</span></div>
+      <div class="Body_Text"><a name="2872782">where </a><span class="Argument">path</span> is an option local path or URL.</div>
+      <div class="Heading_6"><a name="2872783">Examples</a></div>
+      <div class="Input"><a name="2872784">wfopen c:\data\macro</a></div>
+      <div class="Body_Text"><a name="2872785">loads a previously saved EViews workfile &#8220;Macro</a><span class="EViews_Name">.WF1&#8221;</span> from the &#8220;data<span class="EViews_Name">&#8221; </span>directory in the <span class="EViews_Name">C</span> drive.</div>
+      <div class="Input"><a name="2872786">wfopen c:\tsp\nipa.wf</a></div>
+      <div class="Body_Text"><a name="2872787">loads a MicroTSP workfile</a><span class="EViews_Name"> &#8220;</span>Nipa<span class="EViews_Name">.WF&#8221;</span>. If you do not use the workfile type option, you should add the extension &#8220;<span class="EViews_Name">.WF&#8221;</span> to the workfile name when loading a DOS MicroTSP workfile. An alternative method specifies the type explicitly:</div>
+      <div class="Input"><a name="2872788">wfopen(type=dos) nipa</a></div>
+      <div class="Body_Text"><a name="2872789">The command:</a></div>
+      <div class="Input"><a name="2872790">wfopen </a>"&lt;mydropboxdrive&gt;\folder\nipa.wf1"</div>
+      <div class="Command_Section" style="font-style: normal; font-variant: normal; text-transform: none; vertical-align: baseline"><span class="Body_Text"><a name="2872792">will open the file from the cloud location MYDROPBOXDRIVE.</a></span></div>
+      <div class="Command_Section"><a name="2872794">Time Series Formats</a></div>
+      <div class="Body_Text"><a name="2872795">The syntax for time series format files (Aremos-TSD, GiveWin/PcGive, RATS, RATS Portable/TROLL, TSP Portable) is:</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872796">wfopen</a></span><span class="Argument" style="font-weight: normal">(options)</span> <span class="Argument">[path\]source_name</span></div>
+      <div class="Body_Text"><a name="2872797">where </a><span class="Argument">path</span> is an optional local path or URL.</div>
+      <div class="Body_Text"><a name="2872798">If the source files contain data of multiple frequencies, the resulting workfile will be of the lowest frequency, and higher frequency data will be converted to this frequency. If you wish to obtain greater control over the workfile creation, import, or frequency conversion processes, we recommend that you open the file using </a><span class="In-line_command_link"><a href="commandcmd-dbopen.html#2485382" title="dbopen">dbopen</a></span> and use the database tools to create your workfile.</div>
+      <div class="Heading_6"><a name="2872802">Aremos Example</a></div>
+      <div class="Input"><a name="2872803">wfopen dlcs.tsd</a></div>
+      <div class="Input"><a name="2872804">wfopen(type=aremos) dlcs.tsd</a></div>
+      <div class="Body_Text"><a name="2872805">open the AREMOS-TSD file DLCS.</a></div>
+      <div class="Heading_6"><a name="2872806">GiveWin/PcGive Example</a></div>
+      <div class="Input"><a name="2872807">wfopen "f:\project\pc give\data\macrodata.in7"</a></div>
+      <div class="Input"><a name="2872808">wfopen(type=give) "f:\project\pc give\data\macrodata"</a></div>
+      <div class="Body_Text"><a name="2872809">open the PcGive file MACRODATA.</a></div>
+      <div class="Heading_6"><a name="2872810">Rats Examples</a></div>
+      <div class="Input"><a name="2872811">wfopen macrodata.rat"</a></div>
+      <div class="Input"><a name="2872812">wfopen macrodata.trl</a></div>
+      <div class="Body_Text"><a name="2872813">read the native RATS 4.x file MACRODATA.RAT and the RATS Portable/TROLL file &#8220;Macrodata.TRL&#8221;.</a></div>
+      <div class="Heading_6"><a name="2872814">TSP Portable Example</a></div>
+      <div class="Input"><a name="2872815">wfopen macrodata.tsp</a></div>
+      <div class="Body_Text"><a name="2872816">reads the TSP portable file &#8220;Macrodata.TSP&#8221;.</a></div>
+      <div class="Command_Section"><a name="2872818">Raw Data Formats</a></div>
+      <div class="Body_Text"><a name="2872819">The command for reading raw data (Excel 97-2003, Excel 2007, HTML, ASCII text, Binary, Lotus 1-2-3) is</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872820">wfopen</a></span><span class="Argument" style="font-weight: normal">(options) source_description [table_description] [variables_description] [</span><span class="Command_Summary">@keep</span> <span class="Argument">keep_list]</span> <span class="Argument">[</span><span class="Command_Summary">@drop</span> <span class="Argument">drop_list]</span> <span class="Argument">[</span><span class="Command_Summary">@keepmap</span> <span class="Argument">keepmap_list] [</span><span class="Command_Summary">@dropmap</span> <span class="Argument">dropmap_list]</span> <span class="Argument">[</span><span class="Command_Summary">@selectif</span> <span class="Argument">condition]</span></div>
+      <div class="Body_Text"><a name="2872821">where the syntax of the </a><span class="Argument">table_description</span> and <span class="Argument">variables_description </span>differs slightly depending on the type of file.</div>
+      <div class="Heading_5"><a name="2872822">Excel and Lotus Files</a></div>
+      <div class="Body_Text"><a name="2872823">The syntax for reading Excel and Lotus files is:</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872824">wfopen</a></span><span class="Argument" style="font-weight: normal">(options) source_description [table_description] [variables_description]</span></div>
+      <div class="Body_Text"><a name="2872825">The following </a><span class="Argument">table_description</span> elements may be used when reading Excel and Lotus data:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872826">&#8220;range = </a><span class="Argument">arg</span>&#8221;, where <span class="Argument">arg</span> is a range of cells to read from the Excel workbook, following the standard Excel format <span class="Argument">[worksheet</span>!<span class="Argument">][topleft_cell[:bottomright_cell]]</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue"><a name="2872827">If the worksheet name contains spaces, it should be placed in single quotes. If the worksheet name is omitted, the cell range is assumed to refer to the currently active sheet. If only a top left cell is provided, a bottom right cell will be chosen automatically to cover the range of non-empty cells adjacent to the specified top left cell. If only a sheet name is provided, the first set of non-empty cells in the top left corner of the chosen worksheet will be selected automatically. As an alternative to specifying an explicit range, a name which has been defined inside the excel workbook to refer to a range or cell may be used to specify the cells to read.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872828">&#8220;byrow&#8221;, transpose the incoming data. This option allows you to read files where the series are contained in rows (one row per series) rather than columns.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2872829">The optional </a><span class="Argument">variables_description</span> may be formed using the elements:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872830">&#8220;colhead=</a><span class="Argument">int</span>&#8221;, number of table rows to be treated as column headers.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872831">&#8220;namepos = [first|firstatt|last|lastatt|all|none|attonly|discard|custom]&#8221;, which row(s) of the column headers should be used to form the column name, and also how to use the rest. The setting &#8220;first&#8221; (or &#8220;last&#8221;) refers to the object name being in the first (or last) column header row, and all other rows as the object's description. Similarly, &#8220;firstatt&#8221; (or &#8220;lastatt&#8221;) will use the first (or last) row as the name field, but will use all others as a custom attribute. The setting &#8220;all&#8221; will concatenate all column header fields into the object's name. &#8220;none&#8221; will concatenate all column header fields into the object's description. &#8220;attonly&#8221; will save all column header fields into the object's custom attributes. &#8220;discard&#8221; will skip all header rows altogether, and &#8220;custom&#8221; will allow you to specify explicitly how to treat each column header row using the &#8220;colheadnames=&#8221; argument. The default setting is &#8220;all&#8221; if no &#8220;colheadnames=&#8221; is specified, otherwise &#8220;custom&#8221;.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872832">"colheadnames = ("arg1", "arg2")", required when &#8220;namepos=custom&#8221;. Specifies the name &amp; type of each column header row. &#8220;Name&#8221; will be mapped to the object name, &#8220;Description&#8221; to the object's description field, and the rest will be stored as custom object attributes. Any blank name will cause that column header row to be skipped.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872833">&#8220;nonames&#8221;, the file does not contain a column header (same as &#8220;colhead=0&#8221;).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872834">&#8220;names=("</a><span class="Argument">arg1</span>","<span class="Argument">arg2</span>",&#8230;)&#8221;, user specified column names, where <span class="Argument">arg1</span>, <span class="Argument">arg2</span>, &#8230; are names of the first series, the second series, <span class="Emphasis">etc</span>. when names are provided, these override any names that would otherwise be formed from the column headers.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872835">&#8220;descriptions=("</a><span class="Argument">arg1</span>","<span class="Argument">arg2</span>",&#8230;)&#8221;, user specified descriptions of the series. If descriptions are provided, these override any descriptions that would otherwise be read from the data.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872836">&#8220;types=("</a><span class="Argument">arg1</span>","<span class="Argument">arg2</span>",&#8230;)&#8221;, user specified data types of the series. If types are provided they will override the types automatically detected by EViews. You may use any of the following format keywords: &#8220;a&#8221; (character data), &#8220;f&#8221; (numeric data), &#8220;d&#8221; (dates), or &#8220;w&#8221; (EViews automatic detection). Note that the types appear without quotes: e.g., &#8220;types=(a,a,a)&#8221;. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872837">&#8220;na="</a><span class="Argument">arg1</span>"&#8221;, text used to represent observations that are missing from the file. The text should be enclosed on double quotes.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872838">&#8220;scan=[</a><span class="Argument">int</span>| <span class="Command_Summary">all</span>]&#8221;, number of rows of the table to scan during automatic format detection (&#8220;scan=all&#8221; scans the entire file). <span class="Emphasis">Note: If a &#8220;range=&#8221; argument is not specified, then EViews will only scan the first five rows of data to try and determine the data format for each column. Likewise, if the &#8220;na=&#8221; argument is not specified, EViews will also try to determine possible NA values by looking for repeated values in the same rows. If the first five rows are not enough to correctly determine the data format, use the &#8220;scan=&#8221; argument to instruct EViews to look at more rows. In addition, you may want to specify a the &#8220;na=&#8221; value to override any dynamic NA value that EViews may determine on its own.</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872839">&#8220;firstobs=</a><span class="Argument">int</span>&#8221;, first observation to be imported from the table of data (default is 1). This option may be used to start reading rows from partway through the table.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872840">&#8220;lastobs=</a><span class="Argument">int</span>&#8221;, last observation to be read from the table of data (default is last observation of the file). This option may be used to read only part of the file, which may be useful for testing.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="2872841">Excel Examples</a></div>
+      <div class="Input"><a name="2872842">wfopen "c:\data files\data.xls"</a></div>
+      <div class="Body_Text"><a name="2872843">loads the active sheet of DATA.XLS into a new workfile.</a></div>
+      <div class="Input"><a name="2872844">wfopen(page=mypage) "c:\data files\data.xls" range="GDP data" @drop X</a></div>
+      <div class="Body_Text"><a name="2872845">reads the data contained in the &#8220;GDP data&#8221; sheet of &#8220;Data.XLS&#8221; into the MYPAGE page of a new workfile. The data for the series X is dropped, and the name of the new workfile page is &#8220;GDP&#8221;. </a></div>
+      <div class="Body"><a name="2872846">&nbsp;</a></div>
+      <div class="Body_Text"><a name="2872847">To load the Excel file containing US Macro Quarterly data from Stock and Watson&#8217;s </a><span class="Manual_Titles">Introduction to Econometrics </span>you may use the command:</div>
+      <div class="Input"><a name="2872848">wfopen http//wps.aw.com/wps/media/objects/3254/3332253/datasets2e/datasets/USMacro_Quarterly.xls</a></div>
+      <div class="Body_Text"><a name="2872849">which will load the Excel file directly into EViews from the publisher&#8217;s website (as of 08/2009).</a></div>
+      <div class="Heading_5"><a name="2872850">HTML Files</a></div>
+      <div class="Body_Text"><a name="2872851">The syntax for reading HTML pages is:</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872852">wfopen</a></span><span class="Argument" style="font-weight: normal">(options) source_description [table_description] [variables_description]</span></div>
+      <div class="Body_Text"><a name="2872853">The following </a><span class="Argument">table_description</span> elements may be used when reading an HTML file or page:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872854">&#8220;table = </a><span class="Argument">arg</span>&#8221;, where <span class="Argument">arg</span> specifies which table to read in an HTML file/page containing multiple tables.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue"><a name="2872855">When specifying </a><span class="Argument">arg,</span> you should remember that tables are named automatically following the pattern &#8220;Table01&#8221;, &#8220;Table02&#8221;, &#8220;Table03&#8221;, <span class="Emphasis">etc</span>. If no table name is specified, the largest table found in the file will be chosen by default. Note that the table numbering may include trivial tables that are part of the HTML content of the file, but would not normally be considered as data tables by a person viewing the page.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872856">&#8220;skip = </a><span class="Emphasis">int</span>&#8221;, where <span class="Argument">int</span> is the number of rows to discard from the top of the HTML table.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872857">&#8220;byrow&#8221;, transpose the incoming data. This option allows you to import files where the series are contained in rows (one row per series) rather than columns.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2872858">The optional </a><span class="Argument">variables_description</span> may be formed using the elements:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872859">&#8220;colhead=</a><span class="Argument">int</span>&#8221;, number of table rows to be treated as column headers.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872860">&#8220;namepos = [first|firstatt|last|lastatt|all|none|attonly|discard|custom]&#8221;, which row(s) of the column headers should be used to form the column name, and also how to use the rest. The setting &#8220;first&#8221; (or &#8220;last&#8221;) refers to the object name being in the first (or last) column header row, and all other rows as the object's description. Similarly, &#8220;firstatt&#8221; (or &#8220;lastatt&#8221;) will use the first (or last) row as the name field, but will use all others as a custom attribute. The setting &#8220;all&#8221; will concatenate all column header fields into the object's name. &#8220;none&#8221; will concatenate all column header fields into the object's description. &#8220;attonly&#8221; will save all column header fields into the object's custom attributes. &#8220;discard&#8221; will skip all header rows altogether, and &#8220;custom&#8221; will allow you to specify explicitly how to treat each column header row using the &#8220;colheadnames=&#8221; argument. The default setting is &#8220;all&#8221; if no &#8220;colheadnames=&#8221; is specified, otherwise &#8220;custom&#8221;.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872861">"colheadnames = ("arg1", "arg2")", required when &#8220;namepos=custom&#8221;. Specifies the name &amp; type of each column header row. &#8220;Name&#8221; will be mapped to the object name, &#8220;Description&#8221; to the object's description field, and the rest will be stored as custom object attributes. Any blank name will cause that column header row to be skipped.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872862">&#8220;nonames&#8221;, the file does not contain a column header (same as &#8220;colhead=0&#8221;).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872863">&#8220;names=("</a><span class="Argument">arg1</span>","<span class="Argument">arg2</span>",&#8230;)&#8221;, user specified column names, where <span class="Argument">arg1</span>, <span class="Argument">arg2</span>, &#8230; are names of the first series, the second series, <span class="Emphasis">etc</span>. when names are provided, these override any names that would otherwise be formed from the column headers.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872864">&#8220;descriptions=("</a><span class="Argument">arg1</span>","<span class="Argument">arg2</span>",&#8230;)&#8221;, user specified descriptions of the series. If descriptions are provided, these override any descriptions that would otherwise be read from the data.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872865">&#8220;types=("</a><span class="Argument">arg1</span>","<span class="Argument">arg2</span>",&#8230;)&#8221;, user specified data types of the series. If types are provided they will override the types automatically detected by EViews. You may use any of the following format keywords: &#8220;a&#8221; (character data), &#8220;f&#8221; (numeric data), &#8220;d&#8221; (dates), or &#8220;w&#8221;(EViews automatic detection). Note that the types appear without quotes: e.g., &#8220;types=(a,a,a)&#8221;. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872866">&#8220;na="</a><span class="Argument">arg1</span>"&#8221;, text used to represent observations that are missing from the file. The text should be enclosed on double quotes.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872867">&#8220;scan=[</a><span class="Argument">int</span>|<span class="Command_Summary">all</span>]&#8221;, number of rows of the table to scan during automatic format detection (&#8220;scan=all&#8221; scans the entire file). <span class="Emphasis">Note: If a "range=" argument is not specified, then EViews will only scan the first five rows of data to try and determine the data format for each column. Likewise, if the "na=" argument is not specified, EViews will also try to determine possible NA values by looking for repeated values in the same rows. If the first five rows are not enough to correctly determine the data format, use the "scan=" argument to instruct EViews to look at more rows. In addition, you may want to specify a the "na=" value to override any dynamic NA value that EViews may determine on its own.</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872868">&#8220;firstobs=</a><span class="Argument">int</span>&#8221;, first observation to be imported from the table of data (default is 1). This option may be used to start reading rows from partway through the table.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872869">&#8220;lastobs = </a><span class="Argument">int</span>&#8221;, last observation to be read from the table of data (default is last observation of the file). This option may be used to read only part of the file, which may be useful for testing.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="2872870">HTML Examples</a></div>
+      <div class="Input"><a name="2872871">wfopen "c:\data.html"</a></div>
+      <div class="Body_Text"><a name="2872872">loads into a new workfile the data located on the HTML file &#8220;Data.HTML&#8221; located on the C:\ drive</a></div>
+      <div class="Input"><a name="2872873">wfopen(type=html) "http://www.tradingroom.com.au/apps/mkt/forex.ac" colhead=3, namepos=first</a></div>
+      <div class="Body_Text"><a name="2872874">loads into a new workfile the data with the given URL located on the website site &#8220;http://www.tradingroom.com.au&#8221;. The column header is set to three rows, with the first row used as names for columns, and the remaining two lines used to form the descriptions.</a></div>
+      <div class="Heading_5"><a name="2872875">Text and Binary Files</a></div>
+      <div class="Body_Text"><a name="2872876">The syntax for reading text or binary files is:</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872877">wfopen</a></span><span class="Argument" style="font-weight: normal">(options) source_description [table_description] [variables_description]</span></div>
+      <div class="Body_Text"><a name="2872878">If a </a><span class="Argument">table_description</span> is not provided, EViews will attempt to read the file as a free-format text file. The following <span class="Argument">table_description</span> elements may be used when reading a text or binary file:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872879">&#8220;ftype = [ascii|binary]&#8221; specifies whether numbers and dates in the file are stored in a human readable text (ASCII), or machine readable (Binary) form. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872880">&#8220;rectype = [crlf|fixed|streamed]&#8221; describes the record structure of the file: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Annotate_Input"><a name="2872881">&#8220;crlf&#8221;, each row in the output table is formed using a fixed number of lines from the file (where lines are separated by carriage return/line feed sequences). This is the default setting.</a></div>
+      <div class="Annotate_Input"><a name="2872882">&#8220;fixed&#8221;, each row in the output table is formed using a fixed number of characters from the file (specified in &#8220;reclen= </a><span class="Argument">arg</span>&#8221;). This setting is typically used for files that contain no line breaks.</div>
+      <div class="Annotate_Input"><a name="2872883">&#8220;streamed&#8221;, each row in the output table is formed by reading a fixed number of fields, skipping across lines if necessary. This option is typically used for files that contain line breaks, but where the line breaks are not relevant to how rows from the data should be formed.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872884">&#8220;reclines =</a><span class="Argument">int</span>&#8221;, number of lines to use in forming each row when &#8220;rectype=crlf&#8221; (default is 1).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872885">&#8220;reclen=</a><span class="Argument">int</span>&#8221;, number of bytes to use in forming each row when &#8220;rectype=fixed&#8221;.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872886">&#8220;recfields=</a><span class="Argument">int</span>&#8221;, number of fields to use in forming each row when &#8220;rectype=streamed&#8221;.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872887">&#8220;skip=</a><span class="Argument">int</span>&#8221;, number of lines (if rectype is &#8220;crlf&#8221;) or bytes (if rectype is not &#8220;crlf&#8221;) to discard from the top of the file.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872888">&#8220;comment=</a><span class="Argument">string</span>&#8220;, where <span class="Argument">string</span> is a double-quoted string, specifies one or more characters to treat as a comment indicator. When a comment indicator is found, everything on the line to the right of where the comment indicator starts is ignored.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872889">&#8220;emptylines=[keep|drop]&#8221;, specifies whether empty lines should be ignored (&#8220;drop&#8221;), or treated as valid lines (&#8220;keep&#8221;) containing missing values. The default is to ignore empty lines.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872890">&#8220;tabwidth=</a><span class="Argument">int</span>&#8221;, specifies the number of characters between tab stops when tabs are being replaced by spaces (default=8). Note that tabs are automatically replaced by spaces whenever they are not being treated as a field delimiter.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872891">&#8220;fieldtype=[delim|fixed|streamed|undivided]&#8221;, specifies the structure of fields within a record:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Annotate_Input"><a name="2872892">&#8220;Delim&#8221;, fields are separated by one or more delimiter characters</a></div>
+      <div class="Annotate_Input"><a name="2872893">&#8220;Fixed&#8221;, each field is a fixed number of characters</a></div>
+      <div class="Annotate_Input"><a name="2872894">&#8220;Streamed&#8221;, fields are read from left to right, with each field starting immediately after the previous field ends. </a></div>
+      <div class="Annotate_Input"><a name="2872895">&#8220;Undivided&#8221;, read entire record as a single series.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872896">&#8220;quotes=[single|double|both|none]&#8221;, specifies the character used for quoting fields, where &#8220;single&#8221; is the apostrophe, &#8220;double&#8221; is the double quote character, and &#8220;both&#8221; means that either single or double quotes are allowed (default is &#8220;both&#8221;). Characters contained within quotes are never treated as delimiters.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872897">&#8220;singlequote&#8220;, same as &#8220;quotes = single&#8221;.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872898">&#8220;delim=[comma|tab|space|dblspace|white|dblwhite]&#8221;, specifies the character(s) to treat as a delimiter. &#8220;White&#8221; means that either a tab or a space is a valid delimiter. You may also use the abbreviation &#8220;d=&#8221; in place of &#8220;delim=&#8221;.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872899">&#8220;custom="</a><span class="Argument">arg1</span>"&#8221;, specifies custom delimiter characters in the double quoted string. Use the character &#8220;t&#8221; for tab, &#8220;s&#8221; for space and &#8220;a&#8221; for any character.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872900">&#8220;mult=[on|off]&#8221;, to treat multiple delimiters as one. Default value is &#8220;on&#8221; if &#8220;delim&#8221; is &#8220;space&#8221;, &#8220;dblspace&#8221;, &#8220;white&#8221;, or &#8220;dblwhite&#8221;, and &#8220;off&#8221; otherwise.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872901">&#8220;endian = [big|little]&#8221;, selects the endianness of numeric fields contained in binary files.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872902">&#8220;string = [nullterm|nullpad|spacepad]&#8221;, specifies how strings are stored in binary files. If &#8220;nullterm&#8221;, strings shorter than the field width are terminated with a single zero character. If &#8220;nullpad&#8221;, strings shorter than the field width are followed by extra zero characters up to the field width. If &#8220;spacepad&#8221;, strings shorter than the field width are followed by extra space characters up to the field width.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872903">&#8220;byrow&#8221;, transpose the incoming data. This option allows you to import files where the series are contained in rows (one row per series) rather than columns.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872904">&#8220;lastcol&#8221;, include implied last column. For lines that end with a delimiter, this option adds an additional column. When importing a CSV file, lines which have the delimiter as the last character (for example: &#8220;name, description, date&#8221;), EViews normally determines the line to have 3 columns. With the above option, EViews will determine the line to have 4 columns. Note this is not the same as a line containing &#8220;name, description, date&#8221;. In this case, EViews will always determine the line to have 3 columns regardless if the option is set.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2872905">A central component of the </a><span class="Definition">table_description</span> element is the format statement. You may specify the data format using the following table descriptors:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872907">Fortran Format: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Annotate_Input"><a name="2872908">fformat=(</a><span class="Argument">[n1]Type[Width][.Precision]</span>, <span class="Argument">[n2]Type[Width][.Precision]</span>, ...)</div>
+      <div class="List_Continue"><a name="2872909">where </a><span class="Argument">Type</span> specifies the underlying data type, and may be one of the following,</div>
+      <div class="Annotate_Input"><a name="2872910">I - integer</a></div>
+      <div class="Annotate_Input"><a name="2872911">F - fixed precision</a></div>
+      <div class="Annotate_Input"><a name="2872912">E - scientific</a></div>
+      <div class="Annotate_Input"><a name="2872913">A - alphanumeric</a></div>
+      <div class="Annotate_Input"><a name="2872914">X - skip </a></div>
+      <div class="List_Continue"><a name="2872915">and </a><span class="Argument">n1</span>, <span class="Argument">n2</span>, ... are the number of times to read using the descriptor (<span class="Argument">default</span>=1). More complicated Fortran compatible variations on this format are possible.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872917">Column Range Format: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Annotate_Input"><a name="2872918">rformat="</a><span class="Argument">[n1]Type[Width][.Precision]</span>, <span class="Argument">[n2]Type[Width][.Precision]</span>, ...)"</div>
+      <div class="List_Continue"><a name="2872919">where optional type is &#8220;$&#8221; for string or &#8220;#&#8221; for number, and </a><span class="Argument">n1</span>, <span class="Argument">n2</span>, <span class="Argument">n3</span>, <span class="Argument">n4</span>, <span class="Emphasis">etc</span>. are the range of columns containing the data.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872920">C printf/scanf Format: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Annotate_Input"><a name="2872921">cformat="</a><span class="Argument">fmt</span>"</div>
+      <div class="List_Continue"><a name="2872922">where </a><span class="Argument">fmt</span> follows standard C language (printf/scanf) format rules.</div>
+      <div class="Body_Text"><a name="2872923">The optional </a><span class="Argument">variables_description</span> may be formed using the elements:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872924">&#8220;colhead=</a><span class="Argument">int</span>&#8221;, number of table rows to be treated as column headers.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872925">&#8220;namepos = [first|firstatt|last|lastatt|all|none|attonly|discard|custom]&#8221;, which row(s) of the column headers should be used to form the column name, and also how to use the rest. The setting &#8220;first&#8221; (or &#8220;last&#8221;) refers to the object name being in the first (or last) column header row, and all other rows as the object's description. Similarly, &#8220;firstatt&#8221; (or &#8220;lastatt&#8221;) will use the first (or last) row as the name field, but will use all others as a custom attribute. The setting &#8220;all&#8221; will concatenate all column header fields into the object's name. &#8220;none&#8221; will concatenate all column header fields into the object's description. &#8220;attonly&#8221; will save all column header fields into the object's custom attributes. &#8220;discard&#8221; will skip all header rows altogether, and &#8220;custom&#8221; will allow you to specify explicitly how to treat each column header row using the &#8220;colheadnames=&#8221; argument. The default setting is &#8220;all&#8221; if no &#8220;colheadnames=&#8221; is specified, otherwise &#8220;custom&#8221;.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872926">"colheadnames = ("arg1", "arg2")", required when &#8220;namepos=custom&#8221;. Specifies the name &amp; type of each column header row. &#8220;Name&#8221; will be mapped to the object name, &#8220;Description&#8221; to the object's description field, and the rest will be stored as custom object attributes. Any blank name will cause that column header row to be skipped.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872927">&#8220;nonames&#8221;, the file does not contain a column header (same as &#8220;colhead=0&#8221;).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872928">&#8220;names=("</a><span class="Argument">arg1</span>", "<span class="Argument">arg2</span>",&#8230;)&#8221;, user specified column names, where <span class="Argument">arg1</span>, <span class="Argument">arg2</span>, &#8230; are names of the first series, the second series, <span class="Emphasis">etc</span>. when names are provided, these override any names that would otherwise be formed from the column headers.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872929">&#8220;descriptions=("</a><span class="Argument">arg1</span>", "<span class="Argument">arg2</span>",&#8230;)&#8221;, user specified descriptions of the series. If descriptions are provided, these override any descriptions that would otherwise be read from the data.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872930">&#8220;types=("</a><span class="Argument">arg1</span>","<span class="Argument">arg2</span>",&#8230;)&#8221;, user specified data types of the series. If types are provided they will override the types automatically detected by EViews. You may use any of the following format keywords: &#8220;a&#8221; (character data), &#8220;f&#8221; (numeric data), &#8220;d&#8221; (dates), or &#8220;w&#8221; (EViews automatic detection). Note that the types appear without quotes: e.g., &#8220;types=(a,a,a)&#8221;. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872931">&#8220;na="</a><span class="Argument">arg1</span>"&#8221;, text used to represent observations that are missing from the file. The text should be enclosed on double quotes.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872932">&#8220;scan=[</a><span class="Argument">int</span>|<span class="Command_Summary">all</span>]&#8221;, number of rows of the table to scan during automatic format detection (&#8220;scan=all&#8221; scans the entire file). <span class="Emphasis">Note: If a &#8220;range=&#8221; argument is not specified, then EViews will only scan the first five rows of data to try and determine the data format for each column. Likewise, if the &#8220;na=&#8221; argument is not specified, EViews will also try to determine possible NA values by looking for repeated values in the same rows. If the first five rows are not enough to correctly determine the data format, use the &#8220;scan=&#8221; argument to instruct EViews to look at more rows. In addition, you may want to specify a the &#8220;na=&#8221; value to override any dynamic NA value that EViews may determine on its own.</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872933">&#8220;firstobs=</a><span class="Argument">int</span>&#8221;, first observation to be imported from the table of data (default is 1). This option may be used to start reading rows from partway through the table.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2872934">&#8220;lastobs = </a><span class="Argument">int</span>&#8221;, last observation to be read from the table of data (default is last observation of the file). This option may be used to read only part of the file, which may be useful for testing.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="2872935">Text and Binary File Examples (.txt, .csv, etc.)</a></div>
+      <div class="Input"><a name="2872936">wfopen c:\data.csv skip=5, names=(gdp, inv, cons)</a></div>
+      <div class="Body_Text"><a name="2872937">reads &#8220;Data.CSV&#8221; into a new workfile page, skipping the first 5 rows and naming the series GDP, INV, and CONS.</a></div>
+      <div class="Input"><a name="2872938">wfopen(type=text) c:\date.txt delim=comma</a></div>
+      <div class="Body_Text"><a name="2872939">loads the comma delimited data DATE.TXT into a new workfile.</a></div>
+      <div class="Input"><a name="2872940">wfopen(type=raw) c:\data.txt skip=8, rectype=fixed, format=(F10,X23,A4)</a></div>
+      <div class="Body_Text"><a name="2872941">loads a text file with fixed length data into a new workfile, skipping the first 8 rows. The reading is done as follows: read the first 10 characters as a fixed precision number, after that, skip the next 23 characters (X23), and then read the next 4 characters as strings (A4).</a></div>
+      <div class="Input"><a name="2872942">wfopen(type=raw) c:\data.txt rectype=fixed, format=2(4F8,2I2)</a></div>
+      <div class="Body_Text"><a name="2872943">loads the text file as a workfile using the specified explicit format. The data will be a repeat of four fixed precision numbers of length 8 and two integers of length 2. This is the same description as &#8220;format=(F8,F8,F8,F8,I2,I2,F8,F8,F8,F8,I2,I2)&#8221;.</a></div>
+      <div class="Input"><a name="2872944">wfopen(type=raw) c:\data.txt rectype=fixed, rformat="GDP 1-2 INV 3 CONS 6-9"</a></div>
+      <div class="Body_Text"><a name="2872945">loads the text file as a workfile using column range syntax. The reading is done as follows: the first series is located at the first and second character of each row, the second series occupies the 3rd character, the third series is located at character 6 through 9. The series will named GDP, INV, and CONS.</a></div>
+      <div class="Command_Section"><a name="2872947">Datasets</a></div>
+      <div class="Body_Text"><a name="2872948">The syntax for reading data from the remaining sources (Access, Gauss, ODBC, SAS program, SAS transport, SPSS, SPSS portable, Stata) is:</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872949">wfopen</a></span><span class="Argument" style="font-weight: normal">(options) source_description table_description [</span><span class="Command_Summary">@keep</span> <span class="Argument">keep_list]</span> <span class="Argument">[</span><span class="Command_Summary">@drop</span> <span class="Argument">drop_list]</span> <span class="Argument">[</span><span class="Command_Summary">@selectif</span> <span class="Argument">condition]</span></div>
+      <div class="Body_Text"><a name="2872950">Note that for this purpose we view Access and ODBC as datasets.</a></div>
+      <div class="Heading_5"><a name="2872951">ODBC or Microsoft Access</a></div>
+      <div class="Body_Text"><a name="2872952">The syntax for reading from an ODBC or Microsoft Access data source is</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872953">wfopen</a></span><span class="Argument" style="font-weight: normal">(options) source_description table_description [</span><span class="Command_Summary">@keep</span> <span class="Argument">keep_list]</span> <span class="Argument">[</span><span class="Command_Summary">@drop</span> <span class="Argument">drop_list]</span> <span class="Argument">[</span><span class="Command_Summary">@selectif</span> <span class="Argument">condition]</span></div>
+      <div class="Body_Text"><a name="2872954">When reading from an ODBC or Microsoft Access data source, you must provide a </a><span class="Argument">table_description</span> to indicate the table of data to be read. You may provide this information in one of two ways: by entering the name of a table in the data source, or by including an SQL query statement enclosed in double quotes.</div>
+      <div class="Body_Text"><a name="3088896">ODBC support is not provided in EViews Standard Edition.</a></div>
+      <div class="Heading_6"><a name="2872956">ODBC Examples</a></div>
+      <div class="Input"><a name="2872957">wfopen c:\data.dsn CustomerTable</a></div>
+      <div class="Body_Text"><a name="2872958">opens in a new workfile the table named CUSTOMERTABLE from the ODBC database described in the DATA.DSN file.</a></div>
+      <div class="Input"><a name="2872959">wfopen(type=odbc) "my server" "select * from customers where id&gt;30" @keep p*</a></div>
+      <div class="Body_Text"><a name="2872960">opens in a new workfile with SQL query from database using the server &#8220;MY SERVER&#8221;, keeping only variables that begin with P. The query selects all variables from the table CUSTOMERS where the ID variable takes a value greater than 30.</a></div>
+      <div class="Heading_5"><a name="2872961">Other Dataset Types</a></div>
+      <div class="Body_Text"><a name="2872962">The syntax for reading data from the remaining sources (Gauss, SAS program, SAS transport, SPSS, SPSS portable, Stata) is:</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2872963">wfopen</a></span><span class="Argument" style="font-weight: normal">(options) source_description [</span><span class="Command_Summary">@keep</span> <span class="Argument">keep_list]</span> <span class="Argument">[</span><span class="Command_Summary">@drop</span> <span class="Argument">drop_list]</span> <span class="Argument">[</span><span class="Command_Summary">@selectif</span> <span class="Argument">condition]</span></div>
+      <div class="Body_Text"><a name="2872964">Note that no </a><span class="Argument">table_description</span> is required.</div>
+      <div class="Heading_6"><a name="2872965">SAS Program Example</a></div>
+      <div class="Body_Text"><a name="2872966">If a data file, &#8220;Sales.DAT&#8221;, contains the following space delimited data:</a></div>
+      <div class="Program_Syntax"><a name="2872967">AZ 110 1002</a></div>
+      <div class="Program_Syntax"><a name="2872968">CA 200 2003</a></div>
+      <div class="Program_Syntax"><a name="2872969">NM 90 908</a></div>
+      <div class="Program_Syntax"><a name="2872970">OR 120 708</a></div>
+      <div class="Program_Syntax"><a name="2872971">WA 113 1123</a></div>
+      <div class="Program_Syntax"><a name="2872972">UT 98 987</a></div>
+      <div class="Body_Text"><a name="2872973">then the following SAS program file can be read by EViews to open the data:</a></div>
+      <div class="Multi-line_Input"><a name="2872974">Data sales;</a></div>
+      <div class="Multi-line_Input"><a name="2872975">	infile sales.dat';</a></div>
+      <div class="Multi-line_Input"><a name="2872976">	input state $ price sales;</a></div>
+      <div class="Multi-line_Input"><a name="2872977">run;</a></div>
+      <div class="Heading_6"><a name="2872978">SAS Transport Examples</a></div>
+      <div class="Input"><a name="2872979">wfopen(type=sasxport) c:\data.xpt</a></div>
+      <div class="Body_Text"><a name="2872980">loads a SAS transport file &#8220;data.XPT&#8221; into a new workfile.</a></div>
+      <div class="Input"><a name="2872981">wfopen c:\inst.sas</a></div>
+      <div class="Body_Text"><a name="2872982">creates a workfile by reading from external data using the SAS program statements in &#8220;Inst.SAS&#8221;. The program may contain a limited set of SAS statements which are commonly used in reading in a data file. </a></div>
+      <div class="Heading_6"><a name="2872983">Stata Examples</a></div>
+      <div class="Body_Text"><a name="2872984">To load a Stata file &#8220;Data.DTA&#8221; into a new workfile, dropping maps MAP1 and MAP2, you may enter:</a></div>
+      <div class="Input"><a name="2872985">wfopen c:\data.dta @dropmap map1 map2 </a></div>
+      <div class="Body_Text"><a name="2872986">To download the sports cards dataset from Stock and Watson&#8217;s </a><span class="Manual_Titles">Introduction to Econometrics </span>you may use the command:</div>
+      <div class="Input"><a name="2872987">wfopen http://wps.aw.com/wps/media/objects/3254/3332253/datasets2e/datasets/Sportscards.dta</a></div>
+      <div class="Body_Text"><a name="2872988">which will load the Stata dataset directly into EViews from the publisher&#8217;s website (as of 08/2009).</a></div>
+      <div class="Command_Section"><a name="2872989">Cross-references</a></div>
+      <div class="Body_Text"><a name="2872996">See </a><span class="Link"><a href="workfile-Workfile_Basics.html#113414" title="Workfile Basics">&#8220;Workfile Basics&#8221;</a></span> for a discussion of workfiles. </div>
+      <div class="Body_Text"><a name="2873011">See also </a><span class="In-line_command_link"><a href="commandcmd-pageload.html#2872489" title="pageload">pageload</a></span>, <span class="In-line_command_link"><a href="commandcmd-read.html#2020991" title="read">read</a></span>, <span class="In-line_command_link"><a href="commandcmd-fetch.html#2019478" title="fetch">fetch</a></span>, <span class="In-line_command_link"><a href="commandcmd-wfsave.html#2638923" title="wfsave">wfsave</a></span>, <span class="In-line_command_link"><a href="commandcmd-wfclose.html#2480958" title="wfclose">wfclose</a></span> and <span class="In-line_command_link"><a href="commandcmd-pagesave.html#2638010" title="pagesave">pagesave</a></span>.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

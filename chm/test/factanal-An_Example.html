@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>An Example</title>
+    <link rel="StyleSheet" href="css/factanal.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="factanal-Factor_Data_Members.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="factanal-Background.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_othermult.html">Advanced Multivariate Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="factanal-Factor_Analysis.html">Factor Analysis</a> : An Example</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="191020">An Example</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#191023">Specification and Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#191074">Basic Diagnostic Views</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#191107">Factor Rotation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#191167">Factor Scores</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="191021">We illustrate the basic features of the factor object by analyzing a subset of the classic Holzinger and Swineford (1939) data, consisting of measures on 24 psychological tests for 145 Chicago area children attending the Grant-White school (Gorsuch, 1983). A large number of authors have used these data for illustrating various features of factor analysis. The raw data are provided in the EViews workfile &#8220;Holzinger24.WF1&#8221;. We will work with a subset consisting of seven of the 24 variables: VISUAL (visual perception), CUBES (spatial relations), PARAGRAPH (paragraph comprehension), SENTENCE (sentence completion), WORDM (word meaning), PAPER1 (paper shapes), and FLAGS1 (lozenge shapes). </a></div>
+      <div class="Body_Text"><a name="191022">(As noted by Gorsuch (1983, p. 12), the raw data and the published correlations do not match; for example, the data in &#8220;Holzinger24.WF1&#8221; produces correlations that differ from those reported in Table 7.4 of Harman (1976). Here, we will assume that the raw data are correct; later, we will show you how to work directly with the Harman reported correlation matrix.)</a></div>
+      <div class="Heading_4"><a name="191023">Specification and Estimation</a></div>
+      <div class="Picture"><a name="191027"><img class="Default" src="images/factanal.074.08.01.jpg" width="100%" style="left: 0.0pt; max-height: 461px; max-width: 526px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191028">Since we have previously created a group object G7 containing the seven series of interest, double click on G7 to open the group and select </a><span class="Menu_Item">Proc/Make Factor...</span>. EViews will open the main factor analysis specification dialog.</div>
+      <div class="Body_Text"><a name="191029">When the factor object created in this fashion, EViews will pre-define a specification based on the series in the group. You may click on the </a><span class="Menu_Item">Data</span> tab to see the pre-filled settings. Here, we see that EViews has entered in the names of the seven series in G7. </div>
+      <div class="Body_Text"><a name="191030">The remaining default settings instruct EViews to calculate an ordinary (Pearson) correlation for all of the series in the group using a balanced version of the workfile sample. You may change these as desired, but for now we will use these settings.</a></div>
+      <div class="Picture"><a name="191034"><img class="Default" src="images/factanal.074.08.02.jpg" width="100%" style="left: 0.0pt; max-height: 453px; max-width: 528px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191035">Next, click on the </a><span class="Menu_Item">Estimation</span> tab to see the main factor analysis settings. The settings may be divided into three main categories: <span class="Menu_Item">Method</span> (extraction), <span class="Menu_Item">Number of factors</span>, and <span class="Menu_Item">Initial communalities</span>. In addition, the <span class="Menu_Item">Options</span> section on the right of the dialog may be used to control miscellaneous settings.</div>
+      <div class="Body_Text"><a name="191036">By default, EViews will estimate a factor specification using maximum likelihood. The number of factors will be selected using Velicer&#8217;s minimum average partial (MAP) method, and the starting values for the communalities will be taken from the squared multiple correlations (SMCs). We will use the default settings for our example so you may click on </a><span class="Menu_Item">OK</span> to continue.</div>
+      <div class="Body_Text"><a name="191037">EViews estimates the model and displays the results view. Here, we see the top portion of the main results. The heading information provides basic information about the settings used in estimation, and basic status information. We see that the estimation used all 145 observations in the workfile, and converged after five iterations.</a></div>
+      <div class="Picture"><a name="191041"><img class="Default" src="images/factanal.074.08.03.jpg" width="100%" style="left: 0.0pt; max-height: 410px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191042">Below the heading is a section displaying the estimates of the unrotated orthogonal loadings, communalities, and uniqueness estimates obtained from estimation.</a></div>
+      <div class="Body_Text"><a name="191043">We first see that Velicer&#8217;s MAP method has retained two factors, labeled &#8220;F1&#8221; and &#8220;F2&#8221;. A brief examination of the unrotated loadings indicates that PARAGRAPH, SENTENCE and WORDM load on the first factor, while VISUAL, CUES, PAPER1, and FLAGS1 load on the second factor. We therefore might reasonably label the first factor as a measure of verbal ability and the second factor as an indicator of spatial ability. We will return to this interpretation shortly.</a></div>
+      <div class="Body_Text"><a name="191044">To the right of the loadings are communality and uniqueness estimates which apportion the diagonals of the correlation matrix into common (explained) and individual (unexplained) components. The communalities are obtained by computing the </a><span class="Emphasis">row</span> norms of the loadings matrix, while the uniquenesses are obtained directly from the ML estimation algorithm. We see, for example, that 56% (<img class="Default EquationGraphic" src="images/factanal.074.08.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 179px; top: 0.0pt" alt="" />) of the correlation for the VISUAL variable and 69% (<img class="Default EquationGraphic" src="images/factanal.074.08.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 202px; top: 0.0pt" alt="" />) of the SENTENCE correlation are accounted for by the two common factors.</div>
+      <div class="Body_Text"><a name="196245">The next section provides summary information on the total variance and proportion of </a><span class="Emphasis">common</span> variance accounted for by each of the factors, derived by taking column norms of the loadings matrix. First, we note that the variance accounted for by the two factors is 3.55, which is close to 51% (<img class="Default EquationGraphic" src="images/factanal.074.08.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 68px; top: 0.0pt" alt="" />) of the total variance (sum of the diagonals of the correlation matrix). Furthermore, we see that the first factor F1 accounts for 77% (<img class="Default EquationGraphic" src="images/factanal.074.08.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" />) of the <span class="Emphasis">common</span> variance and the second factor F2 accounts for the remaining 23% (<img class="Default EquationGraphic" src="images/factanal.074.08.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" />).</div>
+      <div class="Table"><a name="196258"><img class="Default" src="images/factanal.074.08.09.jpg" width="100%" style="left: 0.0pt; max-height: 97px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="193268">The bottom portion of the output shows basic goodness-of-fit information for the estimated specification. The first column displays the discrepancy function, number of parameters, and degrees-of-freedom (against the saturated model) for the estimated specification For this extraction method (ML), EViews also displays the chi-square goodness-of-fit test and Bartlett adjusted version of the test. Both versions of the test have </a><span class="In-line_math">p</span>-values of over 0.75, indicating that two factors adequately explain the variation in the data.</div>
+      <div class="Table"><a name="191072"><img class="Default" src="images/factanal.074.08.10.jpg" width="100%" style="left: 0.0pt; max-height: 186px; max-width: 926px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191073">For purposes of comparison, EViews also presents results for the independence (no factor) model which show that a model with no factors does not adequately model the variances.</a></div>
+      <div class="Heading_4"><a name="191074">Basic Diagnostic Views</a></div>
+      <div class="Body_Text"><a name="191075">Once we have estimated our factor specification we may examine a variety of diagnostics. First, we will examine a variety of goodness-of-fit statistics and indexes by selecting </a><span class="Menu_Item">View/Goodness-of-fit Summary</span> from the factor menu.</div>
+      <div class="Table"><a name="191079"><img class="Default" src="images/factanal.074.08.11.jpg" width="100%" style="left: 0.0pt; max-height: 791px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191080">As you can see, EViews computes a large number of absolute and relative fit measures. In addition to the discrepancy, chi-square and Bartlett chi-square statistics seen previously, EViews computes scaled information criteria, expected cross-validation indices, generalized fit indices, as well as various measures based on estimates of noncentrality. Also presented are incremental fit indices which compare the fit of the estimated model against the independence model (see </a><span class="Link"><a href="factanal-Background.html#191523" title="Background">&#8220;Model Evaluation&#8221;</a></span> for discussion).</div>
+      <div class="Body_Text"><a name="191084">In addition, you may examine various matrices associated with the estimation procedure. You may examine the computed correlation matrix, various reduced and fitted matrices, and a variety of residual matrices. For example, you may view the residual variance matrix by selecting </a><span class="Menu_Item">View/Residual Covariance Matrix/Using Total Covariance</span>.</div>
+      <div class="Table"><a name="191088"><img class="Default" src="images/factanal.074.08.12.jpg" width="100%" style="left: 0.0pt; max-height: 272px; max-width: 711px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191089">Note that the diagonal elements of the residual matrix are (near) zero since we have subtracted off the total fitted covariance (which includes the uniquenesses). To replace the (near) zero diagonals with the uniqueness estimates, select instead </a><span class="Menu_Item">View/Residual Covariance Matrix/Using Common Covariance</span>.</div>
+      <div class="Picture"><a name="191093"><img class="Default" src="images/factanal.074.08.13.jpg" width="100%" style="left: 0.0pt; max-height: 397px; max-width: 481px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191094">You may examine eigenvalues of relevant matrices using the eigenvalue view. EViews allows you to compute eigenvalues for a variety of matrices and display the results in tabular or graphical form, but for the moment we will simply produce a scree plot for the observed correlation matrix. Select </a><span class="Menu_Item">View/Eigenvalues...</span> and change the <span class="Menu_Item">Output format</span> to <span class="Menu_Item">Graph</span>. </div>
+      <div class="Body_Text"><a name="191095">Click on </a><span class="Menu_Item">OK</span> to accept the settings. EViews will display the scree plot for the data, along with a line indicating the average eigenvalue.</div>
+      <div class="Body_Text"><a name="191096">To examine the Kaiser Measure of Sampling Adequacy, select </a><span class="Menu_Item">View/Kaiser&#8217;s Measure of Sampling Adequacy</span>. The top portion of the display shows the individual measures and the overall of MSA (0.803) which falls in the category deemed by Kaiser to be &#8220;meritorious&#8221;.</div>
+      <div class="Table"><a name="191100"><img class="Default" src="images/factanal.074.08.14.jpg" width="100%" style="left: 0.0pt; max-height: 317px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191101">The bottom portion of the display shows the matrix of partial correlations:</a></div>
+      <div class="Table"><a name="191105"><img class="Default" src="images/factanal.074.08.15.jpg" width="100%" style="left: 0.0pt; max-height: 214px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191106">Each cell of this matrix contains the partial correlation for the two variables, controlling for the remaining variables.</a></div>
+      <div class="Heading_4"><a name="191107">Factor Rotation</a></div>
+      <div class="Body_Text"><a name="191108">Factor rotation may be used to simplify the factor structure and to ease the interpretation of factors. For this example, we will consider one orthogonal and one oblique rotation. To perform a factor rotation, click on the </a><span class="Menu_Item">Rotate</span> button on the factor toolbar or select <span class="Menu_Item">Proc/Rotate...</span> from the main factor menu.</div>
+      <div class="Table"><a name="191112"><img class="Default" src="images/factanal.074.08.16.jpg" width="100%" style="left: 0.0pt; max-height: 349px; max-width: 515px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191113">The factor rotation dialog is used to specify the rotation method, row weighting, iteration control, and choice of initial loadings. We begin by accepting the defaults which rotate the initial loadings using orthogonal Varimax. EViews will perform the rotation and display the results.</a></div>
+      <div class="Body_Text"><a name="191114">The top portion of the displayed output provides information about the rotation and shows the rotated loadings.</a></div>
+      <div class="Table"><a name="191118"><img class="Default" src="images/factanal.074.08.17.jpg" width="100%" style="left: 0.0pt; max-height: 355px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191119">As with the unrotated loadings, the variables PARAGRAPH, SENTENCE, and WORDM load on the first factor while VISUAL, CUBES, PAPER1, and FLAGS1 load on the second factor.</a></div>
+      <div class="Body_Text"><a name="191120">The remaining sections of the output display the rotated factor correlation, initial rotation matrix, the rotation matrices applied to the factors and loadings, and objective functions for the rotations. In this case, The factor correlation and initial rotation matrices are identity matrices since we are performing an orthogonal rotation from the unrotated loadings. The remaining results are presented below:</a></div>
+      <div class="Table"><a name="191124"><img class="Default" src="images/factanal.074.08.18.jpg" width="100%" style="left: 0.0pt; max-height: 291px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191125">Note that the factor rotation and loading rotation matrices are identical since we are performing an orthogonal rotation.</a></div>
+      <div class="Picture"><a name="191129"><img class="Default" src="images/factanal.074.08.19.jpg" width="100%" style="left: 0.0pt; max-height: 353px; max-width: 524px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191130">Perhaps more interesting are the results for an oblique rotation. To replace the Varimax results with an oblique Quartimax/Quartimin rotation, select </a><span class="Menu_Item">Proc/Rotate...</span> and change the <span class="Menu_Item">Type</span> dropdown to <span class="Menu_Item">Oblique</span>, and select <span class="Menu_Item">Quartimax</span>. We will make a few other changes in the dialog. We will use random orthogonal rotations as starting values for our rotation, so that under <span class="Menu_Item">Starting values</span>, you should select <span class="Menu_Item">Random</span>. Set the random generator options as depicted and change the convergence tolerance to 1e-06. By default, EViews will perform 25 oblique rotations using random orthogonal rotation matrices as the starting values, and will select the results with the smallest objective function value. Click on <span class="Menu_Item">OK</span> to accept these settings. </div>
+      <div class="Body_Text"><a name="191131">The top portion of the results shows information on the rotation method and initial loadings. Just below the header are the rotated loadings. Note that the relative importance of the VISUAL, CUBES, PAPER1, and FLAGS1 loadings on the second factor is somewhat more apparent for the oblique factors.</a></div>
+      <div class="Table"><a name="192399"><img class="Default" src="images/factanal.074.08.20.jpg" width="100%" style="left: 0.0pt; max-height: 364px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Table"><a name="192400">&nbsp;</a></div>
+      <div class="Body_Text"><a name="192401">The rotated factor correlation is:</a></div>
+      <div class="Table"><a name="192390"><img class="Default" src="images/factanal.074.08.21.jpg" width="100%" style="left: 0.0pt; max-height: 124px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="192391">with the large off-diagonal element indicating that the orthogonality factor restriction was very much binding.</a></div>
+      <div class="Body_Text"><a name="191143">The rotation matrices and objective functions are given by:</a></div>
+      <div class="Table"><a name="191147"><img class="Default" src="images/factanal.074.08.22.jpg" width="100%" style="left: 0.0pt; max-height: 263px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191148">Note that in the absence of orthogonality, the factor rotation and loading rotation matrices differ.</a></div>
+      <div class="Picture"><a name="191152"><img class="Default" src="images/factanal.074.08.23.jpg" width="100%" style="left: 0.0pt; max-height: 287px; max-width: 321px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191153">Once a rotation has been performed, the last set of rotated loadings will be available to all routines that use loadings. For example, to visualize the factor loadings, select </a><span class="Menu_Item">View/Loadings/Loadings Graph...</span> to bring up the loadings graph dialog. </div>
+      <div class="Body_Text"><a name="191154">Here you will provide indices for the factor loadings you wish to display. Since there are only two factors, EViews has prefilled the dialog with &#8220;1 2&#8221; indicating that it will plot the second factor against the first factor. </a></div>
+      <div class="Body_Text"><a name="191155">By default, EViews will use the rotated loadings if available; note the checkbox allowing you to use the unrotated loadings. Check this box and click on </a><span class="Menu_Item">OK</span> to display the unrotated loadings graph.</div>
+      <div class="Picture"><a name="191159"><img class="Default" src="images/factanal.074.08.24.jpg" width="100%" style="left: 0.0pt; max-height: 411px; max-width: 499px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191160">As is customary, the loadings are displayed as lines from the origin to the points labeled with the variable name. Here we see visual evidence of our previous interpretation: the variables cluster naturally into two groups (factors), with factor 1 representing verbal ability (PARAGRAPH, SENTENCE, WORDM), and factor 2 representing spatial ability (VISUAL, PAPER1, FLAGS1, CUBES).</a></div>
+      <div class="Body_Text"><a name="191161">Before displaying the oblique Quartimax rotated loadings, we will apply this labeling to the factors. Select </a><span class="Menu_Item">Proc/Name Factors...</span> and enter &#8220;Verbal&#8221; and &#8220;Spatial&#8221; in the dialog. EViews will subsequently label the factors using the specified names instead of the generic labels &#8220;Factor 1&#8221; and &#8220;Factor 2.&#8221;</div>
+      <div class="Picture"><a name="191165"><img class="Default" src="images/factanal.074.08.25.jpg" width="100%" style="left: 0.0pt; max-height: 413px; max-width: 493px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191166">Now, let us display the graph of the rotated loadings. Click on </a><span class="Menu_Item">View/Loadings Graph...</span> and simply click on <span class="Menu_Item">OK</span> to accept the defaults. EViews displays the rotated loadings graph. Note the clear separation between the sets of tests.</div>
+      <div class="Heading_4"><a name="191167">Factor Scores</a></div>
+      <div class="Body_Text"><a name="191168">The factors used to explain the covariance structure of the observed data are unobserved, but may be estimated from the rotated or unrotated loadings and observable data.</a></div>
+      <div class="Body_Text"><a name="191169">Click on </a><span class="Menu_Item">View/Scores...</span> to bring up the factor score dialog. As you can see, there are several ways to estimate the factors and several views of the results. For now, we will focus on displaying a summary of the factor score regression estimates, and in producing a biplot of the scores and loadings.</div>
+      <div class="Picture"><a name="191173"><img class="Default" src="images/factanal.074.08.26.jpg" width="100%" style="left: 0.0pt; max-height: 470px; max-width: 629px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191174">The default method of producing scores is to use exact coefficients from Thurstone&#8217;s regression method, and to apply these coefficients to the observables data used in factor extraction.</a></div>
+      <div class="Body_Text"><a name="191175">In our example, EViews will prefill the sample and observables information; all we need to do is to select our </a><span class="Menu_Item">Display output</span> setting, and the method for computing coefficients. Selecting <span class="Menu_Item">Table summary</span>, EViews produces output describing the score coefficient estimation.</div>
+      <div class="Body_Text"><a name="191176">The top portion of the output summarizes the factor score coefficient estimation settings and displays the factor coefficients used in computing scores:</a></div>
+      <div class="Table"><a name="191180"><img class="Default" src="images/factanal.074.08.27.jpg" width="100%" style="left: 0.0pt; max-height: 419px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191181">We see that the VERBAL score for an individual is computed as a linear combination of the centered data for VISUAL, CUBES, </a><span class="Emphasis">etc.</span>, with weights given by the first column of coefficients (0.03, 0.01, <span class="Emphasis">etc.</span>).</div>
+      <div class="Body_Text"><a name="191182">The next section contains the factor indeterminacy indices:</a></div>
+      <div class="Table"><a name="191186"><img class="Default" src="images/factanal.074.08.28.jpg" width="100%" style="left: 0.0pt; max-height: 118px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191187">The indeterminacy indices show that the correlation between the estimated factors and the variables is high; the multiple correlation for the first factor well over 0.90, while the correlation for the second factor is around 0.85. The minimum correlation indices are also reasonable, suggesting that alternative factor score solutions are highly correlated. At a minimum, the correlation between two different measures of the SPATIAL factors will be nearly 0.50.</a></div>
+      <div class="Body_Text"><a name="191188">The following sections report the validity coefficients, the off-diagonal elements of the univocality matrix, and for comparison purposes, the theoretical factor correlation matrix and estimated scores correlation:</a></div>
+      <div class="Table"><a name="191192"><img class="Default" src="images/factanal.074.08.29.jpg" width="100%" style="left: 0.0pt; max-height: 442px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191193">The validity coefficients are both in excess of the Gorsuch (1983) recommended 0.80, and close to the stricter target of 0.90 advocated for using the estimated scores as replacements for the original variables. </a></div>
+      <div class="Body_Text"><a name="191194">The univocality matrix reports the correlations between the factors and the factor scores, which should be similar to the corresponding elements of the factor correlation matrix. Comparing results, we see that univocality correlation of 0.539 between the SPATIAL factor and the VERBAL estimated scores is close to the population correlation value of 0.527. The correlation between the VERBAL factor and the SPATIAL estimated score is somewhat higher, 0.590, but still close to the population correlation. </a></div>
+      <div class="Body_Text"><a name="191195">Similarly, the estimated scores correlation matrix should be close to the population factor correlation matrix. The off-diagonal values generally match, though as is often the case, the factor score correlation of 0.627 is a bit higher than the population value of 0.527.</a></div>
+      <div class="Body_Text"><a name="191196">To display a biplot of using these scores, select </a><span class="Menu_Item">View/Scores...</span> and select <span class="Menu_Item">Biplot graph</span> in the <span class="Menu_Item">Display</span> list box.</div>
+      <div class="Picture"><a name="191200"><img class="Default" src="images/factanal.074.08.30.jpg" width="100%" style="left: 0.0pt; max-height: 411px; max-width: 488px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191201">The positive correlation between the VERBAL and SPATIAL scores is obvious. The outliers show that individual 96 scores high and individual 38 low on both spatial and verbal ability, while individual 52 scores poorly on spatial relative to verbal ability.</a></div>
+      <div class="Picture"><a name="191205"><img class="Default" src="images/factanal.074.08.31.jpg" width="100%" style="left: 0.0pt; max-height: 392px; max-width: 588px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191206">To save scores to the workfile, select </a><span class="Menu_Item">Proc/Make Scores...</span> and fill out the dialog. The procedure dialog differs from the view dialog only in the <span class="Menu_Item">Output specification</span> section. Here, you should enter a list of scores to be saved or a list of indices for the scores. Since we have previously named our factors, we may specify the indices &#8220;1 2&#8221; and click on <span class="Menu_Item">OK</span>. EViews will open an untitled group containing the results saved in the series VERBAL and SPATIAL.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

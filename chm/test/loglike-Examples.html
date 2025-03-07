@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/loglike.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="loglike-Limitations.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="loglike-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="loglike-The_Log_Likelihood_(LogL)_Object.html">The Log Likelihood (LogL) Object</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="616">Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#620">Multinomial Logit (mlogit1.prg)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#110423">AR(1) Model (ar1.prg)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#806">Additional Examples</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="618">In this section, we provide extended examples of working with the logl object to estimate a multinomial logit and a maximum likelihood AR(1) specification. Example programs for these and several other specifications are provided in your default EViews data directory. If you set your default directory to point to the EViews data directory, you should be able to issue a RUN command for each of these programs to create the logl object and to estimate the unknown parameters.</a></div>
+      <div class="Heading_4"><a name="620">Multinomial Logit (mlogit1.prg)</a></div>
+      <div class="Body_Text"><a name="13799">In this example, we demonstrate how to specify and estimate a simple multinomial logit model using the logl object. Suppose the dependent variable Y can take one of three categories 1, 2, and 3. Further suppose that there are data on two regressors, X1 and X2 that vary across observations (individuals). Standard examples include variables such as age and level of education. Then the multinomial logit model assumes that the probability of observing each category in Y is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/loglike.051.10.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(41.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="13809">for <img class="Default EquationGraphic" src="images/loglike.051.10.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 83px; top: 0.0pt" alt="" />. Note that the parameters <img class="Default EquationGraphic" src="images/loglike.051.10.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> are specific to each category so there are <img class="Default EquationGraphic" src="images/loglike.051.10.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 78px; top: 0.0pt" alt="" /> parameters in this specification. The parameters are not all identified unless we impose a normalization, so we normalize the parameters of the first choice category <img class="Default EquationGraphic" src="images/loglike.051.10.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 48px; top: 0.0pt" alt="" /> to be all zero: <img class="Default EquationGraphic" src="images/loglike.051.10.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 185px; top: 0.0pt" alt="" /> (see, for example, Greene (2008, Section 23.11.1).</a></div>
+      <div class="Body_Text"><a name="4570">The log likelihood function for the multinomial logit can be written as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/loglike.051.10.07.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(41.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="4577">where <img class="Default EquationGraphic" src="images/loglike.051.10.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is a dummy variable that takes the value 1 if observation <img class="Default EquationGraphic" src="images/loglike.051.10.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> has chosen alternative <img class="Default EquationGraphic" src="images/loglike.051.10.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> and 0 otherwise. The first-order conditions are:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/loglike.051.10.11.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(41.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="642">for <img class="Default EquationGraphic" src="images/loglike.051.10.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 86px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/loglike.051.10.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 83px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="644">We have provided, in the Example Files subdirectory of your default EViews directory, a workfile &#8220;Mlogit.WK1&#8221; containing artificial multinomial data. The program begins by loading this workfile:</a></div>
+      <div class="Multi-line_Input"><a name="85999">' load artificial data</a></div>
+      <div class="Multi-line_Input"><a name="86000">%evworkfile = @evpath + "\example files\logl\mlogit"</a></div>
+      <div class="Multi-line_Input"><a name="194576">load "{%evworkfile}"</a></div>
+      <div class="Body_Text"><a name="86001">from the EViews example directory.</a></div>
+      <div class="Body_Text"><a name="194591">Next, we declare the coefficient vectors that will contain the estimated parameters for each choice alternative:</a></div>
+      <div class="Multi-line_Input"><a name="652">' declare parameter vector</a></div>
+      <div class="Multi-line_Input"><a name="654">coef(3) b2</a></div>
+      <div class="Multi-line_Input"><a name="656">coef(3) b3</a></div>
+      <div class="Body_Text"><a name="658">As an alternative, we could have used the default coefficient vector C.</a></div>
+      <div class="Body_Text"><a name="660">We then set up the likelihood function by issuing a series of append statements:</a></div>
+      <div class="Multi-line_Input"><a name="662">mlogit.append xb2 = b2(1)+b2(2)*x1+b2(3)*x2</a></div>
+      <div class="Multi-line_Input"><a name="664">mlogit.append xb3 = b3(1)+b3(2)*x1+b3(3)*x2</a></div>
+      <div class="Multi-line_Input"><a name="666">' define prob for each choice</a></div>
+      <div class="Multi-line_Input"><a name="668">mlogit.append denom = 1+exp(xb2)+exp(xb3)</a></div>
+      <div class="Multi-line_Input"><a name="670">mlogit.append pr1 = 1/denom</a></div>
+      <div class="Multi-line_Input"><a name="672">mlogit.append pr2 = exp(xb2)/denom</a></div>
+      <div class="Multi-line_Input"><a name="674">mlogit.append pr3 = exp(xb3)/denom</a></div>
+      <div class="Multi-line_Input"><a name="676">' specify likelihood</a></div>
+      <div class="Multi-line_Input"><a name="678">mlogit.append logl1 = (1-dd2-dd3)*log(pr1) +dd2*log(pr2)+dd3*log(pr3)</a></div>
+      <div class="Body_Text"><a name="680">Since the analytic derivatives for the multinomial logit are particularly simple, we also specify the expressions for the analytic derivatives to be used during estimation and the appropriate </a><span class="In-line_input">@deriv</span> statements: </div>
+      <div class="Multi-line_Input"><a name="682">' specify analytic derivatives</a></div>
+      <div class="Multi-line_Input"><a name="684">for!i = 2 to 3</a></div>
+      <div class="Multi-line_Input"><a name="4320">mlogit.append @deriv b{!i}(1) grad{!i}1 b{!i}(2) grad{!i}2 b{!i}(3) grad{!i}3</a></div>
+      <div class="Multi-line_Input"><a name="688">mlogit.append grad{!i}1 = dd{!i}-pr{!i}</a></div>
+      <div class="Multi-line_Input"><a name="690">mlogit.append grad{!i}2 = grad{!i}1*x1</a></div>
+      <div class="Multi-line_Input"><a name="692">mlogit.append grad{!i}3 = grad{!i}1*x2</a></div>
+      <div class="Multi-line_Input"><a name="694">next</a></div>
+      <div class="Body_Text"><a name="696">Note that if you were to specify this likelihood interactively, you would simply type the expression that follows each append statement directly into the MLOGIT object.</a></div>
+      <div class="Body_Text"><a name="698">This concludes the actual specification of the likelihood object. Before estimating the model, we get the starting values by estimating a series of binary logit models:</a></div>
+      <div class="Multi-line_Input"><a name="700">' get starting values from binomial logit</a></div>
+      <div class="Multi-line_Input"><a name="702">equation eq2.binary(d=l) dd2 c x1 x2</a></div>
+      <div class="Multi-line_Input"><a name="704">b2 = eq2.@coefs</a></div>
+      <div class="Multi-line_Input"><a name="706">equation eq3.binary(d=l) dd3 c x1 x2</a></div>
+      <div class="Multi-line_Input"><a name="708">b3 = eq3.@coefs</a></div>
+      <div class="Body_Text"><a name="710">To check whether you have specified the analytic derivatives correctly, choose </a><span class="Menu_Item">View/Check Derivatives</span> or use the command:</div>
+      <div class="Input"><a name="712">show mlogit.checkderiv</a></div>
+      <div class="Body_Text"><a name="110417">If you have correctly specified the analytic derivatives, they should be fairly close to the numeric derivatives.</a></div>
+      <div class="Body_Text"><a name="110418">We are now ready to estimate the model. Either click the </a><span class="Menu_Item">Estimate</span> button or use the command:</div>
+      <div class="Multi-line_Input"><a name="110419">' do MLE</a></div>
+      <div class="Multi-line_Input"><a name="110420">mlogit.ml(showopts, m=1000, c=1e-5)</a></div>
+      <div class="Multi-line_Input"><a name="110421">show mlogit.output</a></div>
+      <div class="Body_Text"><a name="110422">Note that you can examine the derivatives for this model using the </a><span class="Menu_Item">Gradient Table</span> view, or you can examine the series in the workfile containing the gradients. You can also look at the intermediate results and log likelihood values. For example, to look at the likelihood contributions for each individual, simply double click on the LOGL1 series.</div>
+      <div class="Heading_4"><a name="110423">AR(1) Model (ar1.prg)</a></div>
+      <div class="Body_Text"><a name="110424">In this example, we demonstrate using the logl to compute full maximum likelihood estimates of an AR(1). This logl example replicates the ML estimator that is built-into the least squares estimator for an equation (</a><span class="Link"><a href="timeser-Time_Series_Regression.html#36959" title="Time Series Regression">&#8220;Time Series Regression&#8221;</a></span>). </div>
+      <div class="Body_Text"><a name="224363">To illustrate, we first generate data that follows an AR(1) process:</a></div>
+      <div class="Multi-line_Input"><a name="110426">' make up data</a></div>
+      <div class="Multi-line_Input"><a name="110427">create m 80 89</a></div>
+      <div class="Multi-line_Input"><a name="110428">rndseed 123</a></div>
+      <div class="Multi-line_Input"><a name="110429">series y=0</a></div>
+      <div class="Multi-line_Input"><a name="110430">smpl @first+1 @last</a></div>
+      <div class="Multi-line_Input"><a name="110431">y = 1+0.85*y(-1) + nrnd</a></div>
+      <div class="Body_Text"><a name="110432">The exact Gaussian likelihood function for an AR(1) model is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/loglike.051.10.14.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(41.11)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="110446">where <img class="Default EquationGraphic" src="images/loglike.051.10.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the constant term, <img class="Default EquationGraphic" src="images/loglike.051.10.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is the AR(1) coefficient, and <img class="Default EquationGraphic" src="images/loglike.051.10.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> is the error variance, all to be estimated (see for example Hamilton, 1994, Chapter 5.2). </a></div>
+      <div class="Body_Text"><a name="110447">Since the likelihood function evaluation differs for the first observation in our sample, we create a dummy variable indicator for the first observation:</a></div>
+      <div class="Multi-line_Input"><a name="754">' create dummy variable for first obs</a></div>
+      <div class="Multi-line_Input"><a name="756">series d1 = 0</a></div>
+      <div class="Multi-line_Input"><a name="758">smpl @first @first </a></div>
+      <div class="Multi-line_Input"><a name="760">d1 = 1</a></div>
+      <div class="Multi-line_Input"><a name="762">smpl @all</a></div>
+      <div class="Body_Text"><a name="764">Next, we declare the coefficient vectors to store the parameter estimates and initialize them with the least squares estimates:</a></div>
+      <div class="Multi-line_Input"><a name="766">' set starting values to LS (drops first obs)</a></div>
+      <div class="Multi-line_Input"><a name="768">equation eq1.ls y c ar(1)</a></div>
+      <div class="Multi-line_Input"><a name="770">coef(1) rho = c(2)</a></div>
+      <div class="Multi-line_Input"><a name="772">coef(1) s2 = eq1.@se^2</a></div>
+      <div class="Body_Text"><a name="774">We then specify the likelihood function. We make use of the </a><span class="In-line_input">@recode</span> function to differentiate the evaluation of the likelihood for the first observation from the remaining observations. Note: the <span class="In-line_input">@recode</span> function used here uses the updated syntax for this function&#8212;please double-check the current documentation for details.</div>
+      <div class="Multi-line_Input"><a name="5972">' set up likelihood</a></div>
+      <div class="Multi-line_Input"><a name="780">logl ar1</a></div>
+      <div class="Multi-line_Input"><a name="782">ar1.append @logl logl1</a></div>
+      <div class="Multi-line_Input"><a name="784">ar1.append var = @recode(d1=1,s2(1)/(1-rho(1)^2),s2(1))</a></div>
+      <div class="Multi-line_Input"><a name="786">ar1.append res = @recode(d1=1,y-c(1)/(1-rho(1)),y-c(1)-rho(1)*y(-1))</a></div>
+      <div class="Multi-line_Input"><a name="788">ar1.append sres = res/@sqrt(var)</a></div>
+      <div class="Multi-line_Input"><a name="790">ar1.append logl1 = log(@dnorm(sres))-log(var)/2</a></div>
+      <div class="Body_Text"><a name="792">The likelihood specification uses the built-in function </a><span class="In-line_input">@dnorm</span> for the standard normal density. The second term is the Jacobian term that arises from transforming the standard normal variable to one with non-unit variance. (You could, of course, write out the likelihood for the normal distribution without using the <span class="In-line_input">@dnorm</span> function.)</div>
+      <div class="Body_Text"><a name="794">The program displays the MLE together with the least squares estimates:</a></div>
+      <div class="Multi-line_Input"><a name="796">' do MLE</a></div>
+      <div class="Multi-line_Input"><a name="798">ar1.ml(showopts, m=1000, c=1e-5)</a></div>
+      <div class="Multi-line_Input"><a name="800">show ar1.output</a></div>
+      <div class="Multi-line_Input"><a name="802">' compare with EViews AR(1) which ignores first obs</a></div>
+      <div class="Multi-line_Input"><a name="804">show eq1.output</a></div>
+      <div class="Heading_4"><a name="806">Additional Examples</a></div>
+      <div class="Body_Text"><a name="4324">The following additional example programs can be found in the &#8220;Example Files&#8221; subdirectory of your default EViews directory.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="4325">Conditional logit</a></span> (clogit1.prg): estimates a conditional logit with 3 outcomes and both individual specific and choice specific regressors. The program also displays the prediction table and carries out a Hausman test for independence of irrelevant alternatives (IIA). See Greene (2008, Chapter 23.11.1) for a discussion of multinomial logit models. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="812">Box-Cox transformation</a></span> (boxcox1.prg): estimates a simple bivariate regression with an estimated Box-Cox transformation on both the dependent and independent variables. Box-Cox transformation models are notoriously difficult to estimate and the results are very sensitive to starting values.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="814">Disequilibrium switching model</a></span> (diseq1.prg): estimates the switching model in exercise 15.14&#8211;15.15 of Judge <span class="Emphasis">et al.</span> (1985, p. 644&#8211;646). Note that there are some typos in Judge <span class="Emphasis">et al.</span> (1985, p. 639&#8211;640). The program uses the likelihood specification in Quandt (1988, page 32, equations 2.3.16&#8211;2.3.17).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="816">Multiplicative heteroskedasticity</a></span> (hetero1.prg): estimates a linear regression model with multiplicative heteroskedasticity.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="818">Probit with heteroskedasticit</a></span>y (hprobit1.prg): estimates a probit specification with multiplicative heteroskedasticity. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="820">Probit with grouped data </a></span>(gprobit1.prg): estimates a probit with grouped data (proportions data).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="822">Nested logit</a></span> (nlogit1.prg): estimates a nested logit model with 2 branches. Tests the IIA assumption by a Wald test. See Greene (2008, Chapter 23.11.4) for a discussion of nested logit models.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="215500">Zero-altered Poisson model</a></span> (zpoiss1.prg): estimates the zero-altered Poisson model. Also carries out the non-nested LR test of Vuong (1989). See Greene (2008, Chapter 25.4) for a discussion of zero-altered Poisson models and Vuong&#8217;s non-nested likelihood ratio test.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="4439">Heckman sample selection model</a></span> (heckman1.prg): estimates Heckman&#8217;s two equation sample selection model by MLE using the two-step estimates as starting values.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="110337">Weibull hazard model</a></span> (weibull1.prg): estimates the uncensored Weibull hazard model described in Greene (2008, example 25.4).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="110338">GARCH(1,1) with t-distributed errors</a></span> (arch_t1.prg): estimates a GARCH(1,1) model with <span class="In-line_math">t</span>-distribution. The log likelihood function for this model can be found in Hamilton (1994, equation 21.1.24, page 662). Note that this model may more easily be estimated using the standard ARCH estimation tools provided in EViews (<span class="Link"><a href="arch-ARCH_and_GARCH_Estimation.html#48636" title="ARCH and GARCH Estimation">&#8220;ARCH and GARCH Estimation&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="110342">GARCH with coefficient restrictions</a></span> (garch1.prg): estimates an MA(1)-GARCH(1,1) model with coefficient restrictions in the conditional variance equation. This model is estimated by Bollerslev, Engle, and Nelson (1994, equation 9.1, page 3015) for different data. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="212435">EGARCH with generalized error distributed errors</a></span> (egarch1.prg): estimates Nelson&#8217;s (1991) exponential GARCH with generalized error distribution. The specification and likelihood are described in Hamilton (1994, p. 668&#8211;669). Note that this model may more easily be estimated using the standard ARCH estimation tools provided in EViews (<span class="Link"><a href="arch-ARCH_and_GARCH_Estimation.html#48636" title="ARCH and GARCH Estimation">&#8220;ARCH and GARCH Estimation&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="193588">Multivariate GARCH</a></span> (bv_garch.prg and tv_garch.prg): estimates the bi- or the tri-variate version of the BEKK GARCH specification (Engle and Kroner, 1995). Note that this specification may be estimated using the built-in procedures available in the system object (<span class="Link"><a href="system-System_Estimation.html#36959" title="System Estimation">&#8220;System Estimation&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

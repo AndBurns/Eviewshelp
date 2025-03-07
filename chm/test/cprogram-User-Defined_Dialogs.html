@@ -1,0 +1,506 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>User-Defined Dialogs</title>
+    <link rel="StyleSheet" href="css/cprogram.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cprogram-Subroutines.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-Version_4_Compatibility_Notes.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cprogram-EViews_Programming.html">EViews Programming</a> : User-Defined Dialogs</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="206300">User-Defined Dialogs</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206353">@uiprompt</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206378">@uiedit</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206398">@uilist</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206859">@uimlist</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206428">@uiradio</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206451">@uidialog</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206522">@uifiledlg</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#124274">Example Program</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="206301">EViews offers the ability to construct several types of user-interface controls, or dialogs, within your program. These dialogs permit users to input variables or set options during the running of the program, and allow you to pass information back to users.</a></div>
+      <div class="Body_Text"><a name="206302">There are five different functions that create dialogs in EViews:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command_link"><a href="functionref_u-@uiprompt.html#1259962" title="@uiprompt" name="206306">@uiprompt</a></span> &#8211; creates a prompt control, which displays a message to the user.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command_link"><a href="functionref_u-@uiedit.html#1259758" title="@uiedit" name="206310">@uiedit</a></span> &#8211; creates an edit control, which lets users input text.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command_link"><a href="functionref_u-@uilist.html#1259859" title="@uilist" name="206314">@uilist</a></span> &#8211; creates a list control, which lets users select from a list of choices.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command_link"><a href="functionref_u-@uiradio.html#1260050" title="@uiradio" name="206318">@uiradio</a></span> &#8211; creates a set of radio controls, which lets users select from a set of choices.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command_link"><a href="functionref_u-@uidialog.html#1259612" title="@uidialog" name="206322">@uidialog</a></span> &#8211; creates a dialog which contains a mixture of other controls.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command_link"><a href="functionref_u-@uifiledlg.html#1259805" title="@uifiledlg" name="206326">@uifiledlg</a></span> &#8211; creates a open/save-style dialog to obtain the name of a file.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="206327">Each dialog function returns an integer indicating how the user exited the dialog:</a></div>
+      <div class="Table"><a name="206349">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 180pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text_Header"><a name="206330">User Selection</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text_Header"><a name="206332">Return Value</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206334">Cancel</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206336">-1</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206338">OK</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206340">0</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206342">Yes</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206344">1</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206346">No</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206348">2</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="206350">Note that the only dialog types that can return exit conditions other than &#8220;Cancel&#8221; or &#8220;OK&#8221; are </a><span class="In-line_command">@uiprompt</span> and <span class="In-line_command">@uidialog</span>. If &#8220;Cancel&#8221; is pressed, the variables passed into the dialog will not be updated with whatever settings the user has chosen. If &#8220;OK&#8221; is pressed, then the dialog changes are accepted.</div>
+      <div class="Body_Text"><a name="206351">Each of the dialog functions accept arguments that are used to define what will be displayed by the dialog, and that will be used to store the user's inputs to the dialog. You may use string or a scalar arguments, where both the string and scalar can be a literal, a program variable, or a workfile object.</a></div>
+      <div class="Heading_4"><a name="206353">@uiprompt</a></div>
+      <div class="Body_Text"><a name="206354">The </a><span class="In-line_command">@uiprompt</span>(<span class="Command_Summary">string</span> <span class="Argument">prompt</span>, <span class="Command_Summary">string</span> <span class="Argument">type</span>) function creates a simple message/prompt box that displays a single piece of text, specified using the <span class="Argument">prompt</span> argument, and lets the user click a button to indicate an action. The choices of action offered the user will depend upon the string specified in <span class="Argument">type</span>.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="206355"> if </a><span class="Argument">type</span> is equal to &#8220;O&#8221;, or is omitted completely, then the dialog will only have an &#8220;OK&#8221; button. This type of prompt dialog would typically be used to provide a message to the user.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="206356">if </a><span class="Argument">type</span> is equal to &#8220;OC&#8221;, then the dialog will have an &#8220;OK&#8221; button and a &#8220;Cancel&#8221; button. This type of prompt dialog would be used to pass a message onto the user and let them continue or cancel from the procedure.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="206357">if </a><span class="Argument">type</span> is equal to &#8220;YN&#8221;, then the dialog will contain a &#8220;Yes&#8221; button and a &#8220;No&#8221; button which can be used to ask the user a question requiring an affirmative or negative response.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="206358">if </a><span class="Argument">type</span> is equal to &#8220;YNC&#8221; the dialog will have a &#8220;Yes&#8221; button, a &#8220;No&#8221; button and a &#8220;Cancel&#8221; button. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="206359">For example, the command:</a></div>
+      <div class="Input"><a name="206360">@uiprompt("Welcome to EViews")</a></div>
+      <div class="Picture"><a name="206364"><img class="Default" src="images/cprogram.087.11.1.jpg" width="100%" style="left: 0.0pt; max-height: 154px; max-width: 290px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206365">will display a simple dialog box with a simple welcome message and an &#8220;OK&#8221; button, while the command</a></div>
+      <div class="Input"><a name="206366">@uiprompt("Would you like to continue", "YN")</a></div>
+      <div class="Body_Text"><a name="206367">displays a dialog asking the user if they would like to continue the program, with a &#8220;Yes&#8221; or &#8220;No&#8221; answer.</a></div>
+      <div class="Body_Text"><a name="206368">Note that the arguments to the function may be a program variable or string object rather than string literals. The following sets of commands give identical results to that above:</a></div>
+      <div class="Multi-line_Input"><a name="206369">%type = "YN"</a></div>
+      <div class="Multi-line_Input"><a name="206370">%msg = "Would you like to continue"</a></div>
+      <div class="Multi-line_Input"><a name="206371">scalar ret = @uiprompt(%msg, %type)</a></div>
+      <div class="Body_Text"><a name="206372">The return value of the control is determined by the user response: Cancel (-1), OK (0), Yes (1), No (2).</a></div>
+      <div class="Body_Text"><a name="206376">See </a><span class="In-line_command_link"><a href="functionref_u-@uiprompt.html#1259962" title="@uiprompt">@uiprompt</a></span> for additional detail.</div>
+      <div class="Heading_4"><a name="206378">@uiedit</a></div>
+      <div class="Body_Text"><a name="206379">The </a><span class="In-line_command">@uiedit</span>(<span class="Command_Summary">string</span> <span class="Argument">IOString</span>, <span class="Command_Summary">string</span> <span class="Argument">prompt</span>, <span class="Command_Summary">scalar</span> <span class="Argument">maxEditLen</span>) function provides an edit control that lets the user enter text which is then stored in the string <span class="Argument">IOString</span>. If <span class="Argument">IOString</span> contains text before the <span class="In-line_command">@uiedit</span> function is called, the edit box will be initialized with that text.</div>
+      <div class="Body_Text"><a name="206380">The string </a><span class="Argument">prompt</span> is used to specify text to be displayed above the edit box, which may be used to provide a message or instructions to the user.</div>
+      <div class="Body_Text"><span class="Argument"><a name="206381">maxEditLen</a></span> is an option integer scalar that specifies the maximum length that <span class="Argument">IOString</span> can take. If the user tries to enter text longer than <span class="Argument">maxEditLen</span> characters, the extra characters will be truncated. By default <span class="Argument">maxEditLen</span> is set to 32.</div>
+      <div class="Body_Text"><a name="206382">Both </a><span class="Argument">prompt</span> and <span class="Argument">maxEditLen</span> may be written in-line using string literals, but <span class="Argument">IOString</span> must be either a program variable or a string object in your workfile.</div>
+      <div class="Body_Text"><a name="206383">As an example,</a></div>
+      <div class="Multi-line_Input"><a name="206384">%eqname = "eq_unemp"</a></div>
+      <div class="Multi-line_Input"><a name="206385">scalar ret = @uiedit(%eqname, "Enter a name for your equation")</a></div>
+      <div class="Multi-line_Input"><a name="206386">equation {%eqname} unemp c gdp gdp(-1)</a></div>
+      <div class="Body_Text"><a name="206387">will display the following dialog box and then create an equation object with a name equal to whatever was entered for %EQNAME.</a></div>
+      <div class="Picture"><a name="206391"><img class="Default" src="images/cprogram.087.11.2.jpg" width="100%" style="left: 0.0pt; max-height: 155px; max-width: 264px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206392">The return value of the control is determined by the user response: Cancel (-1) or OK (0).</a></div>
+      <div class="Body_Text"><a name="206396">See </a><span class="In-line_command_link"><a href="functionref_u-@uiedit.html#1259758" title="@uiedit">@uiedit</a></span> for additional detail.</div>
+      <div class="Heading_4"><a name="206398">@uilist</a></div>
+      <div class="Body_Text"><a name="206399">This function creates a list box dialog, which lets the user select one item from a list. There are two forms of the </a><span class="In-line_command">@uilist</span> function, one that returns the user's selection as a string <span class="Argument">IOString</span>, </div>
+      <div class="Indented"><span class="In-line_command"><a name="206400">@uilist</a></span>(<span class="Command_Summary">string</span> <span class="Argument">IOString</span>, <span class="Command_Summary">string</span> <span class="Argument">prompt</span>, <span class="Command_Summary">string</span> <span class="Argument">list</span>)</div>
+      <div class="Body_Text"><a name="206401">and one that stores it as an integer </a><span class="Argument">IOScalar </span>representing the position of the selection in the list, </div>
+      <div class="Indented"><span class="In-line_command"><a name="206402">@uilist</a></span>(<span class="Command_Summary">scalar</span> <span class="Argument">IOScalar</span>, <span class="Command_Summary">string</span> <span class="Argument">prompt</span>, <span class="Command_Summary">string</span> <span class="Argument">list</span>)</div>
+      <div class="Body_Text"><a name="206403">The string </a><span class="Argument">prompt</span> is used to specify text to be displayed above the list box, providing a message or instructions to the user.</div>
+      <div class="Body_Text"><a name="206404">The string </a><span class="Argument">list</span> is a space delimited list of items that will be displayed in the list box. To specify entries with spaces, you should enclose the entry in double-quotes using double-quote escape characters.</div>
+      <div class="Body_Text"><a name="206405">Both </a><span class="Argument">prompt</span> and <span class="Argument">list</span> may be provided using in-line text, but <span class="Argument">IOString</span> or <span class="Argument">IOScalar</span> must be either a program variable or an object in your workfile.</div>
+      <div class="Body_Text"><a name="206406">If the IO variable (</a><span class="Argument">IOString </span>or<span class="Argument"> IOScalar</span>) is defined before the function is called, then the list box control will have the item defined by the variable pre-selected. If the IO variable does not match an item in the list box, or if it is not pre-defined, the first item in the list will be selected.</div>
+      <div class="Body_Text"><a name="206407">The following program lines provide the user with a choice of robust standard errors, and then displays that choice on the statusline:</a></div>
+      <div class="Multi-line_Input"><a name="206408">%choice = "White"</a></div>
+      <div class="Multi-line_Input"><a name="206409">%list = "Default White HAC"</a></div>
+      <div class="Multi-line_Input"><a name="206410">scalar ret = @uilist(%choice, "Standard Errors Choice", %list)</a></div>
+      <div class="Multi-line_Input"><a name="206411">statusline %list</a></div>
+      <div class="Picture"><a name="206415"><img class="Default" src="images/cprogram.087.11.3.jpg" width="100%" style="left: 0.0pt; max-height: 177px; max-width: 200px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206416">Note that the above program could also be run with the following lines:</a></div>
+      <div class="Multi-line_Input"><a name="206417">!choice = 2</a></div>
+      <div class="Multi-line_Input"><a name="206418">%list = "Default White HAC"</a></div>
+      <div class="Multi-line_Input"><a name="206419">scalar ret = @uilist(!choice, "Standard Errors Choice", %list)</a></div>
+      <div class="Multi-line_Input"><a name="206420">%choice = @word(%list,!choice)</a></div>
+      <div class="Multi-line_Input"><a name="206421">statusline %choice</a></div>
+      <div class="Body_Text"><a name="206422">The return value of the control is determined by the user response: Cancel (-1) or OK (0).</a></div>
+      <div class="Body_Text"><a name="206426">See </a><span class="In-line_command_link"><a href="functionref_u-@uilist.html#1259859" title="@uilist">@uilist</a></span> for details.</div>
+      <div class="Heading_4"><a name="206859">@uimlist</a></div>
+      <div class="Body_Text"><a name="206860">This function is similar to </a><span class="In-line_command">@uilist</span> in that it creates a list box dialog, with a difference being that here multiple selections from the list may be made. The form of the <span class="In-line_command">@uimlist</span> function is:</div>
+      <div class="Indented"><span class="In-line_command"><a name="206861">@uimlist</a></span>(<span class="Command_Summary">vector</span> <span class="Argument">IOVector</span>, <span class="Command_Summary">string</span> <span class="Argument">prompt</span>, <span class="Command_Summary">string</span> <span class="Argument">list</span>)</div>
+      <div class="Body_Text"><a name="206864">The string </a><span class="Argument">prompt</span> is used to specify text to be displayed above the list box, providing a message or instructions to the user.</div>
+      <div class="Body_Text"><a name="206865">The string </a><span class="Argument">list</span> is a space delimited list of items that will be displayed in the list box. To specify entries with spaces, you should enclose the entry in double-quotes using double-quote escape characters.</div>
+      <div class="Body_Text"><a name="206866">Both </a><span class="Argument">prompt</span> and <span class="Argument">list</span> may be provided using in-line text, but <span class="Argument">IOString</span> or <span class="Argument">IOScalar</span> must be either a program variable or an object in your workfile.</div>
+      <div class="Body_Text"><a name="206867">If the IO variable (</a><span class="Argument">IOVector</span>) is defined before the function is called, then the list box control will have the items defined by the vector pre-selected. If the IO variable does not match an item in the list box, or if it is not pre-defined, the first item in the list will be selected.</div>
+      <div class="Body_Text"><a name="206868">The following program lines provide the user with a choice of robust standard errors, and then displays those choices on the statusline:</a></div>
+      <div class="Multi-line_Input"><a name="206869">vector(1) choice = 2</a></div>
+      <div class="Multi-line_Input"><a name="206870">%list = "Default White HAC"</a></div>
+      <div class="Multi-line_Input"><a name="206871">scalar ret = @uimlist(choice, "Standard Errors Choice", %list)</a></div>
+      <div class="Multi-line_Input"><a name="206872">statusline %list</a></div>
+      <div class="Picture"><a name="206876"><img class="Default" src="images/cprogram.087.11.4.jpg" width="100%" style="left: 0.0pt; max-height: 180px; max-width: 203px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="217195">See </a><span class="In-line_command_link"><a href="functionref_u-@uimlist.html#1259911" title="@uimlist">@uimlist</a></span> for details.</div>
+      <div class="Heading_4"><a name="206428">@uiradio</a></div>
+      <div class="Body_Text"><span class="In-line_command"><a name="206429">@uiradio</a></span>(<span class="Command_Summary">scalar</span> <span class="Argument">IOScalar</span>, <span class="Command_Summary">string</span> <span class="Argument">prompt</span>, <span class="Command_Summary">string</span> <span class="Argument">list</span>) is similar to <span class="In-line_command">@uilist</span> in that it provides a dialog that lets the user select from a list of choices. However rather than selecting an item from a list box, the user must select the desired item using radio buttons. The <span class="In-line_command">@uiradio</span> function will return the user's choice in <span class="Argument">IOScalar</span>.</div>
+      <div class="Body_Text"><a name="206430">The string </a><span class="Argument">prompt</span> should be used to specify a message or instructions to the user to be displayed above the set of radio buttons.</div>
+      <div class="Body_Text"><a name="206431">The string </a><span class="Argument">list</span> is a space delimited list of items that contains the items for the radio buttons. To specify entries with spaces, you should enclose the entry in double-quotes using double-quote escape characters.</div>
+      <div class="Body_Text"><a name="206432">Both </a><span class="Argument">prompt</span> and <span class="Argument">list</span> may be specified using in-line text, but <span class="Argument">IOScalar</span> must be either a program variable or an object in your workfile.</div>
+      <div class="Body_Text"><a name="206433">If </a><span class="Argument">IOScalar</span> is defined and set equal to a valid integer before the function is called, the radio button associated with that integer will be the default selection when the dialog is shown. If <span class="Argument">IOScalar</span> is not a valid choice, the first radio will be selected.</div>
+      <div class="Body_Text"><a name="206434">As an example, we replicate the standard error choice example from the </a><span class="In-line_command">@uilist</span> function, but this time use radio buttons:</div>
+      <div class="Multi-line_Input"><a name="206435">!choice = 2</a></div>
+      <div class="Multi-line_Input"><a name="206436">%list = "Default White HAC"</a></div>
+      <div class="Multi-line_Input"><a name="206437">scalar ret = @uiradio(!choice, "Standard Errors Choice", %list)</a></div>
+      <div class="Multi-line_Input"><a name="206438">%choice = @word(%list,!choice)</a></div>
+      <div class="Multi-line_Input"><a name="206439">statusline %choice</a></div>
+      <div class="Picture"><a name="206443"><img class="Default" src="images/cprogram.087.11.5.jpg" width="100%" style="left: 0.0pt; max-height: 194px; max-width: 204px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206444">The return value of the control is determined by the user response: Cancel (-1) or OK (0).</a></div>
+      <div class="Body_Text"><a name="206448">See </a><span class="In-line_command_link"><a href="functionref_u-@uiradio.html#1260050" title="@uiradio">@uiradio</a></span> for additional detail.</div>
+      <div class="Heading_4"><a name="206451">@uidialog</a></div>
+      <div class="Body_Text"><a name="206452">The </a><span class="In-line_command">@uidialog</span>(<span class="Argument">control_spec1[</span>, <span class="Argument">control_spec2</span>, &#8230;.<span class="Argument">]</span>) function displays a dialog which may be composed of different controls, including simple text, edit boxes, list boxes, radio buttons and check boxes. The dialog is specified using a list of control specifications passed into the function as arguments. Each control specification is a type keyword specifying the type of control, followed by a list of parameters for that control.</div>
+      <div class="Body_Text"><a name="206453">The type keywords should be from the following list:</a></div>
+      <div class="Table"><a name="206499">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 180pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text_Header"><a name="206456">Keyword</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text_Header"><a name="206458">Control</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206460">&#8220;caption&#8221;</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206462">Dialog title</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206464">&#8220;text&#8221;</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206466">Plain text</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206468">&#8220;edit&#8221;</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206470">Edit box</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206472">&#8220;list&#8221;</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206474">List box</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206476">&#8220;radio&#8221;</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206478">Radio buttons</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206480">&#8220;check&#8221;</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206482">Check box</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206484">&#8220;button&#8221;</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206486">OK-type button</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206488">&#8220;buttonc&#8221;</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206490">Cancel-type button</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206492">&#8220;colbreak&#8221;</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206494">Column break</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206496">&#8220;setoc&#8221;</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="206498">Set OK/Cancel text</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="206500">The &#8220;edit&#8221;, &#8220;list&#8221; and &#8220;radio&#8221; controls are similar to their individual dialog functions, and the specifications for those controls follow the same pattern. Thus the specification for an edit box would be (&#8220;edit&#8221;, string </a><span class="Argument">IOString</span>, string <span class="Argument">prompt</span>, scalar <span class="Argument">maxEditLen</span>).</div>
+      <div class="Body_Text"><a name="206501">The &#8220;caption&#8221; control changes the title of the dialog, shown in the title bar. The </a><span class="In-line_command">caption</span> keyword should be followed by a string containing the text to be used as the caption, yielding a specification of (&#8220;caption&#8221;, string <span class="Argument">caption</span>).</div>
+      <div class="Body_Text"><a name="206502">The &#8220;text&#8221; control adds basic text to the dialog. Like the caption control, the text control keyword, &#8220;text&#8221;, should be followed by a string containing the text to be used, yielding a specification of (&#8220;text&#8221;, string </a><span class="Argument">text</span>).</div>
+      <div class="Body_Text"><a name="206503">The &#8220;check box&#8221; control adds a check box to the dialog. The </a><span class="In-line_command">check</span> keyword should be followed by a scalar, <span class="Argument">IOScalar</span>, which stores the selection of the check box - 1 for checked, and 0 for unchecked, and then by a string prompt which contains the text to be used as a prompt/instructions for the check box. The specification for the check box control is then: (&#8220;check&#8221;, scalar <span class="Argument">IOScalar</span>, string <span class="Argument">prompt</span>).</div>
+      <div class="Body_Text"><a name="206504">The &#8220;button&#8221; and &#8220;buttonc&#8221; controls add a custom button to the dialog. The dialog will close after a button has been pressed. The behavior of the button will depend on the type of button &#8212;buttons of type &#8220;button&#8221; will behave in the same way as the &#8220;OK&#8221; button (</a><span class="Emphasis">i.e.</span>, all variables passed into the dialog will be updated to reflect changes made to their corresponding controls). Buttons of type &#8220;buttonc&#8221; will behave in the same way as the &#8220;Cancel&#8221; button (<span class="Emphasis">i.e.,</span> all variables will be reset to the values that were passed into the dialog). </div>
+      <div class="Body_Text"><a name="206505">The return value of the dialog will correspond to the order in which buttons are placed in the dialog. If only one button (apart from the standard &#8220;OK&#8221; and &#8220;Cancel&#8221;) is included in the dialog, the return value for that button will be &#8220;1&#8221;. If there is more than one button, then the first button will return a value of &#8220;1&#8221;, the second will return a value of &#8220;2&#8221; and so on. Note that the return value is independent of whether the button was of type &#8220;button&#8221; or &#8220;buttonc&#8221;. The specification for the button controls is (&#8220;button[c]&#8221;, &#8220;</a><span class="Argument">text</span>&#8221;) where <span class="Argument">text</span> specifies the text that will be on the button.</div>
+      <div class="Body_Text"><a name="206506">The column break control inserts a column break. By default, EViews will automatically choose the number of columns in the constructed dialog. There is still a maximum of only two columns allowed, but by adding a &#8220;colbreak&#8221; control, you can force the position of a break in the dialog.</a></div>
+      <div class="Body_Text"><a name="206507">&#8220;setoc&#8221; allows you to change the text of the &#8220;OK&#8221; and &#8220;Cancel&#8221; buttons on the dialog. You should supply two words, separated by a space as the text for &#8220;OK&#8221; and &#8220;Cancel&#8221;.</a></div>
+      <div class="Body_Text"><a name="206508">As an example, a dialog that offers a choice of covariance matrix options, plus a check box for degree of freedom adjustment, could be made with:</a></div>
+      <div class="Multi-line_Input"><a name="206509">!choice = 2</a></div>
+      <div class="Multi-line_Input"><a name="206510">!doDF = 1</a></div>
+      <div class="Multi-line_Input"><a name="206511">%list = "Default White HAC"</a></div>
+      <div class="Multi-line_Input"><a name="206512">scalar ret = @uidialog("caption", "Covariance Options", "list", !choice, "Covariance method", %list, "check", !doDF, "DF-adjust")</a></div>
+      <div class="Picture"><a name="206516"><img class="Default" src="images/cprogram.087.11.6.jpg" width="100%" style="left: 0.0pt; max-height: 175px; max-width: 208px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206520">See </a><span class="In-line_command_link"><a href="functionref_u-@uidialog.html#1259612" title="@uidialog">@uidialog</a></span> for details.</div>
+      <div class="Heading_4"><a name="206522">@uifiledlg</a></div>
+      <div class="Body_Text"><a name="206523">The </a><span class="In-line_command">@uifiledlg</span>(<span class="Command_Summary">string</span> <span class="Argument">IO_Filespec</span>, <span class="Command_Summary">string</span> <span class="Argument">filter</span>, <span class="Command_Summary">string</span> <span class="Argument">style</span>) displays a standard Windows file open or save dialog so that you may obtain the path and name of a file. </div>
+      <div class="Body_Text"><span class="In-line_command"><a name="206524">@uifiledlg</a></span> function will return the user's specification in <span class="Argument">file_spec</span>.</div>
+      <div class="Body_Text"><a name="206525">The string </a><span class="Argument">IO_Filespec</span> should be used to specify an initial location and possibly the name for the file. <span class="Argument">IO_Filespec</span> will also contain the file specified on return.</div>
+      <div class="Body_Text"><a name="206526">The string </a><span class="Argument">filter</span> is used to specify the types of files to show in the dialog using the <span class="Argument">filter</span> argument, with, for example, &#8220;&#8221; used to denote all files, and &#8220;prg&#8221; used to limit the display to files ending in &#8220;.prg&#8221;. </div>
+      <div class="Body_Text"><a name="206527">The </a><span class="Argument">type</span> argument is used to determine whether the shown dialog has an &#8220;open&#8221; or a &#8220;save&#8221; prompt.  </div>
+      <div class="Body_Text"><a name="206528">(Note that the clicking </a><span class="Menu_Item">OK</span> on the dialog does not actually open or save the selected file, it merely returns the name of the selected file. Thus, specifying the type argument is for cosmetic reasons only.)</div>
+      <div class="Body_Text"><a name="206529">Both </a><span class="Argument">filter</span> and <span class="Argument">style</span> may be specified using in-line text, but <span class="Argument">IO_Filespec</span> must be either a program variable or an object in your workfile.</div>
+      <div class="Body_Text"><a name="206530">The displayed dialog will display both an </a><span class="Menu_Item">OK</span> and a <span class="Menu_Item">Cancel</span> button, and will return an integer representing the button clicked: Cancel (-1), OK (0).</div>
+      <div class="Multi-line_Input"><a name="206531">string myfile = "c:\temp\"</a></div>
+      <div class="Multi-line_Input"><a name="206532">@uifiledlg(myfile, "prg&#8221;, "open")</a></div>
+      <div class="Body_Text"><a name="206533">These commands display a file open dialog style containing a list of all files with a &#8220;.prg&#8221; extension in the folder &#8220;c:\temp\&#8221;. The user can navigate through the file system and select another file, whose path and name will be returned in the string MYFILE.</a></div>
+      <div class="Body_Text"><a name="206534">Note that the slightly different set of commands</a></div>
+      <div class="Multi-line_Input"><a name="206535">string myfile = "c:\temp"</a></div>
+      <div class="Multi-line_Input"><a name="206536">@uifiledlg(myfile, "prg", "save")</a></div>
+      <div class="Body_Text"><a name="206537">will instead display a save dialog that opens in the &#8220;c:\&#8221; folder with the filename initialized to &#8220;temp.prg&#8221; (MYFILE does not have the trailing &#8220;\&#8221;).</a></div>
+      <div class="Body_Text"><a name="206541">See also </a><span class="In-line_command_link"><a href="functionref_u-@uifiledlg.html#1259805" title="@uifiledlg">@uifiledlg</a></span>.</div>
+      <div class="Heading_4"><a name="124274">Example Program</a></div>
+      <div class="Body_Text"><a name="124275">This program creates a workfile and some series, then puts up dialogs asking the user to specify the dependent variable and the regressors to be used in a least-squares equation. Note that the part of the example program that generates the data could be replaced with a command to open up an existing workfile.</a></div>
+      <div class="Program_Comment"><span class="Program_Comment"><a name="124276">'Create a workfile and some series</a></span></div>
+      <div class="Multi-line_Input"><a name="124277">wfcreate temp u 100</a></div>
+      <div class="Multi-line_Input"><a name="124278">series y=nrnd</a></div>
+      <div class="Multi-line_Input"><a name="124279">series x=nrnd</a></div>
+      <div class="Multi-line_Input"><a name="124280">series w=nrnd</a></div>
+      <div class="Program_Comment"><a name="124281">'-------------------------------------</a></div>
+      <div class="Program_Comment"><a name="124282">'variable to store name of dependent variable</a></div>
+      <div class="Multi-line_Input"><a name="124283">%dep = "" </a></div>
+      <div class="Program_Comment"><span class="Program_Comment"><a name="124284">'variable to store list of regressors. Default is "c" for a constant.</a></span></div>
+      <div class="Multi-line_Input"><a name="124285">%regs = "c " </a></div>
+      <div class="Program_Comment"><span class="Program_Comment"><a name="124286">'variable that will track the result of dialogs. -1 indicates user hit Cancel. 0 Indicates user hit OK.</a></span></div>
+      <div class="Multi-line_Input"><a name="124287">!result  = 0 </a></div>
+      <div class="Program_Comment"><span class="Program_Comment"><a name="124288">'put up an Edit dialog asking for dependent variable.</a></span></div>
+      <div class="Multi-line_Input"><a name="124289">!result = @uiedit(%dep,</a><span class="Program_String">"Enter the dependent variable"</span>) </div>
+      <div class="Multi-line_Input"><span class="Program_Keyword" style="color: #0000ff"><a name="124290">if</a></span> !result=-1 <span class="Program_Keyword" style="color: #0000ff">then</span>    <span class="Program_Comment">'if user cancelled, then stop program</span></div>
+      <div class="Multi-line_Input"><span class="Program_Keyword"><a name="124291">stop</a></span></div>
+      <div class="Multi-line_Input"><span class="Program_Keyword"><a name="124292">endif</a></span></div>
+      <div class="Program_Comment"><a name="124293">'put up an Edit dialog asking for regressors list.</a></div>
+      <div class="Multi-line_Input"><a name="124294">!result = @uiedit(%regs,</a><span class="Program_String">"Enter the list of regressors"</span>)</div>
+      <div class="Multi-line_Input"><span class="Program_Keyword" style="color: #0000ff"><a name="124295">if</a></span> !result=-1 <span class="Program_Keyword" style="color: #0000ff">then</span>   <span class="Program_Comment">'if user cancelled, then stop program</span></div>
+      <div class="Multi-line_Input"><span class="Program_Keyword"><a name="124296">stop</a></span></div>
+      <div class="Multi-line_Input"><span class="Program_Keyword"><a name="124297">endif</a></span></div>
+      <div class="Multi-line_Input"><a name="124298">&nbsp;</a></div>
+      <div class="Multi-line_Input"><a name="124299">equation eq1.ls {%dep} {%regs}   </a><span class="Program_Comment">'estimate equation.</span></div>
+      <div class="Body_Text"><a name="124300">Three program variables are used in this program: %DEP, %REGS and !RESULT. %DEP is the string variable that will contain the user&#8217;s entry for the dependent variable. To begin, we set this equal to an empty string. %REGS is used to store the user&#8217;s entry for the list of regressors. We set this equal to &#8220;C&#8221; to begin with. This means that the default setting for the regressor list will be a constant. !RESULT will be used to track the completion of the dialogs. Every dialog returns an integer value depending on whether the user clicked </a><span class="Menu_Item">OK</span> or <span class="Menu_Item">Cancel</span> (or in some cases <span class="Menu_Item">Yes</span> or <span class="Menu_Item">No</span>). We initialize this value to 0.</div>
+      <div class="Picture"><a name="124304"><img class="Default" src="images/cprogram.087.11.7.jpg" width="100%" style="left: 0.0pt; max-height: 157px; max-width: 266px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="132192">Following the declaration of the variables, the first dialog is brought up using the </a><span class="In-line_command">@uiedit</span> command. This will create an Edit dialog asking the user to &#8220;Enter the dependent variable.&#8221; The user&#8217;s response will be stored in %DEP. Following the dialog command, we check whether the value of !RESULT is equal to &#8209;1. A &#8209;1 indicates that the user pressed <span class="Menu_Item">Cancel</span> in the dialog. If this is the case, the program quits, using the <span class="In-line_command">stop</span> command.</div>
+      <div class="Body_Text"><a name="124306">The second dialog command is similar to the first, but rather than asking for the dependent variable, it asks the user to &#8220;Enter the list of regressors,&#8221; and stores that list in %REGS. Note that since %REGS was set equal to &#8220;C&#8221; prior to the dialog being put up, the dialog will be pre-filled with the constant term. Users can still delete the constant or add extra regressors.</a></div>
+      <div class="Body_Text"><a name="124307">Finally, having obtained entries for both %DEP and %REGS, equation EQ1 is estimated via least squares with the specified variables. </a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

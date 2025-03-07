@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Additional Topics</title>
+    <link rel="StyleSheet" href="css/timeser.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="timeser-Examples.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="timeser-Estimation_Method_Details.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="timeser-Time_Series_Regression.html">Time Series Regression</a> : Additional Topics</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="238860">Additional Topics</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#232271">Dealing with Estimation Problems</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#243193">Nonlinear Models with ARMA errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#243198">Weighted Models with ARMA errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#243215">Two-Stage Regression Models with Serial Correlation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#243209">Nonlinear Models with ARMA Errors</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="232271">Dealing with Estimation Problems</a></div>
+      <div class="Body_Text"><a name="37675">Since EViews uses nonlinear estimation algorithms to estimate ARMA models, all of the discussion in </a><span class="Link"><a href="Regress2-Nonlinear_Least_Squares.html#266885" title="Nonlinear Least Squares">(here)</a></span>, <span class="Link"><a href="Regress2-Nonlinear_Least_Squares.html#266885" title="Nonlinear Least Squares">&#8220;Solving Estimation Problems&#8221;</a></span>, is applicable, especially the advice to try alternative starting values.</div>
+      <div class="Body_Text"><a name="37682">There are a few other issues to consider that are specific to estimation of ARMA and ARFIMA models.</a></div>
+      <div class="Body_Text"><a name="37683">First, MA models are notoriously difficult to estimate. In particular, you should avoid high order MA terms unless absolutely required for your model as they are likely to cause estimation difficulties. For example, a single large autocorrelation spike at lag 57 in the correlogram does not necessarily require you to include an MA(57) term in your model unless you know there is something special happening every 57 periods. It is more likely that the spike in the correlogram is simply the product of one or more outliers in the series. By including many MA terms in your model, you lose degrees of freedom, and may sacrifice stability and reliability of your estimates.</a></div>
+      <div class="Body_Text"><a name="37685">If the underlying roots of the MA process have modulus close to one, you may encounter estimation difficulties, with EViews reporting that it cannot improve the sum-of-squares or that it failed to converge in the maximum number of iterations. This behavior may be a sign that you have over-differenced the data. You should check the correlogram of the series to determine whether you can re-estimate with one less round of differencing.</a></div>
+      <div class="Body_Text"><a name="37686">Lastly, if you continue to have problems, you may wish to turn off MA backcasting.</a></div>
+      <div class="Body_Text"><a name="243191">For a discussion of how to estimate TSLS specifications with ARMA errors, see </a><span class="Link"><a href="gmmiv-Nonlinear_Two-stage_Least_Squares.html#177316" title="Nonlinear Two-stage Least Squares">&#8220;Nonlinear Two-stage Least Squares&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="243193">Nonlinear Models with ARMA errors</a></div>
+      <div class="Body_Text"><a name="243194">EViews will estimate nonlinear ordinary and two-stage least squares models with autoregressive error terms. For details, see the discussion in </a><span class="Link"><a href="Regress2-Nonlinear_Least_Squares.html#266568" title="Nonlinear Least Squares">&#8220;Nonlinear Least Squares&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="243198">Weighted Models with ARMA errors</a></div>
+      <div class="Body_Text"><a name="243212">EViews does not offer built-in procedures to automatically estimate weighted models with ARMA error terms. You can, of course, always construct weighted series and then perform estimation using the weighted data and ARMA terms. Note that this procedure implies a very specific assumption about the properties of your data.</a></div>
+      <div class="Heading_4"><a name="243215">Two-Stage Regression Models with Serial Correlation</a></div>
+      <div class="Body_Text"><a name="243374">By combining two-stage least squares or two-stage nonlinear least squares with AR terms, you can estimate models where there is correlation between regressors and the innovations as well as serial correlation in the residuals.</a></div>
+      <div class="Body_Text"><a name="243375">If the original regression model is linear, EViews uses the Marquardt algorithm to estimate the parameters of the transformed specification. If the original model is nonlinear, EViews uses Gauss-Newton to estimate the AR corrected specification.</a></div>
+      <div class="Body_Text"><a name="243218">For further details on the algorithms and related issues associated with the choice of instruments, see the discussion in </a><span class="Link"><a href="gmmiv-Two-stage_Least_Squares.html#168252" title="Two-stage Least Squares">&#8220;TSLS with AR errors&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="243209">Nonlinear Models with ARMA Errors</a></div>
+      <div class="Body_Text"><a name="243131">EViews can estimate nonlinear regression models with ARMA errors. For example, suppose you wish to estimate the following nonlinear specification with an AR(2) error:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/timeser.033.08.1.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(24.51)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="243085">Simply specify your model using EViews expressions, followed by an additive term describing the AR correction enclosed in square brackets. The AR term should contain a coefficient assignment for each AR lag, separated by commas:</a></div>
+      <div class="Input"><a name="243086">cs = c(1) + gdp^c(2) + [ar(1)=c(3), ar(2)=c(4)]</a></div>
+      <div class="Body_Text"><a name="243087">EViews transforms this nonlinear model by differencing, and estimates the transformed nonlinear specification using a Gauss-Newton iterative procedure (see </a><span class="Link"><a href="timeser-Estimation_Method_Details.html#242317" title="Estimation Method Details">&#8220;Initializing the AR Errors&#8221;</a></span>).</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

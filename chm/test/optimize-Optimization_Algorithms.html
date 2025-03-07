@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Optimization Algorithms</title>
+    <link rel="StyleSheet" href="css/optimize.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="optimize-Setting_Estimation_Options.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="optimize-Nonlinear_Equation_Solution_Methods.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="optimize-Estimation_and_Solution_Options.html">Estimation and Solution Options</a> : Optimization Algorithms</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="137130">Optimization Algorithms</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#137163">Second Derivative Methods</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#137166">Newton-Raphson</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#137197">Quadratic hill-climbing (Goldfeld-Quandt)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#137215">First Derivative Methods</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#137221">Gauss-Newton/BHHH</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#137230">Marquardt</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#137237">Choosing the step size</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#137250">Derivative free methods</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="137131">Given the importance of the proper setting of EViews estimation options, it may prove useful to review briefly various basic optimization algorithms used in nonlinear estimation. Recall that the problem faced in non-linear estimation is to find the values of parameters <img class="Default EquationGraphic" src="images/optimize.077.3.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> that optimize (maximize or minimize) an objective function <img class="Default EquationGraphic" src="images/optimize.077.3.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="137138">Iterative optimization algorithms work by taking an initial set of values for the parameters, say <img class="Default EquationGraphic" src="images/optimize.077.3.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 29px; top: 0.0pt" alt="" />, then performing calculations based on these values to obtain a better set of parameter values, <img class="Default EquationGraphic" src="images/optimize.077.3.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 29px; top: 0.0pt" alt="" />. This process is repeated for <img class="Default EquationGraphic" src="images/optimize.077.3.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 29px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/optimize.077.3.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 29px; top: 0.0pt" alt="" /> and so on until the objective function <img class="Default EquationGraphic" src="images/optimize.077.3.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> no longer improves between iterations.</a></div>
+      <div class="Body_Text"><a name="137154">There are three main parts to the optimization process: (1) obtaining the initial parameter values, (2) updating the candidate parameter vector <img class="Default EquationGraphic" src="images/optimize.077.3.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> at each iteration, and (3) determining when we have reached the optimum.</a></div>
+      <div class="Body_Text"><a name="137158">If the objective function is globally concave so that there is a single maximum, any algorithm which improves the parameter vector at each iteration will eventually find this maximum (assuming that the size of the steps taken does not become negligible). If the objective function is not globally concave, different algorithms may find different local maxima, but all iterative algorithms will suffer from the same problem of being unable to tell apart a local and a global maximum.</a></div>
+      <div class="Body_Text"><a name="137159">The main thing that distinguishes different algorithms is how quickly they find the maximum. Unfortunately, there are no hard and fast rules. For some problems, one method may be faster, for other problems it may not. EViews provides different algorithms, and will often let you choose which method you would like to use.</a></div>
+      <div class="Body_Text"><a name="137160">The following sections outline these methods. The algorithms used in EViews may be broadly classified into three types: </a><span class="Emphasis">second derivative </span>methods, <span class="Emphasis">first derivative </span>methods, and <span class="Emphasis">derivative free</span> methods. EViews&#8217; second derivative methods evaluate current parameter values and the first and second derivatives of the objective function for every observation. First derivative methods use only the first derivatives of the objective function during the iteration process. As the name suggests, derivative free methods do not compute derivatives.</div>
+      <div class="Heading_4"><a name="137163">Second Derivative Methods</a></div>
+      <div class="Body_Text"><a name="137164">For binary, ordered, censored, and count models, EViews can estimate the model using Newton-Raphson or </a><span class="Definition">quadratic hill-climbing.</span></div>
+      <div class="Heading_5"><a name="137166">Newton-Raphson</a></div>
+      <div class="Body_Text"><a name="137170">Candidate values for the parameters <img class="Default EquationGraphic" src="images/optimize.077.3.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 29px; top: 0.0pt" alt="" /> may be obtained using the method of Newton-Raphson by linearizing the first order conditions <img class="Default EquationGraphic" src="images/optimize.077.3.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 55px; top: 0.0pt" alt="" /> at the current parameter values, <img class="Default EquationGraphic" src="images/optimize.077.3.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize.077.3.12.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(60.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="137193">where <img class="Default EquationGraphic" src="images/optimize.077.3.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the gradient vector <img class="Default EquationGraphic" src="images/optimize.077.3.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 55px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/optimize.077.3.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is the Hessian matrix <img class="Default EquationGraphic" src="images/optimize.077.3.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 68px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="137194">If the function is quadratic, Newton-Raphson will find the maximum in a single iteration. If the function is not quadratic, the success of the algorithm will depend on how well a local quadratic approximation captures the shape of the function.</a></div>
+      <div class="Heading_5"><a name="137197">Quadratic hill-climbing (Goldfeld-Quandt)</a></div>
+      <div class="Body_Text"><a name="137198">This method, which is a straightforward variation on Newton-Raphson, is sometimes attributed to Goldfeld and Quandt. Quadratic hill-climbing modifies the Newton-Raphson algorithm by adding a correction matrix (or ridge factor) to the Hessian. The quadratic hill-climbing updating algorithm is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize.077.3.17.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(60.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="137209">where <img class="Default EquationGraphic" src="images/optimize.077.3.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is the identity matrix and <img class="Default EquationGraphic" src="images/optimize.077.3.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is a positive number that is chosen by the algorithm.</a></div>
+      <div class="Body_Text"><a name="137210">The effect of this modification is to push the parameter estimates in the direction of the gradient vector. The idea is that when we are far from the maximum, the local quadratic approximation to the function may be a poor guide to its overall shape, so we may be better off simply following the gradient. The correction may provide better performance at locations far from the optimum, and allows for computation of the direction vector in cases where the Hessian is near singular.</a></div>
+      <div class="Body_Text"><a name="137211">For models which may be estimated using second derivative methods, EViews uses quadratic hill-climbing as its default method. You may elect to use traditional Newton-Raphson, or the first derivative methods described below, by selecting the desired algorithm in the Options menu.</a></div>
+      <div class="Body_Text"><a name="137212">Note that asymptotic standard errors are always computed from the unmodified Hessian once convergence is achieved.</a></div>
+      <div class="Heading_4"><a name="137215">First Derivative Methods</a></div>
+      <div class="Body_Text"><a name="137216">Second derivative methods may be computationally costly since we need to evaluate the <img class="Default EquationGraphic" src="images/optimize.077.3.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 84px; top: 0.0pt" alt="" /> elements of the second derivative matrix at every iteration. Moreover, second derivatives calculated may be difficult to compute accurately. An alternative is to employ methods which require only the first derivatives of the objective function at the parameter values.</a></div>
+      <div class="Body_Text"><a name="137220">For selected other nonlinear models (ARCH and GARCH, GMM, State Space), EViews provides two first derivative methods: Gauss-Newton/BHHH or Marquardt.</a></div>
+      <div class="Body_Text"><a name="140781">Nonlinear single equation and system models are estimated using the Marquardt method.</a></div>
+      <div class="Heading_5"><a name="137221">Gauss-Newton/BHHH</a></div>
+      <div class="Body_Text"><a name="137222">This algorithm follows Newton-Raphson, but replaces the negative of the Hessian by an approximation formed from the sum of the outer product of the gradient vectors for each observation&#8217;s contribution to the objective function. For least squares and log likelihood functions, this approximation is asymptotically equivalent to the actual Hessian when evaluated at the parameter values which maximize the function. When evaluated away from the maximum, this approximation may be quite poor.</a></div>
+      <div class="Body_Text"><a name="137224">The algorithm is referred to as </a><span class="Definition">Gauss-Newton</span> for general nonlinear least squares problems, and often attributed to Berndt, Hall, Hall and Hausman (<span class="Definition">BHHH</span>) for maximum likelihood problems.</div>
+      <div class="Body_Text"><a name="137227">The advantages of approximating the negative Hessian by the outer product of the gradient are that (1) we need to evaluate only the first derivatives, and (2) the outer product is necessarily positive semi-definite. The disadvantage is that, away from the maximum, this approximation may provide a poor guide to the overall shape of the function, so that more iterations may be needed for convergence. </a></div>
+      <div class="Heading_5"><a name="137230">Marquardt</a></div>
+      <div class="Body_Text"><a name="137231">The Marquardt algorithm modifies the Gauss-Newton algorithm in exactly the same manner as quadratic hill climbing modifies the Newton-Raphson method (by adding a correction matrix (or ridge factor) to the Hessian approximation). </a></div>
+      <div class="Body_Text"><a name="137232">The ridge correction handles numerical problems when the outer product is near singular and may improve the convergence rate. As above, the algorithm pushes the updated parameter values in the direction of the gradient.</a></div>
+      <div class="Body_Text"><a name="137233">For models which may be estimated using first derivative methods, EViews uses Marquardt as its default method. In many cases, you may elect to use traditional Gauss-Newton via the Options menu.</a></div>
+      <div class="Body_Text"><a name="137234">Note that asymptotic standard errors are always computed from the unmodified (Gauss-Newton) Hessian approximation once convergence is achieved.</a></div>
+      <div class="Heading_4"><a name="137237">Choosing the step size</a></div>
+      <div class="Body_Text"><a name="137238">At each iteration, we can search along the given direction for the optimal step size. EViews performs a simple trial-and-error search at each iteration to determine a step size <img class="Default EquationGraphic" src="images/optimize.077.3.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> that improves the objective function. This procedure is sometimes referred to as </a><span class="Definition">squeezin</span>g or<span class="Definition"> stretching</span>. </div>
+      <div class="Body_Text"><a name="137245">Note that while EViews will make a crude attempt to find a good step, <img class="Default EquationGraphic" src="images/optimize.077.3.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is not actually optimized at each iteration since the computation of the direction vector is often more important than the choice of the step size. It is possible, however, that EViews will be unable to find a step size that improves the objective function. In this case, EViews will issue an error message.</a></div>
+      <div class="Body_Text"><a name="137249">EViews also performs a crude trial-and-error search to determine the scale factor <img class="Default EquationGraphic" src="images/optimize.077.3.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> for Marquardt and quadratic hill-climbing methods.</a></div>
+      <div class="Heading_4"><a name="137250">Derivative free methods</a></div>
+      <div class="Body_Text"><a name="137251">Other optimization routines do not require the computation of derivatives. The </a><span class="Definition">grid search</span> is a leading example. Grid search simply computes the objective function on a grid of parameter values and chooses the parameters with the highest values. Grid search is computationally costly, especially for multi-parameter models.</div>
+      <div class="Body_Text"><a name="137254">EViews uses (a version of) grid search for the exponential smoothing routine.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

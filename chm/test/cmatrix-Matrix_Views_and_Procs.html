@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Matrix Views and Procs</title>
+    <link rel="StyleSheet" href="css/cmatrix.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cmatrix-Matrix_Commands_and_Functions.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cmatrix-Matrix_Operations_versus_Loop_Operations.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cmatrix-Matrix_Language.html">Matrix Language</a> : Matrix Views and Procs</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="148483">Matrix Views and Procs</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#68988">Matrix Graph and Statistics Views</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#69002">Matrix Input and Output</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#162787">Import</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#162668">Excel Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#162711">HTML Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#162597">Text Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#162843">Export</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="148487">The individual object descriptions list the various views and procs for the various matrix objects. Listings are available for matrices (</a><span class="Link"><a href="matrixcmd-Matrix.html#177415" title="Matrix">&#8220;Matrix&#8221;</a></span>), vectors (<span class="Link"><a href="vectorcmd-Vector.html#176241" title="Vector">&#8220;Vector&#8221;</a></span>), symmetric matrices (<span class="Link"><a href="symcmd-Sym.html#177286" title="Sym">&#8220;Sym&#8221;</a></span>), rowvectors (<span class="Link"><a href="rowvectorcmd-Rowvector.html#176721" title="Rowvector">&#8220;Rowvector&#8221;</a></span>), and coefs (<span class="Link"><a href="coefcmd-Coef.html#176237" title="Coef">&#8220;Coef&#8221;</a></span>).</div>
+      <div class="Heading_4"><a name="68988">Matrix Graph and Statistics Views</a></div>
+      <div class="Body_Text"><a name="148463">All of the matrix objects, with the exception of the scalar object, have windows and views. For example, you may display line and bar graphs for each column of the <img class="Default EquationGraphic" src="images/cmatrix.092.7.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 49px; top: 0.0pt" alt="" /> matrix </a><span class="EViews_Name">Z</span>:</div>
+      <div class="Multi-line_Input"><a name="148467">z.line</a></div>
+      <div class="Multi-line_Input"><a name="68994">z.bar(p)</a></div>
+      <div class="Body_Text"><a name="68995">Each column will be plotted against the row number of the matrix. </a></div>
+      <div class="Body_Text"><a name="68996">Additionally, you can compute descriptive statistics for each column of a matrix, as well as the correlation and covariance matrix between the columns of the matrix:</a></div>
+      <div class="Multi-line_Input"><a name="68997">z.stats</a></div>
+      <div class="Multi-line_Input"><a name="68998">z.cor</a></div>
+      <div class="Multi-line_Input"><a name="68999">z.cov</a></div>
+      <div class="Body_Text"><a name="69000">By default, EViews performs listwise deletion by column when computing correlations and covariances, so that each group of column statistics is computed using the largest possible set of observations.</a></div>
+      <div class="Body_Text"><a name="69001">The full syntax for the commands to display and print these and other views is provided in the reference for the specific object (</a><span class="Emphasis">e.g.</span>, matrix, sym) <span class="Manual_Titles">Object Reference</span>.</div>
+      <div class="Heading_4"><a name="69002">Matrix Input and Output</a></div>
+      <div class="Body_Text"><a name="69003">EViews provides you with the ability to read and write files directly from matrix objects using the </a><span class="In-line_command">import</span> and <span class="In-line_command">export</span> procedures. </div>
+      <div class="Heading_5"><a name="162787">Import</a></div>
+      <div class="Body_Text"><a name="163055">You may read directly into an EViews matrix object (matrix, vector, sym, etc.) from text (both ASCII and binary), HTML, Excel XLSX, and Excel 97 XLS files. Excel reads includes support for named ranges and multiple pages. The new engine supports a number of different formats.</a></div>
+      <div class="Heading_6"><a name="162668">Excel Example</a></div>
+      <div class="Body_Text"><a name="162697">The command</a></div>
+      <div class="Input"><a name="162650">matrix_name.import "c:\data files\data.xls"</a></div>
+      <div class="Body_Text"><a name="162651">loads the active sheet of DATA.XLSX into the MATRIX_NAME matrix object.</a></div>
+      <div class="Input"><a name="162652">matrix_name.import "c:\data files\data.xls" range="GDP data" </a></div>
+      <div class="Body_Text"><a name="162653">reads the data contained in the &#8220;GDP data&#8221; sheet of &#8220;Data.XLS&#8221; into the MATRIX_NAME object. </a></div>
+      <div class="Heading_6"><a name="162711">HTML Example</a></div>
+      <div class="Body_Text"><a name="162635">The command</a></div>
+      <div class="Input"><a name="162575">mat1.import "c:\data.html"</a></div>
+      <div class="Body_Text"><a name="162576">loads into the MAT1 matrix object the data located in the HTML file &#8220;Data.HTML&#8221; located on the C:\ drive</a></div>
+      <div class="Input"><a name="162577">mat1.import(type=html) "http://www.tradingroom.com.au/apps/mkt/forex.ac" colhead=3</a></div>
+      <div class="Body_Text"><a name="162578">loads into a matrix object MAT1 the data with the given URL located on the website site &#8220;http://www.tradingroom.com.au&#8221;. The column header is set to three rows.</a></div>
+      <div class="Heading_6"><a name="162597">Text Example</a></div>
+      <div class="Body_Text"><a name="162621">The command</a></div>
+      <div class="Input"><a name="162601">mat2.import c:\data.csv skip=5</a></div>
+      <div class="Body_Text"><a name="162602">reads &#8220;Data.CSV&#8221; into a MAT2, skipping the first 5 rows.</a></div>
+      <div class="Input"><a name="162603">mat2.import(type=text) c:\date.txt delim=comma</a></div>
+      <div class="Body_Text"><a name="162604">loads the comma delimited data &#8220;Date.TXT&#8221; into the MAT2 matrix object.</a></div>
+      <div class="Heading_5"><a name="162843">Export</a></div>
+      <div class="Body_Text"><a name="162981">The export command supports a number of formats including the various ASCII, binary, HTML, RTF, and Excel formats, along with LaTeX, Markdown, and PDF files. Importantly, the Excel XLSX export allows you to write the matrix results into existing Excel files, beginning at a specified cell.</a></div>
+      <div class="Body_Text"><a name="162912">The command:</a></div>
+      <div class="Input"><a name="162876">matrix1.export mymatrix</a></div>
+      <div class="Body_Text"><a name="162877">exports the data in MATRIX1 to a CSV file named &#8220;mymatrix.CSV&#8221; in the default directory.</a></div>
+      <div class="Input"><a name="162878">matrix1.export(h, t=csv, n="NaN") mymatrix</a></div>
+      <div class="Body_Text"><a name="162879">saves the contents of MATRIX1 along with the column and row headers to a CSV (comma separated value) file named &#8220;mymatrix.CSV&#8221; and writes all NA values as &#8220;NaN&#8221;.</a></div>
+      <div class="Input"><a name="162880">matrix1.export(h, t=html, s=50) mymatrix</a></div>
+      <div class="Body_Text"><a name="162881">exports the data in MATRIX1 along with the column and row headers to a HTML file named &#8220;mymatrix.HTM&#8221; at half of the original size.</a></div>
+      <div class="Input"><a name="162882">matrix1.exports(n=".", r=B) mymatrix</a></div>
+      <div class="Body_Text"><a name="162883">saves the data in the second column to a CSV file named &#8220;mymatrix.CSV&#8221;, and writes all NA values as &#8220;.&#8221;.</a></div>
+      <div class="Input"><a name="162884">matrix1.export(t=excelxml, cellfmt=clear, mode=update) mymatrix range=Country!b5</a></div>
+      <div class="Body_Text"><a name="162885">writes the data in MATRIX1 to the preexisting &#8220;mymatrix.XLSX&#8221; Excel file to the &#8220;Country&#8221; sheet at cell B5, where all cell formatting is cleared.</a></div>
+      <div class="Body_Text"><a name="162841">There are many more options for controlling reading and writing of matrix data; </a><span class="Link"><a href="Basedata-Basic_Data_Handling.html#88945" title="Basic Data Handling">&#8220;Basic Data Handling&#8221;</a></span> offers extensive discussion. See also the descriptions for the matrix procs <span class="In-line_command_link"><a href="matrixcmd-import.html#258256" title="import">Matrix::import</a></span> and <span class="In-line_command_link"><a href="matrixcmd-export.html#258569" title="export">Matrix::export</a></span> (similar descriptions are available for the other matrix objects.)</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

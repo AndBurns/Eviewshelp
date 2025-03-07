@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Setting up a Pool Workfile</title>
+    <link rel="StyleSheet" href="css/pool.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="pool-Pooled_Data.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="pool-Working_with_Pooled_Data.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="pool-Pooled_Time_Series,_Cross-Section_Data.html">Pooled Time Series, Cross-Section Data</a> : Setting up a Pool Workfile</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="186743">Setting up a Pool Workfile</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186746">Direct Setup</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186748">Creating the Workfile and Pool Object</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186767">Importing Pooled Data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#186773">Unstacked Data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#186794">Stacked Data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#186809">Indirect Setup (Restructuring) of Stacked Data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#186835">Direct Import of Stacked Data</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="186744">Your goal in setting up a pool workfile is to obtain a workfile containing individual series for ordinary variables, sets of appropriately named series for the cross-section specific data, and pool objects containing the related sets of identifiers. The workfile should have frequency and range matching the time series dimension of your pooled data.</a></div>
+      <div class="Body_Text"><a name="186745">There are two basic approaches to setting up such a workfile. The direct approach involves first creating an empty workfile with the desired structure, and then importing data into individual series using either standard or pool specific import methods. The indirect approach involves first creating a stacked representation of the data in EViews, and then using EViews built-in reshaping tools to set up a pooled workfile. </a></div>
+      <div class="Heading_4"><a name="186746">Direct Setup</a></div>
+      <div class="Body_Text"><a name="186747">The direct approach to setting up your pool workfile involves three distinct steps: first creating a workfile with the desired time series structure; next, creating one or more pool objects containing the desired cross-section identifiers; and lastly, using pool object tools to import data into individual series in the workfile.</a></div>
+      <div class="Heading_5"><a name="186748">Creating the Workfile and Pool Object</a></div>
+      <div class="Body_Text"><a name="186749">The first step in the direct setup is to create an ordinary EViews workfile structured to match the time series dimension of your data. The range of your workfile should represent the earliest and latest dates or observations you wish to consider for any of the cross-section units. </a></div>
+      <div class="Body_Text"><a name="186750">Simply select </a><span class="Menu_Item">File/New workfile...</span> to bring up the <span class="Menu_Item">Workfile Create</span> dialog which you will use to describe the structure of your workfile. For additional detail, see <span class="Link"><a href="workfile-Creating_a_Workfile.html#124561" title="Creating a Workfile">&#8220;Creating a Workfile by Describing its Structure&#8221;</a></span> .</div>
+      <div class="Body_Text"><a name="186757">For example, to create a pool workfile that has annual data ranging from 1950 to 1992, simply select </a><span class="Menu_Item">Annual</span> in the <span class="Menu_Item">Frequency</span> dropdown menu, and enter &#8220;1950&#8221; as the <span class="Menu_Item">Start date</span> and &#8220;1992&#8221; as the <span class="Menu_Item">End date</span>. </div>
+      <div class="Body_Text"><a name="186758">Next, you should create one or more pool objects containing cross-section identifiers and group definitions as described in </a><span class="Link"><a href="pool-The_Pool_Object.html#186649" title="The Pool Object">&#8220;The Pool Object&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="186767">Importing Pooled Data</a></div>
+      <div class="Body_Text"><a name="186768">Lastly, you should use one of the various methods for importing data into series in the workfile. Before considering the various approaches, we require an understanding the various representations of pooled time series, cross-section data that you may encounter. </a></div>
+      <div class="Body_Text"><a name="186769">Bear in mind that in a pooled setting, a given observation on a variable may be indexed along three dimensions: the variable, the cross-section, and the time period. For example, you may be interested in the value of GDP, for the U.K., in 1989.</a></div>
+      <div class="Body_Text"><a name="186770">Despite the fact that there are three dimensions of interest, you will eventually find yourself working with a two-dimensional representation of your pooled data. There is obviously no unique way to organize three-dimensional data in two-dimensions, but several formats are commonly employed.</a></div>
+      <div class="Heading_6"><a name="186773">Unstacked Data</a></div>
+      <div class="Body_Text"><a name="186774">In this form, observations on a given variable for a given cross-section are grouped together, but are separated from observations for other variables and other cross sections. For example, suppose the top of our Excel data file contains the following:</a></div>
+      <div class="Table"><a name="186778">&nbsp;</a></div>
+      <div class="Table"><a name="186779"><img class="Default" src="images/pool.066.5.1.jpg" width="100%" style="left: 0.0pt; max-height: 210px; max-width: 926px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186780">Here, the base name &#8220;C&#8221; represents consumption, while &#8220;G&#8221; represents government expenditure. Each country has its own separately identified column for consumption, and its own column for government expenditure.</a></div>
+      <div class="Body_Text"><a name="186783">EViews pooled workfiles are structured to work naturally with data that are unstacked, since the sets of cross-section specific series in the pool workfile correspond directly to the multiple columns of unstacked source data. You may read unstacked data directly into EViews using the standard workfile creation procedures described in </a><span class="Link"><a href="workfile-Creating_a_Workfile.html#111704" title="Creating a Workfile">&#8220;Creating a Workfile by Reading from a Foreign Data Source&#8221;</a></span> . Each cross-section specific variable should be read as an individual series, with the names of the resulting series follow the pool naming conventions given in your pool object. Ordinary series may be imported in the usual fashion with no additional complications.</div>
+      <div class="Body_Text"><a name="186790">In this example, we should use the standard EViews tools to read separate series for each column. We create the individual series &#8220;YEAR&#8221;, &#8220;C_USA&#8221;, &#8220;C_KOR&#8221;, &#8220;C_JPN&#8221;, &#8220;G_USA&#8221;, &#8220;G_JPN&#8221;, and &#8220;G_KOR&#8221;.</a></div>
+      <div class="Heading_6"><a name="186794">Stacked Data</a></div>
+      <div class="Body_Text"><a name="186795">Pooled data can also be arranged in stacked form, where all of the data for a variable are grouped together in a single column. </a></div>
+      <div class="Body_Text"><a name="186796">In the most common form, the data for different cross-sections are stacked on top of one another, with all of the sequentially dated observations for a given cross-section grouped together. We may say that these data are</a><span class="Definition"> stacked by cross-section</span>:</div>
+      <div class="Table"><a name="186800"><img class="Default" src="images/pool.066.5.2.jpg" width="100%" style="left: 0.0pt; max-height: 311px; max-width: 926px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186801">Alternatively, we may have data that are </a><span class="Definition">stacked by date</span>, with all of the observations of a given period grouped together:</div>
+      <div class="Table"><a name="186805"><img class="Default" src="images/pool.066.5.3.jpg" width="100%" style="left: 0.0pt; max-height: 331px; max-width: 926px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186806">Each column again represents a single variable, but within each column, all of the cross-sections for a given year are grouped together. If data are stacked by year, you should make certain that the ordering of the cross-sectional identifiers within a year is consistent across years.</a></div>
+      <div class="Body_Text"><a name="186807">There are to primary approaches to importing data into your pool series: you may read the data in stacked form then use EViews tools to restructure the data in pool form, or you may directly read or copy the data into a stacked representation of the pooled series.</a></div>
+      <div class="Heading_7"><a name="186809">Indirect Setup (Restructuring) of Stacked Data</a></div>
+      <div class="Body_Text"><a name="186810">The easiest approach to reading stacked pool data is to create an EViews workfile containing the data in stacked form, and then use the built-in workfile reshaping tools to create a pool workfile with the desired structure and data. (Alternately, you can perform the first step and simply work with the data in stacked form: see </a><span class="Link"><a href="panelwf-Working_with_Panel_Data.html#188383" title="Working with Panel Data">&#8220;Working with Panel Data&#8221;</a></span> for details.)</div>
+      <div class="Body_Text"><a name="186814">The first step in the indirect setup of a pool workfile is to create a workfile containing the contents of your stacked data file. You may manually create the workfile and import the stacked series data, or you may use EViews tools for opening foreign source data directly into a new workfile (</a><span class="Link"><a href="workfile-Creating_a_Workfile.html#111704" title="Creating a Workfile">&#8220;Creating a Workfile by Reading from a Foreign Data Source&#8221;</a></span> ).</div>
+      <div class="Body_Text"><a name="186821">Once you have your stacked data in an EViews workfile, you may use the workfile reshaping tools to unstack the data into a pool workfile page. In addition to unstacking the data into multiple series, EViews will create a pool object containing identifiers obtained from patterns in the series names. See </a><span class="Link"><a href="workadv-Reshaping_a_Workfile.html#117585" title="Reshaping a Workfile">&#8220;Reshaping a Workfile&#8221;</a></span> for a general discussion of reshaping, and <span class="Link"><a href="workadv-Reshaping_a_Workfile.html#124194" title="Reshaping a Workfile">&#8220;Unstacking a Workfile&#8221;</a></span> for a more specific discussion of the unstack procedure.</div>
+      <div class="Body_Text"><a name="186834">The indirect method is generally easier to use than the direct approach and has the advantage of not requiring that the stacked data be balanced. It has the disadvantage of using more computer memory since EViews must have two copies of the source data in memory at the same time.</a></div>
+      <div class="Heading_7"><a name="186835">Direct Import of Stacked Data</a></div>
+      <div class="Body_Text"><a name="186836">An alternative approach is to enter or read the data directly into the workfile using a pool object. You may enter or copy-and-paste data from the source into and a stacked representation of your data, or you may use the pool object to describe how to read the stacked data into the unstacked workfile.</a></div>
+      <div class="Body_Text"><a name="186837">To enter data or copy-and-paste, you use the pool object to create a stacked representation of the data in EViews: </a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186838">First, specify which time series observations will be included in your stacked spreadsheet by setting the workfile sample.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186839">Next, open the pool, then select </a><span class="Menu_Item">View/Spreadsheet View&#8230;</span> EViews will prompt you for a list of series. You can enter ordinary series names or pool series names. If the series exist, then EViews will display the data in the series. If the series do not exist, then EViews will create the series or group of series, using the cross-section identifiers if you specify a pool series.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186840">EViews will open the stacked spreadsheet view of the pool series. If desired, click on the </a><span class="Menu_Item">Order +/&#8211;</span> button to toggle between stacking by cross-section and stacking by date.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186844">Click </a><span class="Menu_Item">Edit +/&#8211;</span> to turn on edit mode in the spreadsheet window, and enter your data, or cut-and-paste from another application.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="186848"><img class="Default" src="images/pool.066.5.4.jpg" width="100%" style="left: 0.0pt; max-height: 204px; max-width: 320px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186849">For example, if we have a pool object that contains the identifiers &#8220;_USA&#8221;, &#8220;_UK&#8221;, &#8220;_JPN&#8221;, and &#8220;_KOR&#8221;, we can instruct EViews to create the series C_USA, C_UK, C_JPN, C_KOR, and G_USA, G_UK, G_JPN, G_KOR, and YEAR simply by entering the pool series names &#8220;C?&#8221;, &#8220;G?&#8221; and the ordinary series name &#8220;YEAR&#8221;, and pressing </a><span class="Menu_Item">OK</span>.</div>
+      <div class="Body_Text"><a name="186850">EViews will open a stacked spreadsheet view of the series in your list. Here we see the series stacked by cross-section, with the pool or ordinary series names in the column header, and the cross-section/date identifiers labeling each row. Note that since YEAR is an ordinary series, its values are repeated for each cross-section in the stacked spreadsheet.</a></div>
+      <div class="Picture"><a name="186854"><img class="Default" src="images/pool.066.5.5.jpg" width="100%" style="left: 0.0pt; max-height: 341px; max-width: 447px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186855">If desired, click on </a><span class="Menu_Item">Order +/&#8211;</span> to toggle between stacking methods to match the organization of the data to be imported. Click on <span class="Menu_Item">Edit +/&#8211;</span> to turn on edit mode, and enter or cut-and-paste into the window.</div>
+      <div class="Body_Text"><a name="186856">Alternatively, you can import stacked data from a file using import tools built into the pool object. While the data in the file may be stacked either by cross-section or by period, EViews does require that the stacked data are &#8220;balanced,&#8221; and that the cross-sections ordering in the file matches the cross-sectional identifiers in the pool. By &#8220;balanced,&#8221; we mean that if the data are stacked by cross-section, each cross-section should contain exactly the same number of periods&#8212;if the data are stacked by date, each date should have exactly the same number of cross-sectional observations arranged in the same order.</a></div>
+      <div class="Body_Text"><a name="186860">We emphasize that</a><span class="Emphasis"> </span>only the representation of the data in the import file needs to be balanced; <span class="Emphasis">the underlying data need not be </span><span class="Definition" style="color: #000000">balanced</span>. Notably, if you have missing values for some observations, you should make certain that there are lines in the file representing the missing values. In the two examples above, the underlying data are not balanced, since information is not available for Korea in 1992. The data in the file have been balanced by including an observation for the missing data.</div>
+      <div class="Body_Text"><a name="186861">To import stacked pool data from a file, first open the pool object, then select </a><span class="Menu_Item">Proc/Import Pool data (ASCII, .XLS, .WK?)&#8230; </span><span class="Emphasis" style="font-weight: normal">It is important that you use the import procedure associated with the pool object, located on the pool proc menu, and not the standard file import procedure</span>.</div>
+      <div class="Body_Text"><a name="186863">Select your input file in the usual fashion. If you select a spreadsheet file, EViews will open a spreadsheet import dialog prompting you for additional input.</a></div>
+      <div class="Picture"><a name="186867"><img class="Default" src="images/pool.066.5.6.jpg" width="100%" style="left: 0.0pt; max-height: 369px; max-width: 515px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186875">First, indicate whether the pool series are in rows or in columns, and whether the data are stacked by cross-section, or stacked by date.</a></div>
+      <div class="Body_Text"><a name="186876">Next, in the pool series edit box, enter the names of the series you wish to import. This list may contain any combination of ordinary series names and pool series names.</a></div>
+      <div class="Body_Text"><a name="186877">Lastly, fill in the sample information, starting cell location, and optionally, the sheet name.</a></div>
+      <div class="Body_Text"><a name="186878">When you specify your series using pool series names, EViews will, if necessary, create and name the corresponding set of pool series using the list of cross-section identifiers in the pool object. If you list an ordinary series name, EViews will, if needed, create a single series to hold the data.</a></div>
+      <div class="Body_Text"><a name="186879">EViews will read the contents of your file into the specified pool variables using the sample information. When reading into pool series, the first set of observations in the file will be placed in the individual series corresponding to the first cross-section (if reading data that is grouped by cross-section), or the first sample observation of each series in the set of cross-sectional series (if reading data that is grouped by date), and so forth. </a></div>
+      <div class="Body_Text"><a name="186880">If you read data into an ordinary series, EViews will continually assign values into the corresponding observation of the single series, so that upon completion of the import procedure, the series will contain the last set of values read from the file.</a></div>
+      <div class="Body_Text"><a name="186881">The basic technique for importing stacked data from ASCII text files is analogous, but the corresponding dialog contains many additional options to handle the complexity of text files.</a></div>
+      <div class="Picture"><a name="190860"><img class="Default" src="images/pool.066.5.7.jpg" width="100%" style="left: 0.0pt; max-height: 391px; max-width: 621px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190863">For a discussion of the text specific settings in the dialog, see </a><span class="Link"><a href="Basedata-References.html#268677" title="References">&#8220;References&#8221;</a></span> .</div>
+      <div class="Body_Text"><a name="194846">Alternately, you may read in the data into a panel workfile, and then use </a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Estimating Switching Regressions in EViews</title>
+    <link rel="StyleSheet" href="css/switching.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="switching-Background.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="switching-Estimation_Output.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="switching-Switching_Regression.html">Switching Regression</a> : Estimating Switching Regressions in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="190265">Estimating Switching Regressions in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#190272">Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190274">Equation Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190303">Switching Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#190335">Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190342">Switching</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190394">Coefficient Covariance Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190398">Starting Value and Iteration Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190405">Start Method</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190409">Randomized Estimates</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190417">Optimization Options</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="190266">To display the switching regression dialog, first open an equation by selecting </a><span class="Menu_Item">Quick/Estimate Equation&#8230;</span> from the main menu and select <span class="Menu_Item">SWITCHREG - Switching Regression</span> in the <span class="Menu_Item">Method</span> dropdown, or enter the command <span class="In-line_command">switchreg</span> in the command line:</div>
+      <div class="Picture"><a name="190270"><img class="Default" src="images/switching.049.3.01.jpg" width="100%" style="left: 0.0pt; max-height: 500px; max-width: 507px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190271">There are two tabs in this dialog. The first tab is used for basic specification of your switching regression. The second tab contains options for modifying selected features of the specification and for controlling computational aspects of the estimation.</a></div>
+      <div class="Heading_4"><a name="190272">Specification</a></div>
+      <div class="Body_Text"><a name="190273">The </a><span class="Menu_Item">Specification</span> page contains three sections: <span class="Menu_Item">Equation specification</span>, <span class="Menu_Item">Switching specification</span>, and <span class="Menu_Item">Estimation settings</span>. We focus on the first two sections since the last should already be familiar.</div>
+      <div class="Heading_5"><a name="190274">Equation Specification</a></div>
+      <div class="Body_Text"><a name="190275">The top portion of the page contains the </a><span class="Menu_Item">Equation specification</span> section where you should specify the behavior of the model in the different regimes.</div>
+      <div class="Picture"><a name="190279"><img class="Default" src="images/switching.049.3.02.jpg" width="100%" style="left: 0.0pt; max-height: 201px; max-width: 458px; top: 0.0pt" alt="" /></a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190280">You should enter the name of the dependent variable series (<img class="Default EquationGraphic" src="images/switching.049.3.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />) followed by any regressors with switching coefficients (<img class="Default EquationGraphic" src="images/switching.049.3.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />) in the first edit field. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190287">Regressors which have non-varying coefficients (<img class="Default EquationGraphic" src="images/switching.049.3.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />) should be listed in the second edit field. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190291">You should select the </a><span class="Menu_Item">Regime specific error variances</span> option if you wish to allow for heteroskedasticity across regimes.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="190292">You may specify dynamics by including lags of the dependent variable series as regressors or by including </a><span class="In-line_command">AR</span> terms to allow for serially correlated errors. Bear in mind that the dimension of the state probability vector, <img class="Default EquationGraphic" src="images/switching.049.3.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 46px; top: 0.0pt" alt="" />, increases rapidly in <img class="Default EquationGraphic" src="images/switching.049.3.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/switching.049.3.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is the highest AR order in the model.</div>
+      <div class="Body_Text"><a name="190302">Note that the dependent variable may not be specified by expression, and that the regressor lists may not contain expressions containing the dependent variable or its lags.</a></div>
+      <div class="Heading_5"><a name="190303">Switching Specification</a></div>
+      <div class="Picture"><a name="190307"><img class="Default" src="images/switching.049.3.09.jpg" width="100%" style="left: 0.0pt; max-height: 111px; max-width: 452px; top: 0.0pt" alt="" /> </a></div>
+      <div class="Body_Text"><a name="190308">The </a><span class="Menu_Item">Switching specification</span> section controls the specification of the regime probabilities.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190309">The </a><span class="Menu_Item">Switching</span> type dropdown allows you to choose between <span class="Menu_Item">Simple</span> and <span class="Menu_Item">Markov</span> switching. The default setting is to estimate a simple switching model.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190313">You should specify the number of regimes <img class="Default EquationGraphic" src="images/switching.049.3.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 47px; top: 0.0pt" alt="" /> in the edit field. By default, EViews assumes that you have two regimes. Bear in mind that switching models with more than a few regimes may be difficult to estimate.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190314">You may specify additional regressors that determine the unconditional regime probabilities (for simple switching) or the regime transition probability matrix (for Markov switching). By default, EViews sets the list so that there is a single constant term resulting in time-invariant probabilities.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue" style="color: #000000; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="Emphasis"><a name="190315">Important note: the data for the probability regressors that determine the transition or regime probabilities for period <img class="Default EquationGraphic" src="images/switching.049.3.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, should be located in period <img class="Default EquationGraphic" src="images/switching.049.3.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> of the workfile. That is, the <img class="Default EquationGraphic" src="images/switching.049.3.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" /> data should be in period <img class="Default EquationGraphic" src="images/switching.049.3.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> of the workfile, not period <img class="Default EquationGraphic" src="images/switching.049.3.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" />. You may, of course, employ standard EViews lag expressions to refer to data in the previous period.</a></span></div>
+      <div class="Body_Text"><a name="190331">Additional options for setting the initial regime probabilities and restricting the elements of the probability vector or transition matrix are located on the </a><span class="Menu_Item">Options</span> tab and described in <span class="Link"><a href="#190342" title="Estimating Switching Regressions in EViews">&#8220;Switching&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="190335">Options</a></div>
+      <div class="Body_Text"><a name="190336">Clicking on the </a><span class="Menu_Item">Options</span> tab displays options for modifying features of the switching specification and for controlling various aspects of the computation.</div>
+      <div class="Picture"><a name="190340"><img class="Default" src="images/switching.049.3.16.jpg" width="100%" style="left: 0.0pt; max-height: 497px; max-width: 506px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_5"><a name="190342">Switching</a></div>
+      <div class="Body_Text"><a name="190343">The </a><span class="Menu_Item">Switching </span>options section may be used to specify the initial state probabilities and any restrictions to the regime probability vector or transition matrix.</div>
+      <div class="Picture"><a name="190347"><img class="Default" src="images/switching.049.3.17.jpg" width="100%" style="left: 0.0pt; max-height: 140px; max-width: 243px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190348">Recall that evaluation of the likelihood in Markov switching and SSAR models requires presample values for the filtered probabilities (</a><span class="Link"><a href="switching-Background.html#190084" title="Background">&#8220;Initial Probabilities&#8221;</a></span>). The <span class="Menu_Item">Initial regime probabilities</span> dropdown lets you choose the method of initializing these values (<span class="Menu_Item">Ergodic solution</span> (default), <span class="Menu_Item">Estimated</span>, <span class="Menu_Item">Uniform</span>, <span class="Menu_Item">User-specified</span>). If you select <span class="Menu_Item">User-specified</span>, you will be prompted for the name of an <img class="Default EquationGraphic" src="images/switching.049.3.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" />-element vector in the workfile that contains the initial probabilities.</div>
+      <div class="Body_Text"><a name="190356">The </a><span class="Menu_Item">Probability restriction vector/Transition restriction matrix</span> edit field allows you to specify restrictions on the regime probabilities. Markov switching models, in particular, will sometime require restrictions on transition matrix probabilities. For example, we may have <img class="Default EquationGraphic" src="images/switching.049.3.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 65px; top: 0.0pt" alt="" /> if it is impossible to transition directly from state <img class="Default EquationGraphic" src="images/switching.049.3.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> to state <img class="Default EquationGraphic" src="images/switching.049.3.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. Similarly, if state <img class="Default EquationGraphic" src="images/switching.049.3.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is an absorbing state, then <img class="Default EquationGraphic" src="images/switching.049.3.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 68px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/switching.049.3.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 65px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/switching.049.3.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="190381">To specify restrictions, you should enter the name of an <img class="Default EquationGraphic" src="images/switching.049.3.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" />-element vector in the workfile (for a SSAR model), or an <img class="Default EquationGraphic" src="images/switching.049.3.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 54px; top: 0.0pt" alt="" /> matrix in the workfile (for Markov switching) in the edit field. The vector or matrix should contain valid probability values for elements that are restricted and NAs for elements that are to be estimated. For example, in a three regime Markov switching model where state 3 is an absorbing state, you would have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/switching.049.3.28.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(39.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190389">You should take care not to specify invalid or inconsistent restrictions. For example, rows of a Markov transition matrix may not be specified so that there is a single unrestricted cell since the adding up condition for the row places a restriction on that cell. Similarly, fixed values should be valid probabilities that do not have generate row sums greater than 1. EViews will detect these types of errors and will refuse to estimate the model.</a></div>
+      <div class="Body_Text"><a name="190393">In </a><span class="Link"><a href="switching-Examples.html#190610" title="Examples">&#8220;Regime Heteroskedasticity&#8221;</a></span>, we offer an example that employs restrictions and discuss several practical issues associated with estimating the model.</div>
+      <div class="Heading_5"><a name="190394">Coefficient Covariance Options</a></div>
+      <div class="Body_Text"><a name="190395">EViews estimates the parameters of the likelihood using the Broyden, Fletcher, Goldfarb and Shanno (BFGS) method. By default, the coefficient covariance is computed using the d.f. corrected inverse of the negative of the observed Hessian.</a></div>
+      <div class="Body_Text"><a name="190396">You may use the </a><span class="Menu_Item">Covariance method</span> dropdown to instruct EViews to use the Hessian, the outer product of the gradient (OPG) method, or a Huber-White robust covariance that forms a sandwich using the Hessian and gradients.</div>
+      <div class="Body_Text"><a name="190397">The </a><span class="Menu_Item">d.f. Adjustment</span> checkbox may be used to remove the d.f. correction.</div>
+      <div class="Heading_5"><a name="190398">Starting Value and Iteration Options</a></div>
+      <div class="Body_Text"><a name="190399">The </a><span class="Menu_Item">Iteration control</span> section contains the standard fields for setting the maximum number of iterations and convergence tolerance. By default, EViews will use the estimation settings from your global options.You may select the <span class="Menu_Item">Display settings</span> checkbox to display starting values and other estimation settings in the top section of your estimation output.</div>
+      <div class="Picture"><a name="190403"><img class="Default" src="images/switching.049.3.29.jpg" width="100%" style="left: 0.0pt; max-height: 236px; max-width: 247px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190404">You may use the </a><span class="Menu_Item">Starting values</span> section to control the setting of initial parameter estimates. Switching regression models often have local roots and may be difficult to estimate so EViews offers a range of tools for choosing starting values.</div>
+      <div class="Heading_6"><a name="190405">Start Method</a></div>
+      <div class="Body_Text"><a name="190406">The </a><span class="Menu_Item">Start method</span> dropdown allows you to specify a basic method for choosing starting values (<span class="Menu_Item">EViews Supplied</span>, <span class="Menu_Item">.8 x EViews Supplied</span>, <span class="Menu_Item">.5 x EViews Supplied</span>, <span class="Menu_Item">.3 x EViews Supplied</span>, <span class="Menu_Item">Zero</span>, <span class="Menu_Item">User-Supplied</span>). </div>
+      <div class="Body_Text"><a name="190407">The EViews supplied methods employ simple least squares coefficient estimates or the specified fraction of those estimates. AR coefficients are arbitrarily initialized to zero.</a></div>
+      <div class="Body_Text"><a name="190408">The </a><span class="Menu_Item">Zero</span> and <span class="Menu_Item">User-Supplied</span> methods are self-explanatory, with the latter taken from the default coefficient vector specified in the dialog (typically the coefficient vector C).</div>
+      <div class="Heading_6"><a name="190409">Randomized Estimates</a></div>
+      <div class="Body_Text"><a name="190410">The first two edit fields under </a><span class="Menu_Item">Randomized estimates</span> allow you to choose random starting values based on the those specified in the <span class="Menu_Item">Start method</span> dropdown. </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190411">EViews will randomly choose the number of random starts as specified in </a><span class="Menu_Item">No. of random starts</span> and for each random start perform the number of iterations as specified in <span class="Menu_Item">Iterations for starts</span>. The coefficients with the highest likelihood value will be chosen as the starting values.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue"><a name="190412">For non user-supplied starting values, EViews will, by default, generate 25 sets of random starting values and refine each with 10 iterations before choosing the best set as the starting values. By default, there is no randomization of user-supplied values.</a></div>
+      <div class="Body_Text"><a name="190413">In addition to randomizing based on the initial values, you may randomize based on the final coefficient estimates. The </a><span class="Menu_Item">No. of random from final </span>edit field determines the number of random coefficients to try following estimation. </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190414">The random starting values are chosen by taking the best estimated values to date and adding random normals with scale given by the </a><span class="Menu_Item">Random scale</span> fraction of the final coefficient standard deviations. The estimates with the highest likelihood become the final estimates.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue"><a name="190415">By default, EViews does not perform randomization based on the final coefficient estimates.</a></div>
+      <div class="Body_Text"><a name="190416">For both initial and final randomization, the random starting values are chosen by taking the base values and adding random normals with scale given by the </a><span class="Menu_Item">Random scale</span> fraction of the root of the estimated coefficient variances (or the scale fraction itself if the variances are not available). The random values will be generated using the <span class="Menu_Item">Generator</span> specified in the dropdown and the random <span class="Menu_Item">Seed</span> specified in the edit field. If a random seed is not specified, EViews will obtain one from a single draw from the generator.</div>
+      <div class="Heading_5"><a name="190417">Optimization Options</a></div>
+      <div class="Body_Text"><a name="190418">You can use the </a><span class="Menu_Item">Optimization method</span> dropdown menu to select a different method.</div>
+      <div class="Picture"><a name="190422"><img class="Default" src="images/switching.049.3.30.jpg" width="100%" style="left: 0.0pt; max-height: 179px; max-width: 228px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190423">By default, EViews uses BFGS with Marquardt steps to obtain parameter estimates. You may use the </a><span class="Menu_Item">Optimization method</span> dropdown to choose between <span class="Menu_Item">BFGS</span>, <span class="Menu_Item">OPG - BHHH</span>, or <span class="Menu_Item">Newton-Raphson</span>. The <span class="Menu_Item">Step method</span> dropdown offers the choice of <span class="Menu_Item">Marquardt</span>, <span class="Menu_Item">Dogleg</span>, and <span class="Menu_Item">Line search</span>.</div>
+      <div class="Body_Text"><a name="190427">See </a><span class="Link"><a href="optimize-Setting_Estimation_Options.html#146519" title="Setting Estimation Options">&#8220;Optimization Method&#8221;</a></span> for discussion.</div>
+      <div class="Body_Text"><a name="190428">The remainder of the section allows you to specify a convergence criterion and the maximum number of iterations, and to instruct EViews to display starting value and other optimization information in the output.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Variable Selection Estimation in EViews</title>
+    <link rel="StyleSheet" href="css/Varsel.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="Varsel-Background.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="Varsel-Working_with_an_Estimated_Equation.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="Varsel-Regression_Variable_Selection.html">Regression Variable Selection</a> : Variable Selection Estimation in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="277295">Variable Selection Estimation in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#277305">Estimation Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277307">Uni-directional and Stepwise Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277324">Swapwise Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277335">Combinatorial Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277342">Auto-Search / GETS Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277369">Lasso Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#282736">Penalty</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#293466">Options</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="277296">To perform a variable selection procedure (VARSEL) in EViews select </a><span class="Menu_Item">Object/New Object/Equation,</span> or press <span class="Menu_Item">Estimate</span> from the toolbar of an existing equation. From the <span class="Menu_Item">Equation Specification</span> dialog choose<span class="Menu_Item"> Method: VARSEL-Variable selection and Stepwise Least Squares</span>. EViews will display the following dialog:</div>
+      <div class="Picture"><a name="277300"><img class="Default" src="images/Varsel.031.3.01.jpg" width="100%" style="left: 0.0pt; max-height: 593px; max-width: 568px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="277301">The </a><span class="Menu_Item">Specification</span> page allows you to provide the basic VARSEL regression specification. In the upper edit field you should first specify the dependent variable followed by the always included variables you wish to use in the final regression. Note that the VARSEL equation must be specified by list.</div>
+      <div class="Body_Text"><a name="277302">You should enter a list of variables to be used as the set of potentially included variables in the second edit field.</a></div>
+      <div class="Body_Text"><a name="277303">The </a><span class="Menu_Item">Selection method</span><span style="font-weight: bold"> </span>dropdown box can be used to specify the type of selection procedure will be used to determine the final model. By default, EViews will estimate the variable selection using the <span class="Menu_Item">Stepwise</span> method. To change the basic method, change the <span class="Menu_Item">Selection</span> <span style="font-weight: bold">method</span> dropdown menu; the dropdown allows you to choose between: <span class="Menu_Item">Uni-directional</span>, <span class="Menu_Item">Stepwise</span>, <span class="Menu_Item">Swapwise</span>, <span class="Menu_Item">Combinatorial</span>, <span class="Menu_Item">Auto-Search/GETS</span> and <span class="Menu_Item">Lasso </span>selection. </div>
+      <div class="Body_Text"><a name="277304">Next, you may use the </a><span style="font-weight: bold">Options</span> tab to more finely tune the selection method. The options available will depend on the selection method chosen, and are described below.</div>
+      <div class="Heading_4"><a name="277305">Estimation Options</a></div>
+      <div class="Body_Text"><a name="277306">When you select one of the variable selection methods, the </a><span class="Menu_Item">Options</span> tab of the dialog will change to display the relevant settings.</div>
+      <div class="Heading_5"><a name="277307">Uni-directional and Stepwise Options</a></div>
+      <div class="Body_Text"><a name="277308">For the </a><span class="Menu_Item">Uni-directional </span>and <span class="Menu_Item">Stepwise</span> methods you may specify the direction of the method using the <span class="Menu_Item">Forwards</span> and <span class="Menu_Item">Backwards</span> radio buttons and to provide a <span class="Menu_Item">Stopping Criteria </span>using either a <span class="In-line_math">p</span>-value or <span class="In-line_math">t</span>-statistic tolerance for adding or removing variables. </div>
+      <div class="Picture"><a name="277318"><img class="Default" src="images/Varsel.031.3.02.jpg" width="100%" style="left: 0.0pt; max-height: 593px; max-width: 569px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="277319">You may also choose to stop the procedures once they have added or removed a specified number of regressors by selecting the </a><span class="Menu_Item">Use number of regressors </span>option and providing a number of the corresponding edit field.</div>
+      <div class="Body_Text"><a name="277320">The </a><span class="Menu_Item">Weights</span> portion of the dialog is the same as that used in other estimators such as least squares. For more information, please see <span class="Link"><a href="Regress2-Weighted_Least_Squares.html#266407" title="Weighted Least Squares">&#8220;Weighted Least Squares&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="277324">Swapwise Options</a></div>
+      <div class="Body_Text"><a name="277325">The Swapwise variable selection method lets you choose whether you wish to use Max R-squared Increment or Min R-squared Increment, and to enter the number of additional variables to be selected.</a></div>
+      <div class="Picture"><a name="277329"><img class="Default" src="images/Varsel.031.3.03.jpg" width="100%" style="left: 0.0pt; max-height: 591px; max-width: 570px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="277330">By default, the number of additional variables is set to one so that if you do not enter a value, EViews will select the single variable that will lead to the largest increase in R-squared.</a></div>
+      <div class="Body_Text"><a name="277331">The </a><span class="Menu_Item">Weights</span> portion of the dialog is the same as that used in other estimators such as least squares. For more information, please see <span class="Link"><a href="Regress2-Weighted_Least_Squares.html#266407" title="Weighted Least Squares">&#8220;Weighted Least Squares&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="277335">Combinatorial Options</a></div>
+      <div class="Body_Text"><a name="277336">The combinatorial options page simply prompts you to provide the number of additional variables. </a></div>
+      <div class="Body_Text"><a name="277337">By default, the number of additional variables is set to one so that if you do not enter a value, EViews will select the single variable that will lead to the largest increase in R-squared</a></div>
+      <div class="Body_Text"><a name="277338">The </a><span class="Menu_Item">Weights</span> portion of the dialog is the same as that used in other estimators such as least squares. For more information, please see <span class="Link"><a href="Regress2-Weighted_Least_Squares.html#266407" title="Weighted Least Squares">&#8220;Weighted Least Squares&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="277342">Auto-Search / GETS Options</a></div>
+      <div class="Body_Text"><a name="277343">When </a><span class="Menu_Item">Auto-Search/GETS </span>is chosen as the <span class="Menu_Item">Selection method</span> on the <span class="Menu_Item">Specification</span> tab, the <span class="Menu_Item">Options</span> tab will change to display options specific to the Auto-Search/GETS algorithm:</div>
+      <div class="Picture"><a name="277347"><img class="Default" src="images/Varsel.031.3.04.jpg" width="100%" style="left: 0.0pt; max-height: 596px; max-width: 567px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="277348">The options are divided into several sections.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277349">The </a><span style="font-weight: bold">Model selection</span> section offers options for the selection criteria used during the variable selection process. The <span style="font-weight: bold">Criteria</span> dropdown specifies the information criteria used to select the final model from the candidates remaining in step 4) of the selection algorithm. The <span style="font-weight: bold">Include GUM </span>and <span style="font-weight: bold">Include empty model</span> checkboxes specify whether to include either the general model (i.e. the model with all possible search variables) or the empty model (the model with zero search variables) as candidates.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="277350">The </a><span style="font-weight: bold">Blocks</span> edit field allows you to overwrite the EViews&#8217; choice for the number of blocks into which to split the search variables if the number of search variables is greater than the number of observations.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277351">The </a><span style="font-weight: bold">Diagnostics</span> section identifies the options for the diagnostic tests used in the diagnostic tests steps 1) and 3) of the algorithm (<span class="Link"><a href="Varsel-Background.html#277256" title="Background">&#8220;Auto-Search / GETS&#8221;</a></span>). The <span style="font-weight: bold">Terminal condition p-value</span> is used to set the <span class="In-line_math">p</span>-value against which the significance of the remaining variable is tested when determining whether to stop the selection process along a path in step 3). </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="277358">The </a><span style="font-weight: bold">AR LM test</span>, <span style="font-weight: bold">ARCH LM test</span>, <span style="font-weight: bold">Normality test</span> and <span style="font-weight: bold">PET test</span> checkboxes are corresponding <span class="In-line_math">p</span>-value edit fields are used to determine whether those tests are used when determining the validity of both the GUM and each selection model, and their associated <span class="In-line_math">p</span>-value. For both the AR and ARCH LM tests, the number of lags used in the test may also be specified.</div>
+      <div class="Body_Text"><a name="277365">The </a><span class="Menu_Item">Weights</span> portion of the dialog is the same as that used in other estimators such as least squares. For more information, please see <span class="Link"><a href="Regress2-Weighted_Least_Squares.html#266407" title="Weighted Least Squares">&#8220;Weighted Least Squares&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="277369">Lasso Options</a></div>
+      <div class="Body_Text"><a name="277370">For Lasso selection, the there are two options dialog pages that allow you control the specification of the objective and the estimation method.</a></div>
+      <div class="Body_Text"><a name="281864">You may use the dialog pages to control the determination of the penalty parameter, to specify data transformation options, individual observation weights, and to control the iterative estimation procedure.</a></div>
+      <div class="Heading_6"><a name="282736">Penalty</a></div>
+      <div class="Body_Text"><a name="282718">There are three sections in this dialog: a </a><span class="Menu_Item">Penalty options</span> section which contains options that affect the penalty calculations, a <span class="Menu_Item">Path definition</span> section which controls the automatic determination of a list of penalty values, and a <span class="Menu_Item">Path stopping</span> rules section which controls the computation of estimates along the <img class="Default EquationGraphic" src="images/Varsel.031.3.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-path.</div>
+      <div class="Picture"><a name="282663"><img class="Default" src="images/Varsel.031.3.06.jpg" width="100%" style="left: 0.0pt; max-height: 596px; max-width: 566px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="286028">The </a><span class="Menu_Item">Penalty options </span>section contains settings related to the computation of the penalty portion of the objective function:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="282772">The </a><span class="Menu_Item">Lambda</span> edit field controls the overall penalty parameter <img class="Default EquationGraphic" src="images/Varsel.031.3.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. You may enter a single value, multiple values in the form of a list of values and/or vector objects, or you may leave the edit field blank to have EViews automatically specify a list of values.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="282985">A </a><span class="Menu_Item">Cross-validation options</span> button provides settings for controlling the cross-validation model selection procedure when you have specified multiple <img class="Default EquationGraphic" src="images/Varsel.031.3.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values in the <span class="Menu_Item">Lambda</span> edit field. See <span class="Link"><a href="enet-How_to_Estimate_an_Elastic_Net_Specification_in.html#489423" title="How to Estimate an Elastic Net Specification in EViews">&#8220;Cross-validation Options&#8221;</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="282649">You may use the </a><span class="Menu_Item">Regressor scaling</span> and <span class="Menu_Item">Dependent scaling</span> drop-down menus to choose between: <span class="Menu_Item">None</span>, <span class="Menu_Item">Std. dev. (pop.)</span>, <span class="Menu_Item">Std. dev. (sample)</span>, <span class="Menu_Item">Absolute value (L1)</span>, <span class="Menu_Item">Squared value (L2)</span>, and <span class="Menu_Item">Min-max</span> scaling.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="284525">The </a><span class="Menu_Item">Path definition </span>section contains settings for automatically determining a grid of <img class="Default EquationGraphic" src="images/Varsel.031.3.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values using the approach outlined in <span class="Link"><a href="enet-Background.html#439653" title="Background">&#8220;Automatic Lambda Grid&#8221;</a></span>:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="283094">The </a><span class="Menu_Item">Path length</span> edit field specifies the number of penalty values in the path.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="284586">The </a><span class="Menu_Item">Path min/max ratio</span> specifies the smallest <img class="Default EquationGraphic" src="images/Varsel.031.3.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> value as a fraction of the automatically determined largest value.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="283118">The </a><span class="Menu_Item">Path stopping rules</span> describe settings for truncating path estimation (<span class="Link"><a href="enet-How_to_Estimate_an_Elastic_Net_Specification_in.html#440346" title="How to Estimate an Elastic Net Specification in EViews">&#8220;Path Stopping Rules&#8221;</a></span>):</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="284438">The </a><span class="Menu_Item">Min. path length</span> specifies the minimum number of values before applying the stopping rules.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="285151">The </a><span class="Menu_Item">Max. R-squared</span> edit field gives the value of the explained fraction of the null sums-of-squared residuals beyond which path estimation stops. EViews will truncate path estimation if fraction of null deviance explained is larger than this value.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="285377">The </a><span class="Menu_Item">Min. change in deviance</span> gives the minimum level of relative change in the explained deviance (sums-of-squared residuals) required to continue path estimation. EViews will stop path estimation if the relative improvement is smaller than this value.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="285095">The remaining two edit fields specify the maximum number of coefficients in levels (</a><span class="Menu_Item">Number of coefs</span>) and as a fraction of the number of observations (<span class="Menu_Item">Fraction of obsevations</span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="293466">Options</a></div>
+      <div class="Body_Text"><a name="293467">The </a><span class="Menu_Item">Options</span> tab contains the remaining estimation settings. There are four sections: <span class="Menu_Item">Coefficient limits</span>, <span class="Menu_Item">Weights</span>, <span class="Menu_Item">Estimation</span>, and <span class="Menu_Item">Coefficient name</span>.</div>
+      <div class="Picture"><a name="277374"><img class="Default" src="images/Varsel.031.3.11.jpg" width="100%" style="left: 0.0pt; max-height: 615px; max-width: 572px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="293507">Most of these options will be familiar from other estimators. Note that coefficient minimum and maximum values may be specified using vectors or a scalar in the </a><span class="Menu_Item">Min values vector</span> and <span class="Menu_Item">Max values vector</span> edit fields. </div>
+      <div class="Body_Text"><a name="293509">The vectors containing the minimum non-positive and the maximum non-negative values should be sized to match the number of coefficients in the specification. Non-restricted coefficients are indicated using a NA in the corresponding vector element.</a></div>
+      <div class="Body_Text"><a name="293705">The </a><span class="Menu_Item">Optimization</span> <span class="Menu_Item">method</span> allows you to choose between the <span class="Menu_Item">EViews</span>, <span class="Menu_Item">Covariance</span>, and <span class="Menu_Item">Naive</span> methods of estimating the Lasso (see <span class="Link"><a href="enet-How_to_Estimate_an_Elastic_Net_Specification_in.html#455602" title="How to Estimate an Elastic Net Specification in EViews">&#8220;Optimization Method&#8221;</a></span> for discussion).</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

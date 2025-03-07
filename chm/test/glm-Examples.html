@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/glm.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="glm-How_to_Estimate_a_GLM_in_EViews.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="glm-Working_with_a_GLM_Equation.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="glm-Generalized_Linear_Models.html">Generalized Linear Models</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="302099">Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#309869">Exponential Regression</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#314590">Binomial</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#310377">Binomial Proportions</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="307996">In this section, we offer three examples illustrating GLM estimation in EViews.</a></div>
+      <div class="Heading_4"><a name="309869">Exponential Regression</a></div>
+      <div class="Body_Text"><a name="309929">Our first example uses the Kennen (1983) dataset (&#8220;Strike.WF1&#8221;) on number of strikes (NUMB), industrial production (IP), and dummy variable representing the month of February (FEB). To account for the non-negative response variable NUMB, we may estimate a nonlinear specification of the form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/glm.042.4.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(32.3)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="312590">where <img class="Default EquationGraphic" src="images/glm.042.4.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 95px; top: 0.0pt" alt="" />. This model falls into the GLM framework with a log link and normal family. To estimate this specification, bring up the GLM dialog and fill out the equation specification page as follows:</a></div>
+      <div class="Input"><a name="315619">numb c ip feb</a></div>
+      <div class="Body_Text"><a name="315628">then change the </a><span class="Menu_Item">Link function</span> to <span class="Menu_Item">Log</span>. For the moment, we leave the remaining settings and those on the <span class="Menu_Item">Options</span> page at their default values. Click on <span class="Menu_Item">OK</span> to accept the specification and estimate the model. EViews displays the following results:</div>
+      <div class="Table"><a name="308940"><img class="Default" src="images/glm.042.4.03.jpg" width="100%" style="left: 0.0pt; max-height: 473px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="310030">The top portion of the output displays the estimation settings and basic results, in particular the choice of algorithm (Newton-Raphson with Marquardt steps), distribution family (Normal), and link function (Log), as well as the dispersion estimator, coefficient covariance estimator, and estimation status. We see that the dispersion estimator is based on the Pearson <img class="Default EquationGraphic" src="images/glm.042.4.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> statistic and the coefficient covariance is computed using the inverse of the (negative of the) observed Hessian.</a></div>
+      <div class="Body_Text"><a name="310103">The coefficient estimates indicate that IP is positively related to the number of strikes, and that the relationship is statistically significant at conventional levels. The FEB dummy variable is negatively related to NUMB, but the relationship is not statistically significant.</a></div>
+      <div class="Body_Text"><a name="310080">The bottom portion of the output displays various descriptive statistics. Note that in place of some of the more familiar statistics, EViews reports the deviance, deviance statistic (deviance divided by the degrees-of-freedom) restricted deviance (for the model with only a constant), and the corresponding LR test statistic and probability. The test indicates that the IP and FEB variables are jointly significant at roughly the 3% level. Also displayed are the sum-of-squared Pearson residuals and the estimate of the dispersion, which in this example is the Pearson statistic.</a></div>
+      <div class="Picture"><a name="310134"><img class="Default" src="images/glm.042.4.05.jpg" width="100%" style="left: 0.0pt; max-height: 387px; max-width: 483px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="310253">It may be instructive to examine the representations view of this equation. Simply go to the equation toolbar or the main menu and click on </a><span class="Menu_Item">View/Representations</span> to display the view. </div>
+      <div class="Body_Text"><a name="310254">Notably, the representations view displays both the specification of the linear predictor (I_NUMB) as well as the mean specification (EXP(I_NUMB)) in terms of the EViews coefficient names, and in terms of the estimated values. These are the expressions used when forecasting the index or the dependent variable using the </a><span class="Menu_Item">Forecast</span> procedure (see <span class="Link"><a href="glm-Working_with_a_GLM_Equation.html#313761" title="Working with a GLM Equation">&#8220;Forecasting&#8221;</a></span>).</div>
+      <div class="Heading_4"><a name="314590">Binomial</a></div>
+      <div class="Body_Text"><a name="314636">We illustrate the estimation of GLM binomial logistic regression using a simple example from Agresti (2007, Table 3.1, p. 69) examining the relationship between snoring and heart disease. The data in the first page of the workfile &#8220;Snoring.WF1&#8221; consist of grouped binomial response data for 2,484 subjects divided into four risk factor groups for snoring level (SNORING), coded as 0, 2, 4, 5. Associated with each of the four groups is the number of individuals in the group exhibiting heart disease (DISEASE) as well as a total group size (TOTAL).</a></div>
+      <div class="Table"><a name="314889">&nbsp;</a></div>
+      <table class="Format_A" style="width: 162pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 54pt">
+            <div class="Table_Text__0028Center_0029"><a name="314922">SNORING</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 54pt">
+            <div class="Table_Text__0028Center_0029"><a name="314924">DISEASE</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 54pt">
+            <div class="Table_Text__0028Center_0029"><a name="314926">TOTAL</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314892">0</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314894">24</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314896">1379</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314916">2</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314918">35</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314920">638</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314910">4</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314912">21</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314914">213</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314904">5</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314906">30</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="314908">254</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="314734">We may estimate a logistic regression model for these data in either raw frequency or proportions form.</a></div>
+      <div class="Body_Text"><a name="314967">To estimate the model in raw frequency form, bring up the GLM equation dialog, enter the linear predictor specification:</a></div>
+      <div class="Input"><a name="314983">disease c snore</a></div>
+      <div class="Body_Text"><a name="314972">select </a><span class="Menu_Item">Binomial Count</span> in the <span class="Menu_Item">Family</span> dropdown, and enter &#8220;TOTAL&#8221; in the <span class="Menu_Item">Number of trials</span> edit field. Next switch over to the <span class="Menu_Item">Options</span> page and turn off the <span class="Menu_Item">d.f. Adjustment</span> for the coefficient covariance. Click on <span class="Menu_Item">OK</span> to estimate the equation.</div>
+      <div class="Table"><a name="315042"><img class="Default" src="images/glm.042.4.06.jpg" width="100%" style="left: 0.0pt; max-height: 308px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="315034">The output header shows relevant information for the estimation procedure. Note in particular the EViews message that summary statistics are computed for the binomial proportions data. This message is a hint at the fact that EViews estimates the binomial count model by scaling the dependent variable by the number of trials, and estimating the corresponding proportions specification. </a></div>
+      <div class="Body_Text"><a name="315097">Accordingly, you could have specified the model in proportions form. Simply enter the linear predictor specification:</a></div>
+      <div class="Input"><a name="315061">disease/total c snoring</a></div>
+      <div class="Body_Text"><a name="315058">with </a><span class="Menu_Item">Binomial Proportions</span> specified in the <span class="Menu_Item">Family</span> dropdown and &#8220;TOTAL&#8221; entered in the <span class="Menu_Item">Number of trials</span> edit field.</div>
+      <div class="Table"><a name="315057"><img class="Default" src="images/glm.042.4.07.jpg" width="100%" style="left: 0.0pt; max-height: 540px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="314645">The top portion of the output changes to show the different settings, but the remaining output is identical. In particular, there is strong evidence that SNORING is related to heart disease in these data, with the estimated probability of heart disease increasing with the level of snoring.</a></div>
+      <div class="Body_Text"><a name="315397">It is worth mentioning that data of this form are sometimes represented in a frequency weighted form in which the data each group is divided into two records, one for the binomial successes, and one for the failures. Each each record contains the number of repeats in the group and a binary indicator for success (the total number of records is <img class="Default EquationGraphic" src="images/glm.042.4.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/glm.042.4.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is the number of groups) The FREQ page of the &#8220;Snoring.WF1&#8221; workfile contains the data represented in this fashion:</a></div>
+      <div class="Table"><a name="315193">&nbsp;</a></div>
+      <table class="Format_A" style="width: 162pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 54pt">
+            <div class="Table_Text__0028Center_0029"><a name="315197">SNORING</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 54pt">
+            <div class="Table_Text__0028Center_0029"><a name="315199">DISEASE</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 54pt">
+            <div class="Table_Text__0028Center_0029"><a name="315201">N</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315203">0</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315205">1</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315317">24</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315209">2</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315211">1</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315319">35</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315215">4</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315217">1</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315321">21</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315221">5</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315223">1</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315225">30</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315255">0</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315294">0</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315309">1355</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315249">2</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315251">0</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315311">603</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315243">4</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315284">0</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315313">192</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315237">5</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315239">0</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="315315">224</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="315359">In this representation, DISEASE is an indicator for whether the record corresponds to individuals with heart disease or not, and N is the number of individuals in the category.</a></div>
+      <div class="Body_Text"><a name="315419">Estimation of the equivalent GLM model specified using the frequency weighted data is straightforward. Simply enter the linear predictor specification:</a></div>
+      <div class="Input"><a name="315360">disease c snoring</a></div>
+      <div class="Body_Text"><a name="315361">with either </a><span class="Menu_Item">Binomial Proportions</span> or <span class="Menu_Item">Binomial Count</span> specified in the <span class="Menu_Item">Family</span> dropdown. Since each observation corresponds to a binary indicator, you should enter &#8220;1&#8221; enter as the <span class="Menu_Item">Number of trials</span> edit field. The multiple individuals in the category are handled by entering &#8220;N&#8221; in the <span class="Menu_Item">Frequency weights</span> field in the <span class="Menu_Item">Options</span> page.</div>
+      <div class="Table"><a name="316741"><img class="Default" src="images/glm.042.4.10.jpg" width="100%" style="left: 0.0pt; max-height: 573px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="316756">Note that while a number of the summary statistics differ due to the different representation of the data (notably the Deviance and Pearson SSRs), the coefficient estimates and LR test statistics in this case are identical to those outlined above. There will, however, be substantive differences between the two results in settings when the dispersion is estimated since the effective number of observations differs in the two settings.</a></div>
+      <div class="Body_Text"><a name="315368">Lastly the data may be represented in individual trial form, which expands observations for each trial in the group into a separate record. The total number of records in the data is <img class="Default EquationGraphic" src="images/glm.042.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 37px; max-width: 50px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/glm.042.4.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is the number of trials in the </a><span class="In-line_math">i</span>-th (of <img class="Default EquationGraphic" src="images/glm.042.4.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />) group. This representation is the traditional ungrouped binary response form for the data. Results for data in this representation should match those for the frequency weighted data.</div>
+      <div class="Body"><a name="314597">&nbsp;</a></div>
+      <div class="Body"><a name="314644">&nbsp;</a></div>
+      <div class="Heading_4"><a name="310377">Binomial Proportions</a></div>
+      <div class="Body_Text"><a name="308002">Papke and Wooldridge (1996) apply GLM techniques to the analysis of fractional response data for 401K tax advantaged savings plan participation rates (&#8220;401kjae.WF1&#8221;). Their analysis focuses on the relationship between plan participation rates (PRATE) and the employer matching contribution rates (MRATE), accounting for the log of total employment (LOG(TOTEMP), LOG(TOTEMP)^2), plan age (AGE, AGE^2), and a binary indicator for whether the plan is the only pension plan offered by the plan sponsor (SOLE).</a></div>
+      <div class="Body_Text"><a name="312094">We focus on two of the equations estimated in the paper. In both, the authors employ a GLM specification using a binomial proportion family and logit link. Information on the binomial group size <img class="Default EquationGraphic" src="images/glm.042.4.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is ignored, but variance misspecification is accounted for in two ways: first using a binomial QMLE with GLM standard errors, and second using the robust Huber-White covariance approach.</a></div>
+      <div class="Body_Text"><a name="312628">To estimate the GLM standard error specification, we first call up the GLM dialog and enter the linear predictor specification:</a></div>
+      <div class="Input"><a name="312728">prate mprate log(totemp) log(totemp)^2 age age^2 sole</a></div>
+      <div class="Body_Text"><a name="312737">Next, select the </a><span class="Menu_Item">Binomial Proportion</span> family, and enter the sample description</div>
+      <div class="Input"><a name="312744">@all if mrate&lt;=1</a></div>
+      <div class="Body_Text"><a name="312750">Lastly, we leave the </a><span class="Menu_Item">Number of trials</span> edit field at the default value of 1, but correct for heterogeneity by going to the <span class="Menu_Item">Options</span> page and specifying <span class="Menu_Item">Pearson Chi-Sq.</span> dispersion estimates. Click on <span class="Menu_Item">OK</span> to continue.</div>
+      <div class="Body_Text"><a name="312773">The resulting estimates correspond the coefficient estimates and first set of standard errors in Papke and Wooldridge (Table II, column 2):</a></div>
+      <div class="Picture"><a name="312098"><img class="Default" src="images/glm.042.4.15.jpg" width="100%" style="left: 0.0pt; max-height: 571px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="311419">Papke and Wooldridge offer a detailed analysis of the results (p. 628&#8211;629), which we will not duplicate here. We will point out that the estimate of the dispersion (0.191798) taken from the Pearson statistic is far from the restricted value of 1.0.</a></div>
+      <div class="Body_Text"><a name="314138">The results using the QML with GLM standard errors rely on validity of the GLM assumption for the variance given in </a><span class="Link"><a href="glm-Overview.html#301237" title="Overview">Equation&nbsp;(32.2)</a></span>, an assumption that may be too restrictive. We may instead estimate the equation without imposing a particular conditional variance specification by computing our estimates using a robust Huber-White sandwich method. Click on <span class="Menu_Item">Estimate</span> to bring up the equation dialog, select the <span class="Menu_Item">Options</span> tab, then change the <span class="Menu_Item">Covariance method</span> from <span class="Menu_Item">Default</span> to <span class="Menu_Item">Huber/White</span>. Click on <span class="Menu_Item">OK</span> to estimate the revised specification:</div>
+      <div class="Picture"><a name="313272"><img class="Default" src="images/glm.042.4.16.jpg" width="100%" style="left: 0.0pt; max-height: 628px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="313273">EViews reports the new method of computing the coefficient covariance in the header. The coefficient estimates are unchanged, since the alternative computation of the coefficient covariance is a post-estimation procedure, and the new standard estimates correspond the second set of standard errors in Papke and Wooldridge (Table II, column 2). Notably, the use of an alternative estimator for the coefficient covariance has little substantive effect on the results.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

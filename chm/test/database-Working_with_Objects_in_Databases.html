@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Working with Objects in Databases</title>
+    <link rel="StyleSheet" href="css/database.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="database-Database_Basics.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="database-Database_Auto-Series.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="database-EViews_Databases.html">EViews Databases</a> : Working with Objects in Databases</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="37047">Working with Objects in Databases</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37054">Storing Objects in the Database</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37078">Fetching Objects from the Database</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37098">Database Export</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#177852">Previewing Objects in the Database</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#178067">Copying Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#150594">Copy-and-Paste</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#160573">Drag-and-Drop</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#104406">Copy Procedure</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37142">Renaming Objects in the Database</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#58295">Deleting Objects From the Database</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37270">Store, Fetch, and Copy of Group Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37272">Storing a Group Object</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37279">Fetching a Group Object</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37285">Copying Group Objects between Workfiles and Databases</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="37048">Since databases are simply containers of other EViews objects, most of your work with databases will involve moving objects into and out of them. The sections on storing, fetching and exporting objects discuss different ways of doing this.</a></div>
+      <div class="Body_Text"><a name="37049">You will also need to manage the objects inside a database. You can examine previews of the objects to see their contents. You can create duplicate copies of objects, change their names, or remove them from the database entirely. The sections on previewing, copying, renaming and deleting objects discuss how these operations can be carried out.</a></div>
+      <div class="Heading_4"><a name="37054">Storing Objects in the Database</a></div>
+      <div class="Body_Text"><a name="37055">An object may be stored in a database in a number of ways. If you have a workfile open on the screen and would like to store objects contained inside it into a database, just select the objects from the workfile window with the mouse, then click on the </a><span class="Menu_Item">Store</span> button in the workfile toolbar. A sequence of dialogs will come up, one for each object selected, which provide a number of options for renaming the object and determining where the object should be stored.</div>
+      <div class="Picture"><a name="138623"><img class="Default" src="images/database.015.04.1.jpg" width="100%" style="left: 0.0pt; max-height: 222px; max-width: 368px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="138631">By default, the object will be stored in the default database with the name used as the workfile. Click </a><span class="Dialog_Item">Yes</span> to store the specified object. If you are storing more than one object, EViews will allow you to select <span class="Dialog_Item">Yes-to-All</span> to store all of the objects using the current settings.</div>
+      <div class="Body_Text"><a name="138664">If you would like to store the object with a different name, simply type the new name over the old name in the </a><span class="Dialog_Item">Store object_name as </span>edit box. If you would like to store the object in a different database, either enter the name of the new database in the text box marked <span class="Dialog_Item">Database Alias or Path </span>(see <span class="Link"><a href="database-The_Database_Registry.html#101571" title="The Database Registry">&#8220;The Database Registry&#8221;</a></span> for an explanation of database aliases), or click on the button marked <span class="Dialog_Item">Browse</span> to select the database name interactively. To store the object to disk as an EViews .DB? file, click on the arrow to the right of the field labeled <span class="Dialog_Item">Store in</span> and select<span class="Dialog_Item"> Individual .DB? files</span>. You may then specify a path in which to place the file using the field labeled<span class="Dialog_Item"> Path for DB files</span>.</div>
+      <div class="Picture"><a name="138673"><img class="Default" src="images/database.015.04.2.jpg" width="100%" style="left: 0.0pt; max-height: 221px; max-width: 393px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="138680">If there is already an existing object in the database with the same name, EViews will display a dialog. The first and last of the three options should be self explanatory. The second option may only be used if the object you are storing from the workfile and the object already in the database are both series of the same frequency. In this case, EViews will merge the data from the two series so that the new series in the database has all the observations from the series being stored, as well as any observations from the existing series which have not been overwritten. For example, if the existing series in the database is an annual series from 1950 to 1990, and the series being stored is an annual series from 1980 to 1995, the new series will run from 1950 to 1995, with data from the existing series for 1950 to 1979, and data from the new series for 1980 to 1995.</a></div>
+      <div class="Heading_4"><a name="37078">Fetching Objects from the Database</a></div>
+      <div class="Body_Text"><a name="37079">There are a number of ways to fetch objects from a database, most of which are similar to the methods for storing.</a></div>
+      <div class="Body_Text"><a name="37080">The first method is to click on the button marked </a><span class="Menu_Item">Fetch</span> on the toolbar of the workfile into which you would like to fetch the object. A dialog will come up which is similar to the dialog for store:</div>
+      <div class="Picture"><a name="37084"><img class="Default" src="images/database.015.04.3.jpg" width="100%" style="left: 0.0pt; max-height: 333px; max-width: 476px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="37085">The dialog allows you to specify the names of the objects to fetch, and the database or directory from which to retrieve them.</a></div>
+      <div class="Body_Text"><a name="37086">Enter the names of the objects you would like to fetch in the field </a><span class="Dialog_Item">Objects to Fetch</span>. Alternatively, you can use the mouse to select objects from the workfile window before clicking on the <span class="Menu_Item">Fetch </span>button, in which case the names of these objects will appear automatically. </div>
+      <div class="Body_Text"><a name="158442">The fields labeled </a><span class="Dialog_Item">Database Alias or Path</span> and <span class="Dialog_Item">Fetch from</span> are the same as for the store dialog with one exception. In addition to <span class="Dialog_Item">EViews Database</span> and <span class="Dialog_Item">Individual .DB? files, Fetch from </span>has an option titled <span class="Dialog_Item">Search Databases. </span>This option tells EViews to search multiple databases for objects which match the specified names. To use this option, you must first define a search order in the database registry (see <span class="Link"><a href="database-The_Database_Registry.html#101571" title="The Database Registry">&#8220;The Database Registry&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="158443">The checkbox labeled </a><span class="Menu_Item">Link objects to database</span> on the bottom of the dialog instructs EViews to bring any listed series or alpha objects into the workfile as links to the data in the database. When you open an existing workfile containing database links, EViews will prompt you for whether you wish to refresh the data series. If you click on <span class="Menu_Item">No</span>, EViews will retain the existing data in the link, otherwise the data will be re-imported from the database when you load the workfile. You may also update existing links manually by selecting <span class="Menu_Item">Object/Manage Links &amp; Formulae...</span> in the workfile window, specifying the objects to update, and clicking on the associated <span class="Menu_Item">Refresh</span> button.</div>
+      <div class="Body_Text"><a name="37090">When you click on </a><span class="Dialog_Item">OK</span>, EViews will fetch all the objects. If an object which is being fetched is already contained in the workfile, a dialog will appear asking whether to replace the object or not. Click on <span class="Dialog_Item">Yes</span> to replace the object in the workfile or <span class="Dialog_Item">No</span> to leave the object in the workfile unchanged. </div>
+      <div class="Body_Text"><a name="37091">Because a workfile has a fixed frequency and range, fetching a series into a workfile may cause the data in the series to be modified to match the frequency and range of the workfile (see </a><span class="Link"><a href="Basedata-Frequency_Conversion.html#233493" title="Frequency Conversion">&#8220;Frequency Conversion&#8221;</a></span>). Be aware that loading a series into a workfile then saving it back into the database can cause truncation and frequency conversion of the series stored in the database. </div>
+      <div class="Body_Text"><span class="Menu_Item"><a name="68512">Object/Update selected from DB&#8230;</a></span> from the workfile toolbar is the same as <span class="Menu_Item">Fetch</span><span class="Dialog_Item"> </span>except that there is no overwrite warning message. If the object in the database is the same type as the one in the workfile, it is automatically overwritten. If it is of a different type, the fetch does not proceed. Update is also available from the <span class="Menu_Item">Object</span> button in individual object windows.</div>
+      <div class="Heading_4"><a name="37098">Database Export</a></div>
+      <div class="Body_Text"><a name="139386">You can also move data into a workfile from the database window. From an open database window, select the objects you would like to copy using the mouse, then click on the button marked </a><span class="Menu_Item">Export</span> in the toolbar at the top of the database window. The <span class="Menu_Item">Database Export </span>dialog will appear on the screen:</div>
+      <div class="Picture"><a name="139390"><img class="Default" src="images/database.015.04.4.jpg" width="100%" style="left: 0.0pt; max-height: 238px; max-width: 290px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="139391">When you click on the down arrow on the right of the field labeled </a><span class="Dialog_Item">Workfile</span>, a list of all workfiles that are currently open will appear from which you may choose the workfile into which you would like to copy the objects. In addition, you may use the <span class="Menu_Item">Page</span> drop down menu to select an existing page in the selected workfile, or to create a new page. Clicking on the button marked <span class="Dialog_Item">OK</span> will copy the selected objects to specified page of the selected workfile.</div>
+      <div class="Body_Text"><a name="150220">There is an extra option in the list of open workfiles for specifying a new workfile as your copy destination. If you select </a><span class="Dialog_Item">New Workfile</span>, EViews will create a new workfile containing the objects you have selected. After you click on <span class="Dialog_Item">OK</span>, a second dialog will appear in which you can set the frequency and range of the workfile to be created. The default frequency is set to the lowest frequency of any of the objects selected, and the default range is set to cover all the data points contained in the objects. Clicking on <span class="Dialog_Item">OK</span> will open a new workfile window and copy the selected objects into it, performing frequency conversion where necessary.</div>
+      <div class="Body_Text"><a name="158921">Lastly, you may export your series or alpha objects to the workfile as database links. When you reopen your workfile containing database links, EViews will prompt you for whether you wish to refresh the data series from the database.</a></div>
+      <div class="Heading_4"><a name="177852">Previewing Objects in the Database</a></div>
+      <div class="Body_Text"><a name="178059">To preview one or more objects in the database, select the object or objects and, if necessary, open the preview window. The preview window will display a preview of the contents of the first selected object.</a></div>
+      <div class="Body_Text"><a name="178063">See </a><span class="Link"><a href="objects-Basic_Object_Operations.html#184790" title="Basic Object Operations">&#8220;Previewing Objects&#8221;</a></span> for details.</div>
+      <div class="Heading_4"><a name="178067">Copying Objects</a></div>
+      <div class="Body_Text"><a name="178038">In addition to the above methods for moving objects, EViews provides general support for the copying of objects between any two EViews container objects (workfiles or databases). You may use these features to move objects between two databases or between two workfiles, to create duplicate copies of objects within a workfile or database, or as an alternative method for store and fetch.</a></div>
+      <div class="Heading_5"><a name="150594">Copy-and-Paste</a></div>
+      <div class="Body_Text"><a name="37112">For copying objects between containers, the procedure is very similar no matter what types of container objects are involved. Before you start, make sure that the windows for both containers are open on the screen. In the container </a><span class="Emphasis">from which</span> you would like to copy the objects, select the objects then click on <span class="Menu_Item">Edit/Copy</span> in the EViews program menu. Click on the container object<span class="Emphasis"> into which</span> you would like to paste the objects, then select <span class="Menu_Item">Edit/Paste</span> or <span class="Menu_Item">Edit/Paste Special...</span> from the EViews program menu.</div>
+      <div class="Body_Text"><a name="37113">Depending on the types of the two containers, you may be presented with one or more dialogs. If, for example, you are performing a copy to or from a database, and click on </a><span class="Menu_Item">Edit/Paste</span>, the standard <span class="Menu_Item">Store</span> or <span class="Menu_Item">Fetch</span> dialogs will appear as if you had carried out the operations using the toolbar buttons on the workfile window. If you click on <span class="Menu_Item">Edit/Paste Special...</span>, an alternate dialog will be displayed, allowing you to override the default frequency conversion methods.</div>
+      <div class="Body_Text"><a name="150612">If, instead, you are copying between two workfiles, selecting </a><span class="Menu_Item">Edit/Paste</span> will simply copy the series using the default frequency conversion if necessary. You will only be prompted with a dialog if there is name collision. Selecting <span class="Menu_Item">Edit/Paste Special...</span> will display a dialog allowing you to override the default conversion methods.</div>
+      <div class="Heading_5"><a name="160573">Drag-and-Drop</a></div>
+      <div class="Body_Text"><a name="160574">An alternative to copy-and-paste is to use drag-and-drop to copy files between containers. If you use the right-mouse button to select the series, dropping them on the new tab is equivalent to copying and then selecting </a><span class="Menu_Item">Edit/Paste Special...</span></div>
+      <div class="Heading_5"><a name="104406">Copy Procedure</a></div>
+      <div class="Picture"><a name="150643"><img class="Default" src="images/database.015.04.5.jpg" width="100%" style="left: 0.0pt; max-height: 181px; max-width: 306px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="150637">You may perform similar operations using the object copy procedure. From the main menu select </a><span class="Menu_Item">Object/Copy</span> (this may appear as <span class="Menu_Item">Object/Copy selected&#8230;</span>). The <span class="Menu_Item">Object Copy</span> dialog will be displayed.</div>
+      <div class="Body_Text"><a name="37119">The</a><span class="Menu_Item"> Source</span> field specifies the object or objects you would like to copy, the <span class="Menu_Item">Destination</span> field specifies where you would like to copy them and what names they should be given.</div>
+      <div class="Body_Text"><a name="37120">The </a><span class="Menu_Item">Source</span> field should be filled in with an expression of the form:</div>
+      <div class="Input"><a name="37121">source_db::source_pattern</a></div>
+      <div class="Body_Text"><a name="58595">where </a><span class="In-line_input">source_db::</span> is optional, and indicates which database the objects should be copied from (if no database name is supplied, the source is taken to be the default workfile), and <span class="In-line_input">source_pattern</span> is either a simple object name or a name pattern. A name pattern may include the wildcard characters &#8220;?&#8221; which matches any single character, and &#8220;*&#8221; which matches zero or more characters.</div>
+      <div class="Body_Text"><a name="58599">The </a><span class="Menu_Item">Destination</span> field should be filled in with an expression of the form:</div>
+      <div class="Input"><a name="37127">dest_db::dest_name</a></div>
+      <div class="Body_Text"><a name="37128">where </a><span class="In-line_input">dest_db::</span> is again optional, and indicates which database the objects should be copied to (if no database name is supplied, the destination is taken to be the default workfile), and <span class="In-line_input">dest_name</span>, which is also optional, is the name to be given to the new copy of the object. If no name is given, the object will be copied with its existing name. If a pattern was used when specifying the source, a pattern must also be used when specifying the destination (see <span class="Link"><a href="wildcards-Source_and_Destination_Patterns.html#51283" title="Source and Destination Patterns">&#8220;Source and Destination Patterns&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="37129">For example, to copy an object from the database DB1 to the database DB2, keeping the existing name, you would fill in the dialog:</a></div>
+      <div class="Command_Types"><a name="37130">source:	</a><span class="In-line_command">db1::object_name</span></div>
+      <div class="Command_Types"><a name="37131">destination: 	</a><span class="In-line_command">db2::</span></div>
+      <div class="Body_Text"><a name="37132">where OBJECT_NAME is the original name as displayed by EViews.</a></div>
+      <div class="Body_Text"><a name="37133">To copy all the objects in the database DB1 beginning with the letter X into the current workfile, changing the names so that they begin with Y, you would fill in the dialog</a></div>
+      <div class="Command_Types"><a name="37134">source:	</a><span class="In-line_command">db1::x*</span></div>
+      <div class="Command_Types"><a name="37135">destination</a><span class="Dialog_Item">:</span> 	<span class="In-line_command">y*</span></div>
+      <div class="Body_Text"><a name="37136">To make a duplicate copy of the object named ABC in the database DB1, giving it the new name XYZ, you would fill in the dialog:</a></div>
+      <div class="Command_Types"><a name="37137">source:	</a><span class="In-line_command">db1::abc</span></div>
+      <div class="Command_Types"><a name="37138">destination: 	</a><span class="In-line_command">db1::xyz</span></div>
+      <div class="Heading_4"><a name="37142">Renaming Objects in the Database</a></div>
+      <div class="Body_Text"><a name="37143">You may rename an object in the database by selecting the object in an open database window, then clicking on the button marked </a><span class="Menu_Item">Rename</span> in the database window toolbar. A dialog will come up in which you can modify the existing name or type in a new name. You can rename several objects at the same time using wildcard patterns and the <span class="In-line_input">rename</span> command. </div>
+      <div class="Heading_4"><a name="58295">Deleting Objects From the Database</a></div>
+      <div class="Body_Text"><a name="58296">To delete objects from the database, select the objects in an open database window, then click on the button marked </a><span class="Menu_Item">Delete</span> on the database window toolbar. You may delete several objects at the same time using wildcard patterns. There is also a <span class="In-line_input">delete</span> command. See <span class="In-line_command_link"><a href="commandcmd-delete.html#2019304" title="delete">delete</a></span> for details.</div>
+      <div class="Heading_4"><a name="37270">Store, Fetch, and Copy of Group Objects</a></div>
+      <div class="Body_Text"><a name="37271">A group object in EViews is essentially a list of series names that form the group. The data of each series are contained in the series object, not in the group object. When you do a store, fetch, or copy operation on a group object, an issue arises as to whether you want to do the operation on each of the series or to the group definition list.</a></div>
+      <div class="Heading_5"><a name="37272">Storing a Group Object</a></div>
+      <div class="Body_Text"><a name="37273">When you store a group object to a database, there are four available options: </a></div>
+      <div class="Picture"><a name="68595"><img class="Default" src="images/database.015.04.6.jpg" width="100%" style="left: 0.0pt; max-height: 251px; max-width: 315px; top: 0.0pt" alt="" /></a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37274">Store the group definition and the series as separate objects: stores the group object (only its definition information) and each of its series as separate objects in the database. If any of the series already exist in the database, EViews will ask whether to overwrite the existing series if in interactive mode, and will error if in batch mode.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37275">Store the group definition and the series as one object: stores each series within the group object. A group object that contains series data will have an icon G+ in the database directory window. A group object with only its definition information will have the usual icon G. If you use this option, you can store two different series with the same name (with one of the series as member of a group).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37276">Store only the series (as separate objects): only stores each series as separate objects in the database. If you want to store a long list of series into a database, you can create a temporary group object that contains those series and issue the store command only once.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37277">Store only the group definition: stores only the group definition information; none of the series data are stored in the database. This option is useful if you want to update the member data from the database but want to keep the group information (e.g. the dated data table settings) in the group.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="37278">By default, EViews will display a dialog asking you to select a group store option every time you store a group object. You can, however, instruct EViews to suppress the dialog and use the global option setting. Simply click on </a><span class="Menu_Item">Options/Database Storage Defaults...</span> in the main EViews menu to bring up a dialog that allows you both to set the global storage options, and to suppress the group store option dialog.</div>
+      <div class="Heading_5"><a name="37279">Fetching a Group Object</a></div>
+      <div class="Body_Text"><a name="37280">When you fetch a group object to a database, there are three options available:</a></div>
+      <div class="Picture"><a name="138686"><img class="Default" src="images/database.015.04.7.jpg" width="100%" style="left: 0.0pt; max-height: 241px; max-width: 278px; top: 0.0pt" alt="" /></a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37281">Fetch both group definition and the actual series: fetches both group definition and its series as separate objects. If any of the series defined in the group is not found in the database, the corresponding series will be created in the workfile filled with NAs. If any of the series already exist in the workfile, EViews will ask whether to overwrite the existing series if in interactive mode, and will error if in batch mode.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37282">Fetch only the series in the group: only fetches each series defined in the group. If the series exists both within the group object (with a G+ icon) and as a separate series object in the database, the series within the group object will be fetched. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37283">Fetch only the group definition: fetches only the group definition (but not the series data). If any of the series defined in the group does not exist in the workfile, EViews will create the corresponding series filled with NAs. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="37284">You can click on </a><span class="Menu_Item">Options/Database Default Storage Options...</span> in the main menu to bring up a dialog that allows you both to set the global fetch options, and to suppress the fetch option dialog.</div>
+      <div class="Heading_5"><a name="37285">Copying Group Objects between Workfiles and Databases</a></div>
+      <div class="Body_Text"><a name="37286">You can also copy groups between different containers. The options that are available will differ depending on the type of source and destination container:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37287">Copy from workfile to database: same options as the store operation. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37288">Copy from database to workfile: same options as the fetch operation.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37289">Copy from workfile to workfile: both the group definition and series will be copied.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37290">Copy from database to database. If the group object contains only the group definition (with a G icon), only the group definition will be copied. If the group object also contains its series data (with a G+ icon), then the group will be copied containing the series data and the copied group will also appear with a G+ icon.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

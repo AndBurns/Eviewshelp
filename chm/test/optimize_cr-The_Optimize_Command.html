@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>The Optimize Command</title>
+    <link rel="StyleSheet" href="css/optimize_cr.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="optimize_cr-Defining_the_Objective_and_Controls.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="optimize_cr-Examples.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="optimize_cr-User-Defined_Optimization.html">User-Defined Optimization</a> : The Optimize Command</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="239206">The Optimize Command</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239211">Specifying the Method and Objective</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239225">Identifying the Control</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239227">Starting Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#240572">Specifying Gradients</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239236">Calculating the Hessian</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239244">Numeric Derivatives</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239248">Iteration and Convergence</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239251">Advanced Optimization Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#239253">Trust Region</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#239261">Step Method</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#239267">Scale</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#239272">Objective Accuracy</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239275">Status Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#239281">Error Handling</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="239207">The syntax for the </a><span class="In-line_command">optimize</span> command is:</div>
+      <div class="Input"><span class="Command_Summary"><a name="239208">optimize</a></span><span class="Argument_Opt" style="font-weight: normal">(options)</span> <span class="Argument_Opt">subroutine_name(arguments)</span></div>
+      <div class="Body_Text"><a name="239209">where </a><span class="Argument">subroutine_name</span> is the name of the defined subroutine in your program (or included programs). The full set of options is provided in <span class="In-line_command_link"><a href="commandcmd-open.html#2485568" title="open">optimize</a></span>,</div>
+      <div class="Body_Text"><a name="239210">By default, EViews will assume that the first argument of the subroutine is the objective of the optimization, and that the second argument contains the controls. The default is to maximize the objective or sum of the objective values (with the sum taken over the current workfile sample, if a series).</a></div>
+      <div class="Heading_4"><a name="239211">Specifying the Method and Objective</a></div>
+      <div class="Body_Text"><a name="239212">You may control the type of optimization and which subroutine argument corresponds to the objective by providing one of the following options to the </a><span class="In-line_command">optimize</span> command:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239213">max&nbsp;</a><span class="Argument">[=integer]</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239214">min&nbsp;</a><span class="Argument">[=integer]</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239215">ls&nbsp;</a><span class="Argument">[=integer]</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239216">ml&nbsp;</a><span class="Argument">[=integer]</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="239217">The four options correspond to different optimization types: maximization (&#8220;max&#8221;), minimization (&#8220;min&#8221;), least squares (&#8220;ls&#8221;) and maximum likelihood (&#8220;ml&#8221;). If the objective is scalar valued only &#8220;max&#8221; and &#8220;min&#8221; are allowed.</a></div>
+      <div class="Body_Text"><a name="239218">As the names suggest, &#8220;min&#8221; and &#8220;max&#8221; correspond to minimizing and maximizing the objective. If the objective is multi-valued, </a><span class="In-line_command">optimize</span> will minimize or maximize the <span class="Emphasis">sum</span> of the elements of the objective.</div>
+      <div class="Body_Text"><a name="239219">&#8220;ls&#8221; and &#8220;ml&#8221; are special forms of minimization and maximization that may be specified only if the multi-valued objective argument has a value for each observation. &#8220;ls&#8221; tells </a><span class="In-line_command">optimize</span> that you wish to perform least squares estimation so the optimizer should minimize the <span class="Emphasis">sum-of-squares</span> of the elements of the objective. &#8220;ml&#8221; informs <span class="In-line_command">optimize</span> you wish to perform maximum likelihood estimation by maximizing the <span class="Emphasis">sum</span> of the elements in the objective. </div>
+      <div class="Body_Text"><a name="239220">&#8220;ls&#8221; and &#8220;ml&#8221; differ from &#8220;min&#8221; and &#8220;max&#8221; in supporting an additional option for approximating the Hessian matrix (see </a><span class="Link"><a href="#239236" title="The Optimize Command">&#8220;Calculating the Hessian&#8221;</a></span>) that is used in the estimation algorithm. Indeed the only difference between the &#8220;max&#8221; and &#8220;ml&#8221; for a multi-valued objective is that &#8220;ml&#8221; supports the use of this option (&#8220;hess=opg&#8221;).</div>
+      <div class="Body_Text"><a name="239224">By default, the first argument of the subroutine is taken as the objective. However you may specify an alternate objective argument by providing an integer value identifier with one of the options above. For example, to identify the second argument of the subroutine as the objective in a minimization problem, you would use the option &#8220;min=2&#8221;. </a></div>
+      <div class="Heading_4"><a name="239225">Identifying the Control</a></div>
+      <div class="Body_Text"><a name="239226">By default, the second argument in the subroutine contains the controls for the optimization. You may modify this by including the </a><span class="In-line_option">&#8220;</span>coef=<span class="Argument">integer</span><span class="In-line_option">&#8221;</span> option in the <span class="In-line_command">optimize</span> command, where <span class="Argument">integer</span> is the argument identifier. For example, to identify the first argument of the subroutine as the control, you would use the option &#8220;coef=1&#8221;.</div>
+      <div class="Heading_4"><a name="239227">Starting Values</a></div>
+      <div class="Body_Text"><a name="240570">The values of the objects containing the control parameters at the onset of optimization are used as starting values for the optimization process. You should note that if any of the control parameters contain missing values at the onset of optimization, or if the objective function, or any analytic gradients cannot be evaluated at the initial parameter values, EViews will error and the optimization process will terminate.</a></div>
+      <div class="Heading_4"><a name="240572">Specifying Gradients</a></div>
+      <div class="Body_Text"><a name="240573">If included in the </a><span class="In-line_command">optimize</span> command, the &#8220;grad=&#8221; option specifies which subroutine argument contains the analytic gradients for each of the coefficients. If you specify the &#8220;grad=&#8221; option, the subroutine should fill out the elements of the gradient argument with values of the analytical gradients at the current coefficient values.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239231">If the objective argument is a scalar, the gradient argument should be a vector of length equal to the number of elements in the coefficient argument.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239232">If the objective argument is a series, the gradient argument should be a group object containing one series per element of the coefficient argument. The series observations should contain the corresponding derivatives for each observation in the current workfile sample.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="239233">For a vector objective, the gradient argument should be a matrix with number of rows equal to the length of the objective vector, and columns equal to the number of elements in the coefficient argument. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="240297">&#8220;grad=&#8221; may not be specified if the objective is a matrix.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="239234">If &#8220;grad=&#8221; is not specified, </a><span class="In-line_command">optimize</span> will use numeric gradients. In general, we have found that using numerical gradients performs as well as analytic gradients. Since programming the calculation of the analytic gradients into the subroutine can be complicated, omitting the &#8220;grad=&#8221; option should usually be one&#8217;s initial approach.</div>
+      <div class="Heading_4"><a name="239236">Calculating the Hessian</a></div>
+      <div class="Body_Text"><a name="239237">The &#8220;hess=&#8221; option tells EViews which Hessian approximation should be used in the estimation algorithm. You may employ numeric Hessian (&#8220;hess=numeric&#8221;), Broyden-Fletcher-Goldfarb-Shanno (&#8220;hess=bfgs&#8221;), or outer-product of the gradients (&#8220;hess=opg&#8221;) approximations to the Hessian (see </a><span class="Link"><a href="optimize_cr-Technical_Details.html#239487" title="Technical Details">&#8220;Hessian Approximation&#8221;</a></span>). </div>
+      <div class="Body_Text"><a name="239241">You may not specify an analytic Hessian, though all three approximations use information from the gradients, so that there will be slight differences in the Hessian calculation depending on whether you use numeric versus analytical gradients.</a></div>
+      <div class="Body_Text"><a name="239242">The &#8220;finalh=&#8221; option allows you to save the Hessian matrix of the optimization problem at the final coefficient values as a matrix in the workfile. For least squares and maximum likelihood problems, the Hessian is commonly used in the calculation of coefficient covariances. </a></div>
+      <div class="Body_Text"><a name="239243">For OPG and numeric Hessian approximations, the final Hessian will be the same as the Hessian approximation used during optimization. For BFGS, the final Hessian will be based on the numeric Hessian, since the BFGS approximation need not converge to the true Hessian.</a></div>
+      <div class="Heading_4"><a name="239244">Numeric Derivatives</a></div>
+      <div class="Body_Text"><a name="239245">You can control the method of computing numeric derivatives for gradient or Hessian calculations using the &#8220;deriv=&#8221; option. </a></div>
+      <div class="Body_Text"><a name="239246">At the default setting of &#8220;deriv=auto&#8221;, EViews will change the number of numeric derivative evaluation points as the optimization routine progresses, switching to a larger number of points as it approaches the optimum.</a></div>
+      <div class="Body_Text"><a name="239247">When you include the &#8220;deriv=high&#8221; option, EViews will always evaluate the objective function at a larger number of points. </a></div>
+      <div class="Heading_4"><a name="239248">Iteration and Convergence</a></div>
+      <div class="Body_Text"><a name="239249">The &#8220;m=&#8221; and &#8220;c=&#8221; options set the maximum number of iterations, and the convergence criterion respectively. Note that for optimization, the number of iterations is the number of successful steps that take place, and that each iteration may involve many function evaluations, both to evaluate any required numeric derivatives and for backtracking in cases where a trial step fails to improve the objective. </a></div>
+      <div class="Body_Text"><a name="239250">Reaching the maximum number of iterations will cause an error to occur (unless the &#8220;noerr&#8221; option is set).</a></div>
+      <div class="Heading_4"><a name="239251">Advanced Optimization Options</a></div>
+      <div class="Body_Text"><a name="239252">There are several advanced options which control different aspects of the optimization procedure. In general, you should not need to worry about these settings, but they may prove useful in cases where you are experiencing estimation difficulties.</a></div>
+      <div class="Heading_5"><a name="239253">Trust Region</a></div>
+      <div class="Body_Text"><a name="239254">You may use the &#8220;trust=&#8221; option to set the initial trust region size as a proportion of the initial control values. The default trust region size is 0.25.</a></div>
+      <div class="Body_Text"><a name="239255">Smaller values of this parameter may be used to provide a more cautious start to the optimization in cases where larger steps immediately lead into an undesirable region of the objective. </a></div>
+      <div class="Body_Text"><a name="239256">Larger values may be used to reduce the iteration count in cases where the objective is well behaved but the initial values may be far from the optimum values. </a></div>
+      <div class="Body_Text"><a name="239260">See </a><span class="Link"><a href="optimize_cr-Technical_Details.html#239437" title="Technical Details">&#8220;Technical Details&#8221;</a></span> for discussion.</div>
+      <div class="Heading_5"><a name="239261">Step Method</a></div>
+      <div class="Body_Text"><span class="In-line_command"><a name="239262">optimize</a></span> offers several methods for determining the constrained step size which you may specify using the &#8220;step=&#8221; option. In additional to the default Marquardt method (&#8220;step=marquardt&#8221;), you may specify dogleg steps (&#8220;step=dogleg&#8221;) or a line-search determined step (&#8220;step=linesearch&#8221;).</div>
+      <div class="Body_Text"><a name="239263">Note that in most cases the choice of step method is less important than the selection of Hessian approximation. See </a><span class="Link"><a href="optimize_cr-Technical_Details.html#239505" title="Technical Details">&#8220;Step Method&#8221;</a></span> for additional detail.</div>
+      <div class="Heading_5"><a name="239267">Scale</a></div>
+      <div class="Body_Text"><a name="239268">By default, the optimization procedure automatically adjusts the scale of the objective and control variables using the square root of the maximum observed value of the second derivative (curvature) of each control parameter. Scaling may be switched off using the &#8220;scale=none&#8221; option. See </a><span class="Link"><a href="optimize_cr-Technical_Details.html#239515" title="Technical Details">&#8220;Scaling&#8221;</a></span> for discussion.</div>
+      <div class="Heading_5"><a name="239272">Objective Accuracy</a></div>
+      <div class="Body_Text"><a name="239273">The &#8220;feps=&#8221; option may be used to specify the expected relative accuracy of the objective function. The default value is 2.2e-16.</a></div>
+      <div class="Body_Text"><a name="239274">The value indicates what fraction of the observed objective value should be considered to be random noise. You may wish to increase the &#8220;feps=&#8221; value if the calculation of your objective may be relatively inaccurate.</a></div>
+      <div class="Heading_4"><a name="239275">Status Functions</a></div>
+      <div class="Body_Text"><a name="239276">To support the </a><span class="In-line_command">optimize</span> command, EViews provides three functions that return information about the optimization process:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="239277">@optstatus</a></span> provides a status code for the optimizer, both during and post-optimization.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="239278">@optiter</a></span> returns the current number of iterations performed. If called post-optimization, it will return the number of iterations required for convergence. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="239279">@optmessage</a></span> returns a one line text message based on status and iteration information that summarizes the current state of an optimization. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="239280">All three of these functions may be used during optimization by including them inside the optimization subroutine, or post-optimization by calling them after the </a><span class="In-line_command">optimize</span> command.</div>
+      <div class="Heading_4"><a name="239281">Error Handling</a></div>
+      <div class="Body_Text"><a name="239282">The &#8220;noerr&#8221; option may be used as an option to suppress any error messages created when the optimization fails. By default, the optimization procedure will generate an error whenever the results of the optimization appear to be unreliable, such as if convergence was not met, or the gradients are non-zero at the final solution. </a></div>
+      <div class="Body_Text"><a name="239283">If </a><span class="In-line_option">noerr</span> is specified, these errors will be suppressed. In this case, your EViews program may still test whether the optimization succeeded using the <span class="In-line_command">@optiter</span> function. Note that the <span class="In-line_option">noerr</span> option is useful in cases where you are deliberately stopping optimization early using the <span class="In-line_option">m=</span> maximum iterations option, since otherwise this will generate an error.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

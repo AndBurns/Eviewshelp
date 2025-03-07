@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Specifying an Equation in EViews</title>
+    <link rel="StyleSheet" href="css/Regress1.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="Regress1-Equation_Objects.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="Regress1-Estimating_an_Equation_in_EViews.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="Regress1-Basic_Regression_Analysis.html">Basic Regression Analysis</a> : Specifying an Equation in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="40591">Specifying an Equation in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#68863">Specifying an Equation by List</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37015">Specifying an Equation by Formula</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="156042">When you create an equation object, a specification dialog box is displayed.</a></div>
+      <div class="Picture"><a name="156046"><img class="Default" src="images/Regress1.029.3.1.jpg" width="100%" style="left: 0.0pt; max-height: 423px; max-width: 485px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="156049">You need to specify three things in this dialog: the equation specification, the estimation method, and the sample to be used in estimation.</a></div>
+      <div class="Body_Text"><a name="68860">In the upper edit box, you can specify the equation: the dependent (left-hand side) and independent (right-hand side) variables and the functional form. There are two basic ways of specifying an equation: &#8220;by list&#8221; and &#8220;by formula&#8221; or &#8220;by expression&#8221;. The list method is easier but may only be used with unrestricted linear specifications; the formula method is more general and must be used to specify nonlinear models or models with parametric restrictions.</a></div>
+      <div class="Heading_4"><a name="68863">Specifying an Equation by List</a></div>
+      <div class="Body_Text"><a name="68864">The simplest way to specify a linear equation is to provide a list of variables that you wish to use in the equation. First, include the name of the dependent variable or expression, followed by a list of explanatory variables. For example, to specify a linear consumption function, CS regressed on a constant and INC, type the following in the upper field of the </a><span class="Menu_Item">Equation Specification</span> dialog:</div>
+      <div class="Input"><a name="36987">cs c inc</a></div>
+      <div class="Body_Text"><a name="176593">Note the presence of the series name C in the list of regressors. This is a built-in EViews series that is used to specify a constant in a regression. EViews does not automatically include a constant in a regression so you must explicitly list the constant (or its equivalent) as a regressor. The internal series C does not appear in your workfile, and you may not use it outside of specifying an equation. If you need a series of ones, you can generate a new series, or use the number 1 as an auto-series.</a></div>
+      <div class="Body_Text"><a name="36994">You may have noticed that there is a pre-defined object C in your workfile. This is the </a><span class="Definition">default coefficient vector</span>&#8212;when you specify an equation by listing variable names, EViews stores the estimated coefficients in this vector, in the order of appearance in the list. In the example above, the constant will be stored in C(1) and the coefficient on INC will be held in C(2).</div>
+      <div class="Body_Text"><a name="36997">Lagged series may be included in statistical operations using the same notation as in generating a new series with a formula&#8212;put the lag in parentheses after the name of the series. For example, the specification:</a></div>
+      <div class="Input"><a name="36998">cs cs(-1) c inc</a></div>
+      <div class="Body_Text"><a name="36999">tells EViews to regress CS on its own lagged value, a constant, and INC. The coefficient for lagged CS will be placed in C(1), the coefficient for the constant is C(2), and the coefficient of INC is C(3).</a></div>
+      <div class="Body_Text"><a name="37001">You can include a consecutive range of lagged series by using the word &#8220;</a><span class="In-line_input">to</span>&#8221; between the lags. For example:</div>
+      <div class="Input"><a name="37002">cs c cs(-1 to -4) inc</a></div>
+      <div class="Body_Text"><a name="37003">regresses CS on a constant, CS(-1), CS(-2), CS(-3), CS(-4), and INC. If you don't include the first lag, it is taken to be zero. For example: </a></div>
+      <div class="Input"><a name="37004">cs c inc(to -2) inc(-4)</a></div>
+      <div class="Body_Text"><a name="37005">regresses CS on a constant, INC, INC(-1), INC(-2), and INC(-4). </a></div>
+      <div class="Body_Text"><a name="37006">You may include auto-series in the list of variables. If the auto-series expressions contain spaces, they should be enclosed in parentheses. For example:</a></div>
+      <div class="Input"><a name="37007">log(cs) c log(cs(-1)) ((inc+inc(-1)) / 2)</a></div>
+      <div class="Body_Text"><a name="37008">specifies a regression of the natural logarithm of CS on a constant, its own lagged value, and a two period moving average of INC.</a></div>
+      <div class="Body_Text"><a name="37012">Typing the list of series may be cumbersome, especially if you are working with many regressors. If you wish, EViews can create the specification list for you. First, highlight the dependent variable in the workfile window by single clicking on the entry. Next, CTRL-click on each of the explanatory variables to highlight them as well. When you are done selecting all of your variables, double click on any of the highlighted series, and select </a><span class="Menu_Item">Open/Equation&#8230;</span>, or right click and select <span class="Menu_Item">Open/as Equation...</span>. The <span class="Menu_Item">Equation Specification</span> dialog box should appear with the names entered in the specification field. The constant C is automatically included in this list; you must delete the C if you do not wish to include the constant.</div>
+      <div class="Heading_4"><a name="37015">Specifying an Equation by Formula</a></div>
+      <div class="Body_Text"><a name="37016">You will need to specify your equation using a formula when the list method is not general enough for your specification. Many, but not all, estimation methods allow you to specify your equation using a formula.</a></div>
+      <div class="Body_Text"><a name="37017">An equation formula in EViews is a mathematical expression involving regressors and coefficients. To specify an equation using a formula, simply enter the expression in the dialog in place of the list of variables. EViews will add an implicit additive disturbance to this equation and will estimate the parameters of the model using least squares.</a></div>
+      <div class="Body_Text"><a name="37018">When you specify an equation by list, EViews converts this into an equivalent equation formula. For example, the list,</a></div>
+      <div class="Input"><a name="37019">log(cs) c log(cs(-1)) log(inc)</a></div>
+      <div class="Body_Text"><a name="37020">is interpreted by EViews as:</a></div>
+      <div class="Input"><a name="37021">log(cs) = c(1) + c(2)*log(cs(-1)) + c(3)*log(inc)</a></div>
+      <div class="Body_Text"><a name="37022">Equations do not have to have a dependent variable followed by an equal sign and then an expression. The &#8220;=&#8221; sign can be anywhere in the formula, as in:</a></div>
+      <div class="Input"><a name="37023">log(urate) - c(1)*dmr = c(2)</a></div>
+      <div class="Body_Text"><a name="37024">The residuals for this equation are given by: </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress1.029.3.2.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(20.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37029">EViews will minimize the sum-of-squares of these residuals.</a></div>
+      <div class="Body_Text"><a name="37031">If you wish, you can specify an equation as a simple expression, without a dependent variable and an equal sign. If there is no equal sign, EViews assumes that the entire expression is the disturbance term. For example, if you specify an equation as:</a></div>
+      <div class="Input"><a name="37032">c(1)*x + c(2)*y + 4*z</a></div>
+      <div class="Body_Text"><a name="37033">EViews will find the coefficient values that minimize the sum of squares of the given expression, in this case (C(1)*X+C(2)*Y+4*Z). While EViews will estimate an expression of this type, since there is no dependent variable, some regression statistics (</a><span class="Emphasis">e.g.</span> R-squared) are not reported and the equation cannot be used for forecasting. This restriction also holds for any equation that includes coefficients to the left of the equal sign. For example, if you specify:</div>
+      <div class="Input"><a name="37034">x + c(1)*y = c(2)*z </a></div>
+      <div class="Body_Text"><a name="37035">EViews finds the values of C(1) and C(2) that minimize the sum of squares of (X+C(1)*Y&#8211;C(2)*Z). The estimated coefficients will be identical to those from an equation specified using:</a></div>
+      <div class="Input"><a name="37036">x = -c(1)*y + c(2)*z</a></div>
+      <div class="Body_Text"><a name="37037">but some regression statistics are not reported.</a></div>
+      <div class="Body_Text"><a name="37038">The two most common motivations for specifying your equation by formula are to estimate restricted and nonlinear models. For example, suppose that you wish to constrain the coefficients on the lags on the variable X to sum to one. Solving out for the coefficient restriction leads to the following linear model with parameter restrictions:</a></div>
+      <div class="Input"><a name="37041">y = c(1) + c(2)*x + c(3)*x(-1) + c(4)*x(-2) + (1-c(2)-c(3)-c(4)) *x(-3)</a></div>
+      <div class="Body_Text"><a name="37042">To estimate a nonlinear model, simply enter the nonlinear formula. EViews will automatically detect the nonlinearity and estimate the model using nonlinear least squares. For details, see </a><span class="Link"><a href="Regress2-Nonlinear_Least_Squares.html#266568" title="Nonlinear Least Squares">&#8220;Nonlinear Least Squares&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="37049">One benefit to specifying an equation by formula is that you can elect to use a different coefficient vector. To create a new coefficient vector, choose </a><span class="Menu_Item">Object/New Object&#8230; </span>and select<span class="Menu_Item"> Matrix-Vector-Coef</span> from the main menu, type in a name for the coefficient vector, and click <span class="Dialog_Item">OK</span>. In the <span class="Menu_Item">New Matrix</span> dialog box that appears, select <span class="Dialog_Item">Coefficient Vector</span> and specify how many rows there should be in the vector. The object will be listed in the workfile directory with the coefficient vector icon (the little <img class="Default EquationGraphic" src="images/Regress1.029.3.3.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />).</div>
+      <div class="Body_Text"><a name="37053">You may then use this coefficient vector in your specification. For example, suppose you created coefficient vectors A and BETA, each with a single row. Then you can specify your equation using the new coefficients in place of C:</a></div>
+      <div class="Input"><a name="37055">log(cs) = a(1) + beta(1)*log(cs(-1))</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

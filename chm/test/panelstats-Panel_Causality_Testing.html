@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Panel Causality Testing</title>
+    <link rel="StyleSheet" href="css/panelstats.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="panelstats-Panel_Principal_Components.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="panelstats-Panel_Long-run_Variances.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="panelstats-Panel_Statistics.html">Panel Statistics</a> : Panel Causality Testing</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="170774">Panel Causality Testing</a></div>
+      <div class="Body_Text"><a name="194994">EViews offers panel specific forms of Granger causality tests (</a><span class="Link"><a href="groups-Granger_Causality.html#171938" title="Granger Causality">&#8220;Granger Causality&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="195034">In panel workfile settings, EViews performs panel data specific causality testing. In these settings, least squares regressions can take a number of different forms, depending upon assumptions made about the structure of the panel data. Since Granger Causality is computed by running bivariate regressions, there are a number of different approaches to testing for Granger Causality in a panel context. </a></div>
+      <div class="Body_Text"><a name="195035">In general, the bivariate regressions in a panel data context take the form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panelstats.071.05.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(58.5)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panelstats.071.05.02.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(58.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="195045">Where </a><span class="In-line_math">t</span> denotes the time period dimension of the panel, and <span class="In-line_math">i</span> denotes the cross-sectional dimension.</div>
+      <div class="Body_Text"><a name="195046">The different forms of panel causality test differ on the assumptions made about the homogeneity of the coefficients across cross-sections.</a></div>
+      <div class="Body_Text"><a name="195047">EViews offers two of the simplest approaches to causality testing in panels. The first is to treat the panel data as one large stacked set of data, and then perform the Granger Causality test in the standard way, with the exception of not letting data from one cross-section enter the lagged values of data from the next cross-section. This method assumes that all coefficients are same across all cross-sections, i.e.:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panelstats.071.05.03.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(58.7)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panelstats.071.05.04.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(58.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="195056">A second approach adopted by Dumitrescu-Hurlin (2012), makes an extreme opposite assumption, allowing all coefficients to be different across cross-sections:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panelstats.071.05.05.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(58.9)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panelstats.071.05.06.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(58.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="202989">This test is calculated by simply running standard Granger Causality regressions for each cross-section individually. The next step is to take the average of the test statistics, which are termed the <img class="Default EquationGraphic" src="images/panelstats.071.05.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 48px; top: 0.0pt" alt="" /> statistic. They show that the standardized version of this statistic, appropriately weighted in unbalanced panels, follows a standard normal distribution. This is termed the <img class="Default EquationGraphic" src="images/panelstats.071.05.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 42px; top: 0.0pt" alt="" /> statistic.</a></div>
+      <div class="Body_Text"><a name="202990">(EViews does not provide built-in versions of other panel-causality tests since they are often based upon regressions using some assumptions on </a><span class="Link"><a href="#195040" title="Panel Causality Testing">Equation&nbsp;(58.5)</a></span>, or in some cases two-stage least squares regressions, often using a fixed or a random effects model. It is possible to perform these test by estimating the models using an EViews equation object and then perform Wald test coefficient restrictions on the appropriate coefficients.)</div>
+      <div class="Body_Text"><a name="195237">To perform the test, create a group containing the series of interest, then select </a><span class="Menu_Item">View/Granger Causality...</span> to display the test dialog:</div>
+      <div class="Picture"><a name="195388"><img class="Default" src="images/panelstats.071.05.09.jpg" width="100%" style="left: 0.0pt; max-height: 225px; max-width: 285px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="195417">Select the </a><span class="Menu_Item">Test type</span> using the radio buttons and provide a number of <span class="Menu_Item">Lags to include</span>. Click on <span class="Menu_Item">OK</span> to accept the settings and compute the test.</div>
+      <div class="Table"><a name="195611"><img class="Default" src="images/panelstats.071.05.10.jpg" width="100%" style="left: 0.0pt; max-height: 225px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="195413">Here we show results for the pairwise Dumitrescu-Hurlin tests using data from &#8220;gasoline.WF1&#8221; (which is available in your examples directory). We reject the null that LCARPCAP does not homogeneously cause LGASPCAR, but do not direct in the opposite direction.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

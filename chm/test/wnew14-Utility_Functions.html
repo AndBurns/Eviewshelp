@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Utility Functions</title>
+    <link rel="StyleSheet" href="css/wnew14.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="wnew14-Data_Handling.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="wnew14-Econometrics_and_Statistics.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">EViews 14 Help Topics : <a class="WebWorks_Breadcrumb_Link" href="wnew14-New_Features_in_EViews_14.html">New Features in EViews 14</a> : Utility Functions</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="431586">Utility Functions</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#431588">Sample Index Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#431592">Current Sample Index (@pagesmplidx)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#431604">Observations Index (@pageidx)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#431616">Boolean Indicators (@pageinidx)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#431638">Matrix Utility Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#431672">String and Date Vector Functions</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="431588">Sample Index Functions</a></div>
+      <div class="Body_Text"><a name="431589">A key EViews feature is the ability to work with subsamples of observations. There are two common ways of defining a subsample of observations in a workfile. One method is to specify a set of (0, 1) (boolean) identifiers that indicate whether each observation in the workfile is included in the subsample. A second method is to specify a list of index values for the observations in the subsample.</a></div>
+      <div class="Body_Text"><a name="431590">In some cases, working with the boolean indicators is more convenient. In others, especially when the subsample is sparse and direct access to the observation is useful, working with the index values may be preferred.</a></div>
+      <div class="Body_Text"><a name="431591">EViews 14 provides new workfile page functions that allow you to extract information from the workfile and workfile sample, and to convert between the two methods.</a></div>
+      <div class="Heading_5"><a name="431592">Current Sample Index (@pagesmplidx)</a></div>
+      <div class="Body_Text"><a name="431593">The </a><span class="In-line_command">@pagesmplidx</span> function returns a vector object containing the index values for the observations in the current sample.</div>
+      <div class="Body_Text"><a name="431594">Suppose we have an annual workfile from 2001 to 2024, and have set the workfile sample to a subset of observations. The commands</a></div>
+      <div class="Multi-line_Input"><a name="431595">wfcreate(wf=awf) a 2001 2024</a></div>
+      <div class="Multi-line_Input"><a name="431596">smpl 2002 2003 2010 2011</a></div>
+      <div class="Body_Text"><a name="431597">create a workfile containing annual observations from 2001 to 2024, then sets the sample to contain observations from 2002&#8211;2003 and 2010&#8211;2011. There are 24 observations in this workfile which may be identified by index values 1 to 24. Then</a></div>
+      <div class="Multi-line_Input"><a name="431598">vector ids = @pagesmplidx</a></div>
+      <div class="Body_Text"><a name="431599">will return IDS containing {2, 3, 10, 11}.</a></div>
+      <div class="Body_Text"><a name="431603">See </a><span class="In-line_command_link"><a href="functionref_p-@pagesmplidx.html#1260612" title="@pagesmplidx">@pagesmplidx</a></span>.</div>
+      <div class="Heading_5"><a name="431604">Observations Index (@pageidx)</a></div>
+      <div class="Body_Text"><a name="431605">The </a><span class="In-line_command">@pageidx(</span><span class="Argument" style="font-weight: normal">arg</span><span class="In-line_command">)</span> function returns a vector object containing the index values for the observations in the workfile specified in <span class="Argument">arg</span>. </div>
+      <div class="Body_Text"><a name="431606">The argument may be a vector of date numbers, an svector of date strings, or a string object or string literal containing a space delimited list of dates.</a></div>
+      <div class="Body_Text"><a name="431607">Observation specifications that are outside of the workfile range will be ignored.</a></div>
+      <div class="Body_Text"><a name="431608">For example,</a></div>
+      <div class="Multi-line_Input"><a name="431609">wfcreate(wf=qwf) q 2001 2024</a></div>
+      <div class="Multi-line_Input"><a name="431610">vector id1 = @pageidx("2010q2 2010q3 2021q1 2023q4")</a></div>
+      <div class="Body_Text"><a name="431611">creates a workfile containing quarterly data from 2001 to 2024 and an ID1 vector containing the values {38, 39, 81, 92}.</a></div>
+      <div class="Body_Text"><a name="431615">See </a><span class="In-line_command_link"><a href="functionref_p-@pageidx.html#1260527" title="@pageidx">@pageidx</a></span>.</div>
+      <div class="Heading_5"><a name="431616">Boolean Indicators (@pageinidx)</a></div>
+      <div class="Body_Text"><a name="431617">The </a><span class="In-line_command">@pageinidx(</span><span class="Argument" style="font-weight: normal">arg</span><span class="In-line_command">)</span> function, where <span class="Argument">arg</span> is a vector containing observation index values, returns a vector object, sized to match the workfile page length, that includes (0, 1) indicators for each observation, with 1&#8217;s assigned to index elements in <span class="Argument">arg, </span>and 0&#8217;s elsewhere.</div>
+      <div class="Body_Text"><a name="431618">If the </a><span class="Argument">arg</span> contains index values that are outside of the workfile range, the function will return an error.</div>
+      <div class="Body_Text"><a name="431619">If we have the commands</a></div>
+      <div class="Multi-line_Input"><a name="431620">vector id2 = @fill(10, 27, 30, 40)</a></div>
+      <div class="Multi-line_Input"><a name="431621">vector incl = @pageinidx(id2)</a></div>
+      <div class="Body_Text"><a name="431622">then INC1 is a vector with 0&#8217;s everywhere except for the elements 10, 27, 30, and 40. Note that these commands are a concise equivalent to the commands</a></div>
+      <div class="Multi-line_Input"><a name="431623">vector inc2 = @zeros(@wfrange)</a></div>
+      <div class="Multi-line_Input"><a name="431624">inc2(10) = 1</a></div>
+      <div class="Multi-line_Input"><a name="431625">inc2(17) = 1</a></div>
+      <div class="Multi-line_Input"><a name="431626">inc2(30) = 1</a></div>
+      <div class="Multi-line_Input"><a name="431627">inc2(40) = 1</a></div>
+      <div class="Body_Text"><a name="431628">Using </a><span class="In-line_command">@pageidx</span> to identify observation indices and then feeding the result to <span class="In-line_command">@pageinidx </span>offers a quick way of specifying a subsample of observations using dates:</div>
+      <div class="Multi-line_Input"><a name="431629">wfcreate(wf=qwf) q 2001 2024</a></div>
+      <div class="Multi-line_Input"><a name="431630">vector inc3 = @pageinidx(@pageidx("2010q2 2010q3 2021q1 2023q4")</a></div>
+      <div class="Multi-line_Input"><a name="431631">stom(inc3, include_series)</a></div>
+      <div class="Multi-line_Input"><a name="431632">smpl @all if include_series = 1</a></div>
+      <div class="Body_Text"><a name="431636">See </a><span class="In-line_command_link"><a href="functionref_p-@pageinidx.html#1260578" title="@pageinidx">@pageinidx</a></span>.</div>
+      <div class="Heading_4"><a name="431638">Matrix Utility Functions</a></div>
+      <div class="Body_Text"><a name="431639">EViews 14 offers a few new matrix utility functions that make common operations easier to perform.</a></div>
+      <div class="Body_Text"><a name="431640">The </a><span class="In-line_command_link"><a href="functionref_l-@lower.html#1258746" title="@lower">@lower</a></span> and <span class="In-line_command_link"><a href="functionref_u-@upper.html#1258789" title="@upper">@upper</a></span> functions make it easy to create lower and upper triangular matrices from matrix and sym objects. The functions allow you to specify an offset from the main diagonal so you can create strict lower and upper matrices, or matrices which zero out all but small lower or upper triangular regions of the source matrix:</div>
+      <div class="Body_Text"><a name="431655">EViews 14 also adds the </a><span class="In-line_command_link"><a href="functionref_i-@implodeu.html#1260346" title="@implodeu">@implodeu</a></span> function to create a symmetric matrix from the upper triangle of a square matrix. This function complements the existing <span class="In-line_command_link"><a href="functionref_i-@implode.html#1260318" title="@implode">@implode</a></span> which creates the sym from the lower triangle of a matrix.</div>
+      <div class="Body_Text"><a name="431663">The new </a><span class="In-line_command_link"><a href="functionref_i-@incr.html#1269513" title="@incr">@incr</a></span> function allows for adjusting all of the columns or rows of a matrix by incrementing with a vector. You may, for example, use this function to quickly add or subtract a multiple of a vector from each column of a matrix, or add or subtract a multiple of a rowvector from each row of a matrix, eliminating the need for expensive Kronecker product operations.</div>
+      <div class="Heading_4"><a name="431672">String and Date Vector Functions</a></div>
+      <div class="Body_Text"><a name="431673">Earlier versions of EViews offered an extensive library of string and date functions which allowed for manipulation of string values and date numbers. You could, for example, easily compare string values, insert strings into other strings, or extract a specific word from a string containing a list of words. Or you could manipulate date numbers to find a date two weeks in the future, or determine the number of days between two dates.</a></div>
+      <div class="Body_Text"><a name="431674">Unfortunately, the EViews library for these functions was generally limited to functions of scalar values. If, for example, you wanted to perform a set of on a set of string dates held in an svector, you needed to extract each element of the svector individually, perform operation on the string and any corresponding date number, and then place the result into a new vector or svector.</a></div>
+      <div class="Body_Text"><a name="431678">EViews 14 features a completely revamped string and date function library which features vector support. Functions which previously only took single string or date number values now operate seamlessly with arguments in vector form.</a></div>
+      <div class="Body_Text"><a name="431685">Consider, for example the </a><span class="In-line_command_link"><a href="functionref_l-@left.html#1226946" title="@left">@left</a></span> function which returns the <img class="Default EquationGraphic" src="images/wnew14.003.3.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> left-most characters in a string <img class="Default EquationGraphic" src="images/wnew14.003.3.2.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. The first argument of the function corresponds to an alphanumeric <img class="Default EquationGraphic" src="images/wnew14.003.3.3.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, and the second argument is a numeric <img class="Default EquationGraphic" src="images/wnew14.003.3.4.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. </div>
+      <div class="Body_Text"><a name="431698">For this function, EViews 14 will return different types of results for different combinations of valid <img class="Default EquationGraphic" src="images/wnew14.003.3.5.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/wnew14.003.3.6.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> argument types. The command</a></div>
+      <div class="Multi-line_Input"><a name="431705">= @left("When in the course", 4)</a></div>
+      <div class="Body_Text"><a name="431706">returns the string &#8220;When&#8221; which is displayed in the EViews status line.</a></div>
+      <div class="Body_Text"><a name="431707">If A is a vector object containing the values 1, 2, 3, 4,</a></div>
+      <div class="Multi-line_Input"><a name="431708">svector s1 = @left("When in the course", A)</a></div>
+      <div class="Body_Text"><a name="431709">will produce an svector S1 containing the strings &#8220;W&#8221;, &#8220;Wh&#8221;, &#8220;Whe&#8221;, and &#8220;When&#8221;. In this case, EViews evaluates the function repeatedly using the literal value &#8220;When in the course&#8221; for <img class="Default EquationGraphic" src="images/wnew14.003.3.7.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> paired with each of the four values of A for <img class="Default EquationGraphic" src="images/wnew14.003.3.8.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="431716">Alternately, if V is a 4-element svector, </a></div>
+      <div class="Multi-line_Input"><a name="431717">svector s2 = @left(V, 4)</a></div>
+      <div class="Body_Text"><a name="431718">will return a 4-element svector S2 containing the left-most 4 characters of the corresponding elements of V. </a></div>
+      <div class="Body_Text"><a name="431719">Lastly,</a></div>
+      <div class="Multi-line_Input"><a name="431720">svector s3 = @left(V, A)</a></div>
+      <div class="Body_Text"><a name="431721">will pair the elements of the svector V and vector A as defined above, returning an svector containing the first character of the first element of V, the first two characters of the second element of V, the first three characters of the third element of V, and the first four characters of the fourth element of V.</a></div>
+      <div class="Body_Text"><a name="431722">To take another example, suppose we wish to specify a string date, find the corresponding underlying date number, manipulate that number to add various numbers of weeks, and then find a string representation of the new date number.</a></div>
+      <div class="Body_Text"><a name="431723">We may now perform a vectorized version of this operation which finds a string representation for 11 weekly days beginning at an initial scalar date:</a></div>
+      <div class="Multi-line_Input"><a name="431724">wfcreate d7 2000 202</a></div>
+      <div class="Multi-line_Input"><a name="431725">vector weeks = @seq(0, 1, 11)</a></div>
+      <div class="Multi-line_Input"><a name="431726">string startdate = "May 1, 2000"</a></div>
+      <div class="Multi-line_Input"><a name="431727">svector enddates = @datestr(@dateadd(@dateval(startdate), weeks, "W"))</a></div>
+      <div class="Body_Text"><a name="431728">This operation uses the </a><span class="In-line_command_link"><a href="functionref_d-@dateval.html#1226546" title="@dateval">@dateval</a></span> function to convert the initial string into a date number, the <span class="In-line_command_link"><a href="functionref_d-@dateadd.html#1226144" title="@dateadd">@dateadd</a></span> function to find the date numbers associated with the initial date number and the following 10 weeks, and the <span class="In-line_command_link"><a href="functionref_d-@datestr.html#1226479" title="@datestr">@datestr</a></span> function to convert the result back into a string.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

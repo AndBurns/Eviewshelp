@@ -1,0 +1,537 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Technical Discussion</title>
+    <link rel="StyleSheet" href="css/VAR.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="VAR-Data_Members_of_a_SVAR.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="VAR-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="VAR-Vector_Autoregression_(VAR)_Models.html">Vector Autoregression (VAR) Models</a> : Technical Discussion</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="270519">Technical Discussion</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#270520">Impulse Response Standard Errors and Confidence Intervals</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#270522">The VAR Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#270596">Residual Based Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#270666">Residual Based Double Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#270785">Fast Double Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#270805">Bootstrapping Impulse Responses</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#270816">VAR Impulse Responses</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#270840">Standard Percentile Confidence Interval</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#270862">Hall&#8217;s Percentile Confidence Interval</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#270892">Hall&#8217;s Studentized Confidence Interval</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#270953">Killian&#8217;s Unbiased Confidence Interval</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#270967">VEC Impulse Responses</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="270520">Impulse Response Standard Errors and Confidence Intervals</a></div>
+      <div class="Body_Text"><a name="270521">Traditionally, confidence intervals for VAR impulse responses have been based on the Lütkepohl (1990) asymptotic approximation and EViews provides these values for ordinary VAR estimators. Nevertheless, it is well known that asymptotic validity is often questionable in small samples. In this regard, Monte Carlo and bootstrap methods are of considerable practical interest as they often perform better when the number of observations is limit</a></div>
+      <div class="Heading_5"><a name="270522">The VAR Bootstrap</a></div>
+      <div class="Body_Text"><a name="270523">To formalize matters, consider a system of time series of length </a><span class="In-line_math">T</span>. If the system is modelled as a vector autoregression (VAR) process of order <span class="In-line_math">p</span>, the data generating process (DGP) for the system is written as:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.001.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.38)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="270543">where <img class="Default EquationGraphic" src="images/VAR.056.8.002.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/VAR.056.8.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> are <img class="Default EquationGraphic" src="images/VAR.056.8.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />-element vectors, <img class="Default EquationGraphic" src="images/VAR.056.8.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 79px; top: 0.0pt" alt="" /> are <img class="Default EquationGraphic" src="images/VAR.056.8.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" /> matrices, and <img class="Default EquationGraphic" src="images/VAR.056.8.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 100px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/VAR.056.8.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/VAR.056.8.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" /> covariance matrix.</a></div>
+      <div class="Body_Text"><a name="270553">Next suppose that the object of interest (</a><span class="Emphasis">e.g.</span>, estimator, test statistic, etc.) is the functional:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.010.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.39)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="270564">The distribution <img class="Default EquationGraphic" src="images/VAR.056.8.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> of <img class="Default EquationGraphic" src="images/VAR.056.8.012.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> may be approximated by generating a large number, say </a><span class="In-line_math">B</span>, of different outcome paths (<img class="Default EquationGraphic" src="images/VAR.056.8.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 37px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/VAR.056.8.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />) for the &#8220;*&#8221; is used to indicate that the object is derived from simulation. In particular, the <span class="In-line_math">B </span>outcomes <img class="Default EquationGraphic" src="images/VAR.056.8.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 37px; top: 0.0pt" alt="" /> are obtained by simulating from the DGP in <span class="Link"><a href="#270527" title="Technical Discussion">Equation&nbsp;(44.38)</a></span> to generate <span class="In-line_math">B</span> independent outcomes <img class="Default EquationGraphic" src="images/VAR.056.8.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 32px; top: 0.0pt" alt="" /> of <img class="Default EquationGraphic" src="images/VAR.056.8.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and for each such draw, compute the corresponding <img class="Default EquationGraphic" src="images/VAR.056.8.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 37px; top: 0.0pt" alt="" /> using <span class="Link"><a href="#270557" title="Technical Discussion">Equation&nbsp;(44.39)</a></span> but with the generated data. The distribution of the <img class="Default EquationGraphic" src="images/VAR.056.8.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is then estimated as the empirical distribution of the set of simulated outcomes <img class="Default EquationGraphic" src="images/VAR.056.8.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 79px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="270595">There are a variety of simulating data from the DGP. EViews supports three: residual based bootstrap, residual based double bootstrap, fast double bootstrap. We consider each in turn.</a></div>
+      <div class="Heading_6"><a name="270596">Residual Based Bootstrap</a></div>
+      <div class="Body_Text"><a name="270600">A commonly used method of generating data from </a><span class="Link"><a href="#270527" title="Technical Discussion">Equation&nbsp;(44.38)</a></span> is the <span class="Definition">residual based bootstrap</span>. The procedure is straightforward:</div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="270607">Using the original data <img class="Default EquationGraphic" src="images/VAR.056.8.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and the specification </a><span class="Link"><a href="#270527" title="Technical Discussion">Equation&nbsp;(44.38)</a></span>, obtain estimates of the coefficients <img class="Default EquationGraphic" src="images/VAR.056.8.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 109px; top: 0.0pt" alt="" /> and the corresponding the residual series <img class="Default EquationGraphic" src="images/VAR.056.8.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 19px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="270620">Derive the centered residual series <img class="Default EquationGraphic" src="images/VAR.056.8.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 93px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/VAR.056.8.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 35px; max-width: 153px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="270624">For each <img class="Default EquationGraphic" src="images/VAR.056.8.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Bullet_0029_inner"><a name="270628">Draw a series of length </a><span class="In-line_math">T</span> of bootstrap innovations <img class="Default EquationGraphic" src="images/VAR.056.8.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 33px; top: 0.0pt" alt="" /> by randomly drawing with replacement from the <img class="Default EquationGraphic" src="images/VAR.056.8.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 19px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Bullet_0029_inner"><a name="270635">Generate a bootstrap DGP of <img class="Default EquationGraphic" src="images/VAR.056.8.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 32px; top: 0.0pt" alt="" /> as follows:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.030.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.40)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List_Indent__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Bullet_0029_inner"><a name="270646">Using the generated <img class="Default EquationGraphic" src="images/VAR.056.8.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 32px; top: 0.0pt" alt="" />, estimate coefficients to obtain <img class="Default EquationGraphic" src="images/VAR.056.8.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 35px; max-width: 152px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Bullet_0029_inner"><a name="270647">Obtain a bootstrap estimate of the object of interest</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.033.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.41)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">4.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="270658">The final bootstrap estimator of <img class="Default EquationGraphic" src="images/VAR.056.8.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />, typically denoted as <img class="Default EquationGraphic" src="images/VAR.056.8.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 30px; top: 0.0pt" alt="" /> is obtained as the average of the individual bootstrap estimates <img class="Default EquationGraphic" src="images/VAR.056.8.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 37px; top: 0.0pt" alt="" />. In other words</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.037.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.42)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_6"><a name="270666">Residual Based Double Bootstrap</a></div>
+      <div class="Body_Text"><a name="270667">It is sometimes necessary to obtain bootstrap statistics of a bootstrap statistic, for example, when the object of interest is the distribution <img class="Default EquationGraphic" src="images/VAR.056.8.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 52px; top: 0.0pt" alt="" /> of the <img class="Default EquationGraphic" src="images/VAR.056.8.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-th bootstrap estimate <img class="Default EquationGraphic" src="images/VAR.056.8.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 37px; top: 0.0pt" alt="" />. This distribution is typically needed in deriving the variance of a bootstrap statistics.</a></div>
+      <div class="Body_Text"><a name="270683">In this case, for each <img class="Default EquationGraphic" src="images/VAR.056.8.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />, the distribution <img class="Default EquationGraphic" src="images/VAR.056.8.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 52px; top: 0.0pt" alt="" /> is approximated by generating a large number, say </a><span class="In-line_math">R</span>, of different outcome paths (<img class="Default EquationGraphic" src="images/VAR.056.8.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 44px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/VAR.056.8.044.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />), where the superscript &#8220;**&#8221; indicates that the object is derived from a second stage bootstrap simulation.</div>
+      <div class="Body_Text"><a name="270693">In particular, the </a><span class="In-line_math">R</span> outcomes <img class="Default EquationGraphic" src="images/VAR.056.8.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 44px; top: 0.0pt" alt="" /> are obtained by simulating, from the bootstrap DGP, using a bootstrap draw of <span class="In-line_math">b</span> and <span class="Link"><a href="#270639" title="Technical Discussion">Equation&nbsp;(44.40)</a></span> and generating new <span class="In-line_math">R</span> outcomes <img class="Default EquationGraphic" src="images/VAR.056.8.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 40px; top: 0.0pt" alt="" /> and then for each of those outcomes, a corresponding <img class="Default EquationGraphic" src="images/VAR.056.8.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 44px; top: 0.0pt" alt="" />. The distribution of the <img class="Default EquationGraphic" src="images/VAR.056.8.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 37px; top: 0.0pt" alt="" /> is then estimated as the empirical distribution of the set of simulated outcomes <img class="Default EquationGraphic" src="images/VAR.056.8.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 86px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="270709">The resampling procedure used to derive these second stage bootstrap statistics is the residual bootstrap double bootstrap. The algorithm is summarized below:</a></div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="270716">Using the original data <img class="Default EquationGraphic" src="images/VAR.056.8.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and the specification </a><span class="Link"><a href="#270527" title="Technical Discussion">Equation&nbsp;(44.38)</a></span>, obtain estimates of the coefficients <img class="Default EquationGraphic" src="images/VAR.056.8.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 109px; top: 0.0pt" alt="" /> and the corresponding the residual series <img class="Default EquationGraphic" src="images/VAR.056.8.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 19px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="270729">Derive the centered residual series <img class="Default EquationGraphic" src="images/VAR.056.8.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 93px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/VAR.056.8.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 35px; max-width: 153px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="270733">For each <img class="Default EquationGraphic" src="images/VAR.056.8.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Bullet_0029_inner"><a name="270740">Perform a residual bootstrap: draw bootstrap residuals <img class="Default EquationGraphic" src="images/VAR.056.8.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 33px; top: 0.0pt" alt="" /> from the <img class="Default EquationGraphic" src="images/VAR.056.8.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 19px; top: 0.0pt" alt="" />, generate bootstrap data <img class="Default EquationGraphic" src="images/VAR.056.8.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 32px; top: 0.0pt" alt="" />, estimate <img class="Default EquationGraphic" src="images/VAR.056.8.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 35px; max-width: 152px; top: 0.0pt" alt="" />, and obtain the first stage bootstrap estimate </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.060.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.43)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List_Indent_Continue"><a name="270751">This step is the same as each step in the standard residual bootstrap.</a></div>
+      <div class="List_Indent__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Bullet_0029_inner"><a name="270752">Derive first stage bootstrap residuals based on the bootstrap data</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.061.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.44)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List_Indent_Continue"><a name="270757">and obtain centered first stage bootstrap residuals by subtracting off means,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.062.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.45)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List_Indent_Continue"><a name="291973">where <img class="Default EquationGraphic" src="images/VAR.056.8.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 35px; max-width: 153px; top: 0.0pt" alt="" />.</a></div>
+      <div class="List_Indent__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Bullet_0029_inner"><a name="270768">For each <img class="Default EquationGraphic" src="images/VAR.056.8.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" /> perform a residual bootstrap: draw bootstrap residuals <img class="Default EquationGraphic" src="images/VAR.056.8.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 41px; top: 0.0pt" alt="" /> from the <img class="Default EquationGraphic" src="images/VAR.056.8.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 33px; top: 0.0pt" alt="" />, generate bootstrap data <img class="Default EquationGraphic" src="images/VAR.056.8.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 40px; top: 0.0pt" alt="" />, estimate <img class="Default EquationGraphic" src="images/VAR.056.8.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 37px; max-width: 176px; top: 0.0pt" alt="" />, and obtain a second stage bootstrap estimate</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.069.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.46)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_6"><a name="270785">Fast Double Bootstrap</a></div>
+      <div class="Body_Text"><a name="270786">Performing a full double bootstrap algorithm is extremely computationally demanding. A single bootstrap algorithm typically requires the computation of <img class="Default EquationGraphic" src="images/VAR.056.8.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> test statistics &#8212;a single statistic performed on the original data and an additional </a><span class="In-line_math">B</span> statistics obtained in the bootstrap loop. On the other hand, a full double bootstrap requires <img class="Default EquationGraphic" src="images/VAR.056.8.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 88px; top: 0.0pt" alt="" /> statistics, with the additional BR statistics computed in the inner loop of the double bootstrap algorithm. For instance, setting <img class="Default EquationGraphic" src="images/VAR.056.8.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 71px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/VAR.056.8.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 71px; top: 0.0pt" alt="" />, the double bootstrap will require the computation of no less than 499,501 test statistics. In this regard, several attempts have been proposed to circumvent this computational burden, among the most popular of which is the fast double bootstrap (FDB) algorithm of Davidson and MacKinnon (2002) and general iterated variants proposed in Davidson and Trokic (2020). The principle governing the success of these algorithms relies on setting <img class="Default EquationGraphic" src="images/VAR.056.8.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 55px; top: 0.0pt" alt="" />. For instance, the FDB has proved particularly useful in approximating full double bootstrap algorithms with roughly less than the twice the computational burden of the traditional bootstrap: <img class="Default EquationGraphic" src="images/VAR.056.8.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 54px; top: 0.0pt" alt="" /> to be precise.</div>
+      <div class="Heading_5"><a name="270805">Bootstrapping Impulse Responses</a></div>
+      <div class="Body_Text"><a name="270809">Let <img class="Default EquationGraphic" src="images/VAR.056.8.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> represent an impulse response coefficient that depends on the data. In terms of the discussion above we may think of <img class="Default EquationGraphic" src="images/VAR.056.8.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 61px; top: 0.0pt" alt="" /> and contemplate obtaining bootstrap measures of the precision of <img class="Default EquationGraphic" src="images/VAR.056.8.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_6"><a name="270816">VAR Impulse Responses</a></div>
+      <div class="Body_Text"><a name="270826">To derive bootstrap confidence intervals for impulse responses, let <img class="Default EquationGraphic" src="images/VAR.056.8.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/VAR.056.8.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 16px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/VAR.056.8.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 24px; top: 0.0pt" alt="" /> denote, respectively, some general impulse response coefficient, its estimator derived using the original data <img class="Default EquationGraphic" src="images/VAR.056.8.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and the DGP in </a><span class="Link"><a href="#270527" title="Technical Discussion">Equation&nbsp;(44.38)</a></span>, and the associated bootstrap estimator derived using a procedure like the residual based bootstrap <span class="Link"><a href="#270596" title="Technical Discussion">&#8220;Residual Based Bootstrap&#8221;</a></span>. </div>
+      <div class="Body_Text"><a name="270836">Next, let  denote a given significance level so that the confidence interval of interest has coverage <img class="Default EquationGraphic" src="images/VAR.056.8.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" />. Then, the following bootstrap confidence intervals have been considered in the literature. See also Lütkepohl (2005) for further details.</a></div>
+      <div class="Heading_7"><a name="270840">Standard Percentile Confidence Interval</a></div>
+      <div class="Body_Text"><a name="270841">The most common bootstrap algorithm for impulse response CIs is based on the percentile confidence interval described in Efron and Tibshirani (1993). The bootstrap CI is derived as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.084.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.47)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="270858">where <img class="Default EquationGraphic" src="images/VAR.056.8.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 43px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/VAR.056.8.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 63px; top: 0.0pt" alt="" /> are the <img class="Default EquationGraphic" src="images/VAR.056.8.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 36px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/VAR.056.8.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" /> quantiles of the empirical distribution of <img class="Default EquationGraphic" src="images/VAR.056.8.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 24px; top: 0.0pt" alt="" />, respectively.</a></div>
+      <div class="Heading_7"><a name="270862">Hall&#8217;s Percentile Confidence Interval</a></div>
+      <div class="Body_Text"><a name="270863">An alternative to the standard percentile CI is the Hall (1992) confidence interval. The idea behind this method is that the distribution of <img class="Default EquationGraphic" src="images/VAR.056.8.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 58px; top: 0.0pt" alt="" /> is asymptotically approximated by the distribution of <img class="Default EquationGraphic" src="images/VAR.056.8.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 66px; top: 0.0pt" alt="" />. Accordingly, the Hall bootstrap CI is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.092.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.48)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="270886">where <img class="Default EquationGraphic" src="images/VAR.056.8.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 42px; top: 0.0pt" alt="" />and <img class="Default EquationGraphic" src="images/VAR.056.8.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 70px; top: 0.0pt" alt="" /> are the <img class="Default EquationGraphic" src="images/VAR.056.8.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/VAR.056.8.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" /> quantiles of the empirical distribution of the bootstrap draws</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.097.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.49)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="270891">See Hall (1986) for details.</a></div>
+      <div class="Heading_7"><a name="270892">Hall&#8217;s Studentized Confidence Interval</a></div>
+      <div class="Body_Text"><a name="270893">Another possible approach to computing the CI is to approximate the distribution of the studentized statistic <img class="Default EquationGraphic" src="images/VAR.056.8.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.099.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.50)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="270901">with the distribution of the bootstrap studentized statistic:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.100.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.51)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="270906">In this case, the bootstrap CI is derived as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.101.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.52)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="270923">where <img class="Default EquationGraphic" src="images/VAR.056.8.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 50px; top: 0.0pt" alt="" />and <img class="Default EquationGraphic" src="images/VAR.056.8.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 78px; top: 0.0pt" alt="" /> are the <img class="Default EquationGraphic" src="images/VAR.056.8.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/VAR.056.8.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" /> quantiles of the empirical distribution of <img class="Default EquationGraphic" src="images/VAR.056.8.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 73px; top: 0.0pt" alt="" />, where</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.8.107.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.53)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="270931">See Hall (1986) for details.</a></div>
+      <div class="Body_Text"><a name="270935">Note that <img class="Default EquationGraphic" src="images/VAR.056.8.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 50px; top: 0.0pt" alt="" /> can be obtained from the empirical variance of the </a><span class="In-line_math">B</span> bootstrap estimates <img class="Default EquationGraphic" src="images/VAR.056.8.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 30px; top: 0.0pt" alt="" /> and that , <img class="Default EquationGraphic" src="images/VAR.056.8.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 64px; top: 0.0pt" alt="" /> may be estimated from the empirical variance of the <span class="In-line_math">R </span>double bootstrap estimates <img class="Default EquationGraphic" src="images/VAR.056.8.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 38px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="270945">Clearly, the computations above require a full double bootstrap. An alternative is to use the significantly less computationally demanding fast double bootstrap (FDB) approximation. In this regard, Davidson and Trokic (2020) offer an algorithm that relies on the inverse relationship between </a><span class="In-line_math">p</span>-values and confidence intervals and only requires <img class="Default EquationGraphic" src="images/VAR.056.8.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 55px; top: 0.0pt" alt="" /> double bootstrap evaluations to compute empirical quantiles.</div>
+      <div class="Body_Text"><a name="270952">While the FDB is computationally appealing, care should be taken with its use as Chang and Hall (2015) show that the FDB does not improve asymptotically on the single bootstrap for the construction of confidence intervals.</a></div>
+      <div class="Heading_7"><a name="270953">Killian&#8217;s Unbiased Confidence Interval</a></div>
+      <div class="Body_Text"><a name="270954">The Kilian (1998) confidence intervals are specifically designed for VAR impulse response estimates. In particular, this approach explicitly corrects for the bias and skewness in the impulse response estimator that arises due to insufficient observations.</a></div>
+      <div class="Body_Text"><a name="270955">We skip over most of the details of the Kilian computation. Roughly, however, the procedure involves:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="270956">Estimating a VAR to obtain coefficients and then running a residual bootstrap to obtain bootstrap coefficient estimates which are used to compute a bias correction adjustment to the original estimates. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="270957">Using the bias corrected coefficients as the basis of a residual double bootstrap to bias correct each of the bootstrap coefficients.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="270958">Constructing the impulse responses using the bias corrected bootstrap coefficients.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="270965">Deriving the <img class="Default EquationGraphic" src="images/VAR.056.8.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/VAR.056.8.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" /> empirical quantiles of the bias corrected bootstrap impulse responses.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="270966">Note that the nested bootstrap computations required for this method can be costly. A fast bootstrap approximation may be obtained by computing the bias adjustments only once per loop and using it across replications.</a></div>
+      <div class="Heading_6"><a name="270967">VEC Impulse Responses</a></div>
+      <div class="Body_Text"><a name="271075">The principles governing the computation of bootstrap CIs for VAR impulse responses remain valid for VEC impulse responses as well. Since every VAR(<img class="Default EquationGraphic" src="images/VAR.056.8.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />) has an equivalent representation as a VEC(<img class="Default EquationGraphic" src="images/VAR.056.8.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />) process, one can simply convert bootstrap VAR estimates into their VEC equivalents, and proceed analogously to derive the VEC impulse responses using the latter coefficients. Alternatively, one can start from a VEC representation, obtain bootstrap coefficient estimates, and then integrate the VEC model to its VAR equivalent. The converted bootstrap coefficient estimates can then be used to derive bootstrap CIs for the corresponding VAR.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

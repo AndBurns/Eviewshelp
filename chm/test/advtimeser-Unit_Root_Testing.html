@@ -1,0 +1,682 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Unit Root Testing</title>
+    <link rel="StyleSheet" href="css/advtimeser.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="advtimeser-Explosive_Bubble_Tests.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="advtimeser-Unit_Root_Tests_with_a_Breakpoint.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_univar.html">Advanced Univariate Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="advtimeser-Univariate_Time_Series_Analysis.html">Univariate Time Series Analysis</a> : Unit Root Testing</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="184599">Unit Root Testing</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#184636">Performing Unit Root Tests in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#184715">Basic Unit Root Theory</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#184771">The Augmented Dickey-Fuller (ADF) Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#184870">Dickey-Fuller Test with GLS Detrending (DFGLS)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#184965">The Phillips-Perron (PP) Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185033">The Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185088">Elliot, Rothenberg, and Stock Point Optimal (ERS) Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185130">Ng and Perron (NP) Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185170">Frequency Zero Spectrum Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185176">Kernel Sum-of-Covariances Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185272">Autoregressive Spectral Density Estimator</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185348">Default Settings</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185376">Automatic Bandwidth and Lag Length Selection</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="184600">The theory behind ARMA estimation is based on stationary time series. A series is said to be (weakly or covariance) </a><span class="Definition">stationary</span> if the mean and autocovariances of the series do not depend on time. Any series that is not stationary is said to be <span class="Definition">nonstationary</span>. </div>
+      <div class="Body_Text"><a name="184603">A common example of a nonstationary series is the </a><span class="Definition">random walk</span>:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.001.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184614">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.002.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is a stationary random disturbance term. The series <img class="Default EquationGraphic" src="images/advtimeser.053.05.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> has a constant forecast value, conditional on <img class="Default EquationGraphic" src="images/advtimeser.053.05.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, and the variance is increasing over time. The random walk is a difference stationary series since the first difference of <img class="Default EquationGraphic" src="images/advtimeser.053.05.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is stationary:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.006.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184632">A difference stationary series is said to be </a><span class="Definition">integrated</span> and is denoted as I(<img class="Default EquationGraphic" src="images/advtimeser.053.05.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />) where <img class="Default EquationGraphic" src="images/advtimeser.053.05.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is the order of integration. The order of integration is the number of unit roots contained in the series, or the number of differencing operations it takes to make the series stationary. For the random walk above, there is one unit root, so it is an I(1) series. Similarly, a stationary series is I(0). </div>
+      <div class="Body_Text"><a name="184633">Standard inference procedures do not apply to regressions which contain an integrated dependent variable or integrated regressors. Therefore, it is important to check whether a series is stationary or not before using it in a regression. The formal method to test the stationarity of a series is the unit root test. </a></div>
+      <div class="Body_Text"><a name="184634">EViews provides you with a variety of powerful tools for testing a series (or the first or second difference of the series) for the presence of a unit root. In addition to Augmented Dickey-Fuller (1979) and Phillips-Perron (1988) tests, EViews allows you to compute the GLS-detrended Dickey-Fuller (Elliot, Rothenberg, and Stock, 1996), Kwiatkowski, Phillips, Schmidt, and Shin (KPSS, 1992), Elliott, Rothenberg, and Stock Point Optimal (ERS, 1996), and Ng and Perron (NP, 2001) unit root tests. All of these tests are available as a view of a series.</a></div>
+      <div class="Heading_4"><a name="184636">Performing Unit Root Tests in EViews</a></div>
+      <div class="Picture"><a name="184640"><img class="Default" src="images/advtimeser.053.05.009.jpg" width="100%" style="left: 0.0pt; max-height: 350px; max-width: 421px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184641">The following discussion assumes that you are familiar with the basic forms of the unit root tests and the associated options. We provide theoretical background for these tests in </a><span class="Link"><a href="#184715" title="Unit Root Testing">&#8220;Basic Unit Root Theory&#8221;</a></span>, and document the settings used when performing these tests. </div>
+      <div class="Body_Text"><a name="184645">To begin, double click on the series name to open the series window, and choose </a><span class="Menu_Item">View/Unit Root Tests/Standard Unit Root Test&#8230;</span></div>
+      <div class="Body_Text"><a name="184646">You must specify four sets of options to carry out a unit root test. The first three settings (on the left-hand side of the dialog) determine the basic form of the unit root test. The fourth set of options (on the right-hand side of the dialog) consist of test-specific advanced settings. You only need concern yourself with these settings if you wish to customize the calculation of your unit root test. </a></div>
+      <div class="Body_Text"><a name="184647">First, you should use the topmost dropdown menu to select the type of unit root test that you wish to perform. You may choose one of six tests: ADF, DFGLS, PP, KPSS, ERS, and NP.</a></div>
+      <div class="Body_Text"><a name="184648">Next, specify whether you wish to test for a unit root in the level, first difference, or second difference of the series. </a></div>
+      <div class="Body_Text"><a name="184649">Lastly, choose your exogenous regressors. You can choose to include a constant, a constant and linear trend, or neither (there are limitations on these choices for some of the tests). </a></div>
+      <div class="Body_Text"><a name="184650">You can click on </a><span class="Dialog_Item">OK</span> to compute the test using the specified settings, or you can customize your test using the advanced settings portion of the dialog.</div>
+      <div class="Body_Text"><a name="184651">The advanced settings for both the ADF and DFGLS tests allow you to specify how lagged difference terms <img class="Default EquationGraphic" src="images/advtimeser.053.05.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> are to be included in the ADF test equation. You may choose to let EViews automatically select <img class="Default EquationGraphic" src="images/advtimeser.053.05.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, or you may supply a fixed positive integer value. If you choose automatic selection, you will be given options for specifying both the lag selection method and maximum number of lags to be used in the selection procedure.</a></div>
+      <div class="Body_Text"><a name="184658">In this case, we have chosen to estimate an ADF test that includes a constant in the test regression and employs automatic lag length selection using a Schwarz Information Criterion (BIC) and a maximum lag length of 14. Applying these settings to data on the U.S. one-month Treasury bill rate for the period from March 1953 to July 1971 (&#8220;Hayashi_92.WF1&#8221;), we can replicate Example 9.2 of Hayashi (2000, p. 596). The results are described below.</a></div>
+      <div class="Body_Text"><a name="184659">The first part of the unit root output provides information about the form of the test (the type of test, the exogenous variables, and lag length used), and contains the test output, associated critical values, and in this case, the </a><span class="In-line_math">p</span>-value:</div>
+      <div class="Table"><a name="184666"><img class="Default" src="images/advtimeser.053.05.012.jpg" width="100%" style="left: 0.0pt; max-height: 198px; max-width: 934px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184670">The ADF statistic value is -1.417 and the associated one-sided </a><span class="In-line_math">p</span>-value (for a test with 221 observations) is .573. In addition, EViews reports the critical values at the 1%, 5% and 10% levels. Notice here that the statistic <img class="Default EquationGraphic" src="images/advtimeser.053.05.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> value is greater than the critical values so that we do not reject the null at conventional test sizes.</div>
+      <div class="Body_Text"><a name="184674">The second part of the output shows the intermediate test equation that EViews used to calculate the ADF statistic:</a></div>
+      <div class="Table"><a name="184678"><img class="Default" src="images/advtimeser.053.05.014.jpg" width="100%" style="left: 0.0pt; max-height: 448px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184679">If you had chosen to perform any of the other unit root tests (PP, KPSS, ERS, NP), the right side of the dialog would show the different options associated with the specified test. The options are associated with the method used to estimate the zero frequency spectrum term, <img class="Default EquationGraphic" src="images/advtimeser.053.05.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />, that is used in constructing the particular test statistic. As before, you only need pay attention to these settings if you wish to change from the EViews defaults.</a></div>
+      <div class="Picture"><a name="184686"><img class="Default" src="images/advtimeser.053.05.016.jpg" width="100%" style="left: 0.0pt; max-height: 347px; max-width: 419px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184687">Here, we have selected the PP test in the dropdown menu. Note that the right-hand side of the dialog has changed, and now features a dropdown menu for selecting the spectral estimation method. You may use this dropdown menu to choose between various kernel or AR regression based estimators for <img class="Default EquationGraphic" src="images/advtimeser.053.05.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />. The entry labeled &#8220;Default&#8221; will show you the default estimator for the specific unit root test&#8212;in this example, we see that the PP default uses a kernel sum-of-covariances estimator with Bartlett weights. Alternately, if you had selected a NP test, the default entry would be &#8220;AR spectral-GLS&#8221;. </a></div>
+      <div class="Body_Text"><a name="184691">Lastly, you can control the lag length or bandwidth used for your spectral estimator. If you select one of the kernel estimation methods (Bartlett, Parzen, Quadratic Spectral), the dialog will give you a choice between using Newey-West or Andrews automatic bandwidth selection methods, or providing a user specified bandwidth. If you choose one of the AR spectral density estimation methods (AR Spectral - OLS, AR Spectral - OLS detrended, AR Spectral - GLS detrended), the dialog will prompt you to choose from various automatic lag length selection methods (using information criteria) or to provide a user-specified lag length. See </a><span class="Link"><a href="#185376" title="Unit Root Testing">&#8220;Automatic Bandwidth and Lag Length Selection&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="184695">Once you have chosen the appropriate settings for your test, click on the </a><span class="Dialog_Item">OK</span> button. EViews reports the test statistic along with output from the corresponding test regression. For these tests, EViews reports the uncorrected estimate of the residual variance and the estimate of the frequency zero spectrum <img class="Default EquationGraphic" src="images/advtimeser.053.05.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> (labeled as the &#8220;HAC corrected variance&#8221;) in addition to the basic output. Running a PP test using the TBILL series using the Andrews bandwidth yields:</div>
+      <div class="Table"><a name="184702"><img class="Default" src="images/advtimeser.053.05.019.jpg" width="100%" style="left: 0.0pt; max-height: 280px; max-width: 934px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184703">As with the ADF test, we fail to reject the null hypothesis of a unit root in the TBILL series at conventional significance levels.</a></div>
+      <div class="Body_Text"><a name="184704">Note that your test output will differ somewhat for alternative test specifications. For example, the KPSS output only provides the asymptotic critical values tabulated by KPSS:</a></div>
+      <div class="Table"><a name="184708"><img class="Default" src="images/advtimeser.053.05.020.jpg" width="100%" style="left: 0.0pt; max-height: 338px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184709">Similarly, the NP test output will contain results for all four test statistics, along with the NP tabulated critical values.</a></div>
+      <div class="Body_Text"><a name="184710">A word of caution. You should note that the critical values reported by EViews are valid only for unit root tests of a data series, and will be invalid if the series is based on estimated values. For example, Engle and Granger (1987) proposed a two-step method of testing for cointegration which looks for a unit root in the residuals of a first-stage regression. Since these residuals are estimates of the disturbance term, the asymptotic distribution of the test statistic differs from the one for ordinary series. See </a><span class="Link"><a href="coint-Single-Equation_Cointegration_Tests.html#190315" title="Single-Equation Cointegration Tests">&#8220;Cointegration Testing&#8221;</a></span> for EViews routines to perform testing in this setting.</div>
+      <div class="Heading_4"><a name="184715">Basic Unit Root Theory</a></div>
+      <div class="Body_Text"><a name="184716">The following discussion outlines the basics features of unit root tests. By necessity, the discussion will be brief. Users who require detail should consult the original sources and standard references (see, for example, Davidson and MacKinnon, 1993, Chapter 20, Hamilton, 1994, Chapter 17, and Hayashi, 2000, Chapter 9).</a></div>
+      <div class="Body_Text"><a name="184717">Consider a simple AR(1) process:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.021.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184726">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> are optional exogenous regressors which may consist of constant, or a constant and trend, <img class="Default EquationGraphic" src="images/advtimeser.053.05.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.05.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> are parameters to be estimated, and the <img class="Default EquationGraphic" src="images/advtimeser.053.05.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> are assumed to be white noise. If <img class="Default EquationGraphic" src="images/advtimeser.053.05.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.05.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a nonstationary series and the variance of <img class="Default EquationGraphic" src="images/advtimeser.053.05.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> increases with time and approaches infinity. If <img class="Default EquationGraphic" src="images/advtimeser.053.05.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.05.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a (trend-)stationary series. Thus, the hypothesis of (trend-)stationarity can be evaluated by testing whether the absolute value of <img class="Default EquationGraphic" src="images/advtimeser.053.05.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is strictly less than one. </a></div>
+      <div class="Body_Text"><a name="184757">The unit root tests that EViews provides generally test the null hypothesis <img class="Default EquationGraphic" src="images/advtimeser.053.05.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 82px; top: 0.0pt" alt="" /> against the one-sided alternative <img class="Default EquationGraphic" src="images/advtimeser.053.05.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 72px; top: 0.0pt" alt="" />. In some cases, the null is tested against a point alternative. In contrast, the KPSS Lagrange Multiplier test evaluates the null of <img class="Default EquationGraphic" src="images/advtimeser.053.05.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 72px; top: 0.0pt" alt="" /> against the alternative <img class="Default EquationGraphic" src="images/advtimeser.053.05.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 82px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="184771">The Augmented Dickey-Fuller (ADF) Test</a></div>
+      <div class="Body_Text"><a name="184779">The standard DF test is carried out by estimating </a><span class="Link"><a href="#184722" title="Unit Root Testing">Equation&nbsp;(42.21)</a></span> after subtracting <img class="Default EquationGraphic" src="images/advtimeser.053.05.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> from both sides of the equation:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.037.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184788">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 79px; top: 0.0pt" alt="" />. The null and alternative hypotheses may be written as,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.039.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184800">and evaluated using the conventional <img class="Default EquationGraphic" src="images/advtimeser.053.05.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-ratio for <img class="Default EquationGraphic" src="images/advtimeser.053.05.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.042.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184815">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 19px; max-width: 16px; top: 0.0pt" alt="" /> is the estimate of <img class="Default EquationGraphic" src="images/advtimeser.053.05.044.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/advtimeser.053.05.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 46px; top: 0.0pt" alt="" /> is the coefficient standard error.</a></div>
+      <div class="Body_Text"><a name="184816">Dickey and Fuller (1979) show that under the null hypothesis of a unit root, this statistic does not follow the conventional Student&#8217;s </a><span class="In-line_math">t</span>-distribution, and they derive asymptotic results and simulate critical values for various test and sample sizes. More recently, MacKinnon (1991, 1996) implements a much larger set of simulations than those tabulated by Dickey and Fuller. In addition, MacKinnon estimates response surfaces for the simulation results, permitting the calculation of Dickey-Fuller critical values and <img class="Default EquationGraphic" src="images/advtimeser.053.05.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-values for arbitrary sample sizes. The more recent MacKinnon critical value calculations are used by EViews in constructing test output.</div>
+      <div class="Body_Text"><a name="184823">The simple Dickey-Fuller unit root test described above is valid only if the series is an AR(1) process. If the series is correlated at higher order lags, the assumption of white noise disturbances <img class="Default EquationGraphic" src="images/advtimeser.053.05.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> is violated. The Augmented Dickey-Fuller (ADF) test constructs a parametric correction for higher-order correlation by assuming that the <img class="Default EquationGraphic" src="images/advtimeser.053.05.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> series follows an AR(<img class="Default EquationGraphic" src="images/advtimeser.053.05.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />) process and adding <img class="Default EquationGraphic" src="images/advtimeser.053.05.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> lagged difference terms of the dependent variable <img class="Default EquationGraphic" src="images/advtimeser.053.05.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> to the right-hand side of the test regression:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.052.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184853">This augmented specification is then used to test </a><span class="Link"><a href="#184793" title="Unit Root Testing">(42.23)</a></span> using the <img class="Default EquationGraphic" src="images/advtimeser.053.05.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-ratio <span class="Link"><a href="#184805" title="Unit Root Testing">(42.24)</a></span>. An important result obtained by Fuller is that the asymptotic distribution of the <img class="Default EquationGraphic" src="images/advtimeser.053.05.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-ratio for <img class="Default EquationGraphic" src="images/advtimeser.053.05.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is independent of the number of lagged first differences included in the ADF regression. Moreover, while the assumption that <img class="Default EquationGraphic" src="images/advtimeser.053.05.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> follows an autoregressive (AR) process may seem restrictive, Said and Dickey (1984) demonstrate that the ADF test is asymptotically valid in the presence of a moving average (MA) component, provided that sufficient lagged difference terms are included in the test regression.</div>
+      <div class="Body_Text"><a name="184863">You will face two practical issues in performing an ADF test. First, you must choose whether to include exogenous variables in the test regression. You have the choice of including a constant, a constant and a linear time trend, or neither in the test regression. One approach would be to run the test with both a constant and a linear trend since the other two cases are just special cases of this more general specification. However, including irrelevant regressors in the regression will reduce the power of the test to reject the null of a unit root. The standard recommendation is to choose a specification that is a plausible description of the data under both the null and alternative hypotheses. See Hamilton (1994, p. 501) for discussion.</a></div>
+      <div class="Body_Text"><a name="184865">Second, you will have to specify the number of lagged difference terms (which we will term the &#8220;lag length&#8221;) to be added to the test regression (0 yields the standard DF test; integers greater than 0 correspond to ADF tests). The usual (though not particularly useful) advice is to include a number of lags sufficient to remove serial correlation in the residuals. EViews provides both automatic and manual lag length selection options. For details, see </a><span class="Link"><a href="#185376" title="Unit Root Testing">&#8220;Automatic Bandwidth and Lag Length Selection&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="184870">Dickey-Fuller Test with GLS Detrending (DFGLS)</a></div>
+      <div class="Body_Text"><a name="184871">As noted above, you may elect to include a constant, or a constant and a linear time trend, in your ADF test regression. For these two cases, ERS (1996) propose a simple modification of the ADF tests in which the data are detrended so that explanatory variables are &#8220;taken out&#8221; of the data prior to running the test regression.</a></div>
+      <div class="Body_Text"><a name="184878">ERS define a quasi-difference of <img class="Default EquationGraphic" src="images/advtimeser.053.05.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> that depends on the value <img class="Default EquationGraphic" src="images/advtimeser.053.05.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> representing the specific point alternative against which we wish to test the null:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.059.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184887">Next, consider an OLS regression of the quasi-differenced data <img class="Default EquationGraphic" src="images/advtimeser.053.05.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 58px; top: 0.0pt" alt="" /> on the quasi-differenced <img class="Default EquationGraphic" src="images/advtimeser.053.05.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 57px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.062.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184903">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> contains either a constant, or a constant and trend, and let <img class="Default EquationGraphic" src="images/advtimeser.053.05.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 36px; top: 0.0pt" alt="" /> be the OLS estimates from this regression.</a></div>
+      <div class="Body_Text"><a name="184910">All that we need now is a value for <img class="Default EquationGraphic" src="images/advtimeser.053.05.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. ERS recommend the use of <img class="Default EquationGraphic" src="images/advtimeser.053.05.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />, where:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.067.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184921">We now define the </a><span class="Definition">GLS detrended data, <img class="Default EquationGraphic" src="images/advtimeser.053.05.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 20px; top: 0.0pt" alt="" /> </span>using the estimates associated with the <img class="Default EquationGraphic" src="images/advtimeser.053.05.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.070.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184930">Then the DFGLS test involves estimating the standard ADF test equation, </a><span class="Link"><a href="#184843" title="Unit Root Testing">(42.25)</a></span>, after substituting the GLS detrended <img class="Default EquationGraphic" src="images/advtimeser.053.05.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 20px; top: 0.0pt" alt="" /> for the original <span class="Definition"><img class="Default EquationGraphic" src="images/advtimeser.053.05.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />:</span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.073.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184948">Note that since the <img class="Default EquationGraphic" src="images/advtimeser.053.05.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 20px; top: 0.0pt" alt="" /> are detrended, we do not include the <img class="Default EquationGraphic" src="images/advtimeser.053.05.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> in the DFGLS test equation. As with the ADF test, we consider the <img class="Default EquationGraphic" src="images/advtimeser.053.05.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-ratio for <img class="Default EquationGraphic" src="images/advtimeser.053.05.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> from this test equation.</a></div>
+      <div class="Body_Text"><a name="184958">While the DFGLS <img class="Default EquationGraphic" src="images/advtimeser.053.05.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-ratio follows a Dickey-Fuller distribution in the constant only case, the asymptotic distribution differs when you include both a constant and trend. ERS (1996, Table 1, p. 825) simulate the critical values of the test statistic in this latter setting for <img class="Default EquationGraphic" src="images/advtimeser.053.05.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 171px; top: 0.0pt" alt="" />. Thus, the EViews lower tail critical values use the MacKinnon simulations for the no constant case, but are interpolated from the ERS simulated values for the constant and trend case. The null hypothesis is rejected for values that fall below these critical values.</a></div>
+      <div class="Heading_5"><a name="184965">The Phillips-Perron (PP) Test</a></div>
+      <div class="Body_Text"><a name="184966">Phillips and Perron (1988) propose an alternative (nonparametric) method of controlling for serial correlation when testing for a unit root. The PP method estimates the non-augmented DF test equation </a><span class="Link"><a href="#184784" title="Unit Root Testing">(42.22)</a></span>, and modifies the <img class="Default EquationGraphic" src="images/advtimeser.053.05.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-ratio of the <img class="Default EquationGraphic" src="images/advtimeser.053.05.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> coefficient so that serial correlation does not affect the asymptotic distribution of the test statistic. The PP test is based on the statistic:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.082.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184995">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is the estimate, and <img class="Default EquationGraphic" src="images/advtimeser.053.05.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> the <img class="Default EquationGraphic" src="images/advtimeser.053.05.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-ratio of <img class="Default EquationGraphic" src="images/advtimeser.053.05.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.05.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 46px; top: 0.0pt" alt="" /> is coefficient standard error, and <img class="Default EquationGraphic" src="images/advtimeser.053.05.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is the standard error of the test regression. In addition, <img class="Default EquationGraphic" src="images/advtimeser.053.05.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is a consistent estimate of the error variance in </a><span class="Link"><a href="#184784" title="Unit Root Testing">(42.22)</a></span> (calculated as <img class="Default EquationGraphic" src="images/advtimeser.053.05.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 96px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/advtimeser.053.05.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the number of regressors). The remaining term, <img class="Default EquationGraphic" src="images/advtimeser.053.05.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />, is an estimator of the residual spectrum at frequency zero.</div>
+      <div class="Body_Text"><a name="185014">There are two choices you will have make when performing the PP test. First, you must choose whether to include a constant, a constant and a linear time trend, or neither, in the test regression. Second, you will have to choose a method for estimating <img class="Default EquationGraphic" src="images/advtimeser.053.05.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />. EViews supports estimators for <img class="Default EquationGraphic" src="images/advtimeser.053.05.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> based on kernel-based sum-of-covariances, or on autoregressive spectral density estimation. See </a><span class="Link"><a href="#185170" title="Unit Root Testing">&#8220;Frequency Zero Spectrum Estimation&#8221;</a></span> for details.</div>
+      <div class="Body_Text"><a name="185027">The asymptotic distribution of the PP modified <img class="Default EquationGraphic" src="images/advtimeser.053.05.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />-ratio is the same as that of the ADF statistic. EViews reports MacKinnon lower-tail critical and </a><span class="In-line_math">p</span>-values for this test.</div>
+      <div class="Heading_5"><a name="185033">The Kwiatkowski, Phillips, Schmidt, and Shin (KPSS) Test</a></div>
+      <div class="Body_Text"><a name="185034">The KPSS (1992) test differs from the other unit root tests described here in that the series <img class="Default EquationGraphic" src="images/advtimeser.053.05.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is assumed to be (trend-) stationary under the null. The KPSS statistic is based on the residuals from the OLS regression of <img class="Default EquationGraphic" src="images/advtimeser.053.05.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> on the exogenous variables <img class="Default EquationGraphic" src="images/advtimeser.053.05.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.099.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185049">The LM statistic is be defined as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.100.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185060">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />, is an estimator of the residual spectrum at frequency zero and where <img class="Default EquationGraphic" src="images/advtimeser.053.05.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> is a cumulative residual function:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.103.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185072">based on the residuals <img class="Default EquationGraphic" src="images/advtimeser.053.05.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 128px; top: 0.0pt" alt="" />. We point out that the estimator of <img class="Default EquationGraphic" src="images/advtimeser.053.05.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> used in this calculation differs from the estimator for <img class="Default EquationGraphic" src="images/advtimeser.053.05.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> used by GLS detrending since it is based on a regression involving the original data and not on the quasi-differenced data.</a></div>
+      <div class="Body_Text"><a name="185079">To specify the KPSS test, you must specify the set of exogenous regressors <img class="Default EquationGraphic" src="images/advtimeser.053.05.107.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and a method for estimating <img class="Default EquationGraphic" src="images/advtimeser.053.05.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />. See </a><span class="Link"><a href="#185170" title="Unit Root Testing">&#8220;Frequency Zero Spectrum Estimation&#8221;</a></span> for discussion.</div>
+      <div class="Body_Text"><a name="185086">The reported critical values for the LM test statistic are based upon the asymptotic results presented in KPSS (Table 1, p. 166).</a></div>
+      <div class="Heading_5"><a name="185088">Elliot, Rothenberg, and Stock Point Optimal (ERS) Test</a></div>
+      <div class="Body_Text"><a name="185089">The ERS Point Optimal test is based on the quasi-differencing regression defined in Equations </a><span class="Link"><a href="#184895" title="Unit Root Testing">(42.27)</a></span>. Define the residuals from <span class="Link"><a href="#184895" title="Unit Root Testing">(42.27)</a></span> as <img class="Default EquationGraphic" src="images/advtimeser.053.05.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 230px; top: 0.0pt" alt="" />, and let <img class="Default EquationGraphic" src="images/advtimeser.053.05.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 149px; top: 0.0pt" alt="" /> be the sum-of-squared residuals function. The ERS (feasible) point optimal test statistic of the null that <img class="Default EquationGraphic" src="images/advtimeser.053.05.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" /> against the alternative that <img class="Default EquationGraphic" src="images/advtimeser.053.05.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />, is then defined as:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.113.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.35)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185115">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />, is an estimator of the residual spectrum at frequency zero.</a></div>
+      <div class="Body_Text"><a name="185119">To compute the ERS test, you must specify the set of exogenous regressors <img class="Default EquationGraphic" src="images/advtimeser.053.05.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and a method for estimating <img class="Default EquationGraphic" src="images/advtimeser.053.05.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> (see </a><span class="Link"><a href="#185170" title="Unit Root Testing">&#8220;Frequency Zero Spectrum Estimation&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="185126">Critical values for the ERS test statistic are computed by interpolating the simulation results provided by ERS (1996, Table 1, p. 825) for <img class="Default EquationGraphic" src="images/advtimeser.053.05.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 171px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="185130">Ng and Perron (NP) Tests</a></div>
+      <div class="Body_Text"><a name="185131">Ng and Perron (2001) construct four test statistics that are based upon the GLS detrended data <img class="Default EquationGraphic" src="images/advtimeser.053.05.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 20px; top: 0.0pt" alt="" />. These test statistics are modified forms of Phillips and Perron <img class="Default EquationGraphic" src="images/advtimeser.053.05.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.05.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> statistics, the Bhargava (1986) <img class="Default EquationGraphic" src="images/advtimeser.053.05.121.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> statistic, and the ERS Point Optimal statistic. First, define the term:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.122.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185148">The modified statistics may then be written as,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.123.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185153">where:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.124.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.38)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185164">The NP tests require a specification for <img class="Default EquationGraphic" src="images/advtimeser.053.05.125.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and a choice of method for estimating <img class="Default EquationGraphic" src="images/advtimeser.053.05.126.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> (see </a><span class="Link"><a href="#185170" title="Unit Root Testing">&#8220;Frequency Zero Spectrum Estimation&#8221;</a></span>).</div>
+      <div class="Heading_5"><a name="185170">Frequency Zero Spectrum Estimation</a></div>
+      <div class="Body_Text"><a name="185171">Many of the unit root tests described above require a consistent estimate of the residual spectrum at frequency zero. EViews supports two classes of estimators for <img class="Default EquationGraphic" src="images/advtimeser.053.05.127.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />: kernel-based sum-of-covariances estimators, and autoregressive spectral density estimators.</a></div>
+      <div class="Heading_6"><a name="185176">Kernel Sum-of-Covariances Estimation</a></div>
+      <div class="Body_Text"><a name="185177">The kernel-based estimator of the frequency zero spectrum is based on a weighted sum of the autocovariances, with the weights are defined by a kernel function. The estimator takes the form,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.128.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.39)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185186">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.129.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> is a bandwidth parameter (which acts as a truncation lag in the covariance weighting), <img class="Default EquationGraphic" src="images/advtimeser.053.05.130.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is a kernel function, and where <img class="Default EquationGraphic" src="images/advtimeser.053.05.131.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, the </a><span class="In-line_math">j</span>-th sample autocovariance of the residuals <img class="Default EquationGraphic" src="images/advtimeser.053.05.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, is defined as:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.133.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.40)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185207">Note that the residuals <img class="Default EquationGraphic" src="images/advtimeser.053.05.134.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> that EViews uses in estimating the autocovariance functions in </a><span class="Link"><a href="#185203" title="Unit Root Testing">(42.40)</a></span> will differ depending on the specified unit root test:</div>
+      <div class="Table"><a name="185237">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 324pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Menu_Item"><a name="185213">Unit root test</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 237.6pt">
+            <div class="Table_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Menu_Item"><a name="185218">Source of <img class="Default EquationGraphic" src="images/advtimeser.053.05.135.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> residuals for kernel estimator</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185220">ADF, DFGLS</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><span class="Emphasis"><a name="185222">not applicable</a></span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185224">PP, ERS Point Optimal, NP</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185229">residuals from the Dickey-Fuller test equation, </a><span class="Link"><a href="#184784" title="Unit Root Testing">(42.22)</a></span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185231">KPSS</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185236">residuals from the OLS test equation, </a><span class="Link"><a href="#185048" title="Unit Root Testing">(42.32)</a></span>.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185238">EViews supports the following kernel functions:</a></div>
+      <div class="Table"><a name="185261">&nbsp;</a></div>
+      <table class="Format_A" style="width: 324pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text"><a name="185241">Bartlett:</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top; width: 237.6pt">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185246"><img class="Default EquationGraphic" src="images/advtimeser.053.05.136.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 61px; max-width: 251px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="185248">Parzen:</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185253"><img class="Default EquationGraphic" src="images/advtimeser.053.05.137.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 89px; max-width: 356px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="185255">Quadratic Spectral</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 4pt; padding-left: 4pt; padding-right: 4pt; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185260"><img class="Default EquationGraphic" src="images/advtimeser.053.05.138.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 51px; max-width: 330px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185262">The properties of these kernels are described in Andrews (1991).</a></div>
+      <div class="Body_Text"><a name="185266">As with most kernel estimators, the choice of the bandwidth parameter <img class="Default EquationGraphic" src="images/advtimeser.053.05.139.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> is of considerable importance. EViews allows you to specify a fixed parameter or to have EViews select one using a data-dependent method. Automatic bandwidth parameter selection is discussed in </a><span class="Link"><a href="#185376" title="Unit Root Testing">&#8220;Automatic Bandwidth and Lag Length Selection&#8221;</a></span>.</div>
+      <div class="Heading_6"><a name="185272">Autoregressive Spectral Density Estimator</a></div>
+      <div class="Body_Text"><a name="185273">The autoregressive spectral density estimator at frequency zero is based upon the residual variance and estimated coefficients from the auxiliary regression:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.140.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.41)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185279">EViews provides three autoregressive spectral methods: OLS, OLS detrending, and GLS detrending, corresponding to difference choices for the data <img class="Default EquationGraphic" src="images/advtimeser.053.05.141.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />. The following table summarizes the auxiliary equation estimated by the various AR spectral density estimators:</a></div>
+      <div class="Table"><a name="185321">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 313.2pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 97.2pt">
+            <div class="Table_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Menu_Item"><a name="185285">AR spectral method</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 216pt">
+            <div class="Table_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Menu_Item"><a name="185287">Auxiliary AR regression specification</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: middle">
+            <div class="Table_Text__0028Middle_0029"><a name="185289">OLS</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185300"><img class="Default EquationGraphic" src="images/advtimeser.053.05.142.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 60px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/advtimeser.053.05.143.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.05.144.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 59px; top: 0.0pt" alt="" />.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: middle">
+            <div class="Table_Text__0028Middle_0029"><a name="185302">OLS detrended</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185310"><img class="Default EquationGraphic" src="images/advtimeser.053.05.145.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 127px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/advtimeser.053.05.146.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: middle">
+            <div class="Table_Text__0028Middle_0029"><a name="185312">GLS detrended</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185320"><img class="Default EquationGraphic" src="images/advtimeser.053.05.147.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 171px; top: 0.0pt" alt="" />. and <img class="Default EquationGraphic" src="images/advtimeser.053.05.148.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185328">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.149.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 36px; top: 0.0pt" alt="" /> are the coefficient estimates from the regression defined in </a><span class="Link"><a href="#184895" title="Unit Root Testing">(42.27)</a></span>.</div>
+      <div class="Body_Text"><a name="185329">The AR spectral estimator of the frequency zero spectrum is defined as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.150.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.42)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185343">where <img class="Default EquationGraphic" src="images/advtimeser.053.05.151.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 112px; top: 0.0pt" alt="" /> is the residual variance, and <img class="Default EquationGraphic" src="images/advtimeser.053.05.152.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 15px; top: 0.0pt" alt="" /> are the estimates from </a><span class="Link"><a href="#185278" title="Unit Root Testing">(42.41)</a></span>. We note here that EViews uses the non-degree of freedom estimator of the residual variance. As a result, spectral estimates computed in EViews may differ slightly from those obtained from other sources.</div>
+      <div class="Body_Text"><a name="185344">Not surprisingly, the spectrum estimator is sensitive to the number of lagged difference terms in the auxiliary equation. You may either specify a fixed parameter or have EViews automatically select one based on an information criterion. Automatic lag length selection is examined in </a><span class="Link"><a href="#185376" title="Unit Root Testing">&#8220;Automatic Bandwidth and Lag Length Selection&#8221;</a></span>.</div>
+      <div class="Heading_6"><a name="185348">Default Settings</a></div>
+      <div class="Body_Text"><a name="185352">By default, EViews will choose the estimator of <img class="Default EquationGraphic" src="images/advtimeser.053.05.153.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> used by the authors of a given test specification. You may, of course, override the default settings and choose from either family of estimation methods. The default settings are listed below:</a></div>
+      <div class="Table"><a name="185374">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 306pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 126pt">
+            <div class="Table_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Menu_Item"><a name="185355">Unit root test</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 180pt">
+            <div class="Table_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Menu_Item"><a name="185357">Frequency zero spectrum default method</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185359">ADF, DFGLS</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text" style="color: #000000; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="Emphasis"><a name="185361">not applicable</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185363">PP, KPSS</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185365">Kernel (Bartlett) sum-of-covariances</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185367">ERS Point Optimal</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185369">AR spectral regression (OLS)</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185371">NP</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="185373">AR spectral regression (GLS-detrended)</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_5"><a name="185376">Automatic Bandwidth and Lag Length Selection</a></div>
+      <div class="Body_Text"><a name="185377">There are three distinct situations in which EViews can automatically compute a bandwidth or a lag length parameter. </a></div>
+      <div class="Body_Text"><a name="185381">The first situation occurs when you are selecting the bandwidth parameter <img class="Default EquationGraphic" src="images/advtimeser.053.05.154.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> for the kernel-based estimators of <img class="Default EquationGraphic" src="images/advtimeser.053.05.155.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />. For the kernel estimators, EViews provides you with the option of using the Newey-West (1994) or the Andrews (1991) data-based automatic bandwidth parameter methods. See the original sources for details. For those familiar with the Newey-West procedure, we note that EViews uses the lag selection parameter formulae given in the corresponding first lines of Table II-C. The Andrews method is based on an AR(1) specification. (See </a><span class="Link"><a href="lrvar-Technical_Discussion.html#155205" title="Technical Discussion">&#8220;Automatic Bandwidth Selection&#8221;</a></span> for discussion.)</div>
+      <div class="Body_Text"><a name="185388">The latter two situations occur when the unit root test requires estimation of a regression with a parametric correction for serial correlation as in the ADF and DFGLS test equation regressions, and in the AR spectral estimator for <img class="Default EquationGraphic" src="images/advtimeser.053.05.156.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />. In all of these cases, <img class="Default EquationGraphic" src="images/advtimeser.053.05.157.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> lagged difference terms are added to a regression equation. The automatic selection methods choose <img class="Default EquationGraphic" src="images/advtimeser.053.05.158.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> (less than the specified maximum) to minimize one of the following criteria:</a></div>
+      <div class="Table"><a name="185445">&nbsp;</a></div>
+      <table class="TwoColWide" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 126pt">
+            <div class="Table_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Menu_Item"><a name="185400">Information criterion</a></span></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 180pt">
+            <div class="Table_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: bold; text-transform: none; vertical-align: baseline"><span class="Menu_Item"><a name="185402">Definition</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: middle">
+            <div class="Table_Text__0028Middle_0029"><a name="185404">Akaike (AIC)</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185409"><img class="Default EquationGraphic" src="images/advtimeser.053.05.159.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 131px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: middle">
+            <div class="Table_Text__0028Middle_0029"><a name="185411">Schwarz (SIC)</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185416"><img class="Default EquationGraphic" src="images/advtimeser.053.05.160.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 171px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: middle">
+            <div class="Table_Text__0028Middle_0029"><a name="185418">Hannan-Quinn (HQ)</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185423"><img class="Default EquationGraphic" src="images/advtimeser.053.05.161.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 217px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: middle">
+            <div class="Table_Text__0028Middle_0029"><a name="185425">Modified AIC (MAIC)</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185430"><img class="Default EquationGraphic" src="images/advtimeser.053.05.162.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 171px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: middle">
+            <div class="Table_Text__0028Middle_0029"><a name="185432">Modified SIC (MSIC)</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185437"><img class="Default EquationGraphic" src="images/advtimeser.053.05.163.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 211px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: middle">
+            <div class="Table_Text__0028Middle_0029"><a name="185439">Modified Hannan-Quinn (MHQ)</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-line__0028Left_0029"><a name="185444"><img class="Default EquationGraphic" src="images/advtimeser.053.05.164.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 257px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185449">where the modification factor <img class="Default EquationGraphic" src="images/advtimeser.053.05.165.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is computed as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.166.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.43)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185462">for <img class="Default EquationGraphic" src="images/advtimeser.053.05.167.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 60px; top: 0.0pt" alt="" />, when computing the ADF test equation, and for <img class="Default EquationGraphic" src="images/advtimeser.053.05.168.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> as defined in </a><span class="Link"><a href="#185272" title="Unit Root Testing">&#8220;Autoregressive Spectral Density Estimator&#8221;</a></span>, when estimating <img class="Default EquationGraphic" src="images/advtimeser.053.05.169.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />. Ng and Perron (2001) propose and examine the modified criteria, concluding with a recommendation of the MAIC.</div>
+      <div class="Body_Text"><a name="185467">For the information criterion selection methods, you must also specify an upper bound to the lag length. By default, EViews chooses a maximum lag of:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.05.170.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.44)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185472">See Hayashi (2000, p. 594) for a discussion of the selection of this upper bound.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

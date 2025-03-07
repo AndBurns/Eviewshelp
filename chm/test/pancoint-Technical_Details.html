@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Technical Details</title>
+    <link rel="StyleSheet" href="css/pancoint.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="pancoint-Examples.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="pancoint-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="pancoint-Panel_Cointegration_Estimation.html">Panel Cointegration Estimation</a> : Technical Details</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="501741">Technical Details</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#476817">Fully-Modified OLS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#476819">Pooled FMOLS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#476941">Weighted FMOLS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#485072">Group-Mean FMOLS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#481792">Dynamic OLS (DOLS)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#482926">Pooled DOLS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#483753">Weighted DOLS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#485893">Group-mean DOLS</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="476817">Fully-Modified OLS</a></div>
+      <div class="Body_Text"><a name="476818">Phillips and Moon (1999), Pedroni (2000), and Kao and Chiang (2000) offer extensions of the Phillips and Hansen (1990) fully modified OLS estimator to panel settings.</a></div>
+      <div class="Heading_5"><a name="476819">Pooled FMOLS</a></div>
+      <div class="Body_Text"><a name="476820">The pooled FMOLS estimator outlined by Phillips and Moon (1999) is a straightforward extension of the standard Phillips and Hansen estimator. Given estimates of the average long-run covariances, <img class="Default EquationGraphic" src="images/pancoint.070.6.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 16px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/pancoint.070.6.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 16px; top: 0.0pt" alt="" />, we may define the modified dependent variable and serial correlation correction terms</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.03.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="476831">and </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.04.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="476842">where <img class="Default EquationGraphic" src="images/pancoint.070.6.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/pancoint.070.6.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 27px; top: 0.0pt" alt="" /> are the corresponding data purged of the individual deterministic trends, and <img class="Default EquationGraphic" src="images/pancoint.070.6.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 31px; top: 0.0pt" alt="" /> is the long-run average variance of <img class="Default EquationGraphic" src="images/pancoint.070.6.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 31px; top: 0.0pt" alt="" /> conditional on <img class="Default EquationGraphic" src="images/pancoint.070.6.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 31px; top: 0.0pt" alt="" />. In the leading case of individual specific intercepts, <img class="Default EquationGraphic" src="images/pancoint.070.6.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 99px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/pancoint.070.6.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 112px; top: 0.0pt" alt="" /> are the demeaned variables. </a></div>
+      <div class="Body_Text"><a name="476849">The pooled FMOLS estimator is then given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.12.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="476854">It is worth noting the pooled estimator simply sums across cross-sections separately in the numerator and denominator.</a></div>
+      <div class="Body_Text"><a name="476858">The estimates of the long-run covariances may be obtained by standard approaches using the <img class="Default EquationGraphic" src="images/pancoint.070.6.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> residuals obtained from estimating </a><span class="Link"><a href="pancoint-Background.html#476710" title="Background">Equation&nbsp;(57.1)</a></span> and after removing the deterministic components in <span class="Link"><a href="pancoint-Background.html#476725" title="Background">Equation&nbsp;(57.2)</a></span>. Note that EViews allows you to relax the assumption of common <img class="Default EquationGraphic" src="images/pancoint.070.6.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> in these first stage estimates. Given estimates of the individual long-run covariances for each cross-section, <img class="Default EquationGraphic" src="images/pancoint.070.6.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/pancoint.070.6.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 20px; top: 0.0pt" alt="" />, we form our estimators by taking simple cross-section averages:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.17.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="476878">Phillips and Moon (1999) show that under appropriate assumptions, the asymptotic distribution of the pooled estimator is asymptotically normal under sequential limits as <img class="Default EquationGraphic" src="images/pancoint.070.6.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 91px; top: 0.0pt" alt="" />. Then</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.19.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="509644">for a constant <img class="Default EquationGraphic" src="images/pancoint.070.6.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> that depends on the deterministic variable specification, where <img class="Default EquationGraphic" src="images/pancoint.070.6.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 31px; top: 0.0pt" alt="" /> is the long-run variance of <img class="Default EquationGraphic" src="images/pancoint.070.6.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" /> conditional on <img class="Default EquationGraphic" src="images/pancoint.070.6.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" />, given by <img class="Default EquationGraphic" src="images/pancoint.070.6.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 175px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="476908">Instead of estimating the asymptotic variance directly using estimates of <img class="Default EquationGraphic" src="images/pancoint.070.6.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 31px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/pancoint.070.6.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 28px; top: 0.0pt" alt="" /> and the corresponding <img class="Default EquationGraphic" src="images/pancoint.070.6.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> for every possible deterministic specification, EViews adopts the Pedroni (2000) and Mark and Sul (2003) approach of forming a consistent estimator using moments of the regressors:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.28.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.11)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="485059">where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.29.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.12)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="485064">In related work, Mark and Sul (2003) propose a sandwich form of this estimator which allows for heterogeneous variances:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.30.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.13)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="481150">where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.31.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="476934">and the long-run variance estimates <img class="Default EquationGraphic" src="images/pancoint.070.6.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 198px; top: 0.0pt" alt="" /> are computed for each cross-section. Note that degree-of-freedom corrections may be applied to the <img class="Default EquationGraphic" src="images/pancoint.070.6.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 31px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/pancoint.070.6.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 36px; top: 0.0pt" alt="" /> for comparability with standard regression standard error of the regression estimators.</a></div>
+      <div class="Heading_5"><a name="476941">Weighted FMOLS</a></div>
+      <div class="Body_Text"><a name="476942">Pedroni (2000) and Kao and Chiang (2000) describe feasible pooled FMOLS estimators for heterogeneous cointegrated panels where the long-run variances differ across cross-sections.</a></div>
+      <div class="Body_Text"><a name="476943">We again use first-stage estimates of the long-run and regressors equations to obtain the residuals, estimate the individual long-run variances <img class="Default EquationGraphic" src="images/pancoint.070.6.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/pancoint.070.6.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 20px; top: 0.0pt" alt="" />, and let</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.37.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="476954">and</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.38.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="476962">for <img class="Default EquationGraphic" src="images/pancoint.070.6.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 21px; top: 0.0pt" alt="" />, a preliminary estimate of the long-run coefficient.</a></div>
+      <div class="Body_Text"><a name="476963">Next, we form the weighted variables:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.40.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="476968">Then the estimator is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.41.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.18)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="485067">and the asymptotic covariance is estimated using a moment estimator as in Pedroni (2000):</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.42.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_5"><a name="485072">Group-Mean FMOLS</a></div>
+      <div class="Body_Text"><a name="479841">Pedroni (2000, 2001) proposes a grouped-mean FMOLS estimator which averages over the individual cross-section FMOLS estimates:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.43.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="479657">Pedroni (1990) notes that in the presence of heterogeneity in the cointegrating relationships, the grouped-mean estimator offers the desirable property of providing consistent estimates of the sample mean of the cointegrating vectors, in contrast to the pooled and weighted estimators.</a></div>
+      <div class="Body_Text"><a name="480972">We estimate the asymptotic covariance matrix for this estimator by computing the variance of the average of the individual estimates:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.44.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="509684">It is worth noting that the basic </a><span class="In-line_math">t</span>-statistics obtained using this covariance estimator differ from the <span class="In-line_math">t</span>-statistic proposed by Pedroni (1991), which aggregates individual statistics across the cross-section dimension.</div>
+      <div class="Heading_4"><a name="481792">Dynamic OLS (DOLS)</a></div>
+      <div class="Body_Text"><a name="482481">Kao and Chiang (2000), Mark and Sul (1999, 2003), and Pedroni (2001) propose extensions of the Saikkonen (1992) and Stock and Watson (1993) DOLS estimator to panel data settings. Panel DOLS involves augmenting the panel cointegrating regression equation with cross-section specific lags </a><span class="Emphasis">and leads</span> of <img class="Default EquationGraphic" src="images/pancoint.070.6.45.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> to eliminate the asymptotic endogenity and serial correlation.</div>
+      <div class="Heading_5"><a name="482926">Pooled DOLS</a></div>
+      <div class="Body_Text"><a name="483068">Kao and Chiang (2000) describe the pooled DOLS estimator in which we use ordinary least squares to estimate an augmented cointegrating regression equation:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.46.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="483361">where <img class="Default EquationGraphic" src="images/pancoint.070.6.47.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/pancoint.070.6.48.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 27px; top: 0.0pt" alt="" /> are the data purged of the individual deterministic trends. Note that the short-run dynamics coefficients <img class="Default EquationGraphic" src="images/pancoint.070.6.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> are allowed to be cross-section specific.</a></div>
+      <div class="Body_Text"><a name="484071">Let <img class="Default EquationGraphic" src="images/pancoint.070.6.50.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 25px; top: 0.0pt" alt="" /> be regressors formed by interacting the <img class="Default EquationGraphic" src="images/pancoint.070.6.51.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 52px; top: 0.0pt" alt="" /> terms with cross-section dummy variables, and let <img class="Default EquationGraphic" src="images/pancoint.070.6.52.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 145px; top: 0.0pt" alt="" />. Then the pooled DOLS estimator may be written as</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.53.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="483493">Kao and Chiang (2000) show that the asymptotic distribution of this estimator is the same as for pooled FMOLS. We may estimate the asymptotic covariance matrix of the <img class="Default EquationGraphic" src="images/pancoint.070.6.54.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 33px; top: 0.0pt" alt="" /> using the corresponding sub-matrix of:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.55.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="485113">where</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.56.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="485118">and <img class="Default EquationGraphic" src="images/pancoint.070.6.57.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 31px; top: 0.0pt" alt="" /> is an estimator of the long-run residual variance.</a></div>
+      <div class="Body_Text"><a name="485148">Alternately, Mark and Sul (2003) employ a sandwich estimator </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.58.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="485123">where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.59.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="485308">employs the individual long-run variance estimates <img class="Default EquationGraphic" src="images/pancoint.070.6.60.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 36px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="483753">Weighted DOLS</a></div>
+      <div class="Body_Text"><a name="485340">Mark and Sul (1999) describe a simple weighted DOLS estimator which allows for heterogeneity in the long-run variances. Define the weighted regression:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.61.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="481992">for individual long-run variance estimates <img class="Default EquationGraphic" src="images/pancoint.070.6.62.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 36px; top: 0.0pt" alt="" /> obtained after preliminary DOLS estimation.</a></div>
+      <div class="Body_Text"><a name="485726">In EViews, we estimate the asymptotic covariance matrix of the <img class="Default EquationGraphic" src="images/pancoint.070.6.63.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 37px; top: 0.0pt" alt="" /> using the corresponding sub-matrix of:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.64.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="484508">Note that this very simple form of weighted estimation differs from the more complex estimator described Kao and Chiang (2000), which mixes the FMOLS endogenity correction, weighting of both dependent variable and regressors, and the DOLS serial correlation correction. </a></div>
+      <div class="Heading_5"><a name="485893">Group-mean DOLS</a></div>
+      <div class="Body_Text"><a name="485909">Pedroni (2001) extends the grouped estimator concept to DOLS estimation by averaging over the individual cross-section DOLS estimates:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.65.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="485948">The asymptotic covariance matrix is obtained from the corresponding sub-matrix of the variance of the average of the individual estimators:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/pancoint.070.6.66.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(57.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="485956">We again note that the basic </a><span class="In-line_math">t</span>-statistics involving this covariance estimator differ from the <span class="In-line_math">t</span>-statistic proposed by Pedroni (1991) which aggregates individual statistics across the cross-section dimension.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

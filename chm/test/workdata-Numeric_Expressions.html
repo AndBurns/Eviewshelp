@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Numeric Expressions</title>
+    <link rel="StyleSheet" href="css/workdata.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="workdata-Working_with_Data.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="workdata-Series.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="workdata-Working_with_Data.html">Working with Data</a> : Numeric Expressions</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="160504">Numeric Expressions</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160511">Operators</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160551">Series Expressions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160558">Series Functions </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160588">Series Elements</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160599">Numeric Relational Operators</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160629">Descriptive Statistics</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160641">Leads, Lags, Differences and Time Series Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160695">Cumulative and Moving Statistic Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160712">Ranking Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160721">Missing Values</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="160505">One of the most powerful features of EViews is the ability to use and to process mathematical expressions. EViews contains an extensive library of built-in operators and functions that allow you to perform complicated mathematical operations on your data with just a few keystrokes. In addition to supporting standard mathematical and statistical operations, EViews provides a number of specialized functions for automatically handling the leads, lags and differences that are commonly found in time series data.</a></div>
+      <div class="Body_Text"><a name="160507">An EViews expression is a combination of numbers, series names, functions, and mathematical and relational operators. In practical terms, you will use expressions to describe all mathematical operations involving EViews objects.</a></div>
+      <div class="Body_Text"><a name="160508">As in other programs, you can use these expressions to calculate a new series from existing series, to describe a sample of observations, or to describe an equation for estimation or forecasting. However, EViews goes far beyond this simple use of expressions by allowing you to use expressions virtually anywhere you would use a series. We will have more on this important feature shortly, but first, we describe the basics of using expressions.</a></div>
+      <div class="Heading_4"><a name="160511">Operators</a></div>
+      <div class="Body_Text"><a name="160513">EViews expressions may include operators for the usual arithmetic operations. The operators for addition (</a><span class="In-line_input">+</span>), subtraction (<span class="In-line_input">-</span>), multiplication (<span class="In-line_input">*</span>), division (<span class="In-line_input">/</span>) and raising to a power (<span class="In-line_input">^</span>) are used in standard fashion so that:</div>
+      <div class="Multi-line_Input"><a name="160514">5 + 6 * 7.0 / 3</a></div>
+      <div class="Multi-line_Input"><a name="160515">7 + 3e-2 / 10.2345 + 6 * 10^2 + 3e3</a></div>
+      <div class="Multi-line_Input"><a name="160516">3^2 - 9</a></div>
+      <div class="Body_Text"><a name="160517">are all valid expressions. Notice that explicit numerical values may be written in integer, decimal, or scientific notation.</a></div>
+      <div class="Body_Text"><a name="160518">In the examples above, the first expression takes 5 and adds to it the product of 6 and 7.0 divided by 3 (5+14=19); the last expression takes 3 raised to the power&nbsp;2 and subtracts 9 (9 &#8211; 9 = 0). These expressions use the order of evaluation outlined below.</a></div>
+      <div class="Body_Text"><a name="160519">The &#8220;</a><span class="In-line_input">-</span>&#8221; and &#8220;<span class="In-line_input">+</span>&#8221; operators are also used as the unary minus (negation) and unary plus operators. It follows that:</div>
+      <div class="Multi-line_Input"><a name="160520">2-2</a></div>
+      <div class="Multi-line_Input"><a name="160521">-2+2</a></div>
+      <div class="Multi-line_Input"><a name="160522">2+++++++++++++-2</a></div>
+      <div class="Multi-line_Input"><a name="160523">2---2</a></div>
+      <div class="Body_Text"><a name="160524">all yield a value of 0.</a></div>
+      <div class="Body_Text"><a name="160525">EViews follows the usual order in evaluating expressions from left to right, with operator precedence order as follows (from highest precedence to lowest): </a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160528">unary minus (</a><span class="In-line_input">-</span>), unary plus (<span class="In-line_input">+</span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160529">exponentiation&nbsp;(</a><span class="In-line_input">^</span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160530">multiplication (</a><span class="In-line_input">*</span>), division (<span class="In-line_input">/)</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160531">addition (</a><span class="In-line_input">+</span>), subtraction (<span class="In-line_input">-</span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160532">comparison (</a><span class="In-line_input">&lt;</span>, <span class="In-line_input">&gt;</span>, <span class="In-line_input">&lt;=</span>, <span class="In-line_input">&gt;=</span>, <span class="In-line_input">=)</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_input"><a name="160533">and</a></span>, <span class="In-line_input">or</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="160534">The last two sets of operators are used in logical expressions.</a></div>
+      <div class="Body_Text"><a name="160537">To enforce a particular order of evaluation, you can use parentheses. As in standard mathematical analysis, terms which are enclosed in parentheses are treated as a subexpression and evaluated first, from the innermost to the outermost set of parentheses. We strongly recommend the use of parentheses when there is any possibility of ambiguity in your expression.</a></div>
+      <div class="Body_Text"><a name="160538">To take some simple examples,</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_input"><a name="160539">-1^2</a></span>, evaluates to (&#8211;1)^2=1 since the unary minus is evaluated prior to the power operator. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_input"><a name="160540">-1 + -2 * 3 + 4</a></span>, evaluates to &#8211;1 + &#8211;6 + 4 = &#8211;3. The unary minus is evaluated first, followed by the multiplication, and finally the addition.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_input"><a name="160541">(-1 + -2) * (3 + 4)</a></span>, evaluates to &#8211;3 * 7 = &#8211;21. The unary minuses are evaluated first, followed by the two additions, and then the multiplication.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_input"><a name="160542">3*((2+3)*(7+4) + 3)</a></span>, evaluates to 3 * (5*11 + 3) = 3 * 58 =174. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="160543">A full listing of operators is presented in </a><span class="Link"><a href="#160511" title="Numeric Expressions">&#8220;Operators&#8221;</a></span> .</div>
+      <div class="Heading_4"><a name="160551">Series Expressions</a></div>
+      <div class="Body_Text"><a name="160552">Much of the power of EViews comes from the fact that expressions involving series operate on every observation, or element, of the series in the current sample. For example, the series expression:</a></div>
+      <div class="Input"><a name="160553">2*y + 3</a></div>
+      <div class="Body_Text"><a name="160554">tells EViews to multiply every sample value of Y by 2 and then to add 3. We can also perform operations that work with multiple series. For example:</a></div>
+      <div class="Input"><a name="160555">x/y + z</a></div>
+      <div class="Body_Text"><a name="160556">indicates that we wish to take every observation for X and divide it by the corresponding observation on Y, and add the corresponding observation for Z. </a></div>
+      <div class="Heading_4"><a name="160558">Series Functions </a></div>
+      <div class="Body_Text"><a name="160559">EViews contains an extensive library of built-in functions that operate on all of the elements of a series in the current sample. Some of the functions are &#8220;element functions&#8221; which return a value for each element of the series, while others are &#8220;summary functions&#8221; which return scalars, vectors or matrices, which may then be used in constructing new series or working in the matrix language (see </a><span class="Link"><a href="cmatrix-Matrix_Language.html#68482" title="Matrix Language">&#8220;Matrix Language&#8221;</a></span> for a discussion of scalar, vector and matrix operations).</div>
+      <div class="Body_Text"><a name="160563">Most function names in EViews are preceded by the </a><span class="In-line_input">@</span>-sign. For example, <span class="In-line_input">@mean</span> returns the average value of a series taken over the current sample, and <span class="In-line_input">@abs</span> takes the absolute value of each observation in the current sample.</div>
+      <div class="Body_Text"><a name="160564">All element functions return NAs when any input value is missing or invalid, or if the result is undefined. Functions which return summary information generally exclude observations for which data in the current sample are missing. For example, the </a><span class="In-line_input">@mean</span> function will compute the mean for those observations in the sample that are non-missing. </div>
+      <div class="Body_Text"><a name="160565">There is an extensive set of functions that you may use with series:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160566">A list of mathematical functions is presented in </a><span class="Link"><a href="functionref_home-Function_Reference.html#1255676" title="Function Reference">&#8220;Function Reference&#8221;</a></span> .</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160573">Workfile functions that provide information about observations identifiers or allow you to construct time trends are described in </a><span class="Link"><a href="wffunctions-Workfile_Functions.html#33824" title="Workfile Functions">&#8220;Workfile Functions&#8221;</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160582">Functions for working with strings and dates are documented in </a><span class="Link"><a href="stringref-String_Function_Summary.html#781102" title="String Function Summary">&#8220;String Function Summary&#8221;</a></span> and <span class="Link"><a href="stringref-Date_Function_Summary.html#862513" title="Date Function Summary">&#8220;Date Function Summary&#8221;</a></span> .</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="160587">The remainder of this chapter will provide additional information on some of these functions, then examples of expressions involving functions.</a></div>
+      <div class="Heading_4"><a name="160588">Series Elements</a></div>
+      <div class="Body_Text"><a name="160589">At times, you may wish to access a particular observation for a series. EViews provides you with a special function, </a><span class="In-line_input">@elem</span>, which allows you to use a specific value of a series.</div>
+      <div class="Body_Text"><span class="In-line_input"><a name="160591">@elem</a></span> takes two arguments: the first argument is the name of the series, and the second is a quoted date or observation identifier.</div>
+      <div class="Body_Text"><a name="160592">For example, suppose that you want to use the 1980Q3 value of the quarterly series Y, or observation 323 of the undated series X. Then the functions:</a></div>
+      <div class="Multi-line_Input"><a name="160593">@elem(y, "1980Q3")</a></div>
+      <div class="Multi-line_Input"><a name="160594">@elem(x, "323")</a></div>
+      <div class="Body_Text"><a name="160595">will return the values of the respective series in the respective periods.</a></div>
+      <div class="Heading_4"><a name="160599">Numeric Relational Operators</a></div>
+      <div class="Body_Text"><a name="160601">Relational comparisons may be used as part of a mathematical operation, as part of a sample statement, or as part of an if-condition in programs.</a></div>
+      <div class="Body_Text"><a name="160602">A numeric relational comparison is an expression which contains the &#8220;=&#8221; (equal), &#8220;&gt;=&#8221; (greater than or equal), &#8220;&lt;=&#8221; (less than or equal), &#8220;&lt;&gt;&#8221; (not equal), &#8220;&gt;&#8221; (greater than), or &#8220;&lt;&#8221; (less than) comparison operators. These expressions generally evaluate to TRUE or FALSE, returning a 1 or a 0, depending on the result of the comparison. </a></div>
+      <div class="Body_Text"><a name="160605">Comparisons involving strings are discussed in </a><span class="Link"><a href="dataapp-Strings.html#92523" title="Strings">&#8220;String Relational Operators&#8221;</a></span> .</div>
+      <div class="Body_Text"><a name="160607">Note that EViews also allows relational comparisons to take the value &#8220;missing&#8221; or NA, but for the moment, we will gloss over this point until our discussion of missing values (see </a><span class="Link"><a href="#160721" title="Numeric Expressions">&#8220;Missing Values&#8221;</a></span>). </div>
+      <div class="Body_Text"><a name="160611">We have already seen examples of expressions using relational operators in our discussion of samples and sample objects. For example, we saw the sample condition:</a></div>
+      <div class="Input" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="In-line_input"><a name="160612">incm &gt; 5000</a></span></div>
+      <div class="Body_Text"><a name="160613">which allowed us to select observations meeting the specified condition. This is an example of a relational expression&#8212;it is TRUE for each observation on INCM that exceeds 5000; otherwise, it is FALSE.</a></div>
+      <div class="Body_Text"><a name="160616">As described above in the discussion of samples, you may use the &#8220;</a><span class="In-line_input">and</span>&#8221; and &#8220;<span class="In-line_input">or</span>&#8221; conjunction operators to build more complicated expressions involving relational comparisons:</div>
+      <div class="Input"><a name="160618">(incm&gt;5000 and educ&gt;=13) or (incm&gt;10000)</a></div>
+      <div class="Body_Text"><a name="160619">It is worth emphasizing the fact that EViews uses the number 1 to represent TRUE and 0 to represent FALSE. This internal representation means that you can create complicated expressions involving logical subexpressions. For example, you can use relational operators to recode your data:</a></div>
+      <div class="Input"><a name="160620">0*(inc&lt;100) + (inc&gt;=100 and inc&lt;200) + 2*(inc&gt;=200)</a></div>
+      <div class="Body_Text"><a name="160621">which yields 0 if INC&lt;100, 1 if INC is greater than or equal to 100 and less than 200, and 2 for INC greater than or equal to 200.</a></div>
+      <div class="Body_Text"><a name="160622">The equality comparison operator &#8220;</a><span class="In-line_input">=</span>&#8221; requires a bit more discussion, since the equal sign is used both in assigning values and in comparing values. We consider this issue in greater depth when we discuss creating and modifying series (see <span class="Link"><a href="workdata-Series.html#160789" title="Series">&#8220;Series&#8221;</a></span>). For now, note that if used in an expression:</div>
+      <div class="Input"><a name="160626">incm = 2000</a></div>
+      <div class="Body_Text"><a name="160627">evaluates to TRUE if INCOME is exactly 2000, and FALSE, otherwise.</a></div>
+      <div class="Heading_4"><a name="160629">Descriptive Statistics</a></div>
+      <div class="Body_Text"><a name="167901">Standard descriptive statistic functions are available in EViews. These include, but are not limited to functions to calculate the mean (</a><span class="In-line_command">@mean</span>), the median (<span class="In-line_command">@median</span>), the standard deviation (<span class="In-line_command">@stdev</span>), the variance (<span class="In-line_command">@var</span>) and covariance (<span class="In-line_command">@cov</span>). The descriptive statistic functions all take an optional sample as an argument. For a full list of descriptive statistics functions, see <span class="Link"><a href="functionref_home-Function_Summaries.html#1296436" title="Function Summaries">&#8220;Basic Statistics&#8221;</a></span> .</div>
+      <div class="Body_Text"><a name="160631">It should be noted that EViews offers two ways to calculate standard deviations, variances and covariances. The simple standard deviation function, </a><span class="In-line_command">@stdev</span>, calculates the sample standard deviation, that is the square root of the sum-of-squares divided by <img class="Default EquationGraphic" src="images/workdata.011.2.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" />. To calculate the population standard deviation, that is division by <span class="In-line_math">n</span>, use the <span class="In-line_command">@stdevp</span> function. Note for symmetry purposes there is also a <span class="In-line_command">@stdevs</span> which performs the same calculation as <span class="In-line_command">@stdev</span>.</div>
+      <div class="Body_Text"><a name="160632">The </a><span class="In-line_command">@var</span> and <span class="In-line_command">@cov</span> functions calculate the population variance and covariance respectively, <span class="Emphasis">i.e.</span>, they divide through by <span class="In-line_math">n</span>. To calculate the sample variance or covariance use the <span class="In-line_command">@vars</span> or <span class="In-line_command">@covs</span> functions. Again, there are also <span class="In-line_command">@varp</span> and <span class="In-line_command">@covp</span> functions which do the same as <span class="In-line_command">@var</span> or <span class="In-line_command">@cov</span>.</div>
+      <div class="Heading_4"><a name="160641">Leads, Lags, Differences and Time Series Functions</a></div>
+      <div class="Body_Text"><a name="160642">It is easy to work with lags or leads of your series. Simply use the series name, followed by the lag or lead enclosed in parentheses. Lags are specified as negative numbers and leads as positive numbers so that,</a></div>
+      <div class="Input"><a name="160643">income(-4)</a></div>
+      <div class="Body_Text"><a name="160644">is the fourth lag of the income series, while:</a></div>
+      <div class="Input"><a name="160645">sales(2)</a></div>
+      <div class="Body_Text"><a name="160646">is the second lead of sales.</a></div>
+      <div class="Body_Text"><a name="160647">While EViews expects lead and lag arguments to be integers, there is nothing to stop you from putting non-integer values in the parentheses. EViews will automatically convert the number to an integer; you should be warned, however, that the conversion behavior is not guaranteed to be systematic. If you must use non-integer values, you are strongly encouraged to use the </a><span class="In-line_input">@round</span>, <span class="In-line_input">@floor</span>, or <span class="In-line_input">@ceil</span> functions to control the lag or lead behavior.</div>
+      <div class="Body_Text"><a name="160648">In many places in EViews, you can specify a range of lead or lag terms. For example, when estimating equations, you can include expressions of the form:</a></div>
+      <div class="Input"><a name="160649">income(-1 to -4)</a></div>
+      <div class="Body_Text"><a name="160650">to represent all of the INCOME lags from 1 to 4. Similarly, the expressions:</a></div>
+      <div class="Multi-line_Input"><a name="160651">sales sales(-1) sales(-2) sales(-3) sales(-4)</a></div>
+      <div class="Multi-line_Input"><a name="160652">sales(0 to -4)</a></div>
+      <div class="Multi-line_Input"><a name="160653">sales(to -4)</a></div>
+      <div class="Body_Text"><a name="160654">are equivalent methods of specifying the level of SALES and all lags from 1 to 4.</a></div>
+      <div class="Body_Text"><a name="160655">The </a><span class="In-line_command">@lag</span> function can also be used to specify lags. Thus the expressions:</div>
+      <div class="Input"><a name="160656">@lag(sales,1)</a></div>
+      <div class="Input"><a name="160657">sales(-1)</a></div>
+      <div class="Body_Text"><a name="160658">are equivalent. Note one useful function of </a><span class="In-line_command">@lag</span> is that it will take the lag of everything within parenthesis. <span class="In-line_command">@lag</span> can therefore be used to find the lag of an expression. Typing:</div>
+      <div class="Input"><a name="160659">@lag((sales-income)/sales,4)</a></div>
+      <div class="Input"><a name="160660">(sales(-4)-income(-4))/sales(-4)</a></div>
+      <div class="Body_Text"><a name="160661">yields identical results.</a></div>
+      <div class="Body_Text"><a name="160665">EViews also has several built-in functions for working with difference data in either levels or in logs. The &#8220;D&#8221; and &#8220;DLOG&#8221; functions will automatically evaluate the differences for you. For example, instead of taking differences explicitly,</a></div>
+      <div class="Multi-line_Input"><a name="160666">income - income(-1)</a></div>
+      <div class="Multi-line_Input"><a name="160667">log(income) - log(income(-1))</a></div>
+      <div class="Body_Text"><a name="160668">you may use the equivalent expressions,</a></div>
+      <div class="Multi-line_Input"><a name="160669">d(income)</a></div>
+      <div class="Multi-line_Input"><a name="160670">dlog(income)</a></div>
+      <div class="Body_Text"><a name="160671">You can take higher order differences by specifying the difference order. For example, the expressions:</a></div>
+      <div class="Multi-line_Input"><a name="160672">d(income,4)</a></div>
+      <div class="Multi-line_Input"><a name="160673">dlog(income,4)</a></div>
+      <div class="Body_Text"><a name="160674">represent the fourth-order differences of INCOME and log(INCOME).</a></div>
+      <div class="Body_Text"><a name="160677">If you wish to take seasonal differences, you should specify both the ordinary, and a seasonal difference term:</a></div>
+      <div class="Multi-line_Input"><a name="160678">d(income,1,4)</a></div>
+      <div class="Multi-line_Input"><a name="160679">dlog(income,1,4)</a></div>
+      <div class="Body_Text"><a name="160680">These commands produce first order differences with a seasonal difference at lag 4. If you want only the seasonal difference, specify the ordinary difference term to be 0:</a></div>
+      <div class="Multi-line_Input"><a name="160681">d(income,0,4)</a></div>
+      <div class="Multi-line_Input"><a name="160682">dlog(income,0,4)</a></div>
+      <div class="Body_Text"><a name="160683">Other time series functions provided by EViews include a number of percentage change type functions. The simplest of these, </a><span class="In-line_command">@pc</span> calculates a simple one-period percentage change in a series. For example typing:</div>
+      <div class="Input"><a name="160684">@pca(income)</a></div>
+      <div class="Body_Text"><a name="160685">calculates the annual percentage change in INCOME.</a></div>
+      <div class="Body_Text"><a name="160686">Two special types of time series functions, moving functions and cumulative functions are also available in EViews, and are described below.</a></div>
+      <div class="Body_Text"><a name="160687">A listing of the lags, leads, differences and percentage change functions is provided in </a><span class="Link"><a href="functionref_home-Function_Summaries.html#1296583" title="Function Summaries">&#8220;Series Utility&#8221;</a></span> .</div>
+      <div class="Heading_4"><a name="160695">Cumulative and Moving Statistic Functions</a></div>
+      <div class="Body_Text"><a name="160696">Cumulative and moving statistic functions provide information over a range, or &#8220;window&#8221; of observations. The cumulative functions come in two types, those that move forwards and those that move backwards. The forwards functions, which take the form </a><span class="In-line_command">@cum</span><span class="In-line_input">[</span><span class="Emphasis" style="font-weight: normal">stat</span><span class="In-line_input">]</span>, have a window that starts at the start of the workfile (or if a sample is given in the function, from the start of the sample) up until the current observation. </div>
+      <div class="Body_Text"><a name="160697">The backwards functions, which take the form </a><span class="In-line_input">@cumb[</span><span class="Emphasis" style="font-weight: normal">stat</span><span class="In-line_input">]</span>, start at the end of the workfile, or sample, and move backwards until the current observation. </div>
+      <div class="Body_Text"><a name="160698">Note for both type of cumulative function the length of the window is different for each observation. The cumulative functions may be thought of as perform &#8220;running total&#8221; type calculations. Missing values are not propagated in the cumulative functions, </a><span class="Emphasis">i.e.</span>, observations with a value equal to NA are simply skipped. </div>
+      <div class="Body_Text"><a name="160699">The moving statistic functions have a shorter, user specified, window length. They provide information on the </a><span class="In-line_math">n</span> observations up to, and including, the current observation, where <span class="In-line_math">n</span> is chosen by the user. </div>
+      <div class="Body_Text"><a name="160700">The moving functions come in two types, those that propagate missing values and those that do not. For the functions that do propagate missing values, which take the form </a><span class="In-line_input">@mov[</span><span class="Emphasis" style="font-weight: normal">stat</span><span class="In-line_input">]</span>, if any of the observations within the window contain an NA the function will return NA. The functions that do not propagate, which take the form <span class="In-line_command">@m</span><span class="In-line_input">[</span><span class="Emphasis" style="font-weight: normal">stat</span><span class="In-line_input">]</span>, will simply skip any NA observations. </div>
+      <div class="Body_Text"><a name="165076">For more information on missing values see </a><span class="Link"><a href="#160721" title="Numeric Expressions">&#8220;Missing Values&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="160701">As an example, you could find out the maximum value of INCOME from the start of the workfile to each observation by typing:</a></div>
+      <div class="Input"><a name="160702">show @cummax(income)</a></div>
+      <div class="Body_Text"><a name="160703">If the first, say, four observations of INCOME are 100, 120, 110, 140 then this command will show a series as 100, 120, 120, and 140 as the first four observations.</a></div>
+      <div class="Body_Text"><a name="160704">If you wanted to know at each observation the average of the previous 3 years (including the current year) SALES figures you could type:</a></div>
+      <div class="Input"><a name="160705">show @movav(sales,3)</a></div>
+      <div class="Body_Text"><a name="160706">Note this is equal to:</a></div>
+      <div class="Input"><a name="160707">show (sales + sales(-1) + sales(-2))/3</a></div>
+      <div class="Body_Text"><a name="160708">Note that the lag or lead operators can be used inside a moving statistic function to allow you to control the exact start and end point of your window. For example, if you wanted to know, at each observation, the sum of SALES from three years ago, two years ago and last year (</a><span class="Emphasis">i.e.</span> the sum of SALES(-1), SALES(-2) and SALES(-3)) you could type:</div>
+      <div class="Input"><a name="160709">show @movsum(sales(-1),3)</a></div>
+      <div class="Body_Text"><a name="160710">Further details and a complete list of cumulative functions can be found in </a><span class="Link"><a href="functionref_home-Function_Summaries.html#1282807" title="Function Summaries">&#8220;Cumulative Statistics&#8221;</a></span>, and for moving functions in <span class="Link"><a href="functionref_home-Function_Summaries.html#1297327" title="Function Summaries">&#8220;Rolling (Moving) Statistics&#8221;</a></span> .</div>
+      <div class="Heading_4"><a name="160712">Ranking Series</a></div>
+      <div class="Body_Text"><a name="160714">EViews has an </a><span class="In-line_command">@ranks</span> function which will generate a series based upon the ranking of another series. Ranking can be either ascending or descending depending upon whether &#8220;a&#8221; or &#8220;d&#8221; is used as an option in the function. For example to create series, ARANK, which contains the ascending ranks of the observations in the series SALES you could type:</div>
+      <div class="Input"><a name="160715">series arank = @ranks(sales,a)</a></div>
+      <div class="Body_Text"><a name="160716">and to create a series containing the descending ranks you could type:</a></div>
+      <div class="Input"><a name="160717">series drank = @ranks(sales,d)</a></div>
+      <div class="Body_Text"><a name="160718">EViews provides a number of different ways of handling ties in the ranking. For more details see </a><span class="In-line_command_link"><a href="functionref_r-@ranks.html#1210855" title="@ranks">@ranks</a></span> .</div>
+      <div class="Heading_4"><a name="160721">Missing Values</a></div>
+      <div class="Body_Text"><a name="160722">Occasionally, you will encounter data that are not available for some periods or observations, or you may attempt to perform mathematical operations where the results are undefined (</a><span class="Emphasis">e.g.</span>, division by zero, log of a negative number). EViews uses the code NA (not available) to represent these missing values.</div>
+      <div class="Body_Text"><a name="160724">For the most part, you need not worry about NAs. EViews will generate NAs for you when appropriate, and will automatically exclude observations with NAs from statistical calculations. For example, if you are estimating an equation, EViews will use the set of observations in the sample that have no missing values for the dependent and all of the independent variables.</a></div>
+      <div class="Body_Text"><a name="160725">There are, however, a few cases where you will need to work with NAs, so you should be aware of some of the underlying issues in the handling of NAs.</a></div>
+      <div class="Body_Text"><a name="160726">First, when you perform operations using multiple series, there may be alternative approaches for handling NAs. EViews will usually provide you with the option of </a><span class="Definition">casewise exclusion</span> (common sample) or <span class="Definition">listwise exclusion</span> (individual sample). With casewise exclusion, only those observations for which <span class="Emphasis">all</span> of the series have non-missing data are used. This rule is always used, for example, in equation estimation. For listwise exclusion, EViews will use the maximum number of observations possible for each series, excluding observations separately for each series in the list of series. For example, when computing descriptive statistics for a group of series, you have the option to use a different sample for each series.</div>
+      <div class="Body_Text"><a name="160731">If you must work directly with NAs, just keep in mind that EViews NAs observe all of the rules of IEEE NaNs. This means that performing mathematical operations on NAs will generate missing values. Thus, each of the following expressions will generate missing values:</a></div>
+      <div class="Multi-line_Input"><a name="160732">@log(-abs(x))</a></div>
+      <div class="Multi-line_Input"><a name="160733">1/(x-x)</a></div>
+      <div class="Multi-line_Input"><a name="160734">(-abs(x))^(1/3)</a></div>
+      <div class="Multi-line_Input"><a name="160735">3*x + NA</a></div>
+      <div class="Multi-line_Input"><a name="160736">exp(x*NA)</a></div>
+      <div class="Body_Text"><a name="160740">For the most part, comparisons involving NA values propagate NA values. For example, the commands:</a></div>
+      <div class="Multi-line_Input"><a name="160741">series y = 3</a></div>
+      <div class="Multi-line_Input"><a name="160742">series x = NA</a></div>
+      <div class="Multi-line_Input"><a name="160743">series equal = (y = x)</a></div>
+      <div class="Multi-line_Input"><a name="160744">series greater = (y &gt; x)</a></div>
+      <div class="Body_Text"><a name="160745">will create series EQUAL and GREATER that contain NA values, since the comparison between observations in a series involving an NA yields an NA.</a></div>
+      <div class="Body_Text"><a name="160746">Note that this NA handling behavior differs from EViews 4 and earlier in which NAs were treated as ordinary values for purposes of equality (&#8220;=&#8221;) and inequality (&#8220;&lt;&gt;&#8221;) testing. In these versions of EViews, the comparison operators &#8220;=&#8221; and &#8220;&lt;&gt;&#8221; always returned a 0 or a 1. The change in behavior was deemed necessary to support the use of string missing values. In all versions of EViews, comparisons involving ordering (&#8220;&gt;&#8221;, &#8220;&lt;&#8221;, &#8220;&lt;=&#8221;, &#8220;&gt;=&#8221;) propagate NAs. </a></div>
+      <div class="Body_Text"><a name="160747">It is still possible to perform comparisons using the previous methods. One approach is to use the special functions </a><span class="In-line_command">@eqna</span> and <span class="In-line_command">@neqna</span> for performing equality and strict inequality comparisons without propagating NAs. For example, you may use the commands:</div>
+      <div class="Multi-line_Input"><a name="160750">series equal1 = @eqna(x, y)</a></div>
+      <div class="Multi-line_Input"><a name="160751">series nequal = @neqna(x, y)</a></div>
+      <div class="Body_Text"><a name="160752">so that NAs in either X or Y are treated as ordinary values for purposes of comparison. Using these two functions, EQUAL1 will be filled with the value 0, and NEQUAL will be filled with the value 1. Note that the </a><span class="In-line_command">@eqna</span> and <span class="In-line_command">@neqna</span> functions do not compare their arguments to NA, but rather facilitate the comparison of values so that the results are guaranteed to be 0 or 1. See also <span class="Link"><a href="cprogram-Version_4_Compatibility_Notes.html#140487" title="Version 4 Compatibility Notes">&#8220;Version 4 Compatibility Mode&#8221;</a></span> for settings that enable the previous behavior for element comparisons in programs. </div>
+      <div class="Body_Text"><a name="160757">To test whether individual observations in a series are NAs, you may use the </a><span class="In-line_command">@isna</span> function. For example,</div>
+      <div class="Input"><a name="160760">series isnaval = @isna(x)</a></div>
+      <div class="Body_Text"><a name="160761">will fill the series ISNAVAL with the value 1, since each observation in X is an NA.</a></div>
+      <div class="Body_Text"><a name="160762">There is one special case where direct comparison involving NAs does not propagate NAs. If you test equality or strict inequality against the literal NA value:</a></div>
+      <div class="Multi-line_Input"><a name="160763">series equal2 = (x = NA)</a></div>
+      <div class="Multi-line_Input"><a name="160764">series nequal2 = (y &lt;&gt; NA)</a></div>
+      <div class="Body_Text"><a name="160765">EViews will perform a special test against the NA value without propagating NA values. Note that these commands are equivalent to the comparisons involving the special functions:</a></div>
+      <div class="Multi-line_Input"><a name="160766">series equal3 = @eqna(x, NA)</a></div>
+      <div class="Multi-line_Input"><a name="160767">series nequal3 = @neqna(y, NA)</a></div>
+      <div class="Body_Text"><a name="160768">If used in a mathematical operation, a relational expression resulting in an NA is treated as an ordinary missing value. For example, for observations where the series X contains NAs, the mathematical expression</a></div>
+      <div class="Input"><a name="160769">5*(x&gt;3)</a></div>
+      <div class="Body_Text"><a name="160770">will yield NAs. However, if the relational expression is used as part of a sample or IF-statement, NA values are treated as FALSE.</a></div>
+      <div class="Multi-line_Input"><a name="160771">smpl 1 1000 if x&gt;y</a></div>
+      <div class="Multi-line_Input"><a name="160772">smpl 1 1000 if x&gt;y and not @isna(x) and not @isna(y)</a></div>
+      <div class="Body_Text"><a name="160773">are equivalent since the condition </a><span class="In-line_input">x&gt;3</span> implicitly tests for NA values. One consequence of this behavior is that:</div>
+      <div class="Input"><a name="160774">smpl 1 1000 if x&lt;NA</a></div>
+      <div class="Body_Text"><a name="160775">will result in a sample with no observations since less-than tests involving NAs yield NAs.</a></div>
+      <div class="Body_Text"><a name="160777">Very early versions of EViews followed the IEEE rules for missing data with one important exception. In EViews 2 and earlier, multiplying any number by zero (including NAs) yielded a zero. In subsequent versions, the value NA times zero equals NA. Thus, an earlier recommended method of recoding (replacing) NA values in the series X no longer worked so that the command for replacing NA values with the values in Y:</a></div>
+      <div class="Input"><a name="160778">x = (x&lt;&gt;na)*x + (x=na)*y</a></div>
+      <div class="Body_Text"><a name="160779">works in EViews 2, but does not work subsequent versions. The </a><span class="In-line_command">@nan</span> function has been provided for this purpose.</div>
+      <div class="Input"><a name="160780">x = @nan(x,y)</a></div>
+      <div class="Body_Text"><a name="160781">recodes NA values of X to take the values in the series Y. See </a><span class="Link"><a href="functionref_home-Function_Summaries.html#1266167" title="Function Summaries">&#8220;Operators&#8221;</a></span>.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

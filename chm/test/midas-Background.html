@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Background</title>
+    <link rel="StyleSheet" href="css/midas.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="midas-Midas_Regression.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="midas-MIDAS_Estimation_in_EViews.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="midas-Midas_Regression.html">Midas Regression</a> : Background</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="328547">Background</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#328648">Step Weighting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#328703">Almon (PDL) Weighting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#328746">Exponential Almon Weighting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#328777">Beta Weighting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#328852">U-MIDAS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#331980">Auto/GETS</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="328548">Standard regression models require the regressor data to follow the same frequency and structure as the dependent variable in the regression. This restriction is not always met in practice&#8212;as in economics, where major statistical releases occur on annual, quarterly, monthly and even daily frequencies.</a></div>
+      <div class="Body_Text"><a name="328549">Traditionally, there have been two approaches to estimation in mixed frequency data settings:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328550">The first approach involves introducing the sum or average of the higher frequency data into the lower frequency regression. This approach adds a single coefficient for each high frequency variable, implicitly applying equal weighting to each value in the sum.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328551">Alternately, the individual components of the higher frequency data may be added to the regression, allowing for a separate coefficient for each high frequency component. For example, in estimating an annual regression with monthly high frequency regressors, one could add each of the monthly components as a regressor. Note that this approach adds a large number of coefficients to the regression.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="328552">MIDAS estimation occupies the middle ground between these approaches, allowing for non-equal weights but reducing the number of coefficients by fitting functions to the parameters of the higher frequency data. Thus, MIDAS offers an approach to mixed frequency estimation featuring a flexible, parsimonious parameterization of the response of the lower frequency dependent variable to the higher frequency data.</a></div>
+      <div class="Body_Text"><a name="328553">Specifically, the model under consideration is:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328558">where</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328565"><img class="Default EquationGraphic" src="images/midas.040.2.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is the dependent variable, sampled at a low frequency, at date <img class="Default EquationGraphic" src="images/midas.040.2.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />,</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328572"><img class="Default EquationGraphic" src="images/midas.040.2.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is the set of regressors sampled at the same low frequency as <img class="Default EquationGraphic" src="images/midas.040.2.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />,</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328579"><img class="Default EquationGraphic" src="images/midas.040.2.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 56px; top: 0.0pt" alt="" /> is a set of regressors sampled at a higher frequency with <img class="Default EquationGraphic" src="images/midas.040.2.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values for each low frequency value. Note that <img class="Default EquationGraphic" src="images/midas.040.2.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 56px; top: 0.0pt" alt="" /> is not restricted to the <img class="Default EquationGraphic" src="images/midas.040.2.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values associated with the current <img class="Default EquationGraphic" src="images/midas.040.2.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> as it may include values corresponding to lagged low frequency values.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328592"><img class="Default EquationGraphic" src="images/midas.040.2.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> is a function describing the effect of the higher frequency data in the lower frequency regression</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328602"><img class="Default EquationGraphic" src="images/midas.040.2.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/midas.040.2.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/midas.040.2.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> vectors of parameters to be estimated.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="328603">The </a><span class="Definition">individual coefficients</span> approach adds each of the higher frequency components as a regressor in the lower frequency regression. In the simple case where we only include high frequency data corresponding to the current low frequency observation, we have:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.15.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328618">where <img class="Default EquationGraphic" src="images/midas.040.2.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 66px; top: 0.0pt" alt="" /> are the data <img class="Default EquationGraphic" src="images/midas.040.2.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> high frequency periods prior to <img class="Default EquationGraphic" src="images/midas.040.2.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> (we will refer to these data as the <img class="Default EquationGraphic" src="images/midas.040.2.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-th high frequency lag at <img class="Default EquationGraphic" src="images/midas.040.2.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />). Notice that this approach estimates a distinct <img class="Default EquationGraphic" src="images/midas.040.2.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> for each of the <img class="Default EquationGraphic" src="images/midas.040.2.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> high frequency lag regressors.</a></div>
+      <div class="Body_Text"><a name="328631">Alternately, the simple </a><span class="Definition">aggregation</span> approach adds an equally weighted sum (or average) of the high frequency data as a regressor in the low frequency regression:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.23.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.3)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328639">The approach estimates a single <img class="Default EquationGraphic" src="images/midas.040.2.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> associated with the new regressor. Viewed differently, the aggregation approach may be thought of as one in which the component higher frequency lags all enter the low frequency regression with a common coefficient <img class="Default EquationGraphic" src="images/midas.040.2.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="328643">For a quarterly regression with a higher frequency monthly series, there are three months in each quarter so the individual coefficients approach adds three regressors to the low frequency regression. The first regressor contains values for the first month in the corresponding quarter (January, April, July, or October), the second regressor has values for the second month in the corresponding quarter (February, May, August, or November), and the third regressor contains values for the third month in the relevant quarter (March, June, September, December).</a></div>
+      <div class="Body_Text"><a name="328644">The aggregation approach adds the single regressor containing the sum of the monthly values over the corresponding quarter. For first quarter observations, the regressor will contain the sum of the higher frequency January, February, and March monthly values for that quarter. Similarly, the regressor will contain the sum of the October, November, and December values in fourth quarter observations.</a></div>
+      <div class="Body_Text"><a name="328645">We may think of these two approaches as polar extremes. The individual coefficients approach offers the greatest flexibility but requires large numbers of coefficients. The aggregation approach is parsimonious, but places quite significant equal weighting restrictions on the lagged high frequency data.</a></div>
+      <div class="Body_Text"><a name="328646">In contrast, MIDAS estimation offers several different weighting functions which occupy the middle ground between the unrestricted and the equally weighted aggregation approaches. The MIDAS weighting functions reduce the number of parameters in the model by placing restrictions on the effects of high frequency variables at various lags.</a></div>
+      <div class="Heading_4"><a name="328648">Step Weighting</a></div>
+      <div class="Body_Text"><a name="328649">The simplest weighting method employs the step function:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.26.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.4)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328654">where </a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328661"><img class="Default EquationGraphic" src="images/midas.040.2.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a chosen number of lagged high frequency periods to use (where <img class="Default EquationGraphic" src="images/midas.040.2.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> may be less than or greater than <img class="Default EquationGraphic" src="images/midas.040.2.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328668"><img class="Default EquationGraphic" src="images/midas.040.2.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is a step length</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328675"><img class="Default EquationGraphic" src="images/midas.040.2.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 66px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/midas.040.2.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 107px; top: 0.0pt" alt="" /></a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="328676">In this approach, the coefficients on the high frequency data are restricted using a step function, with high frequency lags within a given step sharing values for <img class="Default EquationGraphic" src="images/midas.040.2.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. For example, with <img class="Default EquationGraphic" src="images/midas.040.2.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" />, the first three lagged high frequency lags <img class="Default EquationGraphic" src="images/midas.040.2.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 66px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/midas.040.2.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 85px; top: 0.0pt" alt="" />, employ the same coefficient <img class="Default EquationGraphic" src="images/midas.040.2.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, the next three lags use <img class="Default EquationGraphic" src="images/midas.040.2.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, and so on up to the maximum lag of <img class="Default EquationGraphic" src="images/midas.040.2.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="328698">Notably, the number of high frequency coefficients in the step weighting model increases with the number of high frequency lags, but in comparison to an individual coefficient approach, the number of coefficients is reduced by a factor of roughly <img class="Default EquationGraphic" src="images/midas.040.2.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_4"><a name="328703">Almon (PDL) Weighting</a></div>
+      <div class="Body_Text"><a name="328704">Almon lag weighting (also called polynomial distributed lag or PDL weighting) is widely used to place restrictions on lag coefficients in autoregressive models, and is a natural candidate for the mixed frequency weighting. </a></div>
+      <div class="Body_Text"><a name="328711">For each high frequency lag up to <img class="Default EquationGraphic" src="images/midas.040.2.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, the regression coefficients are modeled as a <img class="Default EquationGraphic" src="images/midas.040.2.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> dimensional lag polynomial in the MIDAS parameters <img class="Default EquationGraphic" src="images/midas.040.2.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. We may write the resulting restricted regression model as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.44.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328725">where <img class="Default EquationGraphic" src="images/midas.040.2.45.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is the Almon polynomial order, and the chosen number of lags <img class="Default EquationGraphic" src="images/midas.040.2.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> may be less than or greater than <img class="Default EquationGraphic" src="images/midas.040.2.47.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="328729">Importantly, the number of coefficients to be estimated depends on the polynomial order and not the number of high frequency lags. We can see this more clearly after rearranging terms and rewriting the model using a constructed variable:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.48.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328741">It is easy to see the distinct coefficient <img class="Default EquationGraphic" src="images/midas.040.2.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> associated with each of the <img class="Default EquationGraphic" src="images/midas.040.2.50.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> sets of constructed variables <img class="Default EquationGraphic" src="images/midas.040.2.51.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 31px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_4"><a name="328746">Exponential Almon Weighting</a></div>
+      <div class="Body_Text"><a name="328747">The normalized exponential Almon weighting approach uses exponential weights and a lag polynomial of degree 2, yielding:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.52.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.7)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.53.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328763">where <img class="Default EquationGraphic" src="images/midas.040.2.54.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a chosen number of lags, <img class="Default EquationGraphic" src="images/midas.040.2.55.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is a slope coefficient that is common across lags, and the differential response comes via the exponential weighting function and the lag polynomial which depends on the two MIDAS coefficients <img class="Default EquationGraphic" src="images/midas.040.2.56.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/midas.040.2.57.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="328770">In constructed variable form, we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.58.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328775">Note that this regression model is highly nonlinear in the parameters of the model.</a></div>
+      <div class="Heading_4"><a name="328777">Beta Weighting</a></div>
+      <div class="Body_Text"><a name="328778">Beta weighting was introduced by Ghysels, Santa-Clara and Valkanov (2004) and is based on the normalized beta weighting function. The corresponding regression model is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.59.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328789">where <img class="Default EquationGraphic" src="images/midas.040.2.60.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a number of lags, <img class="Default EquationGraphic" src="images/midas.040.2.61.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is a slope coefficient that is common across lags, and</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.62.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.11)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328800">where <img class="Default EquationGraphic" src="images/midas.040.2.63.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a small number (in practice, approximately equal to <img class="Default EquationGraphic" src="images/midas.040.2.64.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 62px; top: 0.0pt" alt="" />).</a></div>
+      <div class="Body_Text"><a name="328801">In constructed variable form, we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/midas.040.2.65.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(30.12)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328806">The beta function is extremely flexible and can take many shapes, including gradually increasing or decreasing, flat, humped, or U-shaped, depending on the values of the three MIDAS parameters <img class="Default EquationGraphic" src="images/midas.040.2.66.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 80px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="328813">In practice the parameters of the beta function are restricted further by imposing <img class="Default EquationGraphic" src="images/midas.040.2.67.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 56px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/midas.040.2.68.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 56px; top: 0.0pt" alt="" />, or <img class="Default EquationGraphic" src="images/midas.040.2.69.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 56px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/midas.040.2.70.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 56px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328826">The restriction <img class="Default EquationGraphic" src="images/midas.040.2.71.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 56px; top: 0.0pt" alt="" /> implies that the </a><span class="Emphasis">shape </span>of the weight function depends on a single parameter, exhibiting slow decay when <img class="Default EquationGraphic" src="images/midas.040.2.72.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" /> and slow increase when <img class="Default EquationGraphic" src="images/midas.040.2.73.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328836">The restriction <img class="Default EquationGraphic" src="images/midas.040.2.74.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 56px; top: 0.0pt" alt="" /> implies that there are zero weights at the high frequency lag endpoints (when <img class="Default EquationGraphic" src="images/midas.040.2.75.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/midas.040.2.76.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 76px; top: 0.0pt" alt="" />).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328849">The restriction <img class="Default EquationGraphic" src="images/midas.040.2.77.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 56px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/midas.040.2.78.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 56px; top: 0.0pt" alt="" /> imposes both the shape and the zero endpoint weight restrictions.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="328850">(Please note that for specifications with a small number of MIDAS lags the zero endpoint restriction is quite restrictive and may generate significant bias.)</a></div>
+      <div class="Body_Text"><a name="328851">Lastly, while the number of parameters of the beta weighting model is at most 3 and does not increase with the number of lags, estimation does involve optimization of a highly non-linear objective.</a></div>
+      <div class="Heading_4"><a name="328852">U-MIDAS</a></div>
+      <div class="Body_Text"><a name="328853">The U-MIDAS technique adds each of the higher frequency components as a regressor in the lower frequency regression. Notably, The U-MIDAS weighting method is simply the individual coefficients technique given by </a><span class="Link"><a href="#328608" title="Background">Equation&nbsp;(30.2)</a></span>. In contrast to other methods, there are no restrictions on the implied lag polynomial in the low frequency regression. </div>
+      <div class="Body_Text"><a name="331966">While extremely flexible, U-MIDAS requires a estimation of a large number of coefficients. U-MIDAS does not alleviate the issue of requiring a large number of coefficients, but can be used in cases where a small number of lags are required, and is often used for comparative purposes.</a></div>
+      <div class="Heading_4"><a name="331980">Auto/GETS</a></div>
+      <div class="Body_Text"><a name="331981">The Auto/GETS weighting scheme is an extension of U-MIDAS that uses variable selection to reduce down the number of individual coefficients by excluding individual lags. See </a><span class="Link"><a href="Varsel-Background.html#277256" title="Background">&#8220;Auto-Search / GETS&#8221;</a></span> for discussion of the Auto/GETS procedure.</div>
+      <div class="Body_Text"><a name="331982">As a complement to the MIDAS variable selection, EViews also offers the ability to test for indicator variable inclusion. See </a><span class="Link"><a href="Regress2-Indicator_Saturation.html#276745" title="Indicator Saturation">&#8220;Indicator Saturation&#8221;</a></span> for additional detail on indicator saturation.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

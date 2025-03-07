@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Estimating ARCH Models in EViews</title>
+    <link rel="StyleSheet" href="css/arch.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="arch-Basic_ARCH_Specifications.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="arch-Working_with_ARCH_Models.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="arch-ARCH_and_GARCH_Estimation.html">ARCH and GARCH Estimation</a> : Estimating ARCH Models in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="48812">Estimating ARCH Models in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#185626">The Mean Equation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#164172">The Error Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#193153">Variance Equation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#48825">Class of models</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#48828">Variance regressors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#174120">Restrictions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#165068">The Error Distribution</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#48834">Estimation Options </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#165683">Backcasting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#111988">Heteroskedasticity Consistent Covariances</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#141418">Derivative Methods</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#48843">Iterative Estimation Control</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#141429">Starting Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#111714">GARCH(1,1) examples</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="48813">To estimate an ARCH or GARCH model, open the equation specification dialog by selecting </a><span class="Menu_Item">Quick/Estimate Equation&#8230;</span>, by selecting <span class="Menu_Item">Object/New Object.../Equation&#8230;</span>. Select <span class="Menu_Item">ARCH</span> from the method dropdown menu at the bottom of the dialog. Alternately, typing the keyword <span class="In-line_command">arch</span> in the command line both creates the object and sets the estimation method.</div>
+      <div class="Body_Text"><a name="185615">The dialog will change to show you the ARCH specification dialog. You will need to specify both the mean and the variance specifications, the error distribution and the estimation sample.</a></div>
+      <div class="Heading_4"><a name="185626">The Mean Equation</a></div>
+      <div class="Picture"><a name="185630"><img class="Default" src="images/arch.037.3.01.jpg" width="100%" style="left: 0.0pt; max-height: 572px; max-width: 588px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="185631">In the dependent variable edit box, you should enter the specification of the mean equation. You can enter the specification in list form by listing the dependent variable followed by the regressors. You should add the C to your specification if you wish to include a constant. If you have a more complex mean specification, you can enter your mean equation using an explicit expression.</a></div>
+      <div class="Body_Text"><a name="164171">If your specification includes an ARCH-M term, you should select the appropriate item of the dropdown menu in the upper right-hand side of the dialog. You may choose to include </a><span class="Menu_Item">the Std. Dev.</span>, <span class="Menu_Item">Variance</span>, or the <span class="Menu_Item">Log(Var)</span> in the mean equation.</div>
+      <div class="Heading_4"><a name="164172">The Error Specification</a></div>
+      <div class="Heading_5"><a name="193153">Variance Equation</a></div>
+      <div class="Body_Text"><a name="165587">Your next step is to specify your variance equation.</a></div>
+      <div class="Heading_6"><a name="48825">Class of models</a></div>
+      <div class="Body_Text"><a name="165551">To estimate one of the standard GARCH models as described above, select the </a><span class="Menu_Item">GARCH/TARCH</span> entry in the <span class="Menu_Item">Model</span> dropdown menu. The other entries (<span class="Menu_Item">EGARCH</span>, <span class="Menu_Item">PARCH</span>, and C<span class="Menu_Item">omponent ARCH(1, 1)</span>) correspond to more complicated variants of the GARCH specification. We discuss each of these models in <span class="Link"><a href="arch-Additional_ARCH_Models.html#49080" title="Additional ARCH Models">&#8220;Additional ARCH Models&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="48826">In the </a><span class="Menu_Item">Order </span>section, you should choose the number of ARCH and GARCH terms. The default, which includes one ARCH and one GARCH term is by far the most popular specification.</div>
+      <div class="Body_Text"><a name="165593">If you wish to estimate an asymmetric model, you should enter the number of asymmetry terms in the </a><span class="Menu_Item">Threshold order</span> edit field. The default settings estimate a symmetric model with threshold order 0.</div>
+      <div class="Heading_6"><a name="48828">Variance regressors</a></div>
+      <div class="Body_Text"><a name="48829">In the </a><span class="Menu_Item">Variance regressors </span>edit box, you may optionally list variables you wish to include in the variance specification. Note that, with the exception of IGARCH models, EViews will always include a constant as a variance regressor so that you do not need to add C to this list. </div>
+      <div class="Body_Text"><a name="48832">The distinction between the permanent and transitory regressors is discussed in </a><span class="Link"><a href="arch-Additional_ARCH_Models.html#166973" title="Additional ARCH Models">&#8220;The Component GARCH (CGARCH) Model&#8221;</a></span>.</div>
+      <div class="Heading_6"><a name="174120">Restrictions</a></div>
+      <div class="Body_Text"><a name="174118">If you choose the GARCH/TARCH model, you may restrict the parameters of the GARCH model in two ways. One option is to set the </a><span class="Menu_Item">Restrictions</span> dropdown to <span class="Dialog_Item">IGARCH</span>, which restricts the persistent parameters to sum up to one. Another is <span class="Dialog_Item">Variance Target</span>, which restricts the constant term to a function of the GARCH parameters and the unconditional variance:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/arch.037.3.02.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(27.13)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="174137">where <img class="Default EquationGraphic" src="images/arch.037.3.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> is the unconditional variance of the residuals.</a></div>
+      <div class="Heading_5"><a name="165068">The Error Distribution</a></div>
+      <div class="Body_Text"><a name="165076">To specify the form of the conditional distribution for your errors, you should select an entry from the </a><span class="Menu_Item">Error Distribution</span> dropdown menu.You may choose between the default <span class="Menu_Item">Normal (Gaussian),</span> the <span class="Menu_Item">Student&#8217;s t</span>, the <span class="Menu_Item">Generalized Error (GED)</span>, the <span class="Menu_Item">Student&#8217;s t with fixed d.f.</span>, or the <span class="Menu_Item">GED with fixed parameter</span>. In the latter two cases, you will be prompted to enter a value for the fixed parameter. See <span class="Link"><a href="arch-Basic_ARCH_Specifications.html#165096" title="Basic ARCH Specifications">&#8220;Distributional Assumptions&#8221;</a></span> for details on the supported distributions.</div>
+      <div class="Heading_4"><a name="48834">Estimation Options </a></div>
+      <div class="Body_Text"><a name="165678">EViews provides you with access to a number of optional estimation settings. Simply click on the </a><span class="Dialog_Item">Options</span> tab and fill out the dialog as desired.</div>
+      <div class="Heading_5"><a name="165683">Backcasting</a></div>
+      <div class="Picture"><a name="175529"><img class="Default" src="images/arch.037.3.04.jpg" width="100%" style="left: 0.0pt; max-height: 569px; max-width: 582px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="111723">By default, both the innovations used in initializing MA estimation and the initial variance required for the GARCH terms are computed using backcasting methods. Details on the MA backcasting procedure are provided in </a><span class="Link"><a href="timeser-Estimation_Method_Details.html#251756" title="Estimation Method Details">&#8220;Initializing MA Innovations&#8221;</a></span>. </div>
+      <div class="Body_Text"><a name="112092">When computing backcast initial variances for GARCH, EViews first uses the coefficient values to compute the residuals of the mean equation, and then computes an exponential smoothing estimator of the initial values,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/arch.037.3.05.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(27.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="112061">where <img class="Default EquationGraphic" src="images/arch.037.3.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 20px; max-width: 12px; top: 0.0pt" alt="" /> are the residuals from the mean equation, <img class="Default EquationGraphic" src="images/arch.037.3.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 20px; top: 0.0pt" alt="" /> is the unconditional variance estimate:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/arch.037.3.08.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(27.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="112066">and the smoothing parameter <img class="Default EquationGraphic" src="images/arch.037.3.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" />. However, you have the option to choose from a number of weights from 0.1 to 1, in increments of 0.1, by using the </a><span class="Dialog_Item">Presample variance</span> drop-down list. Notice that if the parameter is set to 1, then the initial value is simply the unconditional variance, e.g. backcasting is not calculated:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/arch.037.3.10.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(27.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="112182">Using the unconditional variance provides another common way to set the presample variance.</a></div>
+      <div class="Body_Text"><a name="174160">Our experience has been that GARCH models initialized using backcast exponential smoothing often outperform models initialized using the unconditional variance.</a></div>
+      <div class="Heading_5"><a name="111988">Heteroskedasticity Consistent Covariances</a></div>
+      <div class="Body_Text"><a name="48840">Click on the check box labeled </a><span class="Dialog_Item">Heteroskedasticity Consistent Covariance</span> to compute the quasi-maximum likelihood (QML) covariances and standard errors using the methods described by Bollerslev and Wooldridge (1992). This option is only available if you choose the conditional normal as the error distribution.</div>
+      <div class="Body_Text"><a name="48841">You should use this option if you suspect that the residuals are not conditionally normally distributed. When the assumption of conditional normality does not hold, the ARCH parameter estimates will still be consistent, provided the mean and variance functions are correctly specified. The estimates of the covariance matrix will not be consistent unless this option is specified, resulting in incorrect standard errors.</a></div>
+      <div class="Body_Text"><a name="48842">Note that the parameter estimates will be unchanged if you select this option; only the estimated covariance matrix will be altered.</a></div>
+      <div class="Heading_5"><a name="141418">Derivative Methods</a></div>
+      <div class="Body_Text"><a name="175699">EViews uses both numeric and analytic derivatives in estimating ARCH models. Fully analytic derivatives are available for GARCH(</a><span class="Argument">p</span>, <span class="Argument">q</span>) models with simple mean specifications assuming normal or unrestricted <span class="In-line_math">t</span>-distribution errors. </div>
+      <div class="Body_Text"><a name="175729">Analytic derivatives are not available for models with ARCH in mean specifications, complex variance equation specifications (</a><span class="Emphasis">e.g.</span> threshold terms, exogenous variance regressors, or integrated or target variance restrictions), models with certain error assumptions (<span class="Emphasis">e.g.</span> errors following the GED or fixed parameter <span class="In-line_math">t</span>-distributions), and all non-GARCH(<span class="Argument">p</span>, <span class="Argument">q</span>) models (<span class="Emphasis">e.g.</span> EGARCH, PARCH, component GARCH).</div>
+      <div class="Body_Text"><a name="175687">Some specifications offer analytic derivatives for a subset of coefficients. For example, simple GARCH models with non-constant regressors allow for analytic derivatives for the variance coefficients but use numeric derivatives for any non-constant regressor coefficients. </a></div>
+      <div class="Body_Text"><a name="175770">You may control the method used in computing numeric derivatives to favor speed (fewer function evaluations) or to favor accuracy (more function evaluations). </a></div>
+      <div class="Heading_5"><a name="48843">Iterative Estimation Control</a></div>
+      <div class="Body_Text"><a name="48844">The likelihood functions of ARCH models are not always well-behaved so that convergence may not be achieved with the default estimation settings. You can use the options dialog to select the iterative algorithm (Marquardt, BHHH/Gauss-Newton), change starting values, increase the maximum number of iterations, or adjust the convergence criterion. </a></div>
+      <div class="Heading_5"><a name="141429">Starting Values</a></div>
+      <div class="Body_Text"><a name="141430">As with other iterative procedures, starting coefficient values are required. EViews will supply its own starting values for ARCH procedures using OLS regression for the mean equation. Using the </a><span class="Menu_Item">Options</span> dialog, you can also set starting values to various fractions of the OLS starting values, or you can specify the values yourself by choosing the <span class="Menu_Item">User Specified</span> option, and placing the desired coefficients in the default coefficient vector.</div>
+      <div class="Heading_4"><a name="111714">GARCH(1,1) examples</a></div>
+      <div class="Body_Text"><a name="48846">To estimate a standard GARCH(1,1) model with no regressors in the mean and variance equations:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/arch.037.3.11.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(27.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="48851">you should enter the various parts of your specification:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="48852">Fill in the </a><span class="Menu_Item">Mean Equation Specification</span> edit box as</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Input_0029"><a name="48853">r c</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="48854">Enter </a><span class="In-line_input">1</span> for the number of ARCH terms, and <span class="In-line_input">1</span> for the number of GARCH terms, and select <span class="Dialog_Item">GARCH/TARCH</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="48855">Select </a><span class="Dialog_Item">None</span> for the <span class="Dialog_Item">ARCH-M term</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="48856">Leave blank the </a><span class="Dialog_Item">Variance Regressors</span> edit box.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="48857">To estimate the ARCH(4)-M model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/arch.037.3.12.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(27.18)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="10429">you should fill out the dialog in the following fashion:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="48888">Enter the mean equation specification &#8220;R C DUM&#8221;.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="48890">Enter &#8220;4&#8221; for the ARCH term and &#8220;0&#8221; for the GARCH term, and select </a><span class="Dialog_Item">GARCH (symmetric)</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="48891">Select </a><span class="Dialog_Item">Std. Dev.</span> for the <span class="Dialog_Item">ARCH-M</span> term.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="48892">Enter DUM in the </a><span class="Menu_Item">Variance Regressors</span> edit box.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="48893">Once you have filled in the </a><span class="Menu_Item">Equation Specification</span> dialog, click <span class="Dialog_Item">OK</span> to estimate the model. ARCH models are estimated by the method of maximum likelihood, under the assumption that the errors are conditionally normally distributed. Because the variance appears in a non-linear way in the likelihood function, the likelihood function must be estimated using iterative algorithms. In the status line, you can watch the value of the likelihood as it changes with each iteration. When estimates converge, the parameter estimates and conventional regression statistics are presented in the ARCH object window.</div>
+      <div class="Body_Text"><a name="165895">As an example, we fit a GARCH(1,1) model to the first difference of log daily S&amp;P 500 (DLOG(SPX)) in the workfile &#8220;Stocks.WF1&#8221;, using backcast values for the initial variances and computing Bollerslev-Wooldridge standard errors. The output is presented below:</a></div>
+      <div class="Table"><a name="165899"><img class="Default" src="images/arch.037.3.13.jpg" width="100%" style="left: 0.0pt; max-height: 531px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="165900">By default, the estimation output header describes the estimation sample, and the methods used for computing the coefficient standard errors, the initial variance terms, and the variance equation. Also noted is the method for computing the presample variance, in this case backcasting with smoothing parameter <img class="Default EquationGraphic" src="images/arch.037.3.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="164215">The main output from ARCH estimation is divided into two sections&#8212;the upper part provides the standard output for the mean equation, while the lower part, labeled &#8220;Variance Equation&#8221;, contains the coefficients, standard errors, </a><span class="In-line_math">z</span>-statistics and <span class="In-line_math">p</span>-values for the coefficients of the variance equation.</div>
+      <div class="Body_Text"><a name="164211">The ARCH parameters correspond to <img class="Default EquationGraphic" src="images/arch.037.3.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> and the GARCH parameters to <img class="Default EquationGraphic" src="images/arch.037.3.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> in </a><span class="Link"><a href="arch-Basic_ARCH_Specifications.html#48660" title="Basic ARCH Specifications">Equation&nbsp;(27.2)</a></span>. The bottom panel of the output presents the standard set of regression statistics using the residuals from the mean equation. Note that measures such as <img class="Default EquationGraphic" src="images/arch.037.3.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> may not be meaningful if there are no regressors in the mean equation. Here, for example, the <img class="Default EquationGraphic" src="images/arch.037.3.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> is negative.</div>
+      <div class="Body_Text"><a name="141080">In this example, the sum of the ARCH and GARCH coefficients (<img class="Default EquationGraphic" src="images/arch.037.3.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" />) is very close to one, indicating that volatility shocks are quite persistent. This result is often observed in high frequency financial data.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

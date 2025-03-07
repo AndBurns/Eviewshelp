@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Working with Threshold Equations</title>
+    <link rel="StyleSheet" href="css/tar.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="tar-Threshold_Estimation_in_EViews.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="tar-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="tar-Discrete_Threshold_Regression.html">Discrete Threshold Regression</a> : Working with Threshold Equations</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="271375">Working with Threshold Equations</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#271378">Estimation Output</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#271399">Equation Views and Procs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#271402">Criteria Graph and Table</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#271422">Representations View</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#271430">Threshold Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#271444">Omitted and Redundant Variables Testing</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#271454">Forecasting</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="271376">The threshold equation produced by the EViews threshold estimation procedure is, in essence, a linear regression model with regime dummies on some or all of the variables. For the most part, views and procs will work as in standard models, though some care should be taken in interpreting results. </a></div>
+      <div class="Body_Text"><a name="271377">We describe below the basics of working with your threshold equation, highlighting views and procs for which there are important differences, along with threshold specific tools.</a></div>
+      <div class="Heading_4"><a name="271378">Estimation Output</a></div>
+      <div class="Body_Text"><a name="271379">Suppose we estimate a two-regime threshold regression model with an AR(11) in each regime and model selection over threshold dependent variable lags from -1 to -5 using the LYNX_TRANSF series in the &#8220;terasvirta_lynx.WF1&#8221; example workfile.</a></div>
+      <div class="Body_Text"><a name="271380">The top part of the output shows equation specification information. </a></div>
+      <div class="Picture"><a name="271384"><img class="Default" src="images/tar.045.4.01.jpg" width="100%" style="left: 0.0pt; max-height: 225px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="271385">In addition to the usual dependent variable, method, date, and sample information, EViews displays information about the threshold specification. Here we see that the threshold value was found using the fixed number (one) of sequentially determined thresholds. Since we instructed EViews to perform model selection using 1 to 5 lags of the LYNX_TRANSF series, EViews displays the names of all of the candidate series. Lastly, EViews displays the selected threshold variable and the estimated threshold value. </a></div>
+      <div class="Body_Text"><a name="271386">Some comments on the reported threshold value are in order. Recall that the threshold values are only identified up to an interval defined by adjacent values of the sorted threshold variable (Tsay, 1989). For purposes of display, EViews reports the observed value of the threshold variable at the beginning of a regime, truncated to a more readable form, while ensuring that the representation satisfies the threshold inequalities.</a></div>
+      <div class="Body_Text"><a name="271387">The middle part of the output labels displays coefficient values and associated statistics for each regime. The bottom portion of the output contains the usual summary statistics.</a></div>
+      <div class="Picture"><a name="271391"><img class="Default" src="images/tar.045.4.02.jpg" width="100%" style="left: 0.0pt; max-height: 810px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="271397">Most of the summary statistics are self-explanatory. We do note that the <img class="Default EquationGraphic" src="images/tar.045.4.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />-square, the </a><span class="In-line_math">F</span>-statistic, and the corresponding probability are all based on a comparison with the fully restricted, no threshold, constant only model.</div>
+      <div class="Heading_4"><a name="271399">Equation Views and Procs</a></div>
+      <div class="Body_Text"><a name="271400">Not surprisingly, the available views and procs for threshold equations parallel those in breakpoint least squares regression, with some additions as described below. Additionally we address some subtle and not-so-subtle issues that you should bear in mind when working with the familiar routines.</a></div>
+      <div class="Heading_5"><a name="271402">Criteria Graph and Table</a></div>
+      <div class="Body_Text"><a name="271403">If you select </a><span class="Menu_Item">View/Model Selection Summary </span>from an estimated threshold equation you will be offered a choice of displaying a <span class="Menu_Item">Criteria Graph</span> or a <span class="Menu_Item">Criteria Table</span>:</div>
+      <div class="Picture"><a name="271407"><img class="Default" src="images/tar.045.4.04.jpg" width="100%" style="left: 0.0pt; max-height: 463px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="271408">These two views display the model selection criteria used to select the threshold variable in a line plot or a table, ordered by the selection criterion.</a></div>
+      <div class="Body_Text"><a name="271409">For example, the criteria graph for this equation is shown below:</a></div>
+      <div class="Picture"><a name="271413"><img class="Default" src="images/tar.045.4.05.jpg" width="100%" style="left: 0.0pt; max-height: 461px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="271414">In this figure, the threshold variable whose model has the lowest AIC is clearly visible on the left of the graph.</a></div>
+      <div class="Body_Text"><a name="271416">Here, we see the same set of results in table form. This view also includes information about the common sample used for model selection estimation, and the number of regimes employed for each candidate model.</a></div>
+      <div class="Picture"><a name="271417">&nbsp;</a></div>
+      <div class="Picture"><a name="271421"><img class="Default" src="images/tar.045.4.06.jpg" width="100%" style="left: 0.0pt; max-height: 322px; max-width: 427px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_5"><a name="271422">Representations View</a></div>
+      <div class="Body_Text"><a name="271423">The representations view (</a><span class="Menu_Item">View/Representations</span>) shows the expanded equation specification, which combines the coefficients from different regimes with the threshold variable and limits and various inequalities into a single equation.</div>
+      <div class="Picture"><a name="271428"><img class="Default" src="images/tar.045.4.07.jpg" width="100%" style="left: 0.0pt; max-height: 439px; max-width: 644px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="271429">Note that estimating this single equation specification via ordinary least squares will produce the same coefficients as the estimated threshold model.</a></div>
+      <div class="Heading_5"><a name="271430">Threshold Specification</a></div>
+      <div class="Body_Text"><a name="271431">The threshold specification view displays more detailed information about the threshold variable, values, along with information about the method of selecting the number of thresholds. To display this view, click on </a><span class="Menu_Item">View/Threshold Specification</span> from the equation menu.</div>
+      <div class="Body_Text"><a name="271432">The top portion of the output displays information about the threshold and threshold values:</a></div>
+      <div class="Picture"><a name="271436"><img class="Default" src="images/tar.045.4.08.jpg" width="100%" style="left: 0.0pt; max-height: 305px; max-width: 1001px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="271437">The detailed information on the threshold values includes the actual data value corresponding to the break (in this case 3.40414924921), the actual data value for the next highest data value (here 3.39984671271), and the truncated value EViews uses for display and representation purposes (3.404149). (Note that any value between the lower adjacent data value and the threshold data value would produce the same observed fit).</a></div>
+      <div class="Body_Text"><a name="271438">The lower portion of the output displays calculations used in determining the thresholds:</a></div>
+      <div class="Picture"><a name="271442"><img class="Default" src="images/tar.045.4.09.jpg" width="100%" style="left: 0.0pt; max-height: 671px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="271443">In this case, EViews displays the results for sequentially determined thresholds using the Bai-Perron Sup-F test statistics. We caution again that since this TAR specification contains lagged endogenous variables, that the conditions required for distributional results is violated (Hansen, 1999; Hansen, 2000).</a></div>
+      <div class="Heading_5"><a name="271444">Omitted and Redundant Variables Testing</a></div>
+      <div class="Body_Text"><a name="271445">The omitted variables test (</a><span class="Menu_Item">View/Coefficient Diagnostics/Omitted Variables Test/Likelihood Ratio...</span>), requires the specification of regime-specific or common variables:</div>
+      <div class="Picture"><a name="271450"><img class="Default" src="images/tar.045.4.10.jpg" width="100%" style="left: 0.0pt; max-height: 316px; max-width: 312px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="271451">Simply enter the variables you wish to add in the appropriate edit field.</a></div>
+      <div class="Body_Text"><a name="271452">Alternately, the redundant variables test will prompt you to enter variables from the original specification that you wish to drop.</a></div>
+      <div class="Body_Text"><a name="271453">We point out that these tests are performed conditionally on the thresholds identified in the estimation step. EViews will use the threshold variables and values previously determined and perform the test on the conditional linear specification. This may not be the test you wish to perform.</a></div>
+      <div class="Heading_4"><a name="271454">Forecasting</a></div>
+      <div class="Body_Text"><a name="271455">Static or one-step ahead forecasting from a TR estimated equation is straightforward, and involves conditioning on the observed regressors, including any lagged endogenous and computing the forecast.</a></div>
+      <div class="Body_Text"><a name="271459">For TAR and other models with lagged endogenous variables, <img class="Default EquationGraphic" src="images/tar.045.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-step ahead nonlinear dynamic forecasting is considerably trickier (see, for example the discussion in Potter 1999, or Tong and Lim, 1980 who distinguish between the &#8220;eventual forecasting function&#8221; and the <img class="Default EquationGraphic" src="images/tar.045.4.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-step ahead forecasts). For dynamic threshold regression models, EViews computes forecasts by stochastic simulation with the forecasts and forecast standard errors obtained from the sample average and standard deviation of the simulated values.</a></div>
+      <div class="Body_Text"><a name="271463">To perform the forecast simulation, click on the </a><span class="Menu_Item">Forecast</span> button on the equation toolbar or select <span class="Menu_Item">Proc/Forecast...</span> from the equation menu to display the dialog:</div>
+      <div class="Picture"><a name="271467"><img class="Default" src="images/tar.045.4.13.jpg" width="100%" style="left: 0.0pt; max-height: 358px; max-width: 456px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="271468">Most of this </a><span class="Menu_Item">Forecast</span> dialog should be familiar. Note, however, that under the <span class="Menu_Item">Method</span> section are two new edit fields for controlling the stochastic simulation, one for the number of <span class="Menu_Item">Repetitions</span>, and the second for the <span class="Menu_Item">% failed reps before halting</span>. </div>
+      <div class="Body_Text"><a name="271469">Change the settings as desired and click on </a><span class="Menu_Item">OK</span> to continue. Here we tell EViews we wish to compute the simulated dynamic forecasts from 1900 to 1934. EViews displays the results of the forecast along with evaluation statistics:</div>
+      <div class="Picture"><a name="271473"><img class="Default" src="images/tar.045.4.14.jpg" width="100%" style="left: 0.0pt; max-height: 472px; max-width: 615px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="271474">We may use the saved values of the forecast and standard error series to show a comparison with the actuals. First, display a graph containing the series using the command:</a></div>
+      <div class="Input"><a name="271475">plot lynx_transf lynx_transfcst lynx_transfcst+2*lynx_transfse lynx_transfcst-2*lynx_transfse</a></div>
+      <div class="Body_Text"><a name="271476">After a bit of editing to change line colors, patterns, and legend entries, we have:</a></div>
+      <div class="Picture"><a name="271480"><img class="Default" src="images/tar.045.4.15.jpg" width="100%" style="left: 0.0pt; max-height: 416px; max-width: 503px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

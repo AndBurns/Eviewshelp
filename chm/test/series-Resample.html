@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Resample</title>
+    <link rel="StyleSheet" href="css/series.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="series-Generate_by_Classification.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="series-Interpolate.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_data.html">Basic Data Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="series-Series.html">Series</a> : Resample</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="132897">Resample</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#132903">Input Sample</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#132906">Output Sample</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#132908">NA Handling</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#132910">Series Name</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#132914">Weighting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#132916">Block Length</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="132898">The series resampling procedure selects from the observations in a series to create a new series (the resampled series). You may draw your new sample with replacement (allow a given observation to be drawn multiple times) or without replacement. When you select </a><span class="Menu_Item">Proc/Resample...</span> from the series window, you will be prompted to specify various options.</div>
+      <div class="Picture"><a name="132902"><img class="Default" src="images/series.017.27.1.jpg" width="100%" style="left: 0.0pt; max-height: 350px; max-width: 430px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="132903">Input Sample</a></div>
+      <div class="Body_Text"><a name="132904">Describes the sample from which observations are to be drawn. The default is the current workfile sample. </a></div>
+      <div class="Body_Text"><a name="132905">If you select the </a><span class="Menu_Item">Draw without replacement</span> option, each row will be drawn at most once. This option requires the input sample to be at least as large as the output sample. If you do not select this option, each row will be drawn <span class="Emphasis">with</span> replacement. </div>
+      <div class="Heading_4"><a name="132906">Output Sample</a></div>
+      <div class="Body_Text"><a name="132907">Specifies the sample into which the resampled series will be saved. Any value outside the output sample will not be changed. The default output sample is the current workfile sample. If you select the </a><span class="Menu_Item">Draw without replacement</span> option, the output sample cannot be larger than the input sample. </div>
+      <div class="Heading_4"><a name="132908">NA Handling</a></div>
+      <div class="Body_Text"><a name="132909">The default </a><span class="Menu_Item">Include NAs in draws</span> instructs EViews to draw from every observation in the input sample, including those that contain missing values. Alternatively, you may select the <span class="Menu_Item">Exclude NAs from draws</span> option so that you draw only from observations in the input sample that do not contain any missing values. Finally, the <span class="Menu_Item">Exclude NAs from draws but copy NA rows to output</span> option first copies matching observations in the input sample that contain missing values to the output sample. The remaining rows of the output sample are then filled by drawing from observations in the input sample that do not contain any missing values. This option keeps observations with missing values fixed and resamples those that do not contain any missing values. </div>
+      <div class="Heading_4"><a name="132910">Series Name</a></div>
+      <div class="Body_Text"><a name="132911">The new series will be named using the specified series name. You may provide a series name or a wildcard expression. If you use a wildcard expression, EViews will substitute the existing series name in place of the wildcard. For example, if you are sampling from the series </a><span class="EViews_Name">X</span> and specify &#8220;*_SMP&#8221; as the output series, EViews will save the results in the series <span class="EViews_Name">X_SMP</span>. You may not specify a destination series that is the same as the original series.</div>
+      <div class="Body_Text"><span class="Emphasis"><a name="132912">If another series with the specified name exists in the workfile, the existing values in the output sample will be overwritten with the resampled values</a></span>. Any values outside the output sample will remain unchanged. If there is a non-series object with the specified name, EViews will return an error message. </div>
+      <div class="Body_Text"><a name="132913">Because of these naming conventions, your original series cannot be an auto-series. For example, if the original series is X(-1) or LOG(X), EViews will issue an error. You will have to generate a new series, say by setting XLAG = X(-1) or LOGX = LOG(X), and then resample from the newly generated series. </a></div>
+      <div class="Heading_4"><a name="132914">Weighting</a></div>
+      <div class="Body_Text"><a name="132915">By default, the procedure draws from each row in the input sample with equal probabilities. If you want to attach different probabilities to the rows (importance sampling), you can specify a name of an existing series that contains weights that are proportional to the desired probabilities in each row. The weight series must have non-missing non-negative values in the input sample, but the weights need not add up to 1 since EViews will normalize the weights.</a></div>
+      <div class="Heading_4"><a name="132916">Block Length</a></div>
+      <div class="Body_Text"><a name="132917">By default, sets the </a><span class="Emphasis">block length</span> to 1, meaning that we draw one observation at a time from the input sample. If you specify a block length larger than 1, EViews will draw blocks of consecutive rows of the specified length. The blocks drawn in the procedure form a set of <span class="Emphasis">overlapping moving </span>blocks in the input sample. The drawn blocks will be appended one after the other in the output series until it fills the output sample (the final block will be truncated if the block size is not an integer multiple of the output sample size). Block resampling with a block length larger than 1 makes the most sense when resampling time series data. </div>
+      <div class="Body_Text"><a name="132918">Block resampling requires a continuous output sample. Therefore a block length larger than 1 cannot be used when the output sample contains &#8220;gaps&#8221; or when you have selected the </a><span class="Menu_Item">Exclude NAs from draws but copy NA rows to output</span> option. If you choose the <span class="Menu_Item">Exclude NAs from draws</span> option and the block length is larger than 1, the input sample will shrink in the presence of NAs in order to ensure that there are no missing values in any of the drawn blocks.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

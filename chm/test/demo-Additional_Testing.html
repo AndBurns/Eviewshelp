@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Additional Testing</title>
+    <link rel="StyleSheet" href="css/demo.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="demo-Forecasting_from_an_Estimated_Equation.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="workfile-Workfile_Basics.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="demo-A_Demonstration.html">A Demonstration</a> : Additional Testing</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="131544">Additional Testing</a></div>
+      <div class="Body_Text"><a name="131545">Note that the above specification has been selected for illustration purposes only. Indeed, performing various specification tests on EQLAGS suggests that there may be a number of problems with the existing specification.</a></div>
+      <div class="Body_Text"><a name="131546">For one, there is quite a bit of serial correlation remaining even after estimating the lag specification. A test of serial correlation in the EQLAGS equation (by selecting </a><span class="Menu_Item">View/Residual Diagnostics/Serial Correlation LM Test&#8230;</span>, and entering &#8220;1&#8221; for the number of lags) rejects the null hypothesis of no serial correlation in the reformulated equation. The top portion of the output is:</div>
+      <div class="Table"><a name="131550"><img class="Default" src="images/demo.007.8.1.jpg" width="100%" style="left: 0.0pt; max-height: 112px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="131551">Moreover, there is strong evidence of autoregressive conditional heteroskedasticity (ARCH) in the residuals. Select </a><span class="Menu_Item">View/Residual Diagnostics/Heteroskedasticity Tests... </span>to bring up the <span class="Menu_Item">Heteroskedasticity Tests </span>dialog. Then select <span class="Menu_Item">ARCH</span> from the listbox and accept the default of &#8220;1&#8221;. The top portion of the ARCH test results shows that the data suggest the presence of ARCH in the residuals:</div>
+      <div class="Table"><a name="131555"><img class="Default" src="images/demo.007.8.2.jpg" width="100%" style="left: 0.0pt; max-height: 121px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="131556">In addition to serial correlation and ARCH, there is an even more fundamental problem with the above specification since, as the graphs attest, LOG(M1) exhibits a pronounced upward trend, suggesting that we should perform a unit root in this series. The presence of a unit root will indicate the need for further analysis.</a></div>
+      <div class="Body_Text"><a name="131557">We once again display the LOG(M1) series window by clicking on </a><span class="Menu_Item">Window</span> and selecting the LOG(M1) series window from the menu. If the series window for LOG(M1) is not present (if you previously closed the window), you may again open a new window by selecting <span class="Menu_Item">Quick/Show&#8230;</span>, entering &#8220;log(m1)&#8221;, and clicking <span class="Menu_Item">OK</span>. </div>
+      <div class="Body_Text"><a name="131558">Before computing the test statistic, we will reset the workfile sample to all of the observations by clicking on Quick/Sample... and entering &#8220;@all&#8221; in the dialog.</a></div>
+      <div class="Body_Text"><a name="131559">Next, to perform an Augmented Dickey-Fuller (ADF) test for nonstationarity of this series, select </a><span class="Menu_Item">View/Unit Root Test&#8230;</span> and click on <span class="Menu_Item">OK</span> to accept the default options. EViews will perform an ADF test and display the test results. The top portion of the output reads:</div>
+      <div class="Table"><a name="131563"><img class="Default" src="images/demo.007.8.3.jpg" width="100%" style="left: 0.0pt; max-height: 257px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="131564">EViews performs the ADF test statistic with the number of lagged difference terms in the test equation (here, four) determined by automatic selection. The ADF test statistic value has a probability value of 0.9911, providing little evidence that we may reject the null hypothesis of a unit root.</a></div>
+      <div class="Body_Text"><a name="131565">If a unit root were present in our data, we may wish to adopt more sophisticated statistical models. These techniques are discussed in </a><span class="Link"><a href="timeser-Time_Series_Regression.html#36959" title="Time Series Regression">&#8220;Time Series Regression&#8221;</a></span>, <span class="Link"><a href="VAR-Vector_Autoregression_(VAR)_Models.html#36959" title="Vector Autoregression (VAR) Models">&#8220;Vector Autoregression (VAR) Models&#8221;</a></span> which deal with basic time series, cointegrating regression models, and vector error correction specifications, respectively).</div>
+      <div class="Body_Text"><a name="113725">&nbsp;</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

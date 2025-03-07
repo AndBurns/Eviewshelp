@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Program Basics</title>
+    <link rel="StyleSheet" href="css/cprogram.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cprogram-EViews_Programming.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-Simple_Programs.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cprogram-EViews_Programming.html">EViews Programming</a> : Program Basics</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="129">Program Basics</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#137">What is a Program?</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#175823">Creating a Program</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#173026">Program Formatting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#43049">Saving a Program</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#210123">Snapshots for Programs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#210126">Viewing Snapshots for Programs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#210199">Saving the Command Window</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#117131">Encrypting a Program</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#174483">Opening a Program</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#9225">Executing a Program</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#119865">The Run Program Dialog</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#120034">The Run and Exec Commands</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#177932">External Automation Tools</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#205019">Stopping a Program</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#205023">Running Part of a Program</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#212773">Program Debugging</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#212775">Setting and Clearing Breakpoints</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#212782">Starting a Debugging Session</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#212786">Stopping at a Breakpoint</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#212797">Button Bar</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#212799">Restrictions during Debugging</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#212802">Program Dependency Logging</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="137">What is a Program?</a></div>
+      <div class="Body_Text"><a name="175846">A program is simply a text file containing EViews commands. It is not an EViews object in a workfile. It exists as a file on your computer hard disk, generally with a &#8220;.PRG&#8221; extension.</a></div>
+      <div class="Heading_4"><a name="175823">Creating a Program</a></div>
+      <div class="Body_Text"><a name="139">To create a new program, click </a><span class="Menu_Item">File/New/Program</span>. You will see a standard text editing window where you can type in the lines of the program. You may also open the program window by typing <span class="In-line_input">program</span> in the command window, followed by an optional program name. For example</div>
+      <div class="Input"><a name="143">program firstprg</a></div>
+      <div class="Body_Text"><a name="145">opens a program window named &#8220;FIRSTPRG&#8221;. Program names should follow standard EViews rules for file names. </a></div>
+      <div class="Heading_4"><a name="173026">Program Formatting</a></div>
+      <div class="Body_Text"><a name="173021">As noted earlier, an EViews program is a text file, consisting of one or more lines of text. Generally, each line of a program corresponds to a single EViews command, so you may enter the text for each command and terminate the line by pressing the ENTER key.</a></div>
+      <div class="Body_Text"><a name="43073">If a program line is longer than the current program window, EViews will, by default, autowrap the text of the line. Autowrapping alters the appearance of the program line by displaying it on multiple lines, but does not change the contents of the line. While resizing the window will change the autowrap position, the text remains unchanged and is still contained in a single line. You may turn off autowrapping in programs via </a><span class="Menu_Item">Options/General Options/Programs </span>and deselecting the<span class="Menu_Item"> Enable word wrap </span>check box, or by clicking the <span class="Menu_Item">Wrap +/-</span> button on the program window. </div>
+      <div class="Body_Text"><a name="204940">When autowrapping is turned off via the option menu, you may elect to show program line numbers in your program window by selecting </a><span class="Menu_Item">Display line numbers</span>. You may then right-click anywhere in your program and select <span class="Menu_Item">Go To Line...</span> to jump directly to a specific line number.</div>
+      <div class="Body_Text"><a name="43052">If you desire greater control over the appearance of your lines, you can manually break long lines using the ENTER key, and then use the underscore continuation character &#8220;_&#8221; as the last character on the line to join the multiple lines. For example, the three separate lines of text</a></div>
+      <div class="Multi-line_Input"><a name="43027">equation eq1.ls _</a></div>
+      <div class="Multi-line_Input"><a name="43028">y x c _</a></div>
+      <div class="Multi-line_Input"><a name="43043">ar(1) ar(2)</a></div>
+      <div class="Body_Text"><a name="43029">are equivalent to the single line</a></div>
+      <div class="Input"><a name="124046">equation eq1.ls y x c ar(1) ar(2)</a></div>
+      <div class="Body_Text"><a name="124047">formed by joining the lines at the continuation character. We emphasize that the &#8220;_&#8221; must be the very last character in the line.</a></div>
+      <div class="Body_Text"><a name="124048">The apostrophe &#8220;'&#8221; is the comment character in programs. You may place the comment character anywhere in a line to treat all remaining characters in the line as a comment which will be ignored when executing the program command.</a></div>
+      <div class="Input"><a name="124071">equation eq1.ls y x c ar(1) ar(2) &#8217; this is a comment</a></div>
+      <div class="Body_Text"><a name="124069">A block of lines may be commented or uncommented in the EViews program file editor by highlighting the lines, right-mouse clicking, and selecting </a><span class="Menu_Item">Comment Selection</span> or <span class="Menu_Item">Uncomment Selection</span>.</div>
+      <div class="Body_Text"><a name="176450">You can instruct EViews to automatically format your program by selecting the lines to which you wish to apply formatting, right-mouse clicking and selecting </a><span class="Menu_Item">Format Selection</span>. Automatic formatting will clean up the text in the selection, and will highlight the structure of the program by indenting lines of code inside loops, if conditions and subroutines, <span class="Emphasis">etc.</span> You should find that automatic formatting makes your programs easier to read and edit.</div>
+      <div class="Body_Text"><a name="176444">You may elect to have EViews automatically indent your program as you type by changing the </a><span class="Menu_Item">Indent</span> option in the main EViews options menu (<span class="Menu_Item">Options/General Options/Programs</span>).</div>
+      <div class="Heading_4"><a name="43049">Saving a Program</a></div>
+      <div class="Body_Text"><a name="117129">After you have created and edited your program, you will probably want to save it. Press the </a><span class="Menu_Item">Save</span> or <span class="Menu_Item">SaveAs</span> button on the program window toolbar. When saved, the program will have the extension &#8220;.PRG&#8221;.</div>
+      <div class="Body_Text"><a name="120290">If saving your program will overwrite an existing program file and you have instructed EViews to make backup copies (</a><span class="Link"><a href="globalapp-The_Options_Menu.html#143484" title="The Options Menu">&#8220;Programs&#8221;</a></span>), EViews will automatically create the backup. The backup copy will have the same name as the file, but with the first character in the extension changed to &#8220;~&#8221;.</div>
+      <div class="Heading_5"><a name="210123">Snapshots for Programs</a></div>
+      <div class="Body_Text"><a name="210124">Managing snapshots for an EViews program is similar to workfiles (</a><span class="Link"><a href="workfile-Saving_a_Workfile.html#200391" title="Saving a Workfile">&#8220;Snapshot Backups&#8221;</a></span>). The program window has a <span class="Dialog_Item">Snapshot</span> button to perform a manual snapshot.</div>
+      <div class="Picture"><a name="210274"><img class="Default" src="images/cprogram.087.02.1.jpg" width="100%" style="left: 0.0pt; max-height: 238px; max-width: 502px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_5"><a name="210126">Viewing Snapshots for Programs</a></div>
+      <div class="Body_Text"><a name="210127">To view available snapshots for a program, right-click in the program window and select </a><span class="Menu_Item">Snapshots&#8230;</span></div>
+      <div class="Picture"><a name="210298"><img class="Default" src="images/cprogram.087.02.2.jpg" width="100%" style="left: 0.0pt; max-height: 491px; max-width: 740px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="210129">Clicking on a previous snapshot will display a text compare view that highlights any differences between the two versions.</a></div>
+      <div class="Body_Text"><a name="210196">You can also right-click any snapshot and select </a><span class="Menu_Item">Open&#8230;</span> (or simply double-click the node) to open the snapshot in its own program window.</div>
+      <div class="Picture"><a name="210318"><img class="Default" src="images/cprogram.087.02.3.jpg" width="100%" style="left: 0.0pt; max-height: 371px; max-width: 764px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="210214">Note that automatic snapshots are suspended when an EViews program is actively running. </a></div>
+      <div class="Heading_4"><a name="210199">Saving the Command Window</a></div>
+      <div class="Body_Text"><a name="178392">One convenient method of creating a program is to execute several commands using the EViews command window and then save the history of those commands to a program file. Click in the command window then select </a><span class="Menu_Item">File/Save As...</span> from the main EViews menu. EViews will prompt you to save the command log as a text file. Simply save the file with the &#8220;.PRG&#8221; extension. </div>
+      <div class="Body_Text"><a name="178942">You may then edit the program file and save the edited version in the usual fashion.</a></div>
+      <div class="Heading_4"><a name="117131">Encrypting a Program</a></div>
+      <div class="Body_Text"><a name="117144">EViews offers you the option of encrypting a program file so that you may distribute it to others in a form where they may not view the original text. Encrypted files may be opened and the program lines may be executed, but the source lines may not be viewed. To encrypt a program file simply click on the </a><span class="Menu_Item">Encrypt</span> button on the program window.</div>
+      <div class="Body_Text"><a name="117145">EViews will create an untitled program containing the contents of the original program, but with only the visible text &#8220;Encrypted program&#8221;. You may save this encrypted program in the usual fashion using </a><span class="Menu_Item">Save</span> or <span class="Menu_Item">SaveAs</span>. </div>
+      <div class="Body_Text"><a name="174481">Note that </a><span class="Emphasis">once a program is encrypted it may not be unencrypted; encryption should not be viewed as a method of password protecting a program</span>. You should always keep a separate copy of the original source program. To use an encrypted program, simply open it and run the program in the usual fashion.</div>
+      <div class="Heading_4"><a name="174483">Opening a Program</a></div>
+      <div class="Body_Text"><a name="9230">To load a program file previously saved on disk, click on </a><span class="Menu_Item">File/Open/Program...</span>, navigate to the appropriate directory, and click on the desired name. You may also drag an EViews program file onto the EViews window to open it. Alternatively, from the command line, you may type the keyword <span class="In-line_input">open</span> followed by the full program name, including the file extension &#8220;<span class="EViews_Name">.PRG&#8221;</span>. By default, EViews will look for the program in the default directory, but you may include the full path to the file and enclosed the entire name in quotations, if desired. For example, the commands:</div>
+      <div class="Multi-line_Input"><a name="171">open mysp500.prg</a></div>
+      <div class="Multi-line_Input"><a name="173">open "c:\mywork is here\eviews\myhouse.prg"</a></div>
+      <div class="Body_Text"><a name="179">open the file &#8220;Mysp500.PRG&#8221; in the default EViews directory, and &#8220;Myhouse</a><span class="EViews_Name">.</span>PRG<span class="EViews_Name">&#8221;</span> located in the directory &#8220;c:\mywork is here\eviews<span class="EViews_Name">&#8221;</span>.</div>
+      <div class="Heading_4"><a name="9225">Executing a Program</a></div>
+      <div class="Body_Text"><span class="Emphasis"><a name="118388">Executing a program</a></span> is the process of running all of the commands in a program file.</div>
+      <div class="Body_Text"><a name="177181">Note that EViews commands can be executed in two distinct ways. When you enter and run, line by line, a series of commands in the command window, we say that you are working in </a><span class="Definition">interactive mode</span>. Alternatively, you can type all of the commands in a program and execute or run them collectively as a batch of commands. When you run the commands from a program file, we say that you are in (non-interactive) <span class="Definition">program</span> <span class="Definition">mode</span> or <span class="Definition">batch mode</span>. </div>
+      <div class="Body_Text"><a name="72281">There are several ways to execute an EViews program:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="173974">The easiest method is by pushing the </a><span class="Menu_Item">Run</span> button on an open program window and entering settings in the<span class="Menu_Item"> Run Program</span> dialog.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="173975">Alternately, you may use the </a><span class="In-line_command">run</span> or <span class="In-line_command">exec</span> command to execute a program.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="173976">You may use external automation tools to run EViews and execute a program from outside of the EViews application environment.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="205031">You may select a set of subset of lines to execute and run the selected lines.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="119865">The Run Program Dialog</a></div>
+      <div class="Picture"><a name="120216"><img class="Default" src="images/cprogram.087.02.4.jpg" width="100%" style="left: 0.0pt; max-height: 356px; max-width: 407px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="119741">To run a program from a dialog, click on the </a><span class="Menu_Item">Run</span> button on the program window. The <span class="Menu_Item">Run</span> dialog opens. </div>
+      <div class="Body_Text"><a name="119714">The default run options are taken from the global settings (</a><span class="Link"><a href="globalapp-The_Options_Menu.html#143484" title="The Options Menu">&#8220;Programs&#8221;</a></span>), but may be overridden on a one-time basis using the dialog settings or command options. For purposes of discussion, we will assume that the global options are set to their out-of-the-box values.</div>
+      <div class="Body_Text"><a name="119791">The </a><span class="Menu_Item">Program name or path edit field</span> will show the name and in some cases, path, of the program you are running. You may enter a file specification to instruct EViews to look for a particular program.</div>
+      <div class="Body_Text"><a name="119792">The </a><span class="Menu_Item">Program arguments</span> edit field is used to define special string variables that will be passed to your program when it is running. See <span class="Link"><a href="cprogram-Program_Arguments.html#103352" title="Program Arguments">&#8220;Program Arguments&#8221;</a></span> for details.</div>
+      <div class="Body_Text"><a name="119817">The </a><span class="Menu_Item">Runtime errors</span> section allows you to modify the behavior of the program when it encounters an error. By default, when EViews encounters an error, it will immediately terminate the program and display a message. If you enter a number into the <span class="Dialog_Item">Maximum errors before halting</span> field, EViews will, if possible, continue to execute the program until the maximum number of errors is reached. If it encounters a serious error that makes it impossible to continue, EViews will halt the program even if the maximum number of errors is not reached. See <span class="Link"><a href="cprogram-Control_of_Execution.html#42840" title="Control of Execution">&#8220;Execution Errors&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="119876">If the </a><span class="Menu_Item">Compatibility</span> section checkbox labeled <span class="Menu_Item">Version 4 compatible variable substitution and program boolean comparisons </span>is selected, EViews will use the variable substitution behavior found in EViews 4 and earlier. To support the use of alpha series, EViews 5 and subsequent versions altered the way that % substitution variables are evaluated in expressions. To return to EViews 4 compatible rules for substitution, you may either use this checkbox or include a &#8220;MODE VER4&#8221; statement in your program. See <span class="Link"><a href="cprogram-Version_4_Compatibility_Notes.html#140405" title="Version 4 Compatibility Notes">&#8220;Version 4 Compatibility Notes&#8221;</a></span> and <span class="Link"><a href="cprogram-Program_Modes.html#103355" title="Program Modes">&#8220;Program Modes&#8221;</a></span> for additional discussion.</div>
+      <div class="Body_Text"><a name="120015">Lastly, you may select the </a><span class="Menu_Item">Save options as default </span>checkbox to update your global options with the specified settings. Alternately, you may change the global options from the <span class="Menu_Item">Options/General Options.../Programs/General </span>dialog.</div>
+      <div class="Heading_5"><a name="120034">The Run and Exec Commands</a></div>
+      <div class="Body_Text"><a name="119937">You may use the </a><span class="In-line_command">run</span> command to execute a program from the EViews command window. Simply enter the keyword <span class="In-line_command">run</span> along with any options, followed by a program file specification and any arguments (see <span class="In-line_command_link"><a href="commandcmd-run.html#2017022" title="run">run</a></span>). </div>
+      <div class="Body_Text"><a name="120108">You may run a program by entering the </a><span class="In-line_input">run</span> command, followed by the name of the program file:</div>
+      <div class="Multi-line_Input"><a name="120109">run mysp500</a></div>
+      <div class="Body_Text"><a name="140745">or, using an explicit path,</a></div>
+      <div class="Multi-line_Input"><a name="140746">run c:\eviews\myprog arg1 arg2 arg3</a></div>
+      <div class="Body_Text"><a name="140747">Note that use of the &#8220;.PRG&#8221; extension is not required since EViews will automatically append one to your specification.</a></div>
+      <div class="Body_Text"><a name="133866">The default </a><span class="In-line_command">run</span> options will be taken from the global settings (<span class="Link"><a href="globalapp-The_Options_Menu.html#143484" title="The Options Menu">&#8220;Programs&#8221;</a></span> ), but may be overridden using the command options. For example, you may use the &#8220;v&#8221; or &#8220;verbose&#8221;options to run the program in verbose mode, and the &#8220;q&#8221; or &#8220;quiet&#8221; options to run the program in quiet mode. If you include a number as an option, EViews will use that number to indicate the maximum number of errors encountered before execution is halted:</div>
+      <div class="Multi-line_Input"><a name="119436">run(v, 500) mysp500 </a></div>
+      <div class="Body_Text"><a name="119437">or</a></div>
+      <div class="Multi-line_Input"><a name="119438">run(q, ver4) progarg </a></div>
+      <div class="Body_Text"><a name="119432">Alternatively, you may modify your program to include statements for quiet or verbose mode, and statements to specify version compatibility. For example, to return to EViews 4 compatible rules for substitution, you may use the &#8220;ver4&#8221; option or include a &#8220;MODE VER4&#8221; statement in your program. See </a><span class="Link"><a href="cprogram-Version_4_Compatibility_Notes.html#140405" title="Version 4 Compatibility Notes">&#8220;Version 4 Compatibility Notes&#8221;</a></span> and <span class="Link"><a href="cprogram-Program_Modes.html#103355" title="Program Modes">&#8220;Program Modes&#8221;</a></span> for additional discussion.</div>
+      <div class="Body_Text"><a name="177727">You may provide a list of program arguments after the name of the program. These arguments will be passed on to the program as %0, %1 etc. See </a><span class="Link"><a href="cprogram-Program_Arguments.html#103352" title="Program Arguments">&#8220;Program Arguments&#8221;</a></span> for more details.</div>
+      <div class="Body_Text"><a name="177731">Program options may be passed on to the program by entering them, surrounded by parenthesis immediately after the name of the program. See </a><span class="Link"><a href="cprogram-Program_Options.html#141740" title="Program Options">&#8220;Program Options&#8221;</a></span> for details.</div>
+      <div class="Body_Text"><a name="141180">For example:</a></div>
+      <div class="Input"><a name="141194">run myprog(opt1, opt2, opt3=k) arg0 arg1 arg1</a></div>
+      <div class="Body_Text"><a name="141242">will run the program MYPROG passing on the options OPT1, OPT2, OPT3=k as options, and ARG0, ARG1 and ARG1 as arguments (%0, %1 and %2 respectively).</a></div>
+      <div class="Body_Text"><a name="120404">You may have launch EViews and run a program automatically on startup by choosing </a><span class="Menu_Item">File/Run</span> from the menu bar of the Windows Program Manager or <span class="Menu_Item">Start/Run</span> in Windows and then typing &#8220;eviews&#8221;, followed by the name of the program and the values of any arguments. If the program has as its last line the command <span class="In-line_command">exit</span>, EViews will close following the execution of the program.</div>
+      <div class="Body_Text"><a name="136061">The </a><span class="In-line_command">exec</span> command is similar to the <span class="In-line_command">run</span> command. It can also be used to execute a program file. The main differences between <span class="In-line_command">run</span> and <span class="In-line_command">exec</span> commands are the default directory they will run from, and the behavior when returning from executing a program. For more details see <span class="Link"><a href="cprogram-Multiple_Program_Files.html#189991" title="Multiple Program Files">&#8220;Multiple Program Files&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="177932">External Automation Tools</a></div>
+      <div class="Body_Text"><a name="205012">Lastly, you may use external automation tools to run EViews and execute a program from outside of the EViews application environment. In particular, EViews may be used as a COM Automation server so that an external program or script may launch and control EViews programmatically. See </a><span class="Link"><a href="external-EViews_COM_Automation_Server.html#1678024" title="EViews COM Automation Server">&#8220;EViews COM Automation Server&#8221;</a></span> and the <span class="Manual_Titles">EViews COM Automation Server </span>whitepaper, available from our website <span class="URL"><a href="http://www.eviews.com/download/download.html" target="external_window">www.eviews.com/download/download.html,</a></span> for additional discussion.</div>
+      <div class="Heading_4"><a name="205019">Stopping a Program</a></div>
+      <div class="Body_Text"><a name="205020">Pressing the ESC or F1 keys halts execution of a program. It may take a few seconds for EViews to respond to the halt command.</a></div>
+      <div class="Body_Text"><a name="205021">Programs will also stop when they encounter a </a><span class="In-line_input">stop</span> command, when they reach the maximum number of errors, when they encounter a non-recoverable error in a program statement, or when they finish processing a file that has been executed via a <span class="In-line_command">run</span> statement.</div>
+      <div class="Body_Text"><a name="205022">If you include the </a><span class="In-line_command">exit</span> keyword in your program, the EViews application will close.</div>
+      <div class="Heading_4"><a name="205023">Running Part of a Program</a></div>
+      <div class="Body_Text"><a name="205157">You may choose to only run part of your program by highlight the lines you wish to run, then right-clicking and selecting </a><span class="Menu_Item">Run Selected</span>. EViews will then execute only the selected line of code as a new program. </div>
+      <div class="Picture"><a name="205161"><img class="Default" src="images/cprogram.087.02.5.jpg" width="100%" style="left: 0.0pt; max-height: 457px; max-width: 569px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="205162">You should note that there are potential pitfalls when using </a><span class="Menu_Item">Run Selected</span>. The first is that no arguments or options can be passed into the selected lines of code. If the selected lines rely on program arguments or options, they will fail to execute properly. Similarly, any program variables (<span class="Link"><a href="cprogram-Program_Variables.html#172745" title="Program Variables">&#8220;Program Variables&#8221;</a></span>) declared outside of the selected lines may not be initialized properly when the selected lines are run. Finally, any subroutines declared outside of the selected lines of code cannot be called, since they do not exist in the selected code.</div>
+      <div class="Body_Text"><a name="205007">Alternately, you may use add the </a><span class="In-line_input">stop</span> command to your EViews program to halt execution at a particular place in the program file.</div>
+      <div class="Heading_4"><a name="212773">Program Debugging</a></div>
+      <div class="Body_Text"><a name="212774">EViews offers tools for debugging to help you locate the source of problems. These tools allow you to run programs until they hit breakpoints on specific lines and then examine the state of your workfile at those breakpoints.</a></div>
+      <div class="Heading_5"><a name="212775">Setting and Clearing Breakpoints</a></div>
+      <div class="Body_Text"><a name="212776">Open the EViews program file and set the breakpoint by clicking to the left of the desired line. A red dot will appear:</a></div>
+      <div class="Picture"><a name="212780"><img class="Default" src="images/cprogram.087.02.6.jpg" width="100%" style="left: 0.0pt; max-height: 449px; max-width: 495px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="212781">Clicking on a red dot clears that breakpoint.</a></div>
+      <div class="Heading_5"><a name="212782">Starting a Debugging Session</a></div>
+      <div class="Body_Text"><a name="212783">To begin debugging the program, click the </a><span class="Menu_Item">Debug</span> button in the toolbar and enter any program arguments, choose whether to <span class="Menu_Item">Log dependencies</span>, and if desired change the <span class="Menu_Item">Maximum errors before halting</span>. Click on <span class="Menu_Item">OK</span>.</div>
+      <div class="Picture"><a name="212784">&nbsp;</a></div>
+      <div class="Body_Text"><a name="212785">EViews will start program execution and open the debugging pane. There are three tabs in the pane: </a><span class="Menu_Item">Breakpoints</span>, <span class="Menu_Item">Watch</span>, and <span class="Menu_Item">Callstack</span>. </div>
+      <div class="Heading_5"><a name="212786">Stopping at a Breakpoint</a></div>
+      <div class="Body_Text"><a name="212787">When the program reaches an active breakpoint, the execution will pause at the red dot, now highlighted in yellow:</a></div>
+      <div class="Picture"><a name="212791"><img class="Default" src="images/cprogram.087.02.7.jpg" width="100%" style="left: 0.0pt; max-height: 431px; max-width: 825px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="212792">At this point you can look at the </a><span class="Menu_Item">Breakpoints</span>, <span class="Menu_Item">Callstack,</span> or <span class="Menu_Item">Watch</span> windows for more information.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="212793">Breakpoints</a></span> shows all defined breakpoints. Toggling the checkbox next to a breakpoint name inactivates or reactivates it.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="212794">Callstack</a></span> displays the current line of the active files and subroutines of the program.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="212795">Watch</a></span> presents the values of program and replacement variables. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="212796">Additionally, you may open EViews objects such as series or equations to examine their current states.</a></div>
+      <div class="Heading_5"><a name="212797">Button Bar</a></div>
+      <div class="Body_Text"><span class="Menu_Item"><a name="212798">Resume</a></span> continues program execution until the next breakpoint is reached. <span class="Menu_Item">Step</span> executes the current line. <span class="Menu_Item">Run</span> continues program execution to completion, ignoring any remaining breakpoints. <span class="Menu_Item">Stop</span> cancels program execution.</div>
+      <div class="Heading_5"><a name="212799">Restrictions during Debugging</a></div>
+      <div class="Body_Text"><a name="212800">During a debugging session, you will not be able to close any windows opened by the program since this could negatively affect its execution.</a></div>
+      <div class="Heading_4"><a name="212802">Program Dependency Logging</a></div>
+      <div class="Body_Text"><a name="212806">EViews 14 has a new feature to automatically log a program&#8217;s external dependencies: files (as workfiles, Excel files, CSV files, etc), databases, and other programs (as includes and execs). To use it, check the </a><span class="Menu_Item">Log Dependencies</span> checkbox in the <span class="Menu_Item">Run Program</span> dialog:</div>
+      <div class="Picture"><a name="212810"><img class="Default" src="images/cprogram.087.02.8.jpg" width="100%" style="left: 0.0pt; max-height: 345px; max-width: 404px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="212811">A new </a><span class="Menu_Item">Program Dependencies</span> window will appear showing the type, filename, and path of all the external dependencies detected during the run.</div>
+      <div class="Picture"><a name="212815"><img class="Default" src="images/cprogram.087.02.9.jpg" width="100%" style="left: 0.0pt; max-height: 602px; max-width: 825px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="212816">The above image shows the dependence on the external program files &#8220;xy.prg,&#8221; &#8220;wz.prg,&#8221; and &#8220;z22.prg,&#8221; the workfiles &#8220;tq.wf1&#8221; and &#8220;untitled.wf1,&#8221; and the database &#8220;dbtest.edb,&#8221; along with the line numbers producing these dependencies.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

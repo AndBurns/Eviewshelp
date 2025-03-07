@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Background</title>
+    <link rel="StyleSheet" href="css/enet.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="enet-Elastic_Net_and_Lasso.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="enet-How_to_Estimate_an_Elastic_Net_Specification_in.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="enet-Elastic_Net_and_Lasso.html">Elastic Net and Lasso</a> : Background</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="439561">Background</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#439580">Elastic Net Regression</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#439628">The Penalty Parameter</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#439653">Automatic Lambda Grid</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#439712">Path Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#439764">Model Selection</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#439789">The Penalty Function</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#439909">The Mixing Parameter</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#439849">Individual Penalty Weights</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#440041">Data scaling</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#440070">Dependent Variable Scaling</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#440122">Regressor Scaling</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#440142">Summary</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="439562">While the ordinary least squares estimator (OLS) is notably unbiased, it can exhibit large variance. If, for example, the data have more regressors <img class="Default EquationGraphic" src="images/enet.047.2.001.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> than the length of the dataset <img class="Default EquationGraphic" src="images/enet.047.2.002.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> (sometimes referred to as the &#8220;large <img class="Default EquationGraphic" src="images/enet.047.2.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, small <img class="Default EquationGraphic" src="images/enet.047.2.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> problem&#8221;) or there is high correlation between the <img class="Default EquationGraphic" src="images/enet.047.2.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> regressors, least squares estimates are very sensitive to random errors, and suffer from over-fitting and numeric instability.</a></div>
+      <div class="Body_Text"><a name="439578">In these and other settings, it may be advantageous to perform </a><span class="Emphasis">regularization </span>by specifying constraints on the flexibility of the OLS estimator, resulting in a simpler or more parsimonious model. By restricting the ability of the ordinary least squares estimator to respond to data, we reduce the sensitivity of our estimates to random errors, lowering the overall variability at the expense of added bias. Thus, regularization trades variance reduction for bias with the goal of obtaining a more desirable mean-square error.</div>
+      <div class="Body_Text"><a name="439579">One popular approach to regularization is </a><span class="Definition">elastic net penalized regression</span>.</div>
+      <div class="Heading_4"><a name="439580">Elastic Net Regression</a></div>
+      <div class="Body_Text"><a name="439581">In estimating elastic net penalized regression for regularization, the conventional sum-of-squared residuals (SSR) objective is augmented by a penalty that depends on the absolute and squared magnitudes of the coefficients. These coefficient penalties act to shrink the coefficients magnitudes toward zero, trading off increases in the sums-of-squares against reductions in the penalties.</a></div>
+      <div class="Body_Text"><a name="439582">We may write the </a><span class="Definition">elastic net</span> cost or objective function as,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.006.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="439597">for a sample of <img class="Default EquationGraphic" src="images/enet.047.2.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> observations on the dependent variable and <img class="Default EquationGraphic" src="images/enet.047.2.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> regressors: <img class="Default EquationGraphic" src="images/enet.047.2.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 58px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/enet.047.2.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 95px; top: 0.0pt" alt="" />:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440950">The first term in this expression,</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.011.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="439606">is the familiar sum-of-squared residuals (SSR), divided by two times the number of observations.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="439607">The second term is the penalty portion of the objective,</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.012.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.3)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="521479">for <img class="Default EquationGraphic" src="images/enet.047.2.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 70px; top: 0.0pt" alt="" />, and where the <img class="Default EquationGraphic" src="images/enet.047.2.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /></a><span class="Definition"> </span>norm is the <img class="Default EquationGraphic" src="images/enet.047.2.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />&#8209;weighted sum (<img class="Default EquationGraphic" src="images/enet.047.2.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" />) of the absolute values of the coefficient values, </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.017.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.4)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="521508">and the squared <img class="Default EquationGraphic" src="images/enet.047.2.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> norm is the <img class="Default EquationGraphic" src="images/enet.047.2.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />&#8209;weighted sum of the squared values of the coefficient values,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.020.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="521512">Typically, the coefficients are penalized equally so that <img class="Default EquationGraphic" src="images/enet.047.2.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 57px; top: 0.0pt" alt="" /> for all <img class="Default EquationGraphic" src="images/enet.047.2.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="439597">In general, the problem of minimizing this objective with respect to the coefficients <img class="Default EquationGraphic" src="images/enet.047.2.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> does not have a closed-form solution and requires iterative methods, but efficient algorithms are available for solving this problem (Hastie, Friedman, and Tibshirani 2010).</a></div>
+      <div class="Heading_5"><a name="439628">The Penalty Parameter</a></div>
+      <div class="Body_Text"><a name="439635">Elastic net specifications rely centrally on the penalty parameter <img class="Default EquationGraphic" src="images/enet.047.2.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, (<img class="Default EquationGraphic" src="images/enet.047.2.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" />), which controls the magnitude of the overall coefficient penalties. Clearly, larger values of <img class="Default EquationGraphic" src="images/enet.047.2.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> are associated with a stronger coefficient penalty, and smaller values with a weaker penalty. When <img class="Default EquationGraphic" src="images/enet.047.2.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 52px; top: 0.0pt" alt="" />, the objective reduces to that of standard least squares.</a></div>
+      <div class="Body_Text"><a name="439642">One can compute Enet estimates for a single, specific penalty value, but the recommended approach (Hastie, Friedman, and Tibshirani, 2010) is to compute estimates for each element of a set of values and to examine the behavior of the results as <img class="Default EquationGraphic" src="images/enet.047.2.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> varies from high to low. </a></div>
+      <div class="Body_Text"><a name="464801">When estimates are obtained for multiple penalty values, we may use model selection techniques to choose a &#8220;best&#8221; <img class="Default EquationGraphic" src="images/enet.047.2.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_6"><a name="439653">Automatic Lambda Grid</a></div>
+      <div class="Body_Text"><a name="439657">Researchers will usually benefit from practical guidance in specifying <img class="Default EquationGraphic" src="images/enet.047.2.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values.</a></div>
+      <div class="Body_Text"><a name="439661">Friedman, Hastie, and Tibshirani (2010) describe a recipe for obtaining a path of penalty values:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="439665">First, specify a (maximum) number of penalty values to consider, say <img class="Default EquationGraphic" src="images/enet.047.2.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 73px; top: 0.0pt" alt="" />. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="439666">Next employ the data to compute the smallest <img class="Default EquationGraphic" src="images/enet.047.2.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> for which all of the estimated coefficients are 0. The resulting <img class="Default EquationGraphic" src="images/enet.047.2.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> will be the largest value of <img class="Default EquationGraphic" src="images/enet.047.2.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> to be considered.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="500441">For ridge regression specifications, coefficients are not easily pushed to zero, so we arbitrarily use an elastic net model with <img class="Default EquationGraphic" src="images/enet.047.2.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 82px; top: 0.0pt" alt="" /> to determine <img class="Default EquationGraphic" src="images/enet.047.2.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="439682">Specify <img class="Default EquationGraphic" src="images/enet.047.2.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" />, the smallest value of <img class="Default EquationGraphic" src="images/enet.047.2.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> to be considered, as a predetermined fractional value of <img class="Default EquationGraphic" src="images/enet.047.2.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="439695">Compute a grid of <img class="Default EquationGraphic" src="images/enet.047.2.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> descending penalty values on a natural log scale from <img class="Default EquationGraphic" src="images/enet.047.2.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> to <img class="Default EquationGraphic" src="images/enet.047.2.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" /> so that</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Multi-line_Eq_No_Number"><a name="439699"><img class="Default EquationGraphic" src="images/enet.047.2.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 233px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_Continue"><a name="439703">for <img class="Default EquationGraphic" src="images/enet.047.2.044.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />, where</a></div>
+      <div class="Multi-line_Eq_No_Number"><a name="439707"><img class="Default EquationGraphic" src="images/enet.047.2.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 45px; max-width: 195px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="439711">Take exponents of the values, yielding the lambda path <img class="Default EquationGraphic" src="images/enet.047.2.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 172px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="439712">Path Estimation</a></div>
+      <div class="Body_Text"><a name="439716">Friedman, Hastie, and Tibshirani (2010) describe a path estimation procedure in which one estimates models beginning with the largest value <img class="Default EquationGraphic" src="images/enet.047.2.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 85px; top: 0.0pt" alt="" /> and starting coefficient values of 0, and continuing sequentially from <img class="Default EquationGraphic" src="images/enet.047.2.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 44px; top: 0.0pt" alt="" /> to <img class="Default EquationGraphic" src="images/enet.047.2.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 79px; top: 0.0pt" alt="" /> or until triggering a stopping rule. The procedure employs what the authors term &#8220;warm starts&#8221; with coefficients obtained from estimating the <img class="Default EquationGraphic" src="images/enet.047.2.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> model used as starting values for estimating the <img class="Default EquationGraphic" src="images/enet.047.2.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> model.</a></div>
+      <div class="Body_Text"><a name="439735">Bear in mind that while <img class="Default EquationGraphic" src="images/enet.047.2.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> is derived so that the coefficients values are all 0, an arbitrarily specified fractional value <img class="Default EquationGraphic" src="images/enet.047.2.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" /> has no general interpretation. Further, estimation at a given <img class="Default EquationGraphic" src="images/enet.047.2.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/enet.047.2.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 72px; top: 0.0pt" alt="" /> can be numerically taxing, might not converge, or may offer negligible additional value over prior estimates. To account for these possibilities, we may specify rules to truncate the <img class="Default EquationGraphic" src="images/enet.047.2.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-path of estimated models when encountering non-convergent or redundant results.</a></div>
+      <div class="Body_Text"><a name="522835">Friedman, Hastie, and Tibshirani (2010) propose terminating path estimation if the sequential changes in model fit or changes in coefficient values cross specific thresholds. We may, for example, choose to end path estimation at a given <img class="Default EquationGraphic" src="images/enet.047.2.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> if the <img class="Default EquationGraphic" src="images/enet.047.2.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> exceeds some threshold, or the relative change in the SSR falls below some value. Similarly, if model parsimony is a priority, we might end estimation at a given <img class="Default EquationGraphic" src="images/enet.047.2.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> if the number of non-zero coefficients exceeds a specific value or a specified fraction of the sample size.</a></div>
+      <div class="Heading_6"><a name="439764">Model Selection</a></div>
+      <div class="Body_Text"><a name="439765">We may use cross-validation model selection techniques to identify a preferred value of <img class="Default EquationGraphic" src="images/enet.047.2.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> from the complete path. Cross-validation involves partitioning the data into training and test sets, estimating over the entire <img class="Default EquationGraphic" src="images/enet.047.2.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> path using the training set, and using the coefficients and the test set to compute evaluation statistics.</a></div>
+      <div class="Body_Text"><a name="526398">There are a number of different ways to perform cross-validation. See </a><span class="Link"><a href="enet-Cross-validation_Settings.html#492162" title="Cross-validation Settings">&#8220;Cross-validation Settings&#8221;</a></span> and <span class="Link"><a href="enet-How_to_Estimate_an_Elastic_Net_Specification_in.html#489423" title="How to Estimate an Elastic Net Specification in EViews">&#8220;Cross-validation Options&#8221;</a></span> for discussion and additional detail.</div>
+      <div class="Body_Text"><a name="439773">If a cross-validation method defines only a single training and test set for a given <img class="Default EquationGraphic" src="images/enet.047.2.062.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, the penalty parameter associated with the best evaluation statistic is selected as <img class="Default EquationGraphic" src="images/enet.047.2.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 23px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="439777">If the cross-validation method produces multiple training and test sets for each <img class="Default EquationGraphic" src="images/enet.047.2.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, we average the statistics across the multiple sets, and the penalty parameter for the model with the best average value is selected as <img class="Default EquationGraphic" src="images/enet.047.2.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 23px; top: 0.0pt" alt="" />. Further, we may compute the standard error of the mean of the cross-validation evaluation statistics, and determine the penalty values <img class="Default EquationGraphic" src="images/enet.047.2.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/enet.047.2.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> corresponding to the most penalized models with average values within one and two standard errors of the optimum.</a></div>
+      <div class="Heading_5"><a name="439789">The Penalty Function</a></div>
+      <div class="Body_Text"><a name="439615">Note that the penalty function</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.068.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="521706">is comprised of several components: the overall penalty parameter <img class="Default EquationGraphic" src="images/enet.047.2.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, the coefficient penalty terms <img class="Default EquationGraphic" src="images/enet.047.2.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 28px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/enet.047.2.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 22px; top: 0.0pt" alt="" />, individual penalty weights <img class="Default EquationGraphic" src="images/enet.047.2.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />, and the mixing parameter <img class="Default EquationGraphic" src="images/enet.047.2.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="439813">There are many detailed discussions of the varying properties of these penalty approaches (see, for example Friedman, Hastie, and Tibshirani (2010). </a></div>
+      <div class="Body_Text"><a name="521909">For our purposes it suffices to note that <img class="Default EquationGraphic" src="images/enet.047.2.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 22px; top: 0.0pt" alt="" /> term is quadratic with respect to the representative coefficient <img class="Default EquationGraphic" src="images/enet.047.2.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />. The derivatives of the <img class="Default EquationGraphic" src="images/enet.047.2.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 22px; top: 0.0pt" alt="" /> norm</a><span class="Definition"> </span>are of the form <img class="Default EquationGraphic" src="images/enet.047.2.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" />, so that the absolute value of the <span class="In-line_math">j</span>-th derivative increases and decreases with the weighted values of <img class="Default EquationGraphic" src="images/enet.047.2.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 28px; top: 0.0pt" alt="" />. Crucially, the derivative approaches 0 as <img class="Default EquationGraphic" src="images/enet.047.2.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> approaches 0. </div>
+      <div class="Body_Text"><a name="439845">In contrast, <img class="Default EquationGraphic" src="images/enet.047.2.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is linear in the representative coefficient <img class="Default EquationGraphic" src="images/enet.047.2.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, with a constant derivative of <img class="Default EquationGraphic" src="images/enet.047.2.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> for all values of <img class="Default EquationGraphic" src="images/enet.047.2.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="439909">The Mixing Parameter</a></div>
+      <div class="Body_Text"><a name="439913">The <img class="Default EquationGraphic" src="images/enet.047.2.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> mixing parameter controls the relative importance of the <img class="Default EquationGraphic" src="images/enet.047.2.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/enet.047.2.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 22px; top: 0.0pt" alt="" /> penalties in the overall objective. Larger values of <img class="Default EquationGraphic" src="images/enet.047.2.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> assign more importance to <img class="Default EquationGraphic" src="images/enet.047.2.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> while smaller values assign more importance to <img class="Default EquationGraphic" src="images/enet.047.2.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 22px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="439926">There are many discussions of the properties of the various penalty mixes. See, for example Hastie, Tibshirani, and Friedman (2010) for discussion of the implications of different choices for <img class="Default EquationGraphic" src="images/enet.047.2.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="439933">For our purposes, we note only that models with penalties that emphasize the <img class="Default EquationGraphic" src="images/enet.047.2.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> norm component tend to have more zero coefficients than models which feature the <img class="Default EquationGraphic" src="images/enet.047.2.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 22px; top: 0.0pt" alt="" /> penalty, as the derivatives of the <img class="Default EquationGraphic" src="images/enet.047.2.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> remain constant as the coefficient approaches zero, while the derivatives of the <img class="Default EquationGraphic" src="images/enet.047.2.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> norm for a given coefficient become negligible in the neighborhood of zero.</a></div>
+      <div class="Body_Text"><a name="439943">The limiting cases for the mixing parameter, <img class="Default EquationGraphic" src="images/enet.047.2.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/enet.047.2.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" /> are themselves well-known estimators. </a></div>
+      <div class="Body_Text"><a name="439953">Setting <img class="Default EquationGraphic" src="images/enet.047.2.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" /> yields a </a><span class="Emphasis">Lasso</span> (Least-Absolute Shrinkage and Selection Operator) model that contains only the <img class="Default EquationGraphic" src="images/enet.047.2.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />-norm penalty:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.099.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="439967">Setting <img class="Default EquationGraphic" src="images/enet.047.2.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" /> produces a </a><span class="Definition">ridge regression</span> specification with only the <img class="Default EquationGraphic" src="images/enet.047.2.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 22px; top: 0.0pt" alt="" />-penalty:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.102.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="439972">The ridge regression estimator for this objective has an analytic solution. Writing the objective in matrix form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.103.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="439980">for <img class="Default EquationGraphic" src="images/enet.047.2.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 175px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/enet.047.2.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 59px; top: 0.0pt" alt="" /> corresponds to the unpenalized intercept. Differentiating the objective yields:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.106.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="439985">Setting equal to zero and collecting terms</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.107.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.11)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="439990">so that a analytic closed-form estimator exists, </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.108.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.12)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="439996">which is recognizable as the traditional ridge regression estimator with ridge parameter <img class="Default EquationGraphic" src="images/enet.047.2.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 23px; top: 0.0pt" alt="" /> and diagonal adjustment weights <img class="Default EquationGraphic" src="images/enet.047.2.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/enet.047.2.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 74px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="528501">Thus, while an elastic net model with <img class="Default EquationGraphic" src="images/enet.047.2.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" /> is a form of ridge regression, it is important to recognize that the parameterization of the diagonal adjustment differs between elastic net ridge and traditional ridge regression, with the former using <img class="Default EquationGraphic" src="images/enet.047.2.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and the latter using <img class="Default EquationGraphic" src="images/enet.047.2.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 74px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="495828">Bear in mind that in EViews, the coefficient on the intercept term &#8220;C&#8221; is not penalized in either ridge or in elastic net specifications. Comparison to results obtained elsewhere should ensure that intercept coefficient penalties are specified comparably.</a></div>
+      <div class="Heading_5"><a name="439849">Individual Penalty Weights</a></div>
+      <div class="Body_Text"><a name="439856">The notation in </a><span class="Link"><a href="#439587" title="Background">Equation&nbsp;(37.1)</a></span> explicitly accounts for the fact that we do not wish to penalize the <img class="Default EquationGraphic" src="images/enet.047.2.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> intercept coefficient. </div>
+      <div class="Body_Text"><a name="518046">We may generalize this type of coefficient exclusion using individual penalty weights <img class="Default EquationGraphic" src="images/enet.047.2.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/enet.047.2.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 92px; top: 0.0pt" alt="" /> to attenuate or accentuate the impact of the overall penalty <img class="Default EquationGraphic" src="images/enet.047.2.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> on individual coefficients.</a></div>
+      <div class="Body_Text"><a name="496505">Notably, setting <img class="Default EquationGraphic" src="images/enet.047.2.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 57px; top: 0.0pt" alt="" /> for any <img class="Default EquationGraphic" src="images/enet.047.2.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> implies that <img class="Default EquationGraphic" src="images/enet.047.2.121.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is not penalized. We may, for example, express the intercept excluding penalty in </a><span class="Link"><a href="#439587" title="Background">Equation&nbsp;(37.1)</a></span> using <img class="Default EquationGraphic" src="images/enet.047.2.122.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/enet.047.2.123.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 22px; top: 0.0pt" alt="" /> terms that sum over all <img class="Default EquationGraphic" src="images/enet.047.2.124.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> coefficients (including the intercept) with <img class="Default EquationGraphic" src="images/enet.047.2.125.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 59px; top: 0.0pt" alt="" />:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.126.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.13)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="439880">where <img class="Default EquationGraphic" src="images/enet.047.2.127.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 73px; top: 0.0pt" alt="" /> is a composite individual penalty weight associated with coefficient <img class="Default EquationGraphic" src="images/enet.047.2.128.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="518123">For comparability with the baseline case where the weights are 1 for all but the intercept, we normalize the weights so that <img class="Default EquationGraphic" src="images/enet.047.2.129.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 38px; max-width: 94px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/enet.047.2.130.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 22px; top: 0.0pt" alt="" /> is the number of non-zero <img class="Default EquationGraphic" src="images/enet.047.2.131.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="440041">Data scaling</a></div>
+      <div class="Body_Text"><a name="440042">Scaling of the dependent variable and regressors is sometimes carried out to improve the numeric stability of ordinary least squares regression estimates. It is well-known that scaling the dependent variable or regressors prior to estimation does not have substantive effects on the OLS estimates: </a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440046">Dividing the dependent variable by <img class="Default EquationGraphic" src="images/enet.047.2.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> prior to OLS produces coefficients that equal the unscaled estimates divided by <img class="Default EquationGraphic" src="images/enet.047.2.133.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> and an SSR equal to the unscaled SSR divided by <img class="Default EquationGraphic" src="images/enet.047.2.134.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 22px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440062">Dividing each of the regressors by an individual scale <img class="Default EquationGraphic" src="images/enet.047.2.135.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 25px; top: 0.0pt" alt="" /> prior to OLS produces coefficients equal to the unscaled estimates multiplied by <img class="Default EquationGraphic" src="images/enet.047.2.136.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 25px; top: 0.0pt" alt="" />. The optimal SSR is unchanged. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="452178">Following estimation, the results may easily be returned to the original scale:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="452152">The effect of dependent variable scaling is undone by multiplying the estimated scaled coefficients by <img class="Default EquationGraphic" src="images/enet.047.2.137.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> and multiplying the scaled SSR by <img class="Default EquationGraphic" src="images/enet.047.2.138.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 22px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440062">The effect of regressor scaling is undone by dividing the estimated coefficients by the <img class="Default EquationGraphic" src="images/enet.047.2.139.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 25px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="440069">These simple equivalences do not hold in a penalized setting. You should pay close attention to the effect of your scaling choices, especially when comparing results across approaches.</a></div>
+      <div class="Heading_6"><a name="440070">Dependent Variable Scaling</a></div>
+      <div class="Body_Text"><a name="450399">In some settings, scaling the dependent variable only changes the scale of the estimated coefficients, while in others, it will change both the scale and the relative magnitudes of the estimates.</a></div>
+      <div class="Body_Text"><a name="514059">To understand the effects of dependent variable scaling, define the objective function using the scaled dependent variable, <img class="Default EquationGraphic" src="images/enet.047.2.140.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 89px; top: 0.0pt" alt="" /> and corresponding coefficients <img class="Default EquationGraphic" src="images/enet.047.2.141.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 19px; top: 0.0pt" alt="" /> and penalty <img class="Default EquationGraphic" src="images/enet.047.2.142.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 15px; top: 0.0pt" alt="" />. We will see whether imposing the restricted parametrization, <img class="Default EquationGraphic" src="images/enet.047.2.143.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 90px; top: 0.0pt" alt="" /> alters the objective function.</a></div>
+      <div class="Body_Text"><a name="523723">We may write the restricted objective as:</a></div>
+      <div class="Multi-line_Eq_No_Number"><a name="440081"><img class="Default EquationGraphic" src="images/enet.047.2.144.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 138px; max-width: 592px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="496946">where <img class="Default EquationGraphic" src="images/enet.047.2.145.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 15px; top: 0.0pt" alt="" /> is the penalty associated with the scaled data objective. Notice that this objective using scaled coefficients is not, in general, a simple scaled version of the objective in </a><span class="Link"><a href="#439587" title="Background">Equation&nbsp;(37.1)</a></span> since the <img class="Default EquationGraphic" src="images/enet.047.2.146.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> term is scaled by an additional <img class="Default EquationGraphic" src="images/enet.047.2.147.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> and the <img class="Default EquationGraphic" src="images/enet.047.2.148.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 22px; top: 0.0pt" alt="" /> is not.</div>
+      <div class="Body_Text"><a name="515529">Inspection of this objective yields three results of note:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="513886">If <img class="Default EquationGraphic" src="images/enet.047.2.149.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />, the relative importance of the residual and the penalty portions of the objective are unchanged from </a><span class="Link"><a href="#439587" title="Background">Equation&nbsp;(37.1)</a></span> if <img class="Default EquationGraphic" src="images/enet.047.2.150.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 82px; top: 0.0pt" alt="" />. Thus, the estimates for Lasso model coefficients using the scaled dependent variable will be scaled versions of the unscaled data coefficients obtained using an appropriately scaled penalty.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="513973">If <img class="Default EquationGraphic" src="images/enet.047.2.151.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />, then the relative importance of the residual and the penalty portions of the objective is unchanged for <img class="Default EquationGraphic" src="images/enet.047.2.152.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 53px; top: 0.0pt" alt="" />. Thus, for elastic net ridge regression models, the scaling of the dependent variable produces an equivalent model at the same penalty values.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="515032">For <img class="Default EquationGraphic" src="images/enet.047.2.153.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 43px; top: 0.0pt" alt="" />, it is not possible to find a <img class="Default EquationGraphic" src="images/enet.047.2.154.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> where the simple scaling of coefficients does not alter the relative importance of the residual and penalty components, so estimation of the scaled dependent variable model results in coefficients that differ by more than scale.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="440122">Regressor Scaling</a></div>
+      <div class="Body_Text"><a name="440123">The practice of standardizing the regressors prior to estimation is common in elastic net estimation.</a></div>
+      <div class="Body_Text"><a name="449967">As before, we can see the effect by looking at the effect of scaling on the objective function. We define a new objective using the scaled regressors <img class="Default EquationGraphic" src="images/enet.047.2.155.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 90px; top: 0.0pt" alt="" /> and coefficients <img class="Default EquationGraphic" src="images/enet.047.2.156.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 19px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/enet.047.2.157.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 92px; top: 0.0pt" alt="" />, and corresponding penalty <img class="Default EquationGraphic" src="images/enet.047.2.158.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 15px; top: 0.0pt" alt="" />, and impose the restriction that the new coefficients are individual scaled versions of the original coefficients, <img class="Default EquationGraphic" src="images/enet.047.2.159.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 35px; max-width: 77px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="523534">We have:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/enet.047.2.160.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(37.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="440138">Since coefficients in the penalty portion are individually scaled while those in the SSR residual portion are not, there is no general way to write this objective as a scaled version of the original objective. The coefficient <img class="Default EquationGraphic" src="images/enet.047.2.161.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 15px; top: 0.0pt" alt="" /> estimates will differ from the unweighted estimates by more than just individual variable scale.</a></div>
+      <div class="Heading_6"><a name="440142">Summary</a></div>
+      <div class="Body_Text"><a name="440143">To summarize, when comparing results between different choices for scaling, you should remember that results may differ substantively depending on your choices:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440151">Scaling the dependent variable (<img class="Default EquationGraphic" src="images/enet.047.2.162.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" />) produces ridge regression coefficients that are simple <img class="Default EquationGraphic" src="images/enet.047.2.163.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> scaled versions of those obtained using unscaled data. For Lasso regression, a similar scaled coefficient result holds provided the penalty parameter is also scaled accordingly.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440147">Scaling the dependent variable (<img class="Default EquationGraphic" src="images/enet.047.2.164.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" />) prior to <img class="Default EquationGraphic" src="images/enet.047.2.165.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 70px; top: 0.0pt" alt="" /> elastic net estimation produces scaled and unscaled coefficient estimates that differ by more than scale.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440155">Scaling the regressors (<img class="Default EquationGraphic" src="images/enet.047.2.166.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 49px; top: 0.0pt" alt="" />) prior to estimation produces coefficient results that differ by more than the individual scales from those obtained using unscaled regressors.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

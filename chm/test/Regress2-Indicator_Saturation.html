@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Indicator Saturation</title>
+    <link rel="StyleSheet" href="css/Regress2.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="Regress2-Nonlinear_Least_Squares.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="Regress2-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="Regress2-Additional_Regression_Tools.html">Additional Regression Tools</a> : Indicator Saturation</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="276745">Indicator Saturation</a></div>
+      <div class="Body_Text"><a name="276746">Traditionally, the analysis of outliers and structural breaks in regression analysis was conducted by testing the statistical significance of a parsimonious, predetermined set of related indicator variables. More recently, advances in computing power and the development of general-to-specific (GETS) modeling permit testing of indicators at each observation in the estimation sample.</a></div>
+      <div class="Body_Text"><a name="276747">The</a><span class="Definition"> indicator saturation</span> approach is an extension of least squares regression for testing for outliers and structural breaks in a regression specification. The indicator saturation approach works by including indicator variables for outliers or structural breaks at every observation in the regression, and then employing the GETS algorithms to select which of the included variables should be retained in a final regression model.</div>
+      <div class="Body_Text"><a name="276748">Note that inclusion of indicators at each observation would ordinarily be prohibited due to the singularity of the regressor matrix, but the introduction of block estimation in GETS modeling </a><span class="Link"><a href="Varsel-Background.html#277256" title="Background">&#8220;Auto-Search / GETS&#8221;</a></span>, allows testing of indicators throughout the estimation sample. </div>
+      <div class="Body_Text"><a name="276752">In EViews, you may perform indicator saturation on simple linear equations (which do not include ARMA terms) estimated using least squares. EViews offers testing for three different indicator types at each period </a><span class="In-line_math">t</span>:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="276753">Impulse Indicators (IIS)</a></span>: a dummy variable equal to zero everywhere other than a single value of one at period <span class="In-line_math">t</span>. This indicator is equivalent to the <span class="In-line_command">@isperiod</span> function used at the date corresponding to <span class="In-line_math">t</span><span style="font-style: italic">.</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="276754">Step Indicators (SIS)</a></span>: a step function variable equal to zero until <span class="In-line_math">t</span> and one thereafter. This indicator is equivalent to the <span class="In-line_command">@after</span> function used at the date corresponding to <span class="In-line_math">t</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="276755">Trend Indicators (TIS): </a></span>a trend-break variable that is equal to zero until period <span class="In-line_math">t</span> and then a follows a trend afterward. This indicator is equivalent to the <span class="In-line_command">@trendbr </span>function used at the date corresponding to <span class="In-line_math">t</span><span style="font-style: italic">.</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="276759">(Note that an SIS indicator at </a><span class="In-line_math">t</span><span style="font-style: italic"> </span>and <img class="Default EquationGraphic" src="images/Regress2.030.6.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" /> is numerically the same as an IIS indicator at <span class="In-line_math">t</span>. Similarly, a TIS indicator at <span class="In-line_math">t</span><span style="font-style: italic"> </span>and <img class="Default EquationGraphic" src="images/Regress2.030.6.2.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" /> is numerically identical to an SIS indicator at <span class="In-line_math">t</span>. For this reason, when testing for these combinations of indicators, EViews will automatically drop the numerically equivalent variables.)</div>
+      <div class="Body_Text"><a name="276763">To instruct EViews to detect indicators in your least squares regression, open the equation estimation dialog, enter your least squares specification in the </a><span class="Menu_Item">Equation specification</span> edit field, and select <span class="Menu_Item">LS - Least Squares (NLS and ARMA)</span> in the <span class="Menu_Item">Method</span> dialog. Next, click on the <span style="font-weight: bold">Options</span> tab to display the dialog:</div>
+      <div class="Picture"><a name="276767"><img class="Default" src="images/Regress2.030.6.3.jpg" width="100%" style="left: 0.0pt; max-height: 449px; max-width: 490px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="276768">Select the </a><span class="Menu_Item">Auto-detect </span>check box in the<span class="Menu_Item"> Outlier/indicator saturation </span>area on the right-hand side of the dialog, and then press the <span class="Menu_Item">Options</span> tab to bring up the <span class="Menu_Item">Indicator Options</span> dialog:</div>
+      <div class="Picture"><a name="276772"><img class="Default" src="images/Regress2.030.6.4.jpg" width="100%" style="left: 0.0pt; max-height: 449px; max-width: 404px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="276773">There are a number of settings which control the indicator saturation analysis:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="276774">The </a><span class="Menu_Item">Indicator types</span> section allows you to specify which type of indicator you would like to detect. You may individually choose to test for <span class="Menu_Item">Impulse (IIS)</span>, <span class="Menu_Item">Step-shift (SIS)</span>, and <span class="Menu_Item">Trend (TIS)</span> indicators by selecting the corresponding checkbox.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="276775">In the </a><span class="Menu_Item">Model selection</span> area, the <span class="Menu_Item">Criterion</span> dropdown specifies the information criteria used to select the final model from the candidate models. The <span style="font-weight: bold">I</span><span class="Menu_Item">nclude empty model</span> check box specifies whether to the empty model (with no indicators) as possible a possible candidate model.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="276776">The </a><span class="Menu_Item">Sample </span>edit field in the<span class="Menu_Item"> Variable creation ar</span>ea allows you to specify a different set of dates over which to create the indicators. By default, the estimation sample is used, but you may enter a different sample if desired. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="276777">The </a><span class="Menu_Item">Blocks</span> edit field allows you to specify the number of blocks the indicators will be split into. Since the number of indicators will exceed the number of observations, indicators will be added in blocks. EViews will automatically determine the optimal number of blocks, but you may enter your own choice in this field to override the EViews default. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="276778">The </a><span class="Menu_Item">Chronological blocking </span>and <span class="Menu_Item">Alternating blocking </span>radio buttons determine whether the indicators are split into blocks in chronologically (the first group of dates in the first block, followed by the next group in the second block and so on), or alternating (the first date in the first block, second date in the second block and so on).</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="276779">The </a><span class="Menu_Item">Diagnostics</span> set of options allows selection of which indicator saturation diagnostic tests to include along with their <span class="In-line_math">p</span>-values. You may perform <span class="Menu_Item">AR LM</span> (autoregressive LM), <span class="Menu_Item">ARCH LM</span>, <span class="Menu_Item">Normality</span>, and the <span class="Menu_Item">PET</span> (Parsimonius Encompassing Test) testing. For the <span class="Menu_Item">AR LM </span>test and<span class="Menu_Item"> ARCH LM </span>test, you should specify the number of lags to include.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="276720">Once an equation has been estimated with indicator saturation variables, a new post-estimation diagnostic is available from the </a><span class="Menu_Item">View</span> menu. Select <span class="Menu_Item">View/Indicator Summary </span>to display a summary of the indicators that were included, and, if any were detected, produces a chart of the trajectory of the indicators through time.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>@expand</title>
+    <link rel="StyleSheet" href="css/expression.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="expression-d.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="expression-ma.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : Special Expression Reference</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Command_Title_Box"><a name="1659995">&nbsp;</a></div>
+      <table class="Command_Heading" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 108pt">
+            <div class="Command_Name"><a name="1660006">@expand</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 252pt">
+            <div class="Command_Header" style="color: #0000ff; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Command_Header_link"><a href="expression-Special_Expression_Reference.html#1690806" title="Special Expression Reference" name="1659994">Special Expression</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Description"><a name="1659986">Automatic dummy variables.</a></div>
+      <div class="Body_Text"><a name="1659912">Create a set of dummy variables that span the unique values of the input series</a></div>
+      <div class="Function_Types"><a name="1708687">Syntax:		</a><span class="Command_Summary">@expand</span>(<span class="Argument">ser1[, ser2, ser3, ...][, drop_spec]</span>)</div>
+      <div class="Function_Types"><span class="Argument"><a name="1708768">	ser1</a></span>:	series, alpha</div>
+      <div class="Function_Types"><a name="1708769">	</a><span class="Argument">ser2...:	</span>series, alpha</div>
+      <div class="Body_Text"><a name="1659909">The </a><span class="In-line_command">@expand</span> expression may be added in estimation to indicate the use of one or more automatically created dummy variables.</div>
+      <div class="Body_Text"><a name="1659913">The optional </a><span class="Argument">drop_spec</span> may be used to drop one or more of the dummy variables. <span class="Argument">drop_spec</span> may contain the keyword <span class="Command_Summary">@dropfirst</span> (indicating that you wish to drop the first category), <span class="Command_Summary">@droplast</span> (to drop the last category), or a description of an explicit category, using the syntax:</div>
+      <div class="List_Text_Indent"><span class="Command_Summary"><a name="1659914">@drop</a></span>(<span class="Argument">val1[, val2, val3,...]</span>)</div>
+      <div class="Body_Text"><a name="1659915">where each argument corresponds to a category in @expand. You may use the wild card &#8220;*&#8221; to indicate all values of a corresponding category.</a></div>
+      <div class="Command_Section"><a name="1659916">Example</a></div>
+      <div class="Body_Text"><a name="1659917">For example, consider the following two variables:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="1659918">SEX is a numeric series which takes the values 1 and 0.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="1659919">REGION is an alpha series which takes the values &#8220;North&#8221;, &#8220;South&#8221;, &#8220;East&#8221;, and &#8220;West&#8221;.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="1659920">The command:</a></div>
+      <div class="Input"><a name="1659921">eq.ls income @expand(sex) age</a></div>
+      <div class="Body_Text"><a name="1659922">regresses INCOME on two dummy variables, one for &#8220;SEX=0&#8221; and one for &#8220;SEX=1&#8221; as well as the simple regressor AGE.</a></div>
+      <div class="Body_Text"><a name="1659923">The @EXPAND statement in,</a></div>
+      <div class="Input"><a name="1659924">eq.ls income @expand(sex, region) age</a></div>
+      <div class="Body_Text"><a name="1659925">creates 8 dummy variables corresponding to:</a></div>
+      <div class="List_Text_Indent"><a name="1659926">sex=0, region="North"</a></div>
+      <div class="List_Text_Indent"><a name="1659927">sex=0, region="South"</a></div>
+      <div class="List_Text_Indent"><a name="1659928">sex=0, region="East"</a></div>
+      <div class="List_Text_Indent"><a name="1659929">sex=0, region="West"</a></div>
+      <div class="List_Text_Indent"><a name="1659930">sex=1, region="North"</a></div>
+      <div class="List_Text_Indent"><a name="1659931">sex=1, region="South"</a></div>
+      <div class="List_Text_Indent"><a name="1659932">sex=1, region="East"</a></div>
+      <div class="List_Text_Indent"><a name="1659933">sex=1, region="West"</a></div>
+      <div class="Body_Text"><a name="1659934">The expression:</a></div>
+      <div class="Input"><a name="1659935">@expand(sex, region, @dropfirst)</a></div>
+      <div class="Body_Text"><a name="1659936">creates the set of dummy variables defined above, but no dummy is created for &#8220;SEX=0, REGION="North"&#8221;. In the expression:</a></div>
+      <div class="Input"><a name="1659937">@expand(sex, region, @droplast)</a></div>
+      <div class="Body_Text"><a name="1659938">no dummy is created for &#8220;SEX=1, REGION="WEST"&#8221;.</a></div>
+      <div class="Body_Text"><a name="1659939">The expression:</a></div>
+      <div class="Input"><a name="1659940">@expand(sex, region, @drop(0,"West"), @drop(1,"North"))</a></div>
+      <div class="Body_Text"><a name="1659941">creates a set of dummy variables from SEX and REGION pairs, but no dummy is created for &#8220;SEX=0, REGION="West"&#8221; and &#8220;SEX=1, REGION="North"&#8221;.</a></div>
+      <div class="Input"><a name="1659942">@expand(sex, region, @drop(1,*))</a></div>
+      <div class="Body_Text"><a name="1659943">specifies that dummy variables for all values of REGION where &#8220;SEX=1&#8221; should be dropped.</a></div>
+      <div class="Body"><a name="1676414">&nbsp;</a></div>
+      <div class="Input"><a name="1676415">eq.ls income @expand(sex)*age </a></div>
+      <div class="Body_Text"><a name="1676412">regresses INCOME on regressor AGE with category specific slopes, one for &#8220;SEX=0&#8221; and one for &#8220;SEX=1&#8221;.</a></div>
+      <div class="Command_Section"><a name="1659944">Cross-references</a></div>
+      <div class="Body_Text"><a name="1708516">See </a><span class="Link"><a href="Regress2-Special_Equation_Expressions.html#265734" title="Special Equation Expressions">&#8220;Automatic Categorical Dummy Variables&#8221;</a></span> for further discussion. See also <span class="In-line_command_link"><a href="functionref_w-@wexpand.html#1264756" title="@wexpand">@wexpand</a></span>.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

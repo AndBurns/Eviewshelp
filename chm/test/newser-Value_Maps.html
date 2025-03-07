@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Value Maps</title>
+    <link rel="StyleSheet" href="css/newser.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="newser-Date_Series.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="links-Series_Links.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="newser-Working_with_Data_(Advanced).html">Working with Data (Advanced)</a> : Value Maps</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="135245">Value Maps</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#135260">Defining a Valmap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#135288">Assigning a Valmap to a Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#135297">Using the Valmap Tools</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135300">Sorting Valmap Entries</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135310">Examining Properties of a Valmap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135327">Tracking Valmap Usage</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#135334">Working with a Mapped Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135336">Displaying series values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135354">Editing a Mapped Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135373">Using a Mapped Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#135387">Valmap Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#135416">Valmap Definition Cautions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135418">Many-to-one Valmaps</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135425">Mapping Label Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135429">Mapping Values to Numbers</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="135246">You may use the valmap object to create a </a><span class="Definition">value map </span>(or <span class="Definition">map</span>, for short) that assigns descriptive labels to values in numeric or alpha series. The practice of mapping observation values to labels allows you to hold your data in encoded or abbreviated form, while displaying the results using easy-to-interpret labels.</div>
+      <div class="Picture"><a name="135250"><img class="Default" src="images/newser.012.5.01.jpg" width="100%" style="left: 0.0pt; max-height: 292px; max-width: 439px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135251">Perhaps the most common example of encoded data occurs when you have categorical identifiers that are given by integer values. For example, we may have a numeric series FEMALE containing a binary indicator for whether an individual is a female (1) or a male (0). </a></div>
+      <div class="Body_Text"><a name="135252">Numeric encodings of this type are commonly employed, since they allow one to work with the numeric values of FEMALE. One may, for example, compute the mean value of the FEMALE variable, which will provide the proportion of observations that are female.</a></div>
+      <div class="Body_Text"><a name="135253">On the other hand, numeric encoding of categorical data has the disadvantage that one must always translate from the numeric values to the underlying categorical data types. For example, a one-way tabulation of the FEMALE data produces the output:</a></div>
+      <div class="Table"><a name="135257"><img class="Default" src="images/newser.012.5.02.jpg" width="100%" style="left: 0.0pt; max-height: 247px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135258">Interpretation of this output requires that the viewer remember that the FEMALE series is encoded so that the &#8220;0&#8221; value represents &#8220;Male&#8221; and the &#8220;1&#8221; represents &#8220;Female&#8221;. The example above would be easier to interpret if the first column showed the text representations of the categories in place of the numeric values.</a></div>
+      <div class="Body_Text"><a name="135259">Valmaps allow us to combine the benefits of descriptive text data values with the ease of working with a numeric encoding of the data. In cases where we define value maps for alphanumeric data, the associations allow us to use space saving abbreviations for the underlying data along with more descriptive labels to be used in presenting output.</a></div>
+      <div class="Heading_4"><a name="135260">Defining a Valmap</a></div>
+      <div class="Picture"><a name="135264"><img class="Default" src="images/newser.012.5.03.jpg" width="100%" style="left: 0.0pt; max-height: 231px; max-width: 371px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135265">To create a valmap object, select </a><span class="Menu_Item">Object/New Object.../ValMap</span> from the main menu and optionally enter an object name, or enter the keyword &#8220;VALMAP&#8221; in the command line, followed by an optional name. EViews will open a valmap object.</div>
+      <div class="Body_Text"><a name="135266">You will enter your new mappings below the double line by typing or by copy-and-pasting. In the </a><span class="Menu_Item">Value</span> column, you should enter the values for which you wish to provide labels; in the <span class="Menu_Item">Label</span> column, you will enter the corresponding text label. Here, we define a valmap named FEMALEMAP in which the value 0 is mapped to the string &#8220;Male&#8221;, and the value 1 is mapped to the string &#8220;Female&#8221;.</div>
+      <div class="Body_Text"><a name="135267">The two special entries above the double line should be used to define mappings for blank strings and numeric missing values. The default mapping is to represent blank strings as themselves, and to represent numeric missing values with the text &#8220;NA&#8221;. You may change these defaults by entering the appropriate text in the </a><span class="Menu_Item">Label</span> column. For example, to change the representation of missing numeric values to, say, a period, simply type the &#8220;.&#8221; character in the appropriate cell.</div>
+      <div class="Body_Text"><a name="135268">We caution that when working with maps, EViews will look for exact equality between the value in a series and the value in the valmap. Such an equality comparison is subject to the usual issues associated with comparing floating point numbers. To mitigate these issues and to facilitate mapping large numbers of values, EViews allows you to define value maps using intervals.</a></div>
+      <div class="Picture"><a name="135272"><img class="Default" src="images/newser.012.5.04.jpg" width="100%" style="left: 0.0pt; max-height: 257px; max-width: 427px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135273">To map an interval, simply enter a range of values in the </a><span class="Menu_Item">Value</span> column and the associated label in the <span class="Menu_Item">Label</span> column. You may use round and square parentheses, to denote open (&#8220;(&#8220;, &#8220;)&#8220;) or closed (&#8220;[&#8220;, &#8220;]&#8221;) interval endpoints, and the special values &#8220;&#8211;INF&#8221; and &#8220;INF&#8221; to represent minus and plus infinity. </div>
+      <div class="Body_Text"><a name="135274">Using interval mapping, we require only three entries to map all of the negative values to the string &#8220;negative&#8221;, the positive values to the string &#8220;positive&#8221;, and the value 0 to the string &#8220;zero&#8221;. Note that the first interval in our example, &#8220;[&#8211;inf, 0)&#8221;, is mathematically incorrect since the lower bound should not be closed, but EViews allows the closed interval syntax in this case since there is no possibility of confusion.</a></div>
+      <div class="Picture"><a name="135278"><img class="Default" src="images/newser.012.5.05.jpg" width="100%" style="left: 0.0pt; max-height: 355px; max-width: 402px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135279">While the primary use for valmaps will be to map numeric series values, there is nothing stopping you from defining labels corresponding to alpha series values (note that value and label matching is case sensitive). One important application of string value mapping is to expand abbreviations. For example, one might wish to map the U.S. Postal Service state abbreviations to full state names.</a></div>
+      <div class="Body_Text"><a name="135280">Since valmaps may be used with both numeric and alpha series, the text entries in the </a><span class="Menu_Item">Value</span> column may generally be used to match both numeric and alphanumeric values. For example, if you enter the text &#8220;0&#8221; as your value, EViews treats the entry as representing either a numeric 0 or the string value &#8220;0&#8221;. Similarly, entering the text string &#8220;[0,1]&#8221; will match both numeric values in the interval, as well as the string value &#8220;[0,1]&#8221;. </div>
+      <div class="Picture"><a name="135284"><img class="Default" src="images/newser.012.5.06.jpg" width="100%" style="left: 0.0pt; max-height: 265px; max-width: 426px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135285">There is one exception to this dual interpretation. You may, in the process of defining a given valmap, provide an entry that conflicts with a previous entry. EViews will automatically identify the conflict, and will convert the latter entry into a string-only valmap entry. </a></div>
+      <div class="Body_Text"><a name="135286">For example, if the first line of your valmap maps 0 to &#8220;Zero&#8221;, a line that maps 0 to &#8220;New Zero&#8221;, or one that maps &#8220;[0, 1]&#8221; to &#8220;Unit interval&#8221; conflicts with the existing entry. In the latter cases, the conflicting maps will be treated as text maps. Such a map is identified by enclosing the entry with quotation marks. Here, EViews has automatically added the enclosing quotation marks to indicate that the latter two label entries will only be interpreted as string maps, and not as numeric maps. </a></div>
+      <div class="Body_Text"><a name="135287">Once you have defined your mappings, click on the </a><span class="Menu_Item">Update</span> button on the toolbar to validate the object. EViews will examine your valmap and will remove entries with values that are exact duplicates. In this example, the last entry, which maps the string &#8220;0&#8221; to the value &#8220;New Zero&#8221; will be removed since it conflicts with the first line. The second entry will be retained since it is not an exact duplicate of any other entry. It will, however, be interpreted only as a string since the numeric interpretation would lead to multiple mappings for the value 0.</div>
+      <div class="Heading_4"><a name="135288">Assigning a Valmap to a Series</a></div>
+      <div class="Body_Text"><a name="135289">To use a valmap, you need to instruct EViews to display the values of the map in place of the underlying data. Before working with a valmap, you should be certain that you have updated and validated your valmap by pressing the </a><span class="Menu_Item">Update</span> button on the valmap toolbar.</div>
+      <div class="Picture"><a name="135293"><img class="Default" src="images/newser.012.5.07.jpg" width="100%" style="left: 0.0pt; max-height: 425px; max-width: 570px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135294">First, you must assign the value map to your series by modifying the series properties. Open the series window and select </a><span class="Menu_Item">View/Properties...</span> or click on the <span class="Menu_Item">Properties</span> button in the series toolbar to open the properties dialog. Click on the <span class="Menu_Item">Value Map</span> tab to display the value map name edit field.</div>
+      <div class="Body_Text"><a name="135295">If the edit field is blank, a value map has not been associated with this series. To assign a valmap, simply enter the name of a valmap object in the edit field and click on </a><span class="Menu_Item">OK</span>.</div>
+      <div class="Body_Text"><a name="135296">EViews will validate the entry and apply the specified map to the series. Note that to be valid, the valmap must exist in the same workfile page as the series to which it is assigned.</a></div>
+      <div class="Heading_4"><a name="135297">Using the Valmap Tools</a></div>
+      <div class="Body_Text"><a name="135298">EViews provides a small set of object-specific views and procedures that will aid you in working with valmaps.</a></div>
+      <div class="Heading_5"><a name="135300">Sorting Valmap Entries</a></div>
+      <div class="Body_Text"><a name="135301">You may add your valmap entries in any order without changing the behavior of the map. However, when viewing the contents of the map, you may find it useful to see the entries in sorted order.</a></div>
+      <div class="Picture"><a name="135305"><img class="Default" src="images/newser.012.5.08.jpg" width="100%" style="left: 0.0pt; max-height: 179px; max-width: 297px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135306">To sort the contents of your map, click on </a><span class="Menu_Item">Proc/Sort...</span> from the main valmap menu. EViews provides you with the choice of sorting by the value column using numeric order (<span class="Menu_Item">Value - Numeric</span>), sorting by the value column using text order (<span class="Menu_Item">Value - Text</span>) or sorting by the label column (<span class="Menu_Item">Label</span>). </div>
+      <div class="Body_Text"><a name="135307">In the first two cases, we sort by the values in the first column of the valmap. The difference between the choices is apparent when you note that the ordering of the entries &#8220;9&#8221; and &#8220;10&#8221; depends upon whether we are interpreting the sort as a numeric sort, or as a text sort. Selecting </a><span class="Menu_Item">Value - Numeric</span> tells EViews that, where possible, you wish to interpret strings as numbers when performing comparisons (so that &#8220;9&#8221; is less than &#8220;10&#8221;); selecting <span class="Menu_Item">Value - Text</span> says that all values should be treated as text for purposes of comparison (so that &#8220;10&#8221; is less than &#8220;9&#8221;).</div>
+      <div class="Body_Text"><a name="135308">Click on </a><span class="Menu_Item">OK</span> to accept the sort settings.</div>
+      <div class="Heading_5"><a name="135310">Examining Properties of a Valmap</a></div>
+      <div class="Body_Text"><a name="135311">You may examine a summary of your valmap by selecting </a><span class="Menu_Item">View/Statistics</span> in the valmap window. EViews will display a view showing the properties of the labels defined in the object.</div>
+      <div class="Picture"><a name="135315"><img class="Default" src="images/newser.012.5.09.jpg" width="100%" style="left: 0.0pt; max-height: 351px; max-width: 431px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135316">The top portion of the view shows the number of mappings in the valmap, and the number of unique labels used in those definitions. Here we see that the valmap has four definitions, which map four values into four unique labels. Two of the four definitions are the special entries for blank strings and the numeric NA value.</a></div>
+      <div class="Body_Text"><a name="135317">The remaining portions of the view provide a detailed summary of the valmap describing the properties of the map when applied to numeric and to text values.</a></div>
+      <div class="Body_Text"><a name="135318">When applied to an ordinary numeric series, our FEMALEMAP example contains three relevant definitions that provide labels for the values 0, 1, and NA. Here, EViews reports that the numeric value mapping is one-to-one since there are no two values that produce the same value label.</a></div>
+      <div class="Body_Text"><a name="135319">The output also reports that the FEMALEMAP has three relevant definitions for mapping the three text values, &#8220;0&#8221;, &#8220;1&#8221;, and the blank string, into three unique labels. We see that the text interpreted maps are also one-to-one.</a></div>
+      <div class="Body_Text"><a name="135320">Note that in settings where we map an interval into a given label, or where a given text label is repeated for multiple values, EViews will report a many-to-one mapping. Knowing that a valmap is many-to-one is important since it implies that the values of the underlying source series are not uniquely identified by the label values. This lack of identification has important implications in editing mapped series and in interpreting the results from various statistical output (see </a><span class="Link"><a href="#135354" title="Value Maps">&#8220;Editing a Mapped Series&#8221;</a></span> and <span class="Link"><a href="#135416" title="Value Maps">&#8220;Valmap Definition Cautions&#8221;</a></span>).</div>
+      <div class="Heading_5"><a name="135327">Tracking Valmap Usage</a></div>
+      <div class="Body_Text"><a name="135328">A single valmap may be applied to more than one series. You may track the usage of a given valmap by selecting </a><span class="Menu_Item">View/Usage</span> from the valmap main menu. EViews will examine every numeric and alpha series in the workfile page to determine which, if any, have applied the specified valmap. </div>
+      <div class="Picture"><a name="135332"><img class="Default" src="images/newser.012.5.10.jpg" width="100%" style="left: 0.0pt; max-height: 240px; max-width: 372px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135333">The valmap view then changes to show the number and names of the series that employ the valmap, with separate lists for the numeric and the alpha series. Here we see that there is a single numeric series named FEMALE that uses FEMALEMAP.</a></div>
+      <div class="Heading_4"><a name="135334">Working with a Mapped Series</a></div>
+      <div class="Body_Text"><a name="135335">Once you assign a map to a series, EViews allows you to display and edit your series using the mapped values and will use the labels when displaying the output from selected procedures.</a></div>
+      <div class="Heading_5"><a name="135336">Displaying series values</a></div>
+      <div class="Body_Text"><a name="135337">By default, once you apply a value map to a series, the EViews spreadsheet view will change to display the newly mapped values. </a></div>
+      <div class="Picture"><a name="135341"><img class="Default" src="images/newser.012.5.11.jpg" width="100%" style="left: 0.0pt; max-height: 295px; max-width: 416px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135342">For example, after applying the FEMALEMAP to our FEMALE series, the series spreadsheet view changes to show the labels associated with each value instead of the underlying encoded values. Note that the display format dropdown menu usually visible in series toolbar indicates that EViews is displaying the </a><span class="Menu_Item">Default</span> series values, so that it shows the labels &#8220;Male&#8221; and &#8220;Female&#8221; rather than the underlying 0 and 1 values.</div>
+      <div class="Picture"><a name="135346"><img class="Default" src="images/newser.012.5.12.jpg" width="100%" style="left: 0.0pt; max-height: 290px; max-width: 418px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135347">Note that if any of the values in the series does not have a corresponding valmap entry, EViews will display a mix of labeled and unlabeled values, with the unlabeled value &#8220;showing through&#8221; the mapping. For example, if the last observation in the FEMALE series had the value 3, the series spreadsheet will show observations with &#8220;Male&#8221; and &#8220;Female&#8221; corresponding to the mapped values, as well as the unmapped value 3.</a></div>
+      <div class="Picture"><a name="135351"><img class="Default" src="images/newser.012.5.13.jpg" width="100%" style="left: 0.0pt; max-height: 295px; max-width: 415px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135352">There may be times when you wish to view the underlying series values instead of the labels. There are two possible approaches. First, you may remove the valmap assignment from the series. Simply go to the </a><span class="Menu_Item">Properties</span> dialog and delete the name of the valmap object from the <span class="Menu_Item">Value Map</span> page. The display will revert to showing the underlying values. Less drastically, you may use the display method dropdown menu to change the display format for the spreadsheet view. If you select <span class="Menu_Item">Raw Data</span>, the series spreadsheet view will change to show the underlying series data.</div>
+      <div class="Heading_5"><a name="135354">Editing a Mapped Series</a></div>
+      <div class="Body_Text"><a name="135355">To edit the values of your mapped series, first make certain you are in edit mode, then enter the desired values, either by typing in the edit field, or by pasting from the clipboard. How EViews interprets your input will differ depending upon the current display format for the series. </a></div>
+      <div class="Body_Text"><a name="135356">If your mapped series is displayed in its original form using the </a><span class="Menu_Item">Raw Data </span>setting, EViews will interpret any input as representing the underlying series values, and will place the input directly into the series. For example, if our FEMALE series is displayed using the <span class="Menu_Item">Raw Data </span>setting, any numeric input will be entered directly in the series, and any string input will be interpreted as an NA value.</div>
+      <div class="Body_Text"><a name="135357">In contrast, if the series is displayed using the </a><span class="Menu_Item">Default</span> setting, EViews will use the attached valmap both in displaying the labeled values and in interpreting any input. In this setting, EViews will first examine the attached valmap to determine whether the given input value is also a label in the valmap. If a matching entry is found, and the label matches a unique underlying value, EViews will put the value in the series. If there is no matching valmap label entry, or if there is an entry but the corresponding value is ambiguous, EViews will put the input value directly into the series. One implication of this behavior is that so long as the underlying values are not themselves valmap labels, you may enter data in either mapped or unmapped form. Note, again, that text value and label matching is case-sensitive.</div>
+      <div class="Picture"><a name="135361"><img class="Default" src="images/newser.012.5.14.jpg" width="100%" style="left: 0.0pt; max-height: 292px; max-width: 419px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135362">Let us consider a simple example.</a></div>
+      <div class="Body_Text"><a name="135363">Suppose that the FEMALE series is set to display mapped values, and that you enter the value &#8220;Female&#8221;. EViews will examine the assigned valmap, determine that &#8220;Female&#8221; corresponds to the underlying value &#8220;1&#8221;, and will assign this value to the series. Since &#8220;1&#8221; is a valid form of numeric input, the numeric value 1 will be placed in the series. Note that even though we have implicitly entered 1 into the series, the mapped spreadsheet view will continue to show the value &#8220;Female&#8221;. </a></div>
+      <div class="Body_Text"><a name="135364">Alternatively, we could have directly entered the &#8220;1&#8221; corresponding to the underlying numeric value. Since &#8220;1&#8221; is not a valmap label, EViews will put the value 1 in the series, which will be displayed using the label &#8220;Female&#8221;.</a></div>
+      <div class="Body_Text"><a name="135365">While quite useful, entering data in mapped display mode requires some care, as your results may be somewhat unexpected. For one, you should bear in mind that the required reverse lookup of values associated with a given input requires an exact match of the input to a label value, and a one-to-one correspondence between the given label and a valmap value. If this condition is not met, the original input value will be placed in the series. </a></div>
+      <div class="Body_Text"><a name="135366">Consider, for example, the result of entering the string &#8220;female&#8221; instead of &#8220;Female&#8221;. In this case, there is no matching valmap label entry, so EViews will put the input value, &#8220;female&#8221;, into the series. Since FEMALE is a numeric series, the resulting value will be an NA, and the display will show the mapped value for numeric missing values. </a></div>
+      <div class="Body_Text"><a name="135367">Similarly, suppose you enter &#8220;3&#8221; into the last observation of the FEMALE series. Again, EViews does not find a corresponding valmap label entry, so the input is entered directly into the series. In this case, the input represents a valid number so that the resulting value will be a 3. Since there is no valmap entry for this value, the underlying value will be displayed.</a></div>
+      <div class="Body_Text"><a name="135368">Lastly, note that if the matching valmap label corresponds to multiple underlying values, EViews will be unable to perform the reverse lookup. If, for example, we modify our valmap so that the interval &#8220;[1, 10]&#8221; (instead of just the value 1) maps to the label &#8220;Female&#8221;, then when you enter &#8220;Female&#8221; as your input, it is impossible to determine a unique value for the series. In this case, EViews will enter the original input, &#8220;Female&#8221;, directly into the series, resulting in an NA value.</a></div>
+      <div class="Body_Text"><a name="135372">See </a><span class="Link"><a href="#135416" title="Value Maps">&#8220;Valmap Definition Cautions&#8221;</a></span> for additional cautionary notes.</div>
+      <div class="Heading_5"><a name="135373">Using a Mapped Series</a></div>
+      <div class="Body_Text"><a name="135374">You may use a mapped series as though it were any series. We emphasize the fact that the mapped values of a series are not replacements of the underlying data; they are only labels to be used in output. Thus, when performing numeric calculations with a series, EViews will always use the underlying values of the series, not the label values. For example, if you map the numeric value -99 to the text &#8220;NA&#8221;, and take the absolute value of the mapped numeric series containing that value, you will get the value 99, and not a missing value.</a></div>
+      <div class="Body_Text"><a name="135375">In appropriate settings (where the series values are treated as categories), EViews routines will use the labels when displaying output. For example, a one-way frequency tabulation of the FEMALE series with the assigned FEMALEMAP yields:</a></div>
+      <div class="Table"><a name="135658"><img class="Default" src="images/newser.012.5.15.jpg" width="100%" style="left: 0.0pt; max-height: 242px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="135380">Similarly, when computing descriptive statistics for the SALES data categorized by the values of the FEMALE series, we have:</a></div>
+      <div class="Table"><a name="135664"><img class="Default" src="images/newser.012.5.16.jpg" width="100%" style="left: 0.0pt; max-height: 232px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="135387">Valmap Functions</a></div>
+      <div class="Body_Text"><a name="135388">To facilitate working with valmaps, three new </a><span class="In-line_input">genr</span> functions are provided which allow you to translate between unmapped and mapped values. These functions may be used as part of standard series or alpha expressions.</div>
+      <div class="Body_Text"><a name="135389">First, to obtain the mapped values corresponding to a set of numbers or strings, you may use the command:</a></div>
+      <div class="List_Text_Indent"><span class="In-line_command"><a name="135391">@map</a></span>(<span class="Argument">arg[, map_name]</span>)</div>
+      <div class="Body_Text"><a name="135392">where </a><span class="Argument">arg</span> is a numeric or string series expression or literal, and the optional <span class="Argument">map_name</span> is the name of a valmap object. If <span class="Argument">map_name</span> is not provided, EViews will attempt to determine the map by inspecting <span class="Argument">arg.</span> This attempt will succeed only if <span class="Argument">arg </span>is a numeric series or alpha series that has previously been mapped.</div>
+      <div class="Body_Text"><a name="135393">Let us consider our original example where the FEMALEMAP maps 0 to &#8220;Male&#8221; and 1 to &#8220;Female&#8221;. Suppose that we have two series that contain the values 0 and 1. The first series, MAPPEDSER, has previously applied the FEMALEMAP, while the latter series, UNMAPPEDSER, has not.</a></div>
+      <div class="Body_Text"><a name="135394">Then the commands:</a></div>
+      <div class="Multi-line_Input"><a name="135395">alpha s1 = @map(mappedser)</a></div>
+      <div class="Multi-line_Input"><a name="135396">alpha s2 = @map(mappedser, femalemap)</a></div>
+      <div class="Body_Text"><a name="135397">are equivalent. Both return the labels associated with the numeric values in the series. The first command uses the assigned valmap to determine the mapped values, while the second uses FEMALEMAP explicitly.</a></div>
+      <div class="Body_Text"><a name="135398">Alternately, the command:</a></div>
+      <div class="Input"><a name="135399">alpha s3 = @map(unmappedser)</a></div>
+      <div class="Body_Text"><a name="135400">will generate an error since there is no valmap assigned to the series. To use </a><span class="In-line_command">@map</span> in this context, you must provide the name of a valmap, as in:</div>
+      <div class="Input"><a name="135401">alpha s4 = @map(unmappedser, femalemap)</a></div>
+      <div class="Body_Text"><a name="135402">which will return the mapped values of UNMAPPEDSER, using the valmap FEMALEMAP.</a></div>
+      <div class="Body_Text"><a name="135403">Conversely, you may obtain the numeric values associated with a set of string value labels using the </a><span class="In-line_command">@unmap</span> function. The <span class="In-line_command">@unmap</span> function takes the general form:</div>
+      <div class="List_Text_Indent"><span class="In-line_command"><a name="135405">@unmap</a></span>(<span class="Argument">arg, map_name</span>)</div>
+      <div class="Body_Text"><a name="135406">to return the numeric values that have been mapped into the string given in the string expression or literal </a><span class="Argument">arg</span>, where <span class="Argument">map_name</span> is the name of a valmap object. Note that if a given label is associated with multiple numeric values, the missing value NA will be returned. Note that the <span class="Argument">map_name argument is required with the </span><span class="In-line_command">@unmap</span><span class="Argument" style="font-weight: normal"> function.</span></div>
+      <div class="Body_Text"><a name="135407">Suppose, for example, that you have an alpha series STATEAB that contains state abbreviations (&#8220;AK&#8221;, &#8220;AL&#8221;, etc.) and a valmap STATEMAP that maps numbers to the abbreviations. Then:</a></div>
+      <div class="Input"><a name="135408">series statecode = @unmap(stateab, statemap)</a></div>
+      <div class="Body_Text"><a name="135409">will contain the numeric values associated with each value of STATEAB.</a></div>
+      <div class="Body_Text"><a name="135410">Similarly, you may obtain the string values associated with a set of string value labels using:</a></div>
+      <div class="List_Text_Indent"><span class="In-line_command"><a name="135412">@unmaptxt</a></span>(<span class="Argument">arg, map_name</span>)</div>
+      <div class="Body_Text"><a name="135413">where </a><span class="Argument">arg</span> is a string expression or literal, and <span class="Argument">map_name</span> is the name of a valmap object. <span class="In-line_command">@unmaptxt</span> will return the underlying string values that are mapped into the string labels provided in <span class="Argument">arg</span>. If a given label is associated with multiple values, the missing blank string &#8220;&#8221; will be returned.</div>
+      <div class="Heading_4"><a name="135416">Valmap Definition Cautions</a></div>
+      <div class="Body_Text"><a name="135417">EViews allows you to define quite general value maps that may be used with both numeric and alpha series. While potentially useful, the generality comes with a cost, since if used carelessly, valmaps can cause confusion. Accordingly, we caution you that there are many features of valmaps that should be used with care. To illustrate the issues, we list a few of the more problematic cases.</a></div>
+      <div class="Heading_5"><a name="135418">Many-to-one Valmaps</a></div>
+      <div class="Body_Text"><a name="135419">A many-to-one valmap is a useful tool for creating labels that divide series values into broad categories. For example, you may assign the label &#8220;High&#8221; to a range of values, and the label &#8220;Low&#8221; to a different range of values so that you may, when displaying the series labels, easily view the classification of an observation.</a></div>
+      <div class="Body_Text"><a name="135420">The downside to many-to-one valmaps is that they make interpreting some types of output considerably more difficult. Suppose, for example, that we construct a valmap in which several values are mapped to the label &#8220;Female&#8221;. If we then display a one-way frequency table for a series that uses the valmap, the label &#8220;Female&#8221; may appear as multiple entries. Such a table is almost impossible to interpret since there is no way to distinguish between the various &#8220;Female&#8221; values.</a></div>
+      <div class="Body_Text"><a name="135421">A series with an attached many-to-one valmap is also more difficult to edit when viewing labels since EViews may be unable to identify a unique value corresponding to a given label. In these cases, EViews will assign a missing value to the series, which may lead to confusion (see </a><span class="Link"><a href="#135354" title="Value Maps">&#8220;Editing a Mapped Series&#8221;</a></span>).</div>
+      <div class="Heading_5"><a name="135425">Mapping Label Values</a></div>
+      <div class="Body_Text"><a name="135426">Defining a map in which one of the label values is itself a value that is mapped to a label can cause confusion. Suppose, for example, that we have a valmap with two entries: the first maps the value 6 to the label &#8220;six&#8221;, and the second maps the value &#8220;six&#8221; to the label &#8220;high&#8221;.</a></div>
+      <div class="Body_Text"><a name="135427">Now consider editing an alpha series that has this valmap attached. If we use the </a><span class="Menu_Item">Default</span> display, EViews will show the labeled values. Thus, the underlying value &#8220;six&#8221; will display as the value &#8220;high&#8221;; while the value &#8220;6&#8221; will display as &#8220;six&#8221;. Since the string &#8220;six&#8221; is used both as a label and as a value, in this setting we have the odd result that it must be entered indirectly. Thus, to enter the string &#8220;six&#8221; in the alpha series, we have the counterintuitive result that you must type &#8220;high&#8221; instead of &#8220;six&#8221;, since entering the latter value will put &#8220;6&#8221; in the series. </div>
+      <div class="Body_Text"><a name="135428">Note, however, that if you display the series in </a><span class="Menu_Item">Raw Data </span>form, all data entry is direct; entering &#8220;six&#8221; will put the value &#8220;six&#8221; into the series and entering &#8220;high&#8221; will put the value &#8220;high&#8221; in the series.</div>
+      <div class="Heading_5"><a name="135429">Mapping Values to Numbers</a></div>
+      <div class="Body_Text"><a name="135430">Along the same lines, we strongly recommend that you not define value maps in which numeric values can be mapped to labels that appear to be numeric values. Electing, for example, to define a valmap where the value 5 is mapped to the label &#8220;6&#8221; and the value 6 is mapped to the label &#8220;5&#8221;, is bound to lead to confusion.</a></div>
+      <div class="Body_Text"><a name="113725">&nbsp;</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

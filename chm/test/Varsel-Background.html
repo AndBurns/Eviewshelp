@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Background</title>
+    <link rel="StyleSheet" href="css/Varsel.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="Varsel-Regression_Variable_Selection.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="Varsel-Variable_Selection_Estimation_in_EViews.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="Varsel-Regression_Variable_Selection.html">Regression Variable Selection</a> : Background</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="277139">Background</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#277148">Variable Selection Methods</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277151">Uni-Directional</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#277152">Uni-Directional-Forwards</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#277180">Uni-Directional-Backwards</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277199">Stepwise</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#277200">Stepwise-Forwards</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#277225">Stepwise-Backwards</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277245">Swapwise</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#277247">Swapwise-Max R-Squared Increment</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#277250">Swapwise-Min R-Squared Increment</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277253">Combinatorial</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277256">Auto-Search / GETS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#277275">Lasso</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="277140">The explosion in available data over recent decades, coupled with increases in computing power, has led to the growing popularity of methods that allow the data themselves to suggest the most appropriate combination of regressors to use in estimation. These techniques allow the researcher to provide a set of candidate variables for the model, rather than specifying a specific model. </a></div>
+      <div class="Body_Text"><a name="277141">Variable selection techniques are implemented in EViews as a pre-estimation step before performing a standard least squares regression. Before estimation, you must specify a dependent variable together with a list of always-included variable, and a list of selection variables, from which the selection algorithm will choose the most appropriate. Following the variable selection process, EViews reports the results of the final regression, </a><span class="Emphasis">i.e.</span> the regression of the always-included and the selected variables on the dependent variable.</div>
+      <div class="Body_Text"><a name="277142">In some cases the sample used in this equation may not coincide with the regression that was used during the selection process. This will occur if some of the omitted search variables have missing values for some observations that do not have missing values in the final regression. In such cases EViews will print a warning in the regression output. </a></div>
+      <div class="Body_Text"><a name="277146">The </a><span class="In-line_math">p</span>-values listed in the final regression output and all subsequent testing procedures do not account for the regressions that were run during the selection process. One should take care to interpret results accordingly.</div>
+      <div class="Heading_4"><a name="277148">Variable Selection Methods</a></div>
+      <div class="Body_Text"><a name="277149">EViews offers five different variable selection methods: Uni-directional, Stepwise, Swapwise, Combinatorial, Auto-Search/GETS and Lasso Selection.</a></div>
+      <div class="Heading_5"><a name="277151">Uni-Directional</a></div>
+      <div class="Heading_6"><a name="277152">Uni-Directional-Forwards</a></div>
+      <div class="Body_Text"><a name="277156">The </a><span class="Definition">Uni-directional-Forwards</span> method uses either a lowest p-value or largest <span class="In-line_math">t</span>-statistic criterion for adding variables.</div>
+      <div class="Body_Text"><a name="277160">The method begins with no added regressors. If using the </a><span class="In-line_math">p</span>-value criterion, we select the variable that would have the lowest <span class="In-line_math">p</span>-value were it added to the regression. If the <span class="In-line_math">p</span>-value is lower than the specified stopping criteria, the variable is added. The selection continues by selecting the variable with the next lowest <span class="In-line_math">p</span>-value, given the inclusion of the first variable. The procedure stops when the lowest <span class="In-line_math">p</span>-value of the variables not yet included is greater than the specified forwards stopping criterion, or the number of forward steps or number of added regressors reach the optional user specified limits.</div>
+      <div class="Body_Text"><a name="277176">If using the largest </a><span class="In-line_math">t</span>-statistic criterion, the same variables are selected, but the stopping criterion is specified in terms of the statistic value instead of the <span class="In-line_math">p</span>-value.</div>
+      <div class="Heading_6"><a name="277180">Uni-Directional-Backwards</a></div>
+      <div class="Body_Text"><a name="277181">The </a><span class="Definition">Uni-directional-Backwards</span> method is analogous to the Uni-directional-Forwards method, but begins with all possible added variables included, and then removes the variable with the highest <span class="In-line_math">p</span>-value. The procedure continues by removing the variable with the next highest <span class="In-line_math">p</span>-value, given that the first variable has already been removed. This process continues until the highest <span class="In-line_math">p</span>-value is less than the specified backwards stopping criteria, or the number of backward steps or number of added regressors reach the optional user specified limits.</div>
+      <div class="Body_Text"><a name="277197">The largest </a><span class="In-line_math">t</span>-statistic may be used in place of the lowest <span class="In-line_math">p</span>-value as a selection criterion.</div>
+      <div class="Heading_5"><a name="277199">Stepwise</a></div>
+      <div class="Heading_6"><a name="277200">Stepwise-Forwards</a></div>
+      <div class="Body_Text"><a name="277201">The </a><span class="Definition">Stepwise-Forwards </span>method is a combination of the Uni-directional-Forwards and Backwards methods. Stepwise-Forwards begins with no additional regressors in the regression, then adds the variable with the lowest <span class="In-line_math">p</span>-value. The variable with the next lowest <span class="In-line_math">p</span>-value given that the first variable has already been chosen, is then added. Next both of the added variables are checked against the backwards <span class="In-line_math">p</span>-value criterion. Any variable whose <span class="In-line_math">p</span>-value is higher than the criterion is removed.</div>
+      <div class="Body_Text"><a name="277214">Once the removal step has been performed, the next variable is added. At this, and each successive addition to the model, all the previously added variables are checked against the backwards criterion and possibly removed. The Stepwise-Forwards routine ends when the lowest </a><span class="In-line_math">p</span>-value of the variables not yet included is greater than the specified forwards stopping criteria (or the number of forwards and backwards steps or the number of added regressors has reached the corresponding optional user specified limit).</div>
+      <div class="Body_Text"><a name="277224">You may elect to use the largest </a><span class="In-line_math">t</span>-statistic may be used in place of the lowest <span class="In-line_math">p</span>-value as a selection criterion.</div>
+      <div class="Heading_6"><a name="277225">Stepwise-Backwards</a></div>
+      <div class="Body_Text"><a name="277226">The </a><span class="Definition">Stepwise-Backwards</span> procedure reverses the Stepwise-Forwards method. All possible added variables are first included in the model. The variable with the highest p-value is first removed. The variable with the next highest <span class="In-line_math">p</span>-value, given the removal of the first variable, is also removed. Next both of the removed variables are checked against the forwards <span class="In-line_math">p</span>-value criterion. Any variable whose <span class="In-line_math">p</span>-value is lower than the criterion is added back in to the model.</div>
+      <div class="Body_Text"><a name="277236">Once the addition step has been performed, the next variable is removed. This process continues where at each successive removal from the model, all the previously removed variables are checked against the forwards criterion and potentially re-added. The Stepwise-Backwards routine ends when the largest </a><span class="In-line_math">p</span>-value of the variables inside the model is less than the specified backwards stopping criterion, or the number of forwards and backwards steps or number of regressors reaches the corresponding optional user specified limit.</div>
+      <div class="Body_Text"><a name="277243">The largest </a><span class="In-line_math">t</span>-statistic may be used in place of the lowest p-value as a selection criterion.</div>
+      <div class="Heading_5"><a name="277245">Swapwise</a></div>
+      <div class="Body_Text"><a name="277246">The </a><span class="Definition">swapwise </span>methods both begin with no additional regressors in the model.</div>
+      <div class="Heading_6"><a name="277247">Swapwise-Max R-Squared Increment</a></div>
+      <div class="Body_Text"><a name="277248">The </a><span style="font-style: italic">Max R-squared Increment </span>method starts by adding the variable which maximizes the resulting regression R-squared. The variable that leads to the largest increase in R-squared is then added. Next each of the two variables that have been added as regressors are compared individually with all variables not included in the model, calculating whether the R-squared could be improved by swapping the &#8220;inside&#8221; with an &#8220;outside&#8221; variable. If such an improvement exists then the &#8220;inside&#8221; variable is replaced by the &#8220;outside&#8221; variable. If there exists more than one swap that would improve the R-squared, the swap that yields the largest increase is made.</div>
+      <div class="Body_Text"><a name="277249">Once a swap has been made the comparison process starts again. Once all comparisons and possible swaps are made, a third variable is added, with the variable chosen to produce the largest increase in R-squared. The three variables inside the model are then compared with all the variables outside the model and any R-squared increasing swaps are made. This process continues until the number of variables added to the model reaches the user-specified limit.</a></div>
+      <div class="Heading_6"><a name="277250">Swapwise-Min R-Squared Increment</a></div>
+      <div class="Body_Text"><a name="277251">The </a><span class="Definition">Min R-squared Increment </span>method is very similar to the Max R-squared method. The difference lies in the swapping procedure. Whereas the Max R-squared swaps the variables that would lead to the largest increase in R-squared, the Min R-squared method makes a swap based on the smallest increase. This can lead to a more lengthy selection process, with a larger number of combinations of variables compared.</div>
+      <div class="Heading_5"><a name="277253">Combinatorial</a></div>
+      <div class="Body_Text"><a name="277254">For a given number of added variables, the </a><span class="Definition">combinatorial</span> method evaluates every possible combination of added variables, and selects the combination that leads to the largest R-squared in a regression using the added and always included variables as regressors. This method is more thorough than the previous methods, since those methods do not compare every possible combination of variables, and obviously requires additional computation. With large numbers of potential added variables, the Combinatorial approach can take a very long time to complete.</div>
+      <div class="Heading_5"><a name="277256">Auto-Search / GETS</a></div>
+      <div class="Body_Text"><a name="277257">The </a><span class="Definition">auto-search/GETS</span> algorithm follows the steps suggested by AutoSEARCH algorithm of Escribano and Sucarrat (2011), which in turn builds upon the work in Hoover and Perez 1999. The algorithm is similar to the uni-directional-backwards method:</div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="277258">The model with all search variables (termed the general unrestricted model, GUM) is estimated, and checked with a set of diagnostic tests. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="277259">A number of search </a><span style="font-style: italic">paths</span> are defined, one for each insignificant search variable in the GUM. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="277260">For each path, the insignificant variable defined in 2) is removed and then a series of further variable removal steps is taken, each time removing the most insignificant variable, and each time checking whether the current model passes the set of diagnostic tests. If the diagnostic tests fail after the removal of a variable, that variable is placed back into the model and prevented from being removed again along this path. Variable removal finishes once there are no more insignificant variables, or it is impossible to removal a variable without failing the diagnostic tests.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">4.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="277261">Once all paths have been calculated the final models produced by the paths are compared using an information criteria selection. The best model is then selected.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="277262">For the suite of diagnostic tests performed on both the GUM and in each path, EViews includes:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277266">AR LM test&#8212;a </a><span class="In-line_math">Q</span>-statistic test on the level residuals at the specified significance and number of lags.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277270">ARCH LM test&#8212;a </a><span class="In-line_math">Q</span>-statistic test on the squared residuals at the specified significance and number of lags.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277271">A Jarque-Bera normality test.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277272">A parsimonious encompassing test (PET)&#8212;for models other than the GUM, an F-test of the overall significance of the removed regressors compared to the GUM.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277273">Auto-search/GETS allows for cases where there are more search variables than observations in the estimation sample &#8211; a situation typically impossible due to singularity of the regressor matrix. In such cases the algorithm is split into blocks, where each block has its own GUM with a subset of the search regressors. The algorithm works through each block individually, and then combines the individually selected variables from each block into a new GUM and runs one more time.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="277275">Lasso</a></div>
+      <div class="Body_Text"><a name="281355">The </a><span class="Emphasis">Lasso</span> (Least-Absolute Shrinkage and Selection Operator) estimator is a regression estimator with an <img class="Default EquationGraphic" src="images/Varsel.031.2.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> penalty term that is acts to guard against over-fitting. The <img class="Default EquationGraphic" src="images/Varsel.031.2.2.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> term penalizes non-zero coefficients, pushing (shrinking) them toward zero. This behavior is termed <span class="Definition">shrinkage</span>.</div>
+      <div class="Body_Text"><a name="281370">The Lasso objective function is</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Varsel.031.2.3.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(22.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="277284">with the overall penalty parameter <img class="Default EquationGraphic" src="images/Varsel.031.2.4.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and the individual penalty weights <img class="Default EquationGraphic" src="images/Varsel.031.2.5.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> acting to determine the extent of the penalty and to control the degree of shrinkage. </a></div>
+      <div class="Body_Text"><a name="277285">The Lasso variable selection method implemented in EViews is a model selection routine that estimates models for one or more penalty parameters <img class="Default EquationGraphic" src="images/Varsel.031.2.6.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, possibly performing cross-validation to determine an optimal <img class="Default EquationGraphic" src="images/Varsel.031.2.7.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, and uses the results to determine the set of admissible regressors. Variables whose coefficients shrink to zero in the optimal Lasso specification are excluded from the selected model.</a></div>
+      <div class="Body_Text"><a name="277290">While Lasso is a powerful tool for model selection, caution should be used when applying Lasso to models with highly collinear variables, as this method tends to select one variable at random from a group of such variables.</a></div>
+      <div class="Body_Text"><a name="277294">See &#8220;</a><span class="Link"><a href="enet-Elastic_Net_and_Lasso.html#439556" title="Elastic Net and Lasso">&#8220;Elastic Net and Lasso&#8221;</a></span> for additional discussion.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

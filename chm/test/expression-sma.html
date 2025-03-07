@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>sma</title>
+    <link rel="StyleSheet" href="css/expression.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="expression-sar.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="stringref-String_and_Date_Summary.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : Special Expression Reference</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Command_Title_Box"><a name="1645453">&nbsp;</a></div>
+      <table class="Command_Heading" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 108pt">
+            <div class="Command_Name"><a name="1645450">sma</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 252pt">
+            <div class="Command_Header" style="color: #0000ff; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Command_Header_link"><a href="expression-Special_Expression_Reference.html#1690806" title="Special Expression Reference" name="1645452">Special Expression</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Description"><a name="1645454">Seasonal moving average error specification.</a></div>
+      <div class="Body_Text"><span class="In-line_input"><a name="1645455">sma</a></span> can be included in a <span class="In-line_command">ls</span> or <span class="In-line_command">tsls</span> specification to specify a multiplicative seasonal moving average term. A <span class="In-line_command">sma(p)</span> term can be included in your equation specification to represent a seasonal moving average term of order <img class="Default EquationGraphic" src="images/expression.094.9.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. The lag polynomial used in estimation is the product of that specified by the <span class="In-line_input">ma</span> terms and that specified by the <span class="In-line_command">sma</span> terms. The purpose of the <span class="In-line_input">sma</span> expression is to allow you to form the product of lag polynomials. </div>
+      <div class="Command_Section"><a name="1645459">Examples</a></div>
+      <div class="Input"><a name="1645460">ls tb3 c ma(1) ma(2) sma(4)</a></div>
+      <div class="Body_Text"><span class="EViews_Name"><a name="1645461">TB3</a></span> is modeled as a second order moving average process with a multiplicative seasonal moving average term at lag four.</div>
+      <div class="Input"><a name="1645462">tsls(z) sale c adv ma(1) sma(12) sma(24) @ c gdp </a></div>
+      <div class="Body_Text"><a name="1645463">In this two-stage least squares specification, the error term is a first order moving average process with multiplicative seasonal moving average terms at lags 12 and 24. The &#8220;</a><span class="In-line_option">z</span>&#8221; option turns off backcasting.</div>
+      <div class="Command_Section"><a name="1645464">Cross-references</a></div>
+      <div class="Body_Text"><a name="1645468">See </a><span class="Link"><a href="timeser-Background.html#192521" title="Background">&#8220;Background&#8221;</a></span> for details on ARMA and seasonal ARMA modeling. </div>
+      <div class="Body_Text"><a name="1645478">See also </a><span class="In-line_command_link"><a href="expression-sar.html#1644595" title="sar">sar</a></span>, <span class="In-line_command_link"><a href="expression-ar.html#1691012" title="ar">ar</a></span>, and <span class="In-line_command_link"><a href="expression-ma.html#1640056" title="ma">ma</a></span>.</div>
+      <div class="Body_Text"><a name="1708503">&nbsp;</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

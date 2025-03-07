@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Working with Breakpoint Equations</title>
+    <link rel="StyleSheet" href="css/multibreak.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="multibreak-Estimating_Least_Squares_with_Breakpoints_in_EVi.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="multibreak-Example.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="multibreak-Least_Squares_with_Breakpoints.html">Least Squares with Breakpoints</a> : Working with Breakpoint Equations</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="250358">Working with Breakpoint Equations</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#251258">Estimation Output</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#254018">Equation Views and Procs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#254461">Representations View</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#258319">Breakpoint Specification View</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#259075">Coefficient Labeling in Various Views</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#259860">Specifying Regime-Specific or Common Variables</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#259324">Forecasting Proc</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="250213">Before describing EViews tools for working with an equation estimated using breakpoint least squares, it is important to point out that the resulting estimated equation is simply a linear regression model in which some of the variables are interacted with regime dummy variables, as in </a><span class="Link"><a href="multibreak-Background.html#240371" title="Background">Equation&nbsp;(34.2)</a></span>. Thus, most of the discussion related to the linear regression model in <span class="Link"><a href="Regress1-Basic_Regression_Analysis.html#174005" title="Basic Regression Analysis">&#8220;Basic Regression Analysis&#8221;</a></span> and <span class="Link"><a href="testing-Specification_and_Diagnostic_Tests.html#182045" title="Specification and Diagnostic Tests">&#8220;Specification and Diagnostic Tests&#8221;</a></span> applies. We focus our attention in this section on the unique aspects of the breakpoint equation.</div>
+      <div class="Heading_4"><a name="251258">Estimation Output</a></div>
+      <div class="Body_Text"><a name="251235">To illustrate the output from estimation of a breakpoint equation, we employ data from Hansen&#8217;s (2001) labor productivity example. Hansen&#8217;s example uses monthly (February 1947 to April 2001) U. S. labor productivity in the manufacturing durables sector as measured by the growth rate of the ratio of the Industrial Production Index to average weekly labor hours. The data are in the series DDUR in the workfile &#8220;hansen_jep.wf1&#8221;.</a></div>
+      <div class="Body_Text"><a name="251833">We estimate a breakpoint model with DDUR regressed on its lag DDUR(-1) and a constant. The output is presented below:</a></div>
+      <div class="Picture"><a name="252179"><img class="Default" src="images/multibreak.044.4.01.jpg" width="100%" style="left: 0.0pt; max-height: 733px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="252174">The top portion of the output shows equation specification information. As we see, the two estimated breakdates 1963m12 and 1994m12 were determined using the Bai-Perron sequential breakpoint methodology, with a maximum of 5 breaks, 5% trimming, and a test size of 0.10. Coefficient covariances for the tests and estimates are computed using White&#8217;s method with no d.f. correction.</a></div>
+      <div class="Body_Text"><a name="252983">The middle section labels each regime and shows the corresponding coefficient estimates, standard errors, and </a><span class="In-line_math">p</span>-values.</div>
+      <div class="Body_Text"><a name="253462">The bottom portion of the dialog shows the standard summary statistics. Most are self-explanatory. We do note that the <img class="Default EquationGraphic" src="images/multibreak.044.4.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />-square, the </a><span class="In-line_math">F</span>-statistic, and the corresponding probability are all based on a comparison with the full restricted, no breakpoint, constant only model. Note also the <span class="In-line_math">F</span>-statistic is based on the difference of the sums-of-squares so, despite the presence of White coefficient standard errors, it is not robust to heteroskedasticity.</div>
+      <div class="Heading_4"><a name="254018">Equation Views and Procs</a></div>
+      <div class="Body_Text"><a name="254438">As noted above, estimated equation is simply a linear regression model in which some of the variables are interacted with regime dummy variables. Thus, most of the equation views and procs are defined exactly as in the standard least square regression. There are, however, some specific breakpoint regression features that deserve discussion.</a></div>
+      <div class="Heading_4"><a name="254461">Representations View</a></div>
+      <div class="Body_Text"><a name="254784">The representations view shows you the equation specification estimated by EViews:</a></div>
+      <div class="Picture"><a name="254890"><img class="Default" src="images/multibreak.044.4.03.jpg" width="100%" style="left: 0.0pt; max-height: 386px; max-width: 564px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="254086">Note in particular the use of the </a><span class="In-line_command">@before</span>, <span class="In-line_command">@during</span>, and <span class="In-line_command">@after</span> functions to create regime dummy variables that interact with the regressors. You could have used these functions to specify an equivalent model using the ordinary least squares estimator.</div>
+      <div class="Heading_4"><a name="258319">Breakpoint Specification View</a></div>
+      <div class="Body_Text"><a name="258300">The breakpoint specification view (</a><span class="Menu_Item">View/Breakpoint Specification</span>) displays a summary of the breakpoint specification, the method used to determine the break dates, and if appropriate, re-computes and displays the test statistics used to obtain the optimal breaks. </div>
+      <div class="Body_Text"><a name="258919">The top portion of the output shows the breakpoint summary:</a></div>
+      <div class="Picture"><a name="258920"><img class="Default" src="images/multibreak.044.4.04.jpg" width="100%" style="left: 0.0pt; max-height: 267px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="258921">The remaining portion shows the intermediate results for the breakpoint determination:</a></div>
+      <div class="Picture"><a name="258775"><img class="Default" src="images/multibreak.044.4.05.jpg" width="100%" style="left: 0.0pt; max-height: 607px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="259075">Coefficient Labeling in Various Views</a></div>
+      <div class="Body_Text"><a name="254143">EViews uses various methods for labeling the coefficient results in view output.</a></div>
+      <div class="Body_Text"><a name="256560">For example, the matrix-based coefficient covariance view (</a><span class="Menu_Item">View/Covariance matrix</span>) uses minimum labeling information to identify columns and rows of the covariance matrix. The coefficients are listed in the order that they appear in the equation results view, but without overt regime identification:</div>
+      <div class="Picture"><a name="256564"><img class="Default" src="images/multibreak.044.4.06.jpg" width="100%" style="left: 0.0pt; max-height: 328px; max-width: 658px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="256556">Here, the first to columns correspond to the coefficients on DDUR(-1) and the intercept in the first regime, the next two columns are the results for the second regime, and so on. Any non-regime specific coefficients appear at the end of the blocks of varying coefficients.</a></div>
+      <div class="Body_Text"><a name="258260">In most table output, EViews groups and labels the variables by regimes. For example, the scaled coefficients view (</a><span class="Menu_Item">View/Coefficient Diagnostics/Scaled Coefficients</span>) mirrors the format of the equation results output:</div>
+      <div class="Picture"><a name="258264"><img class="Default" src="images/multibreak.044.4.07.jpg" width="100%" style="left: 0.0pt; max-height: 464px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="258057">Alternately, in leverage plots (</a><span class="Menu_Item">View/Stability Diagnostics/Leverage Plots...</span>) EViews displays graphs that are labeled with the full dummy variable interaction variables previously seen in the representations view:</div>
+      <div class="Picture"><a name="257800"><img class="Default" src="images/multibreak.044.4.08.jpg" width="100%" style="left: 0.0pt; max-height: 506px; max-width: 715px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="259860">Specifying Regime-Specific or Common Variables</a></div>
+      <div class="Body_Text"><a name="259855">EViews dialogs will prompt you, where relevant, to indicate whether variables should have regime-specific or common coefficients. For example, the omitted variables test (</a><span class="Menu_Item">View/Coefficient Diagnostics/Omitted Variables Test - Likelihood Ratio...</span>) dialog offers separate edit fields corresponding to the two types of variables:</div>
+      <div class="Picture"><a name="259217"><img class="Default" src="images/multibreak.044.4.09.jpg" width="100%" style="left: 0.0pt; max-height: 315px; max-width: 312px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="258141">Similarly, if you select </a><span class="Menu_Item">View/Stability Diagnostics/Leverage Plots...</span>, EViews will prompt you to identify the variables for which you wish to display diagnostics. </div>
+      <div class="Picture"><a name="258145"><img class="Default" src="images/multibreak.044.4.10.jpg" width="100%" style="left: 0.0pt; max-height: 347px; max-width: 330px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="258136">Notice that in both cases, you should specify these variables in terms of the original, non-breaking variables.</a></div>
+      <div class="Heading_4"><a name="259324">Forecasting Proc</a></div>
+      <div class="Body_Text"><a name="259584">Forecasting in breakpoint least squares works the same way as in the least squares estimator. Click on the </a><span class="Menu_Item">Forecast</span> button on the toolbar or select <span class="Menu_Item">Proc/Forecast...</span> to bring up the dialog.</div>
+      <div class="Picture"><a name="260041"><img class="Default" src="images/multibreak.044.4.11.jpg" width="100%" style="left: 0.0pt; max-height: 354px; max-width: 456px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="260042">All of the settings are as in the standard linear regression case. However, it is worth noting that the saved forecast S.E. assumes a common variance across regimes even if you have relaxed this assumption in the computation of the coefficient covariances. Note also that out-of-sample forecasts will use the first regime specific coefficients for periods prior to the estimation period, and the last regime specific coefficients for periods after the estimation period.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

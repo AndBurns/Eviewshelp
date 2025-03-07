@@ -4,11 +4,23 @@ Spyder Editor
 
 This is a temporary script file.
 """
+from lxml import html
+from lxml.html.clean import clean_html
 
 dataset = []
-with open(r'C:\Users\home\OneDrive\Documents\GitHub\Eviewshelp\cat-facts.txt', 'r') as file:
-  dataset = file.readlines()
-  print(f'Loaded {len(dataset)} entries')
+with open(r'C:\git\eviewshelp\chm\test\cprogram-EViews_Programming.html', 'r') as file:
+  dataset= file.read()
+  
+#%%  
+parsed_html = html.fromstring(dataset)
+
+# Clean the HTML
+cleaned_html = clean_html(parsed_html)
+
+# Extract text content
+dataset = cleaned_html.text_content().strip()
+#dataset = clean_html(dataset).text_content().strip()
+print(f'Loaded {len(dataset)} entries')
 
 #%%Begin program
 import ollama
@@ -31,7 +43,7 @@ def cosine_similarity(a, b):
   return dot_product / (norm_a * norm_b)
 
 def retrieve(query, top_n=3):
-  query_embedding = ollama.embed(model=EMBEDDING_MODEL, input=chunk)['embeddings'][0]
+  query_embedding = ollama.embed(model=EMBEDDING_MODEL, input=query)['embeddings'][0]
   # temporary list to store (chunk, similarity) pairs
   similarities = []
   for chunk, embedding in VECTOR_DB:
@@ -47,7 +59,7 @@ for i, chunk in enumerate(dataset):
   print(f'Added chunk {i+1}/{len(dataset)} to the database')
   
   
-  #%% Do teh magiv
+ #%% Do the magic
   
 input_query = input('Ask me a question: ')
 retrieved_knowledge = retrieve(input_query)

@@ -1,0 +1,411 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>copy</title>
+    <link rel="StyleSheet" href="css/commandcmd.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="commandcmd-commandcap.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="commandcmd-cor.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : Command Reference</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Command_Title_Box"><a name="2081744">&nbsp;</a></div>
+      <table class="Command_Heading" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 108pt">
+            <div class="Command_Name"><a name="2081738">copy</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 252pt">
+            <div class="Command_Header"><span class="Command_Header_link"><a href="commandcmd-Command_Reference.html#2023547" title="Command Reference" name="2081743">Object Container, Data, and File Commands</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Description"><a name="2015016">Copy an object, or a set of objects matching a name pattern, within and between workfiles, workfile pages, and databases. Data in series objects may be frequency converted or match merged.</a></div>
+      <div class="Command_Section"><a name="2015017">Syntax</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2015018">copy</a></span><span class="Argument" style="font-weight: normal">(options)</span> <span class="Argument">src_spec</span> <span class="Argument">dest_spec [src_id dest_id]</span></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2015019">copy</a></span><span class="Argument" style="font-weight: normal">(options)</span> <span class="Argument">src_spec</span> <span class="Argument">dest_spec [</span><span class="Command_Summary">@src</span><span class="Argument" style="font-weight: normal"> src_ids </span><span class="Command_Summary">@dest</span><span class="Argument" style="font-weight: normal"> dest_id]</span></div>
+      <div class="Body_Text"><a name="2015020">where </a><span class="Argument">src_spec</span> and <span class="Argument">dest_spec</span> are of the form:</div>
+      <div class="Command_Types"><span class="Argument"><a name="2015021">[ctype][container::][page\]</a></span>object_name</div>
+      <div class="Body_Text"><a name="2015022">There are three parts to the </a><span class="In-line_input">copy</span> command: (1) a specification of the location and names of the source objects; (2) a specification of the location and names of the destination objects; (3) optional source and destination IDs if the copy operation involves match merging.</div>
+      <div class="Body_Text"><a name="2015023">The source and destination objects are specified in multiple (optional) parts: (1) the </a><span class="Definition">container</span> specification is the name of a workfile or database; (2) the <span class="Definition">page</span> specification is the name of a page within a workfile or a subdirectory within a database; and (3) the <span class="Definition">object_name</span> specification is the name of an object or a wildcard pattern corresponding to multiple objects. </div>
+      <div class="Body_Text"><a name="2015024">The </a><span class="Argument">ctype</span> specification is rarely required, but permits you to specify precisely your source or destination in cases where a database and workfile share the same name. In this case, <span class="In-line_input">ctype</span> may be used to indicate the container to which you are referring by prefixing the container name with &#8220;:&#8221; to indicate the workfile, or &#8220;::&#8221; to indicate the database with the common name.</div>
+      <div class="Body_Text"><a name="2015025">When parts of the source or destination specification are not provided, EViews will fill in default values where possible. The default container is the active workfile, unless the &#8220;::&#8221; prefix is used in which case the default container is the default database. The default page within a workfile is always the active page. The default name for the destination object is the name of the object within the source container. </a></div>
+      <div class="Body_Text"><a name="2015026">If ID series are not provided in the command, then EViews will perform frequency conversion when copying data whenever the source and destination containers have different frequencies. If ID series are provided, then EViews will perform a general match merge between the source and destination using the specified ID series. In the case where you wish to copy your data using match merging with special treatment for date matching, you must use the special keyword &#8220;@DATE&#8221; as an ID series for the source or destination. If &#8220;@DATE&#8221; is not specified as an identifier in either the source or destination IDs, EViews will perform an exact match merge using the given identifiers.</a></div>
+      <div class="Body_Text"><a name="2015027">If ID series are not specified, but a conversion option requiring a general match merge is used (</a><span class="Emphasis">e.g.</span>, &#8220;c=med&#8221;), &#8220;@DATE @DATE&#8221; will be appended to the list of IDs and a general date match merge will be employed.</div>
+      <div class="Body_Text"><a name="2015031">See </a><span class="In-line_command_link"><a href="linkcmd-linkto.html#2015942" title="linkto">Link::linkto</a></span> for additional discussion of the differences embodied in these choices.</div>
+      <div class="Body_Text"><a name="2015032">The general syntax described above covers all possible uses of the </a><span class="In-line_command">copy</span> command. The following paragraphs provide examples of the specific syntax used for some common cases of the command.</div>
+      <div class="Command_Section"><a name="2015033">Copying Within a Workfile</a></div>
+      <div class="Body_Text"><a name="2015034">Copy an object within the default workfile page as a new object with a different name:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Command_Summary"><a name="2015035">copy</a></span>(<span class="Argument">options</span>) <span class="Argument">src_name</span> <span class="Argument">dest_name</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2015036">Copy an object from the </a><span class="Argument">src_page</span> page into the default workfile page using the specified name:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Command_Summary"><a name="2015037">copy</a></span>(<span class="Argument">options</span>) <span class="Argument">src_page</span>\<span class="Argument">src_name</span> <span class="Argument">dest_name</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2015038">Copy an object from the </a><span class="Argument">src_page</span> page into the <span class="Argument">dest_page</span> page, keeping the same name:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Command_Summary"><a name="2015039">copy</a></span>(<span class="Argument">options</span>) <span class="Argument">src_page</span>\<span class="Argument">src_names</span> <span class="Argument">dest_page</span>\</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2015040">Copy an object from the </a><span class="Argument">src_page</span> page to the default workfile page, match merging any series data using a single <span class="Argument">src_id</span> and a single <span class="Argument">dest_id</span> identifier series:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Command_Summary"><a name="2015041">copy</a></span>(<span class="Argument">options</span>) <span class="Argument">src_page</span>\<span class="Argument">src_name dest_name</span> <span class="Argument">src_id</span> <span class="Argument">dest_id</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2015042">Copy an object from the </a><span class="Argument">src_page</span> page to the <span class="Argument">dest_page</span> match merging any series data using multiple source and destination identifier series:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Command_Summary"><a name="2015043">copy</a></span>(<span class="Argument">options</span>) <span class="Argument">src_page</span>\<span class="Argument">src_name dest_page</span>\<span class="Argument">dest_name</span> <span class="Command_Summary">@src</span> <span class="Argument">src_id1</span> <span class="Argument">src_id2</span> ... <span class="Argument">src_id_n</span> <span class="Command_Summary">@dest</span> <span class="Argument">dest_id1</span> <span class="Argument">dest_id2</span> <span class="Argument">... dest_id_n</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Command_Section"><a name="2015044">Copying Between Containers (Workfiles and Databases)</a></div>
+      <div class="Body_Text"><a name="2015045">Copy one or more objects from the </a><span class="Argument">src_page</span> of the workfile <span class="Argument">src_workfile</span> to the <span class="Argument">dest_page</span> of the workfile <span class="Argument">dest_workfile</span>, using the name or name pattern given in <span class="Argument">src_names</span>:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Command_Summary"><a name="2015046">copy</a></span>(<span class="Argument">options</span>) <span class="Argument">src_workfile</span>::<span class="Argument">src_page</span>\<span class="Argument">src_names</span> <span class="Argument">dest_workfile</span>::<span class="Argument">dest_page</span>\</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2015047">Copy an object from database </a><span class="Argument">src_database</span> to the default page in the container <span class="Argument">dest_container</span>:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Command_Summary"><a name="2015048">copy</a></span>(<span class="Argument">options</span>) <span class="Argument">src_database</span>::<span class="Argument">src_name</span> <span class="Argument">dest_container</span>::<span class="Argument">dest_name</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2015049">Note that if both a workfile and database exist matching the name provided in </a><span class="Argument">dest_container</span>, EViews will favor the workfile unless the &#8220;::&#8221; prefix is used to specify explicitly that the database should be used.</div>
+      <div class="Command_Section"><a name="2015050">Options</a></div>
+      <div class="Object_Subsection"><a name="2015051">Basic Options</a></div>
+      <div class="Table"><a name="2015069">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 81.36pt">
+            <div class="Table_Text"><a name="2196611">overwrite / o</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2196613">Overwrite any existing object with the destination name in the destination container. Error only if a non-editable series is encountered in the destination location.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196615">merge / m</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196617">If the source object is a series, merge the data from the source series into any existing destination series, preserving any values in the destination series that are not present in the source. For all other object types, overwrite any existing object with the source object. Error if a non-editable series is encountered in the destination location.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196619">protect / p</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196621">Protect objects in the destination location from overwriting or merging. If there is an existing object in the destination container, cancel the copy operation for that object, but do not generate an error.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196623">noerr</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196625">Suppress errors that are generated during the copy. For example, if the overwrite option is used, suppress any error caused by attempting to overwrite a non-editable series such as an index series used in the workfile structure.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196627">link</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196629">Link the object to the source data so that the values can be refreshed at a later time.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Object_Subsection"><a name="2015070">Group Copy Options</a></div>
+      <div class="Body_Text"><a name="2015071">When copying a group object from workfile to database:</a></div>
+      <div class="Table"><a name="2015077">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 81.36pt">
+            <div class="Table_Text"><a name="2196631">g=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2196633">Method for copying group objects from a workfile to database: &#8220;s&#8221; (copy group definition and series as separate objects), &#8220;t&#8221; (copy group definition and series as one object), &#8220;d&#8221; (copy series only as separate objects), &#8220;l&#8221; (copy group definition only).</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2015078">When copying a group object from a database to a workfile:</a></div>
+      <div class="Table"><a name="2015084">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 81.36pt">
+            <div class="Table_Text"><a name="2196635">g=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2196637">Method for copying group objects from a database or workfile to a workfile: &#8220;b&#8221; (copy both group definition and series), &#8220;d&#8221; (copy only the series), &#8220;l&#8221; (copy only the group definition).</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2015085">Note that copying a group object containing expressions or auto-updating series between workfiles only copies the expressions, and not the underlying series.</a></div>
+      <div class="Object_Subsection"><a name="2015086">Frequency Conversion Options</a></div>
+      <div class="Body_Text"><a name="2040951">If the </a><span class="In-line_command">copy</span> command does not specify identifier series, EViews will perform frequency conversion of the data contained in series objects whenever the source and destination containers are dated, but do not have the same frequency. </div>
+      <div class="Body_Text"><a name="2040966">If either of the pages are undated, EViews will, unless match merge options are provided (as described below), perform a raw copy, in which the first observation in the source workfile page is copied into the first observation in the destination page, the second observation in the source into the second observation in the destination, and so forth. </a></div>
+      <div class="Body_Text"><a name="2015088">The following options control the frequency conversion method when copying series and group objects into a workfile page and converting from </a><span class="Emphasis">low</span> to <span class="Emphasis">high</span> frequency:</div>
+      <div class="Table"><a name="2015094">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 81.36pt">
+            <div class="Table_Text"><a name="2196639">c=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2196641">Low to high conversion methods: &#8220;r&#8221; or &#8220;repeata&#8221; (constant match average), &#8220;d&#8221; or &#8220;repeats&#8221; (constant match sum), &#8220;q&#8221; or &#8220;quada&#8221; (quadratic match average), &#8220;t&#8221; or &#8220;quads&#8221; (quadratic match sum), &#8220;linearf&#8221; (linear match first), &#8220;i&#8221; or &#8220;linearl&#8221; (linear match last), &#8220;cubicf&#8221; (cubic match first), &#8220;c&#8221; or &#8220;cubicl&#8221; (cubic match last), &#8220;pointf&#8221; (point first), &#8220;pointl&#8221; (point last), &#8220;dentonf&#8221; (Denton first), &#8220;dentonl&#8221; (Denton last), &#8220;dentona&#8221; (Denton average), &#8220;dentons&#8221; (Denton sum), &#8220;chowlinf&#8221; (Chow-Lin first), &#8220;chowlinl&#8221; (Chow-Lin last), &#8220;chowlina&#8221; (Chow-Lin average),&#8220;chowlins&#8221; (Chow-Lin sum), &#8220;litmanf&#8221; (Litterman first), &#8220;litmanl&#8221; (Litterman last), &#8220;litmana&#8221; (Litterman average), &#8220;litmans&#8221; (Litterman sum).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2513938">rho=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2513940">Autocorrelation coefficient (for Chow-Lin and Litterman conversions). Must be between 0 and 1, inclusive.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2015095">In addition, for Denton, Chow-Lin, and Litterman conversions, you must specify the indicator series by appending the keyword &#8220;@indicator&#8221; followed by the series name at the end of the </a><span class="Index_command">copy</span> command.</div>
+      <div class="Body_Text"><a name="2514023">The following options control the frequency conversion method when copying series and group objects into a workfile page and converting from </a><span class="Emphasis">high</span> to <span class="Emphasis">low</span> frequency:</div>
+      <div class="Table"><a name="2015102">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 81.36pt">
+            <div class="Table_Text"><a name="2196643">c=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><span class="Emphasis_Table"><a name="2196645">High to low conversion methods removing NAs</a></span>: &#8220;a&#8221; (average of the nonmissing observations), &#8220;s&#8221; (sum of the nonmissing observations), &#8220;f&#8221; (first nonmissing observation), &#8220;l&#8221; (last nonmissing observation), &#8220;x&#8221; (maximum nonmissing observation), &#8220;m&#8221; (minimum nonmissing observation).</div>
+            <div class="Table_Text"><span class="Emphasis_Table"><a name="2196646">High to low conversion methods propagating NAs</a></span>: &#8220;an&#8221; or &#8220;na&#8221; (average, propagating missings), &#8220;sn&#8221; or &#8220;ns&#8221; (sum, propagating missings), &#8220;fn&#8221; or &#8220;nf&#8221; (first, propagating missings), &#8220;ln&#8221; or &#8220;nl&#8221; (last, propagating missings), &#8220;xn&#8221; or &#8220;nx&#8221; (maximum, propagating missings), &#8220;mn&#8221; or &#8220;nm&#8221; (minimum, propagating missings).</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2015103">Note that if no conversion method is given in the command, the conversion method specified within the series object will be used as the default. If the series does not contain an explicit conversion method, the global option settings will used to determine the method.</a></div>
+      <div class="Body_Text"><a name="2040710">Frequency conversion involving panel structured pages involves special handling:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2040733">If both pages are dated panel pages that are structured with a single identifier, EViews will perform frequency conversion cross-section by cross-section.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2040739">Conversion from a dated panel page to a dated, non-panel page will first perform a mean contraction across cross-sections to obtain a single time series (by computing the means for each period), and then a frequency conversion of the resulting time series to the new frequency. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2040825">Conversion from a dated, non-panel page to a dated panel page will first involve a frequency conversion of the single time series to the new frequency. The converted time series will be used for each cross-section in the panel page.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2040989">In all three of these cases, all of the high-to-low conversion methods are supported, but low-to-high frequency conversion only offers </a><span class="Menu_Item">Constant-match average </span>(repeating of the low frequency observations).</div>
+      <div class="Body_Text"><a name="2040982">Lastly, conversion involving a panel page with more than one dimension or an undated page will default to raw data copy unless general match merge options are provided. </a></div>
+      <div class="Object_Subsection"><a name="2040978">Match Merge Options</a></div>
+      <div class="Body_Text"><a name="2015105">These options are available when ID series are specified in the </a><span class="In-line_command">copy</span> commmand. </div>
+      <div class="Table"><a name="2015126">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 72pt">
+            <div class="Table_Text"><a name="2196648">smpl= </a><span class="Argument_Opt">smpl_spec</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2196650">Sample to be used when computing contractions during copying using match merge. Either provide the sample range in double quotes or specify a named sample object. By default, EViews will use the entire workfile sample &#8220;@ALL&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196652">c=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196654">Set the match merge contraction method.</a></div>
+            <div class="Table_Text"><a name="2196655">If you are copying a numeric source series by general match merge, the argument can be one of: &#8220;mean&#8221;, &#8220;med&#8221; (median), &#8220;max&#8221;, &#8220;min&#8221;, &#8220;sum&#8221;, &#8220;sumsq&#8221; (sum-of-squares), &#8220;var&#8221; (variance), &#8220;sd&#8221; (standard deviation), &#8220;skew&#8221; (skewness), &#8220;kurt&#8221; (kurtosis), &#8220;quant&#8221; (quantile, used with &#8220;quant=&#8221; option), &#8220;obs&#8221; (number of observations), &#8220;nas&#8221; (number of NA values), &#8220;first&#8221; (first observation in group), &#8220;last&#8221; (last observation in group), &#8220;unique&#8221; (single unique group value, if present), &#8220;none&#8221; (disallow contractions). </a></div>
+            <div class="Table_Text"><a name="2196656">If copying an alpha series, only the non-summary methods &#8220;max&#8221;, &#8220;min&#8221;, &#8220;obs&#8221;, &#8220;nas&#8221;, first&#8221;, &#8220;last&#8221;, &#8220;unique&#8221; and &#8220;none&#8221; are supported. </a></div>
+            <div class="Table_Text"><a name="2196657">For copying of numeric series, the default contraction method is &#8220;c=mean&#8221;; for copying of alpha series, the default is &#8220;c=unique&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196659">quant=</a><span class="Argument_Opt">number</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196661">Quantile value to be used when contracting using the &#8220;c=quant&#8221; option (</a><span class="Emphasis_Table">e.g,</span><span class="Argument"> </span>&#8220;quant=.3&#8221;).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196663">nacat</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2196665">Treat &#8220;NA&#8221; values as a category when copying using general match merge operations.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2015127">Most of the conversion options should be self-explanatory. As for the others: &#8220;first&#8221; and &#8220;last&#8221; give the first and last non-missing observed for a given group ID; &#8220;obs&#8221; provides the number of non-missing values for a given group; &#8220;nas&#8221; reports the number of NAs in the group; &#8220;unique&#8221; will provide the value in the source series if it is the identical for all observations in the group, and will return NA otherwise; &#8220;none&#8221; will cause the copy to fail if there are multiple observations in any group&#8212;this setting may be used if you wish to prohibit all contractions.</a></div>
+      <div class="Body_Text"><a name="2015128">On a match merge expansion, copying with match merging will repeat the value of the source for every observation with matching identifier values in the destination. If both the source and destination have multiple values for a given ID, EViews will first perform a contraction across IDs in the source (if not ruled out by &#8220;c=none&#8221;), and then perform the expansion by replicating the contracted value in the destination. For example, converting from a quarterly panel to an annual panel using match merge, EViews will first contract the data across IDs down to a single quarterly time series, will convert the series to an annual frequency, then will assign the annual data to each of the cross-sections in the destination page.</a></div>
+      <div class="Command_Section"><a name="2015129">Examples</a></div>
+      <div class="Input"><a name="2015130">copy good_equation best_equation</a></div>
+      <div class="Body_Text"><a name="2015131">makes an exact copy of </a><span class="EViews_Name">GOOD_EQUATION</span> and names it <span class="EViews_Name">BEST_EQUATION</span>.</div>
+      <div class="Input"><a name="2015132">copy graph_1 wf2::wkly\graph1</a></div>
+      <div class="Body_Text"><a name="2015133">copies GRAPH_1 from the default page of the current workfile to GRAPH1 in the page WKLY of the workfile WF2.</a></div>
+      <div class="Input"><a name="2015134">copy gdp usdat::</a></div>
+      <div class="Body_Text"><a name="2015135">copies </a><span class="EViews_Name">GDP</span> from the current workfile to GDP in the USDAT database or workfile.</div>
+      <div class="Input"><a name="2015136">copy ::gdp macro1::gdp_us</a></div>
+      <div class="Body_Text"><a name="2015137">copies GDP from the default database to either the open workfile MACRO1, or the database named MACRO1 if there is no open workfile with that name. If there is an open workfile MACRO1 you may use</a></div>
+      <div class="Input"><a name="2015138">copy ::gdp ::macro1::gdp_us</a></div>
+      <div class="Body_Text"><a name="2015139">to specify explicitly that you wish to write to the MACRO1 database.</a></div>
+      <div class="Input"><a name="2015140">copy(smpl="1990 2000") page1\pop page2\ @src county @date @dest county @date</a></div>
+      <div class="Body_Text"><a name="2015141">copies POP data for 1990 through 2005 from PAGE1 to PAGE2, match merge using the ids COUNTY and the date structure of the two pages.</a></div>
+      <div class="Input"><a name="2015142">copy(smpl="1990 2000", c=mean) panelpage\inc countypage\ county county</a></div>
+      <div class="Body_Text"><a name="2015143">copies the INC data from the PANELPAGE to the COUNTYPAGE, match merging using the values of the COUNTY series, and contracting the panel data by computing means for each county using the specified sample.</a></div>
+      <div class="Input"><a name="2015144">copy countypage\pop panelpage\ county county</a></div>
+      <div class="Body_Text"><a name="2015145">match merges the POP data from the COUNTYPAGE to the PANELPAGE using the values of the COUNTY series.</a></div>
+      <div class="Input"><a name="2015146">copy(c=x, merge) quarterly::page1\ser* annual::page6\*</a></div>
+      <div class="Body_Text"><a name="2015147">copies all objects with names beginning with &#8220;SER&#8221; on page PAGE1 of workfile QUARTERLY into page PAGE6 of workfile ANNUAL using the existing names. Series objects with data that can be (high-to-low) frequency converted will take the maximum value within a low-frequency period as the conversion method. If destination series already exist with the same name as the source series, the data will be merged. If destination objects (non-series) exist with the same name as source series, they will be overwritten.</a></div>
+      <div class="Body_Text"><a name="2015148">Note that since databases are read from disk, you may provide a path for the database in the container specification, as in:</a></div>
+      <div class="Input"><a name="2015149">copy "c:\my data\dba.edb::ser01" ser02</a></div>
+      <div class="Body_Text"><a name="2015150">which copies the object SER01 from the database DBA.EDB located in the path &#8220;C:\MY DATA\&#8221; to SER02 in the default workfile page.</a></div>
+      <div class="Input"><a name="2015151">copy gd* "c:\my data\findat::"</a></div>
+      <div class="Body_Text"><a name="2015152">makes a duplicate of all objects in the default page of the current workfile with names starting with &#8220;GD&#8221; to the database FINDAT in the root of &#8220;C:\MY DATA\&#8221;.</a></div>
+      <div class="Command_Section"><a name="2015153">Cross-references</a></div>
+      <div class="Body_Text"><a name="2015160">See </a><span class="Link"><a href="database-Working_with_Objects_in_Databases.html#178067" title="Working with Objects in Databases">&#8220;Copying Objects&#8221;</a></span> for a discussion of copying and moving objects.</div>
+      <div class="Body_Text"><a name="2015173">See also </a><span class="In-line_command_link"><a href="commandcmd-fetch.html#2019478" title="fetch">fetch</a></span>, <span class="In-line_command_link"><a href="commandcmd-store.html#2038778" title="store">store</a></span>, and <span class="In-line_command_link"><a href="linkcmd-linkto.html#2015942" title="linkto">Link::linkto</a></span>.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

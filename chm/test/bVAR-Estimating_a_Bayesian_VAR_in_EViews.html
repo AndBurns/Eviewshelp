@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Estimating a Bayesian VAR in EViews</title>
+    <link rel="StyleSheet" href="css/bVAR.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="bVAR-Bayesian_VAR_Models.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="bVAR-Post-Estimation_Procedures.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="bVAR-Bayesian_VAR_Models.html">Bayesian VAR Models</a> : Estimating a Bayesian VAR in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="265255">Estimating a Bayesian VAR in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#265266">Prior Type</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#265283">Hyper-parameters</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#265287">Options</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="265256">To estimate a Bayesian VAR in EViews, click on </a><span class="Menu_Item">Quick/Estimate VAR...</span> or type <span class="In-line_input">var</span> in the command window to bring up the <span class="Menu_Item">VAR Specification </span>dialog. Select the <span class="Menu_Item">Bayesian VAR</span> as the <span class="Menu_Item">VAR type</span> in the radio buttons on the left-hand side of the dialog. </div>
+      <div class="Body_Text"><a name="265257">The dialog will change to the BVAR version of the VAR Specification dialog. As with a standard VAR, you may use the </a><span class="Menu_Item">Basics</span> page to list of endogenous variables, the included lags, and any exogenous variables, and to specify the estimation sample:</div>
+      <div class="Picture"><a name="265261"><img class="Default" src="images/bVAR.059.2.1.jpg" width="100%" style="left: 0.0pt; max-height: 457px; max-width: 476px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265262">The three BVAR specific tabs&#8212;</a><span class="Menu_Item">Prior type</span>, <span class="Menu_Item">Hyper-parameters</span>, and <span class="Menu_Item">Options</span>&#8212;allow you to customize your specification. The following discussion of the settings on these three tabs assumes that you are familiar with the basics of the various prior types and associated settings. For additional detail, see <span class="Link"><a href="bVAR-Technical_Background.html#265414" title="Technical Background">&#8220;Technical Background&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="265266">Prior Type</a></div>
+      <div class="Body_Text"><a name="265267">The </a><span class="Menu_Item">Prior type</span> tab lets you specify the type of prior you wish to use, whether to include dummy observations, and options for calculating the initial residual covariance matrix. </div>
+      <div class="Body_Text"><a name="265268">You may use the drop-down menu to choose between </a><span class="Menu_Item">Litterman/Minnesota</span>, <span class="Menu_Item">normal-Flat</span>, <span class="Menu_Item">normal-Wishart</span>, <span class="Menu_Item">independent normal-Wishart</span>, <span class="Menu_Item">Sims-Zha normal-flat</span>, <span class="Menu_Item">Sims-Zha normal-Wishart</span>, and <span class="Menu_Item">Giannone, Lenza &amp; Primiceri</span> priors.</div>
+      <div class="Body_Text"><a name="265269">The </a><span class="Menu_Item">Dummy observations</span> check boxes allow you to include dummy/additional observations to the data matrices of the VAR. The <span class="Menu_Item">Sum-of-coefficients</span> setting adds observations to account for possible unit-root issues, while the <span class="Menu_Item">Dummy-Initial-observations</span> setting adds observations to account for possible cointegration issues (see <span class="Link"><a href="bVAR-Technical_Background.html#266280" title="Technical Background">&#8220;Dummy Observations&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="265273">For the priors other than </a><span class="Menu_Item">normal-Flat</span> or <span style="font-weight: bold">n</span><span class="Menu_Item">ormal-Wishart</span>, a dropdown menu allows you to specify how the initial residual covariance matrix is calculated:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="265274">Univariate AR </a></span>estimates a univariate AR model (with number of lags matching those specified for the VAR) for each endogenous variable, then constructs the residual covariance matrix as a diagonal matrix with diagonal elements equal to the residual variance from the estimated univariate models.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="265275">Diagonal VAR</a></span> uses the covariance from an estimated classical VAR model, but zeros out the off-diagonals.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="265276">Full VAR </a></span>uses the covariance from an estimated classical VAR model.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="265277">AR(1) </a></span>is computed in the same way as the <span class="Menu_Item">Univariate AR</span>, but only one lag is used.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="265278">The </a><span class="Menu_Item">Exogenous variables</span> radio buttons specify whether to include any exogenous variables specified in the VAR in the calculation of the initial covariance matrix. </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="265279">If you select either of the </a><span class="Menu_Item">Dummy observations </span>choices, the <span class="Menu_Item">Include dummy observations in calculation</span> checkbox specifies whether to include those observations in the initial covariance calculation. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="265280">The </a><span class="Menu_Item">Degree of freedom correction</span> selection determines whether to use a degrees-of-freedom correction in the covariance estimate.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="265281">If the </a><span class="Menu_Item">Giannone, Lenza &amp; Primiceri </span>prior type was selected in the drop-down menu, the <span class="Menu_Item">Optimize</span> checkbox selects whether to use the initial covariances as hyper-parameters, or as the starting values for an optimized hyper-parameter selection.</div>
+      <div class="Body_Text"><a name="265282">Finally, the </a><span class="Menu_Item">Sample:</span> box is used to specify the sample that is used to estimate the covariance. If left blank, the same sample as the overall VAR estimation.</div>
+      <div class="Heading_4"><a name="265283">Hyper-parameters</a></div>
+      <div class="Body_Text"><a name="265284">The </a><span class="Menu_Item">Hyper-parameters</span> tab allows specification of the hyper-parameters of the prior distribution. </div>
+      <div class="Body_Text"><a name="265285">If the </a><span class="Menu_Item">Giannone, Lenza &amp; Primiceri </span>prior type was selected on the <span class="Menu_Item">Prior type</span> tab, the <span class="Menu_Item">Optimize </span>checkbox selects whether to use the values as hyper-parameters, or as the starting values for an optimized hyper-parameter selection.</div>
+      <div class="Body_Text"><a name="265286">Note that only hyper-parameters that are available for the current prior type and choice of initial dummy observations are available for selection.</a></div>
+      <div class="Heading_4"><a name="265287">Options</a></div>
+      <div class="Body_Text"><a name="265288">The </a><span class="Menu_Item">Options </span>tab offers options for the Giannone, Lenza &amp; Primiceri (GLP) prior and the inverse normal-Wishart prior. The GLP prior requires optimization of the hyper-parameters, and so options relating to the optimization algorithm; <span class="Menu_Item">Convergence tolerance</span> and <span class="Menu_Item">Maximum iterations</span>. The latter requires estimation through a Gibbs Sampler, and so offers options for the number of draws from the sampler, the percentage of draws to discard as burn-in draws, and the random number generator&#8217;s seed value.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

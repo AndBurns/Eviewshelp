@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Background</title>
+    <link rel="StyleSheet" href="css/quantreg.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="quantreg-Views_and_Procedures.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="quantreg-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="quantreg-Quantile_Regression.html">Quantile Regression</a> : Background</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="184838">Background</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#184840">The Model</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#184929">Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#184935">Asymptotic Distributions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#184939">Independent and Identical</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#184975">Sparsity Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#184985">Siddiqui Difference Quotient</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#185081">Kernel Density</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185118">Independent, Non-Identical</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185234">Bootstrapping</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185238">Residual Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185312">XY-pair (Design) Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185335">Markov Chain Marginal Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#185377">Model Evaluation and Testing</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#188858">Goodness-of-Fit</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185418">Quasi-Likelihood Ratio Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185449">Coefficient Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#185454">Quantile Process Testing</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185511">Slope Equality Testing</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185525">Symmetry Testing</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="184839">We present here a brief discussion of quantile regression. As always, the discussion is necessarily brief and omits considerable detail. For a book-length treatment of quantile regression see Koenker (2005).</a></div>
+      <div class="Heading_4"><a name="184840">The Model</a></div>
+      <div class="Body_Text"><a name="184844">Suppose that we have a random variable <img class="Default EquationGraphic" src="images/quantreg.050.4.001.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> with probability distribution function</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.002.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184861">so that for <img class="Default EquationGraphic" src="images/quantreg.050.4.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 67px; top: 0.0pt" alt="" />, the <img class="Default EquationGraphic" src="images/quantreg.050.4.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-th quantile of <img class="Default EquationGraphic" src="images/quantreg.050.4.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> may be defined as the smallest <img class="Default EquationGraphic" src="images/quantreg.050.4.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> satisfying <img class="Default EquationGraphic" src="images/quantreg.050.4.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.008.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.3)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184875">Given a set of <img class="Default EquationGraphic" src="images/quantreg.050.4.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> observations on <img class="Default EquationGraphic" src="images/quantreg.050.4.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, the traditional empirical distribution function is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.011.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.4)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184886">where <img class="Default EquationGraphic" src="images/quantreg.050.4.012.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" /> is an indicator function that takes the value 1 if the argument <img class="Default EquationGraphic" src="images/quantreg.050.4.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is true and 0 otherwise. The associated empirical quantile is given by,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.014.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184891">or equivalently, in the form of a simple optimization problem:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.015.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184899">where <img class="Default EquationGraphic" src="images/quantreg.050.4.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 181px; top: 0.0pt" alt="" /> is the so-called </a><span class="Definition">check function</span> which weights positive and negative values asymmetrically.</div>
+      <div class="Body_Text"><a name="184903">Quantile regression extends this simple formulation to allow for regressors <img class="Default EquationGraphic" src="images/quantreg.050.4.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />. We assume a linear specification for the conditional quantile of the response variable <img class="Default EquationGraphic" src="images/quantreg.050.4.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> given values for the <img class="Default EquationGraphic" src="images/quantreg.050.4.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-vector of explanatory variables <img class="Default EquationGraphic" src="images/quantreg.050.4.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.021.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184923">where <img class="Default EquationGraphic" src="images/quantreg.050.4.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> is the vector of coefficients associated with the <img class="Default EquationGraphic" src="images/quantreg.050.4.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-th quantile.</a></div>
+      <div class="Body_Text"><a name="184924">Then the analog to the unconditional quantile minimization above is the conditional quantile regression estimator:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.024.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_4"><a name="184929">Estimation</a></div>
+      <div class="Body_Text"><a name="184930">The quantile regression estimator can be obtained as the solution to a linear programming problem. Several algorithms for obtaining a solution to this problem have been proposed in the literature. EViews uses a </a><span class="Emphasis">modified version</span> of the Koenker and D&#8217;Orey (1987) version of the Barrodale and Roberts (1973) simplex algorithm.</div>
+      <div class="Body_Text"><a name="184931">The Barrodale and Roberts (BR) algorithm has received more than its fair share of criticism for being computationally inefficient, with dire theoretical results for worst-case scenarios in problems involving large numbers of observations. Simulations showing poor relative performance of the BR algorithm as compared with alternatives such as interior point methods appear to bear this out, with estimation times that are roughly quadratic in the number of observations (Koenker and Hallock, 2001; Portnoy and Koenker, 1997).</a></div>
+      <div class="Body_Text"><a name="184932">Our experience with our </a><span class="Emphasis">optimized version</span> of the BR algorithm is that its performance is certainly better than commonly portrayed. Using various subsets of the low-birthweight data described in Koenker and Hallock (2001), we find that while certainly not as fast as Cholesky-based linear regression (and possibly not as fast as interior point methods), the estimation times for the modified BR algorithm are quite reasonable.</div>
+      <div class="Body_Text"><a name="184933">For example, estimating a 16 explanatory variable model for the median using the first 20,000 observations of the data set takes a bit more than 1.2 seconds on a 3.2GHz Pentium 4, with 1.0Gb of RAM; this time includes both estimation and computation of a kernel based estimator of the coefficient covariance matrix. The same specification using the full sample of 198,377 observations takes under 7.5 seconds. </a></div>
+      <div class="Body_Text"><a name="184934">Overall, our experience is that estimation times for the modified BR algorithm are roughly linear in the number of observations through a broad range of sample sizes. While our results are not definitive, we see no real impediment to using this algorithm for virtually all practical problems.</a></div>
+      <div class="Heading_4"><a name="184935">Asymptotic Distributions</a></div>
+      <div class="Body_Text"><a name="184936">Under mild regularity conditions, quantile regression coefficients may be shown to be asymptotically normally distributed (Koenker, 2005) with different forms of the asymptotic covariance matrix depending on the model assumptions.</a></div>
+      <div class="Body_Text"><a name="184937">Computation of the coefficient covariance matrices occupies an important place in quantile regression analysis. In large part, this importance stems from the fact that the covariance matrix of the estimates depends on one or more nuisance quantities which must be estimated. Accordingly, a large literature has developed to consider the relative merits of various approaches to estimating the asymptotic variances (see Koenker (2005), for an overview).</a></div>
+      <div class="Body_Text"><a name="184938">We may divide the estimators into three distinct classes: (1) direct methods for estimating the covariance matrix in </a><span class="Emphasis">i.i.d.</span> settings; (2) direct methods for estimating the covariance matrix for independent but not-identical distribution; (3) bootstrap resampling methods for both <span class="Emphasis">i.i.d.</span> and <span class="Emphasis">i.n.i.d.</span> settings.</div>
+      <div class="Heading_5"><a name="184939">Independent and Identical</a></div>
+      <div class="Body_Text"><a name="184940">Koenker and Bassett (1978) derive asymptotic normality results for the quantile regression estimator in the </a><span class="Emphasis">i.i.d.</span> setting, showing that under mild regularity conditions,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.025.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184946">where:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.026.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="184954">and <img class="Default EquationGraphic" src="images/quantreg.050.4.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, which is termed the </a><span class="Definition">sparsity function </span>or the <span class="Definition">quantile density function</span>, may be interpreted either as the derivative of the quantile function or the inverse of the density function evaluated at the <img class="Default EquationGraphic" src="images/quantreg.050.4.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-th quantile (see, for example, Welsh, 1988). Note that the <span class="Emphasis">i.i.d. </span>error assumption implies that <img class="Default EquationGraphic" src="images/quantreg.050.4.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> does not depend on <img class="Default EquationGraphic" src="images/quantreg.050.4.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> so that the quantile functions depend on <img class="Default EquationGraphic" src="images/quantreg.050.4.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> only in location, hence all conditional quantile planes are parallel.</div>
+      <div class="Body_Text"><a name="184967">Given the value of the sparsity at a given quantile, direct estimation of the coefficient covariance matrix is straightforward. In fact, the expression for the asymptotic covariance in </a><span class="Link"><a href="#184945" title="Background">Equation&nbsp;(40.9)</a></span> is analogous to the ordinary least squares covariance in the <span class="Emphasis">i.i.d.</span> setting, with <img class="Default EquationGraphic" src="images/quantreg.050.4.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 98px; top: 0.0pt" alt="" /> standing in for the error variance in the usual formula.</div>
+      <div class="Heading_6"><a name="184975">Sparsity Estimation</a></div>
+      <div class="Body_Text"><a name="184976">We have seen the importance of the sparsity function in the formula for the asymptotic covariance matrix of the quantile regression estimates for </a><span class="Emphasis">i.i.d</span>. data. Unfortunately, the sparsity is a function of the unknown distribution <img class="Default EquationGraphic" src="images/quantreg.050.4.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, and therefore is a nuisance quantity which must be estimated.</div>
+      <div class="Body_Text"><a name="184983">EViews provides three methods for estimating the scalar sparsity <img class="Default EquationGraphic" src="images/quantreg.050.4.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />: two Siddiqui (1960) difference quotient methods (Koenker, 1994; Bassett and Koenker (1982) and one kernel density estimator (Powell, 1986; Jones, 1992; Buchinsky 1995).</a></div>
+      <div class="Heading_7"><a name="184985">Siddiqui Difference Quotient</a></div>
+      <div class="Body_Text"><a name="184986">The first two methods are variants of a procedure originally proposed by Siddiqui (1960; see Koenker, 1994), where we compute a simple difference quotient of the empirical quantile function:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.035.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.11)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185001">for some bandwidth <img class="Default EquationGraphic" src="images/quantreg.050.4.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> tending to zero as the sample size <img class="Default EquationGraphic" src="images/quantreg.050.4.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />. <img class="Default EquationGraphic" src="images/quantreg.050.4.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> is in essence computed using a simply two-sided numeric derivative of the quantile function. To make this procedure operational we need to determine: (1) how to obtain estimates of the empirical quantile function <img class="Default EquationGraphic" src="images/quantreg.050.4.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 51px; top: 0.0pt" alt="" /> at the two evaluation points, and (2) what bandwidth to employ.</a></div>
+      <div class="Body_Text"><a name="185005">The first approach to evaluating the quantile functions, which EViews terms </a><span class="Menu_Item">Siddiqui (mean fitted), </span>is due to Bassett and Koenker (1982). The approach involves estimating two additional quantile regression models for <img class="Default EquationGraphic" src="images/quantreg.050.4.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/quantreg.050.4.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" />, and using the estimated coefficients to compute fitted quantiles. Substituting the fitted quantiles into the numeric derivative expression yields:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.042.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.12)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185023">for an arbitrary <img class="Default EquationGraphic" src="images/quantreg.050.4.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 26px; top: 0.0pt" alt="" />. While the </a><span class="Emphasis">i.i.d. </span>assumption implies that <img class="Default EquationGraphic" src="images/quantreg.050.4.044.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 26px; top: 0.0pt" alt="" /> may be set to any value, Bassett and Koenker propose using the mean value of <img class="Default EquationGraphic" src="images/quantreg.050.4.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, noting that the mean possesses two very desirable properties: the precision of the estimate is maximized at that point, and the empirical quantile function is monotone in <img class="Default EquationGraphic" src="images/quantreg.050.4.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> when evaluated at <img class="Default EquationGraphic" src="images/quantreg.050.4.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 67px; top: 0.0pt" alt="" />, so that <img class="Default EquationGraphic" src="images/quantreg.050.4.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> will always yield a positive value for suitable <img class="Default EquationGraphic" src="images/quantreg.050.4.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="185039">A second, less computationally intensive approach to evaluating the quantile functions computes the <img class="Default EquationGraphic" src="images/quantreg.050.4.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/quantreg.050.4.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" /> empirical quantiles of the residuals from the original quantile regression equation, as in Koenker (1994). Following Koencker, we compute quantiles for the residuals excluding the <img class="Default EquationGraphic" src="images/quantreg.050.4.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> residuals that are set to zero in estimation, and interpolating values to get a piecewise linear version of the quantile. EViews refers to this method as </a><span class="Menu_Item">Siddiqui (residual)</span>.</div>
+      <div class="Body_Text"><a name="185052">Both Siddiqui methods require specification of a bandwidth <img class="Default EquationGraphic" src="images/quantreg.050.4.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />. EViews offers the Bofinger (1975), Hall-Sheather (1988), and Chamberlain (1994) bandwidth methods (along with the ability to specify an arbitrary bandwidth). </a></div>
+      <div class="Body_Text"><a name="185053">The Bofinger bandwidth, which is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.054.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.13)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185058">(approximately) minimizes the mean square error (MSE) of the sparsity estimates. </a></div>
+      <div class="Body_Text"><a name="185059">Hall-Sheather proposed an alternative bandwidth that is designed specifically for testing. The Hall-Sheather bandwidth is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.055.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185073">where <img class="Default EquationGraphic" src="images/quantreg.050.4.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 145px; top: 0.0pt" alt="" />, for <img class="Default EquationGraphic" src="images/quantreg.050.4.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> the parameter controlling the size of the desired <img class="Default EquationGraphic" src="images/quantreg.050.4.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> confidence intervals. </a></div>
+      <div class="Body_Text"><a name="185074">A similar testing motivation underlies the Chamberlain bandwidth:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.059.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185079">which is derived using the exact and normal asymptotic confidence intervals for the order statistics (Buchinsky, 1995).</a></div>
+      <div class="Heading_7"><a name="185081">Kernel Density</a></div>
+      <div class="Body_Text"><a name="185082">Kernel density estimators of the sparsity offer an important alternative to the Siddiqui approach. Most of the attention has focused on kernel methods for estimating the derivative <img class="Default EquationGraphic" src="images/quantreg.050.4.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 57px; top: 0.0pt" alt="" /> directly (Falk, 1988; Welsh, 1988), but one may also estimate <img class="Default EquationGraphic" src="images/quantreg.050.4.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> using the inverse of a kernel density function estimator (Powell, 1986; Jones, 1992; Buchinsky 1995). In the present context, we may compute:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.062.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185096">where <img class="Default EquationGraphic" src="images/quantreg.050.4.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> are the residuals from the quantile regression fit. EViews supports the latter density function approach, which is termed the </a><span class="Menu_Item">Kernel (residual)</span> method, since it is closely related to the more commonly employed Powell (1984, 1989) kernel estimator for the non-<span class="Emphasis">i.i.d.</span> case described below.</div>
+      <div class="Body_Text"><a name="185100">Kernel estimation of the density function requires specification of a bandwidth <img class="Default EquationGraphic" src="images/quantreg.050.4.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />. We follow Koenker (2005, p. 81) in choosing:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.065.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185111">where <img class="Default EquationGraphic" src="images/quantreg.050.4.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 176px; top: 0.0pt" alt="" /> is the Silverman (1986) robust estimate of scale (where <img class="Default EquationGraphic" src="images/quantreg.050.4.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> the sample standard deviation and <img class="Default EquationGraphic" src="images/quantreg.050.4.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" /> the interquartile range) and <img class="Default EquationGraphic" src="images/quantreg.050.4.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is the Siddiqui bandwidth.</a></div>
+      <div class="Heading_5"><a name="185118">Independent, Non-Identical</a></div>
+      <div class="Body_Text"><a name="185122">We may relax the assumption that the quantile density function does not depend on <img class="Default EquationGraphic" src="images/quantreg.050.4.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />. The asymptotic distribution of <img class="Default EquationGraphic" src="images/quantreg.050.4.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 123px; top: 0.0pt" alt="" /> in the </a><span class="Emphasis">i.n.i.d.</span> setting takes the Huber sandwich form (see, among others, Hendricks and Koenker, 1992):</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.072.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.18)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185134">where <img class="Default EquationGraphic" src="images/quantreg.050.4.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is as defined earlier,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.074.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185139">and:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.075.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185150"><img class="Default EquationGraphic" src="images/quantreg.050.4.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 64px; top: 0.0pt" alt="" /> is the conditional density function of the response, evaluated at the <img class="Default EquationGraphic" src="images/quantreg.050.4.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-th conditional quantile for individual <img class="Default EquationGraphic" src="images/quantreg.050.4.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. Note that if the conditional density does not depend on the observation, the Huber sandwich form of the variance in </a><span class="Link"><a href="#185130" title="Background">Equation&nbsp;(40.18)</a></span> reduces to the simple scalar sparsity form given in <span class="Link"><a href="#184945" title="Background">Equation&nbsp;(40.9)</a></span>.</div>
+      <div class="Body_Text"><a name="185163">Computation of a sample analogue to <img class="Default EquationGraphic" src="images/quantreg.050.4.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is straightforward so we focus on estimation of <img class="Default EquationGraphic" src="images/quantreg.050.4.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />. EViews offers a choice of two methods for estimating <img class="Default EquationGraphic" src="images/quantreg.050.4.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />: a Siddiqui-type difference method proposed by Hendricks and Koenker (1992), and a Powell (1984, 1989) kernel method based on residuals of the estimated model. EViews labels the first method </a><span class="Menu_Item">Siddiqui (mean fitted)</span>, and the latter method <span class="Menu_Item">Kernel (residual)</span>:</div>
+      <div class="Body_Text"><a name="185170">The Siddiqui-type method proposed by Hendricks and Koenker (1991) is a straightforward generalization of the scalar Siddiqui method (see </a><span class="Link"><a href="#184985" title="Background">&#8220;Siddiqui Difference Quotient&#8221;</a></span>). As before, two additional quantile regression models are estimated for <img class="Default EquationGraphic" src="images/quantreg.050.4.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/quantreg.050.4.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />, and the estimated coefficients may be used to compute the Siddiqui difference quotient:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.084.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185185">Note that in the absence of identically distributed data, the quantile density function <img class="Default EquationGraphic" src="images/quantreg.050.4.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 64px; top: 0.0pt" alt="" /> must be evaluated for each individual. One minor complication is that </a><span class="Link"><a href="#185184" title="Background">Equation&nbsp;(40.21)</a></span> is not guaranteed to be positive except at <img class="Default EquationGraphic" src="images/quantreg.050.4.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 63px; top: 0.0pt" alt="" />. Accordingly, Hendricks and Koenker modify the expression slightly to use only positive values:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.087.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185202">where <img class="Default EquationGraphic" src="images/quantreg.050.4.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a small positive number included to prevent division by zero.</a></div>
+      <div class="Body_Text"><a name="185212">The estimated quantile densities <img class="Default EquationGraphic" src="images/quantreg.050.4.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 64px; top: 0.0pt" alt="" /> are then used to form an estimator <img class="Default EquationGraphic" src="images/quantreg.050.4.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 25px; top: 0.0pt" alt="" /> of <img class="Default EquationGraphic" src="images/quantreg.050.4.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.092.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185217">The Powell (1984, 1989) kernel approach replaces the Siddiqui difference with a kernel density estimator using the residuals of the original fitted model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.093.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185229">where <img class="Default EquationGraphic" src="images/quantreg.050.4.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is a kernel function that integrates to 1, and <img class="Default EquationGraphic" src="images/quantreg.050.4.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> is a kernel bandwidth. EViews uses the Koenker (2005) kernel bandwidth as described in </a><span class="Link"><a href="#185081" title="Background">&#8220;Kernel Density&#8221;</a></span> above.</div>
+      <div class="Heading_5"><a name="185234">Bootstrapping</a></div>
+      <div class="Body_Text"><a name="185235">The direct methods of estimating the asymptotic covariance matrices of the estimates require the estimation of the sparsity nuisance parameter, either at a single point, or conditionally for each observation. One method of avoiding this cumbersome estimation is to employ bootstrapping techniques for the estimation of the covariance matrix.</a></div>
+      <div class="Body_Text"><a name="185236">EViews supports four different bootstrap methods: the residual bootstrap (</a><span class="Menu_Item">Residual</span>), the design, or XY-pair, bootstrap (<span class="Menu_Item">XY-pair</span>), and two variants of the Markov Chain Marginal Bootstrap (<span class="Menu_Item">MCMB</span> and <span class="Menu_Item">MBMB-A</span>).</div>
+      <div class="Body_Text"><a name="185237">The following discussion provides a brief overview of the various bootstrap methods. For additional detail, see Buchinsky (1995, He and Hu (2002) and Kocherginsky, He, and Mu (2005).</a></div>
+      <div class="Heading_6"><a name="185238">Residual Bootstrap</a></div>
+      <div class="Body_Text"><a name="185239">The </a><span class="Definition">residual bootstrap</span>, is constructed by resampling (with replacement) separately from the residuals <img class="Default EquationGraphic" src="images/quantreg.050.4.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" /> and from the <img class="Default EquationGraphic" src="images/quantreg.050.4.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="185258">Let <img class="Default EquationGraphic" src="images/quantreg.050.4.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 23px; top: 0.0pt" alt="" /> be an <img class="Default EquationGraphic" src="images/quantreg.050.4.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />-vector of resampled residuals, and let <img class="Default EquationGraphic" src="images/quantreg.050.4.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 26px; top: 0.0pt" alt="" /> be a <img class="Default EquationGraphic" src="images/quantreg.050.4.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 46px; top: 0.0pt" alt="" /> matrix of independently resampled <img class="Default EquationGraphic" src="images/quantreg.050.4.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />. (Note that <img class="Default EquationGraphic" src="images/quantreg.050.4.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> need not be equal to the original sample size <img class="Default EquationGraphic" src="images/quantreg.050.4.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.) We form the dependent variable using the resampled residuals, resampled data, and estimated coefficients, <img class="Default EquationGraphic" src="images/quantreg.050.4.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 144px; top: 0.0pt" alt="" />, and then construct a bootstrap estimate of <img class="Default EquationGraphic" src="images/quantreg.050.4.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> using <img class="Default EquationGraphic" src="images/quantreg.050.4.107.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 26px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/quantreg.050.4.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 26px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="185283">This procedure is repeated for <img class="Default EquationGraphic" src="images/quantreg.050.4.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" /> bootstrap replications, and the estimator of the asymptotic covariance matrix is formed from:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.110.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185295">where <img class="Default EquationGraphic" src="images/quantreg.050.4.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 37px; top: 0.0pt" alt="" /> is the mean of the bootstrap elements. The bootstrap covariance matrix <img class="Default EquationGraphic" src="images/quantreg.050.4.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 42px; top: 0.0pt" alt="" /> is simply a (scaled) estimate of the sample variance of the bootstrap estimates of <img class="Default EquationGraphic" src="images/quantreg.050.4.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="185305">Note that the validity of using separate draws from <img class="Default EquationGraphic" src="images/quantreg.050.4.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 41px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/quantreg.050.4.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> requires independence of the <img class="Default EquationGraphic" src="images/quantreg.050.4.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> and the <img class="Default EquationGraphic" src="images/quantreg.050.4.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Heading_6"><a name="185312">XY-pair (Design) Bootstrap</a></div>
+      <div class="Body_Text"><a name="185313">The </a><span class="Emphasis">XY-pair</span> bootstrap is the most natural form of bootstrap resampling, and is valid in settings where <img class="Default EquationGraphic" src="images/quantreg.050.4.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/quantreg.050.4.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> are not independent. For the XY-pair bootstrap, we simply form <img class="Default EquationGraphic" src="images/quantreg.050.4.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> randomly drawn (with replacement) subsamples of size <img class="Default EquationGraphic" src="images/quantreg.050.4.121.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /><span class="Emphasis"> </span>from the original data, then compute estimates of <img class="Default EquationGraphic" src="images/quantreg.050.4.122.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> using the <img class="Default EquationGraphic" src="images/quantreg.050.4.123.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 66px; top: 0.0pt" alt="" /> for each subsample. The asymptotic covariance matrix is then estimated from sample variance of the bootstrap results using <span class="Link"><a href="#185288" title="Background">Equation&nbsp;(40.25)</a></span>.</div>
+      <div class="Heading_6"><a name="185335">Markov Chain Marginal Bootstrap</a></div>
+      <div class="Body_Text"><a name="185336">The primary disadvantage to the residual and design bootstrapping methods is that they are computationally intensive, requiring estimation of a relatively difficult <img class="Default EquationGraphic" src="images/quantreg.050.4.124.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-dimensional linear programming problem for each bootstrap replication.</a></div>
+      <div class="Body_Text"><a name="185340">He and Hu (2002) proposed a new method for constructing bootstrap replications that reduces each <img class="Default EquationGraphic" src="images/quantreg.050.4.125.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-dimensional bootstrap optimization to a sequence of <img class="Default EquationGraphic" src="images/quantreg.050.4.126.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> easily solved one-dimensional problems. The sequence of one-dimensional solutions forms a Markov chain whose sample variance, computed using </a><span class="Link"><a href="#185288" title="Background">Equation&nbsp;(40.25)</a></span>, consistently approximates the true covariance for large <img class="Default EquationGraphic" src="images/quantreg.050.4.127.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/quantreg.050.4.128.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" />. </div>
+      <div class="Body_Text"><a name="185356">One problem with the MCMB is that high autocorrelations in the MCMB sequence for specific coefficients will result in a poor estimates for the asymptotic covariance for given chain length <img class="Default EquationGraphic" src="images/quantreg.050.4.129.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" />, and may result in non-convergence of the covariance estimates for any chain of practical length.</a></div>
+      <div class="Body_Text"><a name="185360">Kocherginsky, He, and Mu (KHM, 2005) propose a modification to MCMB, which alleviates autocorrelation problems by transforming the parameter space prior to performing the MCMB algorithm, and then transforming the result back to the original space. Note that the resulting MCMB-A algorithm requires the </a><span class="Emphasis">i.i.d.</span> assumption, though the authors suggest that the method is robust against heteroskedasticity.</div>
+      <div class="Body_Text"><a name="185361">Practical recommendations for the MCMB-A are provided in KHM. Summarizing, they recommend that the methods be applied to problems where <img class="Default EquationGraphic" src="images/quantreg.050.4.130.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 154px; top: 0.0pt" alt="" /> with <img class="Default EquationGraphic" src="images/quantreg.050.4.131.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" /> between 100 and 200 for relatively small problems (<img class="Default EquationGraphic" src="images/quantreg.050.4.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 120px; top: 0.0pt" alt="" />). For moderately large problems with <img class="Default EquationGraphic" src="images/quantreg.050.4.133.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 24px; top: 0.0pt" alt="" /> between 10,000 and 2,000,000, they recommend <img class="Default EquationGraphic" src="images/quantreg.050.4.134.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" /> between 50 and 200 depending on one&#8217;s level of patience.</a></div>
+      <div class="Heading_4"><a name="185377">Model Evaluation and Testing</a></div>
+      <div class="Body_Text"><a name="185378">Evaluation of the quality of a quantile regression model may be conducted using goodness-of-fit criteria, as well as formal testing using quasi-likelihood ratio and Wald tests.</a></div>
+      <div class="Heading_5"><a name="188858">Goodness-of-Fit</a></div>
+      <div class="Body_Text"><a name="188859">Koenker and Machado (1999) define a goodness-of-fit statistic for quantile regression that is analogous to the <img class="Default EquationGraphic" src="images/quantreg.050.4.135.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> from conventional regression analysis. We begin by recalling our linear quantile specification, <img class="Default EquationGraphic" src="images/quantreg.050.4.136.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 189px; top: 0.0pt" alt="" />and assume that we may partition the data and coefficient vector as <img class="Default EquationGraphic" src="images/quantreg.050.4.137.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 116px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/quantreg.050.4.138.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 176px; top: 0.0pt" alt="" />, so that</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.139.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185397">We may then define:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.140.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185402">the minimized unrestricted and intercept-only objective functions. The Koenker and Machado goodness-of-fit criterion is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.141.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185413">This statistic is an obvious analogue of the conventional <img class="Default EquationGraphic" src="images/quantreg.050.4.142.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" />. <img class="Default EquationGraphic" src="images/quantreg.050.4.143.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 46px; top: 0.0pt" alt="" /> lies between 0 and 1, and measures the relative success of the model in fitting the data for the <img class="Default EquationGraphic" src="images/quantreg.050.4.144.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-th quantile.</a></div>
+      <div class="Heading_5"><a name="185418">Quasi-Likelihood Ratio Tests</a></div>
+      <div class="Body_Text"><a name="185419">Koenker and Machado (1999) describe quasi-likelihood ratio tests based on the change in the optimized value of the objective function after relaxation of the restrictions imposed by the null hypothesis. They offer two test statistics which they term </a><span class="Emphasis">quantile-</span><img class="Default EquationGraphic" src="images/quantreg.050.4.145.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> tests, though as Koenker (2005) points out, they may also be thought of as quasi-likelihood ratio tests.</div>
+      <div class="Body_Text"><a name="185423">We define the test statistics:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.146.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185434">which are both asymptotically <img class="Default EquationGraphic" src="images/quantreg.050.4.147.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 21px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/quantreg.050.4.148.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the number of restrictions imposed by the null hypothesis.</a></div>
+      <div class="Body_Text"><a name="185438">You should note the presence of the sparsity term <img class="Default EquationGraphic" src="images/quantreg.050.4.149.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> in the denominator of both expressions. Any of the sparsity estimators outlined in </a><span class="Link"><a href="#184975" title="Background">&#8220;Sparsity Estimation&#8221;</a></span> may be employed for either the null or alternative specifications; EViews uses the sparsity estimated under the alternative. The presence of <img class="Default EquationGraphic" src="images/quantreg.050.4.150.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> should be a tipoff that these test statistics require that the quantile density function does not depend on <img class="Default EquationGraphic" src="images/quantreg.050.4.151.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, as in the pure location-shift model.</div>
+      <div class="Body_Text"><a name="185448">Note that EViews will always compute an estimate of the scalar sparsity, even when you specify a Huber sandwich covariance method. This value of the sparsity will be used to compute QLR test statistics which may be less robust than the corresponding Wald counterparts.</a></div>
+      <div class="Heading_5"><a name="185449">Coefficient Tests</a></div>
+      <div class="Body_Text"><a name="185450">Given estimates of the asymptotic covariance matrix for the quantile regression estimates, you may construct Wald-type tests of hypotheses and construct coefficient confidence ellipses as in </a><span class="Link"><a href="testing-Coefficient_Diagnostics.html#182099" title="Coefficient Diagnostics">&#8220;Coefficient Diagnostics&#8221;</a></span>. </div>
+      <div class="Heading_4"><a name="185454">Quantile Process Testing</a></div>
+      <div class="Body_Text"><a name="185455">The focus of our analysis thus far has been on the quantile regression model for a single quantile, <img class="Default EquationGraphic" src="images/quantreg.050.4.152.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. In a number of cases, we may instead be interested in forming joint hypotheses using coefficients for more than one quantile. We may, for example, be interested in evaluating whether the location-shift model is appropriate by testing for equality of slopes across quantile values. Consideration of more than one quantile regression at the same time comes under the general category of </a><span class="Definition">quantile process</span> analysis.</div>
+      <div class="Body_Text"><a name="185459">While the EViews equation object is set up to consider only one quantile at a time, specialized tools allow you to perform the most commonly performed quantile process analyses.</a></div>
+      <div class="Body_Text"><a name="185460">Before proceeding to the hypothesis tests of interest, we must first outline the required distributional theory. Define the process coefficient vector:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.153.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185465">Then</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.154.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185473">where <img class="Default EquationGraphic" src="images/quantreg.050.4.155.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> has blocks of the form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.156.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185482">In the </a><span class="Emphasis">i.i.d.</span> setting, <img class="Default EquationGraphic" src="images/quantreg.050.4.157.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> simplifies to,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.158.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185491">where <img class="Default EquationGraphic" src="images/quantreg.050.4.159.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> has representative element:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.160.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185509">Estimation of <img class="Default EquationGraphic" src="images/quantreg.050.4.161.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> may be performed directly using </a><span class="Link"><a href="#185478" title="Background">(40.32)</a></span>, <span class="Link"><a href="#185487" title="Background">(40.33)</a></span> and <span class="Link"><a href="#185496" title="Background">(40.34)</a></span>, or using one of the bootstrap variants.</div>
+      <div class="Heading_5"><a name="185511">Slope Equality Testing</a></div>
+      <div class="Body_Text"><a name="185512">Koenker and Bassett (1982a) propose testing for slope equality across quantiles as a robust test of heteroskedasticity. The null hypothesis is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.162.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.35)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185520">which imposes <img class="Default EquationGraphic" src="images/quantreg.050.4.163.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 108px; top: 0.0pt" alt="" /> restrictions on the coefficients. We may form the corresponding Wald statistic, which is distributed as a <img class="Default EquationGraphic" src="images/quantreg.050.4.164.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 88px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="185525">Symmetry Testing</a></div>
+      <div class="Body_Text"><a name="185526">Newey and Powell (1987) construct a test of the less restrictive hypothesis of symmetry, for asymmetric least squares estimators, but the approach may easily be applied to the quantile regression case.</a></div>
+      <div class="Body_Text"><a name="185533">The premise of the Newey and Powell test is that if the distribution of <img class="Default EquationGraphic" src="images/quantreg.050.4.165.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> given <img class="Default EquationGraphic" src="images/quantreg.050.4.166.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is symmetric, then:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.167.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185538">We may evaluate this restriction using Wald tests on the quantile process. Suppose that there are an odd number, <img class="Default EquationGraphic" src="images/quantreg.050.4.168.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, of sets of estimated coefficients ordered by <img class="Default EquationGraphic" src="images/quantreg.050.4.169.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />. The middle value <img class="Default EquationGraphic" src="images/quantreg.050.4.170.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 66px; top: 0.0pt" alt="" /> is assumed to be equal to 0.5, and the remaining <img class="Default EquationGraphic" src="images/quantreg.050.4.171.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> are symmetric around 0.5, with <img class="Default EquationGraphic" src="images/quantreg.050.4.172.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 125px; top: 0.0pt" alt="" />, for <img class="Default EquationGraphic" src="images/quantreg.050.4.173.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 157px; top: 0.0pt" alt="" />. Then the Newey and Powell test null is the joint hypothesis that:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/quantreg.050.4.174.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(40.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185564">for <img class="Default EquationGraphic" src="images/quantreg.050.4.175.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 157px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="185565">The Wald test formed for this null is zero under the null hypothesis of symmetry. The null has <img class="Default EquationGraphic" src="images/quantreg.050.4.176.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 89px; top: 0.0pt" alt="" /> restrictions, so the Wald statistic is distributed as a <img class="Default EquationGraphic" src="images/quantreg.050.4.177.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 75px; top: 0.0pt" alt="" />. Newey and Powell point out that if it is known </a><span class="Emphasis">a priori</span> that the errors are <span class="Emphasis">i.i.d.</span>, but possibly asymmetric, one can restrict the null to only examine the restriction for the intercept. This restricted null imposes only <img class="Default EquationGraphic" src="images/quantreg.050.4.178.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 79px; top: 0.0pt" alt="" /> restrictions on the process coefficients.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

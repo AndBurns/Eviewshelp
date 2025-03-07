@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Series</title>
+    <link rel="StyleSheet" href="css/workdata.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="workdata-Numeric_Expressions.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="workdata-Auto-series.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="workdata-Working_with_Data.html">Working with Data</a> : Series</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="160789">Series</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160810">Basic Assignment</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160820">Using Samples</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160836">Dynamic Assignment</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160844">Implicit Assignment</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160870">Using the Command Window</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="160790">One of the primary uses of expressions is to generate new series from existing data or to modify the values in an existing series. Used in combination with samples, expressions allow you to perform sophisticated transformations of your data, saving the results in new or existing series objects.</a></div>
+      <div class="Body_Text"><a name="160791">The current discussion focuses on the basic numeric series object. Users who wish to work with alphanumeric or advanced series features should see </a><span class="Link"><a href="newser-Working_with_Data_(Advanced).html#134950" title="Working with Data (Advanced)">&#8220;Working with Data (Advanced)&#8221;</a></span> and <span class="Link"><a href="links-Series_Links.html#173163" title="Series Links">&#8220;Series Links&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="160802">To create or modify a series, select </a><span class="Menu_Item">Quick/Generate Series&#8230;</span> or click on the <span class="Menu_Item">Genr</span> button on the workfile toolbar. EViews opens a window prompting you for additional information.</div>
+      <div class="Picture"><a name="160806"><img class="Default" src="images/workdata.011.3.1.jpg" width="100%" style="left: 0.0pt; max-height: 298px; max-width: 339px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="160807">You should enter the assignment statement in the upper edit box, and the relevant sample period in the lower edit box. </a></div>
+      <div class="Body_Text"><a name="160808">The assignment statement is actually an implicit loop over observations. Beginning with the first observation in the sample, EViews will evaluate the assignment statement for each included observation.</a></div>
+      <div class="Heading_4"><a name="160810">Basic Assignment</a></div>
+      <div class="Body_Text"><a name="160811">You can type the series name, followed by an equal sign and then an expression. For every element of the sample, EViews will evaluate the expression on the right-hand side of the equality, and assign the value to the </a><span class="Definition">destination series</span> on the left-hand side, creating the series if necessary. </div>
+      <div class="Body_Text"><a name="160812">For example, if there is no series named Y,</a></div>
+      <div class="Input"><a name="160813">y = 2*x + 37*z</a></div>
+      <div class="Body_Text"><a name="160814">will first create the Y series and fill it with NAs. Then, for every observation in the current sample, EViews will fill each element of the Y series with the value of the expression. If Y does exist, EViews will only replace Y values in the current sample with the value of the expression. All observations not in the sample will be unchanged.</a></div>
+      <div class="Body_Text"><a name="160815">One special form of assignment occurs when the right-hand side of the assignment statement is a constant expression:</a></div>
+      <div class="Multi-line_Input"><a name="160816">y = 3</a></div>
+      <div class="Multi-line_Input"><a name="160817">y = 37 * 2 + 3</a></div>
+      <div class="Body_Text"><a name="160818">EViews will simply assign the value of the constant to all of the observations in the sample.</a></div>
+      <div class="Heading_4"><a name="160820">Using Samples</a></div>
+      <div class="Body_Text"><a name="160821">By modifying the sample of observations used in assignment, you can splice together series using multiple series assignment commands. For example, if we enter three assignment commands with different samples: first</a></div>
+      <div class="Command_Types"><a name="160822">Upper window:	</a><span class="In-line_input">y = z</span></div>
+      <div class="Command_Types"><a name="160823">Lower window:	</a><span class="In-line_input">@all if z&lt;=1 and z&gt;-1 </span></div>
+      <div class="Body_Text"><a name="160824">followed by an assignment with,</a></div>
+      <div class="Command_Types"><a name="160825">Upper window:	</a><span class="In-line_input">y = -2 + 3*z</span></div>
+      <div class="Command_Types"><a name="160826">Lower window:	</a><span class="In-line_input">if z&gt;1</span></div>
+      <div class="Body_Text"><a name="160827">and finally,</a></div>
+      <div class="Command_Types"><a name="160828">Upper window:	</a><span class="In-line_input">y = -.9 + .1*z</span></div>
+      <div class="Command_Types"><a name="160829">Lower window:	</a><span class="In-line_input">if z&lt;=-1</span></div>
+      <div class="Body_Text"><a name="160830">we can generate Y as a piecewise linear function of the series Z. Note that the &#8220;@ALL&#8221; is implicit in the latter two assignments.</a></div>
+      <div class="Body_Text"><a name="160831">While it is possible to perform these types of operations using loops and IF-statements</a><span class="Link"><a href="cprogram-EViews_Programming.html#113" title="EViews Programming">&#8220;EViews Programming&#8221;</a></span>, we strongly urge you to use <span class="In-line_command">genr</span> and sample statements where possible, since the latter approach is much more efficient.</div>
+      <div class="Heading_4"><a name="160836">Dynamic Assignment</a></div>
+      <div class="Body_Text"><a name="160837">Since EViews evaluates the assignment expression for each observation in the sample, you can perform dynamic assignment by using lagged values of the destination series on the right side of the equality. For example, suppose we have an annual workfile that ranges from 1945 to 1997. Then if we enter:</a></div>
+      <div class="Command_Types"><a name="160839">Upper window:	</a><span class="In-line_input">y = y + y(-1)</span></div>
+      <div class="Command_Types"><a name="160840">Lower window:	</a><span class="In-line_input">1946 1997</span></div>
+      <div class="Body_Text"><a name="160841">EViews will replace the Y series with the cumulative sum of Y. We begin with 1946, since we do not want to transform the first value in the workfile. Then for each period, EViews will take the current value of Y and add it to the lagged value of Y. The assignment is dynamic because as we successively move on to the next period, the lagged value of Y contains the cumulative sum.</a></div>
+      <div class="Body_Text"><a name="160842">Note that this procedure destroys the original data. To create a new series with the cumulative sums, you will have to perform the assignment in two steps, first making a copy of the original series, and then performing the dynamic assignment.</a></div>
+      <div class="Heading_4"><a name="160844">Implicit Assignment</a></div>
+      <div class="Body_Text"><a name="160847">You can make an implicit assignment by putting a simple formula on the left-hand side of the equal sign. EViews will examine your expression and select, as the destination series, the first valid series name on the left-hand side of the equality. Then for every observation in the sample, EViews will assign values using the implicit relationship. For example, if you enter:</a></div>
+      <div class="Input"><a name="160848">log(y) = x</a></div>
+      <div class="Body_Text"><a name="160849">EViews will treat Y as the destination series, and evaluate </a><span class="In-line_input">y=exp(x)</span> for every observation in the sample. </div>
+      <div class="Body_Text"><a name="160850">The following are examples of valid assignment statements where Y is the destination series:</a></div>
+      <div class="Multi-line_Input"><a name="160851">1/y = z</a></div>
+      <div class="Multi-line_Input"><a name="160852">log(y/x)/14.14 = z</a></div>
+      <div class="Multi-line_Input"><a name="160853">log(@inv(y)*x) = z</a></div>
+      <div class="Multi-line_Input"><a name="160854">2+y+3*z = 4*w</a></div>
+      <div class="Multi-line_Input"><a name="160855">d(y) = nrnd</a></div>
+      <div class="Body_Text"><a name="160858">In general, EViews can solve for, or </a><span class="Definition">normalize,</span> equations that use the following on the left-hand side of the equality: <span class="In-line_input">+</span>, &#8211;, <span class="In-line_input">*</span>, <span class="In-line_input">/</span>, <span class="In-line_input">^</span>, <span class="In-line_input">log()</span>, <span class="In-line_input">exp()</span>, <span class="In-line_input">sqr()</span>, <span class="In-line_input">d()</span>, <span class="In-line_input">dlog()</span>, <span class="In-line_input">@inv()</span>. </div>
+      <div class="Body_Text"><a name="160859">Since </a><span class="Menu_Item">Genr</span> is not a general equation solver, there will be situations in which EViews cannot normalize your equation. You cannot, for example, use the assignment statement:</div>
+      <div class="Input"><a name="160860">@tdist(y, 3) = x</a></div>
+      <div class="Body_Text"><a name="160861">since </a><span class="In-line_input">@tdist</span> is not one of the functions that EViews knows how to invert. Similarly, EViews cannot solve for equations where the destination series appears more than once on the left side of the equality. For example, EViews cannot solve the equation:</div>
+      <div class="Input"><a name="160862">x + 1/x = 5</a></div>
+      <div class="Body_Text"><a name="160863">In both cases, EViews will display the error message &#8220;Unable to normalize equation&#8221;.</a></div>
+      <div class="Body_Text"><a name="160864">Note that the destination series can appear on both sides of the equality. For example:</a></div>
+      <div class="Input"><a name="160865">log(x) = x</a></div>
+      <div class="Body_Text"><a name="160866">is a legal assignment statement. EViews will normalize the expression and perform the assignment</a></div>
+      <div class="Input"><a name="160867">x = exp(x)</a></div>
+      <div class="Body_Text"><a name="160868">so that X will be assigned the exponential of the original value of X. EViews will </a><span class="Emphasis">not</span> solve for the values of X satisfying the equality &#8220;LOG(X) = X&#8221;.</div>
+      <div class="Heading_4"><a name="160870">Using the Command Window</a></div>
+      <div class="Body_Text"><a name="160871">You can create series and assign values from the command window. First, set the workfile sample using the </a><span class="In-line_input">smpl</span> statement, then enter the assignment statement.</div>
+      <div class="Body_Text"><a name="160872">There are alternative forms for the assignment statement. First, if the series does not exist, you must use either the </a><span class="In-line_input">series</span> or the <span class="In-line_input">genr</span> keyword, followed by the assignment expression. The two statements:</div>
+      <div class="Multi-line_Input"><a name="160873">series y = exp(x)</a></div>
+      <div class="Multi-line_Input"><a name="160874">genr y = exp(x)</a></div>
+      <div class="Body_Text"><a name="160875">are equivalent methods of generating the series Y. Once the series has been created, subsequent assignment statements do not require the </a><span class="In-line_input">series</span> or the <span class="In-line_input">genr</span> keyword:</div>
+      <div class="Multi-line_Input"><a name="160876">smpl @all</a></div>
+      <div class="Multi-line_Input"><a name="160877">series y = exp(x)</a></div>
+      <div class="Multi-line_Input"><a name="160878">smpl 1950 1990 if y&gt;300</a></div>
+      <div class="Multi-line_Input"><a name="160879">y = y/2 </a></div>
+      <div class="Body_Text"><a name="160880">This set of commands first sets the series to equal EXP(X) for all observations, then assigns the values Y/2 for the subset of observations from 1950 to 1990 if Y&gt;300.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

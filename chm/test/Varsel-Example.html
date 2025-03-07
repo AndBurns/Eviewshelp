@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Example</title>
+    <link rel="StyleSheet" href="css/Varsel.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="Varsel-Working_with_an_Estimated_Equation.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="Varsel-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="Varsel-Regression_Variable_Selection.html">Regression Variable Selection</a> : Example</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="277416">Example</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#277434">Stepwise Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#277463">Swapwise Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#277471">Auto-search/GETS Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#277478">Lasso Example</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="277417">As an example of using variable selection in EViews, we will estimate a model of hourly electricity spot prices. We will follow, in spirit, the analysis done in Uniejewski, Nowotarski and Weron (2016), estimating a model with a large number of candidate variables to try to perform a one day-ahead forecast of the spot price.</a></div>
+      <div class="Body_Text"><a name="277418">We have a workfile containing hourly data between 2015 and 2018 of the electricity spot price for a region in the United States, along with hourly electricity load data (how much electricity is used) and day-ahead load forecasts for the same region.</a></div>
+      <div class="Body_Text"><a name="277419">As a dependent variable we use the series TPRICE containing the deviation of the log of the spot price from the mean of the log of spot prices for the same hour.</a></div>
+      <div class="Body_Text"><a name="277420">We have a total of 107 search regressors:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277421">3 days (72 hours) of lags of TPRICE</a><span style="font-weight: bold"> </span>(72) </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277422">a single one week (168 hour) lag of TPRICE (1)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277423">the minimum TPRICE of the previous day, two days before and three days before (3)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277424">the maximum TPRICE of the previous day, two days before and three days before (3)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277425">the mean TPRICE of the previous day, two days before and three days before (3)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277426">log of electricity load for current hour, same hour previous day and same hour previous week (3)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277427">log of forecasted load for same hour next day (1)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277428">day of week dummy variables (set to zero for weekday holidays) (7)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277429">Interaction between dummy variables and log of load (y)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277430">Interaction between dummy variables and TPRICE (7)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="277431">These search regressions are stored in the group SEARCHREGS. </a></div>
+      <div class="Body_Text"><a name="277432">The model also has an always-included constant.</a></div>
+      <div class="Body_Text"><a name="277433">For this example we will model TPRICE at noon each day between January 1, 2015 and December 30, 2018, and will use those estimates to forecast TPRICE for December 31, 2018 &#8212;a one observation forecast.</a></div>
+      <div class="Heading_4"><a name="277434">Stepwise Example</a></div>
+      <div class="Body_Text"><a name="277435">To begin, we&#8217;ll use a stepwise regression to select the most appropriate regressors. We click on </a><span class="Menu_Item">Quick/Estimate Equation&#8230;</span> to bring up the <span class="Menu_Item">Equation Estimation</span><span style="font-weight: bold"> </span>dialog, and then change the <span class="Menu_Item">Method</span> dropdown to <span class="Menu_Item">VARSEL-Variable selection and Stepwise Least Squares</span>.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277436">We enter &#8220;TPRICE C&#8221; in the first part of the </a><span class="Menu_Item">Equation Specification</span>, and then &#8220;SEARCHREGS&#8221; in the <span class="Menu_Item">Search Regressors</span> box. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277437">We&#8217;ll leave the </a><span class="Menu_Item">Selection method</span> as <span class="Menu_Item">Stepwise</span>, and keep the options on the <span class="Menu_Item">Options</span> tab at their default settings. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="277438">Finally we set the sample to be the estimation dates we want, ensuring that only the noon observations are used.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="277442"><img class="Default" src="images/Varsel.031.5.01.jpg" width="100%" style="left: 0.0pt; max-height: 593px; max-width: 569px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="277443">Clicking </a><span class="Menu_Item">OK</span> performs the stepwise variable selection, and estimates the final model. The top portion of the output describes the selection process:</div>
+      <div class="Picture"><a name="277447"><img class="Default" src="images/Varsel.031.5.02.jpg" width="100%" style="left: 0.0pt; max-height: 230px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="277448">The final line issues a warning that the final estimation results shown use a different sample than that used during selection. This is because some of the search regressors contain NAs (due to lags in our case), and thus those observations are dropped from the selection process. However some of those variables were not selected, and so those observations can be re-included in the final estimation.</a></div>
+      <div class="Body_Text"><a name="277449">The middle part of the output (partially shown here) displays the selected variables, their coefficients, standard errors, </a><span class="In-line_math">t</span>-statistics and probability values.</div>
+      <div class="Picture"><a name="277456"><img class="Default" src="images/Varsel.031.5.03.jpg" width="100%" style="left: 0.0pt; max-height: 326px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="277457">In this case a total of 54 of the 107 search regressors were selected.</a></div>
+      <div class="Body_Text"><a name="277458">The bottom of the output (partially shown) describes the selection process the stepwise regression undertook.</a></div>
+      <div class="Picture"><a name="277462"><img class="Default" src="images/Varsel.031.5.04.jpg" width="100%" style="left: 0.0pt; max-height: 310px; max-width: 1001px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="277463">Swapwise Example</a></div>
+      <div class="Body_Text"><a name="277464">For a second estimation of the model, we will use the swapwise algorithm. We again click on </a><span class="Menu_Item">Quick\Estimation Equation</span><span style="font-weight: bold"> </span>to bring up the <span class="Menu_Item">Equation Estimation</span> dialog, and fill in the variables and sample as before. We change the <span class="Menu_Item">Selection method</span><span style="font-weight: bold"> </span>combo to <span class="Menu_Item">Swapwise</span>.</div>
+      <div class="Body_Text"><a name="277465">Switching to the </a><span class="Menu_Item">Options</span> tab, we switch to <span class="Menu_Item">Min R-squared increment</span> and instruct EViews to find the best 60 regressors (which seems a reasonable number given the stepwise procedure&#8217;s selection of 54). </div>
+      <div class="Picture"><a name="277469"><img class="Default" src="images/Varsel.031.5.05.jpg" width="100%" style="left: 0.0pt; max-height: 593px; max-width: 569px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="277470">The output from this equation is similar to that of the first&#8212;the top portion displays a summary of the estimation, the middle section provides the estimation results, and the bottom portion displays the selection process.</a></div>
+      <div class="Heading_4"><a name="277471">Auto-search/GETS Example</a></div>
+      <div class="Body_Text"><a name="277472">Our third estimation will use the Auto-search/GETS algorithm. On the </a><span class="Menu_Item">Specification</span> page, change the <span class="Menu_Item">Selection method</span> to <span class="Menu_Item">Auto-Search/GETS</span>, and then click on the <span class="Menu_Item">Options</span><span style="font-weight: bold"> </span>tab to alter some of the default settings. We&#8217;ll change the criteria used to decide between the final candidate models to the Schwarz criterion using the <span class="Menu_Item">Criterion</span> dropdown. We also elect to only use the AR LM test and PET tests as diagnostic tests during the path search.</div>
+      <div class="Picture"><a name="277476"><img class="Default" src="images/Varsel.031.5.06.jpg" width="100%" style="left: 0.0pt; max-height: 593px; max-width: 569px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="277477">The output from this estimation is similar to the previous two; the upper portion describes the selection method, the middle displays the final model&#8217;s coefficient estimates and associates statistics, and the bottom provides some small detail on the selection process. In contrast to the stepwise procedure, Auto-search has only selected 27 regressors.</a></div>
+      <div class="Heading_4"><a name="277478">Lasso Example</a></div>
+      <div class="Body_Text"><a name="277479">In this example employ Lasso to select a model for the electricity data. On the </a><span class="Menu_Item">Specification</span> page, change the <span class="Menu_Item">Selection method</span> to <span class="Menu_Item">Lasso</span>, </div>
+      <div class="Picture"><a name="286244"><img class="Default" src="images/Varsel.031.5.07.jpg" width="100%" style="left: 0.0pt; max-height: 593px; max-width: 569px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="286240">We leave the </a><span class="Menu_Item">Penalty</span> page settings at their default values, but click on the Cross-validation options button and change the K-fold <span class="Menu_Item">Objective</span> to <span class="Menu_Item">Symmetric MAPE</span> and the <span class="Menu_Item">Number of folds</span> to 20. Click on OK to accept the <span class="Menu_Item">Cross-validation Options</span> and then click on <span class="Menu_Item">OK</span> to estimate the model using the specified settings.</div>
+      <div class="Body_Text"><a name="286705">The top of the main estimation output shows information about the Lasso estimation settings:</a></div>
+      <div class="Picture"><a name="283424"><img class="Default" src="images/Varsel.031.5.08.jpg" width="100%" style="left: 0.0pt; max-height: 293px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="283256">Among other things, EViews uses an automatic path determination to specify the <img class="Default EquationGraphic" src="images/Varsel.031.5.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, and employs K-Fold cross-validation with a SMAPE objective to determine an optimal penalty. The optimal <img class="Default EquationGraphic" src="images/Varsel.031.5.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is 0.002031. </a></div>
+      <div class="Body_Text"><a name="283760">The middle portion of the output shows the results for OLS estimation using the variables with non-zero coefficients in the Lasso estimation. </a></div>
+      <div class="Body_Text" style="color: #000000; font-style: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-weight: normal; vertical-align: baseline"><a name="287413"><img class="Default" src="images/Varsel.031.5.11.jpg" width="100%" style="left: 0.0pt; max-height: 598px; max-width: 1000px; top: 0.0pt" alt="" /></a></span></div>
+      <div class="Body_Text"><a name="287905">Below the OLS coefficients are the usual summary statistics:</a></div>
+      <div class="Picture"><a name="287982"><img class="Default" src="images/Varsel.031.5.12.jpg" width="100%" style="left: 0.0pt; max-height: 190px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="287395">The bottom of the output reports that the cross-validation model selection compared 100 values of the penalty parameter. Lasso selects 24 regressors out of the 107 search regressors.</a></div>
+      <div class="Table"><a name="283731">&nbsp;</a></div>
+      <div class="Picture"><a name="287132"><img class="Default" src="images/Varsel.031.5.13.jpg" width="100%" style="left: 0.0pt; max-height: 182px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="287134">EViews also reminds you that the standard errors, </a><span class="In-line_math">p</span>-values, and test results reported in this table are for OLS given the variables selected, and do not account for the randomness associated with Lasso variable selection.</div>
+      <div class="Body_Text"><a name="277500">We may examine details of the model selection process by going to </a><span class="Menu_Item">View/ Model Selection </span>and choosing <span class="Menu_Item">Criteria Graph</span> or <span class="Menu_Item">Criteria Table</span>. The <span class="Menu_Item">Criteria Graph </span>display a graph of the models ranked from best to worst in order of the cross-validation statistic:</div>
+      <div class="Picture"><a name="277504"><img class="Default" src="images/Varsel.031.5.14.jpg" width="100%" style="left: 0.0pt; max-height: 422px; max-width: 485px; top: 0.0pt" alt="" /></a></div>
+      <div class="Picture"><a name="277508">&nbsp;</a></div>
+      <div class="Body_Text"><a name="284008">The </a><span class="Menu_Item">Criteria Table</span> view shows the cross-validation objective and other fit statistics in tabular form, ordered by value of the penalty. The optimal value will be highlighted.</div>
+      <div class="Picture"><a name="284164"><img class="Default" src="images/Varsel.031.5.15.jpg" width="100%" style="left: 0.0pt; max-height: 378px; max-width: 606px; top: 0.0pt" alt="" /></a></div>
+      <div class="Picture"><a name="284129"><img class="Default" src="images/Varsel.031.5.16.jpg" width="100%" style="left: 0.0pt; max-height: 199px; max-width: 591px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="288357">Selecting </a><span class="Menu_Item">View/ Model Selection/Cross-validation Error Graph</span>, shows a graph of the full path of the cross-validation evaluation statistic:</div>
+      <div class="Picture"><a name="288519"><img class="Default" src="images/Varsel.031.5.17.jpg" width="100%" style="left: 0.0pt; max-height: 426px; max-width: 512px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="277509">Under the </a><span class="Menu_Item">View/Model Selection</span> menu EViews also offers views from elastic net estimation. Of particular interest is the <span class="Menu_Item">Coefficients Path Graph</span> view which (among other graphs) plots the (anywhere) non-zero coefficients against the lambda path:</div>
+      <div class="Picture"><a name="288699"><img class="Default" src="images/Varsel.031.5.18.jpg" width="100%" style="left: 0.0pt; max-height: 490px; max-width: 626px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

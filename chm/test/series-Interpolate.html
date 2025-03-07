@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Interpolate</title>
+    <link rel="StyleSheet" href="css/series.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="series-Resample.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="series-Seasonal_Adjustment.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_data.html">Basic Data Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="series-Series.html">Series</a> : Interpolate</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="132921">Interpolate</a></div>
+      <div class="Body_Text"><a name="132922">The interpolation procedure for a series fills in missing values, or NAs, within a series by interpolating from values that are non-missing. EViews offers a number of different algorithms for performing the interpolation: Linear, Log-Linear, the Catmull-Rom Spline, and the Cardinal Spline.</a></div>
+      <div class="Body_Text"><a name="132923">The Linear interpolation method simply computes a linear approximation based on the previous non-missing value and the next non-missing value. The interpolated value is then calculated as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.28.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="132937">where <img class="Default EquationGraphic" src="images/series.017.28.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> is the previous missing value, <img class="Default EquationGraphic" src="images/series.017.28.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> is the next non-missing value, and <img class="Default EquationGraphic" src="images/series.017.28.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is the relative position of the missing value divided by the total number of missing values in a row.</a></div>
+      <div class="Body_Text"><a name="132938">Thus if you have a single NA, then the interpolated value will be half way between the previous value and the next value. If you have two NAs in a row, the first will be interpolated as 1/3 of the distance between the previous value and the next. The second value will be interpolated as 2/3 of the distance.</a></div>
+      <div class="Body_Text"><a name="132939">Log-linear interpolation is calculated in the same way as the Linear method, but the series values are logged before the calculation is made, then the interpolated value is exponentiated. If the source series contains negative values before and after the missing values, then the absolute value is used for interpolation, with the result being negated. If the values to either side of the missing values contain both a negative and a positive number, the interpolation routine will return an NA. Thus the interpolated value is calculated as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.28.05.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.31)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.28.06.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="132948">Note that both the linear and log-linear routines will return an NA if there are no previous or next non-missing values available &#8211; i.e. if the first observation in the sample is an NA, it will not be interpolated since there is no previous value available.</a></div>
+      <div class="Body_Text"><a name="132949">The Cardinal Spline is based on the previous two non-missing values, and the next two non-missing values, and tries to fit the missing data to a non-linear, or curved, pattern. Denoting <img class="Default EquationGraphic" src="images/series.017.28.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/series.017.28.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> as the previous two non-missing values, and <img class="Default EquationGraphic" src="images/series.017.28.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/series.017.28.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> as the next two non-missing values, the interpolated value is calculated as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.28.11.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="132969">where <img class="Default EquationGraphic" src="images/series.017.28.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> is a called a tension parameter and affects the curvature of the spline.</a></div>
+      <div class="Body_Text"><a name="132970">The Catmull-Rom Spline is a special case of the Cardinal Spline, with the tension parameter, <img class="Default EquationGraphic" src="images/series.017.28.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, set at 0. </a></div>
+      <div class="Body_Text"><a name="132974">Note that as with the linear and log-linear routines, both spline routines will return an NA if either <img class="Default EquationGraphic" src="images/series.017.28.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> or <img class="Default EquationGraphic" src="images/series.017.28.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> are missing. However if <img class="Default EquationGraphic" src="images/series.017.28.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> is missing, it is simply set equal to <img class="Default EquationGraphic" src="images/series.017.28.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" />, and if <img class="Default EquationGraphic" src="images/series.017.28.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> is missing, it is set equal to <img class="Default EquationGraphic" src="images/series.017.28.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="132993">For example, the following series is interpolated using Linear and Log-Linear interpolation:</a></div>
+      <div class="Table"><a name="211563">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 324pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 43.2pt">
+            <div class="Table_Text_Header"><a name="132996">Obs</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 43.2pt">
+            <div class="Table_Text_Header"><a name="132998">Data</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 43.2pt">
+            <div class="Table_Text_Header"><a name="133003"><img class="Default EquationGraphic" src="images/series.017.28.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /></a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 57.6pt">
+            <div class="Table_Text_Header"><a name="133005">Linear</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 57.6pt">
+            <div class="Table_Text_Header"><a name="133007">Log-Linear</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 79.2pt">
+            <div class="Table_Text_Header"><a name="133009">Catmull-Rom</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133011">1</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133013">-1</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133015">--</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133017">-1</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133019">-1</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133021">-1</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133023">2</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133025">-0.8</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133027">--</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133029">-0.8</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133031">-0.8</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133033">-0.8</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133035">3</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133037">NA</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133039">1/2</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133041">-0.6</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133043">-0.56569</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133045">-0.4750</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133047">4</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133049">-0.4</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133051">--</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133053">-0.4</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133055">-0.4</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133057">-0.4</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133059">5</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133061">NA</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133063">1/3</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133065">-0.66667</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133067">-0.56769</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133069">-0.60741</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133071">6</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133073">NA</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133075">2/3</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133077">-0.93333</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133079">-0.83203</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133081">-0.90370</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133083">7</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133085">-1.2</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133087">--</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133089">-1.2</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133091">-1.2</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="133093">-1.2</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="133095">For this series, the first missing value is at observation 3. The linear interpolation of this value is simply 1/2 of the value of observation two (the previous non-missing observation) plus 1/2 of the value of observation four (the next non-missing observation), </a><span class="Emphasis">i.e. </span>1/2*-0.8 + 1/2*(-0.4). The second missing value is at observation five, and is equal to 2/3 of the value of observation four, plus (1-1/3) of the value of observation 7, <span class="Emphasis">i.e.</span>, 2/3*(-0.4)+1/3*(-1.2). The final interpolated value, at observation six, is calculated as 1/3*(-0.4) + 2/3*(-1.2)</div>
+      <div class="Body_Text"><a name="133096">For log-linear interpolation, the calculated value for observation three is equal to the negative of the exponent of 1/2 of the logged value at observation two (negated since it is negative) plus 1/2 of the value of observation five (negated): </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.28.21.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="133101">The calculations for observations five and six, respectively, are:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.28.22.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.35)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.28.23.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="133110">For the Catmull-Rom spline, the calculated value for observation three is equal to:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.28.24.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="133115">The values at observations five and six are calculated similarly, although note that both for both observations, <img class="Default EquationGraphic" src="images/series.017.28.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/series.017.28.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> are equal to -1.2.</a></div>
+      <div class="Picture"><a name="133125"><img class="Default" src="images/series.017.28.27.jpg" width="100%" style="left: 0.0pt; max-height: 325px; max-width: 386px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="133126">To perform interpolation from within EViews, open up the series, then click on </a><span class="Menu_Item">Proc/Interpolate&#8230;</span> which will open up the <span class="Menu_Item">Interpolation</span> dialog. The I<span class="Menu_Item">nterpolation method </span>box lets you select which interpolation method you would like to use. </div>
+      <div class="Body_Text"><a name="133127">The </a><span class="Menu_Item">Output series name</span> box lets you enter a name for the output series in which the interpolated values will be stored. If left blank an untitled series will be created.</div>
+      <div class="Body_Text"><a name="133128">The </a><span class="Menu_Item">Sample</span> box lets you select a sample over which the interpolation will run. If left blank, the default workfile sample will be used. Note that observations outside of the selected sample will not be interpolated, nor will they be used as part of the interpolation calculations. The checkbox labeled <span class="Menu_Item">Insert source series for out of sample observations </span>controls whether the output series will be filled with the source series values for out of sample observations, or will be filled with NAs.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

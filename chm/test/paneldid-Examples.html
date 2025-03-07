@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/paneldid.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="paneldid-Estimating_DiD_in_EViews.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="paneldid-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="paneldid-Difference-in-Difference_Estimation.html">Difference-in-Difference Estimation</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="407063">Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#408541">Card and Krueger (1994)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#409632">Stevenson and Wolfers (2006)</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="407064">To demonstrate the use of DiD estimation in EViews we will replicate results from familiar papers.</a></div>
+      <div class="Heading_4"><a name="408541">Card and Krueger (1994)</a></div>
+      <div class="Body_Text"><a name="408472">We first replicate results from one of the most famous DiD studies, the Card and Krueger (1994) paper analyzing the impact of minimum wage laws on employment in fast food workers.</a></div>
+      <div class="Body_Text"><a name="407065">Although Card and Krueger&#8217;s study is involves difference-in-difference estimation, they only have two time periods: February/March 1992 and November/December 1992. They term these two periods Wave 1 and Wave 2. During the gap between these two periods, New Jersey increased the state minimum wage from $4.25 to $5.05. Pennsylvania, a neighboring state, maintained its minimum wage at $4.25 during the same time period.</a></div>
+      <div class="Body_Text"><a name="407066">A subset of the data used in this paper are available in the workfile &#8220;CardKrueger.wf1&#8221;. The data in the workfile contain data for 410 fast-food restaurants, 331 in New Jersey and 79 in Pennsylvania. There are three series containing employment data: EMPFT has the number of full time employees in each store, EMPTOT has the total number of employees, and EMPTOTC has the total number of employees, with stores that have closed down coded as a 0 (instead of an NA). The series HRSOPEN contains the number of hours, per day, each store is open. The NEWMIN series is a binary variable indicating whether a store is subject to an increased in the minimum wage (i.e. is based in New Jersey during wave 2).</a></div>
+      <div class="Body_Text"><a name="407059">We can replicate one of the results in the Card and Krueger paper by performing a simple difference-in-difference estimation of EMPTOT against NEWMIN. We click on </a><span class="Menu_Item">Quick/Estimate Equation</span> and then select<span class="Menu_Item"> DiD &#8211; Difference-in-Difference </span>from the <span class="Menu_Item">Method</span> dropdown to display the dialog:</div>
+      <div class="Picture"><a name="407275"><img class="Default" src="images/paneldid.069.4.01.jpg" width="100%" style="left: 0.0pt; max-height: 417px; max-width: 490px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="407151">Enter &#8220;EMPTOT C&#8221; in the </a><span class="Menu_Item">Equation specification</span> edit field, the name of the treatment indicator &#8220;NEWMIN&#8221; in the <span class="Menu_Item">Treatment variable </span>edit field, and &#8220;1 2&#8221; in the <span class="Menu_Item">Sample</span> edit field. Click on <span class="Menu_Item">OK</span> to estimate this specification. EViews will display the estimation results:</div>
+      <div class="Table"><a name="407277"><img class="Default" src="images/paneldid.069.4.02.jpg" width="100%" style="left: 0.0pt; max-height: 406px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="998390">The estimate of the impact of the increase in the minimum wage on employment is 2.75. This matches the result in Row 4., column (iii) of Table 3 in Card and Krueger, and forms part of the basis for their overall finding that raising the minimum wage in New Jersey actually led to an increase in employment. </a></div>
+      <div class="Body_Text"><a name="408059">As noted earlier, the standard error of the estimate and the </a><span class="In-line_math">t</span>-statistic <span class="In-line_math">p</span>-value employ cross-section cluster-robust standard error calculations.</div>
+      <div class="Body_Text"><a name="998394">Note the test statistic and </a><span class="In-line_math">p</span>-value for the parallel trends test are not displayed at the bottom of the table, since with only two time periods, an estimate of trend values cannot be computed.</div>
+      <div class="Body_Text"><a name="998403">If we use EMPTOTC as the outcome variable instead of EMPTOT, we can replicate the result in Row 5, column (iii) of Table 3 in Card and Krueger, which reports that the impact of the raise in minimum wage is 2.51.</a></div>
+      <div class="Picture"><a name="408306"><img class="Default" src="images/paneldid.069.4.03.jpg" width="100%" style="left: 0.0pt; max-height: 415px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="407279">We could extend the specification to include the number of hours a store is open as a covariate, simply by entering &#8220;HRSOPEN&#8221; as a regressor in the </a><span class="Menu_Item">Equation specification</span> edit field:</div>
+      <div class="Picture"><a name="409296"><img class="Default" src="images/paneldid.069.4.04.jpg" width="100%" style="left: 0.0pt; max-height: 417px; max-width: 490px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="409294">Although not a specification estimated by Card and Krueger, estimation results for the extended model allow evaluation of whether the basic result is sensitive to inclusion of this covariate.</a></div>
+      <div class="Body_Text"><a name="408830">Click on OK to estimate the expanded specification. The results are given by:</a></div>
+      <div class="Picture"><a name="409512"><img class="Default" src="images/paneldid.069.4.05.jpg" width="100%" style="left: 0.0pt; max-height: 435px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="407283">We can see that the inclusion of the HRSOPEN covariate (which is indicated at the bottom of the output) did not have a large impact on the estimate of the effect of the minimum wage increase (2.84 compared with the original 2.75), though the statistical significance of the result is enhanced considerably.</a></div>
+      <div class="Heading_4"><a name="409632">Stevenson and Wolfers (2006)</a></div>
+      <div class="Body_Text"><a name="409686">As a second example, we will first replicate the study by Stevenson and Wolfers (2006), which analyzed the impact of the introduction of no-fault divorce reforms on female suicide rates. The dependent variable consists of annual suicide rates for US states between 1964 and 1996. Throughout this period a number of states, at different times, introduced no-fault divorce reform.</a></div>
+      <div class="Body_Text"><a name="409687">This paper and the corresponding data was also studied by Goodman-Bacon (2021) as an application of the Goodman-Bacon decomposition.</a></div>
+      <div class="Body_Text"><a name="409688">A subset of the data used in Stevenson and Wolfers is available in Stata format from Austin Nichols&#8217; </a><span class="URL"><a href="http://pped.org/bacon_example.dta" target="external_window">website</a></span>. We can easily open this file in EViews, and EViews will automatically detect the panel nature of the data and set up the workfile with that structure:</div>
+      <div class="Input"><a name="409691">wfopen </a><span class="URL"><a href="http://pped.org/bacon_example.dta" target="external_window">http://pped.org/bacon_example.dta</a></span></div>
+      <div class="Body_Text"><a name="408455">The file contains data on the female suicide mortality rate in the series ASMRS, a binary series, POST, equal to 1 if an observation is in a no-fault divorce environment, and zero if no-fault divorces are not allowed, as well as cross-section (state) and date (year) series.</a></div>
+      <div class="Body_Text"><a name="407219">To determine the impact of no-fault divorce reform on female suicide mortality rate we can perform a simple difference-in-difference, with multiple timings, estimation. We click on </a><span class="Menu_Item">Quick/Estimate Equation</span><span style="font-weight: bold"> </span>and then change the <span class="Menu_Item">Method</span><span style="font-weight: bold"> </span>dropdown to <span class="Menu_Item">DiD &#8211; Difference-in-Difference</span>. Note this method is only available because we have a workfile structured as a panel. We enter &#8220;ASMRS&#8221; as the dependent/outcome variable, followed by our treatment dummy, &#8220;POST&#8221;, and the sample pair &#8220;1964 1996&#8221;:</div>
+      <div class="Picture"><a name="409796"><img class="Default" src="images/paneldid.069.4.06.jpg" width="100%" style="left: 0.0pt; max-height: 417px; max-width: 490px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="409819">Clicking </a><span class="Menu_Item">OK</span> produces the estimation output:</div>
+      <div class="Table"><a name="409821"><img class="Default" src="images/paneldid.069.4.07.jpg" width="100%" style="left: 0.0pt; max-height: 416px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="409896">The estimate of the impact of no-fault divorce reform on suicide mortality in females is -3.08, which matches the number presented in Section III of Goodman-Bacon (2021). </a></div>
+      <div class="Body_Text"><a name="409823">To view the Goodman-Bacon decomposition (</a><span class="Link"><a href="paneldid-Estimating_DiD_in_EViews.html#412690" title="Estimating DiD in EViews">&#8220;Goodman-Bacon Decomposition&#8221;</a></span>) we click on <span class="Menu_Item">View/Difference-in-Difference Diagnostics/Goodman-Bacon Decomposition</span>:</div>
+      <div class="Picture"><a name="409825"><img class="Default" src="images/paneldid.069.4.08.jpg" width="100%" style="left: 0.0pt; max-height: 718px; max-width: 681px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="409827">EViews opens a spool with output divided into three sections. The </a><span class="Menu_Item">Individual components</span> middle section showing all of the <img class="Default EquationGraphic" src="images/paneldid.069.4.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> individual coefficients and weights for each pair of treatment dates is closed by default. These individual results can be displayed by clicking the &#8220;+&#8221; symbol:</div>
+      <div class="Picture"><a name="410231"><img class="Default" src="images/paneldid.069.4.10.jpg" width="100%" style="left: 0.0pt; max-height: 507px; max-width: 641px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="998390">We can see that the <img class="Default EquationGraphic" src="images/paneldid.069.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> coefficient comparing observations that introduced divorce reform in 1969 with those that introduced reform in 1970 is 3.09.</a></div>
+      <div class="Body_Text"><a name="998394">The weighted average of these individual year pair-comparisons, combined into groups, is displayed in the first section. We can see that each of the groupings has a negative coefficient, apart from the &#8220;Later vs. Earlier&#8221; group. Since this comparison group may violate the parallel trends assumption, it is possible that a biased positive coefficient with large weight may have upwardly biased the overall TWFE coefficient to the reported value of -3.08.</a></div>
+      <div class="Body_Text"><a name="998403">We can see that there is a large number of the &#8220;Later vs. Earlier&#8221; group above the overall estimated coefficient, again indicating that this group may be upwardly biasing the overall estimate.</a></div>
+      <div class="Heading_4a"><a name="410544">Callaway and Sant&#8217;Anna (2021)</a></div>
+      <div class="Body_Text"><a name="998412">As a third example, we&#8217;ll examine the data used in Callaway and Sant&#8217;Anna (2021). Similar to the Card and Krueger (1994_, Callaway and Sant&#8217;Anna study the impact of the minimum wage on employment levels, but this time concentrating on teen employment. The data contains county level teen employment between 2003&#8211;2007. During this time period the federal minimum wage remained constant at $5.15 per hour. However some states increased the minimum wage within the state above the federal level during the time period. Counties within such states are the treated group (with different treatment times). Counties within states that did not change their minimum wage are in the control group.</a></div>
+      <div class="Body_Text"><a name="410253">These data are provided in the workfile &#8220;CallawaySantanna.wf1</a><span style="font-weight: bold">&#8221;</span>. The series TREATED<span style="font-weight: bold"> </span>is a binary variable indicating whether a county has been subject to an increased minimum wage in the time period, the series LEMP contains the log of employment for that county in that time period, and the series LPOP contains the log of the population within the county. A TWFE estimation of the impact of minimum wage on employment can be performed by clicking on <span class="Menu_Item">Quick/Estimate Equation</span><span style="font-weight: bold"> </span>and then changing the <span class="Menu_Item">Method</span><span style="font-weight: bold"> </span>dropdown to <span class="Menu_Item">DiD&nbsp;&#8209;&nbsp;Difference-in-Difference</span>. We enter &#8220;LEMP&#8221; as the dependent/outcome variable, followed by our treatment dummy, &#8220;TREATED&#8221;, and sample pair &#8220;2003 2007&#8221;:</div>
+      <div class="Picture"><a name="410257"><img class="Default" src="images/paneldid.069.4.12.jpg" width="100%" style="left: 0.0pt; max-height: 417px; max-width: 490px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="410732">Click on </a><span class="Menu_Item">OK</span> to estimate the specification:</div>
+      <div class="Picture"><a name="410892"><img class="Default" src="images/paneldid.069.4.13.jpg" width="100%" style="left: 0.0pt; max-height: 431px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="410930">Note the TWFE estimate of the impact of treatment matches that given in Callaway and Sant&#8217;Anna, Table 3, section A.</a></div>
+      <div class="Body_Text"><a name="410741">To view the Callaway-Sant&#8217;Anna estimator we click on </a><span class="Menu_Item">View/Difference-in-Difference Diagnostics/</span><span style="font-weight: bold">CS Group-Time Effects&#8230; </span>which brings up the Callaway-Sant&#8217;Anna dialog:</div>
+      <div class="Picture"><a name="411027"><img class="Default" src="images/paneldid.069.4.14.jpg" width="100%" style="left: 0.0pt; max-height: 288px; max-width: 320px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="410743">Note, we&#8217;ll include an additional regressor, LPOP, and set the comparison group to by those states who never perform divorce reform. Since county population is constant through the time period being analyzed (population data is taken from the 10 year census), it would not be possible to include it as an explanatory variable in TWFE estimation. However, it may be used in the CS estimator.</a></div>
+      <div class="Picture"><a name="411118"><img class="Default" src="images/paneldid.069.4.15.jpg" width="100%" style="left: 0.0pt; max-height: 580px; max-width: 569px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="411091">The top portion of the output displays the overall estimate of the treatment effect, -0.042, which compares with the TWFE estimate of -0.37.</a></div>
+      <div class="Body_Text"><a name="411087">Below this section we can see the individual coefficients for each date pairing, as well as aggregations of them by treatment date (Group), observation date (Date) and time-since-treatment (Duration).</a></div>
+      <div class="Picture"><a name="411164"><img class="Default" src="images/paneldid.069.4.16.jpg" width="100%" style="left: 0.0pt; max-height: 722px; max-width: 574px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

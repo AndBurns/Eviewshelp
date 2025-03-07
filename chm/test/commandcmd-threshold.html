@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>threshold</title>
+    <link rel="StyleSheet" href="css/commandcmd.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="commandcmd-testdrop.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="commandcmd-tic.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : Command Reference</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Command_Title_Box"><a name="2507996">&nbsp;</a></div>
+      <table class="Command_Heading" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 108pt">
+            <div class="Command_Name"><a name="2507990">threshold</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 252pt">
+            <div class="Command_Header"><span class="Command_Header_link"><a href="commandcmd-Command_Reference.html#2024087" title="Command Reference" name="2507995">Interactive Use Commands</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="Command_Summary"><a name="2640388">Estimation by discrete or smooth threshold least squares, including threshold autoregression.</a></span></div>
+      <div class="Command_Section"><a name="2640389">Syntax</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2640390">threshold</a></span><span class="Argument" style="font-weight: normal">(options)</span> <span class="Argument">y z1 [z2 z3 ...] [</span><span class="Command_Summary">@nv</span><span class="Argument" style="font-weight: normal"> x1 x2 x3 ...] </span><span class="Command_Summary">@thresh</span><span class="Argument" style="font-weight: normal"> t1 [t2 t3 ...]</span></div>
+      <div class="Body_Text"><a name="2640391">List the dependent variable first, followed by a list of the independent variables that have coefficients that are allowed to vary across thresholds, followed optionally by the keyword </a><span class="Command_Summary">@nv</span> and a list of non-varying coefficient variables.</div>
+      <div class="Body_Text"><a name="2640393">List a threshold variable or variables (for model selection) or a single integer or range pairs after the keyword </a><span class="Command_Summary">@thresh</span>. The integer or range pairs indicate a self-exciting model with the lagged dependent variable as the threshold variable.</div>
+      <div class="Body_Text"><a name="2640394">For smooth threshold equations you may specify variables that are to be included only in the base specification or only in the alternative specification. Base-only variables should be specified in parentheses using the </a><span class="Command_Summary">@base</span> key, as in &#8220;@base(x1) @base(x2) @base(x3 x4)&#8221;. Alternative-only variables may be specified analogously using the <span class="Command_Summary">@alt </span>key.</div>
+      <div class="Command_Section"><a name="2640395">Options</a></div>
+      <div class="Command_Subsection"><a name="2640396">Specification Options</a></div>
+      <div class="Table"><a name="2640402">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text"><a name="2640399">type=</a><span class="Argument_Opt">arg (default</span>=&#8220;discrete&#8221;)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 223.2pt">
+            <div class="Table_Text"><a name="2640401">Type of threshold estimation: &#8220;discrete&#8221; (discrete), &#8220;smooth&#8221; (smooth).</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="2640403">Discrete Threshold Options</a></div>
+      <div class="Table"><a name="2640470">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text"><a name="2640406">method=</a><span class="Argument_Opt">arg (default</span>=&#8220;seqplus1&#8221;)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 223.2pt">
+            <div class="Table_Text"><a name="2640408">Threshold selection method: &#8220;seqplus1&#8221; (sequential tests of single <img class="Default EquationGraphic" src="images/commandcmd.098.148.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> versus <img class="Default EquationGraphic" src="images/commandcmd.098.148.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> thresholds), &#8220;seqall&#8221; (sequential test of all possible <img class="Default EquationGraphic" src="images/commandcmd.098.148.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> versus <img class="Default EquationGraphic" src="images/commandcmd.098.148.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> thresholds), &#8220;glob&#8221; (tests of global <img class="Default EquationGraphic" src="images/commandcmd.098.148.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> vs. no thresholds), &#8220;globplus1&#8221; (tests of <img class="Default EquationGraphic" src="images/commandcmd.098.148.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> versus <img class="Default EquationGraphic" src="images/commandcmd.098.148.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> globally determined thresholds), &#8220;globinfo&#8221; (information criteria evaluation)., &#8220;fixedseq&#8221; (fixed number of sequentially determined thresholds), &#8220;fixedglob&#8221; (fixed number of globally determined thresholds), &#8220;user&#8221; (user-specified thresholds)</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640431">nthresh=</a><span class="Argument_Opt">arg</span> (default=1)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640433">Number of thresholds for fixed number threshold selection methods.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640435">select=</a><span class="Argument_Opt">arg </span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640437">Sub-method setting (options depend on &#8220;method=&#8221;).</a></div>
+            <div class="Table_Text"><a name="2640438">(1) if &#8220;method=glob&#8221;: Sequential ("seq") (default), Highest significant ("high"), <img class="Default EquationGraphic" src="images/commandcmd.098.148.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 64px; top: 0.0pt" alt="" /> ("udmax"), <img class="Default EquationGraphic" src="images/commandcmd.098.148.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 69px; top: 0.0pt" alt="" /> ("wdmax").</a></div>
+            <div class="Table_Text"><a name="2640445">(2) if &#8220;method=globinfo&#8221;: Schwarz criterion (&#8220;bic&#8221; or &#8220;sic&#8221;) (default), Liu-Wu-Zidek criterion (&#8220;lwz&#8221;).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640447">trim=</a><span class="Argument_Opt">arg (default</span>=5)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640449">Trimming percentage for determining minimum segment size (5, 10, 15, 20, 25).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640451">maxthresh=</a><span class="Argument_Opt">integer (default</span>=5)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640453">Maximum number of thresholds to allow (not applicable if &#8220;method=seqall&#8221;).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640455">maxlevels=</a><span class="Argument_Opt">integer (default</span>=5)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640457">Maximum number of threshold levels to consider in sequential testing (applicable when &#8220;method=sequall&#8221;).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640459">size=</a><span class="Argument_Opt">arg (default</span>=5)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640461">Test sizes for use in sequential determination and final test evaluation (10, 5, 2.5, 1) corresponding to 0.10, 0.05, 0.025, 0.01, respectively</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640463">heterr</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640465">Assume regimes specific error distributions in variance computation.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640467">commondata</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640469">Assume a common distribution for the data across segments (only applicable if original equation is estimated with a robust covariance method, &#8220;heterr&#8221; is not specified).</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="2640471">Smooth Threshold Options</a></div>
+      <div class="Table"><a name="2640493">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text"><a name="2640474">smoothtrans=</a><span class="Argument_Opt">arg (default</span>=&#8220;logistic&#8221;)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 223.2pt">
+            <div class="Table_Text"><a name="2640476">Smooth threshold transition function: &#8220;logistic&#8221; (logistic), &#8220;logistic2&#8221; (second-order logistic), &#8220;exponential&#8221; (exponential), &#8220;normal&#8221; (normal).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640478">smoothstart=</a><span class="Argument_Opt">arg (default</span>=&#8220;grid_conc&#8221;)</div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640480">Smoth threshold starting value method: or fixed number threshold selection methods: &#8220;grid_conc&#8221; (grid search with concentrated regression coefficients&#8221;, &#8220;grid_zeros&#8221; (grid search with zero regression coefficients), &#8220;data&#8221; (data-based), &#8220;user&#8221; (user-specified using the contents of the coefficient vector in the workfile).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640482">smoothst=</a><span class="Argument_Opt">arg </span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640484">Sub-method setting (options depend on &#8220;method=&#8221;).</a></div>
+            <div class="Table_Text"><a name="2640485">(1) if &#8220;method=glob&#8221;: Sequential ("seq") (default), Highest significant ("high"), <img class="Default EquationGraphic" src="images/commandcmd.098.148.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 64px; top: 0.0pt" alt="" /> ("udmax"), <img class="Default EquationGraphic" src="images/commandcmd.098.148.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 69px; top: 0.0pt" alt="" /> ("wdmax").</a></div>
+            <div class="Table_Text"><a name="2640492">(2) if &#8220;method=globinfo&#8221;: Schwarz criterion (&#8220;bic&#8221; or &#8220;sic&#8221;) (default), Liu-Wu-Zidek criterion (&#8220;lwz&#8221;).</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="2640494">General Options</a></div>
+      <div class="Table"><a name="2640570">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text"><a name="2640497">w=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2640499">Weight series or expression.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640501">wtype=</a><span class="Argument_Opt">arg</span><span class="Argument"> </span><span class="Argument_Opt">(default=</span>&#8220;istdev&#8221;<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640503">Weight specification type: inverse standard deviation (&#8220;istdev&#8221;), inverse variance (&#8220;ivar&#8221;), standard deviation (&#8220;stdev&#8221;), variance (&#8220;var&#8221;).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640505">wscale=</a><span class="Argument_Opt">arg </span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640507">Weight scaling: EViews default (&#8220;eviews&#8221;), average (&#8220;avg&#8221;), none (&#8220;none&#8221;).</a></div>
+            <div class="Table_Text"><a name="2640508">The default setting depends upon the weight type: &#8220;eviews&#8221; if &#8220;wtype=istdev&#8221;, &#8220;avg&#8221; for all others.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640510">cov=</a><span class="Argument_Opt">keyword</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640512">Covariance type </a><span class="Argument_Opt">(optional)</span>: &#8220;white&#8221; (White diagonal matrix), &#8220;hac&#8221; (Newey-West HAC).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640515">nodf</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640517">Do not perform degree of freedom corrections in computing coefficient covariance matrix. The default is to use degree of freedom corrections.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640519">covlag=</a><span class="Argument_Opt">arg</span><span class="Argument"> </span><span class="Argument_Opt">(default=</span>1<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640521">Whitening lag specification: </a><span class="Argument_Opt">integer</span> (user-specified lag value), &#8220;a&#8221; (automatic selection).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640523">covinfosel=</a><span class="Argument_Opt">arg</span><span class="Argument"> </span><span class="Argument_Opt">(default=</span>&#8220;aic&#8221;<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640525">Information criterion for automatic selection: &#8220;aic&#8221; (Akaike), &#8220;sic&#8221; (Schwarz), &#8220;hqc&#8221; (Hannan-Quinn) (if &#8220;lag=a&#8221;).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640527">covmaxlag=</a><span class="Argument_Opt">integer </span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640529">Maximum lag-length for automatic selection </a><span class="Argument_Opt">(optional)</span><span class="Argument"> </span>(if &#8220;lag=a&#8221;). The default is an observation-based maximum of <img class="Default EquationGraphic" src="images/commandcmd.098.148.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 39px; top: 0.0pt" alt="" />.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640534">covkern=</a><span class="Argument_Opt">arg</span><span class="Argument"> </span><span class="Argument_Opt">(default=</span>&#8220;bart&#8221;<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640538">Kernel shape: &#8220;none&#8221; (no kernel), &#8220;bart&#8221; (Bartlett, </a><span class="Argument_Opt">default</span>), &#8220;bohman&#8221; (Bohman), &#8220;daniell&#8221; (Daniel), &#8220;parzen&#8221; (Parzen), &#8220;parzriesz&#8221; (Parzen-Riesz), &#8220;parzgeo&#8221; (Parzen-Geometric), &#8220;parzcauchy&#8221; (Parzen-Cauchy), &#8220;quadspec&#8221; (Quadratic Spectral), &#8220;trunc&#8221; (Truncated), &#8220;thamm&#8221; (Tukey-Hamming), &#8220;thann&#8221; (Tukey-Hanning), &#8220;tparz&#8221; (Tukey-Parzen).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640550">covbw=</a><span class="Argument_Opt">arg</span><span class="Argument"> </span><span class="Argument_Opt">(default=</span>&#8220;fixednw&#8221;<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640553">Kernel Bandwidth: &#8220;fixednw&#8221; (Newey-West fixed), &#8220;andrews&#8221; (Andrews automatic), &#8220;neweywest&#8221; (Newey-West automatic), </a><span class="Argument_Opt">number</span> (User-specified bandwidth).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640555">covnwlag=</a><span class="Argument_Opt">integer</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640557">Newey-West lag-selection parameter for use in nonparametric kernel bandwidth selection (if &#8220;covbw=neweywest&#8221;).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640559">covbwint</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640561">Use integer portion of bandwidth.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640563">prompt</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640565">Force the dialog to appear from within a program.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640567">p</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2640569">Print basic estimation results.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Section"><a name="2640571">Examples</a></div>
+      <div class="Input"><a name="2640572">threshold(method=fixedseq, type=discrete) ss_transf c ss_transf(-1 to -11) @thresh 2</a></div>
+      <div class="Body_Text"><a name="2640573">uses the fixed number of thresholds test to determine the optimal threshold in a model regressing SS_TRANSF on the threshold variables C and SS_TRANSF(-1 to -11).</a></div>
+      <div class="Input"><a name="2640574">threshold(method=fixedseq, type=discrete) ss_transf c ss_transf(-1 to -11) @thresh 1 5</a></div>
+      <div class="Body_Text"><a name="2640575">uses the fixed number of thresholds test to determine the optimal threshold and does model selection over lags of SS_TRANSF from SS_TRANSF(-1) to SS_TRANSF(-5).</a></div>
+      <div class="Input"><a name="2640576">threshold(method=user, threshold=7.44) ss_transf c @nv ss_transf(-1 to -11) @thresh 2</a></div>
+      <div class="Body_Text"><a name="2640577">estimates the model with one user-specified threshold value. In addition, the variables SS_TRANSF(-1 to -11) are restricted to have common coefficients across the regimes.</a></div>
+      <div class="Command_Section"><a name="2640578">Cross-references</a></div>
+      <div class="Body_Text"><a name="2640582">See </a><span class="Link"><a href="tar-Discrete_Threshold_Regression.html#271140" title="Discrete Threshold Regression">&#8220;Discrete Threshold Regression&#8221;</a></span> for a discussion of the various forms of threshold models.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

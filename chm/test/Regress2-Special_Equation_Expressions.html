@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Special Equation Expressions</title>
+    <link rel="StyleSheet" href="css/Regress2.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="Regress2-Additional_Regression_Tools.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="Regress2-Robust_Standard_Errors.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="Regress2-Additional_Regression_Tools.html">Additional Regression Tools</a> : Special Equation Expressions</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="265484">Special Equation Expressions</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#265491">Polynomial Distributed Lags (PDLs)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#265634">How to Estimate Models Containing PDLs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#265668">Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#265734">Automatic Categorical Dummy Variables</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#265785">Example</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="265485">EViews provides you with special expressions that may be used to specify and estimate equations with PDLs, dummy variables, or ARMA errors. We consider here terms for incorporating PDLs and dummy variables into your equation, and defer the discussion of ARMA estimation to </a><span class="Link"><a href="timeser-Time_Series_Regression.html#36959" title="Time Series Regression">&#8220;Time Series Regression&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="265491">Polynomial Distributed Lags (PDLs)</a></div>
+      <div class="Body_Text"><a name="265492">A distributed lag is a relation of the type:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.2.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="265507">The coefficients <img class="Default EquationGraphic" src="images/Regress2.030.2.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> describe the lag in the effect of <img class="Default EquationGraphic" src="images/Regress2.030.2.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/Regress2.030.2.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. In many cases, the coefficients can be estimated directly using this specification. In other cases, the high collinearity of current and lagged values of <img class="Default EquationGraphic" src="images/Regress2.030.2.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> will defeat direct estimation. </a></div>
+      <div class="Body_Text"><a name="265512">You can reduce the number of parameters to be estimated by using polynomial distributed lags (PDLs) to impose a smoothness condition on the lag coefficients. Smoothness is expressed as requiring that the coefficients lie on a polynomial of relatively low degree. A polynomial distributed lag model with order <img class="Default EquationGraphic" src="images/Regress2.030.2.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> restricts the <img class="Default EquationGraphic" src="images/Regress2.030.2.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> coefficients to lie on a <img class="Default EquationGraphic" src="images/Regress2.030.2.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-th order polynomial of the form,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.2.09.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="265533">for <img class="Default EquationGraphic" src="images/Regress2.030.2.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 108px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/Regress2.030.2.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a pre-specified constant given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.2.12.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.3)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="265542">The PDL is sometimes referred to as an Almon lag. The constant <img class="Default EquationGraphic" src="images/Regress2.030.2.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is included only to avoid numerical problems that can arise from collinearity and does not affect the estimates of <img class="Default EquationGraphic" src="images/Regress2.030.2.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="265555">This specification allows you to estimate a model with <img class="Default EquationGraphic" src="images/Regress2.030.2.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> lags of <img class="Default EquationGraphic" src="images/Regress2.030.2.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> using only <img class="Default EquationGraphic" src="images/Regress2.030.2.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> parameters (if you choose <img class="Default EquationGraphic" src="images/Regress2.030.2.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />, EViews will return a &#8220;Near Singular Matrix&#8221; error). </a></div>
+      <div class="Body_Text"><a name="265566">If you specify a PDL, EViews substitutes </a><span class="Link"><a href="#265526" title="Special Equation Expressions">Equation&nbsp;(21.2)</a></span> into <span class="Link"><a href="#265497" title="Special Equation Expressions">(21.1)</a></span>, yielding,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.2.19.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.4)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="265572">where:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.2.20.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="265586">Once we estimate <img class="Default EquationGraphic" src="images/Regress2.030.2.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> from </a><span class="Link"><a href="#265571" title="Special Equation Expressions">Equation&nbsp;(21.4)</a></span>, we can recover the parameters of interest <img class="Default EquationGraphic" src="images/Regress2.030.2.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, and their standard errors using the relationship described in <span class="Link"><a href="#265526" title="Special Equation Expressions">Equation&nbsp;(21.2)</a></span>. This procedure is straightforward since <img class="Default EquationGraphic" src="images/Regress2.030.2.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is a linear transformation of <img class="Default EquationGraphic" src="images/Regress2.030.2.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. </div>
+      <div class="Body_Text"><a name="265599">The specification of a polynomial distributed lag has three elements: the length of the lag <img class="Default EquationGraphic" src="images/Regress2.030.2.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, the degree of the polynomial (the highest power in the polynomial) <img class="Default EquationGraphic" src="images/Regress2.030.2.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, and the constraints that you want to apply. A near end constraint restricts the one-period lead effect of <img class="Default EquationGraphic" src="images/Regress2.030.2.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/Regress2.030.2.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> to be zero:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.2.29.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="265621">A far end constraint restricts the effect of <img class="Default EquationGraphic" src="images/Regress2.030.2.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/Regress2.030.2.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> to die off beyond the number of specified lags:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.2.32.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="265629">If you restrict either the near or far end of the lag, the number of <img class="Default EquationGraphic" src="images/Regress2.030.2.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> parameters estimated is reduced by one to account for the restriction; if you restrict both the near and far end of the lag, the number of <img class="Default EquationGraphic" src="images/Regress2.030.2.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> parameters is reduced by two. </a></div>
+      <div class="Body_Text"><a name="265633">By default, EViews does not impose constraints.</a></div>
+      <div class="Heading_4"><a name="265634">How to Estimate Models Containing PDLs</a></div>
+      <div class="Body_Text"><a name="265636">You specify a polynomial distributed lag by the </a><span class="In-line_input">pdl</span> term, with the following information in parentheses, each separated by a comma in this order:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="265637">The name of the series. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="265638">The lag length (the number of lagged values of the series to be included).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="265639">The degree of the polynomial.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="265640">A numerical code to constrain the lag polynomial (optional):</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Table"><a name="265654">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 212.39999999999998pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 27.36pt">
+            <div class="Table_Text"><a name="265643">1 </a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 185.04pt">
+            <div class="Table_Text"><a name="265645">constrain the near end of the lag to zero.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="265647">2 </a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="265649">constrain the far end.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="265651">3 </a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="265653">constrain both ends.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="265655">You may omit the constraint code if you do not want to constrain the lag polynomial. Any number of </a><span class="In-line_input">pdl</span> terms may be included in an equation. Each one tells EViews to fit distributed lag coefficients to the series and to constrain the coefficients to lie on a polynomial. </div>
+      <div class="Body_Text"><a name="265656">For example, the commands:</a></div>
+      <div class="Input"><a name="265657">ls sales c pdl(orders,8,3)</a></div>
+      <div class="Body_Text"><a name="265658">fits SALES to a constant, and a distributed lag of current and eight lags of ORDERS, where the lag coefficients of ORDERS lie on a third degree polynomial with no endpoint constraints. Similarly:</a></div>
+      <div class="Input"><a name="265659">ls div c pdl(rev,12,4,2)</a></div>
+      <div class="Body_Text"><a name="265660">fits DIV to a distributed lag of current and 12 lags of REV, where the coefficients of REV lie on a 4th degree polynomial with a constraint at the far end.</a></div>
+      <div class="Body_Text"><a name="265661">The </a><span class="In-line_input">pdl</span> specification may also be used in two-stage least squares. If the series in the <span class="In-line_input">pdl</span> is exogenous, you should include the PDL of the series in the instruments as well. For this purpose, you may specify <span class="In-line_input">pdl(*)</span> as an instrument; all <span class="In-line_input">pdl</span> variables will be used as instruments. For example, if you specify the TSLS equation as,</div>
+      <div class="Input"><a name="265663">sales c inc pdl(orders(-1),12,4) </a></div>
+      <div class="Body_Text"><a name="265664">with instruments:</a></div>
+      <div class="Input"><a name="265665">fed fed(-1) pdl(*)</a></div>
+      <div class="Body_Text"><a name="265666">the distributed lag of ORDERS will be used as instruments together with FED and FED(&#8211;1). </a></div>
+      <div class="Body_Text"><a name="265667">Polynomial distributed lags cannot be used in nonlinear specifications.</a></div>
+      <div class="Heading_4"><a name="265668">Example</a></div>
+      <div class="Body_Text"><a name="265669">We may estimate a distributed lag model of industrial production (IP) on money (M1) in the workfile &#8220;Basics.WF1&#8221; by entering the command:</a></div>
+      <div class="Input"><a name="265670">ls ip c m1(0 to -12)</a></div>
+      <div class="Body_Text"><a name="265671">which yields the following results:</a></div>
+      <div class="Table"><a name="265675"><img class="Default" src="images/Regress2.030.2.35.jpg" width="100%" style="left: 0.0pt; max-height: 607px; max-width: 928px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265676">Taken individually, none of the coefficients on lagged M1 are statistically different from zero. Yet the regression as a whole has a reasonable <img class="Default EquationGraphic" src="images/Regress2.030.2.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" />with a very significant </a><span class="In-line_math">F</span>-statistic (though with a very low Durbin-Watson statistic). This is a typical symptom of high collinearity among the regressors and suggests fitting a polynomial distributed lag model.</div>
+      <div class="Body_Text"><a name="265683">To estimate a fifth-degree polynomial distributed lag model with no constraints, set the sample using the command,</a></div>
+      <div class="Multi-line_Input"><a name="265684">smpl 1959m01 1989m12</a></div>
+      <div class="Body_Text"><a name="265685">then estimate the equation specification:</a></div>
+      <div class="Input"><a name="265686">ip c pdl(m1,12,5)</a></div>
+      <div class="Body_Text"><a name="265687">by entering the expression in the </a><span class="Menu_Item">Equation Estimation</span> dialog and estimating using <span class="Menu_Item">Least Squares</span>.</div>
+      <div class="Body_Text"><a name="265688">The following result is reported at the top of the equation window:</a></div>
+      <div class="Table"><a name="265692"><img class="Default" src="images/Regress2.030.2.37.jpg" width="100%" style="left: 0.0pt; max-height: 476px; max-width: 928px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265696">This portion of the view reports the estimated coefficients <img class="Default EquationGraphic" src="images/Regress2.030.2.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> of the polynomial in </a><span class="Link"><a href="#265526" title="Special Equation Expressions">Equation&nbsp;(21.2)</a></span>. The terms PDL01, PDL02, PDL03, &#8230;, correspond to <img class="Default EquationGraphic" src="images/Regress2.030.2.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 68px; top: 0.0pt" alt="" /> in <span class="Link"><a href="#265571" title="Special Equation Expressions">Equation&nbsp;(21.4)</a></span>. </div>
+      <div class="Body_Text"><a name="265709">The implied coefficients of interest <img class="Default EquationGraphic" src="images/Regress2.030.2.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> in equation (1) are reported at the bottom of the table, together with a plot of the estimated polynomial:</a></div>
+      <div class="Picture"><a name="265713"><img class="Default" src="images/Regress2.030.2.41.jpg" width="100%" style="left: 0.0pt; max-height: 362px; max-width: 499px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265714">The </a><span class="Menu_Item">Sum of Lags</span> reported at the bottom of the table is the sum of the estimated coefficients on the distributed lag and has the interpretation of the long run effect of M1 on IP, assuming stationarity. </div>
+      <div class="Body_Text"><a name="265715">Note that selecting </a><span class="Menu_Item">View/Coefficient Diagnostics</span> for an equation estimated with PDL terms tests the restrictions on <img class="Default EquationGraphic" src="images/Regress2.030.2.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, not on <img class="Default EquationGraphic" src="images/Regress2.030.2.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. In this example, the coefficients on the fourth- (PDL05) and fifth-order (PDL06) terms are individually insignificant and very close to zero. To test the joint significance of these two terms, click <span class="Menu_Item">View/Coefficient Diagnostics/Wald Test-Coefficient Restrictions&#8230;</span> and enter:</div>
+      <div class="Input"><a name="265722">c(6)=0, c(7)=0</a></div>
+      <div class="Body_Text"><a name="265726">in the Wald Test dialog box (see </a><span class="Link"><a href="testing-Coefficient_Diagnostics.html#182316" title="Coefficient Diagnostics">&#8220;Wald Test (Coefficient Restrictions)&#8221;</a></span> for an extensive discussion of Wald tests in EViews). EViews displays the result of the joint test:</div>
+      <div class="Table"><a name="265730"><img class="Default" src="images/Regress2.030.2.44.jpg" width="100%" style="left: 0.0pt; max-height: 361px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265731">There is no evidence to reject the null hypothesis, suggesting that you could have fit a lower order polynomial to your lag structure.</a></div>
+      <div class="Heading_4"><a name="265734">Automatic Categorical Dummy Variables</a></div>
+      <div class="Body_Text"><a name="265735">EViews equation specifications support expressions of the form:</a></div>
+      <div class="List_Text_Indent"><span class="In-line_command"><a name="265737">@expand(</a></span><span class="Argument" style="font-weight: normal">ser1[, ser2, ser3, ...][, drop_spec]</span><span class="In-line_command">)</span></div>
+      <div class="Body_Text"><a name="265738">When used in an equation specification, </a><span class="In-line_command">@expand</span> creates a set of dummy variables that span the unique integer or string values of the input series.</div>
+      <div class="Body_Text"><a name="265739">For example consider the following two variables:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="265740">SEX is a numeric series which takes the values 1 and 0.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="265741">REGION is an alpha series which takes the values &#8220;North&#8221;, &#8220;South&#8221;, &#8220;East&#8221;, and &#8220;West&#8221;.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="265742">The equation list specification</a></div>
+      <div class="Input"><a name="265743">income age @expand(sex)</a></div>
+      <div class="Body_Text"><a name="265744">is used to regress INCOME on the regressor AGE, and two dummy variables, one for &#8220;SEX=0&#8221; and one for &#8220;SEX=1&#8221;.</a></div>
+      <div class="Body_Text"><a name="265745">Similarly, the </a><span class="In-line_command">@expand</span> statement in the equation list specification,</div>
+      <div class="Input"><a name="265746">income @expand(sex, region) age</a></div>
+      <div class="Body_Text"><a name="265747">creates 8 dummy variables corresponding to:</a></div>
+      <div class="List_Text_Indent"><a name="265748">sex=0, region="North"</a></div>
+      <div class="List_Text_Indent"><a name="265749">sex=0, region="South"</a></div>
+      <div class="List_Text_Indent"><a name="265750">sex=0, region="East"</a></div>
+      <div class="List_Text_Indent"><a name="265751">sex=0, region="West"</a></div>
+      <div class="List_Text_Indent"><a name="265752">sex=1, region="North"</a></div>
+      <div class="List_Text_Indent"><a name="265753">sex=1, region="South"</a></div>
+      <div class="List_Text_Indent"><a name="265754">sex=1, region="East"</a></div>
+      <div class="List_Text_Indent"><a name="265755">sex=1, region="West"</a></div>
+      <div class="Body_Text"><a name="265756">Note that our two example equation specifications did not include an intercept. This is because the default </a><span class="In-line_command">@expand</span> statements created a full set of dummy variables that would preclude including an intercept. </div>
+      <div class="Body_Text"><a name="265757">You may wish to drop one or more of the dummy variables. </a><span class="In-line_command">@expand</span> takes several options for dropping variables. </div>
+      <div class="Body_Text"><a name="265758">The option </a><span class="In-line_command">@dropfirst</span> specifies that the first category should be dropped so that:</div>
+      <div class="Input"><a name="265759">@expand(sex, region, @dropfirst)</a></div>
+      <div class="Body_Text"><a name="265760">no dummy is created for &#8220;SEX=0, REGION="North"&#8221;.</a></div>
+      <div class="Body_Text"><a name="265761">Similarly, </a><span class="In-line_command">@droplast</span> specifies that the last category should be dropped. In:</div>
+      <div class="Input"><a name="265762">@expand(sex, region, @droplast)</a></div>
+      <div class="Body_Text"><a name="265763">no dummy is created for &#8220;SEX=1, REGION="WEST"&#8221;.</a></div>
+      <div class="Body_Text"><a name="265764">You may specify the dummy variables to be dropped, explicitly, using the syntax </a><span class="In-line_command">@drop(</span><span class="Argument" style="font-weight: normal">val1[, val2, val3,...]</span><span class="In-line_command">)</span>, where each argument specified corresponds to a successive category in <span class="In-line_command">@expand</span>. For example, in the expression:</div>
+      <div class="Input"><a name="265765">@expand(sex, region, @drop(0,"West"), @drop(1,"North"))</a></div>
+      <div class="Body_Text"><a name="265766">no dummy is created for &#8220;SEX=0, REGION="West"&#8221; and &#8220;SEX=1, REGION="North"&#8221;.</a></div>
+      <div class="Body_Text"><a name="265767">When you specify drops by explicit value you may use the wild card &#8220;*&#8221; to indicate all values of a corresponding category. For example:</a></div>
+      <div class="Input"><a name="265768">@expand(sex, region, @drop(1,*))</a></div>
+      <div class="Body_Text"><a name="265769">specifies that dummy variables for all values of REGION where &#8220;SEX=1&#8221; should be dropped.</a></div>
+      <div class="Body_Text"><a name="265770">We caution you to take some care in using </a><span class="In-line_command">@expand</span> since it is very easy to generate excessively large numbers of regressors.</div>
+      <div class="Body_Text"><span class="In-line_command"><a name="265771">@expand</a></span> may also be used as part of a general mathematical expression, for example, in interactions with another variable as in:</div>
+      <div class="Multi-line_Input"><a name="265772">2*@expand(x)</a></div>
+      <div class="Multi-line_Input"><a name="265773">log(x+y)*@expand(z)</a></div>
+      <div class="Multi-line_Input"><a name="265774">a*@expand(x)/b</a></div>
+      <div class="Body_Text"><a name="265775">Also useful is the ability to renormalize the dummies</a></div>
+      <div class="Input"><a name="265776">@expand(x)-.5</a></div>
+      <div class="Body_Text"><a name="265777">Somewhat less useful (at least its uses may not be obvious) but supported are cases like:</a></div>
+      <div class="Multi-line_Input"><a name="265778">log(x+y*@expand(z))</a></div>
+      <div class="Multi-line_Input"><a name="265779">(@expand(x)-@expand(y))</a></div>
+      <div class="Body_Text"><a name="265780">As with all expressions included on an estimation or group creation command line, they should be enclosed in parentheses if they contain spaces. Thus, the following expressions are valid,</a></div>
+      <div class="Multi-line_Input"><a name="265781">a*expand(x)</a></div>
+      <div class="Multi-line_Input"><a name="265782">(a  *  @expand(x))</a></div>
+      <div class="Body_Text"><a name="265783">while this last expression is not,</a></div>
+      <div class="Input"><a name="265784">a  *  @expand(x)</a></div>
+      <div class="Heading_4"><a name="265785">Example</a></div>
+      <div class="Body_Text"><a name="265786">Following Wooldridge (2000, Example 3.9, p. 106), we regress the log median housing price, LPRICE, on a constant, the log of the amount of pollution (LNOX), and the average number of houses in the community, ROOMS, using data from Harrison and Rubinfeld (1978). The data are available in the workfile &#8220;Hprice2.WF1&#8221;.</a></div>
+      <div class="Body_Text"><a name="265787">We expand the example to include a dummy variable for each value of the series RADIAL, representing an index for community access to highways. We use </a><span class="In-line_command">@expand</span> to create the dummy variables of interest, with a list specification of:</div>
+      <div class="Input"><a name="265788">lprice lnox rooms @expand(radial)</a></div>
+      <div class="Body_Text"><a name="265789">We deliberately omit the constant term C since the </a><span class="In-line_command">@expand</span> creates a full set of dummy variables. The top portion of the results is depicted below:</div>
+      <div class="Table"><a name="265793"><img class="Default" src="images/Regress2.030.2.45.jpg" width="100%" style="left: 0.0pt; max-height: 401px; max-width: 928px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265794">Note that EViews has automatically created dummy variable expressions for each distinct value in RADIAL. If we wish to renormalize our dummy variables with respect to a different omitted category, we may include the C in the regression list, and explicitly exclude a value. For example, to exclude the category RADIAL=24, we use the list:</a></div>
+      <div class="Input"><a name="265795">lprice c lnox rooms @expand(radial, @drop(24))</a></div>
+      <div class="Body_Text"><a name="265796">Estimation of this specification yields:</a></div>
+      <div class="Table"><a name="265800"><img class="Default" src="images/Regress2.030.2.46.jpg" width="100%" style="left: 0.0pt; max-height: 545px; max-width: 928px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

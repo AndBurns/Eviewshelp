@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>An Example</title>
+    <link rel="StyleSheet" href="css/midas.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="midas-MIDAS_Estimation_in_EViews.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="midas-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="midas-Midas_Regression.html">Midas Regression</a> : An Example</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="328933">An Example</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#328935">Beta Weighting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#329001">Almon Weighting</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="328934">As an example of using MIDAS regression in EViews, we analyze data used by Armesto, Engemann, and Owyang (2010). The data consists of log-differenced, seasonally adjusted quarterly real GDP between 1947 and 2011 and log-differenced monthly total non-farm payroll employment from 1939 to 2011. These data are in the workfile &#8220;Midas.WF1&#8221; with the real GDP data in series REALGDP on page &#8220;QuarterlyPage&#8221;, and the employment data in series EMP on page &#8220;MonthlyPage&#8221;.</a></div>
+      <div class="Heading_4"><a name="328935">Beta Weighting</a></div>
+      <div class="Body_Text"><a name="328936">We estimate a MIDAS model with real GDP as the dependent variable and a lagged value of real GDP as a regressor. Only data between 1985 and 2009q1 are used. Monthly employment with 9 lags is used as a set of higher-frequency regressors. The employment data lags are off-set by 5 months (</a><span class="Emphasis">i.e.,</span> to explain Quarter 1 real GDP, employment data from the previous year&#8217;s February through October are used). </div>
+      <div class="Body_Text"><a name="328940">We use the beta weighting method, while restricting the endpoints coefficient <img class="Default EquationGraphic" src="images/midas.040.4.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> to be zero. The following dialog settings reflect this equation specification:</a></div>
+      <div class="Picture"><a name="328944"><img class="Default" src="images/midas.040.4.02.jpg" width="100%" style="left: 0.0pt; max-height: 485px; max-width: 487px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="328945">and the associated options</a></div>
+      <div class="Picture"><a name="328949"><img class="Default" src="images/midas.040.4.03.jpg" width="100%" style="left: 0.0pt; max-height: 485px; max-width: 487px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="328950">The results of this estimation are given by</a></div>
+      <div class="Picture"><a name="328954"><img class="Default" src="images/midas.040.4.04.jpg" width="100%" style="left: 0.0pt; max-height: 693px; max-width: 483px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="328955">The top portion of the output describes the estimation sample, MIDAS method, and other estimation settings. Here we see that beta weighting with restricted endpoints (<img class="Default EquationGraphic" src="images/midas.040.4.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 56px; top: 0.0pt" alt="" />). Estimation uses the hybrid method of initial OPG iterations followed by BFGS estimation, with the coefficient covariance computed using the inverse of the negative Hessian.</a></div>
+      <div class="Body_Text"><a name="328962">The first section displays coefficients, standard errors, and </a><span class="In-line_math">t</span>-statistics for the low frequency regressors. These results show standard regression output.</div>
+      <div class="Body_Text"><a name="328963">Next, we display the results for the high frequency variables. First, we describe the page and name of the variable and the number lags <img class="Default EquationGraphic" src="images/midas.040.4.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> used in the low frequency regression. Here, we are using EMP(-5) from the &#8220;monthlypage&#8221; and allowing for 9 high frequency lags of this variable in the low frequency regression.</a></div>
+      <div class="Body_Text"><a name="328970">The coefficient results for the common SLOPE coefficient (<img class="Default EquationGraphic" src="images/midas.040.4.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />) and the free MIDAS beta weight coefficients (<img class="Default EquationGraphic" src="images/midas.040.4.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />) are displayed directly below. </a></div>
+      <div class="Body_Text"><a name="328974">First, we see that monthly EMP(-5) has an overall positive effect on REALGDP as the SLOPE coefficient is a statistically significant 1.91.</a></div>
+      <div class="Body_Text"><a name="328975">The actual lag coefficients are obtained by applying weights to this overall slope. The shape of the weight function is determined by the remaining MIDAS coefficients. The <img class="Default EquationGraphic" src="images/midas.040.4.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> coefficient, labeled BETA01, is very close to 1, so that the lag pattern depends primarily on BETA02 (<img class="Default EquationGraphic" src="images/midas.040.4.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />). </a></div>
+      <div class="Body_Text"><a name="328985">The large positive estimate of <img class="Default EquationGraphic" src="images/midas.040.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, is statistically different from 1, and value of 6.62, implies that the lag pattern is sharply decreasing as shown in the lag coefficient graph at the bottom of the output. We conclude that the coefficient that the zero high frequency lag of employment has a large impact on real GDP, but the effect dies off pretty quickly.</a></div>
+      <div class="Body_Text"><a name="328989">The endpoint coefficient <img class="Default EquationGraphic" src="images/midas.040.4.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> has been restricted to be zero so that it does not appear in the output.</a></div>
+      <div class="Body_Text"><a name="328990">The remaining output consists of the standard summary statistics and diagnostics.</a></div>
+      <div class="Body_Text"><a name="328991">To continue our example, we wish to perform a static forecast over the period after the estimation sample (2009q2) to the end of the workfile (2011q2). To forecast from our MIDAS equation, we do so in the usual manner, by first clicking the </a><span class="Menu_Item">Forecast</span> button:</div>
+      <div class="Picture"><a name="328995"><img class="Default" src="images/midas.040.4.13.jpg" width="100%" style="left: 0.0pt; max-height: 401px; max-width: 444px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="328996">and filling out the resulting dialog with the appropriate settings. Clicking on </a><span class="Menu_Item">OK</span> performs the forecast:</div>
+      <div class="Picture"><a name="329000"><img class="Default" src="images/midas.040.4.14.jpg" width="100%" style="left: 0.0pt; max-height: 439px; max-width: 549px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="329001">Almon Weighting</a></div>
+      <div class="Body_Text"><a name="329002">As a second example we will estimate the same model, but this time using the Almon weighting method, with a second degree polynomial, and we instruct EViews to select the most appropriate number of lags for employment (up to a maximum of 12):</a></div>
+      <div class="Picture"><a name="329006"><img class="Default" src="images/midas.040.4.15.jpg" width="100%" style="left: 0.0pt; max-height: 485px; max-width: 487px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="329007"> and </a></div>
+      <div class="Picture"><a name="329011"><img class="Default" src="images/midas.040.4.16.jpg" width="100%" style="left: 0.0pt; max-height: 489px; max-width: 483px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="329012">Clicking on </a><span class="Menu_Item">OK</span> estimates the specified equation, and displays the results:</div>
+      <div class="Picture"><a name="329016"><img class="Default" src="images/midas.040.4.17.jpg" width="100%" style="left: 0.0pt; max-height: 639px; max-width: 477px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="329017">As with the beta weighting model estimated above, the overall effect of high frequency EMP(-5) on REALGDP is positive and decreasing in the lags. However, in contrast with the beta weights estimates, the Almon weights lag coefficients do not decline sharply; in fact, the pattern appears to be roughly linear.</a></div>
+      <div class="Body_Text"><a name="329018">Note that the MIDAS variable description line shows that EViews chose 7 as the most appropriate high frequency lag length. Clicking on </a><span class="Menu_Item">View/Model Selection/Criteria Graph</span> displays a graph of the sum of squared residuals from each of the different lag selections:</div>
+      <div class="Picture"><a name="329022"><img class="Default" src="images/midas.040.4.18.jpg" width="100%" style="left: 0.0pt; max-height: 415px; max-width: 517px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="329023">providing clear evidence that 7 is the optimal lag.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

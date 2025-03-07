@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Testing for Cointegration</title>
+    <link rel="StyleSheet" href="css/nsreg.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="nsreg-Estimating_a_Cointegrating_Regression.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="nsreg-Working_with_an_Equation.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="nsreg-Cointegrating_Regression.html">Cointegrating Regression</a> : Testing for Cointegration</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="256084">Testing for Cointegration</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#256091">Residual-based Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#257385">Hansen&#8217;s Instability Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#257482">Park&#8217;s Added Variables Test</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="257159">In the single equation setting, EViews provides views that perform Engle and Granger (1987) and Phillips and Ouliaris (1990) residual-based tests, Hansen&#8217;s instability test (Hansen 1992b), and Park&#8217;s <img class="Default EquationGraphic" src="images/nsreg.038.4.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 58px; top: 0.0pt" alt="" /> added variables test (Park 1992). </a></div>
+      <div class="Body_Text"><a name="256090">System cointegration testing using Johansen&#8217;s methodology is described in </a><span class="Link"><a href="coint-Johansen_Cointegration_Test.html#189915" title="Johansen Cointegration Test">&#8220;Johansen Cointegration Test&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="257740">Note that the Engle-Granger and Phillips-Perron tests may also be performed as a view of a Group object.</a></div>
+      <div class="Heading_4"><a name="256091">Residual-based Tests</a></div>
+      <div class="Body_Text"><a name="257175">The Engle-Granger and Phillips-Ouliaris residual-based tests for cointegration are simply unit root tests applied to the residuals obtained from SOLS estimation of </a><span class="Link"><a href="nsreg-Background.html#256618" title="Background">Equation&nbsp;(28.1)</a></span>. Under the assumption that the series are <span class="Emphasis">not</span> cointegrated, <span class="Emphasis">all</span> linear combinations of <img class="Default EquationGraphic" src="images/nsreg.038.4.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 64px; top: 0.0pt" alt="" />, including the residuals from SOLS, are unit root nonstationary. Therefore, a test of the <span class="Emphasis">null hypothesis of no cointegration</span> against the<span class="Emphasis"> alternative of cointegration</span> corresponds to a unit root test of the null of nonstationarity against the alternative of stationarity.</div>
+      <div class="Body_Text"><a name="257182">The two tests differ in the method of accounting for serial correlation in the residual series; the Engle-Granger test uses a parametric, augmented Dickey-Fuller (ADF) approach, while the Phillips-Ouliaris test uses the nonparametric Phillips-Perron (PP) methodology.</a></div>
+      <div class="Body_Text"><a name="257186">The Engle-Granger test estimates a <img class="Default EquationGraphic" src="images/nsreg.038.4.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-lag augmented regression of the form</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.04.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257194">The number of lagged differences <img class="Default EquationGraphic" src="images/nsreg.038.4.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> should increase to infinity with the (zero-lag) sample size <img class="Default EquationGraphic" src="images/nsreg.038.4.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> but at a rate slower than <img class="Default EquationGraphic" src="images/nsreg.038.4.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 39px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="257204">We consider the two standard ADF test statistics, one based on the </a><span class="In-line_math">t</span>-statistic for testing the null hypothesis of nonstationarity <img class="Default EquationGraphic" src="images/nsreg.038.4.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 58px; top: 0.0pt" alt="" /> and the other based directly on the normalized autocorrelation coefficient <img class="Default EquationGraphic" src="images/nsreg.038.4.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.10.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.18)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257222">where <img class="Default EquationGraphic" src="images/nsreg.038.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> is the usual OLS estimator of the standard error of the estimated <img class="Default EquationGraphic" src="images/nsreg.038.4.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 20px; max-width: 14px; top: 0.0pt" alt="" /> </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.13.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257228">(Stock 1986, Hayashi 2000). There is a practical question as to whether the standard error estimate in </a><span class="Link"><a href="#257227" title="Testing for Cointegration">Equation&nbsp;(28.19)</a></span> should employ a degree-of-freedom correction. Following common usage, EViews standalone unit root tests and the Engle-Granger cointegration tests both use the d.f.-corrected estimated standard error <img class="Default EquationGraphic" src="images/nsreg.038.4.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 18px; top: 0.0pt" alt="" />, with the latter test offering an option to turn off the correction.</div>
+      <div class="Body_Text"><a name="257238">In contrast to the Engle-Granger test, the Phillips-Ouliaris test obtains an estimate of <img class="Default EquationGraphic" src="images/nsreg.038.4.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> by running the unaugmented Dickey-Fuller regression</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.16.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257246">and using the results to compute estimates of the long-run variance <img class="Default EquationGraphic" src="images/nsreg.038.4.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> and the strict one-sided long-run variance <img class="Default EquationGraphic" src="images/nsreg.038.4.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 30px; top: 0.0pt" alt="" /> of the residuals. By default, EViews d.f.-corrects the estimates of both long-run variances, but the correction may be turned off. (The d.f. correction employed in the Phillips-Ouliaris test differs slightly from the ones in FMOLS and CCR estimation since the former applies to the estimators of both long-run variances, while the latter apply only to the estimate of the conditional long-run variance).</a></div>
+      <div class="Body_Text"><a name="257250">The bias corrected autocorrelation coefficient is then given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.19.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257259">The test statistics corresponding to </a><span class="Link"><a href="#257215" title="Testing for Cointegration">Equation&nbsp;(28.18)</a></span> are</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.20.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257264">where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.21.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257270">As with ADF and PP statistics, the asymptotic distributions of the Engle-Granger and Phillips-Ouliaris <img class="Default EquationGraphic" src="images/nsreg.038.4.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/nsreg.038.4.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> statistics are non-standard and depend on the deterministic regressors specification, so that critical values for the statistics are obtained from simulation results. Note that the dependence on the deterministics occurs despite the fact that the auxiliary regressions themselves exclude the deterministics (since those terms have already been removed from the residuals). In addition, the critical values for the ADF and PP test statistics must account for the fact that the residuals used in the tests depend upon estimated coefficients.</a></div>
+      <div class="Body_Text"><a name="257277">MacKinnon (1996) provides response surface regression results for obtaining critical values for four different assumptions about the deterministic regressors in the cointegrating equation (none, constant (level), linear trend, quadratic trend) and values of <img class="Default EquationGraphic" src="images/nsreg.038.4.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 89px; top: 0.0pt" alt="" /> from 1 to 12. (Recall that <img class="Default EquationGraphic" src="images/nsreg.038.4.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 160px; top: 0.0pt" alt="" /> is the number of cointegrating regressors less the number of deterministic trend regressors excluded from the cointegrating equation.) When computing critical values, EViews will ignore the presence of any user-specified deterministic regressors since corresponding simulation results are not available. Furthermore, results for <img class="Default EquationGraphic" src="images/nsreg.038.4.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 58px; top: 0.0pt" alt="" /> will be used for cases that exceed that value.</a></div>
+      <div class="Body_Text"><a name="257287">Continuing with our consumption and income example from Hamilton, we construct Engle-Granger and Phillips-Ouliaris tests from an estimated equation where the deterministic regressors include a constant and linear trend. Since SOLS is used to obtain the first-stage residuals, the test results do not depend on the method used to estimate the original equation, only the specification itself is used in constructing the test.</a></div>
+      <div class="Body_Text"><a name="257288">To perform the Engle-Granger test, open an estimated equation and select </a><span class="Menu_Item">View/Cointegration and</span> select <span class="Menu_Item">Engle-Granger</span> in the <span class="Menu_Item">Test Method</span> dropdown. The dialog will change to display the options for this specifying the number <img class="Default EquationGraphic" src="images/nsreg.038.4.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> of augmenting lags in the ADF regression.</div>
+      <div class="Picture"><a name="257295"><img class="Default" src="images/nsreg.038.4.28.jpg" width="100%" style="left: 0.0pt; max-height: 321px; max-width: 296px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257296">By default, EViews uses automatic lag-length selection using the Schwarz information criterion. The default number of lags is the observation-based rule given in </a><span class="Link"><a href="nsreg-Estimating_a_Cointegrating_Regression.html#257122" title="Estimating a Cointegrating Regression">Equation&nbsp;(28.16)</a></span>. Alternately you may specify a <span class="Menu_Item">Fixed (User-specified)</span> lag-length, select a different information criterion (<span class="Menu_Item">Akaike</span>, <span class="Menu_Item">Hannan-Quinn</span>, <span class="Menu_Item">Modified Akaike</span>, <span class="Menu_Item">Modified Schwarz</span>, or <span class="Menu_Item">Modified Hannan-Quinn</span>), or specify sequential testing of the highest order lag using a <span class="In-line_math">t</span>-statistic and specified <span class="In-line_math">p</span>-value threshold. For our purposes the default settings suffice so simply click on <span class="Menu_Item">OK</span>.</div>
+      <div class="Body_Text"><a name="257306">The Engle-Granger test results are divided into three distinct sections. The first portion displays the test specification and settings, along with the test values and corresponding </a><span class="In-line_math">p</span>-values:</div>
+      <div class="Table"><a name="257313"><img class="Default" src="images/nsreg.038.4.29.jpg" width="100%" style="left: 0.0pt; max-height: 282px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257314">The probability values are derived from the MacKinnon response surface simulation results. In settings where using the MacKinnon results may not be appropriate, for example when the cointegrating equation contains user-specified deterministic regressors or when there are more than 12 stochastic trends in the asymptotic distribution, EViews will display a warning message below these results.</a></div>
+      <div class="Body_Text"><a name="257315">Looking at the test description, we first confirm that the test statistic is computed using C and @TREND as deterministic regressors, and note that the choice to include a single lagged difference in the ADF regression was determined using automatic lag selection with a Schwarz criterion and a maximum lag of 13. </a></div>
+      <div class="Body_Text"><a name="257319">As to the tests themselves, the Engle-Granger tau-statistic (</a><span class="In-line_math">t</span>-statistic<span class="Menu_Item">)</span> and normalized autocorrelation coefficient (which we term the <span class="Emphasis">z</span>-statistic) both reject the null hypothesis of no cointegration (unit root in the residuals) at the 5% level. In addition, the tau-statistic rejects at a 1% significance level. On balance, the evidence clearly suggests that LC and LY are cointegrated.</div>
+      <div class="Body_Text"><a name="257320">The middle section of the output displays intermediate results used in constructing the test statistic that may be of interest:</a></div>
+      <div class="Table"><a name="257324"><img class="Default" src="images/nsreg.038.4.30.jpg" width="100%" style="left: 0.0pt; max-height: 207px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257325">Most of the entries are self-explanatory, though a few deserve a bit of discussion. First, the &#8220;Rho S.E.&#8221; and &#8220;Residual variance&#8221; are the (possibly) d.f. corrected coefficient standard error and the squared standard error of the regression. Next, the &#8220;Long-run residual variance&#8221; is the estimate of the long-run variance of the residual based on the estimated parametric model. The estimator is obtained by taking the residual variance and dividing it by the square of 1 minus the sum of the lag difference coefficients. These residual variance and long-run variances are used to obtain the denominator of the </a><span class="Emphasis">z</span>-statistic (<span class="Link"><a href="#257215" title="Testing for Cointegration">Equation&nbsp;(28.18)</a></span>). Lastly, the &#8220;Number of stochastic trends&#8221; entry reports the <img class="Default EquationGraphic" src="images/nsreg.038.4.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 89px; top: 0.0pt" alt="" /> value used to obtain the <span class="In-line_math">p</span>-values. In the leading case, <img class="Default EquationGraphic" src="images/nsreg.038.4.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is simply the number of cointegrating variables (including the dependent) in the system, but the value must generally account for deterministic trend terms in the system that are excluded from the cointegrating equation.</div>
+      <div class="Body_Text"><a name="257338">The bottom section of the output depicts the results for the actual ADF test equation:</a></div>
+      <div class="Table"><a name="257342"><img class="Default" src="images/nsreg.038.4.33.jpg" width="100%" style="left: 0.0pt; max-height: 382px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257343">Alternately, you may compute the Phillips-Ouliaris test statistic. Simply select </a><span class="Menu_Item">View/Cointegration </span>and choose <span class="Menu_Item">Phillips-Ouliaris</span> in the <span class="Menu_Item">Test Method</span> dropdown. </div>
+      <div class="Picture"><a name="257347"><img class="Default" src="images/nsreg.038.4.34.jpg" width="100%" style="left: 0.0pt; max-height: 321px; max-width: 296px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257348">The dialog changes to show a single </a><span class="Menu_Item">Options</span> button for controlling the estimation of the long-run variance <img class="Default EquationGraphic" src="images/nsreg.038.4.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> and the strict one-sided long-run variance <img class="Default EquationGraphic" src="images/nsreg.038.4.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 30px; top: 0.0pt" alt="" />. The default settings instruct EViews to compute these long-run variances using a non-prewhitened Bartlett kernel estimator with a fixed Newey-West bandwidth. To change these settings, click on the <span class="Menu_Item">Options</span> button and fill out the dialog. Since the default settings are sufficient for our needs, simply click on the <span class="Menu_Item">OK</span> button to compute the test statistics.</div>
+      <div class="Body_Text"><a name="257355">As before, the output may be divided into three parts; we will focus on the first two. The test results are given by:</a></div>
+      <div class="Table"><a name="257359"><img class="Default" src="images/nsreg.038.4.37.jpg" width="100%" style="left: 0.0pt; max-height: 292px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257360">At the top of the output EViews notes that we estimated the long-run variance and one-sided long run variance using a Bartlett kernel and an number of observations based bandwidth of 5.0. More importantly, the test statistics show that, as with the Engle-Granger tests, the Phillips-Ouliaris tests reject the null hypothesis of no cointegration (unit root in the residuals) at roughly the 1% significance level. </a></div>
+      <div class="Body_Text"><a name="257361">The intermediate results are given by:</a></div>
+      <div class="Picture"><a name="257365"><img class="Default" src="images/nsreg.038.4.38.jpg" width="100%" style="left: 0.0pt; max-height: 241px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257366">There are a couple of new results. The &#8220;Bias corrected Rho - 1&#8221; reports the estimated value of </a><span class="Link"><a href="#257255" title="Testing for Cointegration">Equation&nbsp;(28.21)</a></span> and the &#8220;Rho* S.E.&#8221; corresponds to <span class="Link"><a href="#257269" title="Testing for Cointegration">Equation&nbsp;(28.23)</a></span>. The &#8220;Long-run residual variance&#8221; and &#8220;Long-run residual autocovariance&#8221; are the estimates of <img class="Default EquationGraphic" src="images/nsreg.038.4.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/nsreg.038.4.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 30px; top: 0.0pt" alt="" />, respectively. It is worth noting that the ratio of <img class="Default EquationGraphic" src="images/nsreg.038.4.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 37px; top: 0.0pt" alt="" /> to the S.E. of the regression, which is a measure of the amount of residual autocorrelation in the long-run variance, is the scaling factor used in adjusting the raw <span class="In-line_math">t</span>-statistic to form tau.</div>
+      <div class="Body_Text"><a name="259672">The bottom portion of the output displays results for the test equation.</a></div>
+      <div class="Heading_4"><a name="257385">Hansen&#8217;s Instability Test</a></div>
+      <div class="Body_Text"><a name="257386">Hansen (1992) outlines a test of the null hypothesis of cointegration against the alternative of no cointegration. He notes that under the alternative hypothesis of no cointegration, one should expect to see evidence of parameter instability. He proposes (among others) use of the <img class="Default EquationGraphic" src="images/nsreg.038.4.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> test statistic, which arises from the theory of Lagrange Multiplier tests for parameter instability, to evaluate the stability of the parameters.</a></div>
+      <div class="Body_Text"><a name="257396">The <img class="Default EquationGraphic" src="images/nsreg.038.4.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> statistic examines time-variation in the scores from the estimated equation. Let <img class="Default EquationGraphic" src="images/nsreg.038.4.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 17px; top: 0.0pt" alt="" /> be the vector of estimated individual score contributions from the estimated equation, and define the partial sums,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.45.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257404">where <img class="Default EquationGraphic" src="images/nsreg.038.4.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 56px; top: 0.0pt" alt="" /> by construction. For FMOLS, we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.47.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257413">where <img class="Default EquationGraphic" src="images/nsreg.038.4.48.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 122px; top: 0.0pt" alt="" /> is the residual for the transformed regression. Then Hansen chooses a constant measure of the parameter instability <img class="Default EquationGraphic" src="images/nsreg.038.4.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 18px; top: 0.0pt" alt="" /> and forms the statistic</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.50.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257424">For FMOLS, the natural estimator for <img class="Default EquationGraphic" src="images/nsreg.038.4.51.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.52.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257435">The <img class="Default EquationGraphic" src="images/nsreg.038.4.53.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 17px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/nsreg.038.4.54.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> may be defined analogously to least squares for CCR using the transformed data. For DOLS <img class="Default EquationGraphic" src="images/nsreg.038.4.55.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 17px; top: 0.0pt" alt="" /> is defined for the subset of original regressors <img class="Default EquationGraphic" src="images/nsreg.038.4.56.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/nsreg.038.4.57.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> may be computed using the method employed in computing the original coefficient standard errors.</a></div>
+      <div class="Body_Text"><a name="257451">The distribution of <img class="Default EquationGraphic" src="images/nsreg.038.4.58.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is nonstandard and depends on <img class="Default EquationGraphic" src="images/nsreg.038.4.59.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 160px; top: 0.0pt" alt="" />, the number of cointegrating regressors less the number of deterministic trend regressors excluded from the cointegrating equation, and <img class="Default EquationGraphic" src="images/nsreg.038.4.60.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> the number of trending regressors in the system. Hansen (1992) has tabulated simulation results and provided polynomial functions allowing for computation of </a><span class="In-line_math">p</span>-values for various values of <img class="Default EquationGraphic" src="images/nsreg.038.4.61.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/nsreg.038.4.62.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. When computing <span class="In-line_math">p</span>-values, EViews ignores the presence of user-specified deterministic regressors in your equation.</div>
+      <div class="Body_Text"><a name="257467">In contrast to the residual based cointegration tests, Hansen&#8217;s test does rely on estimates from the original equation. We continue our illustration by considering an equation estimated on the consumption data using a constant and trend, FMOLS with a Quadratic Spectral kernel, Andrews automatic bandwidth selection, and no d.f. correction for the long-run variance and coefficient covariance estimates. The equation estimates are given by:</a></div>
+      <div class="Table"><a name="257471"><img class="Default" src="images/nsreg.038.4.63.jpg" width="100%" style="left: 0.0pt; max-height: 413px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257472">There are no options for the Hansen test so you may simply click on </a><span class="Menu_Item">View/Cointegration Tests...</span>, select <span class="Menu_Item">Hansen Instability</span> in the dropdown menu, then click on <span class="Menu_Item">OK</span>.</div>
+      <div class="Table"><a name="257476"><img class="Default" src="images/nsreg.038.4.64.jpg" width="100%" style="left: 0.0pt; max-height: 297px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257477">The top portion of the output describes the test hypothesis, the deterministic regressors, and any relevant information about the construction of the score variances. In this case, we see that the original equation had both C and @TREND as deterministic regressors, and that the score variance is based on the usual FMOLS variance with no d.f. correction.</a></div>
+      <div class="Body_Text"><a name="257478">The results are displayed below. The test statistic value of 0.5755 is presented in the first column. The next three columns describe the trends that determine the asymptotic distribution. Here there is a single stochastic regressor (LY) and one deterministic trend (@TREND) in the cointegrating equation, and no additional trends in the regressors equations. Lastly, we see from the final column that the Hansen test does not reject the null hypothesis that the series are cointegrated at conventional levels, though the relatively low </a><span class="In-line_math">p</span>-value are cause for some concern, given the Engle-Granger and Phillips-Ouliaris results.</div>
+      <div class="Heading_4"><a name="257482">Park&#8217;s Added Variables Test</a></div>
+      <div class="Body_Text"><a name="257486">Park&#8217;s <img class="Default EquationGraphic" src="images/nsreg.038.4.65.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 58px; top: 0.0pt" alt="" /> test is an added variable test. The test is computed by testing for the significance of spurious time trends in a cointegrating equation estimated using one of the methods described above.</a></div>
+      <div class="Body_Text"><a name="257493">Suppose we estimate equation </a><span class="Link"><a href="nsreg-Background.html#256618" title="Background">Equation&nbsp;(28.1)</a></span> where, to simplify, we let <img class="Default EquationGraphic" src="images/nsreg.038.4.66.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 29px; top: 0.0pt" alt="" /> consist solely of powers of trend up to order <img class="Default EquationGraphic" src="images/nsreg.038.4.67.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. Then the Park test estimates the spurious regression model including from <img class="Default EquationGraphic" src="images/nsreg.038.4.68.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> to <img class="Default EquationGraphic" src="images/nsreg.038.4.69.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> spurious powers of trend</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/nsreg.038.4.70.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(28.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="257510">and tests for the joint significance of the coefficients <img class="Default EquationGraphic" src="images/nsreg.038.4.71.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 105px; top: 0.0pt" alt="" />. Under the null hypothesis of cointegration, the spurious trend coefficients should be insignificant since the residual is stationary, while under the alternative, the spurious trend terms will mimic the remaining stochastic trend in the residual. Note that unless you wish to treat the constant as one of your spurious regressors, it should be included in the original equation specification.</a></div>
+      <div class="Body_Text"><a name="257511">Since the additional variables are simply deterministic regressors, we may apply a joint Wald test of significance to <img class="Default EquationGraphic" src="images/nsreg.038.4.72.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 105px; top: 0.0pt" alt="" />. Under the maintained hypothesis that the original specification of the cointegrating equation is correct, the resulting test statistic is asymptotically <img class="Default EquationGraphic" src="images/nsreg.038.4.73.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 40px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="257518">While one could estimate an equation with spurious trends and then to test for their significance using a Wald test, EViews offers a view which performs these steps for you. First estimate an equation where you include all trends that are assumed to be in the cointegrating equation. Next, select </a><span class="Menu_Item">View/Cointegration Test...</span> and choose <span class="Menu_Item">Park Added Variables</span> in the dropdown menu. The dialog will change to allow you to specify the spurious trends.</div>
+      <div class="Picture"><a name="257522"><img class="Default" src="images/nsreg.038.4.74.jpg" width="100%" style="left: 0.0pt; max-height: 321px; max-width: 296px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257523">There are two parts to the dialog. The dropdown menu allows you to specify a trend polynomial. By default, the dropdown will be set to two orders higher than the trend order in the original equation. In our example equation which includes a linear trend, the default setting will include quadratic and cubic trend terms in the test equation and test for the significance of the two coefficients. You may use the edit field to enter non power-of-trend deterministic regressors.</a></div>
+      <div class="Body_Text"><a name="257524">We will use the default settings to perform a Park test on the FMOLS linear trend consumption equation considered previously. The results are presented in two parts: the test specification and test results are displayed at the top of the output, and the results for the test equation (not depicted) are displayed at the bottom:</a></div>
+      <div class="Table"><a name="257528"><img class="Default" src="images/nsreg.038.4.75.jpg" width="100%" style="left: 0.0pt; max-height: 244px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257529">The null hypothesis is that the series are cointegrated. The original specification includes a constant and linear trend and the test equation will include up to a cubic trend. The Park test evaluates the statistical significance of the @TREND^2 and the (@TREND/170)^3 terms using a conventional Wald test. (You may notice that the latter cubic trend term&#8212;and any higher order trends that you may include&#8212;uses the trend scaled by the number of observations in the sample.)</a></div>
+      <div class="Body_Text"><a name="257530">The test results reject the null hypothesis of cointegration, in direct contrast to the results for the Engle-Granger, Phillips-Ouliarias, and Hansen tests (though the latter, which also tests the null of cointegration, is borderline). Note however, adding a quadratic trend to the original equation and then testing for cointegration yields results that, for all four tests, point to cointegration between LC and LY. </a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

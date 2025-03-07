@@ -1,0 +1,778 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Cross-sectionally Dependent Panel Unit Root Tests</title>
+    <link rel="StyleSheet" href="css/advtimeser.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="advtimeser-Cross-sectionally_Independent_Panel_Unit_Root_Te.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="advtimeser-Variance_Ratio_Test.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_univar.html">Advanced Univariate Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="advtimeser-Univariate_Time_Series_Analysis.html">Univariate Time Series Analysis</a> : Cross-sectionally Dependent Panel Unit Root Tests</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="196898">Cross-sectionally Dependent Panel Unit Root Tests</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#196404">Performing Dependent Panel Unit Root Tests in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196411">Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196420">ADF Lag Selection</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196450">PANIC MQ Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196476">Factor Selection</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196528">p-value Simulation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#196541">Dependent Panel Unit Root Test Examples</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196559">PANIC MQc Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196594">PANIC MQf Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196628">CIPS Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#197685">Dependent Panel Unit Root Tests Background</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#197849">PANIC Unit Root Testing</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#197931">PANIC Unit Root Test Algorithm</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#197933">Computing test data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#197999">Testing idiosyncratic components</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#198032">Testing common factors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#198120">CIPS Test</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="195687">In </a><span class="Link"><a href="advtimeser-Cross-sectionally_Independent_Panel_Unit_Root_Te.html#185476" title="Cross-sectionally Independent Panel Unit Root Testing">&#8220;Cross-sectionally Independent Panel Unit Root Testing&#8221;</a></span>, we described first generation panel unit root tests on pooled panel data, with (possibly) individual trend, intercepts, and lag coefficients when there is cross-sectional independence. </div>
+      <div class="Body_Text"><a name="195644">The assumption of cross-sectional independence can be difficult to justify, as cross-sections are often influenced by common forces, termed factors. For instance, cross-country purchasing power parity (PPP) data is often anchored to a common numeraire currency such as the US dollar, so that movements in the latter affect the cross-sectional PPP in correlated fashion. Tests which account for cross-sectional dependence have been termed </a><span class="Definition">second generation panel unit root tests</span>. </div>
+      <div class="Body_Text"><a name="195645">EViews currently supports two important second generation contributions: Bai and Ng&#8217;s (2004) Panel Analysis of Nonstationarity in Idiosyncratic and Common Components (PANIC), and Pesaran&#8217;s (2007) Cross-sectionally Augmented IPS (CIPS).</a></div>
+      <div class="Body_Text"><a name="197085">As with independent panel unit root tests, EViews supports testing in different settings involving multiple series: as a series view (if the workfile is panel structured), as a group view, or as a pool view.</a></div>
+      <div class="Heading_4"><a name="196404">Performing Dependent Panel Unit Root Tests in EViews</a></div>
+      <div class="Body_Text"><a name="196405">Second generation panel unit root tests may be performed on a single series in a panel workfile or on a group of series in a workfile. To perform the test in the panel setting, you should open the series and then click on </a><span class="Menu_Item">View/Unit Root Tests/Cross-Sectionally Dependent...</span> In the group setting, open the group and click on the same view entry. EViews will display the dialog:</div>
+      <div class="Picture"><a name="196409"><img class="Default" src="images/advtimeser.053.09.001.jpg" width="100%" style="left: 0.0pt; max-height: 486px; max-width: 545px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196410">There is a lot to this dialog so we will examine each section in turn.</a></div>
+      <div class="Heading_5"><a name="196411">Test</a></div>
+      <div class="Body_Text"><a name="196412">The </a><span class="Menu_Item">Test</span> section of the dialog is used to specify the basic test type:</div>
+      <div class="Picture"><a name="196416"><img class="Default" src="images/advtimeser.053.09.002.jpg" width="100%" style="left: 0.0pt; max-height: 103px; max-width: 268px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196417">The </a><span class="Menu_Item">Type</span> dropdown lets you choose between the two second generation panel unit root test types: <span class="Menu_Item">Bai and Ng - PANIC</span> and <span class="Menu_Item">Pesaran - CIPS</span>.</div>
+      <div class="Body_Text"><a name="196418">The </a><span class="Menu_Item">Deterministics</span> dropdown offers three choices for the deterministic terms to be included in the specification: <span class="Menu_Item">None</span>, <span class="Menu_Item">Constant</span>, or <span class="Menu_Item">Constant and trend</span>.</div>
+      <div class="Heading_5"><a name="196420">ADF Lag Selection</a></div>
+      <div class="Body_Text"><a name="196421">The </a><span class="Menu_Item">ADF lag selection</span> section controls the specification of the ADF test specifications in the PANIC and CIPS tests. </div>
+      <div class="Picture"><a name="196425"><img class="Default" src="images/advtimeser.053.09.003.jpg" width="100%" style="left: 0.0pt; max-height: 123px; max-width: 268px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196426">The </a><span class="Menu_Item">Method</span> dropdown offers several options for determining the number of lagged difference terms <img class="Default EquationGraphic" src="images/advtimeser.053.09.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> to use in the ADF specifications. You may use the dropdown to select between using information criteria (Akaike, Schwarz, Hannan-Quinn, Modified Akaike, Modified, Schwarz, Modified Hannan-Quinn), performing <span class="In-line_math">t</span>-tests of lag difference variable significance, or providing a user-specified fixed value.</div>
+      <div class="Body_Text"><a name="196436">For the information criteria and </a><span class="In-line_math">t</span>-test options, you will be prompted for the maximum number of lags to consider; for the user-specified fixed value, you will be prompted to enter the value itself.</div>
+      <div class="Body_Text"><a name="196437">Note that EViews pre-fills the </a><span class="Menu_Item">Maximum lags</span> edit field with a default value derived from a variation of the Schwert (1989) rule: let there be a lag choice function <img class="Default EquationGraphic" src="images/advtimeser.053.09.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 160px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/advtimeser.053.09.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 167px; top: 0.0pt" alt="" /> and let <img class="Default EquationGraphic" src="images/advtimeser.053.09.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 126px; top: 0.0pt" alt="" />; then the default maximum lag <img class="Default EquationGraphic" src="images/advtimeser.053.09.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 222px; top: 0.0pt" alt="" />.</div>
+      <div class="Heading_5"><a name="196450">PANIC MQ Options</a></div>
+      <div class="Body_Text"><a name="196451">If you choose to perform a PANIC test the </a><span class="Menu_Item">PANIC MQ options</span> section offers options for controlling the computation:</div>
+      <div class="Picture"><a name="196455"><img class="Default" src="images/advtimeser.053.09.009.jpg" width="100%" style="left: 0.0pt; max-height: 191px; max-width: 268px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196456">The </a><span class="Menu_Item">Type</span> dropdown lets you choose between the <span class="Menu_Item">MQC</span> and <span class="Menu_Item">MQF</span> statistics.</div>
+      <div class="Body_Text"><a name="196457">The </a><span class="Menu_Item">Significance level</span> edit field lets you choose the level of significance at which EViews will perform the test as the <span class="In-line_math">p</span>-value for these statistics is obtained by simulation.</div>
+      <div class="Body_Text"><a name="196461">The remaining options will change with your selection of the PANIC type:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="196465">If you choose to compute the <img class="Default EquationGraphic" src="images/advtimeser.053.09.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" />, the </a><span class="Menu_Item">Long-Run Variance Options</span> button will be enabled.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="196469">If you choose <img class="Default EquationGraphic" src="images/advtimeser.053.09.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" />, the </a><span class="Menu_Item">Lag selection options</span> will be enabled so that you may control the order of the VAR(<img class="Default EquationGraphic" src="images/advtimeser.053.09.012.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />). The settings are as described in <span class="Link"><a href="#196420" title="Cross-sectionally Dependent Panel Unit Root Tests">&#8220;ADF Lag Selection&#8221;</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="196476">Factor Selection</a></div>
+      <div class="Body_Text"><a name="196477">The </a><span class="Menu_Item">Factor selection</span> options control the selection of number of factors method used in the PANIC procedure:</div>
+      <div class="Body_Text"><a name="196478">The </a><span class="Menu_Item">Method</span> dropdown lets you choose between the <span class="Menu_Item">Simple</span>, <span class="Menu_Item">Bai and Ng</span>, and <span class="Menu_Item">Ahn and Horenstein</span>. In turn, each of these choices offers different options.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="196479">If you select </a><span class="Menu_Item">Simple</span>, you will choose a <span class="Menu_Item">Criterion</span> from the dropdown. You may choose from the following selections: <span class="Menu_Item">Minimum of...</span>, <span class="Menu_Item">Maximum of...</span>, <span class="Menu_Item">Average of criteria</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="196483"><img class="Default" src="images/advtimeser.053.09.013.jpg" width="100%" style="left: 0.0pt; max-height: 249px; max-width: 268px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_Continue"><a name="196484">For the first two selections, the number of factors is determined as the minimum or maximum of the </a><span class="Menu_Item">Max. Factors</span> (discussed below), the specified <span class="Menu_Item">Minimum eigenvalue</span>, and <span class="Menu_Item">Cumulative proportion</span> of eigenvalues. The <span class="Menu_Item">Average of criteria</span> will use the average of the other two results.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="196485">If you select </a><span class="Menu_Item">Bai and Ng</span>, EViews will compute the Bai and Ng (2002) as discussed in <span class="Link"><a href="groups-Principal_Components.html#190512" title="Principal Components">&#8220;Bai and Ng&#8221;</a></span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="196492"><img class="Default" src="images/advtimeser.053.09.014.jpg" width="100%" style="left: 0.0pt; max-height: 249px; max-width: 268px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_Continue"><a name="196493">The </a><span class="Menu_Item">Criterion</span> dropdown offers all of the information criteria described by Bai and Ng (<span class="Menu_Item">ICP1</span>, <span class="Menu_Item">ICP2</span>, <span class="Menu_Item">ICP3</span>, <span class="Menu_Item">PCP1</span>, <span class="Menu_Item">PCP2</span>, <span class="Menu_Item">PCP3</span>) as well as the <span class="Menu_Item">Average of criteria</span> which averages the criteria prior to determining the optimal number of factors.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="196494">If you select </a><span class="Menu_Item">Ahn and Horenstein</span>, EViews will compute the Ahn and Horenstein (2013) number of factor determination procedure (<span class="Link"><a href="groups-Principal_Components.html#190649" title="Principal Components">&#8220;Ahn and Horenstein&#8221;</a></span>). The dialog looks the same as for <span class="Menu_Item">Bai and Ng</span>, but the <span class="Menu_Item">Criterion</span> dropdown now offers <span class="Menu_Item">Eigenvalue Ratio</span>, <span class="Menu_Item">Growth ratio</span>, and <span class="Menu_Item">Average of criteria</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="196498">For </a><span class="Menu_Item">User</span>, the number of factors is specified by the user in the edit box</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="196499">In all of the automatic factor selection procedures above is the selection of maximum factors to be considered. While ultimately an arbitrary selection, EViews offers some suggestions typically seen in the literature. In particular, as in the case of ADF selection, consider the </a><span class="Menu_Item">Max. factors</span> dropdown which provides the following options:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="196503">Schwert</a></span>: let there be a lag choice function <img class="Default EquationGraphic" src="images/advtimeser.053.09.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 160px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/advtimeser.053.09.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 167px; top: 0.0pt" alt="" /> and let <img class="Default EquationGraphic" src="images/advtimeser.053.09.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 126px; top: 0.0pt" alt="" />; then returns the value <img class="Default EquationGraphic" src="images/advtimeser.053.09.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 222px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="196513">Ahn and Horenstein</a></span>: uses the suggestion made on page 1208 in Ahn and Horenstein (2013).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="196517">min(root(N), root(T))</a></span>: uses <img class="Default EquationGraphic" src="images/advtimeser.053.09.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 101px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="196521">min(N,T):</a></span> uses <img class="Default EquationGraphic" src="images/advtimeser.053.09.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="196522">User</a></span>: users can specify an arbitrary value in the <span class="Menu_Item">User maximum factors</span> edit field.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="196523">Furthermore, as discussed in Bai and Ng (2002) and Ahn and Horenstein (2013), factor selection procedures can be improved dramatically if time and/or cross-section dimensions are demeaned and/or standardized. To allow for these possibilities, there are four checkboxes associated with each of these options and combinations:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="196524">Time-demean</a></span>: demeans the time dimension.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="196525">Time-standardize</a></span>: standardizes the time dimension.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="196526">Cross-demean</a></span>: demeans the cross-section dimension.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="196527">Cross-standardize</a></span>: standardizes the cross-section dimension.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="196528">p-value Simulation</a></div>
+      <div class="Body_Text"><a name="196532">In case of the PANIC tests, inference is based on simulated </a><span class="In-line_math">p</span>-values. In this setting, you can may specify simulation options in the <span class="In-line_math">p</span>-value<span class="Menu_Item"> simulations</span> section. </div>
+      <div class="Picture"><a name="196539"><img class="Default" src="images/advtimeser.053.09.021.jpg" width="100%" style="left: 0.0pt; max-height: 152px; max-width: 268px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196540">In particular, the number of </a><span class="Menu_Item">Monte Carlo replications</span>, <span class="Menu_Item">Asymptotic length</span> and <span class="Menu_Item">Random seed</span> can be set in their respective edit fields. Note that the latter is optional. Furthermore, the <span class="Menu_Item">Random generator</span> dropdown offers various random number generators. Details associated with the latter options can be obtained in the EViews documentation for rndseed.</div>
+      <div class="Heading_4"><a name="196541">Dependent Panel Unit Root Test Examples</a></div>
+      <div class="Body_Text"><a name="196542">To illustrate some of the features of second generation panel unit root tests in EViews, we consider three examples using data from Pesaran (2007). These panel data feature quarterly real exchange rates from 17 OECD countries for the period 1973q1 to 1998q4. Data can be downloaded from </a></div>
+      <div class="Indented" style="color: #0000ff; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="URL"><a href="http://qed.econ.queensu.ca/jae/2007-v22.2/pesaran/" target="external_window" name="196544">http://qed.econ.queensu.ca/jae/2007-v22.2/pesaran/</a></span></div>
+      <div class="Body_Text"><a name="196545">in the file &#8220;real-xrate.zip&#8221;. </a></div>
+      <div class="Body_Text"><a name="196546">You may unzip the file then drag-and-drop it onto your EViews to create the new workfile. As is, however, the resulting unstacked, undated workfile is not set up for panel or group unit root testing.</a></div>
+      <div class="Body_Text"><a name="196547">From the command line you can set up the group form of the unstacked data with the following command:</a></div>
+      <div class="Multi-line_Input"><a name="196548">pagestruct(freq=q, start=1973q1)</a></div>
+      <div class="Multi-line_Input"><a name="196549">group oecd_rer *_rate</a></div>
+      <div class="Body_Text"><a name="196550">The first line specifies the frequency of the data (the EViews auto-input was unable to do so since there are no dates in the file). The next line creates a group containing all of the rate series. We can conduct the unit root tests using the group object OECD_RER.</a></div>
+      <div class="Body_Text"><a name="196551">Alternately, we can choose to stack the data in a new page, and conduct the test on the stacked panel data. The command</a></div>
+      <div class="Multi-line_Input"><a name="196552">pagestack ?real_exchange_rate @ ?*</a></div>
+      <div class="Body_Text"><a name="196553">creates a new page containing a stacked panel data series REAL_EXCHANGE_RATE. </a></div>
+      <div class="Body_Text"><a name="196554">Whichever form with which we wish to work, we will use the sample statement</a></div>
+      <div class="Multi-line_Input"><a name="196555">smpl 1974 1998</a></div>
+      <div class="Body_Text"><a name="196556">to the example in Pesaran (2007).</a></div>
+      <div class="Body_Text"><a name="196557">Lastly, note that the examples below use the REAL_EXCHANGE_RATE series in the workfile tab &#8220;Realexchangerates7398_STK. All of the examples may also be performed using the group object OECD_RER in the workfile tab &#8220;Realexchangerates7398&#8221;.</a></div>
+      <div class="Heading_5"><a name="196559">PANIC MQc Example</a></div>
+      <div class="Body_Text"><a name="196560">This example will use default values for all inputs. To use the panel data form of the test, click on the workfile tab &#8220;Realexchangerates7398_STK&#8221;, and then open the panel series REAL_EXCHANGE_RATE. Click on View/Unit Root Tests/Cross-Sectionally Dependent..., to access the second generation panel unit root tests.</a></div>
+      <div class="Picture"><a name="196564"><img class="Default" src="images/advtimeser.053.09.022.jpg" width="100%" style="left: 0.0pt; max-height: 486px; max-width: 545px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196568">As PANIC <img class="Default EquationGraphic" src="images/advtimeser.053.09.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> is the default test, at this point, one can simply click on </a><span class="Menu_Item">OK</span> to compute this test.</div>
+      <div class="Picture"><a name="196572"><img class="Default" src="images/advtimeser.053.09.024.jpg" width="100%" style="left: 0.0pt; max-height: 615px; max-width: 787px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196573">The output displays a spool with the spool tree listing the summary, factor selection, common factors, and individual and pooled idiosyncratic elements. The first of these is a summary of the PANIC procedure performed. The second is a table listing the details of the factor selection procedure. In particular, since the selection was the average of the Bai and Ng (2002) test statistics, listed in the table are the factor selections based on each of the six individual statistic variants as well as their average which is used in the remainder of the PANIC procedure. </a></div>
+      <div class="Body_Text"><a name="196574">Next, the common factors table displays the PANIC test for how many common factors influence the panel. The test statistic and associated </a><span class="In-line_math">p</span>-value are reported. In this particular case, that number selected 7, which is also the maximum number of factors allowed using the Schwert (1989) rule.</div>
+      <div class="Picture"><a name="196581"><img class="Default" src="images/advtimeser.053.09.025.jpg" width="100%" style="left: 0.0pt; max-height: 786px; max-width: 787px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196582">The table that follows displays the individual ADF test statistics for the idiosyncratic elements associated with each cross-section. The ADF lags are selected for each cross-section independently using the same automatic selection rule, which in this case happens to be AIC with 7 maximum lags. Furthermore, the columns </a><span class="Menu_Item">t-stat</span> and <span class="Menu_Item">p-value</span> report the ADF <span class="In-line_math">t</span>-statistic and associated <span class="In-line_math">p</span>-value corresponding to the null hypothesis that the idiosyncratic element exhibit a unit root. It is readily seen that apart from Norway, all other cross-sections exhibit a unit root at the 5% significance level. </div>
+      <div class="Body_Text"><a name="196589">Lastly, the final table is a pooled version of the individual ADF test statistics in the previous table. Here, we cannot reject the null hypothesis that all of the cross-sections are simultaneously co-integrated.</a></div>
+      <div class="Picture"><a name="196593"><img class="Default" src="images/advtimeser.053.09.026.jpg" width="100%" style="left: 0.0pt; max-height: 591px; max-width: 787px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_5"><a name="196594">PANIC MQf Example</a></div>
+      <div class="Body_Text"><a name="196595">For the second example, using the same data, the objective is to perform a PANIC unit root test using the <img class="Default EquationGraphic" src="images/advtimeser.053.09.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> test statistic and the Ahn and Horenstein (2013) factor selection procedure. </a></div>
+      <div class="Body_Text"><a name="196599">From the series window click on </a><span class="Menu_Item">View/Unit Root Tests/Cross-Sectionally Dependent...</span>. In the <span class="Menu_Item">PANIC MQ options</span> section select <span class="Menu_Item">MQF</span> in the <span class="Menu_Item">Type</span> dropdown. Next, under the <span class="Menu_Item">Factor selection</span> group, select <span class="Menu_Item">Ahn and Horenstein</span> from the <span class="Menu_Item">Method</span> dropdown. Furthermore, for the <span class="Menu_Item">Max. factors</span>, select <span class="Menu_Item">Ahn and Horenstein</span>. Lastly, ensure that <span class="Menu_Item">Time-demean</span>, <span class="Menu_Item">Time-standardize</span>, <span class="Menu_Item">Cross-demean</span>, and <span class="Menu_Item">Cross-standardize</span> are all checked. Click on <span class="Menu_Item">OK</span>.</div>
+      <div class="Picture"><a name="196603"><img class="Default" src="images/advtimeser.053.09.028.jpg" width="100%" style="left: 0.0pt; max-height: 486px; max-width: 545px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196607">The spool output display is analogous to that in </a><span class="Link"><a href="#196559" title="Cross-sectionally Dependent Panel Unit Root Tests">&#8220;PANIC MQc Example&#8221;</a></span>. Here, the factor selection procedure is based on Ahn and Horenstein (2013). </div>
+      <div class="Picture"><a name="196611"><img class="Default" src="images/advtimeser.053.09.029.jpg" width="100%" style="left: 0.0pt; max-height: 591px; max-width: 787px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196612">Evidently, both the eigenvalue ratio and growth ratio statistics select a single common factor using the Ahn and Horenstein (2013) suggestion for maximum factors, which here happens to be 1.</a></div>
+      <div class="Body_Text"><a name="196613">Since the number of common factors selected is 1, the test associated with the common factors is based on an ADF regression. The next table displays the results of this test.</a></div>
+      <div class="Picture"><a name="196617"><img class="Default" src="images/advtimeser.053.09.030.jpg" width="100%" style="left: 0.0pt; max-height: 785px; max-width: 787px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196618">Here, we see that the test fails to reject the null hypothesis that the single common factor is non-stationary. </a></div>
+      <div class="Body_Text"><a name="196619">Next, as in the previous example, table that follows displays the individual ADF test statistics for the idiosyncratic elements associated with each cross-section. Unlike the previous example, there are significantly more cross-sections for which one can argue rejection of the unit root null hypothesis. </a></div>
+      <div class="Body_Text"><a name="196623">Lastly, the pooled version of the latter tests has a </a><span class="In-line_math">p</span>-value which effectively zero, and therefore we fail to reject the null hypothesis that all cross-sections are not cointegrated.</div>
+      <div class="Picture"><a name="196627"><img class="Default" src="images/advtimeser.053.09.031.jpg" width="100%" style="left: 0.0pt; max-height: 591px; max-width: 787px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_5"><a name="196628">CIPS Example</a></div>
+      <div class="Body_Text"><a name="196629">The final example uses the same data. Here, the objective is to perform the Pesaran (2007) CIPS test. From the series window click on </a><span class="Menu_Item">View/Unit Root Tests/Cross-Sectionally Dependent...</span>. From the <span class="Menu_Item">Type</span> dropdown, select <span class="Menu_Item">Pesaran &#8211; CIPS</span>. To conform with the analysis in the original paper, change the <span class="Menu_Item">Method</span> dropdown in the <span class="Menu_Item">ADF lag selection</span> group to <span class="Menu_Item">User</span>. We will stick with a single lag for the ADF regression. Hit <span class="Menu_Item">OK</span>.</div>
+      <div class="Picture"><a name="196633"><img class="Default" src="images/advtimeser.053.09.032.jpg" width="100%" style="left: 0.0pt; max-height: 486px; max-width: 545px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196634">The output displays a spool with the spool tree listing the summary, CIPS and CADF unit root tests, as well as CIPS and CADF critical value interpolations. </a></div>
+      <div class="Picture"><a name="196638"><img class="Default" src="images/advtimeser.053.09.033.jpg" width="100%" style="left: 0.0pt; max-height: 692px; max-width: 787px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196639">The first of the spool tables is a summary of the CIPS procedure performed. The second is a table listing the details of the CIPS test. In particular, the first part of this table displays the critical values for the usual CIPS statistic as well as its truncated version. The second portion of this table summarizes the test results. Note that the </a><span class="In-line_math">t</span>-statistic is displayed along with the associated <span class="In-line_math">p</span>-values which are summarized categorically based on the critical values tabulated in Pesaran (2007). Here, we cannot reject the null hypothesis below the 10% significance level. Furthermore, the outcome of this table matches the results reported in Table XI of the original paper.</div>
+      <div class="Body_Text"><a name="196646">The next table summarizes the ADF test statistics that are used in the computation of the CIPS statistic. </a></div>
+      <div class="Picture"><a name="196650"><img class="Default" src="images/advtimeser.053.09.034.jpg" width="100%" style="left: 0.0pt; max-height: 664px; max-width: 825px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196651">Here, the first portion of the table summarizes the critical values associated with the CADF statistic as well as its truncated version. The second portion of this table summarizes the test results for each of the cross-sections. In particular, these are </a><span class="In-line_math">t</span>-statistics associated with the cross-sectionally augmented ADF regressions for each of the cross-sections. The table summarizes the <span class="In-line_math">t</span>-statistic and <span class="In-line_math">p</span>-value category for each of the CADF and truncated CADF test statistics. In particular, here we cannot reject the unit root null hypotheses at significance levels less than 10% for any of the cross-sections.</div>
+      <div class="Body_Text"><a name="196661">At last, the remaining two tables summarize the interpolation computation used to derive the critical values reported earlier.</a></div>
+      <div class="Picture"><a name="196665"><img class="Default" src="images/advtimeser.053.09.035.jpg" width="100%" style="left: 0.0pt; max-height: 664px; max-width: 825px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="196666">In particular, if the </a><span class="In-line_math">T</span> or <span class="In-line_math">N</span> columns display values, it implies that interpolation was done on that dimension of the data.</div>
+      <div class="Heading_4"><a name="197685">Dependent Panel Unit Root Tests Background</a></div>
+      <div class="Body_Text"><a name="197692">To formalize the discussion, let <img class="Default EquationGraphic" src="images/advtimeser.053.09.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 95px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 95px; top: 0.0pt" alt="" />, respectively, denote the cross-section and time indices, and consider the following integrated panel data model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.038.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.89)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="197706">where <img class="Default EquationGraphic" src="images/advtimeser.053.09.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> is the observed data, <img class="Default EquationGraphic" src="images/advtimeser.053.09.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> are the model deterministic dynamics, and <img class="Default EquationGraphic" src="images/advtimeser.053.09.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> are the innovations.</a></div>
+      <div class="Body_Text"><a name="197707">The traditional first generation panel unit root tests of Maddala and Wu (1999), Hadri (2000), Levin, Lin and Chu (2002), and Im, Pesaran and Shin (2003), while differing in unit root parameter heterogeneity assumptions and in test construction approach, all assume that <img class="Default EquationGraphic" src="images/advtimeser.053.09.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> are independent across </a><span class="In-line_math">i</span>. </div>
+      <div class="Body_Text"><a name="197714">To introduce cross-sectional dependence, we model <img class="Default EquationGraphic" src="images/advtimeser.053.09.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> as having a factor model structure,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.044.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.90)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="197725">where <img class="Default EquationGraphic" src="images/advtimeser.053.09.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is a vector of <img class="Default EquationGraphic" src="images/advtimeser.053.09.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> common factors generated by a multivariate white noise process <img class="Default EquationGraphic" src="images/advtimeser.053.09.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.048.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.91)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="197739"><img class="Default EquationGraphic" src="images/advtimeser.053.09.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> denotes a vector of cross-section specific factor loadings, and <img class="Default EquationGraphic" src="images/advtimeser.053.09.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is a multivariate idiosyncratic component which is cross-sectionally independent as <img class="Default EquationGraphic" src="images/advtimeser.053.09.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is assumed to account for all inter-cross-sectional correlations. When <img class="Default EquationGraphic" src="images/advtimeser.053.09.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> are not cross-sectionally independent, the factor model governing <img class="Default EquationGraphic" src="images/advtimeser.053.09.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> is said to be </a><span class="Emphasis">approximate</span>. As usual, <img class="Default EquationGraphic" src="images/advtimeser.053.09.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is the lag operator, and we have the polynomial:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.055.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.92)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="197756">Substituting, an integrated panel model with cross-sectional dependence may be formulated as</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.056.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.93)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="197771">Assumptions imposed on <img class="Default EquationGraphic" src="images/advtimeser.053.09.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> govern the nature of the process for <img class="Default EquationGraphic" src="images/advtimeser.053.09.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" />. For example, when <img class="Default EquationGraphic" src="images/advtimeser.053.09.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> has rank 0, <img class="Default EquationGraphic" src="images/advtimeser.053.09.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is non-stochastic and stationary, or <img class="Default EquationGraphic" src="images/advtimeser.053.09.062.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />. Alternately, when <img class="Default EquationGraphic" src="images/advtimeser.053.09.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> has rank <img class="Default EquationGraphic" src="images/advtimeser.053.09.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 72px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.09.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is an <img class="Default EquationGraphic" src="images/advtimeser.053.09.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> process driven by <img class="Default EquationGraphic" src="images/advtimeser.053.09.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> linearly independent stochastic trends. In particular, when <img class="Default EquationGraphic" src="images/advtimeser.053.09.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 45px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.09.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> has <img class="Default EquationGraphic" src="images/advtimeser.053.09.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> common trends and <img class="Default EquationGraphic" src="images/advtimeser.053.09.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 86px; top: 0.0pt" alt="" /> cointegrated stationary factors.</a></div>
+      <div class="Body_Text"><a name="197811">A crucial feature of these models is that the common factors <img class="Default EquationGraphic" src="images/advtimeser.053.09.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> and idiosyncratic components <img class="Default EquationGraphic" src="images/advtimeser.053.09.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> can each be <img class="Default EquationGraphic" src="images/advtimeser.053.09.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> or <img class="Default EquationGraphic" src="images/advtimeser.053.09.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />. This generality permits a wide spectrum of possible outcomes for the properties of the observed <img class="Default EquationGraphic" src="images/advtimeser.053.09.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" />. For instance, <img class="Default EquationGraphic" src="images/advtimeser.053.09.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> is considered <img class="Default EquationGraphic" src="images/advtimeser.053.09.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> if </a><span class="Emphasis">either</span> <img class="Default EquationGraphic" src="images/advtimeser.053.09.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> or <img class="Default EquationGraphic" src="images/advtimeser.053.09.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is <img class="Default EquationGraphic" src="images/advtimeser.053.09.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />. Alternately, if the number of common trends <img class="Default EquationGraphic" src="images/advtimeser.053.09.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 46px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.09.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> is deemed conditionally stationary or non-stationary, depending on the properties of the idiosyncratic component <img class="Default EquationGraphic" src="images/advtimeser.053.09.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 125px; top: 0.0pt" alt="" />. </div>
+      <div class="Body_Text"><a name="197848">For further detail, see Bai and Ng (2004) and Banerjee and Wagner (2009).</a></div>
+      <div class="Heading_5"><a name="197849">PANIC Unit Root Testing</a></div>
+      <div class="Body_Text"><a name="197850">Bai and Ng&#8217;s (2004) PANIC (Panel Analysis of Nonstationarity in Idiosyncratic and Common Components) test is widely considered to be the first unit root test for panel data with cross-sectional dependence. The PANIC test is based on a factor model in which non-stationarity can arise from common factors, idiosyncratic components, or both. </a></div>
+      <div class="Body_Text"><a name="197854">The observed series is modeled using </a><span class="Link"><a href="#197761" title="Cross-sectionally Dependent Panel Unit Root Tests">Equation&nbsp;(42.93)</a></span>:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.085.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.94)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="197859">where</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.086.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.95)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="197867">and <img class="Default EquationGraphic" src="images/advtimeser.053.09.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is a mean zero, stationary, and invertible MA process. PANIC assumes a balanced sample where both <img class="Default EquationGraphic" src="images/advtimeser.053.09.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> are large, such that <img class="Default EquationGraphic" src="images/advtimeser.053.09.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" /> as both <img class="Default EquationGraphic" src="images/advtimeser.053.09.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="197883">Estimation requires a suitable stationary transformation of <img class="Default EquationGraphic" src="images/advtimeser.053.09.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="197890">If <img class="Default EquationGraphic" src="images/advtimeser.053.09.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> contains at most a constant, we take the first differences of <img class="Default EquationGraphic" src="images/advtimeser.053.09.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /></a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.095.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.96)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="197901">If <img class="Default EquationGraphic" src="images/advtimeser.053.09.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> contains a linear trend, <img class="Default EquationGraphic" src="images/advtimeser.053.09.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> is both demeaned and differenced,</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.098.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.97)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="197906">where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.099.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.98)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="197911">Then the transformed equation is</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.100.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.99)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="197929">where <img class="Default EquationGraphic" src="images/advtimeser.053.09.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 72px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 79px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/advtimeser.053.09.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 87px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 95px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="197930">Before we turn to the computation of the test, note that an important advantage of PANIC is that the idiosyncratic components can be tested for stationarity regardless of the (non-)stationarity of the common factors. In other words, tests on common factors are asymptotically independent of tests on idiosyncratic components. </a></div>
+      <div class="Heading_6"><a name="197931">PANIC Unit Root Test Algorithm</a></div>
+      <div class="Body_Text"><a name="197932">The algorithm for computing the PANIC unit root test is quite involved and we encourage those interested to seek out more expansive treatments than that given here. Briefly, however, the algorithm involves three parts: computing the factor and idiosyncratic components, testing for a unit root in the idiosyncratic components, testing for a unit root in the common factors.</a></div>
+      <div class="Heading_7"><a name="197933">Computing test data</a></div>
+      <div class="Body_Text"><a name="197937">The first step in PANIC is computing estimates of the common factors <img class="Default EquationGraphic" src="images/advtimeser.053.09.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 16px; top: 0.0pt" alt="" /> and idiosyncratic components <img class="Default EquationGraphic" src="images/advtimeser.053.09.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="197950">Arbitrarily specify the number <img class="Default EquationGraphic" src="images/advtimeser.053.09.107.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> of common factors, or use <img class="Default EquationGraphic" src="images/advtimeser.053.09.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 69px; top: 0.0pt" alt="" /> to determine <img class="Default EquationGraphic" src="images/advtimeser.053.09.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, the number of factors to use (</a><span class="Link"><a href="groups-Principal_Components.html#190376" title="Principal Components">&#8220;Determining the Number of Components&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="197960">Compute the principal components decomposition of the <img class="Default EquationGraphic" src="images/advtimeser.053.09.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 69px; top: 0.0pt" alt="" /> matrix, producing the <img class="Default EquationGraphic" src="images/advtimeser.053.09.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 175px; top: 0.0pt" alt="" /> matrix of eigenvectors <img class="Default EquationGraphic" src="images/advtimeser.053.09.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="197976">Using <img class="Default EquationGraphic" src="images/advtimeser.053.09.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, form a matrix of <img class="Default EquationGraphic" src="images/advtimeser.053.09.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> differenced common factors <img class="Default EquationGraphic" src="images/advtimeser.053.09.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 11px; top: 0.0pt" alt="" /> and run a regression of <img class="Default EquationGraphic" src="images/advtimeser.053.09.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/advtimeser.053.09.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 11px; top: 0.0pt" alt="" /> to obtain the factor loadings matrix <img class="Default EquationGraphic" src="images/advtimeser.053.09.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 16px; top: 0.0pt" alt="" />. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="197992">Compute estimates of the common factors <img class="Default EquationGraphic" src="images/advtimeser.053.09.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 16px; top: 0.0pt" alt="" /> and idiosyncratic components <img class="Default EquationGraphic" src="images/advtimeser.053.09.121.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> by taking cumulative sums of terms involving <img class="Default EquationGraphic" src="images/advtimeser.053.09.122.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 11px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.123.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 16px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_7"><a name="197999">Testing idiosyncratic components</a></div>
+      <div class="Body_Text"><a name="198000">Next, PANIC tests for a unit root in the idiosyncratic components:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="198007">Compute an ADF regression with <img class="Default EquationGraphic" src="images/advtimeser.053.09.124.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> lags on the <img class="Default EquationGraphic" src="images/advtimeser.053.09.125.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> for each cross-section and test for a unit root in the idiosyncratic component.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="198008">If we are unable to reject the null hypothesis for a given cross-section, we conclude that there is a unit root in the data for that cross section.</a></div>
+      <div class="Body_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="198009">Recall too that early panel unit root tests conducted pooled tests to addressed the low power of univariate unit root tests in face of small <img class="Default EquationGraphic" src="images/advtimeser.053.09.126.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />. Similarly, we may compute a pooled test statistic based on Maddala and Wu (1999) and Choi (2001), </a></span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.127.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.100)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="198026">where <img class="Default EquationGraphic" src="images/advtimeser.053.09.128.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 20px; top: 0.0pt" alt="" /> is the </a><span class="In-line_math">p</span>-value associated with the idiosyncratic component ADF test for the <span class="In-line_math">i</span>-th cross-section.</div>
+      <div class="Body_Text"><a name="198027">Observe that although the individual ADF test statistics have a non-standard distribution characterized by functionals of Brownian motions, under cross-sectional independence, the pooled test converges to the standard Gaussian distribution. Furthermore, note that the null hypothesis of this test, that all cross-sections have a unit root, holds only if no stationary combination of the <img class="Default EquationGraphic" src="images/advtimeser.053.09.129.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> exists. As such, the pooled test is also, in fact, a panel test for no cointegration.</a></div>
+      <div class="Body_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="198031">Bear in mind, however, that the pooled version of the idiosyncratic ADF test does require cross-sectional independence, even though the overall PANIC procedure allows for slight correlation between the idiosyncratic components.</a></span></div>
+      <div class="Heading_7"><a name="198032">Testing common factors</a></div>
+      <div class="Body_Text"><a name="198033">Lastly, PANIC tests for unit roots in the common factors:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="198037">If there is only one common factor (<img class="Default EquationGraphic" src="images/advtimeser.053.09.130.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" />), PANIC computes an ADF regression with <img class="Default EquationGraphic" src="images/advtimeser.053.09.131.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> lags and tests for a unit root in the common factor.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="198044">In the multivariate common factor case (<img class="Default EquationGraphic" src="images/advtimeser.053.09.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />) perform an iterative testing procedure for determining the number of common trends. This procedure is reminiscent of the Johansen (1991) trace test for cointegrating rank. Bai and Ng consider two test statistics:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_Indent_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_Indent_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_Indent_inner"><a name="198048">The first, denoted as <img class="Default EquationGraphic" src="images/advtimeser.053.09.133.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" />, is based on a VAR(1) representation and corrects for serial correlation of arbitrary form through a non-parametric estimation. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_Indent_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_Indent_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_Indent_inner"><a name="198055">The second, denoted as <img class="Default EquationGraphic" src="images/advtimeser.053.09.134.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" />, is based on a VAR(<img class="Default EquationGraphic" src="images/advtimeser.053.09.135.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />) representation, and corrects for the presence of serial correlation through a filter procedure. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="198059">A brief description of the <img class="Default EquationGraphic" src="images/advtimeser.053.09.136.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 34px; top: 0.0pt" alt="" /> statistics is warranted here. In particular, these statistics are modified versions of similarly named statistics in Stock and Watson (1988) that were designed to test the null hypothesis that <img class="Default EquationGraphic" src="images/advtimeser.053.09.137.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> common factors have at most <img class="Default EquationGraphic" src="images/advtimeser.053.09.138.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> common stochastic trends, against the alternative that they have less than <img class="Default EquationGraphic" src="images/advtimeser.053.09.139.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> common trends. In this regard, the <img class="Default EquationGraphic" src="images/advtimeser.053.09.140.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> test adapts the Dickey and Fuller (1979) unit root test to the multivariate settings. On the other hand, the <img class="Default EquationGraphic" src="images/advtimeser.053.09.141.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> parallels in the multivariate the Phillips (1987) test.</a></div>
+      <div class="Bullet_List_Continue"><a name="198078">In practice, for each <img class="Default EquationGraphic" src="images/advtimeser.053.09.142.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 34px; top: 0.0pt" alt="" /> statistic, the testing procedure first computes the relevant <img class="Default EquationGraphic" src="images/advtimeser.053.09.143.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 34px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/advtimeser.053.09.144.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 55px; top: 0.0pt" alt="" /> and tests whether the number of common stochastic trends is equal to <img class="Default EquationGraphic" src="images/advtimeser.053.09.145.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />. If the null is not rejected, we conclude that all <img class="Default EquationGraphic" src="images/advtimeser.053.09.146.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 55px; top: 0.0pt" alt="" /> common factors are nonstationary. If the null is rejected, we decrement <img class="Default EquationGraphic" src="images/advtimeser.053.09.147.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> by <img class="Default EquationGraphic" src="images/advtimeser.053.09.148.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> and repeat until we fail to reject or until <img class="Default EquationGraphic" src="images/advtimeser.053.09.149.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 56px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Bullet_List_Continue"><a name="198106">If fail to reject the null at some <img class="Default EquationGraphic" src="images/advtimeser.053.09.150.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 61px; top: 0.0pt" alt="" />, we conclude that among the <img class="Default EquationGraphic" src="images/advtimeser.053.09.151.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> common factors, <img class="Default EquationGraphic" src="images/advtimeser.053.09.152.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> are nonstationary, and <img class="Default EquationGraphic" src="images/advtimeser.053.09.153.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 86px; top: 0.0pt" alt="" /> are stationary.</a></div>
+      <div class="Bullet_List_Continue"><a name="198119">If we reject the null at <img class="Default EquationGraphic" src="images/advtimeser.053.09.154.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 56px; top: 0.0pt" alt="" />, we conclude that all <img class="Default EquationGraphic" src="images/advtimeser.053.09.155.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> common factors are stationary.</a></div>
+      <div class="Heading_5"><a name="198120">CIPS Test</a></div>
+      <div class="Body_Text"><a name="198121">It is widely acknowledged that Bai and Ng (2004) is among the most general frameworks for panel unit root testing. In this regard, several specializations of PANIC exist and among the most popular and accessible is the Pesaran (2007) test (Cross-sectionally Augmented IPS). </a></div>
+      <div class="Body_Text"><a name="198122">The framework is again the factor augmented integrated panel, </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.156.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.101)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="198127">but with the cross-sectional dependency restricted to a single </a><span class="Emphasis">stationary</span> common factor (<img class="Default EquationGraphic" src="images/advtimeser.053.09.157.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.158.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is <img class="Default EquationGraphic" src="images/advtimeser.053.09.159.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />). </div>
+      <div class="Body_Text"><a name="198137">This model reduces to a simple heterogeneous dynamic linear model. When the deterministics include a trend and intercept we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.160.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.102)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="198146">where <img class="Default EquationGraphic" src="images/advtimeser.053.09.161.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> are mean zero, stationary ARMA processes that are cross-sectionally and intra-sectionally independent. In addition to being <img class="Default EquationGraphic" src="images/advtimeser.053.09.162.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.09.163.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is assumed to be serially uncorrelated with mean zero and constant variance, and <img class="Default EquationGraphic" src="images/advtimeser.053.09.164.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.09.165.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/advtimeser.053.09.166.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> are mutually independent for all </a><span class="In-line_math">i</span> and <span class="In-line_math">t</span>. </div>
+      <div class="Body_Text"><a name="198165">We may rewrite </a><span class="Link"><a href="#198142" title="Cross-sectionally Dependent Panel Unit Root Tests">Equation&nbsp;(42.102)</a></span> in Augmented Dickey-Fuller form as</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.167.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.103)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="198176">where <img class="Default EquationGraphic" src="images/advtimeser.053.09.168.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 115px; top: 0.0pt" alt="" />, the <img class="Default EquationGraphic" src="images/advtimeser.053.09.169.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> lagged differences are added to account for correlation in the <img class="Default EquationGraphic" src="images/advtimeser.053.09.170.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/advtimeser.053.09.171.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 36px; top: 0.0pt" alt="" /> represents factor augmentation.</a></div>
+      <div class="Body_Text"><a name="198183">It is important to highlight the fact that non-stationarity arises in this model only when the <img class="Default EquationGraphic" src="images/advtimeser.053.09.172.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 110px; top: 0.0pt" alt="" /> autoregressive coefficient is equal to 0. Accordingly the null hypothesis for the unit root test is </a></div>
+      <div class="Multi-line_Eq_No_Number"><a name="198190"><img class="Default EquationGraphic" src="images/advtimeser.053.09.173.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 89px; top: 0.0pt" alt="" /> for all </a><span class="In-line_math">i</span>, </div>
+      <div class="Body_Text"><a name="198191">against possibly heterogeneous alternatives, </a></div>
+      <div class="Multi-line_Eq_No_Number"><a name="198204"><img class="Default EquationGraphic" src="images/advtimeser.053.09.174.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 81px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/advtimeser.053.09.175.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 48px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.176.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 57px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/advtimeser.053.09.177.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 48px; top: 0.0pt" alt="" /> </a></div>
+      <div class="Body_Text"><a name="198214">such that <img class="Default EquationGraphic" src="images/advtimeser.053.09.178.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 121px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/advtimeser.053.09.179.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 67px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.180.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 83px; top: 0.0pt" alt="" /> is a positive integer, where, without loss of generality, we reorder the cross-sections to facilitate partitioning by index </a><span class="In-line_math">i</span>.</div>
+      <div class="Body_Text"><a name="198221">For <img class="Default EquationGraphic" src="images/advtimeser.053.09.181.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> sufficiently large, Pesaran (2007) argues that <img class="Default EquationGraphic" src="images/advtimeser.053.09.182.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 112px; top: 0.0pt" alt="" /> where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.183.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.104)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="198235">are proxies for the common factor <img class="Default EquationGraphic" src="images/advtimeser.053.09.184.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />. It follows that <img class="Default EquationGraphic" src="images/advtimeser.053.09.185.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 67px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.186.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 77px; top: 0.0pt" alt="" /> may be used to filter out the effects of the unobserved common factor. </a></div>
+      <div class="Body_Text"><a name="198236">Using these proxies we obtain the cross-sectionally augmented ADF (CADF) equation:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.187.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.105)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="198248">Let <img class="Default EquationGraphic" src="images/advtimeser.053.09.188.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 50px; top: 0.0pt" alt="" /> denote the </a><span class="In-line_math">t</span>-statistic associated with the traditional ADF null hypothesis <img class="Default EquationGraphic" src="images/advtimeser.053.09.189.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 87px; top: 0.0pt" alt="" /> for cross-section <span class="In-line_math">i</span>. Following Im, Pesaran, and Shin (2003), the panel unit root test of interest is a pooled version of individual CADF statistics, or the cross-sectionally augmented (CIPS) statistic:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.190.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.106)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="198256">A truncated version of this test is proposed to counter the influence of extreme outcomes that may arise when <img class="Default EquationGraphic" src="images/advtimeser.053.09.191.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is sufficiently small, say <img class="Default EquationGraphic" src="images/advtimeser.053.09.192.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 88px; top: 0.0pt" alt="" />. Define the constants <img class="Default EquationGraphic" src="images/advtimeser.053.09.193.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 92px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.09.194.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 83px; top: 0.0pt" alt="" />obtained by simulation in Pesaran (2007), and use these values to define a truncated version of <img class="Default EquationGraphic" src="images/advtimeser.053.09.195.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 44px; top: 0.0pt" alt="" />,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.09.196.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.107)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="198276">Neither CIPS nor truncated CIPS tests have standard limiting distributions. Critical values for popular scenarios have been derived via simulation and tabulated in Pesaran (2007).</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

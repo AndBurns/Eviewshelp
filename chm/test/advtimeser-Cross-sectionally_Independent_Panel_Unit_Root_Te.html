@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Cross-sectionally Independent Panel Unit Root Testing</title>
+    <link rel="StyleSheet" href="css/advtimeser.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="advtimeser-Seasonal_Unit_Root_Testing.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="advtimeser-Cross-sectionally_Dependent_Panel_Unit_Root_Test.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_univar.html">Advanced Univariate Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="advtimeser-Univariate_Time_Series_Analysis.html">Univariate Time Series Analysis</a> : Cross-sectionally Independent Panel Unit Root Testing</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="185476">Cross-sectionally Independent Panel Unit Root Testing</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#185479">Performing Independent Panel Unit Root Tests in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#185508">Independent Panel Unit Root Tests Background</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185558">Tests with Common Unit Root Process</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185586">Levin, Lin, and Chu</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185719">Breitung</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185757">Hadri</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#185843">Tests with Individual Unit Root Processes</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185849">Im, Pesaran, and Shin</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#185930">Fisher-ADF and Fisher-PP</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="195663">The unit root test is a cornerstone of modern time series analysis. Nevertheless, a well-known drawback of many popular univariate unit root tests is a lack of statistical power in the presence of small to medium sized samples. </a></div>
+      <div class="Body_Text"><a name="195610">Since many economic time series have short samples but are observed over many cross-sections, multivariate unit root tests that combine results for different cross-sections or series, offer improved statistical power over their univariate counterparts. While these tests are commonly termed &#8220;panel unit root&#8221; tests, theoretically, they are simply multiple-series unit root tests that have been applied to panel data structures (where the presence of cross-sections generates &#8220;multiple series&#8221; out of a single series)</a></div>
+      <div class="Body_Text"><a name="195978">EViews computes five different independent cross-section panel unit root tests: Levin, Lin and Chu (2002), Breitung (2000), Im, Pesaran and Shin (2003), Fisher-type tests using ADF and PP tests (Maddala and Wu (1999) and Choi (2001)), and Hadri (2000). Notably all of these tests require cross-sectional independence. Tests which relax this assumption are described in </a><span class="Link"><a href="advtimeser-Cross-sectionally_Dependent_Panel_Unit_Root_Test.html#196898" title="Cross-sectionally Dependent Panel Unit Root Tests">&#8220;Cross-sectionally Dependent Panel Unit Root Tests&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="185478">Bear in mind that while these tests are commonly termed &#8220;panel unit root&#8221; tests, theoretically, they are simply multiple-series unit root tests that have been applied to panel data structures (where the presence of cross-sections generates &#8220;multiple series&#8221; out of a single series). Accordingly, EViews supports these tests in settings involving multiple series: as a series view (if the workfile is panel structured), as a group view, or as a pool view.</a></div>
+      <div class="Heading_4"><a name="185479">Performing Independent Panel Unit Root Tests in EViews</a></div>
+      <div class="Body_Text"><a name="185480">The following discussion assumes that you are familiar with the basics of both unit root tests and panel unit root tests. Additional background is provided in </a><span class="Link"><a href="#185508" title="Cross-sectionally Independent Panel Unit Root Testing">&#8220;Independent Panel Unit Root Tests Background&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="185481">To begin, select </a><span class="Menu_Item">View/Unit Root Tests/Cross-sectionally Independent&#8230; </span>from the menu of an EViews group or pool object, or from the menu of an individual series in a panel structured workfile. Here we show the dialog for a Group unit root test&#8212;the other dialogs differ slightly (for testing using a pool object, there is an additional field in the upper-left hand portion of the dialog where you must indicate the name of the pool series on which you wish to conduct your test; for the series object in a panel workfile, the <span class="Menu_Item">Use balanced sample</span> option is not present).</div>
+      <div class="Picture"><a name="185485"><img class="Default" src="images/advtimeser.053.08.001.jpg" width="100%" style="left: 0.0pt; max-height: 402px; max-width: 492px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="185486">If you wish to accept the default settings, simply click on </a><span class="Dialog_Item">OK. </span>EViews will use the default <span class="Menu_Item">Summary</span> setting, and will compute a full suite of unit root tests on the levels of the series, along with a summary of the results. </div>
+      <div class="Body_Text"><a name="185487">To customize the unit root calculations, you will choose from a variety of options. The options on the left-hand side of the dialog determine the basic structure of the test or tests, while the options on the right-hand side of the dialog control advanced computational details such as bandwidth or lag selection methods, or kernel methods.</a></div>
+      <div class="Body_Text"><a name="185488">The dropdown menu at the top of the dialog is where you will choose the type of test to perform. There are six settings: &#8220;</a><span class="Menu_Item">Summary&#8221;,</span> &#8220;<span class="Menu_Item">Common root - Levin, Lin, Chu</span>&#8221;, &#8220;<span class="Menu_Item">Common root - Breitung</span>&#8221;, &#8220;<span class="Menu_Item">Individual root - Im, Pesaran, Shin&#8221;</span>, &#8220;<span class="Menu_Item">Individual root - Fisher - ADF&#8221;</span>, &#8220;<span class="Menu_Item">Individual root - Fisher - PP&#8221;</span>, and &#8220;<span class="Menu_Item">Hadri&#8221;</span>, corresponding to one or more of the tests listed above. The dropdown menu labels include a brief description of the assumptions under which the tests are computed. &#8220;Common root&#8221; indicates that the tests are estimated assuming a common AR structure for all of the series; &#8220;Individual root&#8221; is used for tests which allow for different AR coefficients in each series. </div>
+      <div class="Body_Text"><a name="185489">We have already pointed out that the </a><span class="Menu_Item">Summary</span> default instructs EViews to estimate the first five of the tests, where applicable, and to provide a brief summary of the results. Selecting an individual test type allows you better control over the computational method and provides additional detail on the test results.</div>
+      <div class="Body_Text"><a name="185490">The next two sets of radio buttons allow you to control the specification of your test equation. First, you may choose to conduct the unit root on the </a><span class="Menu_Item">Level</span>, <span class="Menu_Item">1st difference</span>, or <span class="Menu_Item">2nd difference</span> of your series. Next, you may choose between sets of exogenous regressors to be included. You can select <span class="Menu_Item">Individual intercept</span> if you wish to include individual fixed effects, <span class="Menu_Item">Individual intercepts and individual trends</span> to include both fixed effects and trends, or <span class="Menu_Item">None</span> for no regressors.</div>
+      <div class="Body_Text"><a name="185491">The </a><span class="Menu_Item">Use balanced sample </span>option is present only if you are estimating a Pool or a Group unit root test. If you select this option, EViews will adjust your sample so that only observations where all series values are not missing will be included in the test equations.</div>
+      <div class="Body_Text"><a name="185492">Depending on the form of the test or tests to be computed, you will be presented with various advanced options on the right side of the dialog. For tests that involve regressions on lagged difference terms (Levin, Lin, and Chu, Breitung, Im, Pesaran, and Shin, Fisher - ADF) these options relate to the choice of the number of lags to be included. For the tests involving kernel weighting (Levin, Lin, and Chu, Fisher - PP, Hadri), the options relate to the choice of bandwidth and kernel type.</a></div>
+      <div class="Body_Text"><a name="185493">For a group or pool unit root test, the EViews default is to use automatic selection methods: information matrix criterion based for the number of lag difference terms (with automatic selection of the maximum lag to evaluate), and the Andrews or Newey-West method for bandwidth selection. For unit root tests on a series in a panel workfile, the default behavior uses user-specified options.</a></div>
+      <div class="Body_Text"><a name="185494">If you wish to override these settings, simply enter the appropriate information. You may, for example, select a fixed, user-specified number of lags by entering a number in the </a><span class="Menu_Item">User specified</span> field. Alternatively, you may customize the settings for automatic lag selection method. Alternative criteria for evaluating the optimal lag length may be selected via the dropdown menu (Akaike, Schwarz, Hannan-Quinn, Modified Akaike, Modified Schwarz, Modified Hannan-Quinn), and you may limit the number of lags to try in automatic selection by entering a number in the <span class="Menu_Item">Maximum lags</span> box. For the kernel based methods, you may select a kernel type from the dropdown menu (<span class="Menu_Item">Bartlett</span>, <span class="Menu_Item">Parzen</span>, <span class="Menu_Item">Quadratic spectral</span>), and you may specify either an automatic bandwidth selection method (<span class="Menu_Item">Andrews</span>, <span class="Menu_Item">Newey-West</span>) or user-specified fixed bandwidth.</div>
+      <div class="Body_Text"><a name="185495">As an illustration, we perform a panel unit root tests on real gross investment data (I) in the oft-cited Grunfeld data containing data on R&amp;D expenditure and other economic measures for 10 firms for the years 1935 to 1954 found in &#8220;Grunfeld_Baltagi_Panel.WF1&#8221;. We compute the summary panel unit root test, using individual fixed effects as regressors, and automatic lag difference term and bandwidth selection (using the Schwarz criterion for the lag differences, and the Newey-West method and the Bartlett kernel for the bandwidth). The results for the panel unit root test are presented below:</a></div>
+      <div class="Table"><a name="185499"><img class="Default" src="images/advtimeser.053.08.002.jpg" width="100%" style="left: 0.0pt; max-height: 444px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="185500">The top of the output indicates the type of test, exogenous variables and test equation options. If we were instead estimating a Pool or Group test, a list of the series used in the test would also be depicted. The lower part of the summary output gives the main test results, organized both by null hypothesis as well as the maintained hypothesis concerning the type of unit root process. </a></div>
+      <div class="Body_Text"><a name="185501">All of the results indicate the presence of a unit root, as the LLC, IPS, and both Fisher tests fail to reject the null of a unit root.</a></div>
+      <div class="Body_Text"><a name="185502">If you only wish to compute a single unit root test type, or if you wish to examine the tests results in greater detail, you may simply repeat the unit root test after selecting the desired test in </a><span class="Menu_Item">Test type</span> dropdown menu. Here, we show the bottom portion of the LLC test specific output for the same data:</div>
+      <div class="Table"><a name="185506"><img class="Default" src="images/advtimeser.053.08.003.jpg" width="100%" style="left: 0.0pt; max-height: 368px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="185507">For each cross-section, the autoregression coefficient, variance of the regression, HAC of the dependent variable, the selected lag order, maximum lag, bandwidth truncation parameter, and the number of observations used are displayed.</a></div>
+      <div class="Heading_4"><a name="185508">Independent Panel Unit Root Tests Background</a></div>
+      <div class="Body_Text"><a name="185509">Panel unit root tests are similar, but not identical, to unit root tests carried out on a single series. Here, we briefly describe the five panel unit root tests currently supported in EViews; for additional detail, we encourage you to consult the original literature. The discussion assumes that you have a basic knowledge of unit root theory.</a></div>
+      <div class="Body_Text"><a name="185510">We begin by classifying our unit root tests on the basis of whether there are restrictions on the autoregressive process across cross-sections or series. Consider a following AR(1) process for panel data:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.004.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.63)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185519">where <img class="Default EquationGraphic" src="images/advtimeser.053.08.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 113px; top: 0.0pt" alt="" /> cross-section units or series, that are observed over periods <img class="Default EquationGraphic" src="images/advtimeser.053.08.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 117px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="185526">The <img class="Default EquationGraphic" src="images/advtimeser.053.08.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> represent the exogenous variables in the model, including any fixed effects or individual trends, <img class="Default EquationGraphic" src="images/advtimeser.053.08.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> are the autoregressive coefficients, and the errors <img class="Default EquationGraphic" src="images/advtimeser.053.08.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> are assumed to be mutually independent idiosyncratic disturbance. If <img class="Default EquationGraphic" src="images/advtimeser.053.08.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 55px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.08.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is said to be weakly (trend-) stationary. On the other hand, if <img class="Default EquationGraphic" src="images/advtimeser.053.08.012.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 65px; top: 0.0pt" alt="" /> then <img class="Default EquationGraphic" src="images/advtimeser.053.08.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> contains a unit root.</a></div>
+      <div class="Body_Text"><a name="185548">For purposes of testing, there are two natural assumptions that we can make about the <img class="Default EquationGraphic" src="images/advtimeser.053.08.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />. First, one can assume that the persistence parameters are common across cross-sections so that <img class="Default EquationGraphic" src="images/advtimeser.053.08.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 55px; top: 0.0pt" alt="" /> for all <img class="Default EquationGraphic" src="images/advtimeser.053.08.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. The Levin, Lin, and Chu (LLC), Breitung, and Hadri tests all employ this assumption. Alternatively, one can allow <img class="Default EquationGraphic" src="images/advtimeser.053.08.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> to vary freely across cross-sections. The Im, Pesaran, and Shin (IPS), and Fisher-ADF and Fisher-PP tests are of this form.</a></div>
+      <div class="Heading_5"><a name="185558">Tests with Common Unit Root Process</a></div>
+      <div class="Body_Text"><a name="185559">Levin, Lin, and Chu (LLC), Breitung, and Hadri tests all assume that there is a common unit root process so that <img class="Default EquationGraphic" src="images/advtimeser.053.08.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is identical across cross-sections. The first two tests employ a null hypothesis of a unit root while the Hadri test uses a null of no unit root.</a></div>
+      <div class="Body_Text"><a name="185563">LLC and Breitung both consider the following basic ADF specification:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.019.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.64)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185572">where we assume a common <img class="Default EquationGraphic" src="images/advtimeser.053.08.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 79px; top: 0.0pt" alt="" />, but allow the lag order for the difference terms, <img class="Default EquationGraphic" src="images/advtimeser.053.08.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />, to vary across cross-sections. The null and alternative hypotheses for the tests may be written as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.022.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.65)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.023.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.66)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185584">Under the null hypothesis, there is a unit root, while under the alternative, there is no unit root. </a></div>
+      <div class="Heading_6"><a name="185586">Levin, Lin, and Chu</a></div>
+      <div class="Body_Text"><a name="185596">The method described in LLC derives estimates of <img class="Default EquationGraphic" src="images/advtimeser.053.08.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> from proxies for <img class="Default EquationGraphic" src="images/advtimeser.053.08.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.08.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> that are standardized and free of autocorrelations and deterministic components.</a></div>
+      <div class="Body_Text"><a name="185597">For a given set of lag orders, we begin by estimating two additional sets of equations, regressing both <img class="Default EquationGraphic" src="images/advtimeser.053.08.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/advtimeser.053.08.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" /> on the lag terms <img class="Default EquationGraphic" src="images/advtimeser.053.08.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 51px; top: 0.0pt" alt="" /> (for <img class="Default EquationGraphic" src="images/advtimeser.053.08.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 96px; top: 0.0pt" alt="" />) and the exogenous variables <img class="Default EquationGraphic" src="images/advtimeser.053.08.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" />. The estimated coefficients from these two regressions will be denoted <img class="Default EquationGraphic" src="images/advtimeser.053.08.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 45px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.08.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 45px; top: 0.0pt" alt="" />, respectively.</a></div>
+      <div class="Body_Text"><a name="185625">We define <img class="Default EquationGraphic" src="images/advtimeser.053.08.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" /> by taking <img class="Default EquationGraphic" src="images/advtimeser.053.08.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" /> and removing the autocorrelations and deterministic components using the first set of auxiliary estimates:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.036.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.67)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185633">Likewise, we may define the analogous <img class="Default EquationGraphic" src="images/advtimeser.053.08.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" /> using the second set of coefficients:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.038.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.68)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185644">Next, we obtain our proxies by standardizing both <img class="Default EquationGraphic" src="images/advtimeser.053.08.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.08.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" />, dividing by the regression standard error:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.041.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.69)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185655">where <img class="Default EquationGraphic" src="images/advtimeser.053.08.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> are the estimated standard errors from estimating each ADF in </a><span class="Link"><a href="#185568" title="Cross-sectionally Independent Panel Unit Root Testing">Equation&nbsp;(42.64)</a></span>.</div>
+      <div class="Body_Text"><a name="185659">Lastly, an estimate of the coefficient <img class="Default EquationGraphic" src="images/advtimeser.053.08.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> may be obtained from the pooled proxy equation:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.044.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.70)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185670">LLC show that under the null, a modified </a><span class="In-line_math">t</span>-statistic for the resulting <img class="Default EquationGraphic" src="images/advtimeser.053.08.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is asymptotically normally distributed</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.046.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.71)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185687">where <img class="Default EquationGraphic" src="images/advtimeser.053.08.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is the standard </a><span class="In-line_math">t</span>-statistic for <img class="Default EquationGraphic" src="images/advtimeser.053.08.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.08.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 20px; top: 0.0pt" alt="" /> is the estimated variance of the error term <img class="Default EquationGraphic" src="images/advtimeser.053.08.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.08.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> is the standard error of <img class="Default EquationGraphic" src="images/advtimeser.053.08.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, and:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.053.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.72)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185701">The remaining terms, which involve complicated moment calculations, are described in greater detail in LLC. The average standard deviation ratio, <img class="Default EquationGraphic" src="images/advtimeser.053.08.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" />, is defined as the mean of the ratios of the long-run standard deviation to the innovation standard deviation for each individual. Its estimate is derived using kernel-based techniques. The remaining two terms, <img class="Default EquationGraphic" src="images/advtimeser.053.08.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 43px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.08.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 42px; top: 0.0pt" alt="" /> are adjustment terms for the mean and standard deviation.</a></div>
+      <div class="Body_Text"><a name="185711">The LLC method requires a specification of the number of lags used in each cross-section ADF regression, <img class="Default EquationGraphic" src="images/advtimeser.053.08.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />, as well as kernel choices used in the computation of <img class="Default EquationGraphic" src="images/advtimeser.053.08.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" />. In addition, you must specify the exogenous variables used in the test equations. You may elect to include no exogenous regressors, or to include individual constant terms (fixed effects), or to employ individual constants and trends.</a></div>
+      <div class="Heading_6"><a name="185719">Breitung</a></div>
+      <div class="Body_Text"><a name="185720">The Breitung method differs from LLC in two distinct ways. First, only the autoregressive portion (and not the exogenous components) is removed when constructing the standardized proxies:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.059.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.73)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185734">where <img class="Default EquationGraphic" src="images/advtimeser.053.08.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/advtimeser.053.08.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 15px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/advtimeser.053.08.062.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> are as defined for LLC.</a></div>
+      <div class="Body_Text"><a name="185735">Second, the proxies are transformed and detrended,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.063.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.74)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185743">The persistence parameter <img class="Default EquationGraphic" src="images/advtimeser.053.08.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is estimated from the pooled proxy equation:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.065.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.75)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185751">Breitung shows that under the null, the resulting estimator <img class="Default EquationGraphic" src="images/advtimeser.053.08.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 24px; top: 0.0pt" alt="" /> is asymptotically distributed as a standard normal.</a></div>
+      <div class="Body_Text"><a name="185752">The Breitung method requires only a specification of the number of lags used in each cross-section ADF regression, <img class="Default EquationGraphic" src="images/advtimeser.053.08.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />, and the exogenous regressors. Note that in contrast with LLC, no kernel computations are required.</a></div>
+      <div class="Heading_6"><a name="185757">Hadri</a></div>
+      <div class="Body_Text"><a name="185758">The Hadri panel unit root test is similar to the KPSS unit root test, and has a null hypothesis of no unit root in any of the series in the panel. Like the KPSS test, the Hadri test is based on the residuals from the individual OLS regressions of <img class="Default EquationGraphic" src="images/advtimeser.053.08.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> on a constant, or on a constant and a trend. For example, if we include both the constant and a trend, we derive estimates from:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.069.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.76)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185769">Given the residuals <img class="Default EquationGraphic" src="images/advtimeser.053.08.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 19px; max-width: 12px; top: 0.0pt" alt="" /> from the individual regressions, we form the LM statistic:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.071.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.77)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185777">where <img class="Default EquationGraphic" src="images/advtimeser.053.08.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> are the cumulative sums of the residuals,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.073.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.78)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185785">and <img class="Default EquationGraphic" src="images/advtimeser.053.08.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 17px; top: 0.0pt" alt="" /> is the average of the individual estimators of the residual spectrum at frequency zero:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.075.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.79)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185795">EViews provides several methods for estimating the <img class="Default EquationGraphic" src="images/advtimeser.053.08.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />. See </a><span class="Link"><a href="advtimeser-Unit_Root_Testing.html#184599" title="Unit Root Testing">&#8220;Unit Root Testing&#8221;</a></span> for additional details.</div>
+      <div class="Body_Text"><a name="185800">An alternative form of the LM statistic allows for heteroskedasticity across <img class="Default EquationGraphic" src="images/advtimeser.053.08.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.078.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.80)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185805">Hadri shows that under mild assumptions,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.079.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.81)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185819">where <img class="Default EquationGraphic" src="images/advtimeser.053.08.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 72px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.08.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 79px; top: 0.0pt" alt="" />, if the model only includes constants (<img class="Default EquationGraphic" src="images/advtimeser.053.08.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is set to 0 for all <img class="Default EquationGraphic" src="images/advtimeser.053.08.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />), and <img class="Default EquationGraphic" src="images/advtimeser.053.08.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 80px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.08.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 104px; top: 0.0pt" alt="" />, otherwise.</a></div>
+      <div class="Body_Text"><a name="185829">The Hadri panel unit root tests require only the specification of the form of the OLS regressions: whether to include only individual specific constant terms, or whether to include both constant and trend terms. EViews reports two <img class="Default EquationGraphic" src="images/advtimeser.053.08.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />-statistic values, one based on <img class="Default EquationGraphic" src="images/advtimeser.053.08.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> with the associated homoskedasticity assumption, and the other using <img class="Default EquationGraphic" src="images/advtimeser.053.08.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> that is heteroskedasticity consistent.</a></div>
+      <div class="Body_Text"><a name="185839">It is worth noting that simulation evidence suggests that in various settings (for example, small <img class="Default EquationGraphic" src="images/advtimeser.053.08.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />), Hadri's panel unit root test experiences significant size distortion in the presence of autocorrelation when there is no unit root. In particular, the Hadri test appears to over-reject the null of stationarity, and </a><span class="Emphasis">may yield results that directly contradict those obtained using alternative test statistics</span> (see Hlouskova and Wagner (2006) for discussion and details).</div>
+      <div class="Heading_5"><a name="185843">Tests with Individual Unit Root Processes</a></div>
+      <div class="Body_Text"><a name="185844">The Im, Pesaran, and Shin, and the Fisher-ADF and PP tests all allow for individual unit root processes so that <img class="Default EquationGraphic" src="images/advtimeser.053.08.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> may vary across cross-sections. The tests are all characterized by the combining of individual unit root tests to derive a panel-specific result.</a></div>
+      <div class="Heading_6"><a name="185849">Im, Pesaran, and Shin</a></div>
+      <div class="Body_Text"><a name="185850">Im, Pesaran, and Shin begin by specifying a separate ADF regression for each cross section:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.091.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.82)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185856">The null hypothesis may be written as,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.092.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.83)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185861">while the alternative hypothesis is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.093.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.84)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185869">(where the <img class="Default EquationGraphic" src="images/advtimeser.053.08.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> may be reordered as necessary) which may be interpreted as a non-zero fraction of the individual processes is stationary.</a></div>
+      <div class="Body_Text"><a name="185876">After estimating the separate ADF regressions, the average of the </a><span class="In-line_math">t</span>-statistics for <img class="Default EquationGraphic" src="images/advtimeser.053.08.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> from the individual ADF regressions, <img class="Default EquationGraphic" src="images/advtimeser.053.08.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 55px; top: 0.0pt" alt="" />:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.097.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.85)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185884">is then adjusted to arrive at the desired test statistics.</a></div>
+      <div class="Body_Text"><a name="185891">In the case where the lag order is always zero (<img class="Default EquationGraphic" src="images/advtimeser.053.08.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 55px; top: 0.0pt" alt="" /> for all <img class="Default EquationGraphic" src="images/advtimeser.053.08.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />), simulated critical values for <img class="Default EquationGraphic" src="images/advtimeser.053.08.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 30px; top: 0.0pt" alt="" /> are provided in the IPS paper for different numbers of cross sections <img class="Default EquationGraphic" src="images/advtimeser.053.08.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, series lengths <img class="Default EquationGraphic" src="images/advtimeser.053.08.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />, and for test equations containing either intercepts, or intercepts and linear trends. EViews uses these values, or linearly interpolated values, in evaluating the significance of the test statistics.</a></div>
+      <div class="Body_Text"><a name="185904">In the general case where the lag order in </a><span class="Link"><a href="#185855" title="Cross-sectionally Independent Panel Unit Root Testing">Equation&nbsp;(42.82)</a></span> may be non-zero for some cross-sections, IPS show that a properly standardized <img class="Default EquationGraphic" src="images/advtimeser.053.08.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 30px; top: 0.0pt" alt="" /> has an asymptotic standard normal distribution:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.104.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.86)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185915">The expressions for the expected mean and variance of the ADF regression </a><span class="In-line_math">t</span>-statistics, <img class="Default EquationGraphic" src="images/advtimeser.053.08.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 79px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.08.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 97px; top: 0.0pt" alt="" />, are provided by IPS for various values of <img class="Default EquationGraphic" src="images/advtimeser.053.08.107.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.08.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> and differing test equation assumptions, and are not provided here.</div>
+      <div class="Body_Text"><a name="185928">The IPS test statistic requires specification of the number of lags and the specification of the deterministic component for each cross-section ADF equation. You may choose to include individual constants, or to include individual constant and trend terms.</a></div>
+      <div class="Heading_6"><a name="185930">Fisher-ADF and Fisher-PP</a></div>
+      <div class="Body_Text"><a name="185931">An alternative approach to panel unit root tests uses Fisher&#8217;s (1932) results to derive tests that combine the </a><span class="In-line_math">p</span>-values from individual unit root tests. This idea has been proposed by Maddala and Wu, and by Choi.</div>
+      <div class="Body_Text"><a name="185944">If we define <img class="Default EquationGraphic" src="images/advtimeser.053.08.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> as the </a><span class="In-line_math">p</span>-value from any individual unit root test for cross-section <img class="Default EquationGraphic" src="images/advtimeser.053.08.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, then under the null of unit root for all <img class="Default EquationGraphic" src="images/advtimeser.053.08.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> cross-sections, we have the asymptotic result that</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.112.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.87)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185952">In addition, Choi demonstrates that:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.08.113.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.88)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="185960">where <img class="Default EquationGraphic" src="images/advtimeser.053.08.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 29px; top: 0.0pt" alt="" /> is the inverse of the standard normal cumulative distribution function.</a></div>
+      <div class="Body_Text"><a name="185964">EViews reports both the asymptotic <img class="Default EquationGraphic" src="images/advtimeser.053.08.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> and standard normal statistics using ADF and Phillips-Perron individual unit root tests. The null and alternative hypotheses are the same as for the as IPS.</a></div>
+      <div class="Body_Text"><a name="185965">For both Fisher tests, you must specify the exogenous variables for the test equations. You may elect to include no exogenous regressors, to include individual constants (effects), or include individual constant and trend terms.</a></div>
+      <div class="Body_Text"><a name="185966">Additionally, when the Fisher tests are based on ADF test statistics, you must specify the number of lags used in each cross-section ADF regression. For the PP form of the test, you must instead specify a method for estimating <img class="Default EquationGraphic" src="images/advtimeser.053.08.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />. EViews supports estimators for <img class="Default EquationGraphic" src="images/advtimeser.053.08.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> based on kernel-based sum-of-covariances. See </a><span class="Link"><a href="advtimeser-Unit_Root_Testing.html#185170" title="Unit Root Testing">&#8220;Frequency Zero Spectrum Estimation&#8221;</a></span> for details.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

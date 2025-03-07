@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Panel Estimation Examples</title>
+    <link rel="StyleSheet" href="css/panel.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="panel-Estimating_a_Panel_Equation.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="panel-Panel_Equation_Testing.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="panel-Panel_Estimation.html">Panel Estimation</a> : Panel Estimation Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="196584">Panel Estimation Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#189254">Least Squares Examples</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#189336">Instrumental Variables Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#189356">GMM Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#193516">Pooled Mean Group Example</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="189254">Least Squares Examples</a></div>
+      <div class="Body_Text"><a name="189255">To illustrate the estimation of panel equations in EViews, we first consider an example involving unbalanced panel data from Harrison and Rubinfeld (1978) for the study of hedonic pricing (&#8220;Harrison_panel.WF1&#8221;). The data are well known and used as an example dataset in many sources (</a><span class="Emphasis">e.g.</span>, Baltagi (2005), p. 171).</div>
+      <div class="Picture"><a name="189259"><img class="Default" src="images/panel.068.3.01.jpg" width="100%" style="left: 0.0pt; max-height: 272px; max-width: 459px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189260">The data consist of 506 census tract observations on 92 towns in the Boston area with group sizes ranging from 1 to 30. The dependent variable of interest is the logarithm of the median value of owner occupied houses (MV), and the regressors include various measures of housing desirability.</a></div>
+      <div class="Body_Text"><a name="189261">We begin our example by structuring our workfile as an undated panel. Click on the &#8220;Range:&#8221; description in the workfile window, select </a><span class="Menu_Item">Undated Panel</span>, and enter &#8220;TOWNID&#8221; as the <span class="Menu_Item">Identifier series</span>. EViews will prompt you twice to create a CELLID series to uniquely identify observations. Click on <span class="Menu_Item">OK</span> to both questions to accept your settings.</div>
+      <div class="Picture"><a name="189265"><img class="Default" src="images/panel.068.3.02.jpg" width="100%" style="left: 0.0pt; max-height: 112px; max-width: 449px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189266">EViews restructures your workfile so that it is an unbalanced panel workfile. The top portion of the workfile window will change to show the undated structure which has 92 cross-sections and a maximum of 30 observations in a cross-section.</a></div>
+      <div class="Picture"><a name="189270"><img class="Default" src="images/panel.068.3.03.jpg" width="100%" style="left: 0.0pt; max-height: 413px; max-width: 509px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189271">Next, we open the equation specification dialog by selecting </a><span class="Menu_Item">Quick/Estimate Equation</span> from the main EViews menu. </div>
+      <div class="Body_Text"><a name="189272">First, following Baltagi and Chang (1994) (also described in Baltagi, 2005), we estimate a fixed effects specification of a hedonic housing equation. The dependent variable in our specification is the median value MV, and the regressors are the crime rate (CRIM), a dummy variable for the property along Charles River (CHAS), air pollution (NOX), average number of rooms (RM), proportion of older units (AGE), distance from employment centers (DIS), proportion of African-Americans in the population (B), and the proportion of lower status individuals (LSTAT). Note that you may include a constant term C in the specification. Since we are estimating a fixed effects specification, EViews will add one if it is not present so that the fixed effects estimates are relative to the constant term and add up to zero.</a></div>
+      <div class="Body_Text"><a name="189273">Click on the </a><span class="Menu_Item">Panel Options</span> tab and select <span class="Menu_Item">Fixed</span> for the <span class="Menu_Item">Cross-section</span> effects. To match the Baltagi and Chang results, we will leave the remaining settings at their defaults. Click on <span class="Menu_Item">OK</span> to accept the specification.</div>
+      <div class="Table"><a name="189277"><img class="Default" src="images/panel.068.3.04.jpg" width="100%" style="left: 0.0pt; max-height: 688px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189278">The results for the fixed effects estimation are depicted here. Note that as in pooled estimation, the reported R-squared and </a><span class="In-line_math">F</span>-statistics are based on the difference between the residuals sums of squares from the estimated model, and the sums of squares from a <span class="Emphasis">single</span> constant-only specification, not from a fixed-effect-only specification. Similarly, the reported information criteria report likelihoods adjusted for the number of estimated coefficients, including fixed effects. Lastly, the reported Durbin-Watson stat is formed simply by computing the first-order residual correlation on the stacked set of residuals.</div>
+      <div class="Body_Text"><a name="189282">We may click on the </a><span class="Menu_Item">Estimate</span> button to modify the specification to match the Wallace-Hussain random effects specification considered by Baltagi and Chang. We modify the specification to include the additional regressors (ZN, INDUS, RAD, TAX, PTRATIO) used in estimation, change the cross-section effects to be estimated as a random effect, and use the <span class="Menu_Item">Options</span> page to set the random effects computation method to Wallace-Hussain.</div>
+      <div class="Body_Text"><a name="189283">The top portion of the resulting output is given by:</a></div>
+      <div class="Table"><a name="189287"><img class="Default" src="images/panel.068.3.05.jpg" width="100%" style="left: 0.0pt; max-height: 696px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189288">Note that the estimates of the component standard deviations must be squared to match the component variances reported by Baltagi and Chang (0.016 and 0.020, respectively).</a></div>
+      <div class="Picture"><a name="189292"><img class="Default" src="images/panel.068.3.06.jpg" width="100%" style="left: 0.0pt; max-height: 320px; max-width: 461px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189293">Next, we consider an example of estimation with standard errors that are robust to serial correlation. For this example, we employ data on job training grants (&#8220;Jtrain.WF1&#8221;) used in examples from Wooldridge (2002, p. 276 and 282). </a></div>
+      <div class="Body_Text"><a name="189294">As before, the first step is to structure the workfile as a panel workfile. Click on </a><span class="Menu_Item">Range:</span> to bring up the dialog, and enter &#8220;YEAR&#8221; as the date identifier and &#8220;FCODE&#8221; as the cross-section ID. </div>
+      <div class="Picture"><a name="189298"><img class="Default" src="images/panel.068.3.07.jpg" width="100%" style="left: 0.0pt; max-height: 118px; max-width: 462px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189299">EViews will structure the workfile so that it is a panel workfile with 157 cross-sections, and three annual observations. Note that even though there are 471 observations in the workfile, a large number of them contain missing values for variables of interest.</a></div>
+      <div class="Picture"><a name="189303"><img class="Default" src="images/panel.068.3.08.jpg" width="100%" style="left: 0.0pt; max-height: 344px; max-width: 291px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189304">To estimate the fixed effect specification with robust standard errors (Wooldridge example 10.5, p. 276), click on specification </a><span class="Menu_Item">Quick/Estimate Equation</span> from the main EViews menu. Enter the list specification:</div>
+      <div class="Input"><a name="189305">lscrap c d88 d89 grant grant_1</a></div>
+      <div class="Body_Text"><a name="189306">in the </a><span class="Menu_Item">Equation specification</span> edit box on the main page and select <span class="Menu_Item">Fixed</span> in the Cross-section effects specification dropdown menu on the <span class="Menu_Item">Panel Options</span> page. </div>
+      <div class="Body_Text"><a name="193926">Lastly, since we wish to compute standard errors that are robust to serial correlation (Arellano (1987), White (1980)), we choose </a><span class="Menu_Item">White period</span> as the <span class="Menu_Item">Coef covariance method</span>. To match the reported Wooldridge example, we must select <span class="Menu_Item">No d.f. correction</span> in the covariance calculation. Click on <span class="Menu_Item">OK</span> to accept the options. EViews displays the results from estimation:</div>
+      <div class="Table"><a name="189310"><img class="Default" src="images/panel.068.3.09.jpg" width="100%" style="left: 0.0pt; max-height: 574px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189311">Note that EViews automatically adjusts for the missing values in the data. There are only 162 observations on 54 cross-sections used in estimation. The top portion of the output indicates that the results use robust White period standard errors with no d.f. correction. Notice that EViews warns you that the estimated coefficient covariances is not of full rank which occurs in this case since the number of periods is less than the number of cross-sections.</a></div>
+      <div class="Body_Text"><a name="189312">Alternately, we may estimate a first difference estimator for these data with robust standard errors (Wooldridge example 10.6, p. 282). Open a new equation dialog by clicking on </a><span class="Menu_Item">Quick/Estimate Equation...</span>, or modify the existing equation by clicking on the <span class="Menu_Item">Estimate</span> button on the equation toolbar. Enter the specification:</div>
+      <div class="Input"><a name="189313">d(lscrap) c d89 d(grant) d(grant_1)</a></div>
+      <div class="Body_Text"><a name="189314">in the </a><span class="Menu_Item">Equation specification</span> edit box on the main page, select <span class="Menu_Item">None </span>in the Cross-section effects specification dropdown menu, <span class="Menu_Item">White period</span> and <span class="Menu_Item">No d.f. correction</span> for the coefficient covariance method on the <span class="Menu_Item">Panel Options</span> page. The results are given by:</div>
+      <div class="Table"><a name="189318"><img class="Default" src="images/panel.068.3.10.jpg" width="100%" style="left: 0.0pt; max-height: 469px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189319">While current versions of EViews do not provide a full set of specification tests for panel equations, it is a straightforward task to construct some tests using residuals obtained from the panel estimation.</a></div>
+      <div class="Body_Text"><a name="189320">To continue with the Wooldridge example, we may test for AR(1) serial correlation in the first-differenced equation by regressing the residuals from this specification on the lagged residuals using data for the year 1989. First, we save the residual series in the workfile. Click on </a><span class="Menu_Item">Proc/Make Residual Series...</span> on the estimated equation toolbar, and save the residuals to the series RESID01.</div>
+      <div class="Body_Text"><a name="189321">Next, regress RESID01 on RESID01(-1), yielding:</a></div>
+      <div class="Table"><a name="189325"><img class="Default" src="images/panel.068.3.11.jpg" width="100%" style="left: 0.0pt; max-height: 368px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189326">Under the null hypothesis that the original idiosyncratic errors are uncorrelated, the residuals from this equation should have an autocorrelation coefficient of -0.5. Here, we obtain an estimate of <img class="Default EquationGraphic" src="images/panel.068.3.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 87px; top: 0.0pt" alt="" /> which appears to be far from the null value. A formal Wald hypothesis test rejects the null that the original idiosyncratic errors are serially uncorrelated. Perform a Wald test on the test equation by clicking on </a><span class="Menu_Item">View/Coefficient Diagnostics/Wald-Coefficient Restrictions... </span>and entering the restriction &#8220;C(1)=-0.5&#8221; in the edit box:</div>
+      <div class="Table"><a name="189333"><img class="Default" src="images/panel.068.3.13.jpg" width="100%" style="left: 0.0pt; max-height: 351px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Table"><a name="189334">&nbsp;</a></div>
+      <div class="Body_Text"><a name="189335">The formal test confirms our casual observation, strongly rejecting the null hypothesis.</a></div>
+      <div class="Heading_4"><a name="189336">Instrumental Variables Example</a></div>
+      <div class="Body_Text"><a name="189337">To illustrate the estimation of instrumental variables panel estimators, we consider an example taken from Papke (1994) for enterprise zone data for 22 communities in Indiana that is outlined in Wooldridge (2002, p. 306). </a></div>
+      <div class="Picture"><a name="189341"><img class="Default" src="images/panel.068.3.14.jpg" width="100%" style="left: 0.0pt; max-height: 292px; max-width: 444px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189342">The panel workfile for this example is structured using YEAR as the period identifier, and CITY as the cross-section identifier. The result is a balanced annual panel for dates from 1980 to 1988 for 22 cross-sections.</a></div>
+      <div class="Body_Text"><a name="189343">To estimate the example specification, create a new equation by entering the keyword </a><span class="In-line_command">tsls</span> in the command line, or by clicking on <span class="Menu_Item">Quick/Estimate Equation...</span> in the main menu. Selecting <span class="Menu_Item">TSLS - Two-Stage Least Squares (and AR)</span> in the <span class="Menu_Item">Method</span> dropdown menu to display the instrumental variables estimator dialog, if necessary, and enter:</div>
+      <div class="Input"><a name="189344">d(luclms) c d(luclms(-1)) d(ez)</a></div>
+      <div class="Body_Text"><a name="189345">to regress the difference of log unemployment claims (LUCLMS) on the lag difference, and the difference of enterprise zone designation (EZ). Since the model is estimated with time intercepts, you should click on the </a><span class="Menu_Item">Panel Options</span> page, and select <span class="Menu_Item">Fixed</span> for the <span class="Menu_Item">Period</span> effects.</div>
+      <div class="Body_Text"><a name="189346">Next, click on the Instruments tab, and add the names:</a></div>
+      <div class="Input"><a name="189347">c d(luclms(-2)) d(ez)</a></div>
+      <div class="Body_Text"><a name="189348">to the </a><span class="Menu_Item">Instrument list</span> edit box. Note that adding the constant C to the regressor and instrument boxes is not required since the fixed effects estimator will add it for you. Click on <span class="Menu_Item">OK</span> to accept the dialog settings. EViews displays the output for the IV regression:</div>
+      <div class="Table"><a name="189352"><img class="Default" src="images/panel.068.3.15.jpg" width="100%" style="left: 0.0pt; max-height: 557px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189353">Note that the instrument rank in this equation is 8 since the period dummies also serve as instruments, so you have the 3 instruments specified explicitly, plus 5 for the non-collinear period dummy variables.</a></div>
+      <div class="Heading_4"><a name="189356">GMM Example</a></div>
+      <div class="Body_Text"><a name="189357">To illustrate the estimation of dynamic panel data models using GMM, we employ the unbalanced 1031 observation panel of firm level data (&#8220;Abond_pan.WF1&#8221;) from Layard and Nickell (1986), previously examined by Arellano and Bond (1991). The analysis fits the log of employment (N) to the log of the real wage (W), log of the capital stock (K), and the log of industry output (YS). </a></div>
+      <div class="Picture"><a name="189361"><img class="Default" src="images/panel.068.3.16.jpg" width="100%" style="left: 0.0pt; max-height: 310px; max-width: 431px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189362">The workfile is structured as a dated annual panel using ID as the cross-section identifier series and YEAR as the date classification series.</a></div>
+      <div class="Body_Text"><a name="189363">Since the model is assumed to be dynamic, we employ EViews tools for estimating dynamic panel data models. To bring up the GMM dialog, enter the keyword </a><span class="In-line_command">gmm</span> in the command line, or select <span class="Menu_Item">Quick/Estimate Equation...</span> from the main menu, and choose <span class="Menu_Item">GMM/DPD - Generalized Method of Moments / Dynamic Panel Data </span>in the <span class="Menu_Item">Method</span> dropdown menu to display the IV estimator dialog.</div>
+      <div class="Body_Text"><a name="189364">Click on the button labeled </a><span class="Menu_Item">Dynamic Panel Wizard...</span> to bring up the DPD wizard. The DPD wizard is a tool that will aid you in filling out the general GMM dialog. The first page is an introductory screen describing the basic purpose of the wizard. Click <span class="Menu_Item">Next</span> to continue.</div>
+      <div class="Picture"><a name="189368"><img class="Default" src="images/panel.068.3.17.jpg" width="100%" style="left: 0.0pt; max-height: 410px; max-width: 528px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189369">The second page of the wizard prompts you for the dependent variable and the number of its lags to include as explanatory variables. In this example, we wish to estimate an equation with N as the dependent variable and N(-1) and N(-2) as explanatory variables so we enter &#8220;N&#8221; and select &#8220;2&#8221; lags in the dropdown menu. Click on </a><span class="Menu_Item">Next</span> to continue to the next page, where you will specify the remaining explanatory variables.</div>
+      <div class="Body_Text"><a name="194207">In the next page, you will complete the specification of your explanatory variables. First, enter the list:</a></div>
+      <div class="Input"><a name="194208">w w(-1) k ys ys(-1)</a></div>
+      <div class="Body_Text"><a name="194209">in the regressor edit box to include these variables. Since the desired specification will include time dummies, make certain that the checkbox for </a><span class="Menu_Item">Include period dummy variables</span> is selected, then click on <span class="Menu_Item">Next</span> to proceed.</div>
+      <div class="Picture"><a name="189376"><img class="Default" src="images/panel.068.3.18.jpg" width="100%" style="left: 0.0pt; max-height: 410px; max-width: 528px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189377">The next page of the wizard is used to specify a transformation to remove the cross-section fixed effect. You may choose to use first </a><span class="Menu_Item">Differences</span> or <span class="Menu_Item">Orthogonal deviations</span>. In addition, if your specification includes period dummy variables, there is a checkbox asking whether you wish to transform the period dummies, or to enter them in levels. Here we specify the first difference transformation, and choose to include untransformed period dummies in the transformed equation. Click on <span class="Menu_Item">Next</span> to continue.</div>
+      <div class="Picture"><a name="189381"><img class="Default" src="images/panel.068.3.19.jpg" width="100%" style="left: 0.0pt; max-height: 410px; max-width: 528px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189382">The next page is where you will specify your dynamic period-specific (predetermined) instruments. The instruments should be entered with the &#8220;@DYN&#8221; tag to indicate that they are to be expanded into sets of predetermined instruments, with optional arguments to indicate the lags to be included. If no arguments are provided, the default is to include all valid lags (from -2 to &#8220;-infinity&#8221;). Here, we instruct EViews that we wish to use the default lags for N as predetermined instruments.</a></div>
+      <div class="Picture"><a name="189386"><img class="Default" src="images/panel.068.3.20.jpg" width="100%" style="left: 0.0pt; max-height: 410px; max-width: 528px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189387">You should now specify the remaining instruments. There are two lists that should be provided. The first list, which is entered in the edit field labeled </a><span class="Menu_Item">Transform</span>, should contain a list of the strictly exogenous instruments that you wish to transform prior to use in estimating the transformed equation. The second list, which should be entered in the <span class="Menu_Item">No transform</span> edit box should contain a list of instruments that should be used directly without transformation. Enter the remaining instruments:</div>
+      <div class="Input"><a name="189388">w w(-1) k ys ys(-1)</a></div>
+      <div class="Body_Text"><a name="189389">in the first edit box and click on </a><span class="Menu_Item">Next</span> to proceed to the final page.</div>
+      <div class="Picture"><a name="189393"><img class="Default" src="images/panel.068.3.21.jpg" width="100%" style="left: 0.0pt; max-height: 410px; max-width: 528px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189394">The final page allows you to specify your GMM weighting and coefficient covariance calculation choices. In the first dropdown menu, you will choose a GMM Iteration option. You may select </a><span class="Menu_Item">1-step (for i.i.d. innovations)</span> to compute the Arellano-Bond 1-step estimator, <span class="Menu_Item">2-step (update weights once),</span> to compute the Arellano-Bond 2-step estimator, <span class="Menu_Item">or n-step (iterate to convergence)</span>, to iterate the weight calculations. In the first case, EViews will provide you with choices for computing the standard errors, but here only White period robust standard errors are allowed. Clicking on <span class="Menu_Item">Next</span> takes you to the final page. Click on <span class="Menu_Item">Finish</span> to return to the <span class="Menu_Item">Equation Estimation</span> dialog.</div>
+      <div class="Body_Text"><a name="189395">EViews has filled out the </a><span class="Menu_Item">Equation Estimation</span> dialog with our choices from the DPD wizard. You should take a moment to examine the settings that have been filled out for you since, in the future, you may wish to enter the specification directly into the dialog without using the wizard. You may also, of course, modify the settings in the dialog prior to continuing. For example, click on the <span class="Menu_Item">Panel Options</span> tab and check the <span class="Menu_Item">No d.f. correction</span> setting in the covariance calculation to match the original Arellano-Bond results (Table 4(b), p. 290). Click on <span class="Menu_Item">OK</span> to estimate the specification.</div>
+      <div class="Body_Text"><a name="189396">The top portion of the output describes the estimation settings, coefficient estimates, and summary statistics. Note that both the weighting matrix and covariance calculation method used are described in the top portion of the output. </a></div>
+      <div class="Table"><a name="189400"><img class="Default" src="images/panel.068.3.22.jpg" width="100%" style="left: 0.0pt; max-height: 627px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189401">The standard errors that we report here are the standard Arellano-Bond 2-step estimator standard errors. Note that there is evidence in the literature that the standard errors for the two-step estimator may not be reliable.</a></div>
+      <div class="Body_Text"><a name="189402">The bottom portion of the output displays additional information about the specification and summary statistics:</a></div>
+      <div class="Table"><a name="189406"><img class="Default" src="images/panel.068.3.23.jpg" width="100%" style="left: 0.0pt; max-height: 215px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="193503">Note in particular the results labeled &#8220;J-statistic&#8221; and &#8220;Instrument rank&#8221;. Since the reported J-statistic is simply the Sargan statistic (value of the GMM objective function at estimated parameters), and the instrument rank of 38 is greater than the number of estimated coefficients (13), we may use it to construct the Sargan test of over-identifying restrictions. It is worth noting here that the J-statistic reported by a panel equation differs from that reported by an ordinary equation by a factor equal to the number of observations. Under the null hypothesis that the over-identifying restrictions are valid, the Sargan statistic is distributed as a <img class="Default EquationGraphic" src="images/panel.068.3.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 64px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/panel.068.3.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the number of estimated coefficients and <img class="Default EquationGraphic" src="images/panel.068.3.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is the instrument rank. The </a><span class="In-line_math">p</span>-value of 0.22 in this example may be computed using &#8220;scalar pval = @chisq(30.11247, 25)&#8221;.</div>
+      <div class="Heading_4"><a name="193516">Pooled Mean Group Example</a></div>
+      <div class="Body_Text"><a name="193518">As an example of the pooled mean group estimator, we follow the application given in PSS estimating consumption functions for OECD countries in the years 1962&#8211;1993. The data are in the file &#8220;OECD.wf1&#8221;. The series CONS contains per capita real private consumption for each country. INF is a measure of inflation, and INC is per capita real disposable income. PSS estimate an ARDL(1,1,1) model with the natural log of CONS as the dependent variable and the logs of INF and INC as the two dynamic regressors, with a constant as a static regressor.</a></div>
+      <div class="Body_Text"><a name="193378">We can estimate this in EViews by clicking on </a><span class="Menu_Item">Quick/Estimate Equation</span> and then selecting <span class="Dialog_Item">PMG/ARDL </span>in the method dropdown. We enter </div>
+      <div class="Input"><a name="193379">log(cons) log(inf) log(inc)</a></div>
+      <div class="Body_Text"><a name="193380">in the </a><span class="Dialog_Item">Dynamic Specification</span> box, select the <span class="Dialog_Item">Fixed</span> radio button to turn off model selection, and change the number of dependent lags and regressor lags to 1. To match PSS, we change the estimation sample to &#8220;1962 1993&#8221;. Leaving all other options at their default values, we click <span class="Dialog_Item">OK</span> to estimate the model.</div>
+      <div class="Picture"><a name="193384"><img class="Default" src="images/panel.068.3.27.jpg" width="100%" style="left: 0.0pt; max-height: 620px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="193385">The results are as shown:</a></div>
+      <div class="Picture"><a name="193389"><img class="Default" src="images/panel.068.3.28.jpg" width="100%" style="left: 0.0pt; max-height: 542px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="199961">The first part of the output gives a summary of the settings used in estimation. The table that follows is split into two blocks. The first block displays estimates of the long-run or pooled coefficients. The second block includes estimates for the mean-group coefficients.</a></div>
+      <div class="Body_Text"><a name="199982">The coefficient on the log of inflation is an estimate of the long-run inflation elasticity, and is negative (and strongly significant), as economic theory, and PSS, expect. We would expect the long run income elasticity (the coefficient on the log of income) to be equal to one, but the estimated value is slightly less at 0.904. </a></div>
+      <div class="Body_Text"><a name="200083">We can perform a Wald test of unit elasticity by clicking on </a><span class="Menu_Item">View/Coefficient Diagnostics/Wald Test</span>, and entering the restriction of <span class="In-line_input">C(2)=1</span>. This test rejects the null hypothesis of unit elasticity.</div>
+      <div class="Picture"><a name="200110"><img class="Default" src="images/panel.068.3.29.jpg" width="100%" style="left: 0.0pt; max-height: 391px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="200145">Click on </a><span class="Menu_Item">ARDL Diagnostics/Cross-Sectional Error-Correction Results</span> to display the error correction results for each cross-section:</div>
+      <div class="Picture"><a name="200271"><img class="Default" src="images/panel.068.3.30.jpg" width="100%" style="left: 0.0pt; max-height: 592px; max-width: 651px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="200294">and </a><span class="Menu_Item">ARDL Diagnostics/Cross-Sectional Cointegrating Relation Plots</span> to display the cointegrating series,</div>
+      <div class="Picture"><a name="200301"><img class="Default" src="images/panel.068.3.31.jpg" width="100%" style="left: 0.0pt; max-height: 593px; max-width: 652px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

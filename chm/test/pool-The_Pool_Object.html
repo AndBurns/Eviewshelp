@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>The Pool Object</title>
+    <link rel="StyleSheet" href="css/pool.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="pool-The_Pool_Workfile.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="pool-Pooled_Data.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="pool-Pooled_Time_Series,_Cross-Section_Data.html">Pooled Time Series, Cross-Section Data</a> : The Pool Object</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="186649">The Pool Object</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186660">Defining a Pool Object</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186664">Cross-section Identifiers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186679">Group Definitions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186691">Viewing or Editing Definitions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186694">Copying a Pool Object </a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="186650">Before describing the pooled workfile in greater detail, we must first provide a brief description of the EViews </a><span class="Emphasis">pool object</span>.</div>
+      <div class="Body_Text"><a name="186651">We begin by noting that the pool object serves two distinct roles. First, the pool contains a set of definitions that describe the structure of the pooled time series, cross-section data in your workfile. In this role, the pool object serves as a tool for managing and working with pooled data, much like the group object serves is used as a tool for working with sets of series. Second, the pool provides procedures for estimating econometric models using pooled data, and examining and working with the results from this estimation. In this role, the pool object is analogous to an equation object that is used to estimate econometric specifications.</a></div>
+      <div class="Body_Text"><a name="186652">In this section, we focus on the definitions that serve as the foundation for the pool object and simple tools for managing your pool object. The tools for working with data are described in </a><span class="Link"><a href="pool-Working_with_Pooled_Data.html#190870" title="Working with Pooled Data">&#8220;Working with Pooled Data&#8221;</a></span>, and the role of the pool object in estimation is the focus of <span class="Link"><a href="pool-Pooled_Estimation.html#187066" title="Pooled Estimation">&#8220;Pooled Estimation&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="186660">Defining a Pool Object</a></div>
+      <div class="Body_Text"><a name="186661">There are two parts to the definitions in a pool object: the cross-section identifiers, and optionally, definitions of groups of identifiers.</a></div>
+      <div class="Heading_4"><a name="186664">Cross-section Identifiers</a></div>
+      <div class="Body_Text"><a name="186666">The central feature of a pool object is a list of cross-section members which provides a naming convention for series in the workfile. The entries in this list are termed </a><span class="Definition">cross-section identifiers</span>. For example, in a cross-country study, you might use &#8220;_USA&#8221; to refer to the United States, &#8220;_KOR&#8221; to identify Korea, &#8220;_JPN&#8221; for Japan, and &#8220;_UK&#8221; for the United Kingdom. Since the cross-section identifiers will be used as a base in forming series names, we recommend that they be kept relatively short.</div>
+      <div class="Body_Text"><a name="186667">Specifying the list cross-section identifiers in a pool tells EViews about the structure of your data. When using a pool with the four cross-section identifiers given above, you instruct EViews to work with separate time series data for each of the four countries, and that the data may be held in series that contain the identifiers as part of the series names.</a></div>
+      <div class="Body_Text"><a name="186668">The most direct way of creating a pool object is to select </a><span class="Menu_Item">Object/New Object.../Pool</span>. EViews will open the pool specification view into which you should enter or copy-and-paste a list of identifiers, with individual entries separated by spaces, tabs, or carriage returns. Here, we have entered four identifiers on separate lines.</div>
+      <div class="Picture"><a name="186672"><img class="Default" src="images/pool.066.3.1.jpg" width="100%" style="left: 0.0pt; max-height: 305px; max-width: 543px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186673">There are no special restrictions on the labels that you can use for cross-section identifiers, though you must be able to form legal EViews series names containing these identifiers. </a></div>
+      <div class="Body_Text"><a name="186674">Note that we have used the &#8220;_&#8221; character at the start of each of the identifiers in our list; this is not necessary, but you may find that it makes it easier to spot the identifier when it is used as the end of a series name.</a></div>
+      <div class="Body_Text"><a name="186675">Before moving on, it is important to note that a pool object is simply a description of the underlying structure of your data, so that it does not itself contain series or data. This separation of the object and the data has important consequences.</a></div>
+      <div class="Body_Text"><a name="186676">First, you may use pool objects to define multiple sets of cross-section identifiers. Suppose, for example, that the pool object POOL01 contains the definitions given above. You may also have a POOL02 that contains the identifiers &#8220;_GER,&#8221; &#8220;_AUS,&#8221; &#8220;_SWTZ,&#8221; and a POOL03 that contains the identifiers &#8220;_JPN&#8221; and &#8220;_KOR&#8221;. Each of these three pool objects defines a different set of identifiers, and may be used to work with different sets of series in the workfile. Alternatively, you may have multiple pool objects in a workfile, each of which contain the same list of identifiers. A POOL04 that contains the same identifiers as POOL01 may be used to work with data from the same set of countries.</a></div>
+      <div class="Body_Text"><a name="186677">Second, since pool objects contain only definitions and not series data, deleting a pool will not delete underlying series data. You may, however, </a><span class="Emphasis">use</span> a pool object to delete, create, and manipulate underlying series data.</div>
+      <div class="Heading_4"><a name="186679">Group Definitions</a></div>
+      <div class="Body_Text"><a name="186681">In addition to the main list of cross-section identifiers, you may define groups made up of subsets of your identifiers. To define a group of identifiers, you should enter the keyword &#8220;@GROUP&#8221; followed by a name for the group, and the subset of the pool identifiers that are to be used in the group. EViews will define a group using the specified name and any identifiers provided. </a></div>
+      <div class="Body_Text"><a name="186682">We may, for example, define the ASIA group containing the &#8220;_JPN&#8221; and &#8220;_KOR&#8221; identifiers, or the NORTHAMERICA group containing the &#8220;_USA&#8221; identifier by adding:</a></div>
+      <div class="Multi-line_Input"><a name="186683">@group asia _jpn _kor</a></div>
+      <div class="Multi-line_Input"><a name="186684">@group northamerica _usa</a></div>
+      <div class="Body_Text"><a name="186685">to the pool definition.</a></div>
+      <div class="Body_Text"><a name="186686">These subsets of cross-section identifiers may be used to define virtual series indicating whether a given observation corresponds to a given subgroup or not. The ASIA group, for example, can be used along with special tools to identify whether a given observation should be viewed as coming from Japan or Korea, or from one of the other countries in the pool. We describe this functionality in greater detail in </a><span class="Link"><a href="pool-Pooled_Data.html#186716" title="Pooled Data">&#8220;Pool Series&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="186691">Viewing or Editing Definitions</a></div>
+      <div class="Body_Text"><a name="186692">You may, at any time, change the view of an existing pool object to examine the current list of cross-section identifiers and group definitions. Simply push the </a><span class="Menu_Item">Define</span> button on the toolbar, or select <span class="Menu_Item">View/Cross-Section Identifiers</span>. If desired, you can edit the list of identifiers or group definitions.</div>
+      <div class="Heading_4"><a name="186694">Copying a Pool Object </a></div>
+      <div class="Body_Text"><a name="186695">Typically, you will work with more than one pool object. Multiple pools are used to define various subsamples of cross-section identifiers, or to work with different pooled estimation specifications.</a></div>
+      <div class="Body_Text"><a name="186696">To copy a pool object, open the original pool, and select </a><span class="Menu_Item">Object/Copy Object&#8230; </span>Alternatively, you can highlight the name of the pool in the workfile window, and either select <span class="Menu_Item">Object/Copy Selected&#8230;</span> in the main workfile toolbar, or right mouse-click and select <span class="Menu_Item">Object/Copy...</span> and enter the new name</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

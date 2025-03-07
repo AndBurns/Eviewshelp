@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Working with an Equation</title>
+    <link rel="StyleSheet" href="css/nsreg.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="nsreg-Testing_for_Cointegration.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="nsreg-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="nsreg-Cointegrating_Regression.html">Cointegrating Regression</a> : Working with an Equation</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="256449">Working with an Equation</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#257558">Views </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#257570">Procedures</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#257577">Data Members</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="257554">Once you estimate your equation, EViews offers a variety of views and procedures for examining the properties of the equation, testing, forecasting, and generating new data. For the most part, these views and procedures are a subset of those available in other estimation settings such as least squares estimation. (The one new view, for cointegration testing, is described in depth in </a><span class="Link"><a href="nsreg-Testing_for_Cointegration.html#256084" title="Testing for Cointegration">&#8220;Testing for Cointegration&#8221;</a></span>.) In some cases there have been modifications to account for the nature of cointegrating regression.</div>
+      <div class="Heading_4"><a name="257558">Views </a></div>
+      <div class="Picture"><a name="257562"><img class="Default" src="images/nsreg.038.5.1.jpg" width="100%" style="left: 0.0pt; max-height: 243px; max-width: 199px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257563">For the most part, the views of a cointegrating equation require little discussion. For example, the </a><span class="Menu_Item">Representations</span> view offers text descriptions of the estimated cointegrating equation, the <span class="Menu_Item">Covariance Matrix</span> displays the coefficient covariance, and the <span class="Menu_Item">Residual Diagnostics</span> (<span class="Menu_Item">Correlogram - Q-statistics</span>, <span class="Menu_Item">Correlogram Squared Residuals</span>, <span class="Menu_Item">Histogram - Normality Test</span>) offer statistics based on pooled residuals. That said, a few comments about the construction of these views are in order.</div>
+      <div class="Body_Text"><a name="257564">First, the </a><span class="Menu_Item">Representations</span> and <span class="Menu_Item">Covariance Matrix </span>views of an equation only show results for the cointegrating equation and the long-run coefficients. In particular, the short-run dynamics included in a DOLS equation are not incorporated into the equation. Similarly, <span class="Menu_Item">Coefficient Diagnostics</span> and <span class="Menu_Item">Gradients </span>views do not include any of the short-run coefficients.</div>
+      <div class="Body_Text"><a name="257565">Second, the computation of the residuals used in the </a><span class="Menu_Item">Actual, Fitted, Residual</span> views and the <span class="Menu_Item">Residual Diagnostics</span> views differs depending on the estimation method. For FMOLS and CCR, the residuals are derived simply by substituting the estimated coefficients into the cointegrating equation and computing the residuals. The values are <span class="Emphasis">not</span> based on the transformed data. For DOLS, the residuals from the cointegrating equation are adjusted for the estimated short-run dynamics. In all cases, the test statistics results in the <span class="Menu_Item">Residual Diagnostics</span> should only be viewed is illustrative as they are not supported by asymptotic theory.</div>
+      <div class="Body_Text"><a name="264142">Note that standardized residuals are simply the residuals divided through by the long-run variance estimate.</a></div>
+      <div class="Body_Text"><a name="257566">The </a><span class="Menu_Item">Gradient</span> (score) views are based on the moment conditions implied by the particular estimation method. For FMOLS and CCR, these moment conditions <span class="Emphasis">are</span> based on the transformed data (see <span class="Link"><a href="nsreg-Testing_for_Cointegration.html#257409" title="Testing for Cointegration">Equation&nbsp;(28.25)</a></span> for the expression for FMOLS scores). For DOLS, these values are simply proportional (-2 times) to the residuals times the regressors.</div>
+      <div class="Heading_4"><a name="257570">Procedures</a></div>
+      <div class="Picture"><a name="257574"><img class="Default" src="images/nsreg.038.5.2.jpg" width="100%" style="left: 0.0pt; max-height: 182px; max-width: 226px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="257575">The procs for an equation estimated using cointegrating regression are virtually identical to those found in least squares estimation. </a></div>
+      <div class="Body_Text"><a name="257576">Most of the relevant issues were discussed previously (</a><span class="Emphasis">e.g.</span>, construction of residuals and gradients), however you should also note that forecasts constructed using the <span class="Menu_Item">Forecast...</span> procedure and models created using <span class="Menu_Item">Make Model</span> procedure follow the <span class="Menu_Item">Representations</span> view in omitting DOLS short-run dynamics. Furthermore, the forecast standard errors generated by the <span class="Menu_Item">Forecast...</span> proc and from solving models created using the <span class="Menu_Item">Make Model...</span> proc both employ the &#8220;S.E. of the regression&#8221; reported in the estimation output. This may not be appropriate.</div>
+      <div class="Heading_4"><a name="257577">Data Members</a></div>
+      <div class="Body_Text"><a name="257578">The summary statistics results in the bottom of the equation output may be accessed using data member functions (see </a><span class="Link"><a href="equationcmd-Equation.html#178713" title="Equation">&#8220;Equation Data Members&#8221;</a></span> for a list of common data members). For equations estimated using DOLS (with default standard errors), FMOLS, or CCR, EViews computes an estimate of the long-run variance of the residuals. This statistic may be accessed using the <span class="In-line_command">@lrvar</span> member function, so that if you have an equation named FMOLS, </div>
+      <div class="Input"><a name="257579">scalar mylrvar = fmols.@lrvar</a></div>
+      <div class="Body_Text"><a name="257580">will store the desired value in the scalar MYLRVAR.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

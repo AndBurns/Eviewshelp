@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>An Illustration</title>
+    <link rel="StyleSheet" href="css/robustreg.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="robustreg-Estimating_Robust_Regression_in_EViews.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="robustreg-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="robustreg-Robust_Least_Squares.html">Robust Least Squares</a> : An Illustration</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="134232">An Illustration</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#134277">M-estimation example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#134308">MM-estimation example</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="134233">For our example of robust regression estimation, we employ the &#8220;salinity&#8221; data set taken from Rousseeuw and Leroy (1987, page 82), which has been used in many studies of robust regression and outlier effects. See, for example, Rousseeuw and van Zomeren (1992) and Fung (1993). The data consist of 28 observations on water salinity (salt concentration) and river discharge measurements taken from Pamlico Sound in North Carolina. </a></div>
+      <div class="Body_Text"><a name="134234">We are interested in modeling the relationship between the amount of discharge and the level of salinity. The regression model of interest is:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/robustreg.043.4.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(33.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="134248">where <img class="Default EquationGraphic" src="images/robustreg.043.4.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is the salinity level, <img class="Default EquationGraphic" src="images/robustreg.043.4.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is discharge and <img class="Default EquationGraphic" src="images/robustreg.043.4.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> represents a time trend.</a></div>
+      <div class="Body_Text"><a name="135224">The data are provided in the workfile &#8220;Rousseeuw and Leroy.wf1&#8221; located in the EViews application data directory. The series SALINITY and DISCHARGE contain the salt and discharge measurements, TREND contains the number of biweekly periods since the start of spring, and LAGSEL is contains the lagged value of SALINITY. </a></div>
+      <div class="Body_Text"><a name="134250">We begin with ordinary least squares estimation of this specification. The equation EQ01 in the workfile contains these least squares estimates:</a></div>
+      <div class="Table"><a name="134254"><img class="Default" src="images/robustreg.043.4.05.jpg" width="100%" style="left: 0.0pt; max-height: 425px; max-width: 1155px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="134255">Rousseeuw and Leroy identify observation 16 as being an outlier. We can confirm this finding by looking at the influence statistics and leverages for this equation. From the EQ01 menu, display the influence statistics dialog by selecting </a><span class="Menu_Item">View/Stability Diagnostics/Influence Statistics...</span></div>
+      <div class="Picture"><a name="134259"><img class="Default" src="images/robustreg.043.4.06.jpg" width="100%" style="left: 0.0pt; max-height: 337px; max-width: 486px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="134260">Check the box labeled </a><span class="Menu_Item">Hat Matrix</span> to tell EViews that you want to view the diagonals of the matrix along with the default results, then click on <span class="Menu_Item">OK</span> to display the graphs:</div>
+      <div class="Picture"><a name="134264"><img class="Default" src="images/robustreg.043.4.07.jpg" width="100%" style="left: 0.0pt; max-height: 528px; max-width: 649px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="134265">The spikes in the graphs for all four influence measures point to observation 16 as being an outlier. This finding is confirmed by the leverage plot view of EQ01. Select </a><span class="Menu_Item">View/Stability Diagnostics/Leverage Plots...</span> and click on <span class="Menu_Item">OK</span> to accept the default settings:</div>
+      <div class="Picture"><a name="134269"><img class="Default" src="images/robustreg.043.4.08.jpg" width="100%" style="left: 0.0pt; max-height: 522px; max-width: 645px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="134270">The graphs support the view that observation 16 has high leverage, especially in the relationship between SALINITY and DISCHARGE. Using the mouse pointer to hover over the outlier confirms the identity of the outlier observation. (For additional discussion of these diagnostics, see </a><span class="Link"><a href="testing-Stability_Diagnostics.html#183859" title="Stability Diagnostics">&#8220;Leverage Plots&#8221;</a></span> and <span class="Link"><a href="testing-Stability_Diagnostics.html#183937" title="Stability Diagnostics">&#8220;Influence Statistics&#8221;</a></span>.)</div>
+      <div class="Heading_4"><a name="134277">M-estimation example</a></div>
+      <div class="Body_Text"><a name="134278">Given the presence of outliers, we re-estimate the regression using robust M-estimation. Create a new equation object by clicking on </a><span class="Menu_Item">Quick/Estimate Equation&#8230;</span>, or by selecting <span class="Menu_Item">Object/New Object&#8230;/Equation</span> and then select <span class="Menu_Item">ROBUSTLS</span> from the <span class="Menu_Item">Method</span> dropdown menu. Enter the dependent variable followed by the list of regressor variables in the E<span class="Menu_Item">quation specification</span> edit field:</div>
+      <div class="Input"><a name="134279">salinity c lagsel trend discharge</a></div>
+      <div class="Body_Text"><a name="134282">and click on </a><span class="Menu_Item">OK</span> to instruct EViews to estimate the specification using the default estimator and settings. (For convenience, we have included the equation object EQ02 estimated using these settings in your workfile.)</div>
+      <div class="Table"><a name="134286"><img class="Default" src="images/robustreg.043.4.09.jpg" width="100%" style="left: 0.0pt; max-height: 617px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="134287">A description of the settings used in the M-estimation is presented at the top of the output. Here we see that the Bisquare function with a default tuning parameter value of 4.685 was used, that the scale was estimated using the median centered, median absolute deviation method, and that the </a><span class="In-line_math">z</span>-statistics in the output are based on Huber Type I covariance estimates.</div>
+      <div class="Body_Text"><a name="134291">Turning to the coefficient estimates, we see the effect on the coefficient estimates of moving from least squares to robust M-estimation. The M-estimator produces a much larger negative impact of DISCHARGE on SALINITY than does ordinary least squares (-0.623 versus -0.295) with the M-estimator coefficient estimated with similar precision (0.091 versus 0.107). The sensitivity of the DISCHARGE coefficient estimates to robust estimation is in accord with the earlier EQ01 diagnostic suggesting that observation 16 had high leverage for the relationship between SALINITY and DISCHARGE.</a></div>
+      <div class="Body_Text"><a name="134298">The bottom portion of the output displays the <img class="Default EquationGraphic" src="images/robustreg.043.4.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/robustreg.043.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 30px; top: 0.0pt" alt="" /> goodness-of-fit and adjusted measures, along which indicate that the model accounts for roughly 60-90% of the variation in the constant-only model. The <img class="Default EquationGraphic" src="images/robustreg.043.4.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 27px; top: 0.0pt" alt="" /> statistic of 202.906 and corresponding </a><span class="In-line_math">p</span>-value of 0.00 indicate strong rejection of the null hypothesis that all non-intercept coefficients are equal to zero. Lastly, the output shows the value of the deviance, information criteria, and the estimated scale. These measures may be of use when comparing models. See <span class="Link"><a href="robustreg-Background.html#133747" title="Background">&#8220;M-estimator summary statistics&#8221;</a></span> for formulae and discussion.</div>
+      <div class="Heading_4"><a name="134308">MM-estimation example</a></div>
+      <div class="Body_Text"><a name="134309">Next, we estimate the equation using MM-estimation. In the </a><span class="Menu_Item">Specification</span> tab:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="134310">Specify your equation estimation method as </a><span class="Menu_Item">ROBUSTLS - Robust Least Squares</span>, </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="134311">Change the </a><span class="Menu_Item">Robust Estimation Type dropdown</span> to <span class="Menu_Item">MM-estimation</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="134312">Fill out the </a><span class="Menu_Item">Specification</span> edit field with &#8220;salinity c lagsel trend discharge&#8221; as before.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="134313">Next, we will provide values for the tuning and breakdown values, and will specify options to control the S-estimation refinement. </a></div>
+      <div class="Body_Text"><a name="134314">Click on the </a><span class="Menu_Item">Options</span> tab to display the additional estimation settings:</div>
+      <div class="Picture"><a name="134318"><img class="Default" src="images/robustreg.043.4.13.jpg" width="100%" style="left: 0.0pt; max-height: 461px; max-width: 491px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="134319">For the objective specification, we will provide tuning and breakdown values. Select the </a><span class="Menu_Item">User-specified constants</span> radio button and enter the values as depicted. The S-tuning value of 2.937 is chosen to provide a breakdown of 0.25; the M-tuning value of 3.44 is chosen to produce relative efficiency of 0.85.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="134320">Select </a><span class="Menu_Item">Huber Type II</span> standard errors.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="134321">Under </a><span class="Menu_Item">S options</span>, enter values for the <span class="Menu_Item">Number of trials, </span>and <span class="Menu_Item">Max refinements</span>, as depicted. The <span class="Menu_Item">Initial sample size </span>will be pre-filled with the number of regressor variables specified on the first tab of the dialog&#8212;we will leave this at the default setting. Enter &#8220;5&#8221; in the <span class="Menu_Item">Number of comparisons</span> edit field so that EViews will refine the best 5 of the 200 trials. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="134327">Additional detail on these settings are provided in </a><span class="Link"><a href="robustreg-Background.html#133863" title="Background">&#8220;S-estimation&#8221;</a></span> and <span class="Link"><a href="robustreg-Estimating_Robust_Regression_in_EViews.html#134180" title="Estimating Robust Regression in EViews">&#8220;S-estimation options&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="134329">Click on </a><span class="Menu_Item">OK</span> to accept the specification and options and to estimate the equation. EViews will display the results of the MM-estimation.</div>
+      <div class="Picture"><a name="134333"><img class="Default" src="images/robustreg.043.4.14.jpg" width="100%" style="left: 0.0pt; max-height: 647px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="134334">Notice that the top of the output displays various settings for both the S and the M-portions of the MM-estimation. In addition to showing the S-tuning value of 2.937 and associated breakdown value of 0.25, EViews reports that the S-estimation consists of 200 trials with initial coefficients obtained from a random initial sample size of 4 and 2 initial refinement steps. The final comparison involves fully refining 5 sets of the scale estimates and choosing the smallest scale estimate. </a></div>
+      <div class="Body_Text"><a name="134335">Once the scale estimate is obtained, EViews performs fixed scale M-estimation using the reported 3.44 tuning parameter.</a></div>
+      <div class="Body_Text"><a name="134336">EViews also reports information on the random number generator used to obtain the random subsamples, and the method used to obtain coefficient estimate covariances.</a></div>
+      <div class="Body_Text"><a name="134337">Turning to the results, we note that despite the difference in robust estimation method, relative efficiency settings, and method of computing standard errors, the results from the M-estimation and the MM-estimation are generally quite similar. Most importantly, both estimates show statistically significant DISCHARGE coefficients of around -0.62 with roughly comparable coefficient standard errors (0.089 versus 0.13). The results for other coefficients are even closer.</a></div>
+      <div class="Body_Text"><a name="134338">The MM-estimate of the scale is considerably larger than that obtained from M-estimation (1.16 versus 0.73), but the overall goodness-of-fit measures and <img class="Default EquationGraphic" src="images/robustreg.043.4.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 27px; top: 0.0pt" alt="" /> statistic and test results are quite similar. </a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

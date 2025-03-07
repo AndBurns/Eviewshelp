@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Estimation</title>
+    <link rel="StyleSheet" href="css/loglike.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="loglike-Specification.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="loglike-LogL_Views.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="loglike-The_Log_Likelihood_(LogL)_Object.html">The Log Likelihood (LogL) Object</a> : Estimation</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="454">Estimation</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#463">Starting Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#118595">Estimation Sample</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="5227">Once you have specified the logl object, you can ask EViews to find the parameter values which maximize the likelihood parameters. Simply click the </a><span class="Menu_Item">Estimate</span> button in the likelihood window toolbar to open the <span class="Menu_Item">Estimation Options</span> dialog.</div>
+      <div class="Picture"><a name="29406"><img class="Default" src="images/loglike.051.04.1.jpg" width="100%" style="left: 0.0pt; max-height: 337px; max-width: 467px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="5228">There are a number of options which allow you to control various aspects of the estimation procedure. </a></div>
+      <div class="Body_Text"><a name="223489">You may also use the </a><span class="Menu_Item">Estimation options</span> section of the dialog to specify the estimation method, step method, maximum number of iterations, convergence tolerance, and whether to display information about settings in the output. </div>
+      <div class="Body_Text"><a name="224462">Note that the default estimation method for new logl objects is BFGS. </a></div>
+      <div class="Body_Text"><a name="224792">The </a><span class="Menu_Item">Coefficient covariance</span> section of the dialog provides options for controlling the coefficient covariance estimate. The default <span class="Menu_Item">Covariance method</span> estimates the coefficient covariance using the inverse of the matrix specified in the<span class="Menu_Item"> Information matrix</span> dropdown menu. Alternately, you may compute the sandwich covariance by selecting <span class="Menu_Item">Huber &#8211; White</span> in the <span class="Menu_Item">Covariance method</span> menu. By default, EViews uses the outer-product of the gradients (<span class="Menu_Item">OPG</span>) as the information matrix estimator, but if you are performing non-legacy optimization, you may substitute the (negative of the) observed Hessian by selecting <span class="Menu_Item">Hessian &#8211; Observed</span>.</div>
+      <div class="Body_Text"><a name="222828">See </a><span class="Link"><a href="optimize-Setting_Estimation_Options.html#137039" title="Setting Estimation Options">&#8220;Setting Estimation Options&#8221;</a></span> for a discussion of these options. </div>
+      <div class="Body_Text"><a name="222170">The default settings should, however, provide a good start for most problems. When you click on </a><span class="Menu_Item">OK</span>, EViews will begin estimation using the current settings.</div>
+      <div class="Heading_4"><a name="463">Starting Values</a></div>
+      <div class="Body_Text"><a name="465">Since EViews uses an iterative algorithm to find the maximum likelihood estimates, the choice of starting values is important. For problems in which the likelihood function is globally concave, it will influence how many iterations are taken for estimation to converge. For problems where the likelihood function is not concave, it may determine which of several local maxima is found. In some cases, estimation will fail unless reasonable starting values are provided.</a></div>
+      <div class="Body_Text"><a name="467">By default, EViews uses the values stored in the coefficient vector or vectors prior to estimation. If a </a><span class="In-line_input">@param</span> statement is included in the specification, the values specified in the statement will be used instead.</div>
+      <div class="Body_Text"><a name="469">In our conditional heteroskedasticity regression example, one choice for starting values for the coefficients of the mean equation coefficients are the simple OLS estimates, since OLS provides consistent point estimates even in the presence of (bounded) heteroskedasticity. To use the OLS estimates as starting values, first estimate the OLS equation by the command:</a></div>
+      <div class="Input"><a name="471">equation eq1.ls y c x z</a></div>
+      <div class="Body_Text"><a name="473">After estimating this equation, the elements C(1), C(2), C(3) of the C coefficient vector will contain the OLS estimates. To set the variance scale parameter C(4) to the estimated OLS residual variance, you can type the assignment statement in the command window:</a></div>
+      <div class="Input"><a name="475">c(4) = eq1.@se^2</a></div>
+      <div class="Body_Text"><a name="477">For the final heteroskedasticity parameter C(5), you can use the residuals from the original OLS regression to carry out a second OLS regression, and set the value of C(5) to the appropriate coefficient. Alternatively, you can arbitrarily set the parameter value using a simple assignment statement:</a></div>
+      <div class="Input"><a name="479">c(5) = 1</a></div>
+      <div class="Body_Text"><a name="481">Now, if you estimate the logl specification immediately after carrying out the OLS estimation and subsequent commands, it will use the values that you have placed in the C vector as starting values. </a></div>
+      <div class="Body_Text"><a name="483">As noted above, an alternative method of initializing the parameters to known values is to include a </a><span class="In-line_input">@param</span> statement in the likelihood specification. For example, if you include the line:</div>
+      <div class="Input"><a name="485">@param c(1) 0.1 c(2) 0.1 c(3) 0.1 c(4) 1 c(5) 1</a></div>
+      <div class="Body_Text"><a name="118587">in the specification of the logl, EViews will always set the starting values to C(1)=C(2)=C(3)=0.1, C(4)=C(5)=1.</a></div>
+      <div class="Body_Text"><a name="118594">See also the discussion of starting values in </a><span class="Link"><a href="optimize-Setting_Estimation_Options.html#146943" title="Setting Estimation Options">&#8220;Starting Coefficient Values&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="118595">Estimation Sample</a></div>
+      <div class="Body_Text"><a name="493">EViews uses the sample of observations specified in the Estimation Options dialog when estimating the parameters of the log likelihood. EViews evaluates each expression in the logl for every observation in the sample at current parameter values, using the </a><span class="Emphasis">by observation</span> or <span class="Emphasis">by equation</span> ordering. All of these evaluations follow the standard EViews rules for evaluating series expressions. </div>
+      <div class="Body_Text"><a name="495">If there are missing values in the log likelihood series at the initial parameter values, EViews will issue an error message and the estimation procedure will stop. In contrast to the behavior of other EViews built-in procedures, logl estimation performs no endpoint adjustments or dropping of observations with missing values when estimating the parameters of the model.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

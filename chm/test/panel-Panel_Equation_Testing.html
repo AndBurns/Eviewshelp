@@ -1,0 +1,769 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Panel Equation Testing</title>
+    <link rel="StyleSheet" href="css/panel.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="panel-Panel_Estimation_Examples.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="panel-Estimation_Background.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="panel-Panel_Estimation.html">Panel Estimation</a> : Panel Equation Testing</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="189423">Panel Equation Testing</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#189426">Omitted Variables Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#189458">Redundant Variables Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#189487">Fixed Effects Testing</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#189513">Hausman Test for Correlated Random Effects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#190543">LM Tests for Random Effects </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190560">Background</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190666">Breusch-Pagan Two-Sided Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190732">Honda UMP One-Sided Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190779">King and Wu</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190813">Standardized LM Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190848">Gourieroux, Holly, Monfort test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190885">Example </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#191025">Panel Cross-section Dependence Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#191037">Background</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#191102">Breusch-Pagan LM</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#191127">Pesaran Scaled LM </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#191156">Pesaran CD </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#191193">Baltagi, Feng, and Kao Bias-corrected Scaled LM</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#191232">Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#194995">Arellano-Bond Serial Correlation Testing</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#200782">Pooled Mean Group Bounds Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#200419">Pooled Mean Group Hausman (Similarity) Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#200455">Pooled Mean Group Symmetry Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#201038">Pooled Mean Group Diagnostics</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196531">Model Selection</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196536">Error-Correction Results</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#196541">Cointegrating Relation Graphs</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="189426">Omitted Variables Test</a></div>
+      <div class="Body_Text"><a name="189430">You may perform an </a><span class="In-line_math">F</span>-test of the joint significance of variables that are presently omitted from a panel or pool equation estimated by list. Select <span class="Menu_Item">View/Coefficient Diagnostics/Omitted Variables - Likelihood Ratio...</span> and in the resulting dialog, enter the names of the variables you wish to add to the default specification. If estimating in a pool setting, you should enter the desired pool or ordinary series in the appropriate edit box (common, cross-section specific, period specific). </div>
+      <div class="Body_Text"><a name="189431">When you click on </a><span class="Menu_Item">OK</span>, EViews will first estimate the unrestricted specification, then form the usual <span class="In-line_math">F</span>-test, and will display both the test results as well as the results from the unrestricted specification in the equation or pool window. </div>
+      <div class="Body_Text"><a name="189435">Adapting Example 10.6 from Wooldridge (2002, p. 282) slightly, we may first estimate a pooled sample equation for a model of the effect of job training grants on LSCRAP using first differencing. The restricted set of explanatory variables includes a constant and D89. The results from the restricted estimator are given by:</a></div>
+      <div class="Table"><a name="189439"><img class="Default" src="images/panel.068.4.001.jpg" width="100%" style="left: 0.0pt; max-height: 460px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189440">We wish to test the significance of the first differences of the omitted job training grant variables GRANT and GRANT_1. Click on </a><span class="Menu_Item">View/Coefficient Diagnostics/Omitted Variables - Likelihood Ratio...</span> and type &#8220;D(GRANT)&#8221; and &#8220;D(GRANT_1)&#8221; to enter the two variables in differences. Click on <span class="Menu_Item">OK</span> to display the omitted variables test results.</div>
+      <div class="Body_Text"><a name="189441">The top portion of the results contains a brief description of the test, the test statistic values, and the associated significance levels:</a></div>
+      <div class="Picture"><a name="189445"><img class="Default" src="images/panel.068.4.002.jpg" width="100%" style="left: 0.0pt; max-height: 193px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Table"><a name="189447">&nbsp;</a></div>
+      <div class="Body_Text"><a name="189448">Here, the test statistics do not reject, at conventional significance levels, the null hypothesis that D(GRANT) and D(GRANT_1) are jointly irrelevant.</a></div>
+      <div class="Body_Text"><a name="189449">The remainder of the results shows summary information and the test equation estimated under the unrestricted alternative:</a></div>
+      <div class="Table"><a name="189453"><img class="Default" src="images/panel.068.4.003.jpg" width="100%" style="left: 0.0pt; max-height: 274px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Table"><a name="189454">&nbsp;</a></div>
+      <div class="Body_Text"><a name="189455">Note that if appropriate, the alternative specification will be estimated using the cross-section or period GLS weights obtained from the restricted specification. If these weights were not saved with the restricted specification and are not available, you may first be asked to reestimate the original specification.</a></div>
+      <div class="Heading_4"><a name="189458">Redundant Variables Test</a></div>
+      <div class="Body_Text"><a name="189462">You may perform an </a><span class="In-line_math">F</span>-test of the joint significance of variables that are presently included in a panel or pool equation estimated by list. Select <span class="Menu_Item">View/Coefficient Diagnostics/Redundant Variables - Likelihood Ratio...</span> and in the resulting dialog, enter the names of the variables in the current specification that you wish to remove in the restricted model.</div>
+      <div class="Body_Text"><a name="189465">When you click on </a><span class="Menu_Item">OK</span>, EViews will estimate the restricted specification, form the usual <span class="In-line_math">F</span>-test, and will display the test results and restricted estimates. Note that if appropriate, the alternative specification will be estimated using the cross-section or period GLS weights obtained from the unrestricted specification. If these weights were not saved with the specification and are not available, you may first be asked to reestimate the original specification.</div>
+      <div class="Body_Text"><a name="189467">To illustrate the redundant variables test, consider Example 10.4 from Wooldridge (2002, p. 262), where we test for the redundancy of GRANT and GRANT_1 in a specification estimated with cross-section random effects. The top portion of the unrestricted specification is given by:</a></div>
+      <div class="Table"><a name="189471">.<img class="Default" src="images/panel.068.4.004.jpg" width="100%" style="left: 0.0pt; max-height: 499px; max-width: 934px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189472">Note in particular that our unrestricted model is a random effects specification using Swamy and Arora estimators for the component variances, and that the estimates of the cross-section and idiosyncratic random effects standard deviations are 1.390 and 0.4978, respectively.</a></div>
+      <div class="Body_Text"><a name="189473">If we select the redundant variables test, and perform a joint test on GRANT and GRANT_1, EViews displays the test results in the top of the results window:</a></div>
+      <div class="Table"><a name="189477"><img class="Default" src="images/panel.068.4.005.jpg" width="100%" style="left: 0.0pt; max-height: 319px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189478">Here we see that the statistic value of 1.832 does not, at conventional significance levels, lead us to reject the null hypothesis that GRANT and GRANT_1 are redundant in the unrestricted specification.</a></div>
+      <div class="Body_Text"><a name="189479">The restricted test equation results are depicted in the bottom portion of the window. Here we see the top portion of the results for the restricted equation:</a></div>
+      <div class="Table"><a name="189483"><img class="Default" src="images/panel.068.4.006.jpg" width="100%" style="left: 0.0pt; max-height: 469px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189484">The important thing to note is that the restricted specification removes the test variables GRANT and GRANT_1. Note further that the output indicates that we are using existing estimates of the random component variances (&#8220;Use pre-specified random component estimates&#8221;), and that the displayed results for the effects match those for the unrestricted specification.</a></div>
+      <div class="Heading_4"><a name="189487">Fixed Effects Testing</a></div>
+      <div class="Body_Text"><a name="189488">EViews provides built-in tools for testing the joint significance of the fixed effects estimates in least squares specifications. To test the significance of your effects you must first estimate the unrestricted specification that includes the effects of interest. Next, select </a><span class="Menu_Item">View/Fixed/Random Effects Testing/Redundant Fixed Effects &#8211; Likelihood Ratio</span>. EViews will estimate the appropriate restricted specifications, and will display the test output as well as the results for the restricted specifications.</div>
+      <div class="Body_Text"><a name="189489">Note that where the unrestricted specification is a two-way fixed effects estimator, EViews will test the joint significance of all of the effects as well as the joint significance of the cross-section effects and the period effects separately.</a></div>
+      <div class="Body_Text"><a name="189490">Let us consider Example 3.6.2 in Baltagi (2005), in which we estimate a two-way fixed effects model using data in &#8220;Gasoline.WF1&#8221;. The results for the unrestricted estimated gasoline demand equation are given by:</a></div>
+      <div class="Table"><a name="189494"><img class="Default" src="images/panel.068.4.007.jpg" width="100%" style="left: 0.0pt; max-height: 596px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189495">Note that the specification has both cross-section and period fixed effects. When you select the fixed effect test from the equation menu, EViews estimates three restricted specifications: one with period fixed effects only, one with cross-section fixed effects only, and one with only a common intercept. The test results are displayed at the top of the results window:</a></div>
+      <div class="Table"><a name="189499"><img class="Default" src="images/panel.068.4.008.jpg" width="100%" style="left: 0.0pt; max-height: 288px; max-width: 934px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189500">Notice that there are three sets of tests. The first set consists of two tests (&#8220;Cross-section F&#8221; and &#8220;Cross-section Chi-square&#8221;) that evaluate the joint significance of the cross-section effects using sums-of-squares (</a><span class="In-line_math">F</span>-test) and the likelihood function (Chi-square test). The corresponding restricted specification is one in which there are period effects only. The two statistic values (113.35 and 682.64) and the associated <span class="In-line_math">p</span>-values strongly reject the null that the cross-section effects are redundant.</div>
+      <div class="Body_Text"><a name="189507">The next two tests evaluate the significance of the period dummies in the unrestricted model against a restricted specification in which there are cross-section effects only. Both forms of the statistic strongly reject the null of no period effects.</a></div>
+      <div class="Body_Text"><a name="189508">The remaining results evaluate the joint significance of all of the effects, respectively. Both of the test statistics reject the restricted model in which there is only a single intercept.</a></div>
+      <div class="Body_Text"><a name="189509">Below the test statistic results, EViews displays the results for the test equations. In this example, there are three distinct restricted equations so EViews shows three sets of estimates.</a></div>
+      <div class="Body_Text"><a name="189510">Lastly, note that this test statistic is not currently available for instrumental variables and GMM specifications.</a></div>
+      <div class="Heading_4"><a name="189513">Hausman Test for Correlated Random Effects</a></div>
+      <div class="Body_Text"><a name="189514">A central assumption in random effects estimation is the assumption that the random effects are uncorrelated with the explanatory variables. One common method for testing this assumption is to employ a Hausman (1978) test to compare the fixed and random effects estimates of coefficients (for discussion see, for example Wooldridge 2002, p. 288), and Baltagi 2005, p. 66). </a></div>
+      <div class="Body_Text"><a name="189515">To perform the Hausman test, you must first estimate a model with your random effects specification. Next, select </a><span class="Menu_Item">View/Fixed/Random Effects Testing/Correlated Random Effects - Hausman Test</span>. EViews will automatically estimate the corresponding fixed effects specifications, compute the test statistics, and display the results and auxiliary equations.</div>
+      <div class="Body_Text"><a name="189516">For example, Baltagi (2005) considers an example of Hausman testing (Example 1, p. 70), in which the results for a Swamy-Arora random effects estimator for the Grunfeld data (&#8220;Grunfeld_baltagi_panel.WF1&#8221;) are compared with those obtained from the corresponding fixed effects estimator. To perform this test we </a><span class="Emphasis">must first estimate a random effects estimator</span>, obtaining the results:</div>
+      <div class="Table"><a name="189520"><img class="Default" src="images/panel.068.4.009.jpg" width="100%" style="left: 0.0pt; max-height: 413px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189521">Next we select the Hausman test from the equation menu by clicking on </a><span class="Menu_Item">View/Fixed/Random Effects Testing/Correlated Random Effects - Hausman Test</span>. EViews estimates the corresponding fixed effects estimator, evaluates the test, and displays the results in the equation window. If the original specification is a two-way random effects model, EViews will test the two sets of effects separately as well as jointly.</div>
+      <div class="Body_Text"><a name="189522">There are three parts to the output. The top portion describes the test statistic and provides a summary of the results. Here we have:</a></div>
+      <div class="Table"><a name="189526"><img class="Default" src="images/panel.068.4.010.jpg" width="100%" style="left: 0.0pt; max-height: 200px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189527">The statistic provides little evidence against the null hypothesis that there is no misspecification.</a></div>
+      <div class="Body_Text"><a name="189528">The next portion of output provides additional test detail, showing the coefficient estimates from both the random and fixed effects estimators, along with the variance of the difference and associated </a><span class="In-line_math">p</span>-values for the hypothesis that there is no difference. Note that in some cases, the estimated variances can be negative so that the probabilities cannot be computed.</div>
+      <div class="Table"><a name="189535"><img class="Default" src="images/panel.068.4.011.jpg" width="100%" style="left: 0.0pt; max-height: 150px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189536">The bottom portion of the output contains the results from the corresponding fixed effects estimation:</a></div>
+      <div class="Table"><a name="189540"><img class="Default" src="images/panel.068.4.012.jpg" width="100%" style="left: 0.0pt; max-height: 529px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189541">In some cases, EViews will automatically drop non-varying variables in order to construct the test statistic. These dropped variables will be indicated in this latter estimation output.</a></div>
+      <div class="Heading_4"><a name="190543">LM Tests for Random Effects </a></div>
+      <div class="Body_Text"><a name="190544">Testing for the existence of cross-section (individual) and time effects is important in panel and pool regression settings since accounting for the presence of these effects is necessary for correct specification of the regression and proper inference. As a result, a large number of effects tests have been considered in the literature. See, for example, the survey by Baltagi (2008).</a></div>
+      <div class="Body_Text"><a name="190548">EViews offers testing for individual and time effects using both </a><span class="In-line_math">F</span>-statistic (likelihood ratio) and Lagrange multiplier (LM) tests. The follow discussion describes LM testing for random effects (<span class="Emphasis">the </span><span class="In-line_math">F</span>-statistic<span class="Emphasis"> tests for fixed effects are described elsewhere in this manual</span>).</div>
+      <div class="Body_Text"><a name="190552">The most popular random effects test is the Breusch-Pagan (1980) LM test. Honda (1985) derives component LM tests with one-sided alternatives, obtaining a uniformly most powerful (UMP) test statistic. Moulton and Randolph (1989) propose a standardized version of the Honda test that has improved asymptotic size. King and Wu (1997) introduce a locally mean most powerful (LMMP) one-sided LM test. In addition, Baltagi and Li (1992), Baltagi, Chang and Li (1999) extend the Breusch-Pagan, Honda, and King and Wu approaches to unbalanced designs.</a></div>
+      <div class="Body_Text"><a name="190553">The EViews panel effects (PE) test view computes the following LM tests: </a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190554">Conventional LM (Breusch-Pagan, 1980)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190555">Uniformly most powerful LM (Honda, 1985)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190556">Standardized LM (Moulton and Randolph, 1989; Honda, 1991; Baltagi et al., 1999)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190557">Locally mean most powerful (LMMP) (King and Wu, 1997)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190558">Gourieroux, Holly, and Monfort (1982)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="190559">All of these tests may be computed from estimated regressions for equation objects in a panel structured workfile, or estimated pool objects in a non-panel workfile. Note that EViews offers these tests for equations estimated using both regression and instrumental variables so long as the equations are free of estimated effects, AR terms, and GLS weighting, despite the fact that these LM tests are not, strictly speaking, applicable in the instrumental variables case. One should employ appropriate caution in the use of such results in this setting.</a></div>
+      <div class="Heading_5"><a name="190560">Background</a></div>
+      <div class="Body_Text"><a name="190561">Our discussion follows closely the survey by Baltagi (2008). We consider two-way error components disturbances:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.013.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190576">for cross-sections <img class="Default EquationGraphic" src="images/panel.068.4.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 95px; top: 0.0pt" alt="" /> and periods <img class="Default EquationGraphic" src="images/panel.068.4.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 117px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/panel.068.4.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> are unobservable individual effects, <img class="Default EquationGraphic" src="images/panel.068.4.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> are unobservable time effects, and <img class="Default EquationGraphic" src="images/panel.068.4.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is the remaining idiosyncratic disturbance.</a></div>
+      <div class="Body_Text"><a name="190583">The LM tests are derived under the assumption that the unobserved individual effects are distributed as independent <img class="Default EquationGraphic" src="images/panel.068.4.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 66px; top: 0.0pt" alt="" />, the unobservable time effects are independent <img class="Default EquationGraphic" src="images/panel.068.4.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 66px; top: 0.0pt" alt="" />, and the idiosyncratic disturbances are independent <img class="Default EquationGraphic" src="images/panel.068.4.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 65px; top: 0.0pt" alt="" />. The null hypotheses to be tested are: no individual effects (<img class="Default EquationGraphic" src="images/panel.068.4.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 78px; top: 0.0pt" alt="" />); no time effects (<img class="Default EquationGraphic" src="images/panel.068.4.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 78px; top: 0.0pt" alt="" />); and no individual and time effects (<img class="Default EquationGraphic" src="images/panel.068.4.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 123px; top: 0.0pt" alt="" />).</a></div>
+      <div class="Body_Text"><a name="190602">For the remaining discussion, it will be useful to write the component specification in stacked matrix form. Let <img class="Default EquationGraphic" src="images/panel.068.4.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 196px; top: 0.0pt" alt="" />. Then, define the cross-section residual vector <img class="Default EquationGraphic" src="images/panel.068.4.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 177px; top: 0.0pt" alt="" /> and stacked residuals <img class="Default EquationGraphic" src="images/panel.068.4.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 172px; top: 0.0pt" alt="" />, we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.028.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190628">where <img class="Default EquationGraphic" src="images/panel.068.4.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/panel.068.4.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 39px; max-width: 100px; top: 0.0pt" alt="" /> matrix of cross-section dummies, <img class="Default EquationGraphic" src="images/panel.068.4.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/panel.068.4.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 40px; max-width: 100px; top: 0.0pt" alt="" /> matrix of period dummies, and <img class="Default EquationGraphic" src="images/panel.068.4.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is defined analogously to <img class="Default EquationGraphic" src="images/panel.068.4.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="190647">For a balanced panel, <img class="Default EquationGraphic" src="images/panel.068.4.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 120px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 120px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/panel.068.4.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/panel.068.4.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-dimensional identity matrix and <img class="Default EquationGraphic" src="images/panel.068.4.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> a <img class="Default EquationGraphic" src="images/panel.068.4.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-dimensional unit vector. We also have <img class="Default EquationGraphic" src="images/panel.068.4.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 150px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 150px; top: 0.0pt" alt="" />, for <img class="Default EquationGraphic" src="images/panel.068.4.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 77px; top: 0.0pt" alt="" /> a <img class="Default EquationGraphic" src="images/panel.068.4.044.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> matrix of ones.</a></div>
+      <div class="Heading_5"><a name="190666">Breusch-Pagan Two-Sided Test</a></div>
+      <div class="Body_Text"><a name="190667">Breusch and Pagan (1980) derive the two-sided LM test for error components in balanced panels. Define </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.045.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190676">where <img class="Default EquationGraphic" src="images/panel.068.4.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> are the residuals obtained from the restricted model. Then defining</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.047.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190682">and </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.048.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190691">we obtain the LM statistic for testing <img class="Default EquationGraphic" src="images/panel.068.4.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 33px; top: 0.0pt" alt="" />:</a></div>
+      <div class="Equation_No_Number"><a name="190695"><img class="Default EquationGraphic" src="images/panel.068.4.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 161px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190708">which is distributed as a <img class="Default EquationGraphic" src="images/panel.068.4.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 21px; top: 0.0pt" alt="" /> under the null. To test <img class="Default EquationGraphic" src="images/panel.068.4.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 25px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 25px; top: 0.0pt" alt="" />, we may use <img class="Default EquationGraphic" src="images/panel.068.4.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 39px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 39px; top: 0.0pt" alt="" /> respectively, both of which are distributed as a <img class="Default EquationGraphic" src="images/panel.068.4.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 21px; top: 0.0pt" alt="" /> under corresponding null.</a></div>
+      <div class="Body_Text"><a name="190715">Baltagi and Li (1990) derived corresponding statistics for unbalanced samples:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.057.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190720">where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.058.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.11)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190731">which simplifies for the balanced case where <img class="Default EquationGraphic" src="images/panel.068.4.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 62px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 63px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_6"><a name="190732">Honda UMP One-Sided Test</a></div>
+      <div class="Body_Text"><a name="190733">One shortcoming of the Breusch-Pagan test is that it assumes that the alternative hypothesis is two-sided even though the variance components cannot be negative. </a></div>
+      <div class="Body_Text"><a name="190740">Honda(1985) derives a uniformly most powerful <img class="Default EquationGraphic" src="images/panel.068.4.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 39px; top: 0.0pt" alt="" /> statistic for <img class="Default EquationGraphic" src="images/panel.068.4.062.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 78px; top: 0.0pt" alt="" /> against a one-sided <img class="Default EquationGraphic" src="images/panel.068.4.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 75px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.064.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.12)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190754">Similarly, for the one-sided test of <img class="Default EquationGraphic" src="images/panel.068.4.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 78px; top: 0.0pt" alt="" /> against <img class="Default EquationGraphic" src="images/panel.068.4.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 75px; top: 0.0pt" alt="" /> we have:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.067.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.13)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190760">Note that both of these statistics are the square roots of the corresponding Breusch-Pagan LM statistics.</a></div>
+      <div class="Body_Text"><a name="190761">Honda&#8217;s statistics can be generalized to the unbalanced case yielding square roots of the unbalanced Breusch-Pagan LM statistics:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.068.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190769">Honda does not derive a uniformly most powerful statistic <img class="Default EquationGraphic" src="images/panel.068.4.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 123px; top: 0.0pt" alt="" /> against the one-sided alternative, but does suggest a &#8220;</a><span class="Emphasis">handy&#8221;</span> one-sided test statistic:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.070.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190778">which also converges to a <img class="Default EquationGraphic" src="images/panel.068.4.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 59px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Heading_6"><a name="190779">King and Wu</a></div>
+      <div class="Body_Text"><a name="190780">King and Wu (1997) propose locally mean most powerful (LMMP) one-sided test statistics <img class="Default EquationGraphic" src="images/panel.068.4.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 43px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 43px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/panel.068.4.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 78px; top: 0.0pt" alt="" /> against a one-sided <img class="Default EquationGraphic" src="images/panel.068.4.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 75px; top: 0.0pt" alt="" /> and for <img class="Default EquationGraphic" src="images/panel.068.4.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 78px; top: 0.0pt" alt="" /> against <img class="Default EquationGraphic" src="images/panel.068.4.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 75px; top: 0.0pt" alt="" />. These two statistics are identical to the corresponding Honda UMP statistics.</a></div>
+      <div class="Body_Text"><a name="190802">Baltagi, Chang, and Li (1992) derive the corresponding LMMP test for <img class="Default EquationGraphic" src="images/panel.068.4.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 115px; top: 0.0pt" alt="" /> against the one-sided alternative:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.079.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190808">and Baltagi, Chang, and Li (1999) obtain results for unbalanced case:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.080.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_6"><a name="190813">Standardized LM Tests</a></div>
+      <div class="Body_Text"><a name="190814">Moulton and Randolph (1989) showed that the asymptotic approximation for the one-sided statistics can be poor when the number of regressors is large or the inter-correlation of regressors is high. Alternatively, they propose a standardized one-sided LM (SLM) statistic which centers and scales the statistic so that its mean is zero and its variance is one. </a></div>
+      <div class="Body_Text"><a name="190821">For <img class="Default EquationGraphic" src="images/panel.068.4.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 78px; top: 0.0pt" alt="" /> against a one-sided <img class="Default EquationGraphic" src="images/panel.068.4.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 75px; top: 0.0pt" alt="" />, they show that the standardized Honda (or King-Wu statistic) is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.083.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.18)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190826">Expressions for the expected value and variance may be found in Moulton and Randolph (1989) and Baltagi (2008).</a></div>
+      <div class="Body_Text"><a name="190836">The one-sided statistic <img class="Default EquationGraphic" src="images/panel.068.4.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 49px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/panel.068.4.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 78px; top: 0.0pt" alt="" /> against a one-sided <img class="Default EquationGraphic" src="images/panel.068.4.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 75px; top: 0.0pt" alt="" /> is defined analogously:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.087.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190841">For the two-way model, Honda (1991) proposes a standardized Honda-type SLM test statistic, and Baltagi, Chang and Li (1999) describe a standardized King-Wu statistic. Under <img class="Default EquationGraphic" src="images/panel.068.4.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 115px; top: 0.0pt" alt="" />, these SLM statistics are asymptotically distributed as <img class="Default EquationGraphic" src="images/panel.068.4.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 59px; top: 0.0pt" alt="" /> and their critical values should be more accurate than those of the corresponding unstandardized tests. See Baltagi, Chang, and Li (1999) and Baltagi (2008) for details.</a></div>
+      <div class="Heading_6"><a name="190848">Gourieroux, Holly, Monfort test</a></div>
+      <div class="Body_Text"><a name="190849">Gourieroux, Holly and Monfort (1982) and Baltagi, Chang and Li (1992) account for the possibility of negative estimates of the variance components with the following modification of the LM test under the null hypothesis <img class="Default EquationGraphic" src="images/panel.068.4.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 115px; top: 0.0pt" alt="" /> against the two-sided alternative</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.091.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190866">where <img class="Default EquationGraphic" src="images/panel.068.4.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 46px; top: 0.0pt" alt="" /> is a mixed <img class="Default EquationGraphic" src="images/panel.068.4.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> distribution with <img class="Default EquationGraphic" src="images/panel.068.4.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 282px; top: 0.0pt" alt="" />. The weights <img class="Default EquationGraphic" src="images/panel.068.4.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/panel.068.4.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> are from Gourieroux </a><span class="Emphasis">et al.</span> (1982), <img class="Default EquationGraphic" src="images/panel.068.4.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 21px; top: 0.0pt" alt="" /> is zero with probability one, and <img class="Default EquationGraphic" src="images/panel.068.4.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 39px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 39px; top: 0.0pt" alt="" /> are asymptotically independent of each other.</div>
+      <div class="Heading_5"><a name="190885">Example </a></div>
+      <div class="Body_Text"><a name="190886">The LM test for random effects view implements Lagrange multiplier tests of individual or/and time effects based on the results of the pooling model. As an example we use the Grunfeld (1958) data which contains 10 large US manufacturing firms over 20 years (1935&#8211;1954), which is available in the workfile &#8220;Grunfeld_Baltagi_panel.wf1&#8221; in the &#8220;Working with Panel Data&#8221; folder in your &#8220;Example Files&#8221; directory.</a></div>
+      <div class="Body_Text"><a name="190887">Following Grunfeld (1958), we consider the following investment equation:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.101.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190904">where <img class="Default EquationGraphic" src="images/panel.068.4.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> denotes real gross investment for firm <img class="Default EquationGraphic" src="images/panel.068.4.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> in year <img class="Default EquationGraphic" src="images/panel.068.4.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />; <img class="Default EquationGraphic" src="images/panel.068.4.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" /> is the real value of the firm (share outstanding); and <img class="Default EquationGraphic" src="images/panel.068.4.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> is the real value of the capital stock. We estimate this model using ordinary pooled least squares on the specification:</a></div>
+      <div class="Input"><a name="190908">i f c c01</a></div>
+      <div class="Body_Text"><a name="190909">and name our equation EQ01. The results are shown as below:</a></div>
+      <div class="Picture"><a name="190913"><img class="Default" src="images/panel.068.4.107.jpg" width="100%" style="left: 0.0pt; max-height: 448px; max-width: 491px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190914">To test for the presence of individual and time effects in this model, we can click on </a><span class="Menu_Item">View/Fixed-Random Effects Testing/Omitted Random Effects - Lagrange Multiplier</span> menu item. The results of the LM tests are shown as below:</div>
+      <div class="Table"><a name="190918"><img class="Default" src="images/panel.068.4.108.jpg" width="100%" style="left: 0.0pt; max-height: 539px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190919">From the first column, we see that there is strong evidence that there are unaccounted for cross-section random effects in the pooled estimator residuals. All three of the cross-section tests have </a><span class="In-line_math">p</span>-values well below conventional significance levels.</div>
+      <div class="Body_Text"><a name="190529">However, for testing time-specific effects, there is a marked difference between the results for the two-sided Breusch-Pagan and the one-sided tests, with the former suggesting the presence of effects, and the latter with negative values indicating that there are no time-effects. These data clearly show the benefits of using one-sided tests in an empirical setting.</a></div>
+      <div class="Heading_4"><a name="191025">Panel Cross-section Dependence Test</a></div>
+      <div class="Body_Text"><a name="191026">It is commonly assumed that disturbances in panel data models are cross-sectionally independent, especially when the cross-section dimension (<img class="Default EquationGraphic" src="images/panel.068.4.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />) is large. There is, however, considerable evidence that cross-sectional dependence is often present in panel regression settings.</a></div>
+      <div class="Body_Text"><a name="191030">Ignoring cross-sectional dependence in estimation can have serious consequences, with unaccounted for residual dependence resulting in estimator efficiency loss and invalid test statistics.</a></div>
+      <div class="Body_Text"><a name="191031">There are a variety of tests for cross-section dependence in the literature. EViews offers the following tests:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="191032">Breusch-Pagan (1980) LM</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="191033">Pesaran (2004) scaled LM</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="191034">Baltagi, Feng, and Kao (2012) bias-corrected scaled LM</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="191035">Pesaran (2004) CD</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="191036">These four tests may be computed from panel and pool equations estimated by least squares and instrumental variables. They may also be computed for series in a panel workfile.</a></div>
+      <div class="Heading_5"><a name="191037">Background</a></div>
+      <div class="Body_Text"><a name="191038">Following Pesaran (2004), suppose that we have a panel data model</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.110.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="191055">for <img class="Default EquationGraphic" src="images/panel.068.4.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 113px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 113px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/panel.068.4.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/panel.068.4.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-dimensional column vector of regressors, <img class="Default EquationGraphic" src="images/panel.068.4.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> are the corresponding cross-section specific vectors of parameters to be estimated. (Pesaran points out that while this specification has cross-section specific coefficients, the tests described below are also applicable to the more restrictive fixed and random effects models).</a></div>
+      <div class="Body_Text"><a name="191059">The general null hypothesis of no cross-section dependence may be stated in terms of the correlations between the disturbances in different cross-section units: </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.116.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="191069">For balanced samples, <img class="Default EquationGraphic" src="images/panel.068.4.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is the product-moment correlation coefficients of the residuals</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.118.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="191075">In the unbalanced case, Pesaran proposes use of the centered correlation coefficient</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.119.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="191087">where the notation <img class="Default EquationGraphic" src="images/panel.068.4.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 66px; top: 0.0pt" alt="" /> is used to indicate that we sum over the subset of <img class="Default EquationGraphic" src="images/panel.068.4.121.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" /> observations common to </a><span class="In-line_math">i</span> and <span class="In-line_math">j</span>, and the pairwise mean</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.122.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="191093">is used to adjust for the fact that the residuals in pairwise subsets are not necessarily mean zero.</a></div>
+      <div class="Body_Text"><a name="191097">(Note that in practice EViews always employs centered correlations as in </a><span class="Link"><a href="#191080" title="Panel Equation Testing">Equation&nbsp;(55.25)</a></span> as this allows for estimation methods where the residuals are not constrained to have zero means in each cross-section. These results may differ from those that would have been obtained using the non-centered correlations in <span class="Link"><a href="#191074" title="Panel Equation Testing">Equation&nbsp;(55.24)</a></span>. EViews will provide a message informing you when non-zero means are found.)</div>
+      <div class="Heading_6"><a name="191102">Breusch-Pagan LM</a></div>
+      <div class="Body_Text"><a name="191103">The most well-known cross-section dependence diagnostic is the Breusch-Pagan (1980) Lagrange Multiplier (LM) test statistic. In a seemingly unrelated regressions context, Breusch and Pagan show that under the null hypothesis in </a><span class="Link"><a href="#191065" title="Panel Equation Testing">Equation&nbsp;(55.23)</a></span>, a LM statistic for dependence is given by:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.123.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="191114">where the <img class="Default EquationGraphic" src="images/panel.068.4.124.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> are the correlation coefficients obtained from the residuals of the model as described above. The asymptotic <img class="Default EquationGraphic" src="images/panel.068.4.125.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> distribution is obtained for <img class="Default EquationGraphic" src="images/panel.068.4.126.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> fixed as <img class="Default EquationGraphic" src="images/panel.068.4.127.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 64px; top: 0.0pt" alt="" /> for all <img class="Default EquationGraphic" src="images/panel.068.4.128.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" />, and follows from a normality assumption on the errors.</a></div>
+      <div class="Heading_6"><a name="191127">Pesaran Scaled LM </a></div>
+      <div class="Body_Text"><a name="191128">It is well known that the standard Breusch-Pagan LM test statistic is not appropriate for testing in large <img class="Default EquationGraphic" src="images/panel.068.4.129.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> settings. To address this shortcoming, Pesaran (2004) proposes a standardized version of the LM statistic</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.130.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="191142">which is asymptotically standard normal as first <img class="Default EquationGraphic" src="images/panel.068.4.131.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 64px; top: 0.0pt" alt="" /> and then <img class="Default EquationGraphic" src="images/panel.068.4.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 56px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="191146">Pesaran notes one shortcoming of the scaled LM which is that <img class="Default EquationGraphic" src="images/panel.068.4.133.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 97px; top: 0.0pt" alt="" /> is not centered at zero for finite <img class="Default EquationGraphic" src="images/panel.068.4.134.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" />, so that the statistic is likely to exhibit size distortion for small <img class="Default EquationGraphic" src="images/panel.068.4.135.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" />, and that the distortion will worsen for larger <img class="Default EquationGraphic" src="images/panel.068.4.136.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_6"><a name="191156">Pesaran CD </a></div>
+      <div class="Body_Text"><a name="191163">To address the size distortion of <img class="Default EquationGraphic" src="images/panel.068.4.137.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 32px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.138.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 39px; top: 0.0pt" alt="" />, Pesaran (2004) proposes an alternative statistic based on the average of the pairwise correlation coefficients <img class="Default EquationGraphic" src="images/panel.068.4.139.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.140.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="191179">which is asymptotically standard normal for <img class="Default EquationGraphic" src="images/panel.068.4.141.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 64px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.142.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 56px; top: 0.0pt" alt="" /> in any order.</a></div>
+      <div class="Body_Text"><a name="191180">Further, Pesaran points out that for a wide array of panel data models, the mean of CD is exactly equal to zero for all <img class="Default EquationGraphic" src="images/panel.068.4.143.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 80px; top: 0.0pt" alt="" /> and all <img class="Default EquationGraphic" src="images/panel.068.4.144.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, so that the CD test is likely to have good properties for both <img class="Default EquationGraphic" src="images/panel.068.4.145.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.146.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" /> small, and he provides Monte Carlo evidence to support this claim.</a></div>
+      <div class="Heading_6"><a name="191193">Baltagi, Feng, and Kao Bias-corrected Scaled LM</a></div>
+      <div class="Body_Text"><a name="191194">Baltagi, Feng, and Kao (2012) offer a simple asymptotic bias correction for the scaled LM test statistic:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.147.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="191206">For a fixed effects homogeneous panel data model with <img class="Default EquationGraphic" src="images/panel.068.4.148.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 64px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/panel.068.4.149.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 56px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/panel.068.4.150.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 159px; top: 0.0pt" alt="" />, Baltagi,</a><span class="Emphasis"> et al. </span>show that the scaled LM has an asymptotic bias term of <img class="Default EquationGraphic" src="images/panel.068.4.151.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 105px; top: 0.0pt" alt="" /> resulting from the incidental parameters problem since, for small <img class="Default EquationGraphic" src="images/panel.068.4.152.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" />, the within residuals are estimated imprecisely. (Note that in <span class="Link"><a href="#191199" title="Panel Equation Testing">Equation&nbsp;(55.30)</a></span> we extend the slightly Baltagi, <span class="Emphasis">et al.</span> scaled LM test to unbalanced designs by using the maximum of <img class="Default EquationGraphic" src="images/panel.068.4.153.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 26px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/panel.068.4.154.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> and requiring that <img class="Default EquationGraphic" src="images/panel.068.4.155.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 85px; top: 0.0pt" alt="" /> as <img class="Default EquationGraphic" src="images/panel.068.4.156.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 64px; top: 0.0pt" alt="" />).</div>
+      <div class="Body_Text"><a name="191231">Note that EViews will not compute the biased corrected LM statistic unless the equation was estimated with cross-section fixed effects.</a></div>
+      <div class="Heading_5"><a name="191232">Example</a></div>
+      <div class="Body_Text"><a name="191233">We illustrate the use of cross-section dependence tests for equation objects using an empirical example from Baltagi (2008) examining gasoline demand in 18 OECD countries over the period 1960&#8211;1978 (Table 2.8, p. 29).</a></div>
+      <div class="Body_Text"><a name="191234">We download the data and create a panel-structured workfile by entering the following command in the EViews command window</a></div>
+      <div class="Input"><a name="193784">wfopen http://www.wiley.com///wileychi/baltagi/supp/Gasoline.dat lastobs=342</a></div>
+      <div class="Body_Text"><a name="193785">and clicking on </a><span class="Menu_Item">Finish</span> in the import wizard to accept the default settings.</div>
+      <div class="Body_Text"><a name="193786">The equation of interest is a cross-section fixed effects regression of log motor gasoline consumption per auto (LNGASPCAR), on log real per capital income (LINCOMEP), log real motor gasoline price (LRPMG), log real motor gasoline price the log of the stock of cars per capita (LCARPCAP).</a></div>
+      <div class="Body_Text"><a name="191238">We estimate this fixed effect specification by entering the command:</a></div>
+      <div class="Input"><a name="191239">equation gas.ls(cx=f) lgaspcar c lincomep lrpmg lcarpcap</a></div>
+      <div class="Body_Text"><a name="191240">which creates the equation object GAS and displays the estimation results:</a></div>
+      <div class="Picture"><a name="191244"><img class="Default" src="images/panel.068.4.157.jpg" width="100%" style="left: 0.0pt; max-height: 506px; max-width: 488px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191247">Implicit in our approach to estimation in this example and in the validity of the computed </a><span class="In-line_math">t</span>-statistics is the assumption that the errors for different cross-sectional units are uncorrelated.</div>
+      <div class="Body_Text"><a name="191249">To test for the presence of cross-sectional dependence, we click on </a><span class="Menu_Item">View/Residual Diagnostics/Cross-section Dependence Test</span></div>
+      <div class="Picture"><a name="191253"><img class="Default" src="images/panel.068.4.158.jpg" width="100%" style="left: 0.0pt; max-height: 437px; max-width: 459px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191254">EViews will compute the cross-section dependence tests and display the results in the object window:</a></div>
+      <div class="Picture"><a name="191258"><img class="Default" src="images/panel.068.4.159.jpg" width="100%" style="left: 0.0pt; max-height: 341px; max-width: 472px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191259">The top of the table displays the test hypothesis and information about the number of cross-section and period observations in the panel. The bottom portion of the table contains the test results. </a></div>
+      <div class="Body_Text"><a name="191260">The first line contains results for the Breusch-Pagan LM test. EViews shows the test statistic value, test degree-of-freedom, and the associated </a><span class="In-line_math">p</span>-value. In this case, the value of the test statistic, 1027.14 is well into the upper tail of a <img class="Default EquationGraphic" src="images/panel.068.4.160.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 39px; top: 0.0pt" alt="" />, and we strongly reject the null of no correlation at conventional significance levels.</div>
+      <div class="Body_Text"><a name="191267">The next two lines present results for the two scaled Breusch-Pagan tests. Both the Pesaran scaled Breusch-Pagan LM, and the Baltagi </a><span class="Emphasis">et al.</span> bias-adjusted LM tests are asymptotically standard normal, and the test statistic results of 49.97 and 49.47 respectively, strongly reject the null at conventional levels. Note that in this example, the bias correction has a relatively small effect on the scaled LM statistic as <img class="Default EquationGraphic" src="images/panel.068.4.161.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.162.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> are of similar magnitude.</div>
+      <div class="Body_Text"><a name="191277">Since <img class="Default EquationGraphic" src="images/panel.068.4.163.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is relatively small, we may instead wish to focus on the results for the asymptotically standard normal Pesaran CD test which are presented in the final line of the table. While the test statistic value of 3.25 is significantly below that of the scaled LM tests, the Pesaran CD test still rejects the null at conventional significance levels.</a></div>
+      <div class="Heading_4"><a name="194995">Arellano-Bond Serial Correlation Testing</a></div>
+      <div class="Body_Text"><a name="194996">For models estimated by GMM, you may compute the first and second order serial correlation statistics proposed by Arellano and Bond (1991) as one method of testing for serial correlation. The test is actually two separate statistics, one for first order correlation and one for second. If the innovations are </a><span class="Emphasis">i.i.d.</span> we expect the first order statistic to be significant (with a negative auto-correlation coefficient), and the second order statistic to be insignificant. </div>
+      <div class="Body_Text"><a name="194997">The statistics are calculated as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.164.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.31)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.165.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.32)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.166.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="195013">where<img class="Default EquationGraphic" src="images/panel.068.4.167.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is the average </a><span class="In-line_math">j-</span>th order autocovariance. </div>
+      <div class="Body_Text" style="color: #000000; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="Emphasis"><a name="195014">(Note that this test is only available for equations estimated by GMM using first difference cross-section effects.)</a></span></div>
+      <div class="Body_Text"><a name="195015">To perform the test click on </a><span class="Menu_Item">View/Residual Diagnostics/Arellano-Bond Serial Correlation Test</span>. EViews will then calculate the test statistics for both first and second order correlation and display them in one table.</div>
+      <div class="Body_Text"><a name="195016">As an illustration, we again use the workfile ABOND_PAN.WF1 which contains data on a firm level panel, as examined in Arellano and Bond (1991), and Doornik, Bond and Arellano (2006). The following command estimates the GMM example used in the </a><span class="Link"><a href="panel-Panel_Estimation_Examples.html#189356" title="Panel Estimation Examples">&#8220;GMM Example&#8221;</a></span> section, but uses ordinary standard error estimates, instead of the White period standard errors used above:</div>
+      <div class="Input"><a name="195020">gmm(cx=fd, per=f, gmm=perwhite, iter=oneb, levelper) n n(-1) n(-2) w w(-1) k ys ys(-1) @ @dyn(n,-2) w w(-1) k ys ys(-1)</a></div>
+      <div class="Body_Text"><a name="195021">This equation replicates the estimates shown in Table 4(b), page 290, of Arellano Bond (1991). </a></div>
+      <div class="Picture"><a name="195025"><img class="Default" src="images/panel.068.4.168.jpg" width="100%" style="left: 0.0pt; max-height: 763px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="195026">Once estimated we click on </a><span class="Menu_Item">View/Residual Diagnostics/Arellano-Bond Serial Correlation Test</span> to view the serial correlation test results. The table displays the results for a test of both first and second order serial correlation:</div>
+      <div class="Picture"><a name="195030"><img class="Default" src="images/panel.068.4.169.jpg" width="100%" style="left: 0.0pt; max-height: 230px; max-width: 1001px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="195031">Although the original 1991 Arellano Bond paper does not display results for the first order test, the same data are used as an example in Doornik, Bond and Arellano 2006 (page 11), which does display corrected results for both tests. </a></div>
+      <div class="Body_Text"><a name="195032">The tests show that the first order statistic is statistically significant, whereas the second order statistic is not, which is what we would expect if the model error terms are serial uncorrelated in levels.</a></div>
+      <div class="Heading_4"><a name="200782">Pooled Mean Group Bounds Tests</a></div>
+      <div class="Body_Text"><a name="200849">The bounds test associated with univariate ARDL models (</a><span class="Link"><a href="ardl-Views_and_Procs_of_ARDL.html#281640" title="Views and Procs of ARDL">&#8220;Bounds Test View&#8221;</a></span>) may be computed for each cross-section in the panel. </div>
+      <div class="Body_Text"><a name="201005">To perform these tests, click on </a><span class="Menu_Item">View/ARDL Diagnostics/Bounds Test</span>. EViews will display a spool with the bounds statistics for each cross-section in the first node,</div>
+      <div class="Picture"><a name="200978"><img class="Default" src="images/panel.068.4.170.jpg" width="100%" style="left: 0.0pt; max-height: 637px; max-width: 747px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="200920">and with test critical values in the second node,</a></div>
+      <div class="Picture"><a name="200864"><img class="Default" src="images/panel.068.4.171.jpg" width="100%" style="left: 0.0pt; max-height: 485px; max-width: 760px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="200419">Pooled Mean Group Hausman (Similarity) Tests</a></div>
+      <div class="Body_Text"><a name="200501">The PMG estimator lies between mean group (MG) and pooled estimators which offer alternative assumptions about cross-sectional homogeneity.</a></div>
+      <div class="Body_Text"><a name="200421">At one extreme, the mean group estimator computes the average of coefficient estimates from separate cross-section specific equations. The estimation allows for complete heterogeneity of coefficients and variances, and ignores the fact that parameters may actually be identical across cross-sections.</a></div>
+      <div class="Body_Text"><a name="200422">At the other extreme are traditional pooled estimators such as the fixed and random effects estimators, which assume that the coefficients and variances are homogeneous across cross-sections (apart from limited exceptions such as individual effects).</a></div>
+      <div class="Body_Text"><a name="200423">The PMG allows intercepts, short-run coefficients and error variances to differ freely across groups, but constrains the long-run slope coefficients to be the same.</a></div>
+      <div class="Body_Text"><a name="200424">A useful diagnostic associated with these three estimators are Hausman-type (Hausman (1978)) tests applied to the difference between the MG and PMG estimators, and to the difference between PMG and dynamic estimators.</a></div>
+      <div class="Body_Text"><a name="200434">Formally, for long-run coefficient estimates <img class="Default EquationGraphic" src="images/panel.068.4.172.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.173.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> and corresponding covariances, <img class="Default EquationGraphic" src="images/panel.068.4.174.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 22px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/panel.068.4.175.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 22px; top: 0.0pt" alt="" />, under appropriate consistency and efficiency conditions, the test statistic,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/panel.068.4.176.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(55.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="200448">is distributed as a <img class="Default EquationGraphic" src="images/panel.068.4.177.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 44px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/panel.068.4.178.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the number of long-run parameters.</a></div>
+      <div class="Body_Text"><a name="200449">In the context of PMG estimation, one can construct two Hausman-type tests. The first considers the null of no difference in the consistent long-run coefficient estimates of the relative efficient PMG and the MG estimator. The second compares the PMG estimator to the relatively efficient pooled dynamic fixed effects estimator.</a></div>
+      <div class="Body_Text"><a name="200450">To compute the PMG Hausman tests, click on </a><span class="Menu_Item">View/ARDL Diagnostics/PMG Similarity Test</span>. </div>
+      <div class="Picture"><a name="200758"><img class="Default" src="images/panel.068.4.179.jpg" width="100%" style="left: 0.0pt; max-height: 601px; max-width: 764px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="200451">The output is a spool object displaying the Hausman test statistic value along with the associated </a><span class="In-line_math">p</span>-value, along with additional output related to the difference of estimators, their variances, and the regression results from each of the mean-group and dynamic fixed effects regressions.</div>
+      <div class="Heading_4"><a name="200455">Pooled Mean Group Symmetry Tests</a></div>
+      <div class="Body_Text"><a name="200458">For PMG equations, the symmetry test associated with asymmetric NARDL regressors (</a><span class="Link"><a href="ardl-Views_and_Procs_of_ARDL.html#281822" title="Views and Procs of ARDL">&#8220;Symmetry Test View&#8221;</a></span>) can be derived for each cross-section. To compute the tests, click on <span class="Menu_Item">View/ARDL Diagnostics/PMG Symmetry Test</span>. EViews will produce a spool with the NARDL symmetry test for each cross-section.</div>
+      <div class="Heading_4"><a name="201038">Pooled Mean Group Diagnostics</a></div>
+      <div class="Body_Text"><a name="201175">In addition to the specific tests outlined above, PMG estimation offers several diagnostic views.</a></div>
+      <div class="Heading_5"><a name="196531">Model Selection</a></div>
+      <div class="Body_Text"><a name="196532">The </a><span class="Menu_Item">Model Selection Summary</span> item on the <span class="Menu_Item">View</span> menu allows you to view either a <span class="Menu_Item">Criteria Graph</span> or a <span class="Menu_Item">Criteria Table</span>. The graph output shows the model selection value for the twenty &#8220;best&#8221; with the lowest criterion value. The table form of the view displays the log-likelihood value, AIC, BIC and HQ values of the best twenty models in tabular form.</div>
+      <div class="Heading_5"><a name="196536">Error-Correction Results</a></div>
+      <div class="Body_Text"><a name="196537">The error correction representation of the ARDL specification offers an easy-to-interpret representations of the cointegrating relationship between the dependent variable and the explanatory variables. </a></div>
+      <div class="Body_Text"><a name="196851">To see the individual cross-sectional short-run coefficients for the each of the cross-section EC equations, you can click on </a><span class="Menu_Item">View/ARDL Diagnostics/Cross-sectional Error-Correction Results</span>. The resulting display shows a spool containing each cross-section&#8217;s coefficients, standard errors, <span class="In-line_math">t</span>-statistics and <span class="In-line_math">p</span>-values.</div>
+      <div class="Body_Text"><a name="201418">See the discussion of the non-panel ARDL view </a><span class="Link"><a href="ardl-Views_and_Procs_of_ARDL.html#281556" title="Views and Procs of ARDL">&#8220;Error Correction Output View&#8221;</a></span> for additional background.</div>
+      <div class="Heading_5"><a name="196541">Cointegrating Relation Graphs</a></div>
+      <div class="Body_Text"><a name="196542">To view the fitted cointegrating relation series for each cross section, you may click on the menu item </a><span class="Menu_Item">View/ARDLDiagnostics/Cross sectional Cointegration Relation Plots</span>.</div>
+      <div class="Body_Text"><a name="201486">See the discussion of the non-panel ARDL view</a> <span class="Link"><a href="ardl-Views_and_Procs_of_ARDL.html#281606" title="Views and Procs of ARDL">&#8220;Cointegrating Relation View&#8221;</a></span> for additional background.</div>
+      <div class="Picture"><a name="200664">&nbsp;</a></div>
+      <div class="Picture"><a name="200591">&nbsp;</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

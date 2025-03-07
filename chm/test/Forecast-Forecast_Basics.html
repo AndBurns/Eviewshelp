@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Forecast Basics</title>
+    <link rel="StyleSheet" href="css/Forecast.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="Forecast-An_Illustration.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="Forecast-Forecasts_with_Lagged_Dependent_Variables.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="Forecast-Forecasting_from_an_Equation.html">Forecasting from an Equation</a> : Forecast Basics</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="181333">Forecast Basics</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#181344">Computing Point Forecasts</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#181357">Adjustment for Missing Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#181365">Forecast Errors and Variances</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#181402">Residual Uncertainty</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#181409">Coefficient Uncertainty</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#181422">Forecast Variability</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#181439">Additional Details</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#181455">Forecast Evaluation</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="181335">EViews stores the forecast results in the series specified in the </a><span class="Dialog_Item">Forecast name</span> field. We will refer to this series as the <span class="Definition">forecast series</span>. </div>
+      <div class="Body_Text"><a name="181336">The</a><span class="Emphasis"> forecast sample</span> specifies the observations for which EViews will try to compute fitted or forecasted values. If the forecast is not computable, a missing value will be returned. In some cases, EViews will carry out automatic adjustment of the sample to prevent a forecast consisting entirely of missing values (see <span class="Link"><a href="#181357" title="Forecast Basics">&#8220;Adjustment for Missing Values&#8221;</a></span>, below). Note that the forecast sample may or may not overlap with the sample of observations used to estimate the equation.</div>
+      <div class="Body_Text"><a name="181341">For values not included in the forecast sample, there are two options. By default, EViews fills in the actual values of the dependent variable. If you turn off the</a><span class="Menu_Item"> Insert actuals for out-of-sample</span> option, out-of-forecast-sample values will be filled with NAs.</div>
+      <div class="Body_Text"><a name="181342">As a consequence of these rules, </a><span class="Emphasis">all data in the forecast series will be overwritten during the forecast procedure</span>. Existing values in the forecast series will be lost.</div>
+      <div class="Heading_4"><a name="181344">Computing Point Forecasts</a></div>
+      <div class="Body_Text"><a name="181345">For each observation in the forecast sample, EViews computes the fitted value of the dependent variable using the estimated parameters, the right-hand side exogenous variables, and either the actual or estimated values for lagged endogenous variables and residuals. The method of constructing these forecasted values depends upon the estimated model and user-specified settings.</a></div>
+      <div class="Body_Text"><a name="181346">To illustrate the forecasting procedure, we begin with a simple linear regression model with no lagged endogenous right-hand side variables, and no ARMA terms. Suppose that you have estimated the following equation specification:</a></div>
+      <div class="Input"><a name="181347">y c x z</a></div>
+      <div class="Body_Text"><a name="181348">Now click on </a><span class="Menu_Item">Forecast</span>, specify a forecast period, and click <span class="Dialog_Item">OK</span>.</div>
+      <div class="Body_Text"><a name="181349">For every </a><span class="Default_Document_Font">observation</span> in the forecast period, EViews will compute the fitted value of Y using the estimated parameters and the corresponding values of the regressors, X and Z:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Forecast.034.4.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(25.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="181354">You should make certain that you have valid values for the exogenous right-hand side variables for all observations in the forecast period. If any data are missing in the forecast sample, the corresponding forecast observation will be an NA.</a></div>
+      <div class="Heading_4"><a name="181357">Adjustment for Missing Values</a></div>
+      <div class="Body_Text"><a name="181358">There are two cases when a missing value will be returned for the forecast value. First, if any of the regressors have a missing value, and second, if any of the regressors are out of the range of the workfile. This includes the implicit error terms in AR models.</a></div>
+      <div class="Body_Text"><a name="181359">In the case of forecasts with no dynamic components in the specification (</a><span class="Emphasis">i.e</span>. with no lagged endogenous or ARMA error terms), a missing value in the forecast series will not affect subsequent forecasted values. In the case where there are dynamic components, however, a single missing value in the forecasted series will propagate throughout all future values of the series.</div>
+      <div class="Body_Text"><a name="181360">As a convenience feature, EViews will move the starting point of the sample forward where necessary until a valid forecast value is obtained. Without these adjustments, the user would have to figure out the appropriate number of presample values to skip, otherwise the forecast would consist entirely of missing values. For example, suppose you wanted to forecast dynamically from the following equation specification:</a></div>
+      <div class="Input"><a name="181361">y c y(-1) ar(1)</a></div>
+      <div class="Body_Text"><a name="181362">If you specified the beginning of the forecast sample to the beginning of the workfile range, EViews will adjust forward the forecast sample by 2 observations, and will use the pre-forecast-sample values of the lagged variables (the loss of 2 observations occurs because the residual loses one observation due to the lagged endogenous variable so that the forecast for the error term can begin only from the third observation.)</a></div>
+      <div class="Heading_4"><a name="181365">Forecast Errors and Variances</a></div>
+      <div class="Body_Text"><a name="181366">Suppose the &#8220;true&#8221; model is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Forecast.034.4.02.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(25.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="181374">where <img class="Default EquationGraphic" src="images/Forecast.034.4.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> is an independent, and identically distributed, mean zero random disturbance, and <img class="Default EquationGraphic" src="images/Forecast.034.4.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is a vector of unknown parameters. Below, we relax the restriction that the <img class="Default EquationGraphic" src="images/Forecast.034.4.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />&#8217;s be independent.</a></div>
+      <div class="Body_Text"><a name="181387">The true model generating <img class="Default EquationGraphic" src="images/Forecast.034.4.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is not known, but we obtain estimates <img class="Default EquationGraphic" src="images/Forecast.034.4.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> of the unknown parameters <img class="Default EquationGraphic" src="images/Forecast.034.4.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. Then, setting the error term equal to its mean value of zero, the (point) forecasts of <img class="Default EquationGraphic" src="images/Forecast.034.4.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />are obtained as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Forecast.034.4.10.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(25.3)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="181398">Forecasts are made with error, where the error is simply the difference between the actual and forecasted value <img class="Default EquationGraphic" src="images/Forecast.034.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 103px; top: 0.0pt" alt="" />. Assuming that the model is correctly specified, there are two sources of forecast error: residual uncertainty and coefficient uncertainty.</a></div>
+      <div class="Heading_5"><a name="181402">Residual Uncertainty</a></div>
+      <div class="Body_Text"><a name="181403">The first source of error, termed</a><span class="Definition"> residual </span>or<span class="Definition"> innovation uncertainty</span>, arises because the innovations <img class="Default EquationGraphic" src="images/Forecast.034.4.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> in the equation are unknown for the forecast period and are replaced with their expectations. While the residuals are zero in expected value, the individual values are non-zero; the larger the variation in the individual residuals, the greater the overall error in the forecasts. </div>
+      <div class="Body_Text"><a name="181407">The standard measure of this variation is the standard error of the regression (labeled &#8220;S.E. of regression&#8221; in the equation output). Residual uncertainty is usually the largest source of forecast error.</a></div>
+      <div class="Body_Text"><a name="181408">In dynamic forecasts, innovation uncertainty is compounded by the fact that lagged dependent variables and ARMA terms depend on lagged innovations. EViews also sets these equal to their expected values, which differ randomly from realized values. This additional source of forecast uncertainty tends to rise over the forecast horizon, leading to a pattern of increasing forecast errors. Forecasting with lagged dependent variables and ARMA terms is discussed in more detail below.</a></div>
+      <div class="Heading_5"><a name="181409">Coefficient Uncertainty</a></div>
+      <div class="Body_Text"><a name="181413">The second source of forecast error is </a><span class="Definition">coefficient uncertainty</span>. The estimated coefficients <img class="Default EquationGraphic" src="images/Forecast.034.4.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> of the equation deviate from the true coefficients <img class="Default EquationGraphic" src="images/Forecast.034.4.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> in a random fashion. The standard error of the estimated coefficient, given in the regression output, is a measure of the precision with which the estimated coefficients measure the true coefficients. </div>
+      <div class="Body_Text"><a name="181417">The effect of coefficient uncertainty depends upon the exogenous variables. Since the estimated coefficients are multiplied by the exogenous variables <img class="Default EquationGraphic" src="images/Forecast.034.4.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> in the computation of forecasts, the more the exogenous variables deviate from their mean values, the greater is the forecast uncertainty.</a></div>
+      <div class="Heading_5"><a name="181422">Forecast Variability</a></div>
+      <div class="Body_Text"><a name="181423">The variability of forecasts is measured by the forecast standard errors. For a single equation without lagged dependent variables or ARMA terms, the forecast standard errors are computed as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Forecast.034.4.16.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(25.4)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="181433">where <img class="Default EquationGraphic" src="images/Forecast.034.4.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is the standard error of regression. These standard errors account for both innovation (the first term) and coefficient uncertainty (the second term). Point forecasts made from linear regression models estimated by least squares are optimal in the sense that they have the smallest forecast variance among forecasts made by linear unbiased estimators. Moreover, if the innovations are normally distributed, the forecast errors have a </a><span class="In-line_math">t</span>-distribution and forecast intervals can be readily formed.</div>
+      <div class="Body_Text"><a name="181437">If you supply a name for the forecast standard errors, EViews computes and saves a series of forecast standard errors in your workfile. You can use these standard errors to form forecast intervals. If you choose the </a><span class="Dialog_Item">Do graph</span> option for output, EViews will plot the forecasts with plus and minus two standard error bands. These two standard error bands provide an approximate 95% forecast interval; if you (hypothetically) make many forecasts, the actual value of the dependent variable will fall inside these bounds 95 percent of the time.</div>
+      <div class="Heading_5"><a name="181439">Additional Details</a></div>
+      <div class="Body_Text"><a name="181440">EViews accounts for the additional forecast uncertainty generated when lagged dependent variables are used as explanatory variables (see </a><span class="Link"><a href="Forecast-Forecasts_with_Lagged_Dependent_Variables.html#181588" title="Forecasts with Lagged Dependent Variables">&#8220;Forecasts with Lagged Dependent Variables&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="181444">There are cases where coefficient uncertainty is ignored in forming the forecast standard error. For example, coefficient uncertainty is always ignored in equations specified by expression, for example, nonlinear least squares, and equations that include PDL (polynomial distributed lag) terms (</a><span class="Link"><a href="Forecast-Forecasting_with_Nonlinear_and_PDL_Specification.html#181991" title="Forecasting with Nonlinear and PDL Specifications">&#8220;Forecasting with Nonlinear and PDL Specifications&#8221;</a></span>). </div>
+      <div class="Body_Text"><a name="181451">In addition, forecast standard errors do not account for GLS weights in estimated panel equations.</a></div>
+      <div class="Heading_4"><a name="181455">Forecast Evaluation</a></div>
+      <div class="Body_Text"><a name="181456">Suppose we construct a dynamic forecast for HS over the period 1990M02 to 1996M01 using our estimated housing equation. If the </a><span class="Dialog_Item">Forecast evaluation</span> option is checked, and there are actual data for the forecasted variable for the forecast sample, EViews reports a table of statistical results evaluating the forecast:</div>
+      <div class="Table"><a name="181460"><img class="Default" src="images/Forecast.034.4.18.jpg" width="100%" style="left: 0.0pt; max-height: 247px; max-width: 926px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="181461">Note that EViews cannot compute a forecast evaluation if there are no data for the dependent variable for the forecast sample.</a></div>
+      <div class="Body_Text"><a name="181462">The forecast evaluation is saved in one of two formats. If you turn on the </a><span class="Dialog_Item">Do graph</span> option, the forecasts are included along with a graph of the forecasts. If you wish to display the evaluations in their own table, you should turn off the <span class="Dialog_Item">Do graph</span> option in the Forecast dialog box.</div>
+      <div class="Body_Text"><a name="181466">Suppose the forecast sample is <img class="Default EquationGraphic" src="images/Forecast.034.4.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 201px; top: 0.0pt" alt="" />, and denote the actual and forecasted value in period <img class="Default EquationGraphic" src="images/Forecast.034.4.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> as <img class="Default EquationGraphic" src="images/Forecast.034.4.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/Forecast.034.4.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 18px; top: 0.0pt" alt="" />, respectively. The reported forecast error statistics are computed as follows:</a></div>
+      <div class="Table"><a name="181509">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 324pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 115.2pt">
+            <div class="Table_Text"><a name="181479">Root Mean Squared Error </a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 208.8pt">
+            <div class="Table_Multi-Line_Equation"><a name="181484"><img class="Default EquationGraphic" src="images/Forecast.034.4.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 38px; max-width: 168px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="181487">Mean Absolute Error</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="181492"><img class="Default EquationGraphic" src="images/Forecast.034.4.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 41px; max-width: 154px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="181494">Mean Absolute Percentage Error</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="181500"><img class="Default EquationGraphic" src="images/Forecast.034.4.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 50px; max-width: 172px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="181503">Theil Inequality Coefficient</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="181508"><img class="Default EquationGraphic" src="images/Forecast.034.4.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 75px; max-width: 262px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="181510">The first two forecast error statistics depend on the scale of the dependent variable. These should be used as relative measures to compare forecasts for the same series across different models; the smaller the error, the better the forecasting ability of that model according to that criterion. The remaining two statistics are scale invariant. The Theil inequality coefficient always lies between zero and one, where zero indicates a perfect fit.</a></div>
+      <div class="Body_Text"><a name="181511">The mean squared forecast error can be decomposed as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Forecast.034.4.27.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(25.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="181534">where <img class="Default EquationGraphic" src="images/Forecast.034.4.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 39px; max-width: 72px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/Forecast.034.4.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/Forecast.034.4.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/Forecast.034.4.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> are the means and (biased) standard deviations of <img class="Default EquationGraphic" src="images/Forecast.034.4.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/Forecast.034.4.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/Forecast.034.4.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is the correlation between <img class="Default EquationGraphic" src="images/Forecast.034.4.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/Forecast.034.4.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. The proportions are defined as: </a></div>
+      <div class="Table"><a name="181569">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 226.8pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 126.72pt">
+            <div class="Table_Text"><a name="181547">Bias Proportion</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 100.08pt">
+            <div class="Table_Multi-Line_Equation"><a name="181552"><img class="Default EquationGraphic" src="images/Forecast.034.4.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 74px; max-width: 134px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="181555">Variance Proportion</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="181560"><img class="Default EquationGraphic" src="images/Forecast.034.4.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 63px; max-width: 114px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="181563">Covariance Proportion</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="181568"><img class="Default EquationGraphic" src="images/Forecast.034.4.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 58px; max-width: 114px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="181570">The bias proportion tells us how far the mean of the forecast is from the mean of the actual series.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="181571">The variance proportion tells us how far the variation of the forecast is from the variation of the actual series.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="181572">The covariance proportion measures the remaining unsystematic forecasting errors.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="181573">Note that the bias, variance, and covariance proportions add up to one.</a></div>
+      <div class="Body_Text"><a name="181574">If your forecast is &#8220;good&#8221;, the bias and variance proportions should be small so that most of the bias should be concentrated on the covariance proportions. For additional discussion of forecast evaluation, see Pindyck and Rubinfeld (1998, p. 210-214).</a></div>
+      <div class="Body_Text"><a name="181575">For the example output, the bias proportion is large, indicating that the mean of the forecasts does a poor job of tracking the mean of the dependent variable. To check this, we will plot the forecasted series together with the actual series in the forecast sample with the two standard error bounds. Suppose we saved the forecasts and their standard errors as HSF and HSFSE, respectively. Then the plus and minus two standard error series can be generated by the commands:</a></div>
+      <div class="Multi-line_Input"><a name="181576">smpl 1990m02 1996m01</a></div>
+      <div class="Multi-line_Input"><a name="181577">series hsf_high = hsf + 2*hsfse</a></div>
+      <div class="Multi-line_Input"><a name="181578">series hsf_low = hsf - 2*hsfse</a></div>
+      <div class="Body_Text"><a name="181579">Create a group containing the four series. You can highlight the four series HS, HSF, HSF_HIGH, and HSF_LOW, double click on the selected area, and select </a><span class="Menu_Item">Open Group</span>, or you can select <span class="Menu_Item">Quick/Show&#8230;</span> and enter the four series names. Once you have the group open, select <span class="Menu_Item">View/Graph... </span>and select <span class="Dialog_Item">Line &amp; Symbol</span><span class="Menu_Item"> </span>from the left side of the dialog.</div>
+      <div class="Picture"><a name="181583"><img class="Default" src="images/Forecast.034.4.40.jpg" width="100%" style="left: 0.0pt; max-height: 381px; max-width: 414px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="181584">The forecasts completely miss the downturn at the start of the 1990&#8217;s, but, subsequent to the recovery, track the trend reasonably well from 1992 to 1996.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

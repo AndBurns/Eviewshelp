@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Program Modes</title>
+    <link rel="StyleSheet" href="css/cprogram.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cprogram-Program_Variables.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-Program_Arguments.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cprogram-EViews_Programming.html">EViews Programming</a> : Program Modes</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="103355">Program Modes</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#182123">Program Message Logging</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#208370">Logging Options</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="103404">Program modes describe different settings associated with the execution of your program. You may, for example, choose to provide verbose messaging where your program will echo each command to the status line, or you may choose quiet mode. Alternately, you may wish to run a legacy program file in Version 4 compatibility mode. </a></div>
+      <div class="Body_Text"><a name="181905">EViews provides you with the opportunity to set program execution modes at the time that the program is first run. In addition, you may use the &#8220;MODE&#8221; statement to change the execution mode of a program from within the program itself. One important benefit to using &#8220;MODE&#8221; statements is that the program can begin executing in one mode, and switch to a second mode as the program executes.</a></div>
+      <div class="Body_Text"><a name="103410">To change the mode for quiet or verbose mode, simply add a line to your program reading &#8220;MODE&#8221; followed by either the &#8220;QUIET&#8221; or the &#8220;VERBOSE&#8221; keyword, as in</a></div>
+      <div class="Input"><a name="103411">mode quiet</a></div>
+      <div class="Body_Text"><a name="103408">For version 4 compatibility, you should use the keyword &#8220;VER4&#8221;:</a></div>
+      <div class="Input"><a name="174693">mode ver4</a></div>
+      <div class="Body_Text"><a name="103433">as a line in the body of the program.</a></div>
+      <div class="Body_Text"><a name="103438">Multiple settings may be set in a single &#8220;MODE&#8221; line:</a></div>
+      <div class="Input"><a name="103443">mode quiet ver4</a></div>
+      <div class="Body_Text"><a name="103451">and multiple mode statements may be specified in a program to change the mode as the program runs:</a></div>
+      <div class="Multi-line_Input"><a name="103452">mode quiet</a></div>
+      <div class="Multi-line_Input"><span class="Argument"><a name="103453">[some program lines]</a></span> </div>
+      <div class="Multi-line_Input"><a name="103454">mode verbose</a></div>
+      <div class="Multi-line_Input"><span class="Argument"><a name="103455">[additional program lines]</a></span> </div>
+      <div class="Body_Text"><a name="182119">Note that setting the execution mode explicitly in a program overrides any settings specified at the time the program is executed.</a></div>
+      <div class="Heading_4"><a name="182123">Program Message Logging</a></div>
+      <div class="Body_Text"><a name="209785">When executing a program in EViews, it may be useful to keep track of what is happening during execution. Log windows allow you to determine more accurately the state of various objects in your workfile or follow program progression.</a></div>
+      <div class="Picture"><a name="209790">&nbsp;</a></div>
+      <div class="Body_Text"><a name="210096">Log windows may be switched on using the </a><span class="In-line_input">logmode</span> command. The <span class="In-line_command">logmode</span> command gives the ability to specify the name of the log window and directs the messages to the window with the specified name. If no name is specified the messages are directed to a window with the name of the program. If a program is executed more than once and a log window has already been created, with no name specified for the log, the log window will be cleared and all subsequent messages will be sent to the existing log window. If you wish to preserve a log, you may either select to append message, save the log to a text file, or freeze it, which creates a text file object. All of these actions can be accessed by the popup menu that appears when right-clicking on a message log window.<img class="Default" src="images/cprogram.087.05.1.jpg" width="100%" style="left: 0.0pt; max-height: 396px; max-width: 182px; top: 0.0pt" alt="" /></div>
+      <div class="Body_Text"><a name="210113">The log windows appear as tabbed windows and can be rearranged by the user. The </a><span class="In-line_command">logmode</span> command has an option to have the log window floating next to the program window.</div>
+      <div class="Picture"><a name="208366"><img class="Default" src="images/cprogram.087.05.2.jpg" width="100%" style="left: 0.0pt; max-height: 539px; max-width: 660px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="208367">There are several types of messages that can be logged: program lines, status line messages, user log messages, and program errors. When displayed in a log message, each type will appear in a different color, making it easier to differentiate one type from another. Program lines are echoes of the line of code in the program currently being executed, and are displayed in black. Status line messages are the messages displayed in the status line and appear in blue. User log messages are custom messages created by the program via the </a><span class="In-line_command">logmsg</span> command and appear in green. Program errors are messages generated when a logical or syntax error has occurred and appear in red.</div>
+      <div class="Body_Text"><a name="208604">Beginning with EViews 14, all program log windows appear as tabbed windows and may be rearranged. Additionally, you have the ability to specify a name for the log window and direct the messages to the log window with the specified name. If no name is specified, the messages are directed to a window with the name of the program. This was the default behavior in versions of EViews before EViews 10.</a></div>
+      <div class="Heading_5"><a name="208370">Logging Options</a></div>
+      <div class="Body_Text"><a name="208371">The Message settings dialog in the </a><span class="Dialog_Item">Programs</span> section of the <span class="Dialog_Item">General Options</span> dialog specifies whether EViews runs programs in Verbose mode (the default), lists commands in the status line as they are executed, or uses Quiet mode, which suppresses this information. EViews will run faster in quiet mode since the status line display does not need to be updated.</div>
+      <div class="Body_Text"><a name="208372">This default may always be overridden from the Run Program dialog, or by using the option "q" in the run statement, as in:</a></div>
+      <div class="Input"><a name="208373">run(q) myprogram</a></div>
+      <div class="Body_Text"><a name="208374">In addition, you may modify the Logging settings to delete (Clear) or leave (Append) the contents of the log window on program start.</a></div>
+      <div class="Picture"><a name="208378"><img class="Default" src="images/cprogram.087.05.3.jpg" width="100%" style="left: 0.0pt; max-height: 414px; max-width: 591px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="208391">See also the </a><span class="In-line_command_link"><a href="commandcmd-logmode.html#2639698" title="logmode">logmode</a></span>, <span class="In-line_command_link"><a href="commandcmd-logmsg.html#2639844" title="logmsg">logmsg</a></span>, <span class="In-line_command_link"><a href="commandcmd-logclose.html#2639628" title="logclose">logclose</a></span>, and <span class="In-line_command_link"><a href="commandcmd-logsave.html#2639905" title="logsave">logsave</a></span> commands, which all have additional options to specify the name of the log.</div>
+      <div class="Picture"><a name="208392">&nbsp;</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

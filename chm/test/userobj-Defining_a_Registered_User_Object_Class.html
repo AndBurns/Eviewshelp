@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Defining a Registered User Object Class</title>
+    <link rel="StyleSheet" href="css/userobj.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="userobj-Managing_User_Object_Classes.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="userobj-User_Object_Programming_Support.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="userobj-User_Objects.html">User Objects</a> : Defining a Registered User Object Class</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="410261">Defining a Registered User Object Class</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#411846">Creating an Object Definition File</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#411743">Registering a User Object Class</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#410256">Creating a User Object Package</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#432517">Creating the Self-installing Package</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#432586">Table of Contents</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#432614">Installer Program</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#432866">Documentation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#432869">Version</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#409022">XML File Specification</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="420349">To define a registered user object class, you must provide information on how to </a><span class="Emphasis">construct </span>(create) an instance of the object. While the constructor information is all that is required, you may optionally specify menu items and custom command names for views and procs that will execute EViews programs.</div>
+      <div class="Body_Text"><a name="421255">We may divide the registration procedure into two distinct steps: </a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="421440">Create an object definition file which includes constructor, view, and proc definitions.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="421443">Register the object definition file with EViews.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="422853">This discussion assumes that you have already written programs to initialize your object and possibly to display views and execute procs. These programs will be standard EViews programs that use ordinary EViews commands. There are, however, several programming features which are designed specifically for user object (and Add-in) program development that you should find useful. See </a><span class="Link"><a href="addins-Add-ins_Design_Support.html#395090" title="Add-ins Design Support">&#8220;Add-ins Design Support&#8221;</a></span> in the <span class="Manual_Titles">Command and Programming Reference</span>.</div>
+      <div class="Heading_4"><a name="411846">Creating an Object Definition File</a></div>
+      <div class="Body_Text"><a name="422031">The object definition file is a simple text file with a &#8220;INI&#8221; extension. This file describes how to construct the custom object using an EViews program and optionally provides menu items and custom command names for views and procs that will execute EViews programs. </a></div>
+      <div class="Body_Text"><a name="422027">There are three sections in the file, corresponding to the constructor, the views, and the procs of the object.</a></div>
+      <div class="Body_Text"><a name="422067">The first section of the definition file should start with a line consisting of the text &#8220;[constructor]&#8221; (without the quotes). The line immediately following should contain the path and name of an EViews program file that will be used as the constructor. The constructor program file describes how the object should be initialized, or constructed, when you create a new instance using the </a><span class="Menu_Item">Object/New Object...</span> menu item or the command line.</div>
+      <div class="Body_Text"><a name="411805">The second section contains the view definition specifications. This section should start with a line consisting of the keyword &#8220;[views]&#8221;. Each line following this keyword will define a view for the user object. Each view definition line should consist of the menu text, followed by a comma, a custom command name for the view, a comma, the path and name of the program file to be run when the view is selected from the menu or run from the command line.</a></div>
+      <div class="Body_Text"><a name="411806">The third section contains the proc definition specifications. It follows the same format as the views section, but begins with &#8220;[procs]&#8221; rather than &#8220;[views]&#8221;. </a></div>
+      <div class="Body_Text"><a name="411807">Note that when providing the path of the programs in your definitions, the &#8220;.\&#8221; shortcut can be used to denote the folder containing the definition INI file.</a></div>
+      <div class="Body_Text"><a name="422604">For example, the following is the definition file for the ResStore user object:</a></div>
+      <div class="Multi-line_Input"><a name="411809">[constructor]</a></div>
+      <div class="Multi-line_Input"><a name="411810">".\resstore construct.prg"</a></div>
+      <div class="Multi-line_Input"><a name="411812">[views]</a></div>
+      <div class="Multi-line_Input"><a name="411813">"View stored objects", objects, ".\viewall.prg"</a></div>
+      <div class="Multi-line_Input"><a name="411814">"View stored equations", equations, ".\viewequations.prg"</a></div>
+      <div class="Multi-line_Input"><a name="411815">"View stored graphs", graphs, ".\viewgraphs.prg"</a></div>
+      <div class="Multi-line_Input"><a name="411816">"view stored tables", tables, ".\viewtables.prg"</a></div>
+      <div class="Multi-line_Input"><a name="411818">[procs]</a></div>
+      <div class="Multi-line_Input"><a name="411819">"Extract objects from store", extractobjects, ".\extract objects.prg"</a></div>
+      <div class="Multi-line_Input"><a name="411820">"Add objects to store", addobjects, ".\resstore construct.prg"</a></div>
+      <div class="Multi-line_Input"><a name="411821">"Remove objects from store", dropobjects, ".\remove objects.prg"</a></div>
+      <div class="Body_Text"><a name="411823">The ResStore user object use a constructor program called &#8220;resstore construct.PRG&#8221; which is called when you create a new ResStore object from the dialogs or command line.</a></div>
+      <div class="Body_Text"><a name="440252">There are four view menu items, each associated with a different EViews program. The first view definition tells EViews that it should create a view menu item </a><span class="Menu_Item">View stored objects</span> and object command <span class="In-line_command">objects</span>, and associate both with the EViews program &#8220;viewall.PRG&#8221; (which is located in the ResStore directory). This definition means that selecting <span class="Menu_Item">View/View stored objects</span> from the object menu, or entering the object command </div>
+      <div class="Input"><a name="424081">my_object.objects</a></div>
+      <div class="Body_Text"><a name="424084">will run the &#8220;viewall.PRG&#8221; program which displays all of the stored objects in MY_OBJECT.</a></div>
+      <div class="Body_Text"><a name="423456">Similarly, there are three proc menu items. Selecting </a><span class="Menu_Item">Proc/Remove objects from store</span> or issuing the command</div>
+      <div class="Input"><a name="424495">my_object.dropobjects</a></div>
+      <div class="Body_Text"><a name="424423">runs the &#8220;remove objects.PRG&#8221; program which displays a dialog prompting you for the name of the objects to remove from MY_OBJECT.</a></div>
+      <div class="Heading_4"><a name="411743">Registering a User Object Class</a></div>
+      <div class="Body_Text"><a name="424684">To register a new user object class, select </a><span class="Menu_Item">Add-ins/Manage User Objects...</span> from the main EViews menu to display the <span class="Menu_Item">User objects</span> management dialog, then click on the <span class="Menu_Item">Add</span> button to display the <span class="Menu_Item">Add/Edit Program</span> dialog.</div>
+      <div class="Picture"><a name="411748"><img class="Default" src="images/userobj.090.7.1.jpg" width="100%" style="left: 0.0pt; max-height: 359px; max-width: 450px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="411749">The dialog allows you to provide a name for the user object class, to specify the INI file, attach a documentation file, and provide various object attributes:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="411750">The </a><span class="Menu_Item">Object name </span>edit field should be used to specify the user object class name. Note that if you provide the name of a built-in EViews object, the EViews built-in object will take precedence.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="411751">The </a><span class="Menu_Item">Definition file</span> edit field must be used to enter the name and path of the INI definition file. Note you may press the &#8220;<span class="Menu_Item">...&#8221;</span> button to navigate to and select the file.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="411752">The </a><span class="Menu_Item">Documentation file </span>edit field allows you specify a PDF, Text, RTF, Microsoft Word file, or URL containing documentation for the user object class. (Note that relative paths are evaluated with respect to the directory of the INI file, not the default user object directory.)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="411754">You may use the </a><span class="Menu_Item">Brief description</span> edit field to describe the purpose of the User Object.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440490">You may enter a </a><span class="Menu_Item">Version</span> number for your user object and an <span class="Menu_Item">Update URL</span> indicating where to find the update XML file (see <span class="Link"><a href="#409022" title="Defining a Registered User Object Class">&#8220;XML File Specification&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="425132">You must provide an object name and a definition file to register your object. The remaining information is recommended, but not required.</a></div>
+      <div class="Heading_4"><a name="410256">Creating a User Object Package</a></div>
+      <div class="Body_Text"><a name="406239">In </a><span class="Link"><a href="#410261" title="Defining a Registered User Object Class">&#8220;Defining a Registered User Object Class&#8221;</a></span> we showed how you can use EViews program files and an object definition file to register a new user object class for personal use.</div>
+      <div class="Body_Text"><a name="431074">If you wish to distribute your custom object to others, we highly recommend that you create a user object package. Packaging the user object allows you to bundle all of the files for distribution and, if you provide an installer program, offers automatic installation of the object by dragging-and-dropping the package onto EViews or double clicking on the file.</a></div>
+      <div class="Body_Text"><a name="432516">The process of creating a user object package is virtually identical to packaging of an EViews Add-in, with a few minor exceptions. We summarize briefly the main steps. Related discussion may be found in.</a></div>
+      <div class="Heading_5"><a name="432517">Creating the Self-installing Package</a></div>
+      <div class="Body_Text"><a name="432518">The process of creating a user object package is straightforward, requiring only two steps:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="432120">(</a><span class="Emphasis">optional</span>) Create a table of contents (TOC) information file and installer program file to allow for automatic registration and updating of the Add-in.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="432121">Create a self-extracting user object package file containing the object definition file and any support files (including the TOC and installer program file, if available).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="432122">To create the self-extractive file simply create a standard ZIP archive file containing all of the files for your user object, then rename the ZIP file so that it has the extension &#8220;UOPZ&#8221;. Opening such an file, automatically after completing the download, by double clicking on the file, or by dropping it onto EViews, will begin the automatic installation procedure. </a></div>
+      <div class="Body_Text"><a name="432124">The user object will not, however be automatically installed and registered unless you include a table of contents (TOC) information file and installer program along with your program files. Creating the TOC and installer program files takes only a few minutes and allows you to support automatic registration and updating of the user object. We strongly recommend that package distributors take the time to create these files as described below.</a></div>
+      <div class="Heading_5"><a name="432586">Table of Contents</a></div>
+      <div class="Body_Text"><a name="432588">Next, you should create a table-of-contents file named &#8220;Toc.INI&#8221;. The TOC file should contain setup information for the user object which describes the directory in which it should be installed, and the name of the EViews program, if any, that should be run to register the user object files. The format of the TOC file is:</a></div>
+      <div class="Input"><a name="432589">[package]</a></div>
+      <div class="Input"><a name="432590">installer = </a><span class="Argument">&lt;name of installer file&gt;</span></div>
+      <div class="Input"><a name="432591">folder = </a><span class="Argument">&lt;name of folder to create&gt;</span></div>
+      <div class="Body_Text"><a name="432592">A TOC file should always begin with the line &#8220;[package]&#8221;. The &#8220;installer&#8221; keyword is used to indicate the name of the EViews program file that should be run to register the user object. If, for example, a registration file named &#8220;Roll install.PRG&#8221; is included in your package, you should include the line</a></div>
+      <div class="Input"><a name="432593">installer = roll install.prg</a></div>
+      <div class="Body_Text"><a name="432594">The &#8220;folder&#8221; keyword may be used to indicate the subfolder of the default user object directory into which you wish to extract the package files. Thus,</a></div>
+      <div class="Input"><a name="432595">folder = Roll</a></div>
+      <div class="Body_Text"><a name="432596">tells EViews to extract the contents of the UOPZ file into the &#8220;Roll&#8221; folder of the User Object directory. If no folder is specified, the basename of the UOPZ file will be used as the target folder name. </a></div>
+      <div class="Heading_5"><a name="432614">Installer Program</a></div>
+      <div class="Body_Text"><a name="409752">If you wish to facilitate automatic registration of the user object class, you should create a simple EViews &#8220;.PRG&#8221; program that uses the </a><span class="In-line_command">adduo</span> command to register the User Object class. For example, the rolling regression user object described in <span class="Link"><a href="userobj-Examples.html#416780" title="Examples">&#8220;Rolling Regression Estimation Object (Roll)&#8221;</a></span> may be registered by including the command</div>
+      <div class="Input"><a name="409133">adduo(name="roll", version="1.0", desc="Rolling regression object") ./rolldef.ini</a></div>
+      <div class="Body_Text"><a name="409134">in a program file, and including a reference to this file in the package table-of-contents. </a></div>
+      <div class="Heading_6"><a name="432866">Documentation</a></div>
+      <div class="Body_Text"><a name="432867">We recommend that you provide documentation for your user object, and use the &#8220;docs=&#8221; option to point to the documentation file. Providing some documentation for the command line methods of initializing the object and accessing views and procs is especially important. Documentation could be anything from a simple text file with some syntax hints, to a lengthy PDF document that describes the user object features in detail. </a></div>
+      <div class="Heading_6"><a name="432869">Version</a></div>
+      <div class="Body_Text"><a name="432870">You may specify an version number for your user object. Version numbers allow users to use automatic updating to ensure they have the latest version of the object class definition files. When a user uses the </a><span class="Menu_Item">Update</span> button on the <span class="Menu_Item">Manage User Objects </span>dialog to check for updates, EViews will compare the hosted version number with the currently registered version number and download the latest version if newer.</div>
+      <div class="Body_Text"><a name="432871">You may use the &#8220;version=&#8221; option to specify the version number. If omitted, EViews will assume that the user object version number is 1.0.</a></div>
+      <div class="Heading_6"><a name="409022">XML File Specification</a></div>
+      <div class="Body_Text"><a name="433735">One of the most useful user object management features is the ability of users to automatically update their installed user object as newer versions become available. To support this feature, EViews must know where to look to determine the most recent version of the user object and where to download any updates.</a></div>
+      <div class="Body_Text"><a name="440771">(Note that this specification is identical to the file specification for Add-ins and the material below is virtually identical to the discussion for Add-ins.)</a></div>
+      <div class="Body_Text"><a name="433736">This information is communicated in an XML file, typically located on the Add-ins package hosting site. If you will be hosting this file, you should use the </a><span class="In-line_command">adduo</span> option &#8220;url=&#8221; to specify the URL for the XML file. If this option is not supplied, EViews will look for the XML file on EViews.com.</div>
+      <div class="Body_Text"><a name="434133">The XML file should contain one or more item definitions, where each item is a set of information on a specific user object. The item definition is contained in the lines between an </a><span class="In-line_input">&lt;item&gt;</span> and <span class="In-line_input">&lt;/item&gt;</span> tag. The full specification of an item is as follows:</div>
+      <div class="Multi-line_Input"><a name="434040">&lt;item&gt;</a></div>
+      <div class="Multi-line_Input"><a name="434041">&lt;title&gt;Roll&lt;/title&gt;</a></div>
+      <div class="Multi-line_Input"><a name="434042">&lt;version&gt;1.0&lt;/version&gt;</a></div>
+      <div class="Multi-line_Input"><a name="434043">&lt;description&gt;User Object for performing rolling regression.&lt;/description&gt;</a></div>
+      <div class="Multi-line_Input"><a name="434044">&lt;link&gt;http://eviews.com/Addins/Roll.uopz&lt;/link&gt;</a></div>
+      <div class="Multi-line_Input"><a name="434045">&lt;pubDate&gt;14 Dec 2012&lt;/pubDate&gt;</a></div>
+      <div class="Multi-line_Input"><a name="433747">&lt;/item&gt;</a></div>
+      <div class="Body_Text"><a name="434071">The only required specifications are the </a><span class="In-line_input">&lt;title&gt;</span> and <span class="In-line_input">&lt;link&gt;</span>. </div>
+      <div class="Body_Text"><a name="434167">The </a><span class="In-line_input">&lt;version&gt;</span> is used to specify the current user object version number. When the user checks for updates, EViews will download the user object if the version number they have currently installed is lower than the one given in the <span class="In-line_input">&lt;version&gt;</span> tag.</div>
+      <div class="Body_Text"><a name="433750">The </a><span class="In-line_input">&lt;link&gt;</span> specification contains the URL (or network file location) of the UOPZ file containing the user object package. This is the location from which EViews will download the updated Add-in package should the user request an update.</div>
+      <div class="Body_Text"><a name="434942">The </a><span class="In-line_input">&lt;description&gt;</span> and <span class="In-line_input">&lt;pubDate&gt;</span> specifications should be self-explanatory.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

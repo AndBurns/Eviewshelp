@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Program Arguments</title>
+    <link rel="StyleSheet" href="css/cprogram.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cprogram-Program_Modes.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-Program_Options.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cprogram-EViews_Programming.html">EViews Programming</a> : Program Arguments</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="103352">Program Arguments</a></div>
+      <div class="Body_Text"><span class="Definition"><a name="600">Program arguments</a></span> are special string variables that are passed to your program when you run the program. Arguments allow you to change the value of string variables every time you run the program. You may use them in any context where a string variable is appropriate. Any number of arguments may be included in a program. The individual arguments will be available in the string variables &#8220;<span class="EViews_Name">%0</span>&#8221;, &#8220;<span class="EViews_Name">%1</span>&#8221;, &#8220;<span class="EViews_Name">%2</span>&#8221;, and so on; the &#8220;%ARGS&#8221; variable will contain a space delimited list of all the arguments passed into the program.</div>
+      <div class="Body_Text"><a name="602">When you run a program that takes arguments, you may supply the values for the arguments. If you use the </a><span class="Menu_Item">Run</span> button or <span class="Menu_Item">File/Run</span>, you will see a dialog box where you can type in the values of the arguments. If you use the <span class="In-line_input">run</span> or <span class="In-line_input">exec</span> command, you may list the arguments consecutively after the name of the program.</div>
+      <div class="Body_Text"><a name="604">For example, suppose we have a program named &#8220;REGPROG&#8221;:</a></div>
+      <div class="Multi-line_Input"><a name="606">equation eq1</a></div>
+      <div class="Multi-line_Input"><a name="608">smpl 1980q3 1994q1</a></div>
+      <div class="Multi-line_Input"><a name="610">eq1.ls {%0} c {%1} {%1}(-1) time</a></div>
+      <div class="Body_Text"><a name="612">To run REGPROG from the command line with %0=&#8220;lgdp&#8221; and %1=&#8220;m1&#8221;, we enter</a></div>
+      <div class="Input"><a name="614">run regprog lgdp m1</a></div>
+      <div class="Body_Text"><a name="616">This program performs a regression of the variable </a><span class="EViews_Name">LGDP</span>, on <span class="EViews_Name">C</span>, <span class="EViews_Name">M1</span>, <span class="EViews_Name">M1</span>(-1), and <span class="EViews_Name">TIME</span>, by executing the command:</div>
+      <div class="Input"><a name="618">eq1.ls lgdp c m1 m1(-1) time</a></div>
+      <div class="Body_Text"><a name="620">Alternatively, you can run this program by clicking on the </a><span class="Menu_Item">Run</span> button on the program window, or selecting <span class="Menu_Item">File/Run...</span>. In the <span class="Menu_Item">Run Program</span> dialog box that appears, type the name of the program in the <span class="Menu_Item">Program name or path field</span> and enter the values of the arguments in the Program arguments field. For this example, type &#8220;regprog&#8221; for the name of the program, and &#8220;lgdp&#8221; and &#8220;m1&#8221; for the arguments.</div>
+      <div class="Body_Text"><a name="622">Any arguments in your program that are not initialized in the </a><span class="Menu_Item">Run Program</span> dialog or <span class="In-line_input">run</span> command are treated as empty string variables. For example, suppose you have a one-line program named &#8220;<span class="EViews_Name">REGRESS&#8221;</span>:</div>
+      <div class="Input"><a name="624">equation eq1.ls y c time {%0} {%1} {%2} {%3} {%4} {%5} {%6} {%7} {%8}</a></div>
+      <div class="Body_Text"><a name="626">The command,</a></div>
+      <div class="Input"><a name="628">exec regress x x(-1) x(-2)</a></div>
+      <div class="Body_Text"><a name="630">executes</a></div>
+      <div class="Input"><a name="632">equation eq1.ls y c time x x(-1) x(-2) </a></div>
+      <div class="Body_Text"><a name="634">while the command,</a></div>
+      <div class="Input"><a name="636">exec regress</a></div>
+      <div class="Body_Text"><a name="638">executes </a></div>
+      <div class="Input"><a name="640">ls y c time </a></div>
+      <div class="Body_Text"><a name="642">In both cases, EViews ignores arguments that are not included in your </a><span class="In-line_input">run</span> command.</div>
+      <div class="Body_Text"><a name="644">As a last example, we repeat our simple forecasting program from above, but use arguments to simplify our work. Suppose you have the program &#8220;</a><span class="EViews_Name">MYPROG&#8221;</span>:</div>
+      <div class="Multi-line_Input"><a name="646">wfcreate(wf={%0}) m 1968m3 1997m6</a></div>
+      <div class="Multi-line_Input"><a name="648">fetch progdemo::{%1}</a></div>
+      <div class="Multi-line_Input"><a name="650">smpl 1968m5 1992m12</a></div>
+      <div class="Multi-line_Input"><a name="652">equation reg1.ls {%1} c {%1}(-1)</a></div>
+      <div class="Multi-line_Input"><a name="654">reg1.makeresid {%1}res</a></div>
+      <div class="Multi-line_Input"><a name="656">smpl 1993m1 1997m6</a></div>
+      <div class="Multi-line_Input"><a name="658">reg1.forecast {%1}fit</a></div>
+      <div class="Multi-line_Input"><a name="660">freeze({%1}plot) {%1}fit.line</a></div>
+      <div class="Multi-line_Input"><a name="662">save </a></div>
+      <div class="Body_Text"><a name="664">The results of running the two example programs at the start of this chapter can be duplicated by executing MYPROG with arguments:</a></div>
+      <div class="Multi-line_Input"><a name="666">exec myprog myhouse hsf</a></div>
+      <div class="Body_Text"><a name="43152">and </a></div>
+      <div class="Multi-line_Input"><a name="42728">exec myprog mysp500 fspcom</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

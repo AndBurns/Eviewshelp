@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Estimating a Mixed Frequency VAR in EViews</title>
+    <link rel="StyleSheet" href="css/mixvar.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="mixvar-Mixed_Frequency_VAR.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="mixvar-An_Example.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="mixvar-Mixed_Frequency_VAR.html">Mixed Frequency VAR</a> : Estimating a Mixed Frequency VAR in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="297579">Estimating a Mixed Frequency VAR in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#297972">Hyper-parameters</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#297925">Options </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#298035">Post Estimation Procedures</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="297659">Although a single EViews workfile page can contain only one frequency of data, workfiles support multiple frequencies by allowing multiple pages. To estimate a mixed frequency VAR (MFVAR) in EViews, your workfile must be setup with different frequency data on different pages.</a></div>
+      <div class="Body_Text"><a name="297660">To estimate a MFVAR in EViews, select the page with the </a><span class="Emphasis">lowest</span> frequency data, and click on <span class="Menu_Item">Quick/Estimate VAR...</span> or type <span class="In-line_command">var</span> in the command window to bring up the <span class="Menu_Item">VAR Specification</span> dialog. Select <span class="Menu_Item">Mixed Frequency</span> as the <span class="Menu_Item">VAR type</span> in the drop-down box on the left-hand side of the dialog. </div>
+      <div class="Body_Text"><a name="278592">The dialog will change to the MFVAR version of the VAR Specification dialog. As with a standard VAR, you may use the </a><span class="Menu_Item">Basics</span> page to list of endogenous variables, the included lags, and any exogenous variables, and to specify the estimation sample:</div>
+      <div class="Picture"><a name="297699"><img class="Default" src="images/mixvar.061.2.1.jpg" width="100%" style="left: 0.0pt; max-height: 495px; max-width: 503px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="297720">Note that the </a><span class="Menu_Item">Endogenous variables </span>and <span class="Menu_Item">Exogenous variables</span> boxes should be used to enter the names of the series that are located on the current <span class="Emphasis">lowest</span> frequency page. EViews does not allow for exogenous variables in a differing frequency.</div>
+      <div class="Body_Text"><a name="297721">The </a><span class="Menu_Item">High frequency variables</span> edit field is used to specify the higher-frequency endogenous variables. The syntax for high frequency variables is <span class="Argument">pagename\seriesname</span> where <span class="Argument">pagename</span> is the name of the page containing the series, and <span class="Emphasis">seriesname</span> is the name of the series. Note also that series expressions are allowed, <span class="Emphasis">e.g.</span> &#8220;mypage\log(x)&#8221;. </div>
+      <div class="Body_Text"><a name="297722">The </a><span class="Menu_Item">Estimation type</span> radio buttons change the estimation type between simple U-MIDAS and Bayesian estimation.</div>
+      <div class="Heading_4"><a name="297972">Hyper-parameters</a></div>
+      <div class="Body_Text"><a name="278594">If </a><span class="Menu_Item">Mixed Frequency </span>is selected as the <span class="Menu_Item">Estimation type</span>, the <span class="Menu_Item">Hyper-parameters</span> page of the dialog allows specification of the hyper-parameters used during estimation:</div>
+      <div class="Picture"><a name="297792"><img class="Default" src="images/mixvar.061.2.2.jpg" width="100%" style="left: 0.0pt; max-height: 492px; max-width: 501px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="297925">Options </a></div>
+      <div class="Body_Text"><a name="297794">The </a><span class="Menu_Item">Options</span> page offers options on the frequency conversion method used, as well as options for the sampler used during mixed frequency estimation:</div>
+      <div class="Picture"><a name="297738"><img class="Default" src="images/mixvar.061.2.3.jpg" width="100%" style="left: 0.0pt; max-height: 492px; max-width: 500px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="297870">The </a><span class="Menu_Item">Number of observations</span> field in the <span class="Menu_Item">Frequency Conversion </span>box specifies the number of high frequency observations to use for each low frequency period. For example, when dealing with monthly and quarterly data, the field can be used to specify that only two months out of each quarter should be used, rather than all three. Note that in contrast to univariate MIDAS estimation, mixed frequency VAR estimation does not allow specification of high frequency observations that fall outside of the corresponding low frequency period.</div>
+      <div class="Body_Text"><a name="297871">If the field is left blank, EViews will use the minimum number of high-frequency observations per low frequency period. For monthly to quarterly data this will be three.  For seven-day daily to monthly, this will be 28 (if the monthly data cover a non-leap year February). Care should be taken if choosing to increase the value to 30 or 31, since for a number of months the observation will be NA, and that NA will be propagated multiple times due to the lag nature of the VAR, resulting in a large number of observations being dropped from estimation.</a></div>
+      <div class="Body_Text"><a name="297872">The </a><span class="Menu_Item">First observations</span> and <span class="Menu_Item">Last observations</span> radio boxes specify whether to use the first set of high-frequency observations from each low frequency period, or the last. For example, with monthly and quarterly data, if two observations are being used, these radio buttons select whether the first two months in the quarter are used or the last two months.</div>
+      <div class="Body_Text"><a name="297874">The </a><span class="Menu_Item">Initial Covariance</span> and <span class="Menu_Item">Sampler</span> boxes are only available if <span class="Menu_Item">Bayesian</span> was selected as the <span class="Menu_Item">Estimation type</span> on the <span class="Menu_Item">Basics</span> tab. </div>
+      <div class="Body_Text"><span class="Menu_Item"><a name="297875">Initial Covariance</a></span> specifies the initial estimate of the residual covariance matrix used for formulation of the prior. Either the covariance matrix from a U-MIDAS classical VAR can be used, or an identity matrix.</div>
+      <div class="Body_Text"><span class="Menu_Item"><a name="297740">Sampler</a></span> specifies the number of draws of the Gibbs&#8217; Sampler, the percentage of draws to discard as burn-in, and the random number seed.</div>
+      <div class="Heading_4"><a name="298035">Post Estimation Procedures</a></div>
+      <div class="Body_Text"><a name="298036">Although </a><span class="Menu_Item">Proc/Forecast</span> can be used for mixed-frequency VARs, it should be noted that only forecasts for the low-frequency variables will be produced.</div>
+      <div class="Body_Text"><a name="297905">If the mixed-frequency VAR is estimated using Bayesian methods, the </a><span class="Menu_Item">View/Impulse Responses&#8230;</span> and <span class="Menu_Item">Proc/Forecast&#8230;</span> menu items will offer the Bayesian form of these procedures as outlined in <span class="Link"><a href="bVAR-Bayesian_VAR_Models.html#36959" title="Bayesian VAR Models">&#8220;Bayesian VAR Models&#8221;</a></span>.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

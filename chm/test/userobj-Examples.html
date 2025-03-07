@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/userobj.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="userobj-Registered_User_Objects.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="userobj-Managing_User_Object_Classes.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="userobj-User_Objects.html">User Objects</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="410224">Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#412816">Simple Container Object (ResStore)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#416780">Rolling Regression Estimation Object (Roll)</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="404837">To illustrate the use of registered user objects, we examine two of the EViews user objects that are currently available for download from our website</a><span class="Emphasis"><a href="userobj-Registered_User_Objects.html#410143" title="Registered User Objects">. (To follow along with these examples, we recommend that you first download and install the corresponding user object using the steps outlined in </a></span><span class="Link"><a href="userobj-Registered_User_Objects.html#410143" title="Registered User Objects">&#8220;Downloading a Registered User Object&#8221;</a></span><span class="Emphasis" style="font-weight: normal"><a href="userobj-Registered_User_Objects.html#410143" title="Registered User Objects">.)</a></span></div>
+      <div class="Body_Text"><a name="414993">The first example uses a simple container user object (of type ResStore) that allows you to add, extract, and display graphs, tables and estimation objects. The second example performs rolling regression estimation using the Roll user object.</a></div>
+      <div class="Heading_4"><a name="412816">Simple Container Object (ResStore)</a></div>
+      <div class="Body_Text"><a name="395578">This first example uses the ResStore user object to create a storage container for objects from our workfile. This is a bare bones registered object that nonetheless shows the basic features of registered user objects.</a></div>
+      <div class="Body_Text"><a name="417028">We use the workfile &#8220;Demo.WF1&#8221; (which may be found in the example files subdirectory of your EViews installation directory) and assume that you have already installed the ResStore object class.</a></div>
+      <div class="Body_Text"><a name="395579">You may create a new ResStore object by clicking on </a><span class="Menu_Item">Object/New Object...</span> and then selecting <span class="Menu_Item">resstore</span> in the list of object types. </div>
+      <div class="Picture"><a name="415174"><img class="Default" src="images/userobj.090.5.01.jpg" width="100%" style="left: 0.0pt; max-height: 419px; max-width: 325px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="415176">Notice that while the built-in EViews objects are listed alphabetically, the two user objects (ResStore and Roll) are simply placed at the bottom of the listbox. Select </a><span class="Menu_Item">resstore</span> and specify the name STOREDOBJECT for our new object. Click on <span class="Menu_Item">OK</span> to create the object. Alternately, enter the command</div>
+      <div class="Input"><a name="419240">resstore storedobject</a></div>
+      <div class="Body_Text"><a name="419263">in the EViews command line and hit ENTER.</a></div>
+      <div class="Body_Text"><a name="395581">As part of its construction, the ResStore object will display a dialog asking you to enter the names of the workfile objects you would like to store: </a></div>
+      <div class="Picture"><a name="415853"><img class="Default" src="images/userobj.090.5.02.jpg" width="100%" style="left: 0.0pt; max-height: 218px; max-width: 331px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="415855">You may enter the names of any matrix objects (including scalars), strings objects, estimation objects, or view objects (graphs, tables, spools).</a></div>
+      <div class="Body_Text"><a name="415400">Note that there is a check-box that lets you specify whether to remove the objects from the workfile after storing them. You should selection this option if you wish to move, rather than copy, the specified objects into the ResStore.</a></div>
+      <div class="Body_Text"><a name="395582">Once you hit </a><span class="Menu_Item">OK</span>, a new ResStore object named STOREDOBJECT will be added to your workfile. If you open up the ResStore object, a spool view display of all objects currently stored is shown:</div>
+      <div class="Picture"><a name="416013"><img class="Default" src="images/userobj.090.5.03.jpg" width="100%" style="left: 0.0pt; max-height: 381px; max-width: 560px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="416100">You may use the </a><span class="Menu_Item">View</span> menu to access the defined views for this type of object which allow you to show various subset types of the objects in the container:</div>
+      <div class="Picture"><a name="416101"><img class="Default" src="images/userobj.090.5.04.jpg" width="100%" style="left: 0.0pt; max-height: 381px; max-width: 560px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="416140">Similarly, the </a><span class="Menu_Item">Proc</span> menu lists procs which allow you to add, remove, and extract objects from the storage container:</div>
+      <div class="Picture"><a name="416892"><img class="Default" src="images/userobj.090.5.05.jpg" width="100%" style="left: 0.0pt; max-height: 381px; max-width: 560px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="419632">As with other EViews objects, you may use the command language to work with the ResStore object. For example the defined view command,</a></div>
+      <div class="Input"><a name="419633">storedobject.graphs</a></div>
+      <div class="Body_Text"><a name="419635">displays all of the graph objects in the object</a></div>
+      <div class="Input"><a name="419636">storedobject.extractobjects</a></div>
+      <div class="Body_Text"><a name="416778">extracts all of the objects from STOREDOBJECT into the workfile.</a></div>
+      <div class="Body_Text"><a name="416885">The command</a></div>
+      <div class="Input"><a name="416779">string storednames = storedobject.</a><span class="In-line_command">@members</span></div>
+      <div class="Body_Text"><a name="416823">saves a list of the stored object names in the string object STOREDNAMES.</a></div>
+      <div class="Heading_4"><a name="416780">Rolling Regression Estimation Object (Roll)</a></div>
+      <div class="Body_Text"><a name="420003">Our second example uses the Roll user object to estimate rolling regressions. We again use the workfile &#8220;Demo.WF1&#8221;, and we assume that you have already installed the Roll object class.</a></div>
+      <div class="Body_Text"><a name="420005">You can create a new Roll object by clicking on </a><span class="Menu_Item">Object/New Object...</span> and then selecting <span class="Menu_Item">roll</span> in the list of object types, or by entering the <span class="In-line_command">roll</span> command followed by the name of a new object in the command line:</div>
+      <div class="Input"><a name="426033">roll myroll</a></div>
+      <div class="Body_Text"><a name="439088">As part of its creation, the Roll object will display a series of dialogs prompting you to provide information on how the object should be constructed. First, you will be asked whether to create the new object using the specification from an existing equation or by specifying an equation manually:</a></div>
+      <div class="Picture"><a name="426363"><img class="Default" src="images/userobj.090.5.06.jpg" width="100%" style="left: 0.0pt; max-height: 176px; max-width: 234px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="439061">Since we will use one of the previously estimated equations in our workfile as the basis of our rolling regression, click on </a><span class="Menu_Item">OK</span> to accept the default.</div>
+      <div class="Body_Text"><a name="427275">Next, you will be asked to select your base equation and to specify the basic type of rolling regressions you wish to perform:</a></div>
+      <div class="Picture"><a name="427279"><img class="Default" src="images/userobj.090.5.07.jpg" width="100%" style="left: 0.0pt; max-height: 238px; max-width: 229px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="427280">To obtain recursive estimates based on equation EQ01 choose </a><span class="Menu_Item">EQ01</span> in the drop-down menu and select<span class="Menu_Item"> Anchored at start</span>. Click on <span class="Menu_Item">OK</span> to continue.</div>
+      <div class="Body_Text"><a name="427112">Lastly, you will be prompted to provide sample information and a step size:</a></div>
+      <div class="Picture"><a name="427296"><img class="Default" src="images/userobj.090.5.08.jpg" width="100%" style="left: 0.0pt; max-height: 222px; max-width: 253px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="426935">Click on </a><span class="Menu_Item">OK</span> to create the Roll object using the specified settings. </div>
+      <div class="Body_Text"><a name="427564">(Note that if you had chosen </a><span class="Menu_Item">Manual equation specification</span> in the first dialog or <span class="Menu_Item">Fixed window </span>estimation in the second dialog, the subsequent dialogs would provide a different set of options).</div>
+      <div class="Body_Text"><a name="426174">EViews estimates the rolling regression and, like built-in estimation objects, displays basic estimation information in the object window:</a></div>
+      <div class="Table"><a name="427801"><img class="Default" src="images/userobj.090.5.09.jpg" width="100%" style="left: 0.0pt; max-height: 687px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="427658">These basic results may be viewed at any time by selecting </a><span class="Menu_Item">View/Summary</span> in the object view menu or by entering the object command</div>
+      <div class="Input"><a name="427977">myroll.summary</a></div>
+      <div class="Body_Text"><a name="427993">in the command line.</a></div>
+      <div class="Body_Text"><a name="428015">Next, consider the custom views that have been defined for this object. In addition to the summary view, you may display information on the coefficient statistics, residual statistics, likelihood statistics, members of the object, and the standard label information view for the Roll object:</a></div>
+      <div class="Picture"><a name="428164"><img class="Default" src="images/userobj.090.5.10.jpg" width="100%" style="left: 0.0pt; max-height: 167px; max-width: 264px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="428499">Clicking on </a><span class="Menu_Item">View/View rolling coefficient statistics...</span> display a dialog prompting you to select the coefficients and statistics you wish to display. By default, the object will display the coefficient estimates for all of the coefficients in the regression:</div>
+      <div class="Picture"><a name="428599"><img class="Default" src="images/userobj.090.5.11.jpg" width="100%" style="left: 0.0pt; max-height: 314px; max-width: 253px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="428519">Click on </a><span class="Menu_Item">OK</span> to accept the default values and to display a graph of the results in the object window:</div>
+      <div class="Picture"><a name="428847"><img class="Default" src="images/userobj.090.5.12.jpg" width="100%" style="left: 0.0pt; max-height: 516px; max-width: 644px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="428823">Equivalently, you could have issued the command:</a></div>
+      <div class="Input"><a name="428940">myroll.rollcoefs c log(gdp) rs dlog(pr)</a></div>
+      <div class="Body_Text"><a name="428941">in the command line. </a></div>
+      <div class="Body_Text"><a name="429183">Note that you could have specified a different statistic in the dialog or add the &#8220;stat=&#8221; option to the command to display a different coefficient statistic. For example, selecting </a><span class="Menu_Item">P-values</span> in the dialog or entering,</div>
+      <div class="Input"><a name="429114">myroll.rollcoefs(stat=pvals) c log(gdp) rs dlog(pr)</a></div>
+      <div class="Body_Text"><a name="429005">displays the coefficient </a><span class="In-line_math">t</span>-statistic <span class="In-line_math">p</span>-values:</div>
+      <div class="Picture"><a name="429254"><img class="Default" src="images/userobj.090.5.13.jpg" width="100%" style="left: 0.0pt; max-height: 516px; max-width: 642px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="428655">Similarly, you may click on the Proc menu to display a list of the user defined procs:</a></div>
+      <div class="Picture"><a name="429456"><img class="Default" src="images/userobj.090.5.14.jpg" width="100%" style="left: 0.0pt; max-height: 159px; max-width: 300px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="429803">The first two entries re-initialize the Roll object using the dialogs we first encountered when creating MYROLL. The next three menu entries extract results into the workfile. For example, clicking on </a><span class="Menu_Item">Extract rolling residual statistics...</span> opens a dialog prompting you to identify the results you wish to extract along with the destination:</div>
+      <div class="Picture"><a name="429821"><img class="Default" src="images/userobj.090.5.15.jpg" width="100%" style="left: 0.0pt; max-height: 293px; max-width: 266px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="429804">Clicking on </a><span class="Menu_Item">OK</span> t saves the <img class="Default EquationGraphic" src="images/userobj.090.5.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 25px; top: 0.0pt" alt="" /> statistics in the workfile in the series ROLL_R2. The command</div>
+      <div class="Input"><a name="430107">myroll.extractresidstat(stat=r2s) roll_r2</a></div>
+      <div class="Body_Text"><a name="430142">performs an equivalent operation.</a></div>
+      <div class="Body_Text"><a name="430240">It is worth noting that behind-the-scenes in this object is a set of user programs that use standard EViews programming tools to display dialogs, perform computations, and display and extract results.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

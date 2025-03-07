@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Specification and Hypothesis Tests</title>
+    <link rel="StyleSheet" href="css/demo.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="demo-Estimating_a_Regression_Model.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="demo-Modifying_the_Equation.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="demo-A_Demonstration.html">A Demonstration</a> : Specification and Hypothesis Tests</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="131449">Specification and Hypothesis Tests</a></div>
+      <div class="Body_Text"><a name="131450">We can use the estimated equation to perform hypothesis tests on the coefficients of the model. For example, to test the hypothesis that the coefficient on the price term is equal to 2, we will perform a Wald test. First, determine the coefficient of interest by selecting </a><span class="Menu_Item">View/Representations</span> from the equation toolbar:</div>
+      <div class="Picture"><a name="131455"><img class="Default" src="images/demo.007.5.1.jpg" width="100%" style="left: 0.0pt; max-height: 325px; max-width: 495px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="131768">Note that the coefficients are assigned in the order that the variables appear in the specification so that the coefficient for the PR term is labeled C(4). To test the restriction on C(4) you should select </a><span class="Menu_Item">View/Coefficient Diagnostics/Wald Test&#8211;Coefficient Restrictions&#8230;</span>, and enter the restriction &#8220;c(4)=2&#8221;. EViews will report the results of the Wald test:</div>
+      <div class="Table"><a name="131772"><img class="Default" src="images/demo.007.5.2.jpg" width="100%" style="left: 0.0pt; max-height: 375px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="131773">The low probability values indicate that the null hypothesis that C(4)=2 is strongly rejected.</a></div>
+      <div class="Body_Text"><a name="131462">We should, however, be somewhat cautious of accepting this result without additional analysis. The low value of the Durbin-Watson statistic reported above is indicative of the presence of serial correlation in the residuals of the estimated equation. If uncorrected, serial correlation in the residuals will lead to incorrect estimates of the standard errors, and invalid statistical inference for the coefficients of the equation.</a></div>
+      <div class="Body_Text"><a name="131464">The Durbin-Watson statistic can be difficult to interpret. To perform a more general Breusch-Godfrey test for serial correlation in the residuals, select </a><span class="Menu_Item">View/Residual Diagnostics/Serial Correlation LM Test&#8230;</span> from the equation toolbar, and specify an order of serial correlation to test against. Entering &#8220;1&#8221; yields a test against first-order serial correlation:</div>
+      <div class="Table"><a name="131468"><img class="Default" src="images/demo.007.5.3.jpg" width="100%" style="left: 0.0pt; max-height: 582px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="131469">The top part of the output presents the test statistics and associated probability values. The test regression used to carry out the test is reported below the statistics.</a></div>
+      <div class="Body_Text"><a name="131470">The statistic labeled &#8220;Obs*R-squared&#8221; is the LM test statistic for the null hypothesis of no serial correlation. The (effectively) zero probability value strongly indicates the presence of serial correlation in the residuals.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

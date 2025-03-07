@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/bVAR.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="bVAR-Post-Estimation_Procedures.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="bVAR-Technical_Background.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="bVAR-Bayesian_VAR_Models.html">Bayesian VAR Models</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="265341">Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#265342">Investment Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#265347">Basic Settings</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#265372">Alternate priors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#265383">Macroeconomic Variables Example</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="265342">Investment Example</a></div>
+      <div class="Body_Text"><a name="265343">To illustrate the Bayesian approach, we first estimate the coefficients of a VAR(2) model using the first differences of the logarithm of the investment (DLINVESTMENT), income (DLINCOME), and consumption (DLCONCUMPTION). The raw data are provided in the EViews workfile &#8220;wgmacro.WF1&#8221;. This data set was examined by Lütkepohl (2007, page 228).</a></div>
+      <div class="Body_Text"><a name="265344">Click on </a><span class="Menu_Item">Quick/Estimate VAR...</span> to open the main VAR specification dialog. In the VAR type box, select <span class="Menu_Item">Bayesian VAR</span> and in the <span class="Menu_Item">Endogenous Variables</span> box, type:</div>
+      <div class="Input"><a name="265345">dlincome dlinvestment dlconsumption</a></div>
+      <div class="Body_Text"><a name="265346">Here, you will see the pre-filled settings including the variable names. You may change the default settings, but for now on, we assume that the default settings are used. </a></div>
+      <div class="Heading_5"><a name="265347">Basic Settings</a></div>
+      <div class="Body_Text"><a name="265348">Next, click on the </a><span class="Menu_Item">Prior type</span> tab to select the prior type for the VAR. By default, EViews will choose the <span class="Menu_Item">Litterman/Minnesota</span> for the <span class="Menu_Item">Prior type </span>and the <span class="Menu_Item">Univariate AR</span> option for the <span class="Menu_Item">Initial residual covariance</span>, but you can change the prior type and the initial covariance calculation option from the menus.</div>
+      <div class="Body_Text"><a name="265349">The </a><span class="Menu_Item">Hyper-parameters</span> tab shows the hyper-parameter settings. Note that the settings may vary depending on the prior type. We will only change the hyper-parameter, <span class="Menu_Item">Mu1</span> to be equal to zero (since the data are all differenced):</div>
+      <div class="Picture"><a name="265353"><img class="Default" src="images/bVAR.059.4.01.jpg" width="100%" style="left: 0.0pt; max-height: 485px; max-width: 505px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265354">Click on </a><span class="Menu_Item">OK</span> to accept the dialog settings. EViews estimates the VAR and displays the results view. The results are shown below:</div>
+      <div class="Picture"><a name="265358"><img class="Default" src="images/bVAR.059.4.02.jpg" width="100%" style="left: 0.0pt; max-height: 733px; max-width: 479px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265359">The heading information provides the basic information about the settings used in estimation, and the basic prior information, including hyper-parameter values. Just below the heading, the mean and standard errors from the posterior distribution are displayed. </a></div>
+      <div class="Body_Text"><a name="265360">The bottom portion of the output displays standard classical summary statistics for a VAR. Although they do not have a Bayesian interpretation, they are displayed for comparison purposes.</a></div>
+      <div class="Body_Text"><a name="265361">In his study of this data, Lütkepohl chose to use a diagonal VAR to calculate the initial residual covariance. We can replicate his results by setting the Diagonal VAR covariance type on the </a><span class="Menu_Item">Prior type</span> tab of the dialog:</div>
+      <div class="Picture"><a name="265365"><img class="Default" src="images/bVAR.059.4.03.jpg" width="100%" style="left: 0.0pt; max-height: 491px; max-width: 505px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265366">Since the estimates in the third row of Table 5.3 of Lütkepohl&#8217;s example may be obtained using EViews&#8217; default hyper-parameter values (other than the previously changed Mu1), click on </a><span class="Menu_Item">OK </span>to estimate the modified BVAR specification:</div>
+      <div class="Picture"><a name="265370"><img class="Default" src="images/bVAR.059.4.04.jpg" width="100%" style="left: 0.0pt; max-height: 729px; max-width: 479px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265371">The results in the other rows of table Table 5.3 may be obtained by changing the hyper-parameters.</a></div>
+      <div class="Heading_5"><a name="265372">Alternate priors</a></div>
+      <div class="Body_Text"><a name="265373">To illustrate the importance of prior selection, we estimate the same model using the Sims-Zha normal-Wishart prior, with the univariate AR calculation for the initial residual covariance, and the default hyper-parameter settings:</a></div>
+      <div class="Picture"><a name="265377"><img class="Default" src="images/bVAR.059.4.05.jpg" width="100%" style="left: 0.0pt; max-height: 485px; max-width: 505px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265378">We can see that, for these data and VAR specification, changing the prior type did not have a large impact on any of the parameter values:</a></div>
+      <div class="Picture"><a name="265382"><img class="Default" src="images/bVAR.059.4.06.jpg" width="100%" style="left: 0.0pt; max-height: 739px; max-width: 492px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="265383">Macroeconomic Variables Example</a></div>
+      <div class="Body_Text"><a name="265384">As a second example of using Bayesian VARs in EViews, we work with a dataset created by Stock and Watson (2008) which provides data on a number of US macroeconomic variables.  The dataset was obtained from Mark Watson&#8217;s website: </a><span class="URL"><a href="http://www.princeton.edu/~mwatson/publi.html" target="external_window">http://www.princeton.edu/~mwatson/publi.html</a></span>, and a truncated version, with only variables used in this example, is provided as the EViews workfile &#8220;stockwatson.wf1&#8221;. These data are used in Giannone, Lenza and Primiceri 2012, among other studies. </div>
+      <div class="Body_Text"><a name="265386">We will estimate a VAR using the same series as Giannone, Lenza and Primiceri&#8217;s &#8220;Medium-scale model&#8221;. This model contains seven series: Gross domestic product (GDP), the GDP deflator (GDPI), consumption (CONS), investment (INV), hours worked (HOURS), wages (WAGES), and the federal funds rate (FED). The first six variables were reported at a quarterly frequency. The federal funds rate is reported at a monthly rate, so the quarterly average is used to convert the data to quarterly. All variables have been logged and multiplied by four (to give annualized values), with the exception of the funds rate which is left in levels.</a></div>
+      <div class="Body_Text"><a name="265387">To estimate the VAR we click on </a><span class="Menu_Item">Quick/Estimate VAR&#8230; </span>to open the main VAR specification dialog. We select <span class="Menu_Item">Bayesian VAR </span>as the <span class="Menu_Item">VAR type</span>, and in the <span class="Menu_Item">Endogenous Variables</span> box we type:</div>
+      <div class="Input"><a name="265388">gdp gdpi cons inv hours wages fed</a></div>
+      <div class="Body_Text"><a name="265389">To estimate the VAR with 5 lags, in the </a><span class="Menu_Item">Lags for endogenous </span>edit field we enter:</div>
+      <div class="Input"><a name="265390">1 5</a></div>
+      <div class="Body_Text"><a name="265391">To begin we will estimate with a normal-Wishart prior, including dummy observations to account for both unit roots and cointegration:</a></div>
+      <div class="Picture"><a name="265395"><img class="Default" src="images/bVAR.059.4.07.jpg" width="100%" style="left: 0.0pt; max-height: 485px; max-width: 505px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265396">We keep the hyper-parameters at their default values. Clicking </a><span class="Menu_Item">OK </span>will estimate the VAR and display the results (the top portion of which are displayed below):</div>
+      <div class="Picture"><a name="265400"><img class="Default" src="images/bVAR.059.4.08.jpg" width="100%" style="left: 0.0pt; max-height: 402px; max-width: 813px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265401">Having estimated the VAR, we will look at the impulse responses to a shock in GDP. We bring up the Impulse Response dialog by clicking the </a><span class="Menu_Item">Impulse</span> button on the VAR. We enter &#8220;GDP&#8221; in the <span class="Menu_Item">Impulses</span> box and keep all other settings at their defaults. </div>
+      <div class="Body_Text"><a name="265402">Clicking </a><span class="Menu_Item">OK</span> will produce a graph of the responses:</div>
+      <div class="Picture"><a name="265406"><img class="Default" src="images/bVAR.059.4.09.jpg" width="100%" style="left: 0.0pt; max-height: 690px; max-width: 781px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="265407">We would like to compare these results with those obtained assuming independent normal-Wishart priors. </a></div>
+      <div class="Body_Text"><a name="265408">We follow the steps above a second time, beginning with estimation, but after changing the prior to </a><span class="Menu_Item">Independent normal-Wishart</span>. The resulting responses are:</div>
+      <div class="Picture"><a name="265412"><img class="Default" src="images/bVAR.059.4.10.jpg" width="100%" style="left: 0.0pt; max-height: 640px; max-width: 701px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

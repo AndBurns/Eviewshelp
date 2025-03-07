@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Outlier Detection</title>
+    <link rel="StyleSheet" href="css/series.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="series-Forecast_Evaluation.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="series-Correlogram.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_data.html">Basic Data Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="series-Series.html">Series</a> : Outlier Detection</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="206073">Outlier Detection</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206075">Tukey Fences</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206099">Mean / Standard Deviation Fences</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206115">ARMA Estimation Outliers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206124">Wavelet Outliers</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206140">Series Outlier Detection in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206216">Outlier Detection Example</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="206074">The EViews outlier detection view displays results for several different methods for identifying outliers in your series: Tukey fences, Mean/Standard deviation fences, ARMA outliers, Wavelet outliers. </a></div>
+      <div class="Body_Text"><a name="208205">This view is available in non-panel workfiles.</a></div>
+      <div class="Heading_4"><a name="206075">Tukey Fences</a></div>
+      <div class="Body_Text"><a name="206076">Tukey fences, also known as Tukey's fences or Tukey's range test, were developed by John Tukey (1977). Tukey fences provide a way to define a quartile-based interval beyond which data points are considered outliers.</a></div>
+      <div class="Body_Text"><a name="206077">The fences define an upper and lower bound, where any observation lying outside these bounds is determined to be an outlier. The fences are based upon the interquartile range (IQR) of the series (i.e. the difference between the third quartile (<img class="Default EquationGraphic" src="images/series.017.09.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" />) and the first quartile (<img class="Default EquationGraphic" src="images/series.017.09.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" />)):</a></div>
+      <div class="Multi-line_Eq_No_Number"><a name="206087"><img class="Default EquationGraphic" src="images/series.017.09.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 53px; max-width: 223px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206091">where <img class="Default EquationGraphic" src="images/series.017.09.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> is a user-defined constant that determines the range beyond which data points are considered outliers. Typically, <img class="Default EquationGraphic" src="images/series.017.09.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> is set to 1.5, but it can be adjusted depending on the specific needs of the analysis. A larger <img class="Default EquationGraphic" src="images/series.017.09.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> value will make the method more tolerant of extreme values, resulting in fewer observations being labeled outliers.</a></div>
+      <div class="Body_Text"><a name="206098">Note that Tukey fences may not perform well for trending data since the quartiles do not account for the trend and are calculated over the full sample.</a></div>
+      <div class="Heading_4"><a name="206099">Mean / Standard Deviation Fences</a></div>
+      <div class="Body_Text"><a name="206100">Mean/Standard deviation fences are similar to Tukey Fences, but instead of the bounds being based on quartiles, they are based on the mean (<img class="Default EquationGraphic" src="images/series.017.09.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />) and standard deviation (<img class="Default EquationGraphic" src="images/series.017.09.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />) of the data:</a></div>
+      <div class="Multi-line_Eq_No_Number"><a name="206110"><img class="Default EquationGraphic" src="images/series.017.09.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 47px; max-width: 190px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206114">where <img class="Default EquationGraphic" src="images/series.017.09.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> is a user-defined constant. Note that Mean/Standard Deviation fences may not perform well for trending data since the mean and standard deviation are calculated over the full sample and do not account for the trend.</a></div>
+      <div class="Heading_4"><a name="206115">ARMA Estimation Outliers</a></div>
+      <div class="Body_Text"><a name="206116">Chen and Liu (1993) provide a method of detecting outliers in an ARMA process. They consider four different types of outlier effects: Innovational Outlier (IO), Additive Outlier (AO), Level Shift (LS), and Temporary Change (TC). </a></div>
+      <div class="Body_Text"><a name="206117">The Chen and Liu paper describes in detail an approach for iteratively identifying outliers and adjusting ARMA coefficient estimates to account for outliers. The ARMA outlier detection used by EViews uses only the part of Stage 1 of Chen and Liu which:</a></div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="206118">Obtains residuals from preliminary ARMA estimation using the original data.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="206119">Conducts test for an outlier at each observation using the residuals and standardized test statistics corresponding to the four types of outlier effects. If the absolute value of any of the four test statistics exceeds a specified critical value <img class="Default EquationGraphic" src="images/series.017.09.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, the observation is considered an outlier.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="206123">EViews uses the Hyndman and Khandakar (2008) automatic lag selection ARMA estimation procedure, where the model includes a constant and a trend as exogenous variables.</a></div>
+      <div class="Heading_4"><a name="206124">Wavelet Outliers</a></div>
+      <div class="Body_Text"><a name="206125">One particularly important and useful application of wavelets is outlier detection (Bilen and Huzurbazar, 2002). The wavelet outlier procedure is described in great detail in </a><span class="Link"><a href="advtimeser-Wavelet_Analysis.html#210990" title="Wavelet Analysis">&#8220;Wavelet Outlier Detection&#8221;</a></span>. </div>
+      <div class="Body_Text"><a name="206129">Briefly, wavelet analysis approximates the observed series using discrete Fourier transforms, and performs wavelet-based spectrum estimation. </a></div>
+      <div class="Body_Text"><a name="206130">Wavelets are a family of basis functions that allow for multi-resolution analysis of time series data. Wavelets decompose data into different frequency components, each with a corresponding time interval. This dual localization in time and scale enables the detection of anomalies at multiple resolutions, with precision both in frequency and time.</a></div>
+      <div class="Body_Text"><a name="206131">We can apply wavelet analysis to the detection of outliers as in Bilen and Huzurbazar (2002) which uses the following approach:</a></div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="206132">Perform a Wavelet Transformation: Convert time series data into wavelet coefficients that represent the spectrum. This decomposition provides insights into both rapid changes and gradual shifts.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="206136">Threshold Wavelet Coefficients: Determine a threshold (</a><span class="Emphasis">e.g.</span> median or absolute deviation) for wavelet coefficients at one or more scales.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="206137">Detect anomalous Wavelet Coefficients: Wavelet coefficients above the threshold are used to indicate anomalous movement.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">4.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="206138">Identify Outliers: Once anomalous wavelet coefficients are determined, reconstruct the original time series data using the inverse wavelet transform. This procedure allows for determination of which observations in the original time series data gave rise to the anomalous coefficients. These observations are identified as outliers.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="206139">EViews uses wavelet outlier settings that broadly match those used in Bilen and Huzurbazar (2002): a single scale time scale, hard thresholding, the False Discovery Rate (FDR) value method, and the Mean Median Absolute Deviation coefficient variance.</a></div>
+      <div class="Heading_4"><a name="206140">Series Outlier Detection in EViews</a></div>
+      <div class="Body_Text"><a name="206141">To perform outlier detection of a single series in EViews, open the series, and click on </a><span style="font-weight: bold">View/Outlier Detection&#8230;</span>. EViews will display the <span class="Menu_Item">Outlier Detection</span> dialog:</div>
+      <div class="Picture"><a name="206145"><img class="Default" src="images/series.017.09.12.jpg" width="100%" style="left: 0.0pt; max-height: 426px; max-width: 351px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206146">The </a><span style="font-weight: bold">Transformation</span> section offers you the ability to perform outlier detection on the original series, or to transform the series to remove trends or cycle. By default, the original series will be employed (<span class="Menu_Item">None</span>), but you can select the Hodrick-Prescott filter (<span style="font-weight: bold">HP filter</span>) to use the cyclical series, or use the first-difference of the series (<span style="font-weight: bold">Difference</span>).</div>
+      <div class="Body_Text"><a name="206147">(More complicated transformations or detrending/cycling procedures may be performed by running those procedures on the original series elsewhere in EViews, saving the transformed results, and then performing outlier detection on the resulting transformed series.</a></div>
+      <div class="Body_Text"><a name="206148">The </a><span style="font-weight: bold">Methods</span> section checkboxes control which outlier detection methods will be performed. By default, all of the methods will be reported. Note that selecting the <span style="font-weight: bold">Fences</span> box will instruct EViews to employ both Tukey and Mean/Standard Deviation fences.</div>
+      <div class="Body_Text"><a name="206149">The </a><span style="font-weight: bold">Options</span> section has a number of options for tailoring the detection routine and its output. </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="206150">The </a><span style="font-weight: bold">Sensitivity</span> drop down box allows you to quickly set the tolerance levels of the outlier detection methods. <span style="font-weight: bold">Sensitivity</span> can be set to <span style="font-weight: bold">Low</span>, <span style="font-weight: bold">Medium</span>, <span style="font-weight: bold">High</span>, or <span style="font-weight: bold">Custom</span>. The values corresponding to the settings are:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Table"><a name="211542">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 291.59999999999996pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 108pt">
+            <div class="Table_Text__0028Center_0029"><a name="206153">&nbsp;</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 61.2pt">
+            <div class="Table_Text_Header"><span class="Default_Paragraph_Font"><a name="206155">Low</a></span></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 61.2pt">
+            <div class="Table_Text_Header"><span class="Default_Paragraph_Font"><a name="206157">Medium</a></span></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 61.2pt">
+            <div class="Table_Text_Header"><span class="Default_Paragraph_Font"><a name="206159">High</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Header"><a name="206164">Tukey </a><span style="font-weight: normal"><img class="Default EquationGraphic" src="images/series.017.09.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /></span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206166">3.0</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206168">1.5</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206170">0.4</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Header"><a name="206175">Mean/StdDev </a><span style="font-weight: normal"><img class="Default EquationGraphic" src="images/series.017.09.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /></span></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206177">4.7</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206179">2.7</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206181">1.5</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Header"><a name="206186">ARMA <img class="Default EquationGraphic" src="images/series.017.09.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /></a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206188">16.0</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206190">8.0</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206192">4.0</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Header"><a name="206194">Wavelet FDR</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206196">0.0005</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206198">0.001</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="206200">0.01</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="206205">Note that the </a><span class="Menu_Item">Sensitivity</span> corresponds to <img class="Default EquationGraphic" src="images/series.017.09.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> for the Tukey and Mean/Standard Deviation fences, the ARMA critical value <img class="Default EquationGraphic" src="images/series.017.09.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, and the False Detection Rate (FDR) for wavelet analysis. Chen and Liu (1993, Section 3.1, p. 288) offer a simulation study which provides some guidance for the specification of the critical value <img class="Default EquationGraphic" src="images/series.017.09.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. If <span style="font-weight: bold">Custom</span> is selected, a new dialog will open, allowing setting of these values on an individual basis.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="206212">If you enter a valid object name in the </a><span style="font-weight: bold">Create series object </span>edit field EViews will produce a new binary series object in the workfile containing a value of &#8220;1&#8221; for any observation that was identified as an outlier, and a value of &#8220;0&#8221; for any observation that was not determined to be an outlier. Any observations outside of the current workfile sample are assigned a value of NA. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="206213">Checking the </a><span style="font-weight: bold">Label outliers in graphs </span>checkbox instructs EViews to include the date label of any identified outlier on the output graph.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="206214">If the </a><span style="font-weight: bold">Set workfile sample</span> checkbox is selected, EViews will set the workfile sample using the results of the outlier analysis. Selecting Exclude outliers will set the sample to the existing workfile sample with outliers excluded. Conversely, selecting <span style="font-weight: bold">Only outliers </span>to those observations in the original sample that are identified as outliers. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="206215">In both cases, since setting the sample requires a series in the workfile, if you have not entered a name in the </a><span style="font-weight: bold">Create series object edit</span>, EViews will automatically add one.</div>
+      <div class="Heading_4"><a name="206216">Outlier Detection Example</a></div>
+      <div class="Body_Text"><a name="206217">The workfile &#8220;Series Outlier.wf1&#8221; contains a single series of data holding quarterly real GDP for the United States between 1980 and 2015. Unfortunately, there was a data entry error in the series GDPC1 where observation 1999Q4 was entered incorrectly:</a></div>
+      <div class="Picture"><a name="206221"><img class="Default" src="images/series.017.09.19.jpg" width="100%" style="left: 0.0pt; max-height: 283px; max-width: 480px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206222">We can use EViews' outlier detection routines to see whether 1999Q4 would be identified correctly as an outlier. Click on </a><span style="font-weight: bold">View/Outlier Detection</span>, leave all options at their default values, and then click on <span style="font-weight: bold">OK</span>. EViews will conduct the outlier analysis and will to produce the spool output, which is split into distinct sections</div>
+      <div class="Picture"><a name="206223">&nbsp;</a></div>
+      <div class="Body_Text"><a name="206224">The </a><span class="Menu_Item">Summary</span> node provides a summary of the outlier detection routine, </div>
+      <div class="Picture"><a name="206228"><img class="Default" src="images/series.017.09.20.jpg" width="100%" style="left: 0.0pt; max-height: 501px; max-width: 695px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206229">From our summary we can see that two outliers were detected: one for 1999Q4, and one for the subsequent period 2000Q1. We can also see that while neither the Tukey or Mean/Standard Deviation fences detected any outliers, both the ARMA and Wavelet methods identified 1994Q4 as outlier. Only the ARMA method identifies 2000Q1 as an outlier.</a></div>
+      <div class="Body_Text"><a name="206230">The </a><span class="Menu_Item">Outlier Graph</span> node provides a graph of the original series, the detected outliers, and the Tukey and mean/standard deviation fences, </div>
+      <div class="Picture"><a name="206234"><img class="Default" src="images/series.017.09.21.jpg" width="100%" style="left: 0.0pt; max-height: 497px; max-width: 662px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206235">The next four sections provide additional information for the individual detection methods. The </a><span class="Menu_Item">Tukey Fences</span> and <span class="Menu_Item">Mean/StDev Fences</span> results display information relevant to the construction of the fences:</div>
+      <div class="Picture"><a name="206239"><img class="Default" src="images/series.017.09.22.jpg" width="100%" style="left: 0.0pt; max-height: 525px; max-width: 630px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206243">The tables show the scale factor <img class="Default EquationGraphic" src="images/series.017.09.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />, first quartile (Q1), third quartile (Q3), interquartile range (IQR), and the resulting fences used in identifying the Tukey outliers, and the scale factor, mean, standard deviation and the corresponding fences used to identify the Mean/Standard outliers. Both methods report that no observations are outside the fences.</a></div>
+      <div class="Body_Text"><a name="206244">The </a><span class="Menu_Item">ARMA Outliers</span> section lists the outliers detected by the ARMA routine, along with the value of the observation at that date:</div>
+      <div class="Picture"><a name="206248"><img class="Default" src="images/series.017.09.24.jpg" width="100%" style="left: 0.0pt; max-height: 425px; max-width: 632px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206249">The </a><span class="Menu_Item">Wavelet Outliers</span> section lists the outliers detected by the Wavelet routine and the absolute deviation from the mean, and the absolute deviation from the median.</div>
+      <div class="Body_Text"><a name="206250">It is notable that the neither of the fence methods identifies an outlier. From the original graph of our series, it is obvious that the series exhibits a strong upward trend, which presumably is the reason that the fence methods were unable to detect our outlier. We can alleviate this problem by performing the detection after remove the trend using the Hodrick-Prescott filter. Click on </a><span style="font-weight: bold">View/Outlier Detection</span> to display the dialog,</div>
+      <div class="Picture"><a name="206254"><img class="Default" src="images/series.017.09.25.jpg" width="100%" style="left: 0.0pt; max-height: 426px; max-width: 353px; top: 0.0pt" alt="" />9</a></div>
+      <div class="Picture"><a name="206255">&nbsp;</a></div>
+      <div class="Body_Text"><a name="206256">Change the </a><span class="Menu_Item">Transformation</span> method to <span class="Menu_Item">HP filter</span> and click on <span class="Menu_Item">OK</span> to continue. The results are quite different. The <span class="Menu_Item">Summary</span> table shows a larger number and slightly different set of outliers:</div>
+      <div class="Table"><a name="206260"><img class="Default" src="images/series.017.09.26.jpg" width="100%" style="left: 0.0pt; max-height: 375px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206261">Both the fences methods report outliers, with the Tukey method detecting seven outliers. Of particular note is that all four methods agree that 1999Q4 is an outlier. </a></div>
+      <div class="Body_Text"><a name="206262">The graph shows the seven outliers and the two sets of fences:</a></div>
+      <div class="Picture"><a name="206266"><img class="Default" src="images/series.017.09.27.jpg" width="100%" style="left: 0.0pt; max-height: 356px; max-width: 523px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206267">Some of the observations detected by the Tukey fences as outliers may result from natural variation in the cyclical data. We may wish to impose more stringent criteria for whether an observation is an outlier. Click on </a><span style="font-weight: bold">View/Outlier Detection</span> to display the dialog,</div>
+      <div class="Picture"><a name="206271"><img class="Default" src="images/series.017.09.28.jpg" width="100%" style="left: 0.0pt; max-height: 430px; max-width: 352px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206272">change the </a><span class="Menu_Item">Sensitivity</span> to <span class="Menu_Item">Low</span>, and click on <span class="Menu_Item">OK</span>.</div>
+      <div class="Body_Text"><a name="206273">The results show that with lower sensitivity, there are two outliers</a></div>
+      <div class="Picture"><a name="206277"><img class="Default" src="images/series.017.09.29.jpg" width="100%" style="left: 0.0pt; max-height: 279px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="206278">and 1999Q4 is still detected by all four methods.</a></div>
+      <div class="Picture"><a name="206282"><img class="Default" src="images/series.017.09.30.jpg" width="100%" style="left: 0.0pt; max-height: 356px; max-width: 523px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Groups</title>
+    <link rel="StyleSheet" href="css/workdata.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="workdata-Auto-series.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="workdata-Scalars.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="workdata-Working_with_Data.html">Working with Data</a> : Groups </div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="160972">Groups </a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160994">Accessing Individual Series in a Group</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#161025">Group Row Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#161036">Creating a Group By Expanding a Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#161050">An Illustration</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="160973">EViews provides specialized tools for working with groups of series that are held in the form of a group object. In </a><span class="Link"><a href="Basedata-Importing_Data.html#231898" title="Importing Data">&#8220;Importing Data&#8221;</a></span>, we used groups to import data from spreadsheets into existing workfiles. Briefly, a group is a collection of one or more series identifiers or expressions. Note that a group does not contain the data in the individual series, only references to the data in the series.</div>
+      <div class="Body_Text"><a name="160979">To create a group, select </a><span class="Menu_Item">Object/New Object.../Group</span> and fill in the dialog with names of series and auto-series. Or you may select <span class="Menu_Item">Show</span> from the workfile toolbar and fill out the dialog. Alternatively, type the command <span class="In-line_input">group</span> in the command window, followed by a name to be given to the group and then the series and auto-series names:</div>
+      <div class="Input"><a name="160980">group macrolist gdp invest cons</a></div>
+      <div class="Body_Text"><a name="160981">creates the group MACROLIST containing the series GDP, INVEST and CONS. Similarly,</a></div>
+      <div class="Input"><a name="160982">group altlist log(gdp) d(invest) cons/price</a></div>
+      <div class="Body_Text"><a name="160983">creates the group ALTLIST containing the log of the series GDP, the first difference of the series INVEST, and the CONS series divided by the PRICE series.</a></div>
+      <div class="Body_Text"><a name="160984">There are a few features of groups that are worth keeping in mind:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160985">A group is simply a list of series identifiers. It is not a copy of the data in the series. Thus, if you change the data for one of the series in the group, you will see the changes reflected in the group.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160986">If you delete a series from the workfile, the series identifier will be maintained in all groups. If you view the group spreadsheet, you will see a phantom series containing NA values. If you subsequently create or import the series, the series values will be restored in all groups.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160987">Renaming a series changes the reference in every group containing the series, so that the newly named series will still be a member of each group.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="160988">There are many routines in EViews where you can use a group name in place of a list of series. If you wish, for example, to use X1, X2, and X3 as right-hand side variables in a regression, you can instead create a group containing the series, and use the group in the regression.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="160992">We describe groups in greater detail in </a><span class="Link"><a href="groups-Groups.html#170092" title="Groups">&#8220;Groups&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="160994">Accessing Individual Series in a Group</a></div>
+      <div class="Body_Text"><a name="160995">Groups, like other EViews objects, contain their own views and procedures. For now, note that you can access the individual elements of a named group as individual series. </a></div>
+      <div class="Body_Text"><a name="161002">To refer the <img class="Default EquationGraphic" src="images/workdata.011.5.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-th series in the group, simply append &#8220;(<img class="Default EquationGraphic" src="images/workdata.011.5.2.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />)&#8221; to the group name. For example, consider the MACROLIST group, defined above. The expression MACROLIST(1) may be used to refer to GDP and MACROLIST(2) to refer to INVEST. </a></div>
+      <div class="Body_Text"><a name="161003">You can work with MACROLIST(1) as though it were any other series in EViews. You can display the series by clicking on the </a><span class="Menu_Item">Show</span> button on the toolbar and entering MACROLIST(1). You can include GDP in another group directly or indirectly. A group which contains:</div>
+      <div class="Input"><a name="161004">macrolist(1) macrolist(2)</a></div>
+      <div class="Body_Text"><a name="161005">will be identical to a group containing</a></div>
+      <div class="Input"><a name="161006">gdp invest</a></div>
+      <div class="Body_Text"><a name="161007">We can also use the individual group members as part of expressions in generating new series:</a></div>
+      <div class="Multi-line_Input"><a name="161008">series realgdp = macrolist(1)/price</a></div>
+      <div class="Multi-line_Input"><a name="161009">series y = 2*log(macrolist(3))</a></div>
+      <div class="Body_Text"><a name="161010">or in modifying the original series:</a></div>
+      <div class="Input"><a name="161011">series macrolist(2) = macrolist(2)/price</a></div>
+      <div class="Body_Text"><a name="161012">Note that in this latter example the </a><span class="In-line_input">series</span> keyword is required, despite the fact that the INVEST series already exists. This is true whenever you access a series as a member of a group.</div>
+      <div class="Body_Text"><a name="161014">Other tools allow you to retrieve the number of series in a group using the </a><span class="In-line_command">@count</span> group data member: </div>
+      <div class="Input"><a name="161015">scalar numgroup = macrolist.@count</a></div>
+      <div class="Body_Text"><a name="161016">To retrieve the names of each of the series, you may use the group data member </a><span class="In-line_command">@seriesname</span>. These tools are described in greater detail in <span class="Link"><a href="groupcmd-Group.html#227456" title="Group">&#8220;Group&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="161025">Group Row Functions</a></div>
+      <div class="Body_Text"><a name="161026">EViews allows you to generate a series based upon the rows, or observations, in a group. The most simple of these is the </a><span class="In-line_command">@columns</span> function which simply returns a series where every observation is equal to the number of series in a group. This function provides exactly the same information as the <span class="In-line_command">@count</span> data member of a group. Thus the expression:</div>
+      <div class="Input"><a name="161027">series numgroup = @columns(macrolist)</a></div>
+      <div class="Body_Text"><a name="161028">produces the same result as:</a></div>
+      <div class="Input"><a name="161029">series numgroup = macrolist.@count</a></div>
+      <div class="Body_Text"><a name="161030">There are also functions that will calculate the mean of a group&#8217;s rows (</a><span class="In-line_command">@rmean</span>), their standard deviation (<span class="In-line_command">@rstdev</span>) and variance (<span class="In-line_command">@rvar</span>). </div>
+      <div class="Body_Text"><a name="161031">The </a><span class="In-line_command">@rvalcount</span> function can be used to find how many times a specific value occurs within the rows of a group. For example:</div>
+      <div class="Input"><a name="161032">series numvals = @valcount(macrolist,5)</a></div>
+      <div class="Body_Text"><a name="161033">will create a series where each row of that series will be the count of how many of the series within the MACROLIST group contain the value &#8220;5&#8221; for that particular row. Note that the value argument for this function can be a scalar or a series. </a></div>
+      <div class="Body_Text"><a name="161034">A full list of the group row functions can be found in </a><span class="Link"><a href="functionref_home-Function_Summaries.html#1296667" title="Function Summaries">&#8220;By-Row Statistics&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="161036">Creating a Group By Expanding a Series</a></div>
+      <div class="Body_Text"><a name="161038">The </a><span class="In-line_command">@expand</span> function allows you to create a group of dummy variables by expanding out one or more series into individual categories. For example, if the series UNION contains values equal to either &#8220;union&#8221;, &#8220;non-union&#8221;, then using: </div>
+      <div class="Input"><a name="161039">group g1 @expand(union) </a></div>
+      <div class="Body_Text"><a name="161040">will create a group, G1, with two series, the first series containing 1 where-ever union is equal to &#8220;union&#8221; and zero elsewhere, the second series containing 1 where-ever union is equal to &#8220;non-union&#8221; and zero elsewhere.</a></div>
+      <div class="Body_Text"><span class="In-line_command"><a name="161041">@expand</a></span> may also be used on more than one series to give the cross-interaction of different series. Thus if you have a second series called MARRIED that contains either &#8220;married&#8221; or &#8220;single&#8221; then entering:</div>
+      <div class="Input"><a name="161042">group g2 @expand(union,married)</a></div>
+      <div class="Body_Text"><a name="161043">will create a group, G2, with four series, the first containing 1 where-ever UNION is equal to &#8220;union&#8221; and MARRIED is equal to &#8220;married&#8221;, the second series containing a 1 where-ever UNION is equal to &#8220;union&#8221; and MARRIED is equal to &#8220;single&#8221;, and so on.</a></div>
+      <div class="Body_Text"><a name="161044">The </a><span class="In-line_command">@expand</span> function can be used as part of a mathematical expression, so that a command of:</div>
+      <div class="Input"><a name="161045">group g3 2*@expand(union)</a></div>
+      <div class="Body_Text"><a name="161046">will create a group where the first series contains a 2 where-ever UNION is equal to &#8220;union&#8221;. Further, </a></div>
+      <div class="Input"><a name="161047">group g4 log(income)*@expand(married)</a></div>
+      <div class="Body_Text"><a name="161048">creates a group where the first series is equal to the values of the log of INCOME where-ever MARRIED is equal to &#8220;married&#8221; and so on.</a></div>
+      <div class="Body_Text"><a name="161049">The of the most useful applications of the </a><span class="In-line_command">@expand</span> function is when specifying an equation object, since it can be used to automatically create dummy variables.</div>
+      <div class="Body_Text"><a name="161207">See also </a><span class="Link"><a href="Regress2-Special_Equation_Expressions.html#265734" title="Special Equation Expressions">&#8220;Automatic Categorical Dummy Variables&#8221;</a></span> for additional discussion.</div>
+      <div class="Heading_4"><a name="161050">An Illustration</a></div>
+      <div class="Body_Text"><a name="161051">Auto-series and group processing provides you with a powerful set of tools for working with series data. As we saw above, auto-series provide you with dynamic updating of expressions. If we use the auto-series expression:</a></div>
+      <div class="Input"><a name="161052">log(y)</a></div>
+      <div class="Body_Text"><a name="161053">the result will be automatically updated whenever the contents of the series Y changes. </a></div>
+      <div class="Body_Text"><a name="161054">A potential drawback of using auto-series is that expressions may be quite lengthy. For example, the two expressions:</a></div>
+      <div class="Multi-line_Input"><a name="161055">log(gdp)/price + d(invest) * (cons + invest)</a></div>
+      <div class="Multi-line_Input"><a name="161056">12345.6789 * 3.14159 / cons^2 + dlog(gdp)</a></div>
+      <div class="Body_Text"><a name="161057">are not suited to use as auto-series if they are to be used repeatedly in other expressions.</a></div>
+      <div class="Body_Text"><a name="161058">You can employ group access to make this style of working with data practical. First, create groups containing the expressions:</a></div>
+      <div class="Multi-line_Input"><a name="161059">group g1 log(gdp)/price+d(invest)*(cons+invest)</a></div>
+      <div class="Multi-line_Input"><a name="161060">group g2 12345.6789*3.14159/cons^2+dlog(gdp)</a></div>
+      <div class="Body_Text"><a name="161061">If there are spaces in the expression, the entire contents should be enclosed in parentheses.</a></div>
+      <div class="Body_Text"><a name="161062">You can now refer to the auto-series as G1(1) and G2(1). You can go even further by combining the two auto-series into a single group:</a></div>
+      <div class="Input"><a name="161063">group myseries g1(1) g2(1)</a></div>
+      <div class="Body_Text"><a name="161064">and then referring to the series as MYSERIES(1) and MYSERIES(2). If you wish to skip the intermediate step of defining the subgroups G1 and G2, make certain that there are no spaces in the subexpression or that it is enclosed in parentheses. For example, the two expressions in the group ALTSERIES,</a></div>
+      <div class="Input"><a name="161065">group altseries (log(gdp)/price) 3.141*cons/price</a></div>
+      <div class="Body_Text"><a name="161066">may be referred to as ALTSERIES(1) and ALTSERIES(2). </a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

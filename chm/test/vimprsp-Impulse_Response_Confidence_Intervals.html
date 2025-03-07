@@ -1,0 +1,885 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Impulse Response Confidence Intervals</title>
+    <link rel="StyleSheet" href="css/vimprsp.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="vimprsp-Impulse_Response_Functions.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="vimprsp-Impulse_Responses_Analysis_in_EViews.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="vimprsp-Impulse_Response_Analysis.html">Impulse Response Analysis</a> : Impulse Response Confidence Intervals</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="291173">Impulse Response Confidence Intervals</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#316702">Analytic Asymptotic (Delta Method)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#291203">Traditional VAR Analytic</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#291245">Local Projection Analytic</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#295394">Sequential Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#291296">Joint Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#296246">Monte Carlo (MC Integration)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#291372">Bootstrapping</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#291374">Bootstrap Theory</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#321670">Types of Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#291397">Residual Based Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#291414">Block of Blocks Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#291479">Double Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#291487">Fast Double Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#291632">Traditional VAR Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#321944">Confidence Interval Methods</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#291634">Standard Percentile Confidence Interval</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#291646">Hall's Percentile Confidence Interval</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#291654">Hall's Studentized Confidence Interval</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#291716">Kilian's Unbiased Confidence Interval</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#301773">Local Projection Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#322727">Additional Confidence Interval Methods</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#291792">Jordà Confidence Interval</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#291810">Randomized Impulses</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#291829">Traditional VEC Bootstrap</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="316653">In addition to estimating the impulse response path, we may wish to obtain confidence intervals for those estimates. There are a variety of approaches to obtaining these estimates.</a></div>
+      <div class="Heading_4"><a name="316702">Analytic Asymptotic (Delta Method)</a></div>
+      <div class="Body_Text"><a name="291174">An extensive theoretical overview on analytic confidence intervals may be found in Chapter 3 of Lütkepohl (2005). </a></div>
+      <div class="Body_Text"><a name="316862">Briefly, the theoretical results are based on a first-order expansion (delta method) of the asymptotic normal distribution of the impulse response estimate.</a></div>
+      <div class="Body_Text"><a name="291176">Without loss of generality (</a><span class="Emphasis">i.e.</span>, remaining agnostic about the method of estimation and structural identification), consider an arbitrary full impulse response path <img class="Default EquationGraphic" src="images/vimprsp.058.3.001.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 92px; top: 0.0pt" alt="" /> matrix:</div>
+      <div class="Multi-line_Eq_No_Number"><a name="294722"><img class="Default EquationGraphic" src="images/vimprsp.058.3.002.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 202px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="291182">and let <img class="Default EquationGraphic" src="images/vimprsp.058.3.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 148px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 148px; top: 0.0pt" alt="" /> denote respectively the vectorized forms of <img class="Default EquationGraphic" src="images/vimprsp.058.3.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 63px; top: 0.0pt" alt="" /> and its estimate. Then, as usual, we have the following asymptotic result:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.006.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291189">Then, as usual, we can construct confidence interval bands for the impulse response path as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.007.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291195">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 77px; top: 0.0pt" alt="" /> denotes the <img class="Default EquationGraphic" src="images/vimprsp.058.3.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 75px; top: 0.0pt" alt="" />-vector of diagonal elements of the estimated covariance matrix <img class="Default EquationGraphic" src="images/vimprsp.058.3.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 32px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/vimprsp.058.3.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 53px; top: 0.0pt" alt="" /> denotes the <img class="Default EquationGraphic" src="images/vimprsp.058.3.012.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" />-quantile of the standard Gaussian distribution. </a></div>
+      <div class="Body_Text"><a name="317457">Note that these bands capture the unconditional uncertainty of the impulse response coefficients at each horizon step <img class="Default EquationGraphic" src="images/vimprsp.058.3.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. While these results are both useful and valid, this approach to confidence interval computation ignores the collinearity among impulse response coefficients, and ignores the temporal ordering of the impulse response path. The latter is a particularly important omission as a given value of the impulse response path affects the future trajectory of the path, but not conversely.</a></div>
+      <div class="Heading_5"><a name="291203">Traditional VAR Analytic</a></div>
+      <div class="Body_Text"><a name="291195">Lütkepohl describes analytic estimation of the covariance matrix <img class="Default EquationGraphic" src="images/vimprsp.058.3.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 32px; top: 0.0pt" alt="" /> for results obtained from traditional VAR estimation and provides the necessary equations for its computation.</a></div>
+      <div class="Body_Text"><a name="291205">Let <img class="Default EquationGraphic" src="images/vimprsp.058.3.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 180px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 105px; top: 0.0pt" alt="" />. Then we have the following asymptotic results:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.017.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291213">where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.018.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="328134">and <img class="Default EquationGraphic" src="images/vimprsp.058.3.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 218px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="328164">The covariance of the impulse responses, <img class="Default EquationGraphic" src="images/vimprsp.058.3.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 42px; top: 0.0pt" alt="" />, described in </a><span class="Link"><a href="#295135" title="Impulse Response Confidence Intervals">Equation&nbsp;(46.23)</a></span> is the sum of two components: </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328189"><img class="Default EquationGraphic" src="images/vimprsp.058.3.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 117px; top: 0.0pt" alt="" /> reflects the uncertainty associated with the slope parameter estimates </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="328201"><img class="Default EquationGraphic" src="images/vimprsp.058.3.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 107px; top: 0.0pt" alt="" /> captures the uncertainty associated with the estimate of <img class="Default EquationGraphic" src="images/vimprsp.058.3.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /></a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="291226">The nominal <img class="Default EquationGraphic" src="images/vimprsp.058.3.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 56px; top: 0.0pt" alt="" />% confidence interval for a specific impulse response coefficient at horizon step <img class="Default EquationGraphic" src="images/vimprsp.058.3.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> satisfies:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.026.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291241">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 41px; top: 0.0pt" alt="" /> is the <img class="Default EquationGraphic" src="images/vimprsp.058.3.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 195px; top: 0.0pt" alt="" />-th element of <img class="Default EquationGraphic" src="images/vimprsp.058.3.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 42px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="291245">Local Projection Analytic</a></div>
+      <div class="Heading_6"><a name="295394">Sequential Estimation</a></div>
+      <div class="Body_Text"><a name="291253">The limiting distribution theory for the sequential local projection impulse response estimator can be derived analogously. Consider again the asymptotic result:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.030.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291261">where,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.031.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291274">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is the covariance of the <img class="Default EquationGraphic" src="images/vimprsp.058.3.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="318081">Then, as in </a><span class="Link"><a href="#295202" title="Impulse Response Confidence Intervals">Equation&nbsp;(46.24)</a></span>:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.034.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="295530">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 35px; top: 0.0pt" alt="" /> is the <img class="Default EquationGraphic" src="images/vimprsp.058.3.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 195px; top: 0.0pt" alt="" />-th element of <img class="Default EquationGraphic" src="images/vimprsp.058.3.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 32px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="291292">Jordà (2005) warns that the innovation process <img class="Default EquationGraphic" src="images/vimprsp.058.3.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> of the local-projection regression has a moving average component of order <img class="Default EquationGraphic" src="images/vimprsp.058.3.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. Although the presence of the moving average doesn&#8217;t affect estimator consistency, Jordà (2005) recommends the use of a Newey-West estimator for <img class="Default EquationGraphic" src="images/vimprsp.058.3.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> at each horizon step <img class="Default EquationGraphic" src="images/vimprsp.058.3.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> to improve the accuracy of the confidence interval estimate.</a></div>
+      <div class="Heading_6"><a name="291296">Joint Estimation</a></div>
+      <div class="Body_Text"><a name="295681">Since the residuals from a local-projection regression exhibit a moving average component of order <img class="Default EquationGraphic" src="images/vimprsp.058.3.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, for sequential estimation, Jordà (2005) recommends use of a Newey-West estimator of the residual covariance matrix at each horizon step <img class="Default EquationGraphic" src="images/vimprsp.058.3.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="318361">Alternately, Jordà (2009), shows it is possible to address this issue parametrically, and derives the correct covariance matrix of the full path of the impulse response coefficients: </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.044.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291308">where we replace the estimated <img class="Default EquationGraphic" src="images/vimprsp.058.3.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> in </a><span class="Link"><a href="#295453" title="Impulse Response Confidence Intervals">Equation&nbsp;(46.26)</a></span> with <img class="Default EquationGraphic" src="images/vimprsp.058.3.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/vimprsp.058.3.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> is a transformation matrix that depends on the lag coefficients of the LP (Jordà 2009, p. 642).</div>
+      <div class="Body_Text"><a name="291311">Recall that the sequential confidence intervals in </a><span class="Link"><a href="#295202" title="Impulse Response Confidence Intervals">Equation&nbsp;(46.24)</a></span> and <span class="Link"><a href="#295503" title="Impulse Response Confidence Intervals">Equation&nbsp;(46.27)</a></span> ignore collinearity among impulse response coefficients, and the temporal ordering of the impulse response path. To address these issues, Jordà (2009) proposes two simultaneous confidence band computations, the Scheffé band and the conditional error band.</div>
+      <div class="Body_Text"><a name="291314">The Scheffé's band is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.048.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291321">which we obtain using the LDL decomposition of <img class="Default EquationGraphic" src="images/vimprsp.058.3.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 32px; top: 0.0pt" alt="" /></a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.050.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291327">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 33px; top: 0.0pt" alt="" /> is a lower triangular matrix with 1&#8217;s along the main diagonal; <img class="Default EquationGraphic" src="images/vimprsp.058.3.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 33px; top: 0.0pt" alt="" /> is a diagonal matrix, and <img class="Default EquationGraphic" src="images/vimprsp.058.3.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is the <img class="Default EquationGraphic" src="images/vimprsp.058.3.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> critical value of <img class="Default EquationGraphic" src="images/vimprsp.058.3.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 24px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="291329">An alternative joint confidence band is the conditional error band:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.056.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="318853">Scheffé bands provide a rectangular approximation to the elliptical simultaneous confidence region of impulse response coefficients. Alternately, conditional error bands separate the variation of each impulse response coefficient from the variation resulting from impulse response serial correlation. Thus, conditional error bands are better at identifying the significance of individual impulse response coefficients analogous to the way a Wald test on coefficient joint significance works.</a></div>
+      <div class="Body_Text"><a name="291339">Note that, even with joint estimation, we can compute the classical confidence bands by ignoring serial correlation and collinearity by deriving the band using only the diagonal elements of <img class="Default EquationGraphic" src="images/vimprsp.058.3.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_4"><a name="296246">Monte Carlo (MC Integration)</a></div>
+      <div class="Body_Text"><a name="291347">An alternative method of computing impulse response confidence intervals is provided by Sims and Zha (1999). This Bayesian approach simulates the posterior distribution of the impulse response conditional on the </a><span style="font-style: italic">p</span> pre-sample observations. Assuming Gaussian innovations, the distribution of interest is normal-inverse Wishart. As the theory has only been developed given traditional VAR estimation, we only employ this method in that context.</div>
+      <div class="Body_Text"><a name="291349">From </a><span class="Link"><a href="#291173" title="Impulse Response Confidence Intervals">&#8220;Impulse Response Confidence Intervals&#8221;</a></span> we see that the impulse response path is a nonlinear function of the vectorized VAR coefficients <img class="Default EquationGraphic" src="images/vimprsp.058.3.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" />, and the vectorized residual covariance matrix <img class="Default EquationGraphic" src="images/vimprsp.058.3.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, which we may denote as</div>
+      <div class="Multi-line_Eq_No_Number"><a name="296366"><img class="Default EquationGraphic" src="images/vimprsp.058.3.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 94px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="291355">The method of MC integration is based on drawing from the posterior distribution, <img class="Default EquationGraphic" src="images/vimprsp.058.3.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 111px; top: 0.0pt" alt="" />, where:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.062.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291365">The error bands are obtained as the <img class="Default EquationGraphic" src="images/vimprsp.058.3.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> percentiles of the simulated posterior distribution of the impulse response coefficients. Extending the result to structural shocks is straightforward and only requires scaling by an appropriate <img class="Default EquationGraphic" src="images/vimprsp.058.3.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 30px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_4"><a name="291372">Bootstrapping</a></div>
+      <div class="Heading_5"><a name="291374">Bootstrap Theory</a></div>
+      <div class="Body_Text"><a name="291375">Suppose there exists a data generating process (DGP) we're interested in estimating. Without loss of generality, we can assume such a DGP is parametric with a particular model specification <img class="Default EquationGraphic" src="images/vimprsp.058.3.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, an associated core dataset <img class="Default EquationGraphic" src="images/vimprsp.058.3.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, some parameter space <img class="Default EquationGraphic" src="images/vimprsp.058.3.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />, and an auxiliary data/parameter space <img class="Default EquationGraphic" src="images/vimprsp.058.3.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> to complete the specification. We can succinctly describe such a DGP as a tuple</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.070.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291379">To formalize matters, assume a simple autoregressive DGP of the form</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.071.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291383">Then, <img class="Default EquationGraphic" src="images/vimprsp.058.3.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 125px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vimprsp.058.3.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 54px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/vimprsp.058.3.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 120px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="291385">Finally, let the object of statistical interest (e.g., estimator, test statistic, etc.) be some functional of the data and parameters:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.075.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.35)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291389">Then, the general principle governing bootstrap methods is that distribution <img class="Default EquationGraphic" src="images/vimprsp.058.3.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> of <img class="Default EquationGraphic" src="images/vimprsp.058.3.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> can be approximated by generating a large number, say <img class="Default EquationGraphic" src="images/vimprsp.058.3.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />, of different outcome paths (<img class="Default EquationGraphic" src="images/vimprsp.058.3.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 170px; top: 0.0pt" alt="" /> with <img class="Default EquationGraphic" src="images/vimprsp.058.3.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />) for <img class="Default EquationGraphic" src="images/vimprsp.058.3.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />, where the superscript <img class="Default EquationGraphic" src="images/vimprsp.058.3.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 19px; top: 0.0pt" alt="" /> indicates that the object is derived from simulation. In particular, the <img class="Default EquationGraphic" src="images/vimprsp.058.3.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> outcomes <img class="Default EquationGraphic" src="images/vimprsp.058.3.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 37px; top: 0.0pt" alt="" /> are obtained by simulating from <img class="Default EquationGraphic" src="images/vimprsp.058.3.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" /> (via repeated applications of <img class="Default EquationGraphic" src="images/vimprsp.058.3.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />) to generate <img class="Default EquationGraphic" src="images/vimprsp.058.3.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> independent outcomes <img class="Default EquationGraphic" src="images/vimprsp.058.3.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 30px; top: 0.0pt" alt="" /> of <img class="Default EquationGraphic" src="images/vimprsp.058.3.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, and for each such draw, estimate <img class="Default EquationGraphic" src="images/vimprsp.058.3.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and compute the corresponding <img class="Default EquationGraphic" src="images/vimprsp.058.3.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 37px; top: 0.0pt" alt="" /> in the same way <img class="Default EquationGraphic" src="images/vimprsp.058.3.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> was derived from the original data. <img class="Default EquationGraphic" src="images/vimprsp.058.3.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> is then estimated as the empirical distribution of <img class="Default EquationGraphic" src="images/vimprsp.058.3.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 83px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="291391">Note that the final bootstrap estimator of <img class="Default EquationGraphic" src="images/vimprsp.058.3.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />, typically denoted as <img class="Default EquationGraphic" src="images/vimprsp.058.3.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 30px; top: 0.0pt" alt="" />, is derived as the average of the individual bootstrap estimates <img class="Default EquationGraphic" src="images/vimprsp.058.3.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 37px; top: 0.0pt" alt="" />. In other words:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.098.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_6"><a name="321670">Types of Bootstrap</a></div>
+      <div class="Body_Text"><a name="321694">Four our purposes it is useful to distinguish between two types of bootstrap simulation: residual based boostrap and blocks of blocks bootstrap.</a></div>
+      <div class="Heading_7"><a name="291397">Residual Based Bootstrap</a></div>
+      <div class="Body_Text"><a name="291398">In traditional regression settings, the bootstrap procedure often used to obtain <img class="Default EquationGraphic" src="images/vimprsp.058.3.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 83px; top: 0.0pt" alt="" /> is the </a><span class="Definition">residual based bootstrap</span>. Assuming a simple autoregressive DGP of the form above, the algorithm is summarized below:</div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="291399">Estimate <img class="Default EquationGraphic" src="images/vimprsp.058.3.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" /> to derive estimates <img class="Default EquationGraphic" src="images/vimprsp.058.3.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 13px; top: 0.0pt" alt="" /> and the residual process <img class="Default EquationGraphic" src="images/vimprsp.058.3.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="297432">For each <img class="Default EquationGraphic" src="images/vimprsp.058.3.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />:	</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Lowercase_Letters_0029_outer" style="margin-left: 54pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">a.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner"><a name="297511">Randomly draw with replacement from <img class="Default EquationGraphic" src="images/vimprsp.058.3.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> to obtain bootstrap innovations <img class="Default EquationGraphic" src="images/vimprsp.058.3.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 31px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Lowercase_Letters_0029_outer" style="margin-left: 54pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">b.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner"><a name="297644">Simulate bootstrap data via <img class="Default EquationGraphic" src="images/vimprsp.058.3.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 160px; top: 0.0pt" alt="" /> (i.e., recursively).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Lowercase_Letters_0029_outer" style="margin-left: 54pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">c.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner"><a name="297897">Generate the bootstrap DGP:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.107.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List_Indent__0028Lowercase_Letters_0029_outer" style="margin-left: 54pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">d.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner"><a name="298164">Estimate <img class="Default EquationGraphic" src="images/vimprsp.058.3.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 35px; top: 0.0pt" alt="" /> to derive estimates <img class="Default EquationGraphic" src="images/vimprsp.058.3.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 27px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 31px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Lowercase_Letters_0029_outer" style="margin-left: 54pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">e.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner"><a name="297924">Obtain a bootstrap estimate of the object of interest as:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.111.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.38)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_7"><a name="291414">Block of Blocks Bootstrap</a></div>
+      <div class="Body_Text"><a name="298274">The </a><span class="Emphasis">block of blocks bootstrap</span> is a non-parametric method designed to accommodate weakly dependent stationary observations. While there are several implementations of this methodology, each addressing important practical aspects, here we only outline the basic idea. In particular, data is bootstrapped by selecting blocks of length <img class="Default EquationGraphic" src="images/vimprsp.058.3.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> randomly with replacement from <img class="Default EquationGraphic" src="images/vimprsp.058.3.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. Again, assuming a simple autoregressive DGP shown earlier, the algorithm is described below:</div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="298313">Define <img class="Default EquationGraphic" src="images/vimprsp.058.3.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 67px; top: 0.0pt" alt="" /> overlapping blocks of data <img class="Default EquationGraphic" src="images/vimprsp.058.3.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 162px; top: 0.0pt" alt="" /> of length <img class="Default EquationGraphic" src="images/vimprsp.058.3.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" />. In other words, form a matrix <img class="Default EquationGraphic" src="images/vimprsp.058.3.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 162px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="298321">For each <img class="Default EquationGraphic" src="images/vimprsp.058.3.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />:	</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Lowercase_Letters_0029_outer" style="margin-left: 54pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">a.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner"><a name="298351">Simulate bootstrap data via <img class="Default EquationGraphic" src="images/vimprsp.058.3.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 217px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/vimprsp.058.3.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 58px; top: 0.0pt" alt="" />. In other words, draw with replacement from the columns of <img class="Default EquationGraphic" src="images/vimprsp.058.3.121.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 18px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Lowercase_Letters_0029_outer" style="margin-left: 54pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">b.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner"><a name="298408">Generate the bootstrap DGP:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Multi-line_Eq_No_Number"><a name="298906"><img class="Default EquationGraphic" src="images/vimprsp.058.3.122.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 221px; top: 0.0pt" alt="" /></a></div>
+      <div class="List_Indent__0028Lowercase_Letters_0029_outer" style="margin-left: 54pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">c.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner"><a name="298929">Estimate <img class="Default EquationGraphic" src="images/vimprsp.058.3.123.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 35px; top: 0.0pt" alt="" /> to derive estimates <img class="Default EquationGraphic" src="images/vimprsp.058.3.124.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 27px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.125.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 31px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Lowercase_Letters_0029_outer" style="margin-left: 54pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">d.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Lowercase_Letters_0029_inner"><a name="298930">Obtain a bootstrap estimate of the object of interest as:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Multi-line_Eq_No_Number"><a name="298556"><img class="Default EquationGraphic" src="images/vimprsp.058.3.126.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 175px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_6"><a name="291479">Double Bootstrap</a></div>
+      <div class="Body_Text"><a name="291481">It is sometimes necessary to obtain bootstrapped versions of bootstrap statistics. For instance, the object of interest may be the distribution <img class="Default EquationGraphic" src="images/vimprsp.058.3.127.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 52px; top: 0.0pt" alt="" /> of <img class="Default EquationGraphic" src="images/vimprsp.058.3.128.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 37px; top: 0.0pt" alt="" />. This is typically needed in deriving the variance of a bootstrap statistic. In this case, for each <img class="Default EquationGraphic" src="images/vimprsp.058.3.129.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 110px; top: 0.0pt" alt="" />, the distribution <img class="Default EquationGraphic" src="images/vimprsp.058.3.130.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 56px; top: 0.0pt" alt="" /> is approximated by generating a large number, say <img class="Default EquationGraphic" src="images/vimprsp.058.3.131.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" />, of different outcome paths (<img class="Default EquationGraphic" src="images/vimprsp.058.3.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 35px; max-width: 49px; top: 0.0pt" alt="" /> with <img class="Default EquationGraphic" src="images/vimprsp.058.3.133.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 110px; top: 0.0pt" alt="" />) for <img class="Default EquationGraphic" src="images/vimprsp.058.3.134.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 41px; top: 0.0pt" alt="" />, where the superscript <img class="Default EquationGraphic" src="images/vimprsp.058.3.135.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 27px; top: 0.0pt" alt="" /> indicates that the object is derived from a second stage bootstrap simulation. In particular, the <img class="Default EquationGraphic" src="images/vimprsp.058.3.136.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> outcomes <img class="Default EquationGraphic" src="images/vimprsp.058.3.137.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 35px; max-width: 49px; top: 0.0pt" alt="" /> are obtained by simulating from each first stage bootstrap DGP in exactly the same way that <img class="Default EquationGraphic" src="images/vimprsp.058.3.138.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 41px; top: 0.0pt" alt="" /> was simulated from the original DGP. <img class="Default EquationGraphic" src="images/vimprsp.058.3.139.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 56px; top: 0.0pt" alt="" /> is estimated as the empirical distribution of</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.140.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.39)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_6"><a name="291487">Fast Double Bootstrap</a></div>
+      <div class="Body_Text"><a name="321918">Performing a full double bootstrap algorithm is extremely computationally demanding. A single bootstrap algorithm typically requires the computation of <img class="Default EquationGraphic" src="images/vimprsp.058.3.141.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 51px; top: 0.0pt" alt="" /> test statistics -- a single statistic performed on the original data and an additional <img class="Default EquationGraphic" src="images/vimprsp.058.3.142.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> statistics obtained in the bootstrap loop. On the other hand, a full double bootstrap requires <img class="Default EquationGraphic" src="images/vimprsp.058.3.143.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 107px; top: 0.0pt" alt="" /> statistics, with the additional <img class="Default EquationGraphic" src="images/vimprsp.058.3.144.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 43px; top: 0.0pt" alt="" /> statistics computed in the inner loop of the double bootstrap algorithm. For instance, setting <img class="Default EquationGraphic" src="images/vimprsp.058.3.145.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 77px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.146.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 77px; top: 0.0pt" alt="" />, the double bootstrap will require the computation of no less than 499,501 test statistics. </a></div>
+      <div class="Body_Text"><a name="319549">Several attempts have been proposed to reduce this computational burden, among the most popular of which is the </a><span class="Definition">fast double bootstrap </span>(FDB) algorithm of Davidson and MacKinnon (2002) and general iterated variants proposed in Davidson and Trokic (2020). The principle governing the success of these algorithms relies on setting <img class="Default EquationGraphic" src="images/vimprsp.058.3.147.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 61px; top: 0.0pt" alt="" />. For instance, the FDB has proved particularly useful in approximating full double bootstrap algorithms with roughly less than the twice the computational burden of the traditional bootstrap: <img class="Default EquationGraphic" src="images/vimprsp.058.3.148.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 60px; top: 0.0pt" alt="" /> to be precise.</div>
+      <div class="Heading_5"><a name="291632">Traditional VAR Bootstrap</a></div>
+      <div class="Body_Text"><a name="291633">To derive bootstrap confidence intervals for traditional VAR impulse response paths, let <img class="Default EquationGraphic" src="images/vimprsp.058.3.149.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vimprsp.058.3.150.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 16px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vimprsp.058.3.151.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 24px; top: 0.0pt" alt="" /> denote, respectively, some general impulse response coefficient, estimated using the original data <img class="Default EquationGraphic" src="images/vimprsp.058.3.152.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and the DGP in </a><span class="Link"><a href="vimprsp-Impulse_Response_Functions.html#292603" title="Impulse Response Functions">Equation&nbsp;(46.1)</a></span>, and the associated bootstrap estimator so that <img class="Default EquationGraphic" src="images/vimprsp.058.3.153.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 61px; top: 0.0pt" alt="" />. </div>
+      <div class="Body_Text"><a name="291732">The choice of bootstrap algorithm to derive <img class="Default EquationGraphic" src="images/vimprsp.058.3.154.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 24px; top: 0.0pt" alt="" /> is not particularly important. Traditionally, a procedure like the residual bootstrap is widely used for traditional VAR impulse response analysis. While modern approaches do suggest the viability of the block of blocks bootstraping, To follow the original literature, however, EViews offers only the residual bootstrap methods described above (</a><span class="Link"><a href="#291397" title="Impulse Response Confidence Intervals">&#8220;Residual Based Bootstrap&#8221;</a></span>) for the case of impulse responses derived via traditional VARs.</div>
+      <div class="Heading_6"><a name="321944">Confidence Interval Methods</a></div>
+      <div class="Body_Text"><a name="321619">Let <img class="Default EquationGraphic" src="images/vimprsp.058.3.155.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> denote a given significance level so that the confidence interval of interest has coverage <img class="Default EquationGraphic" src="images/vimprsp.058.3.156.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" />. Then, the following bootstrap confidence intervals have been considered in the impulse response literature. See Lütkepohl (2005) for further details.</a></div>
+      <div class="Heading_7"><a name="291634">Standard Percentile Confidence Interval</a></div>
+      <div class="Body_Text"><a name="291638">The most common bootstrap algorithm for impulse response CIs is based on the percentile confidence interval described in Efron and Tibshirani (1993). The bootstrap CI is derived as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.157.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.40)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291642">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.158.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 43px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.159.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 62px; top: 0.0pt" alt="" /> are respectively the <img class="Default EquationGraphic" src="images/vimprsp.058.3.160.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 36px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.161.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" /> quantiles of the empirical distribution of <img class="Default EquationGraphic" src="images/vimprsp.058.3.162.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 24px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_7"><a name="291646">Hall's Percentile Confidence Interval</a></div>
+      <div class="Body_Text"><a name="291647">An alternative to the </a><span style="font-weight: bold">standard percentile CI</span> is the Hall (1992) confidence interval. The idea behind this contribution is that the distribution of <img class="Default EquationGraphic" src="images/vimprsp.058.3.163.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 58px; top: 0.0pt" alt="" /> is asymptotically approximated by the distribution of <img class="Default EquationGraphic" src="images/vimprsp.058.3.164.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 66px; top: 0.0pt" alt="" />. Accordingly, the bootstrap CI is derived as:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.165.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.41)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291651">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.166.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 42px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.167.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 60px; top: 0.0pt" alt="" /> are respectively the <img class="Default EquationGraphic" src="images/vimprsp.058.3.168.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 36px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.169.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" /> quantiles of the empirical distribution of <img class="Default EquationGraphic" src="images/vimprsp.058.3.170.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 34px; max-width: 104px; top: 0.0pt" alt="" />. See Hall (1986) for details.</a></div>
+      <div class="Heading_7"><a name="291654">Hall's Studentized Confidence Interval</a></div>
+      <div class="Body_Text"><a name="291656">Another possibility is to asymptotically approximate the distribution of the studentized statistic <img class="Default EquationGraphic" src="images/vimprsp.058.3.171.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, formalized as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.172.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.42)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291660">with the distribution of the bootstrap studentized statistic: </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.173.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.43)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291664">In this case, the bootstrap CI is derived as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.174.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.44)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291668">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.175.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 50px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.176.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 69px; top: 0.0pt" alt="" /> are respectively the <img class="Default EquationGraphic" src="images/vimprsp.058.3.177.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 36px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.178.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" /> quantiles of the empirical distribution of <img class="Default EquationGraphic" src="images/vimprsp.058.3.179.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 73px; top: 0.0pt" alt="" /> where: </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.180.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.45)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291672">See Hall (1986) for details.</a></div>
+      <div class="Body_Text"><a name="291674">Here, <img class="Default EquationGraphic" src="images/vimprsp.058.3.181.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 54px; top: 0.0pt" alt="" /> can be estimated from the <img class="Default EquationGraphic" src="images/vimprsp.058.3.182.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> individual bootstrap estimates <img class="Default EquationGraphic" src="images/vimprsp.058.3.183.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 30px; top: 0.0pt" alt="" />. In particular:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.184.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.46)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291678">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.185.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 44px; max-width: 137px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="291680">Naturally, extending the argument above, <img class="Default EquationGraphic" src="images/vimprsp.058.3.186.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 68px; top: 0.0pt" alt="" /> can be estimated from an additional <img class="Default EquationGraphic" src="images/vimprsp.058.3.187.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> double bootstrap estimates <img class="Default EquationGraphic" src="images/vimprsp.058.3.188.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 38px; top: 0.0pt" alt="" />. In this regard, the re-sampling mechanism is obtained by augmenting the residual based bootstrap algorithm to the double bootstrap approach (</a><span class="Link"><a href="#291479" title="Impulse Response Confidence Intervals">&#8220;Double Bootstrap&#8221;</a></span>). In particular:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.189.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.47)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291684">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.190.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 41px; max-width: 186px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="322299">Alternately, we may employ the less computationally demanding fast double bootstrap approximation. Davidson and Trokic (2020) offer an algorithm to derive confidence intervals based on the FDB. The idea relies on the inverse relationship between <img class="Default EquationGraphic" src="images/vimprsp.058.3.191.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-values and confidence intervals. In particular, any <img class="Default EquationGraphic" src="images/vimprsp.058.3.192.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-value can be converted into a confidence bound through inversion. Thus, the FDB CI algorithm first derives the FDB <img class="Default EquationGraphic" src="images/vimprsp.058.3.193.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-values for a studentized test statistic <img class="Default EquationGraphic" src="images/vimprsp.058.3.194.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> that rejects in the lower and upper tails as follows:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.195.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.48)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291693">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.196.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 33px; top: 0.0pt" alt="" /> is the usual indicator function and <img class="Default EquationGraphic" src="images/vimprsp.058.3.197.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 22px; top: 0.0pt" alt="" /> is the bootstrap <img class="Default EquationGraphic" src="images/vimprsp.058.3.198.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-value derived as follows:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.199.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.49)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291697">and <img class="Default EquationGraphic" src="images/vimprsp.058.3.200.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 57px; top: 0.0pt" alt="" /> is the empirical <img class="Default EquationGraphic" src="images/vimprsp.058.3.201.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-quantile of the second stage bootstrap statistics <img class="Default EquationGraphic" src="images/vimprsp.058.3.202.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 35px; top: 0.0pt" alt="" />. Note here that the latter are obtained by setting <img class="Default EquationGraphic" src="images/vimprsp.058.3.203.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 55px; top: 0.0pt" alt="" />, thereby achieving a significant computational speedup.</a></div>
+      <div class="Body_Text"><a name="301167">Next, the algorithm inverts <img class="Default EquationGraphic" src="images/vimprsp.058.3.204.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 62px; top: 0.0pt" alt="" /> to obtain the lower and upper confidence bounds by solving the equation:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.205.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.50)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291703">The solution to this inversion, in case of lower and upper bounds, is as follows:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.206.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.51)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="291710">where <img class="Default EquationGraphic" src="images/vimprsp.058.3.207.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 49px; top: 0.0pt" alt="" /> is the empirical <img class="Default EquationGraphic" src="images/vimprsp.058.3.208.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-quantile of the first stage bootstrap statistics <img class="Default EquationGraphic" src="images/vimprsp.058.3.209.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 27px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="322404">Care should be taken however, as Chang and Hall (2015) show that the FDB does not improve asymptotically on the single bootstrap for the construction of confidence intervals.</a></div>
+      <div class="Heading_7"><a name="291716">Kilian's Unbiased Confidence Interval</a></div>
+      <div class="Body_Text"><a name="291717">The Kilian (1998) confidence intervals are specifically designed for VAR impulse response estimates. In particular, this approach explicitly corrects for the bias and skewness in the impulse response estimator that arises due to insufficient observations. We skip over most of the details but an overview of the procedure proceeds as follows:</a></div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="301542">Estimate a VAR to obtain original coefficient estimates.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="301569">Run a residual bootstrap to obtain bootstrap coefficient estimates which are used to compute a bias correction adjustment to the original estimates.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="301586">Use the bias corrected coefficients as the basis of a residual double bootstrap to bias correct each of the bootstrap coefficients.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">4.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="301605">Construct the impulse responses using the bias corrected bootstrap coefficients.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">5.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="301622">Derive the <img class="Default EquationGraphic" src="images/vimprsp.058.3.210.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 36px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.211.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" /> empirical quantiles of the bias corrected bootstrap impulse responses.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="291727">Note that the nested bootstrap computations required for this method can be costly. A fast bootstrap approximation may be obtained by computing the bias adjustments only once per loop and using it across replications.</a></div>
+      <div class="Heading_4"><a name="301773">Local Projection Bootstrap</a></div>
+      <div class="Body_Text"><a name="291784">One can also rely on bootstrap methods to derive confidence intervals for impulse responses derived via local projections. All that is really necessary is a bootstrap version of the data, namely <img class="Default EquationGraphic" src="images/vimprsp.058.3.212.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 159px; top: 0.0pt" alt="" />, for <img class="Default EquationGraphic" src="images/vimprsp.058.3.213.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />. Once generated, we can apply local projection methods outlined in </a><span class="Link"><a href="vimprsp-Impulse_Response_Functions.html#291066" title="Impulse Response Functions">&#8220;Local Projection&#8221;</a></span> in order to estimate <img class="Default EquationGraphic" src="images/vimprsp.058.3.214.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 30px; top: 0.0pt" alt="" /> accordingly.</div>
+      <div class="Body_Text"><a name="291786">We note here that the literature on bootstrap methods for impulse responses via local projections is not as developed as its traditional VAR counterpart. </a></div>
+      <div class="Body_Text"><a name="322464">While bootstrap methods outlined for traditional VARs are in principle valid for local projection, few papers formally consider the subject of bootstrapping impulse responses computed via local projections. Prominent amongst those that do, Kilian and Kim (2011) argue for using the block of blocks bootstrap to simulate <img class="Default EquationGraphic" src="images/vimprsp.058.3.215.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 30px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="322727">Additional Confidence Interval Methods</a></div>
+      <div class="Body_Text"><a name="291788">In additional to the confidence interval methods describe above in </a><span class="Link"><a href="#321944" title="Impulse Response Confidence Intervals">&#8220;Confidence Interval Methods&#8221;</a></span>, we may employ two additional methods specifically designed for use in local projection settings.</div>
+      <div class="Heading_6"><a name="291792">Jordà Confidence Interval</a></div>
+      <div class="Body_Text"><a name="291793">The Jordà (2009) confidence interval is specifically designed for impulse response estimates via local projections. What makes this method unique is that instead of deriving quantiles of impulse response paths directly, it derives quantiles via an auxiliary Wald statistic. We provide an overview of the methodology below:</a></div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="291794">Derive impulse response coefficients via local projections using original data.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="302054">Derive the Wald statistics below where <img class="Default EquationGraphic" src="images/vimprsp.058.3.216.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 23px; top: 0.0pt" alt="" /> is the variance (covariance) of the impulse response coefficient (path):</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.217.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.52)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="302258">Derive the <img class="Default EquationGraphic" src="images/vimprsp.058.3.218.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 36px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.219.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" /> empirical quantiles of <img class="Default EquationGraphic" src="images/vimprsp.058.3.220.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 36px; top: 0.0pt" alt="" />. Let <img class="Default EquationGraphic" src="images/vimprsp.058.3.221.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 36px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vimprsp.058.3.222.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 54px; top: 0.0pt" alt="" /> respectively denote the indices associated with these two quantiles.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Number_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Number_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">4.	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Number_0029_inner"><a name="302273">The desired confidence interval is then</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vimprsp.058.3.223.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(46.53)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_5"><a name="291810">Randomized Impulses</a></div>
+      <div class="Body_Text"><a name="291814">Kilian and Kim (2011) offer LP simulation experiments which suggest that treating the impulse matrix as random improves coverage accuracy of intervals compared with those based on initial point estimates for all bootstrap replications.</a></div>
+      <div class="Heading_4"><a name="291829">Traditional VEC Bootstrap</a></div>
+      <div class="Body_Text"><a name="291834">The principles governing the computation of bootstrap CIs for VAR impulse responses remain valid for VEC impulse responses as well. Since every VAR(<img class="Default EquationGraphic" src="images/vimprsp.058.3.224.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />) has an equivalent representation as a VEC(<img class="Default EquationGraphic" src="images/vimprsp.058.3.225.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />) process, one can simply convert bootstrap VAR estimates into their VEC equivalents, and proceed to derive the VEC impulse responses using the latter coefficients. Alternatively, one can start from a VEC representation, obtain bootstrap coefficient estimates, and then integrate the VEC model to its VAR equivalent. The converted bootstrap coefficient estimates can then be used to derive bootstrap CIs for the corresponding VAR.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

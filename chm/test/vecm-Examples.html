@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/vecm.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="vecm-VEC_Data_Members.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="vecm-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="vecm-Vector_Error_Correction_Models_(VECMs).html">Vector Error Correction Models (VECMs)</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="274331">Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#274333">Example 1: Unrestricted Constant (JHJ)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#274379">Example 2: Unrestricted Constant, Restricted Trend</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#274401">Example 3: Unrestricted Constant, Restricted Trend, and Exogenous</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#274427">Example 4: VEC Restrictions</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="274332">Below, we demonstrate VEC estimation using the EViews example workfile &#8220;var1.WF1&#8221;, located under the </a><span class="Link"><a href="vecm-Vector_Error_Correction_Models_(VECMs).html#272813" title="Vector Error Correction Models (VECMs)">&#8220;</a></span><span class="Default_Paragraph_Font" style="color: #0000ff"><a href="vecm-Vector_Error_Correction_Models_(VECMs).html#272813" title="Vector Error Correction Models (VECMs)">Vector Error Correction Models (VECMs)</a></span><span class="Link"><a href="vecm-Vector_Error_Correction_Models_(VECMs).html#272813" title="Vector Error Correction Models (VECMs)">&#8221;</a></span> folder. This is a workfile with a number of classic macroeconomic variables including gross domestic product, various measure of money supply, treasury bills of different maturations, industrial production, producer price index, the unemployment.</div>
+      <div class="Heading_4"><a name="274333">Example 1: Unrestricted Constant (JHJ)</a></div>
+      <div class="Body_Text"><a name="274334">We begin with the classical problem of studying the relationship between money supply (M1), gross domestic product (GDP), and 3-month Treasury bills (TB3). </a></div>
+      <div class="Body_Text"><a name="274335">These three endogenous variables will enter the VEC system with lags 1 through 4, and we assume that there exists a single cointegrating relationship. Furthermore, we will estimate the VEC using the default deterministic specification &#8211; </a><span class="Menu_Item">Case 3 (JHJ): Unrest. constant</span>. In this case, the constant is not restricted to the cointegrating relations, but is artificially inserted into the cointegrating vector using orthogonalization (<span class="Link"><a href="vecm-Background.html#273520" title="Background">&#8220;The Johansen, Hendry, and Juselius Approach&#8221;</a></span>). </div>
+      <div class="Body_Text"><a name="274339">To estimate this model, select </a><span class="Menu_Item">Vector Error Correction</span> in the <span class="Menu_Item">Method</span> dropdown menu to display the VEC estimation dialog then enter &#8220;</div>
+      <div class="Input"><a name="274340">m1 gdp tb3</a></div>
+      <div class="Body_Text"><a name="274341">in the </a><span class="Menu_Item">Endogenous variables</span><span style="font-weight: bold"> </span>field on the <span class="Menu_Item">Basics</span> tab. </div>
+      <div class="Body_Text"><a name="274342">Furthermore, specify</a></div>
+      <div class="Input"><a name="274343">1 4</a></div>
+      <div class="Body_Text"><a name="274344">in the </a><span class="Menu_Item">Lag intervals for diff. endog </span>field </div>
+      <div class="Body_Text"><a name="274345">and </a></div>
+      <div class="Input"><a name="274346">1959m01 1982m03</a></div>
+      <div class="Body_Text"><a name="274347">in the </a><span class="Menu_Item">Estimation sample</span> edit field. We emphasize again that the lag interval specification refers to the differences of the dependent variable in the conditional error correction equation, and not the dependent variable itself in the levels equation.</div>
+      <div class="Body_Text"><a name="274348">You may leave the remaining fields and options at their default values. Hit </a><span class="Menu_Item">OK</span> to estimate the VEC with this specification. EViews will estimate the VEC and display the output in a table which contains four sections. Click on the <span class="Menu_Item">Name</span> button and enter <span class="Menu_Item">VEC1</span>.</div>
+      <div class="Body_Text"><a name="274349">At the top of the output, EViews shows a summary of the estimation procedure, including the sample, lag specification, variables, and deterministic assumptions used on constructing the estimates:</a></div>
+      <div class="Table"><a name="274353"><img class="Default" src="images/vecm.057.7.01.jpg" width="100%" style="left: 0.0pt; max-height: 252px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274354">Next is a table of coefficient estimates for the cointegrating relation. In this case which is estimated assuming the default of one cointegrating vector, there is a single column of coefficients representing the only column of the cointegrating matrix. Since the deterministics are assumed to follow Johansen-Hendry-Juselius variant Case 3, the cointegrating relation includes an orthogonalized intercept estimate of -170.6729</a></div>
+      <div class="Table"><a name="274358"><img class="Default" src="images/vecm.057.7.02.jpg" width="100%" style="left: 0.0pt; max-height: 311px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Table"><a name="274359">&nbsp;</a></div>
+      <div class="Body_Text"><a name="274360">Notably, there is no standard estimate for the orthogonalized intercept estimate.</a></div>
+      <div class="Body_Text"><a name="274361">Next, EViews displays a table containing the coefficient estimates for the error correction regressions, with the results for each dependent variable appearing in columns. </a></div>
+      <div class="Picture"><a name="274365"><img class="Default" src="images/vecm.057.7.03.jpg" width="100%" style="left: 0.0pt; max-height: 808px; max-width: 390px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274369">The long-run portion of these results, the adjustment coefficients <img class="Default EquationGraphic" src="images/vecm.057.7.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, appear at the top of the table, as the estimated coefficient on COINTEQ1.</a></div>
+      <div class="Body_Text"><a name="274373">The remaining coefficients are estimates of the short-run-dynamics coefficients <img class="Default EquationGraphic" src="images/vecm.057.7.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. Note that for JHJ Case 3, the short-run results include estimates of the intercept, C. Since C is both inside and outside the cointegrating equation, keep in mind that the short-run estimate is obtained conditionally on the orthogonalized estimate of C in the cointegrating equation.</a></div>
+      <div class="Body_Text"><a name="274374">Just below the remainder of the short-run estimates including the estimate for C is the last part of the output showing summary statistics associated with the overall fit.</a></div>
+      <div class="Picture"><a name="274378"><img class="Default" src="images/vecm.057.7.06.jpg" width="100%" style="left: 0.0pt; max-height: 419px; max-width: 408px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="274379">Example 2: Unrestricted Constant, Restricted Trend</a></div>
+      <div class="Body_Text"><a name="274380">We modify the previous example to use only the first 2 lags, to have cointegration rank 2, and assume that the constant is entirely unrestricted, but restricting the trend to the cointegrating relation and the intercept to the short-run equation. To proceed, copy the existing var object, click on the </a><span class="Menu_Item">Estimate</span> button to bring up the VAR estimation dialog again, and then change the <span class="Menu_Item">Lag intervals for diff. endog</span> to &#8220;1 2&#8221;:</div>
+      <div class="Picture"><a name="274384"><img class="Default" src="images/vecm.057.7.07.jpg" width="100%" style="left: 0.0pt; max-height: 491px; max-width: 503px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274385">then click on the </a><span class="Menu_Item">Cointegration</span> tab. select <span class="Menu_Item">2</span> as the <span class="Menu_Item">Number of cointegrating relations</span>, and change the <span class="Menu_Item">Deterministic trend specification </span>dropdown to <span class="Menu_Item">4: Unrestricted constant and restricted trend</span>.</div>
+      <div class="Picture"><a name="274389"><img class="Default" src="images/vecm.057.7.08.jpg" width="100%" style="left: 0.0pt; max-height: 491px; max-width: 508px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274390">Click on </a><span class="Menu_Item">OK</span> to estimate the revised model, then press <span class="Menu_Item">Name</span> and enter VEC2. the top portion of the output is given by:</div>
+      <div class="Table"><a name="274394"><img class="Default" src="images/vecm.057.7.09.jpg" width="100%" style="left: 0.0pt; max-height: 491px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274395">Notice that there are now two cointegrating vectors, </a><span class="Menu_Item">CointEq1</span> and <span class="Menu_Item">CointEq2</span>, which include a trend, with coefficient estimates -0.1129 and 4.6129, respectively, and standard errors, but not a constant since the latter is in the short-run regressors.</div>
+      <div class="Body_Text"><a name="274396">The error correction results, which now include the two cointegrated series COINTEQ1 and COINTEQ2, and an intercept, and the summary statistics results are presented below:</a></div>
+      <div class="Picture"><a name="274400"><img class="Default" src="images/vecm.057.7.10.jpg" width="100%" style="left: 0.0pt; max-height: 788px; max-width: 396px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="274401">Example 3: Unrestricted Constant, Restricted Trend, and Exogenous</a></div>
+      <div class="Body_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="274402">Extending the previous model, let us augment the cointegrating relation and the short-run dynamics by including exogenous variables. These exogenous variables can enter the cointegrating relation, so that they affect the long-run relationship, and they can be in the short-run relationship where they affect the dynamics of convergence to equilibrium.</a></span></div>
+      <div class="Body_Text"><a name="274403">Let us assume that the 10-year Treasury bill rate (TB10Y) is an exogenous variable inside the cointegrating relation but not a part of the short-run dynamics, that the Producer Price Index (PPI), a measure of inflation, impacts only the short-run dynamics to convergence, and that the unemployment rate (UNRATE) is in both the short and long-run relationships. </a></div>
+      <div class="Body_Text"><a name="274404">Copy the existing var then click on </a><span class="Menu_Item">Estimate</span> to modify the specification. We enter &#8220;PPI&#8221; in the <span class="Menu_Item">Short-run (outside cointegrating equation)</span> field, &#8220;TB10Y&#8221; in the <span class="Menu_Item">Long-run (inside cointegrating equation)</span> field, and &#8220;URATE&#8221; in the <span class="Menu_Item">Both long-run and short-run</span> field:</div>
+      <div class="Picture"><a name="274408"><img class="Default" src="images/vecm.057.7.11.jpg" width="100%" style="left: 0.0pt; max-height: 491px; max-width: 505px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274409">Furthermore, we&#8217;ll assume there&#8217;s a single cointegrating relation, and that the deterministic case specifies a constant and trend only affect the adjustment to equilibrium dynamics (short-run). </a></div>
+      <div class="Body_Text"><a name="274410">Click on the </a><span class="Menu_Item">Cointegration</span> tab and change the <span class="Menu_Item">Number of cointegrating relations</span> dropdown to 1, and set the <span class="Menu_Item">Deterministic trend specification</span> dropdown to <span class="Menu_Item">5: (JHJ) Unrest. constant and trend</span>:</div>
+      <div class="Picture"><a name="274414"><img class="Default" src="images/vecm.057.7.12.jpg" width="100%" style="left: 0.0pt; max-height: 492px; max-width: 504px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274415">Click on </a><span class="Menu_Item">OK</span> to estimate the updated specification.</div>
+      <div class="Picture"><a name="274419"><img class="Default" src="images/vecm.057.7.13.jpg" width="100%" style="left: 0.0pt; max-height: 629px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274420">Notice that in addition to a description of the deterministic trend assumption, the output header now lists the exogenous variables included in the specification, by type. </a></div>
+      <div class="Body_Text"><a name="274421">Below the header, the results for the cointegrating vector show the three endogenous variables, followed by the coefficient for the long-run only variable TB10Y, and the both long and short-run variable URATE. Since the latter is included in the cointegrating equation via orthogonalization, is no standard error associated with the estimated coefficient.</a></div>
+      <div class="Body_Text"><a name="274422">The error correction results include estimates for the two short-run only deterministic trend variables, C and @TREND, along with the short-run only PPI, and the both long and short-run URATE. As with other both long and short-run variables, the coefficient of URATE is estimated conditionally on the orthogonalization.</a></div>
+      <div class="Picture"><a name="274426"><img class="Default" src="images/vecm.057.7.14.jpg" width="100%" style="left: 0.0pt; max-height: 800px; max-width: 485px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="274427">Example 4: VEC Restrictions</a></div>
+      <div class="Body_Text"><a name="274428">We may continue with the previous example after imposing restrictions on elements of the <img class="Default EquationGraphic" src="images/vecm.057.7.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> matrix.</a></div>
+      <div class="Body_Text"><a name="274432">Once again, copy the existing var object, click on the </a><span class="Menu_Item">Estimate</span> button to bring up the VAR estimation dialog. Leave the existing specification in place, including the exogenous variables, but click on the <span class="Menu_Item">VEC Restrictions</span> tab to display the restrictions settings dialog. Click on the <span class="Menu_Item">Impose Restrictions</span> to enable the restrictions and enter &#8220;B(1,1)=1, B(1,2)=0.25, B(1,3)=0.5&#8221; in the edit field:</div>
+      <div class="Picture"><a name="274436"><img class="Default" src="images/vecm.057.7.16.jpg" width="100%" style="left: 0.0pt; max-height: 492px; max-width: 507px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274437">This specification restricts the first three elements of the cointegrating vector to the specified values. Click on </a><span class="Menu_Item">OK</span> to estimate the restricted VEC.</div>
+      <div class="Table"><a name="274441"><img class="Default" src="images/vecm.057.7.17.jpg" width="100%" style="left: 0.0pt; max-height: 519px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274442">The familiar heading information is augmented to show the cointegrating restrictions, information about estimation and convergence, an analysis of whether the restrictions are identifying, and the results for a LR test for those restrictions that are binding.</a></div>
+      <div class="Body_Text"><a name="274443">The reported estimates of the cointegrating relation show both the restricted and unrestricted coefficient values:</a></div>
+      <div class="Table"><a name="274447"><img class="Default" src="images/vecm.057.7.18.jpg" width="100%" style="left: 0.0pt; max-height: 316px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274448">Note that the elements of the cointegrating value reflect the restrictions imposed in estimation, and that there are no standard errors for the restricted values.</a></div>
+      <div class="Body_Text"><a name="274449">The form of the remaining output (not shown), which consists of the error correction regression results and summary statistics is unchanged from unrestricted estimation, with the exception of the number of coefficients.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

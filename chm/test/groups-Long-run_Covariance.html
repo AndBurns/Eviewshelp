@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Long-run Covariance</title>
+    <link rel="StyleSheet" href="css/groups.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="groups-Cross_Correlations_and_Correlograms.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="groups-Unit_Root_Tests.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_data.html">Basic Data Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="groups-Groups.html">Groups</a> : Long-run Covariance</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="171769">Long-run Covariance</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#177760">Basic Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#177774">Whitening Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#177796">Kernel Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#177800">Kernel Shape</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#177813">Bandwidth Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#177852">Examples</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="177745">You may compute estimates of the long-run covariance matrix of a group of series.</a></div>
+      <div class="Body_Text"><a name="177746">The discussion that follows assumes that you are familiar with the various issues and choices involved in computing a long-run covariance matrix. The technical description of the tools are given in </a><span class="Link"><a href="lrvar-Long-run_Covariance_Estimation.html#154864" title="Long-run Covariance Estimation">Appendix&nbsp;F. &#8220;Long-run Covariance Estimation&#8221;</a></span> </div>
+      <div class="Body_Text"><a name="177753">To compute the (possibly row-weighted) long-run covariance matrix of the series in a group, open the Group object and select </a><span class="Menu_Item">View/Long-run Covariance...</span> from the toolbar or main menu. If you wish to compute the results for a particular sample, you should set the workfile sample accordingly.</div>
+      <div class="Body_Text"><a name="177754">By default, EViews will estimate the symmetric long-run covariance matrix using a non-parametric kernel estimator with a Bartlett kernel and a real-valued bandwidth determined solely using the number of observations. The data will be centered (by subtracting off means) prior to computing the kernel covariance estimator, but no other pre-whitening will be performed. The results will only be displayed in the series or group window.</a></div>
+      <div class="Picture"><a name="177758"><img class="Default" src="images/groups.018.14.01.jpg" width="100%" style="left: 0.0pt; max-height: 322px; max-width: 527px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177759">You may use the dialog to change these settings. The dialog (here we show the dialog for a group object) is divided into three sections. The </a><span class="Menu_Item">Basic options</span> section is used to describe the covariance that you wish to compute and to specify an output matrix, if desired. The <span class="Menu_Item">Whitening options</span> section is used to define pre-whitening or VARHAC options. The <span class="Menu_Item">Kernel options</span> section describes the non-parametric kernel settings.</div>
+      <div class="Heading_4"><a name="177760">Basic Options</a></div>
+      <div class="Picture"><a name="177764"><img class="Default" src="images/groups.018.14.02.jpg" width="100%" style="left: 0.0pt; max-height: 195px; max-width: 235px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177765">You may instruct EViews to compute a one-sided covariance by changing the </a><span class="Menu_Item">Window</span> dropdown from the <span class="Menu_Item">Symmetric</span> default to one of <span class="Menu_Item">Lower (lags)</span>, <span class="Menu_Item">Strict lower (lags)</span>, <span class="Menu_Item">Upper (leads)</span>, <span class="Menu_Item">Strict upper (leads)</span>. The &#8220;lower&#8221; methods only use covariances in which the rows correspond to contemporaneous values and the columns correspond to current and lagged data; the &#8220;upper&#8221; methods employ covariances where the columns correspond to current values and leads of the data. The &#8220;strict&#8221; long-run covariances exclude the contemporaneous covariance from the computation.</div>
+      <div class="Picture"><a name="177769"><img class="Default" src="images/groups.018.14.03.jpg" width="100%" style="left: 0.0pt; max-height: 195px; max-width: 233px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177770">You may use the </a><span class="Menu_Item">Remove means</span> checkbox to indicate whether you wish to subtract off means (center your data) prior to computing the kernel covariance estimator. By default, EViews will remove the mean from each series in the group. To compute an uncentered long-run covariance, you should uncheck this box. If you do elect to center the data, you will be prompted for whether the covariance estimates should employ a <span class="Menu_Item">d.f. Adjustment</span> that accounts for the estimation of the mean values. </div>
+      <div class="Body_Text"><a name="177771">In addition, you may provide weights by entering a series expression in the </a><span class="Menu_Item">Row weights</span> edit field. Row weights are a convenient way of instructing EViews to compute the long-run covariance on data where the series in the group are weighted by a common element. A leading application occurs in the computation of White or Newey-West regression coefficient covariances, where the group contains the regressor data and the weights are the residuals. For example, if you have the regressors series X1, X2, and X3 in your group, and the residuals are in the series RES, entering &#8220;RES&#8221; in the <span class="Menu_Item">Row weights</span> edit field instructs EViews to compute the long-run covariance of &#8220;X1*RES&#8221;, &#8220;X2*RES&#8221;, &#8220;X3*RES&#8221;.</div>
+      <div class="Body_Text"><a name="177772">Lastly, you may elect to save your results in an EViews object. Simply enter a valid EViews object name in the </a><span class="Menu_Item">Output matrix</span> edit field. EViews will save symmetric long-run covariances in a sym object and one-sided covariances in a matrix object.</div>
+      <div class="Body_Text"><a name="179331">In panel workfiles, EViews will compute the Phillips and Moon (1999) </a><span class="Argument">long-run average covariance matrix</span> obtained by averaging the long-run covariances across cross-sections. You may provide a name in the <span class="Menu_Item">Panel matrix </span>edit field to EViews to save a matrix containing the individual covariance estimates. Each row will contain the vec or vech of the results matrix for the corresponding cross-section.</div>
+      <div class="Heading_4"><a name="177774">Whitening Options</a></div>
+      <div class="Body_Text"><a name="177775">The </a><span class="Menu_Item">Whitening options</span> section is used to define options for computing the VAR used in computing VARHAC or pre-whitened kernel estimation.</div>
+      <div class="Picture"><a name="177780"><img class="Default" src="images/groups.018.14.04.jpg" width="100%" style="left: 0.0pt; max-height: 138px; max-width: 281px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177781">By default, EViews does not whiten the data before computing the long-run covariance. To enable whitening, you should change the lag specification dropdown menu from </a><span class="Menu_Item">None</span> to one of <span class="Menu_Item">Fixed</span>, <span class="Menu_Item">Auto - AIC</span>, <span class="Menu_Item">Auto - Schwarz</span>, or <span class="Menu_Item">Auto - Hannan-Quinn</span>.</div>
+      <div class="Picture"><a name="177785"><img class="Default" src="images/groups.018.14.05.jpg" width="100%" style="left: 0.0pt; max-height: 103px; max-width: 276px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177786">If you specify one of the automatic methods (</a><span class="Menu_Item">Auto - AIC</span>, <span class="Menu_Item">Auto - Schwarz</span>, <span class="Menu_Item">Auto - Hannan-Quinn</span>), you must specify the maximum number of lags in the <span class="Menu_Item">Maximum lags</span> edit field. You may provide the actual maximum value, or you may enter &#8220;*&#8221; to instruct EViews to use an observation-based maximum given by the integer portion of <img class="Default EquationGraphic" src="images/groups.018.14.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 56px; top: 0.0pt" alt="" /> as suggested by Den Haan and Levin (1997).</div>
+      <div class="Picture"><a name="177793"><img class="Default" src="images/groups.018.14.07.jpg" width="100%" style="left: 0.0pt; max-height: 103px; max-width: 274px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177794">If you specify a </a><span class="Menu_Item">Fixed</span> lag specification, you should enter the value in the <span class="Menu_Item">Number of lags</span> edit field.</div>
+      <div class="Heading_4"><a name="177796">Kernel Options</a></div>
+      <div class="Body_Text"><a name="177797">The </a><span class="Menu_Item">Kernel options</span> section is used to define settings for estimation of the long-run covariance of the original or pre-whitened data.</div>
+      <div class="Heading_5"><a name="177800">Kernel Shape</a></div>
+      <div class="Picture"><a name="177805"><img class="Default" src="images/groups.018.14.08.jpg" width="100%" style="left: 0.0pt; max-height: 249px; max-width: 275px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177806">The </a><span class="Menu_Item">Kernel</span> dropdown is used to define the method for computing the long-run covariance. Choosing <span class="Menu_Item">None</span> tells EViews to compute the long-run covariance using only the contemporaneous covariance. (The VARHAC methodology, for example, uses a combination of pre-whitening and the <span class="Menu_Item">None</span> setting.) The remaining choices specify the shape of the kernel function. There are a large number of pre-defined kernel shapes from which you may choose, as well as the option to provide the name of a <span class="Menu_Item">User-specified</span> custom kernel shape vector.</div>
+      <div class="Picture"><a name="177810"><img class="Default" src="images/groups.018.14.09.jpg" width="100%" style="left: 0.0pt; max-height: 180px; max-width: 277px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177811">If you choose to use a user-specified kernel, EViews will prompt you for the name of a vector object containing the kernel weights. The vector should contain the weights for the (auto)covariances for lags from 0 to the lag truncation value. For example, to specify user-weights that match a Bartlett kernel with bandwidth value of 4.0, you should provide a vector of length 4 with values (1.0, 0.75, 0.5, 0.25) or equivalently a vector of length 5 with values (1.0, 0.75, 0.5, 0.25, 0.0).</a></div>
+      <div class="Heading_5"><a name="177813">Bandwidth Specification</a></div>
+      <div class="Picture"><a name="177817"><img class="Default" src="images/groups.018.14.10.jpg" width="100%" style="left: 0.0pt; max-height: 178px; max-width: 279px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177818">If you elect to use one of the pre-defined kernel shapes, EViews will prompt you to provide bandwidth information. By default, the kernel bandwidth is determined by the arbitrary observation-based </a><span class="Menu_Item">Newey-West Fixed</span> bandwidth rule. You may override the default choice by selecting either the <span class="Menu_Item">Andrews Automatic</span>, <span class="Menu_Item">Newey-West Automatic</span> settings for automatic optimal bandwidth selection, or the <span class="Menu_Item">User-specified</span> setting if you wish to provide a bandwidth value.</div>
+      <div class="Picture"><a name="177825"><img class="Default" src="images/groups.018.14.11.jpg" width="100%" style="left: 0.0pt; max-height: 171px; max-width: 276px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177826">The </a><span class="Menu_Item">Newey-West Automatic</span> bandwidth selection method requires specification of a <span class="Menu_Item">Lag selection parameter</span>. You may enter a value for the number of lags in the edit field, or you may specify &#8220;*&#8221; to use an observation-based value given by the integer portion of <img class="Default EquationGraphic" src="images/groups.018.14.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 105px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/groups.018.14.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> depends on the properties of the selected kernel shape as given in <span class="Link"><a href="lrvar-Kernel_Function_Properties.html#156034" title="Kernel Function Properties">&#8220;Kernel Function Properties&#8221;</a></span> (see <span class="Link"><a href="lrvar-Technical_Discussion.html#155429" title="Technical Discussion">&#8220;Newey-West Automatic Selection&#8221;</a></span> and Newey-West (1994) for discussion).</div>
+      <div class="Body_Text"><a name="177845">Both the </a><span class="Dialog_Item">Newey-West Automatic</span> and the <span class="Dialog_Item">Andrews Automatic</span> bandwidth selection methods allow you to adjust the chosen bandwidth by an offset, by entering a value in the <span class="Dialog_Item">Offset </span>edit field. By default the offset is set to zero, which implies no adjustment will take place, however you may enter any positive or negative number to make an adjustment. This can be useful when trying to align the result given by EViews with results which use a different interpretation of the bandwidth. In such cases the most common required offset is a value of &#8220;1&#8221;.</div>
+      <div class="Picture"><a name="177849"><img class="Default" src="images/groups.018.14.14.jpg" width="100%" style="left: 0.0pt; max-height: 175px; max-width: 266px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177850">The </a><span class="Menu_Item">User-specified</span> bandwidth selection requires that you provide a bandwidth value. Simply enter the value as prompted in the <span class="Menu_Item">Bandwidth value</span> edit field.</div>
+      <div class="Body_Text"><a name="177851">Lastly, EViews does not restrict bandwidth values to be integers. Notably, the bandwidths obtained from the Newey-West fixed and the Andrews and Newey-West automatic methods are likely to be real valued. You may instruct EViews to use the integer portions of these bandwidths by checking the </a><span class="Menu_Item">Truncate to integer</span> checkbox.</div>
+      <div class="Heading_4"><a name="177852">Examples</a></div>
+      <div class="Body_Text"><a name="177853">To illustrate the use of the long-run covariance view of a group, we employ the HAC covariance matrix example taken from Stock and Watson (2007, p. 620, Column 1). In this example Stock and Watson estimate the dynamic effect of cold weather on the price of orange juice by regressing the percent change in prices on a distributed lag of the number of freezing degree days and a constant, and obtain a HAC estimator for the coefficient covariance matrix using a Bartlett kernel estimator with lag truncation of 7. While the HAC covariances may be obtained directly from the EViews equation object (see </a><span class="Link"><a href="Regress2-Robust_Standard_Errors.html#266356" title="Robust Standard Errors">&#8220;HAC Consistent Covariances (Newey-West)&#8221;</a></span> ), here we will estimate the long-run covariance estimate of <img class="Default EquationGraphic" src="images/groups.018.14.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 35px; top: 0.0pt" alt="" /> manually using the group long-run covariance view, and will use this estimate to derive the HAC coefficient covariance matrix. </div>
+      <div class="Body_Text"><a name="177863">First, open the workfile &#8220;STOCK WAT.WF1&#8221; and the program &#8220;STOCK_WATSON_HAC.PRG&#8221; and run the program on the workfile. In the results, notice that we have the equation object EQ_OLS which contains an estimated OLS equation (with conventional coefficient covariance and standard errors), and the group object XVARS which contains the regressors for the equation. We wish to compute the HAC coefficient covariance associated with the coefficient estimates in EQ_OLS using the group XVARS.</a></div>
+      <div class="Body_Text"><a name="177864">First, we need to obtain the residuals. Open EQ_OLS and click on </a><span class="Menu_Item">Proc/Make Residual Series</span> to display the <span class="Menu_Item">Make Residuals</span> dialog. Enter &#8220;RES&#8221; for the name of the residuals, then click on <span class="Menu_Item">OK</span> to save the regression residuals in the workfile.</div>
+      <div class="Body_Text"><a name="177868">Next, we will compute the symmetric long-run covariance of <img class="Default EquationGraphic" src="images/groups.018.14.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 35px; top: 0.0pt" alt="" />. Double click on XVARS to open the group containing the regressors, then select </a><span class="Menu_Item">View/Long-run Covariance...</span> to display the dialog. </div>
+      <div class="Picture"><a name="177872"><img class="Default" src="images/groups.018.14.17.jpg" width="100%" style="left: 0.0pt; max-height: 320px; max-width: 524px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177873">We must make a few changes to the default settings. To weight the regressors using the residuals, you must enter &#8220;RES&#8221; in the </a><span class="Menu_Item">Row weights</span> edit field. Uncheck the <span class="Menu_Item">Remove means</span> checkbox, since the <img class="Default EquationGraphic" src="images/groups.018.14.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 35px; top: 0.0pt" alt="" /> should already have mean zero. Then, enter &#8220;LRCOV&#8221; in the <span class="Menu_Item">Output matrix</span> edit fields so that EViews will save the results in a sym matrix object.</div>
+      <div class="Body_Text"><a name="177877">The Stock-Watson example uses a Bartlett kernel with no pre-whitening, so we leave the </a><span class="Menu_Item">Lag spec</span> at the default <span class="Menu_Item">None</span> setting and the <span class="Menu_Item">Kernel</span> shape choice at the default <span class="Menu_Item">Bartlett</span>. We should, however, change the <span class="Menu_Item">Bandwidth</span> method to <span class="Menu_Item">User-specified</span> and enter &#8220;8&#8221; in the edit field to match the 7 lags employed by Stock and Watson. Click on <span class="Menu_Item">OK</span> to compute and save the results.</div>
+      <div class="Body_Text"><a name="177878">The long-run covariance estimates are displayed in the group window and saved in the LRCOV matrix in the workfile. To obtain the d.f. corrected HAC coefficient covariances (see, for example, Hamilton (1994, p. 282)), we issue the commands:</a></div>
+      <div class="Multi-line_Input"><a name="177879">sym xxinv = @inverse(@inner(xvars))</a></div>
+      <div class="Multi-line_Input"><a name="177880">scalar obs = eq_ols.@regobs</a></div>
+      <div class="Multi-line_Input"><a name="177881">scalar df = eq_ols.@regobs - eq_ols.@ncoef</a></div>
+      <div class="Multi-line_Input"><a name="177882">sym hac_direct = (obs / df) * obs * xxinv * lrcov * xxinv</a></div>
+      <div class="Body_Text"><a name="177886">The first line computes <img class="Default EquationGraphic" src="images/groups.018.14.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 63px; top: 0.0pt" alt="" />. The next two lines get the number of observations and the number of degrees-of-freedom. The last line computes the d.f. corrected sandwich estimator using the long-run covariance in LRCOV as the estimator of <img class="Default EquationGraphic" src="images/groups.018.14.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 107px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="177890">You may wish to verify that the estimate HAC_DIRECT matches the coefficient covariance matrix obtained using equation EQ_HAC (also provided in the workfile) estimated using the same HAC settings:</a></div>
+      <div class="Multi-line_Input"><a name="177891">equation eq_hac.ls(cov=hac, covbw=8) 100*dlog(poj) xvars</a></div>
+      <div class="Multi-line_Input"><a name="177892">sym hac_eq = eq_hac.@coefcov</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

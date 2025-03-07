@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Auxiliary Commands</title>
+    <link rel="StyleSheet" href="css/cbasics.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cbasics-Interactive_Commands.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cgraphs-Working_with_Graphs.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cbasics-Object_and_Command_Basics.html">Object and Command Basics</a> : Auxiliary Commands</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="213510">Auxiliary Commands</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#531">Managing Workfiles and Databases</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#194898">Managing Workfiles</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#596">Managing Databases</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#642">Managing Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#652">Copying Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#20197">Copy with Wildcard Characters</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#666">Renaming Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#680">Deleting Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#694">Saving Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#199183">Fetch Objects</a>
+        </div>
+      </div>
+      <div class="Body_Text"><span class="Definition"><a name="213511">Auxiliary commands</a></span> are commands which are unrelated to a particular object (<span class="Emphasis">i.e.</span>, are not object views or procs), or act on an object in a way that is generally independent of the type or contents of the object. Many of the important auxiliary commands are used for managing objects, and object containers. A few of the more important commands are described below.</div>
+      <div class="Body_Text"><a name="225302">Auxiliary commands typically follow the syntax:</a></div>
+      <div class="Input"><span class="Argument"><a name="505">command(option_list)</a></span> <span class="Argument">argument_list</span></div>
+      <div class="Body_Text"><a name="507">where </a><span class="Argument">command</span> is the name of the command, <span class="Argument">option_list</span> is a list of options separated by commas, and <span class="Argument">argument_list</span> is a list of arguments generally separated by spaces.</div>
+      <div class="Body_Text"><a name="509">An example of an auxiliary command is:</a></div>
+      <div class="Input"><a name="511">store(d=c:\newdata\db1) gdp m x</a></div>
+      <div class="Body_Text"><a name="513">which will store the three objects </a><span class="EViews_Name">GDP</span>, <span class="EViews_Name">M</span> and <span class="EViews_Name">X</span> in the database named <span class="EViews_Name">DB1</span> in the directory <span class="EViews_Name">C:\NEWDATA</span>. </div>
+      <div class="Heading_4"><a name="531">Managing Workfiles and Databases</a></div>
+      <div class="Body_Text"><a name="84845">There are two types of object containers: </a><span class="Definition">workfiles</span> and <span class="Definition">databases</span>. All EViews objects must be held in an object container, so before you begin working with objects you must create a workfile or database. Workfiles and databases are described in depth in <span class="Link"><a href="workfile-Workfile_Basics.html#113414" title="Workfile Basics">&#8220;Workfile Basics&#8221;</a></span> and <span class="Link"><a href="database-EViews_Databases.html#36960" title="EViews Databases">&#8220;EViews Databases&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="194898">Managing Workfiles</a></div>
+      <div class="Body_Text"><a name="194902">To declare and create a new workfile, you may use the </a><span class="In-line_command_link"><a href="commandcmd-wfcreate.html#2481007" title="wfcreate">wfcreate</a></span> command. You may enter the keyword <span class="In-line_command">wfcreate</span> followed by a name for the workfile, an option for the frequency of the workfile, and the start and end dates. The most commonly used workfile frequency type options are:</div>
+      <div class="Table"><a name="32781">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 212.4pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 32.4pt">
+            <div class="Table_Text"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="44">a</a></span></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 180pt">
+            <div class="Table_Text"><a name="46">annual.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="52">s</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="54">semi-annual.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="60">q</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="62">quarterly.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="68">m</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="70">monthly.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="76">w</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="78">weekly.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="84">d</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="86">daily (5 day week).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="92">7</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="94">daily (7 day week).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="100">u</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="102">undated/unstructured.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="556">but there are additional options for multi-year, bimonthly, fortnight, ten-day, daily with custom week, intraday, integer date, and undated frequency workfiles.</a></div>
+      <div class="Body_Text"><a name="225340">For example:</a></div>
+      <div class="Input"><a name="558">wfcreate macro1 q 1965Q1 1995Q4</a></div>
+      <div class="Body_Text"><a name="560">creates a new quarterly workfile named </a><span class="EViews_Name">MACRO1</span> from the first quarter of 1965 to the fourth quarter of 1995.</div>
+      <div class="Input"><a name="562">wfcreate cps88 u 1 1000</a></div>
+      <div class="Body_Text"><a name="564">creates a new undated workfile named </a><span class="EViews_Name">CPS88</span> with 1000 observations. </div>
+      <div class="Body_Text"><a name="118514">Alternately, you may use </a><span class="In-line_command_link"><a href="commandcmd-wfopen.html#2872547" title="wfopen">wfopen</a></span> to read a foreign data source into a new workfile.</div>
+      <div class="Body_Text"><a name="225382">If you have multiple open workfiles, the </a><span class="In-line_command_link"><a href="commandcmd-wfselect.html#2017809" title="wfselect">wfselect</a></span> commandmay be used to change the active workfile.</div>
+      <div class="Body_Text"><a name="570">To save the active workfile, use the </a><span class="In-line_command_link"><a href="commandcmd-wfsave.html#2638923" title="wfsave">wfsave</a></span> commandby typing the keyword <span class="In-line_command">wfsave</span> followed by a workfile name. If any part of the path or workfile name has spaces, you should enclose the entire expression in quotation marks. The active workfile will be saved in the default path under the given name. You may optionally provide a path to save the workfile in a different directory:</div>
+      <div class="Input"><a name="572">wfsave a:\mywork</a></div>
+      <div class="Body_Text"><a name="576">If necessary, enclose the path name in quotations. </a></div>
+      <div class="Body_Text"><a name="225391">To close the workfile, use the </a><span class="In-line_command_link"><a href="commandcmd-close.html#2485638" title="close">close</a></span> command. For example:</div>
+      <div class="Input"><a name="578">close mywork</a></div>
+      <div class="Body_Text"><a name="580">closes the workfile window of MYWORK.</a></div>
+      <div class="Body_Text"><a name="584">To open a previously saved workfile, use the </a><span class="In-line_command_link"><a href="commandcmd-wfopen.html#2872547" title="wfopen">wfopen</a></span> command. You should follow the keyword with the name of the workfile. You can optionally include a path designation to open workfiles that are not saved in the default path. For example:</div>
+      <div class="Input"><a name="586">wfopen "c:\mywork\proj1" </a></div>
+      <div class="Heading_5"><a name="596">Managing Databases</a></div>
+      <div class="Body_Text"><a name="600">To create a new database, follow the </a><span class="In-line_command_link"><a href="commandcmd-dbcreate.html#2015316" title="dbcreate">dbcreate</a></span> command keywordwith a name for the new database. Alternatively, you could use the <span class="In-line_command_link"><a href="commandcmd-db.html#2015241" title="db">db</a></span> command keywordfollowed by a name for the new database. The two commands differ only when the named database already exists. </div>
+      <div class="Body_Text"><a name="225392">If you use </a><span class="In-line_command">dbcreate</span> and the named database already exists on disk, EViews will error indicating that the database already exits. If you use <span class="In-line_command">db</span> and the named database already exists on disk, EViews will simply open the existing database. Note that the newly opened database will become the default database. </div>
+      <div class="Body_Text"><a name="602">For example:</a></div>
+      <div class="Input"><a name="604">dbcreate mydata1 </a></div>
+      <div class="Body_Text"><a name="606">creates a new database named </a><span class="EViews_Name">MYDATA1</span> in the default path, opens a new database window, and makes <span class="EViews_Name">MYDATA1</span> the default database.</div>
+      <div class="Input"><a name="608">db c:\evdata\usdb</a></div>
+      <div class="Body_Text"><a name="610">opens the </a><span class="EViews_Name">USDB</span> database in the specified directory if it already exists. If it does not, EViews creates a new database named <span class="EViews_Name">USDB</span>, opens its window, and makes it the default database. </div>
+      <div class="Body_Text"><a name="614">You may use </a><span class="In-line_command_link"><a href="commandcmd-dbopen.html#2485382" title="dbopen">dbopen</a></span> to open an existing database and to make it the default database. For example:</div>
+      <div class="Input"><a name="616">dbopen findat</a></div>
+      <div class="Body_Text"><a name="618">opens the database named </a><span class="EViews_Name">FINDAT</span> in the default directory. If the database does not exist, EViews will error indicating that the specified database cannot be found.</div>
+      <div class="Body_Text"><a name="118571">You may use </a><span class="In-line_command_link"><a href="commandcmd-dbrename.html#2015526" title="dbrename">dbrename</a></span> to rename an existing database. Follow the <span class="In-line_command">dbrename</span> keyword by the current (old) name and a new name:</div>
+      <div class="Input"><a name="626">dbrename temp1 newmacro</a></div>
+      <div class="Body_Text"><a name="630">To delete an existing database, use the </a><span class="In-line_command_link"><a href="commandcmd-dbdelete.html#2015360" title="dbdelete">dbdelete</a></span> command. Follow the <span class="In-line_input">dbdelete </span>keyword by the name of the database to delete:</div>
+      <div class="Input"><a name="118594">dbdelete c:\data\usmacro</a></div>
+      <div class="Body_Text"><span class="In-line_command_link"><a href="commandcmd-dbcopy.html#2015285" title="dbcopy" name="118596">dbcopy</a></span> makes a copy of the existing database. Follow the <span class="In-line_command">dbcopy</span> keyword with the name of the source file and the name of the destination file:</div>
+      <div class="Input"><a name="638">dbcopy c:\evdata\macro1 a:\macro1</a></div>
+      <div class="Body_Text"><span class="In-line_command_link"><a href="commandcmd-dbpack.html#2015462" title="dbpack" name="9803">dbpack</a></span> and <span class="In-line_command_link"><a href="commandcmd-dbrebuild.html#2015493" title="dbrebuild">dbrebuild</a></span> are database maintenance commands. See also <span class="Link"><a href="database-EViews_Databases.html#36960" title="EViews Databases">&#8220;EViews Databases&#8221;</a></span> for a detailed description. </div>
+      <div class="Heading_4"><a name="642">Managing Objects</a></div>
+      <div class="Body_Text"><a name="644">In the course of a program you will often need to manage the objects in a workfile by copying, renaming, deleting and storing them to disk. EViews provides a number of auxiliary commands which perform these operations. The following discussion introduces you to the most commonly used commands; a full description of these, and other commands is provided in </a><span class="Link"><a href="commandcmd-Command_Reference.html#2640374" title="Command Reference">&#8220;Command Reference&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="652">Copying Objects</a></div>
+      <div class="Body_Text"><a name="654">You may create a duplicate copy of one or more objects using the </a><span class="In-line_command_link"><a href="commandcmd-copy.html#2081738" title="copy">copy</a></span> command. The <span class="In-line_input">copy</span> command is an auxiliary command with the format:</div>
+      <div class="Input"><a name="656">copy source_name dest_name</a></div>
+      <div class="Body_Text"><a name="658">where </a><span class="In-line_input">source_name</span> is the name of the object you wish to duplicate, and <span class="In-line_command">dest_name</span> is the name you want attached to the new copy of the object.</div>
+      <div class="Body_Text"><a name="660">The </a><span class="In-line_command">copy</span> command may also be used to copy objects in databases and to move objects between workfiles and databases.</div>
+      <div class="Heading_5"><a name="20197">Copy with Wildcard Characters</a></div>
+      <div class="Body_Text"><a name="20198">EViews supports the use of wildcard characters (&#8220;?&#8221; for a single character match and &#8220;*&#8221; for a pattern match) in destination specifications when using the </a><span class="In-line_input">copy</span> and <span class="In-line_input">rename</span> commands. Using this feature, you can copy or rename a set of objects whose names share a common pattern in a single operation. This features is useful for managing series produced by model simulations, series corresponding to pool cross-sections, and any other situation where you have a set of objects which share a common naming convention.</div>
+      <div class="Body_Text"><a name="20399">A destination wildcard pattern can be used only when a wildcard pattern has been provided for the source, and the destination pattern must always conform to the source pattern in that the number and order of wildcard characters must be exactly the same between the two. For example, the patterns:</a></div>
+      <div class="Table"><a name="32810">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 172.8pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.25pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.25pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.25pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 79.2pt">
+            <div class="Table_Text_Header"><a name="118699">Source Pattern</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.25pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.25pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.25pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text_Header"><a name="118701">Destination Pattern</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="118703">x*</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="118705">y*</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="118707">*c</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="118709">b*</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="118711">x*12?</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="118713">yz*f?abc</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="20203">conform to each other. These patterns do not:</a></div>
+      <div class="Table"><a name="32811">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 172.8pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.25pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.25pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.25pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 79.2pt">
+            <div class="Table_Text_Header"><a name="20471">Source Pattern</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.25pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.25pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.25pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text_Header"><a name="20473">Destination Pattern</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20475">a*</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20477">b</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20479">*x</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20481">?y</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20483">x*y*</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20485">*x*y*</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="20207">When using wildcards, the destination name is formed by replacing each wildcard in the destination pattern by the characters from the source name that matched the corresponding wildcard in the source pattern. Some examples should make this principle clear:</a></div>
+      <div class="Table"><a name="32821">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 338.4pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 79.2pt">
+            <div class="Table_Text_Header"><a name="20210">Source Pattern</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text_Header"><a name="20212">Destination Pattern</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 79.2pt">
+            <div class="Table_Text_Header"><a name="20214">Source Name</a></div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text_Header"><a name="20216">Destination Name</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><span class="In-line_input"><a name="20218">*_base</a></span> </div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><span class="In-line_input"><a name="20220">*_jan</a></span> </div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20222">x_base</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20224">x_jan</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; margin-bottom: 0.0pt; text-transform: none; vertical-align: baseline"><span class="In-line_input"><a name="20226">us_* </a></span></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><span class="In-line_input"><a name="20228">*</a></span> </div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20230">us_gdp</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20232">gdp</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><span class="In-line_input"><a name="20234">x?</a></span> </div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><span class="In-line_input"><a name="20236">x?f</a></span> </div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20238">x1</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20240">x1f</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><span class="In-line_input"><a name="20242">*_*</a></span> </div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><span class="In-line_input"><a name="20244">**f</a></span> </div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20246">us_gdp</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20248">usgdpf</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><span class="In-line_input"><a name="20250">??*f</a></span> </div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><span class="In-line_input"><a name="20252">??_*</a></span> </div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20254">usgdpf</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="20256">us_gdp</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="20258">Note, as shown in the second example, that a simple asterisk for the destination pattern does not mean to use the unaltered source name as the destination name. To copy objects between containers preserving the existing name, either repeat the source pattern as the destination pattern,</a></div>
+      <div class="Input"><span class="In-line_input"><a name="20259">copy</a></span> x* db1::x*</div>
+      <div class="Body_Text"><a name="20260">or omit the destination pattern entirely:</a></div>
+      <div class="Input"><a name="20261">copy x* db1::</a></div>
+      <div class="Body_Text"><a name="20195">If you use wildcard characters in the source name and give a destination name without a wildcard character, EViews will keep overwriting all objects which match the source pattern to the name given as destination.</a></div>
+      <div class="Body_Text"><a name="76971">For additional discussion of wildcards, see </a><span class="Link"><a href="wildcards-Wildcards.html#92046" title="Wildcards">Appendix&nbsp;A. &#8220;Wildcards&#8221;</a></span></div>
+      <div class="Heading_4"><a name="666">Renaming Objects</a></div>
+      <div class="Body_Text"><a name="668">You can give an object a different name using the </a><span class="In-line_command_link"><a href="commandcmd-rename.html#2016846" title="rename">rename</a></span> command. The <span class="In-line_input">rename</span> command has the format:</div>
+      <div class="Input"><a name="670">rename source_name dest_name</a></div>
+      <div class="Body_Text"><a name="672">where source_name is the original name of the object and dest_name is the new name you would like to give to the object.</a></div>
+      <div class="Body_Text"><span class="In-line_input"><a name="674">rename</a></span> can also be used to rename objects in databases.</div>
+      <div class="Body_Text"><a name="20511">You may use wildcards when renaming series. The name substitution rules are identical to those described above for </a><span class="In-line_command">copy</span>.</div>
+      <div class="Heading_4"><a name="680">Deleting Objects</a></div>
+      <div class="Body_Text"><a name="682">Objects may be removed from the workfile or a database using the </a><span class="In-line_command_link"><a href="commandcmd-delete.html#2019304" title="delete">delete</a></span> command. The <span class="In-line_command">delete</span> command has the format:</div>
+      <div class="Input"><a name="684">delete name_pattern</a></div>
+      <div class="Body_Text"><a name="686">where </a><span class="In-line_input">name_pattern</span> can either be a simple name such as &#8220;XYZ&#8221;, or a pattern containing the wildcard characters &#8220;<span class="In-line_input">?</span>&#8221; and &#8220;<span class="In-line_input">*</span>&#8221;, where &#8220;<span class="In-line_input">?</span>&#8221; means to match any one character, and &#8220;*&#8221; means to match zero or more characters. When a pattern is provided, all objects in the workfile with names matching the pattern will be deleted. <span class="Link"><a href="wildcards-Wildcards.html#92046" title="Wildcards">Appendix&nbsp;A. &#8220;Wildcards&#8221;</a></span> describes further the use of wildcards.</div>
+      <div class="Heading_4"><a name="694">Saving Objects</a></div>
+      <div class="Body_Text"><a name="696">All named objects will be saved automatically in the workfile when the workfile is saved to disk. You can store and retrieve the current workfile to and from disk using the </a><span class="In-line_command_link"><a href="commandcmd-wfsave.html#2638923" title="wfsave">wfsave</a></span> and <span class="In-line_command_link"><a href="commandcmd-wfopen.html#2872547" title="wfopen">wfopen</a></span> commands. Unnamed objects will not be saved as part of the workfile.</div>
+      <div class="Body_Text"><a name="702">You can also save objects for later use by storing them in a database. The </a><span class="In-line_command_link"><a href="commandcmd-store.html#2038778" title="store">store</a></span> command has the format:</div>
+      <div class="Input"><a name="68078">store(</a><span class="Argument_Opt">option_list)</span> <span class="Argument_Opt">object1</span> <span class="Argument_Opt">object2</span> &#8230;</div>
+      <div class="Body_Text"><a name="706">where </a><span class="Argument_Opt">object1</span>, <span class="Argument_Opt">object2</span>, ..., are the names of the objects you would like to store in the database. If no options are provided, the series will be stored in the current default database (see <span class="Link"><a href="database-EViews_Databases.html#36960" title="EViews Databases">&#8220;EViews Databases&#8221;</a></span> for a discussion of the default database). You can store objects into a particular database by using the option &#8220;<span class="In-line_option">d=db_nam</span>e&#8221; or by prepending the object name with a database name followed by a double colon &#8220;<span class="In-line_option">::</span>&#8221;, such as:</div>
+      <div class="Input"><a name="708">store db1::x db2::x</a></div>
+      <div class="Heading_4"><a name="199183">Fetch Objects</a></div>
+      <div class="Body_Text"><a name="199188">You can retrieve objects from a database using the </a><span class="In-line_command_link"><a href="commandcmd-fetch.html#2019478" title="fetch">fetch</a></span> command. The <span class="In-line_command">fetch</span> command has the same format as the <span class="In-line_input">store</span> command:</div>
+      <div class="Input"><a name="716">fetch(</a><span class="Argument_Opt">option_list</span>) <span class="Argument_Opt">object1</span> <span class="Argument_Opt">object2</span> &#8230;</div>
+      <div class="Body_Text"><a name="718">To specify a particular database use the &#8220;</a><span class="In-line_option">d=</span>&#8221; option or the &#8220;<span class="In-line_option">::</span>&#8221; extension as for <span class="In-line_input">store</span>.</div>
+      <div class="Body_Text"><a name="139785">&nbsp;</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

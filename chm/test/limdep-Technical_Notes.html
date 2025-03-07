@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Technical Notes</title>
+    <link rel="StyleSheet" href="css/limdep.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="limdep-Count_Models.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="limdep-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="limdep-Discrete_and_Limited_Dependent_Variable_Models.html">Discrete and Limited Dependent Variable Models</a> : Technical Notes</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="38646">Technical Notes</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#38650">Default Standard Errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#179773">Huber/White (QML) and Cluster-robust (QML) Standard Errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#183626">GLM Standard Errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#38721">The Hosmer-Lemeshow Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#38750">The Andrews Test </a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="38650">Default Standard Errors</a></div>
+      <div class="Body_Text"><a name="179757">The default standard errors are obtained by taking the inverse of the estimated information matrix. If you estimate your equation using a Newton-Raphson or Quadratic Hill Climbing method, EViews will use the inverse of the Hessian, <img class="Default EquationGraphic" src="images/limdep.041.8.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 31px; top: 0.0pt" alt="" />, to form your coefficient covariance estimate. If you employ BHHH, the coefficient covariance will be estimated using the inverse of the outer product of the scores <img class="Default EquationGraphic" src="images/limdep.041.8.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 54px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/limdep.041.8.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 20px; max-width: 13px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/limdep.041.8.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 18px; top: 0.0pt" alt="" /> are the gradient (or score) and Hessian of the log likelihood evaluated at the ML estimates. </a></div>
+      <div class="Heading_4"><a name="179773">Huber/White (QML) and Cluster-robust (QML) Standard Errors</a></div>
+      <div class="Body_Text"><a name="38651">The Huber/White options for robust standard errors computes the quasi-maximum likelihood (or pseudo-ML) standard errors:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.8.05.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.62)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="193962">The Cluster-robust variants of these errors replace the inner matrix with a cluster-aware version of the moment.</a></div>
+      <div class="Body_Text"><a name="183619">Note that these standard errors are </a><span class="Emphasis">not</span> robust to heteroskedasticity in binary dependent variable models. They are robust to certain misspecifications of the underlying distribution of <img class="Default EquationGraphic" src="images/limdep.041.8.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, but as with all QML estimation, caution is advised.</div>
+      <div class="Heading_4"><a name="183626">GLM Standard Errors</a></div>
+      <div class="Body_Text"><a name="183627">Many of the discrete and limited dependent variable models described in this chapter belong to a class of models known as </a><span class="Definition">generalized linear models</span> (GLM). The assumption of GLM is that the distribution of the dependent variable <img class="Default EquationGraphic" src="images/limdep.041.8.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> belongs to the exponential family and that the conditional mean of <img class="Default EquationGraphic" src="images/limdep.041.8.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is a (smooth) nonlinear transformation of the linear part <img class="Default EquationGraphic" src="images/limdep.041.8.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 33px; top: 0.0pt" alt="" />:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.8.10.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.63)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38684">Even though the QML covariance is robust to general misspecification of the conditional distribution of <img class="Default EquationGraphic" src="images/limdep.041.8.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />, it does not possess any efficiency properties. An alternative consistent estimate of the covariance is obtained if we impose the GLM condition that the (true) variance of <img class="Default EquationGraphic" src="images/limdep.041.8.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is proportional to the variance of the distribution used to specify the log likelihood:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.8.13.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.64)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38698">In other words, the ratio of the (conditional) variance to the mean is some constant <img class="Default EquationGraphic" src="images/limdep.041.8.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> that is independent of <img class="Default EquationGraphic" src="images/limdep.041.8.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. The most empirically relevant case is <img class="Default EquationGraphic" src="images/limdep.041.8.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 47px; top: 0.0pt" alt="" />, which is known as </a><span class="Definition">overdispersion</span>. If this proportional variance condition holds, a consistent estimate of the GLM covariance is given by:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.8.17.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.65)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38707">where the d.f. corrected variance factor estimator is</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.8.18.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.66)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38715">If you do not choose to d.f. correct, the leading term in </a><span class="Link"><a href="#38711" title="Technical Notes">Equation&nbsp;(31.66)</a></span> is <img class="Default EquationGraphic" src="images/limdep.041.8.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" />. When you select GLM standard errors, the estimated proportionality term <img class="Default EquationGraphic" src="images/limdep.041.8.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 20px; top: 0.0pt" alt="" /> is reported as the variance factor estimate in EViews. </div>
+      <div class="Body_Text"><a name="189851">(Note that the EViews legacy estimator always estimates a d.f. corrected variance factor, while the other estimators permit you to choose whether to override the default of no correction. Since the default behavior has changed, you will need to explicitly request d.f. correction to match the legacy covariance results.)</a></div>
+      <div class="Body_Text"><a name="38718">For detailed discussion on GLMs and the phenomenon of overdispersion, see McCullaugh and Nelder (1989). </a></div>
+      <div class="Heading_4"><a name="38721">The Hosmer-Lemeshow Test</a></div>
+      <div class="Body_Text"><a name="38728">Let the data be grouped into <img class="Default EquationGraphic" src="images/limdep.041.8.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 110px; top: 0.0pt" alt="" /> groups, and let <img class="Default EquationGraphic" src="images/limdep.041.8.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> be the number of observations in group <img class="Default EquationGraphic" src="images/limdep.041.8.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. Define the number of <img class="Default EquationGraphic" src="images/limdep.041.8.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 55px; top: 0.0pt" alt="" /> observations and the average of predicted values in group <img class="Default EquationGraphic" src="images/limdep.041.8.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.8.26.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.67)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38736">The Hosmer-Lemeshow test statistic is computed as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.8.27.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.68)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38741">The distribution of the HL statistic is not known; however, Hosmer and Lemeshow (1989, p.141) report evidence from extensive simulation indicating that when the model is correctly specified, the distribution of the statistic is well approximated by a <img class="Default EquationGraphic" src="images/limdep.041.8.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />distribution with <img class="Default EquationGraphic" src="images/limdep.041.8.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> degrees of freedom. Note that these findings are based on a simulation where <img class="Default EquationGraphic" src="images/limdep.041.8.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is close to <img class="Default EquationGraphic" src="images/limdep.041.8.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_4"><a name="38750">The Andrews Test </a></div>
+      <div class="Body_Text"><a name="38757">Let the data be grouped into <img class="Default EquationGraphic" src="images/limdep.041.8.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 110px; top: 0.0pt" alt="" /> groups. Since <img class="Default EquationGraphic" src="images/limdep.041.8.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is binary, there are <img class="Default EquationGraphic" src="images/limdep.041.8.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 24px; top: 0.0pt" alt="" /> cells into which any observation can fall. Andrews (1988a, 1988b) compares the <img class="Default EquationGraphic" src="images/limdep.041.8.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 24px; top: 0.0pt" alt="" /> vector of the actual number of observations in each cell to those predicted from the model, forms a quadratic form, and shows that the quadratic form has an asymptotic <img class="Default EquationGraphic" src="images/limdep.041.8.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />distribution if the model is specified correctly. </a></div>
+      <div class="Body_Text"><a name="38764">Andrews suggests three tests depending on the choice of the weighting matrix in the quadratic form. EViews uses the test that can be computed by an auxiliary regression as described in Andrews (1988a, 3.18) or Andrews (1988b, 17). </a></div>
+      <div class="Body_Text"><a name="38774">Briefly, let <img class="Default EquationGraphic" src="images/limdep.041.8.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 18px; top: 0.0pt" alt="" /> be an <img class="Default EquationGraphic" src="images/limdep.041.8.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> matrix with element <img class="Default EquationGraphic" src="images/limdep.041.8.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 138px; top: 0.0pt" alt="" />, where the indicator function <img class="Default EquationGraphic" src="images/limdep.041.8.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 60px; top: 0.0pt" alt="" /> takes the value one if observation <img class="Default EquationGraphic" src="images/limdep.041.8.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> belongs to group <img class="Default EquationGraphic" src="images/limdep.041.8.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> with <img class="Default EquationGraphic" src="images/limdep.041.8.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 55px; top: 0.0pt" alt="" />, and zero otherwise (we drop the columns for the groups with <img class="Default EquationGraphic" src="images/limdep.041.8.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> to avoid singularity). Let <img class="Default EquationGraphic" src="images/limdep.041.8.45.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> be the <img class="Default EquationGraphic" src="images/limdep.041.8.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 46px; top: 0.0pt" alt="" /> matrix of the contributions to the score <img class="Default EquationGraphic" src="images/limdep.041.8.47.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 79px; top: 0.0pt" alt="" />. The Andrews test statistic is <img class="Default EquationGraphic" src="images/limdep.041.8.48.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> times the <img class="Default EquationGraphic" src="images/limdep.041.8.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> from regressing a constant (one) on each column of <img class="Default EquationGraphic" src="images/limdep.041.8.50.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/limdep.041.8.51.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />. Under the null hypothesis that the model is correctly specified, <img class="Default EquationGraphic" src="images/limdep.041.8.52.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 35px; top: 0.0pt" alt="" />is asymptotically distributed <img class="Default EquationGraphic" src="images/limdep.041.8.53.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />with <img class="Default EquationGraphic" src="images/limdep.041.8.54.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> degrees of freedom. </a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

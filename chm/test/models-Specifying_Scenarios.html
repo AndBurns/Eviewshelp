@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Specifying Scenarios</title>
+    <link rel="StyleSheet" href="css/models.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="models-Working_with_the_Model_Structure.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="models-Using_Add_Factors.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="models-Models.html">Models</a> : Specifying Scenarios</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="117151">Specifying Scenarios</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#113957">Scenario Editing Tools</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#114004">Scenario List</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="117108">When working with a model, you will often want to compare model predictions under a variety of different assumptions regarding the paths of your exogenous variables, or with one or more of your equations excluded from the model. Model scenarios allow you to do this without overwriting previous data or changing the structure of your model.</a></div>
+      <div class="Body_Text"><a name="51413">The most important function of a scenario is to specify which series will be used to hold the data associated with a particular solution of the model. To distinguish the data associated with different scenarios, each scenario modifies the names of the model variables according to an aliasing rule. Typically, aliasing will involve adding an underline followed by a number, such as &#8220;_0&#8221; or &#8220;_1&#8221; to the variable names of the model. The data for each scenario will be contained in series in the workfile with the aliased names.</a></div>
+      <div class="Body_Text"><a name="51414">Model scenarios support the analysis of different assumptions for exogenous variables by allowing you to override a set of variables you would like to alter. Exogenous variables which are overridden will draw their values from series with names aliased for that scenario, while exogenous variables which are not overridden will draw their values from series with the same name as the variable.</a></div>
+      <div class="Body_Text"><a name="51415">Scenarios also allow you to exclude one or more endogenous variables from the model. When an endogenous variable is excluded, the equation associated with that variable is dropped from the model and the value of the variable is taken directly from the workfile series with the same name. Excluding an endogenous variable effectively treats the variable as an exogenous variable for the purposes of solving the model.</a></div>
+      <div class="Body_Text"><a name="51416">When excluding an endogenous variable, you can specify a sample range over which the variable should be excluded. One use of this is to handle the case where more recent historical data is available for some of your endogenous variables than others. By excluding the variables for which you have data, your forecast can use actual data where possible, and results from the model where data are not yet available.</a></div>
+      <div class="Body_Text"><a name="51417">Each model can contain many scenarios. You can view the scenarios associated with the current model by choosing </a><span class="Menu_Item">View/Scenario Specification&#8230;</span>as shown above on <span class="Link"><a href="models-An_Example_Model.html#51304" title="An Example Model">(here)</a></span>.</div>
+      <div class="Body_Text"><a name="51421">There are two special scenarios associated with every model: actuals and baseline. These two scenarios have in common the special property that they cannot contain any overrides or excludes. They differ in that the actuals scenario writes the values for endogenous variables back into the series with the same name as the variables in the model, while the baseline scenario modifies the names. When solving the model using actuals as your active scenario, you should be careful not to accidentally overwrite your historical data.</a></div>
+      <div class="Body_Text"><a name="51422">The baseline scenario gets its name from the fact that it provides the base case from which other scenarios are constructed. Scenarios differ from the baseline by having one or more variables overridden or excluded. By comparing the results from another scenario against those of the baseline case, we can separate out the movements in the endogenous variables that are due to the changes made in that particular scenario from movements which are present in the baseline itself.</a></div>
+      <div class="Body_Text"><a name="51423">The </a><span class="Menu_Item">Select Scenario</span> tab of the dialog allows you to select, create, copy, delete and rename the scenarios associated with the model. You may also apply the selected scenario to the baseline data, which involves copying the series associated with any overridden variables in the selected scenario on top of the baseline values. Applying a scenario to the baseline is a way of committing to the edited values of the selected scenario making them a permanent part of the baseline case.</div>
+      <div class="Body_Text"><a name="51424">The </a><span class="Menu_Item">Scenario overrides</span> tab provides a summary of variables which have been overridden in the selected scenario and equations which have been excluded. This is a useful way of seeing a complete list of all the changes which have been made to the scenario from the baseline case.</div>
+      <div class="Body_Text"><a name="51425">The </a><span class="Menu_Item">Aliasing</span> tab allows you to examine the name aliasing rules associated with any scenario. The page displays the complete set of aliases that will be applied to the different types of variables in the model.</div>
+      <div class="Body_Text"><a name="109523">Although the scenario dialog lets you see all the settings for a scenario in one place, you will probably alter most scenario settings directly from the variable view instead. For both exogenous variables and add factors, you can select the variable from the variable view window, then use the right mouse button menu to call up the properties page for the variable. The override status of the variable can be adjusted using the </a><span class="Menu_Item">Use override</span> checkbox. Once a variable has been overridden, it will appear in red in the variable view.</div>
+      <div class="Body_Text"><a name="113891">The </a><span class="Menu_Item">Description</span> tab may be used to store notes describing the purpose of each scenario and, if desired, to include the description in the solution series. If the <span class="Menu_Item">Export description to solution series</span> check box is checked, any series that are generated during a solve under the scenario will have the scenario&#8217;s description added to their own description attribute.</div>
+      <div class="Picture"><a name="113895"><img class="Default" src="images/models.064.06.1.jpg" width="100%" style="left: 0.0pt; max-height: 410px; max-width: 490px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="113957">Scenario Editing Tools</a></div>
+      <div class="Body_Text"><a name="109590">The </a><span class="Menu_Item">Edit override</span> right button menu item, available from the variables view of a model, lets you quickly exclude, override and edit endogenous and exogenous variables for the current scenario.</div>
+      <div class="Body_Text"><a name="110347">To simultaneously create an override for an exogenous variable and open it for editing, first select </a><span class="Menu_Item">View/Variables</span> to display the model in variables view, then select <span class="Menu_Item">Edit override</span> from the right mouse button menu. EViews will ask you to confirm that you wish to override the variable, and will then open an untitled group containing the original series and the newly created override series for the current scenario. Again the group is opened in compare mode (<span class="Link"><a href="groups-Spreadsheet.html#181431" title="Spreadsheet">&#8220;Group Comparison Tools&#8221;</a></span>) to facilitate easy editing of the new series.</div>
+      <div class="Picture"><a name="110355"><img class="Default" src="images/models.064.06.2.jpg" width="100%" style="left: 0.0pt; max-height: 479px; max-width: 599px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><span class="Menu_Item"><a name="109599">Edit override</a></span> may also be used for endogenous variables, in which case EViews will simultaneously exclude and override the variable for the current scenario.</div>
+      <div class="Body_Text"><a name="109601">You may quickly revert an overriden variable back to its original non-overriden values by using the </a><span class="Menu_Item">Revert</span> right button menu item.</div>
+      <div class="Heading_4"><a name="114004">Scenario List</a></div>
+      <div class="Body_Text"><a name="114085">The scenario list view of a model (available from </a><span class="Menu_Item">View/Scenario View</span>) displays a list of each of the model&#8217;s scenarios, along with their alias, overrides or excludes, and descriptions:</div>
+      <div class="Picture"><a name="114094"><img class="Default" src="images/models.064.06.3.jpg" width="100%" style="left: 0.0pt; max-height: 305px; max-width: 626px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

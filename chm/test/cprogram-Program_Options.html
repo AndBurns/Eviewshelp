@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Program Options</title>
+    <link rel="StyleSheet" href="css/cprogram.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cprogram-Program_Arguments.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-Control_of_Execution.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cprogram-EViews_Programming.html">EViews Programming</a> : Program Options</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="141740">Program Options</a></div>
+      <div class="Body_Text"><a name="141741">Much like program arguments, </a><span class="Definition">program options</span> are special string variables that may be passed to your program when you run the program. You may specify options by providing a comma separated list of options in parentheses in the <span class="In-line_command">run</span> or <span class="In-line_command">exec</span> command statement, immediately after the name of the program as in:</div>
+      <div class="Input"><a name="182894">run myprogram(myoption1, myoption2)</a></div>
+      <div class="Body_Text"><a name="182709">Note that options are only supported via the command line method using </a><span class="In-line_command">run</span> or <span class="In-line_command">exec</span>. You cannot pass an option to a program when running a program via the menus. Options are included via the command line by entering them in parenthesis immediately following the name of the program to be run.</div>
+      <div class="Body_Text"><a name="142312">In contrast with arguments, options may not be accessed directly from within your program. Rather you can only test for the existence of an option, or retrieve part of an option. The </a><span class="In-line_command">@hasoption</span> command lets you test for the existence of an option. For example, <span class="In-line_command">@hasoption(</span>"<span class="In-line_command">k</span>"<span class="In-line_command">)</span> will return a value of 1 if the &#8220;k&#8221; option was passed into the program at run time, or 0 if it was not.</div>
+      <div class="Body_Text"><span class="In-line_command"><a name="142730">@equaloption</a></span> may be used to return the value to the right of an equality sign in an option. For example if &#8220;cov=hac&#8221; is entered as an option, <span class="In-line_command">@equaloption(</span>"<span class="In-line_command">cov</span>"<span class="In-line_command">)</span> would return &#8220;hac&#8221;. If the option was not entered at all, <span class="In-line_command">@equaloption</span> will return an empty string.</div>
+      <div class="Body_Text"><a name="142936">For example, suppose you have the following program:</a></div>
+      <div class="Multi-line_Input"><a name="143002">%filename = @equaloption("file")</a></div>
+      <div class="Multi-line_Input"><a name="143190">wfcreate(wf={%filename}) m 1968m3 1997m6</a></div>
+      <div class="Multi-line_Input"><a name="182597">fetch progdemo::{%0}</a></div>
+      <div class="Multi-line_Input"><a name="182598">if (@hasoption("LS")=1) then</a></div>
+      <div class="Multi-line_Input"><a name="182599">	smpl 1968m5 1992m12</a></div>
+      <div class="Multi-line_Input"><a name="143320">	equation reg1.ls {%0} c {%0}(-1)</a></div>
+      <div class="Multi-line_Input"><a name="143336">endif</a></div>
+      <div class="Body_Text"><a name="143210">If you were to run this program with:</a></div>
+      <div class="Multi-line_Input"><a name="143259">run myprog(file=myhouse, ls) hsf</a></div>
+      <div class="Body_Text"><a name="143351">the program would create a workfile called MYHOUSE, would fetch a series called HSF, and would then create an equation called REG1 by performing least squares using the series HSF (for discussion of the &#8220;if&#8221; condition used in this example, see </a><span class="Link"><a href="cprogram-Control_of_Execution.html#698" title="Control of Execution">&#8220;IF Statements&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="143666">If we had run the program with just:</a></div>
+      <div class="Multi-line_Input"><a name="143713">run myprog hsf</a></div>
+      <div class="Body_Text"><a name="143729">the workfile would not have been named (and would be given the default name of UNTITLED), and the regression would not have been run.</a></div>
+      <div class="Body_Text"><a name="174699">Note that if your program name has spaces or illegal characters, it must be enclosed within quotes in </a><span class="In-line_command">run</span> or <span class="In-line_command">exec</span> commands. In this case, program options should be included after the closing quote without a space. For example, if we were to name our above program as MY PROG, then the correct method to issue options is:</div>
+      <div class="Input"><a name="175055">run "my prog"(file=myhouse, ls) hsf</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Subroutines</title>
+    <link rel="StyleSheet" href="css/cprogram.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cprogram-Multiple_Program_Files.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-User-Defined_Dialogs.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cprogram-EViews_Programming.html">EViews Programming</a> : Subroutines</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="190209">Subroutines</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#1182">Defining Subroutines</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#1228">Subroutine with Arguments</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#42782">Calling Subroutines</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#175536">Subroutine Placement</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#1347">Global and Local Variables</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#1369">Global Subroutines</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#1479">Local Subroutines </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#147686">Local Samples</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="190217">A </a><span class="Definition">subroutine</span> is a collection of commands that allows you to perform a given task repeatedly, with minor variations, without actually duplicating the commands. You may also use subroutines from one program to perform the same task in other programs.</div>
+      <div class="Heading_4"><a name="1182">Defining Subroutines</a></div>
+      <div class="Body_Text"><a name="1184">A subroutine begins with the keyword </a><span class="In-line_command">subroutine</span> followed by the name of the routine and any arguments, and ends with the keyword <span class="In-line_input">endsub</span>. Any number of commands can appear in between. The simplest type of subroutine has the following form:</div>
+      <div class="Multi-line_Input"><a name="1186">subroutine z_square</a></div>
+      <div class="Multi-line_Input"><a name="1188">series x = z^2</a></div>
+      <div class="Multi-line_Input"><a name="1190">endsub</a></div>
+      <div class="Body_Text"><a name="1192">where the keyword </a><span class="In-line_input">subroutine</span> is followed only by the name of the routine. This subroutine has no arguments so that it will behave identically every time it is used. It forms the square of the existing series <span class="EViews_Name">Z </span>and stores it in the new series <span class="EViews_Name">X</span>.</div>
+      <div class="Body_Text"><a name="131121">You may use the </a><span class="In-line_command">return</span> command to force EViews to exit from the subroutine at any time. A common use of <span class="In-line_command">return</span> is to exit from the subroutine if an unanticipated error is detected. The following program exits the subroutine if Durbin&#8217;s <img class="Default EquationGraphic" src="images/cprogram.087.10.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> statistic (Greene, 2008, p. 646, or Davidson and MacKinnon, 1993, p. 360) for testing serial correlation with a lagged dependent variable cannot be computed: </div>
+      <div class="Multi-line_Input_With_Tabs"><a name="131126">subroutine durbin_h</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1204">	equation eqn.ls cs c cs(-1) inc</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1206">	scalar test=1-eqn.@regobs*eqn.@cov(2,2)</a></div>
+      <div class="Program_Comment"><a name="1208">	' an error is indicated by test being nonpositive</a></div>
+      <div class="Program_Comment"><a name="9352">	' exit on error</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1210">	if test&lt;=0 then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1212">		return</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="9364">	endif</a></div>
+      <div class="Program_Comment"><a name="1216">	' compute h statistic if test positive</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1218">	scalar h=(1-eqn.@dw/2)*sqr(eqn.@regobs/test) </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1220">endsub</a></div>
+      <div class="Heading_4"><a name="1228">Subroutine with Arguments</a></div>
+      <div class="Body_Text"><a name="1230">The subroutines we have seen thus far have been written to work with a specific set of variables. More generally, subroutines can take arguments. Arguments allow you to change the behavior of the group of commands each time the subroutine is used. You may be familiar with the concept from other programming languages, but if now, you are probably familiar with similar concepts in mathematics. You can define a function, say</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/cprogram.087.10.2.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(6.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="1235">where <img class="Default EquationGraphic" src="images/cprogram.087.10.3.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> depends upon the argument <img class="Default EquationGraphic" src="images/cprogram.087.10.4.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. The argument <img class="Default EquationGraphic" src="images/cprogram.087.10.5.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is merely a place holder&#8212;it&#8217;s there to define the function and it does not really stand for anything. Then, if you want to evaluate the function at a particular numerical value, say 0.7839, you can write <img class="Default EquationGraphic" src="images/cprogram.087.10.6.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 71px; top: 0.0pt" alt="" />. If you want to evaluate the function at a different value, say 0.50123, you merely write <img class="Default EquationGraphic" src="images/cprogram.087.10.7.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 80px; top: 0.0pt" alt="" />. By defining the function, you save yourself from writing the full function expression every time you wish to evaluate it for a different value.</a></div>
+      <div class="Body_Text"><a name="1237">To define a subroutine with arguments, you start with the </a><span class="In-line_input">subroutine</span> keyword, followed by the subroutine name and (with no space) the arguments separated by commas, enclosed in parentheses. Each argument is specified by listing a type of EViews object, followed by the name of the argument. For example:</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1239">subroutine power(series v, series y, scalar p)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1241">	v = y^p</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1243">endsub</a></div>
+      <div class="Body_Text"><a name="1245">This subroutine generalizes the example subroutine </a><span class="EViews_Name">Z_SQUARE</span>. Calling the subroutine <span class="EViews_Name">POWER</span> will fill the series given by the argument <span class="EViews_Name">V</span> with the power <span class="EViews_Name">P</span> of the series specified by the argument <span class="EViews_Name">Y</span>. So if you set <span class="EViews_Name">V</span> equal to <span class="EViews_Name">X</span>, <span class="EViews_Name">Y</span> equal to <span class="EViews_Name">Z</span>, and <span class="EViews_Name">P</span> equal to <span class="EViews_Name">2</span>, you will get the equivalent of the subroutine <span class="EViews_Name">Z_SQUARE</span> above. See the discussion below on how to call subroutines.</div>
+      <div class="Body_Text"><a name="190749">When creating subroutines with scalar or string arguments, you will define your arguments using the </a><span class="In-line_command">scalar</span> or the <span class="In-line_command">string</span> types. Beyond that, you have a choice of whether you can to make the corresponding argument a (temporary) program variable or a (permanent) workfile object:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="192864">To make the argument a program variable, you should use a program variable name (beginning with a &#8220;!&#8221; for a control variable and a &#8220;%&#8221; for a string variable). If you choose to use program variables, they should be referred to using the &#8220;!&#8221; or &#8220;%&#8221; name inside the subroutine.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="192865">To make the argument a workfile object, you should use a standard EViews object name. The object should be referred to by the argument name inside the subroutine.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="191189">Obviously, you can mix the two approaches in the definition of any subroutine.</a></div>
+      <div class="Body_Text"><a name="193675">For example, the declaration</a></div>
+      <div class="Input"><a name="191225">subroutine mysub(scalar !a, string %b)</a></div>
+      <div class="Body_Text"><a name="191270">uses program variable names, while</a></div>
+      <div class="Input"><a name="191319">subroutine mysub(scalar a, string b)</a></div>
+      <div class="Body_Text"><a name="191369">uses object names. In the first case you should refer to &#8220;!A&#8221; and &#8220;%B&#8221; inside the subroutine; in the latter case, you should refer to the objects named &#8220;A&#8221; and &#8220;B&#8221;.</a></div>
+      <div class="Body_Text"><a name="191849">If you define your subroutine using program variables, the subroutine will operate on them as though they were any other program variable. The variables, which cannot go out-of-scope, should be referred to using the &#8220;!&#8221; or &#8220;%&#8221; argument name inside the subroutine. </a></div>
+      <div class="Body_Text"><a name="192754">If you define your subroutine using object names, the subroutine will operate on those variables as though they were scalar or string objects. The variables, which may be deleted and may go out-of-scope (if, for example, you change the workfile page), should be referred to using the argument names as though they were scalar or string objects.</a></div>
+      <div class="Body_Text"><a name="190577">(We discuss in detail related issues in </a><span class="Link"><a href="#42782" title="Subroutines">&#8220;Calling Subroutines&#8221;</a></span>.)</div>
+      <div class="Body_Text"><a name="152456">You should note that EViews makes no distinction between input or output arguments in a subroutine. Each argument may be an input to the subroutine, an output from the subroutine, or both (or neither!). There is no way to declare that some arguments are inputs and some are outputs. There is no need to order the arguments in any particular order. However we find it much easier to read subroutine code when we stick to a convention, such as listing all output arguments prior to all input arguments (or vice versa).</a></div>
+      <div class="Heading_4"><a name="42782">Calling Subroutines</a></div>
+      <div class="Body_Text"><a name="1319">Once a subroutine is defined, you may execute the commands in the subroutine by using the </a><span class="In-line_command">call</span> keyword. <span class="In-line_command">call</span> should be followed by the name of the subroutine, and a list of any argument values you wish to use, enclosed in parentheses and separated by commas (with no space after the subroutine name). If the subroutine takes arguments, the arguments must be provided in the same order as in the declaration statement. Here is an example program file that calls subroutines:</div>
+      <div class="Multi-line_Input"><a name="1321">include powers </a></div>
+      <div class="Multi-line_Input"><a name="1323">load mywork</a></div>
+      <div class="Multi-line_Input"><a name="1325">fetch z gdp</a></div>
+      <div class="Multi-line_Input"><a name="1327">series x</a></div>
+      <div class="Multi-line_Input"><a name="1329">series gdp2 </a></div>
+      <div class="Multi-line_Input"><a name="1331">series gdp3</a></div>
+      <div class="Multi-line_Input"><a name="1333">call z_square</a></div>
+      <div class="Multi-line_Input"><a name="1335">call power(gdp2,gdp,2)</a></div>
+      <div class="Multi-line_Input"><a name="1337">call power(gdp3,gdp,3)</a></div>
+      <div class="Body_Text"><a name="1339">The call of the Z_SQUARE subroutine fills the series </a><span class="EViews_Name">X</span> with the value of <span class="EViews_Name">Z</span> squared. Next, the call to the POWER subroutine creates the series <span class="EViews_Name">GDP2</span> which is <span class="EViews_Name">GDP</span> squared. The last call to POWER creates the series <span class="EViews_Name">GDP3</span> as the cube of <span class="EViews_Name">GDP</span>.</div>
+      <div class="Body_Text"><a name="194970">When calling your subroutine, bear in mind that:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="194954">When the subroutine argument is a scalar, the subroutine may be called with a scalar object, a control variable, a simple number (such as &#8220;10&#8221; or &#8220;15.3&#8221;), a matrix element (such as &#8220;mat1(1,2)&#8221;) or a scalar expression (such as &#8220;!y+25&#8221;). </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="194955">Subroutines with a string argument may be called with a string object, a string program variable, simple text (such as &#8220;hello&#8221;) or an element of an svector object.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="194956">Subroutines that take matrix and vector arguments can be called with a matrix name, and if not modified by the subroutine, may also take a matrix expression. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="195029">All other arguments must be passed to the subroutine with an object name referring to a single object of the correct type.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="194312">In </a><span class="Link"><a href="#1228" title="Subroutines">&#8220;Subroutine with Arguments&#8221;</a></span> we described how you can <span class="Emphasis">define</span> subroutines that use either program variables or objects for scalar or string arguments. However you define your subroutine, you may call the subroutine using either program variables or objects&#8212;you are not required to match the calling arguments with the subroutine definition. Suppose, for example, that you define your subroutine as</div>
+      <div class="Multi-line_Input"><a name="193580">subroutine mysub(scalar a, string b)</a></div>
+      <div class="Body_Text"><a name="193581">Then for scalar and string objects F and G, and program variables !X and %Y, </a></div>
+      <div class="Multi-line_Input"><a name="195696">scalar f = 3</a></div>
+      <div class="Multi-line_Input"><a name="195333">string g = "hello"</a></div>
+      <div class="Multi-line_Input"><a name="195360">!x = 2</a></div>
+      <div class="Multi-line_Input"><a name="195368">%y = "goodbye"</a></div>
+      <div class="Body_Text"><a name="195588">you may call the subroutine using any of the following commands:</a></div>
+      <div class="Multi-line_Input"><a name="195282">call mysub(!x, %y)</a></div>
+      <div class="Multi-line_Input"><a name="195305">call mysub(!x, g)</a></div>
+      <div class="Multi-line_Input"><a name="195394">call mysub(f, %y)</a></div>
+      <div class="Multi-line_Input"><a name="195415">call mysub(f, g)</a></div>
+      <div class="Body_Text"><a name="193589">Note that changes to the scalars A and B inside the subroutine will change the corresponding program variable or object that you pass into the routine.</a></div>
+      <div class="Body_Text"><a name="195880">Similarly, you may define</a></div>
+      <div class="Multi-line_Input"><a name="195911">subroutine mysub(scalar !a, string !b)</a></div>
+      <div class="Body_Text"><a name="195935">and use the same four </a><span class="In-line_command">call</span> statements to execute the subroutine commands. </div>
+      <div class="Body_Text"><a name="196234">However the subroutine is called, bear in mind that behavior inside the subroutine is dependent on whether the subroutine declaration is in terms of program variables or objects, not on the variable type that is passed into the subroutine.</a></div>
+      <div class="Heading_4"><a name="175536">Subroutine Placement</a></div>
+      <div class="Body_Text"><a name="175537">Subroutine definitions may be placed anywhere throughout your program. However, for clarity, we recommend grouping subroutine definitions together either at the start or at the end of your program. The subroutines will not be executed until they are executed by the program using a </a><span class="In-line_command">call</span> statement. For example:</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="175538">subroutine z_square</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="175539">	series x=z^2</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="175540">endsub</a></div>
+      <div class="Program_Comment"><a name="175541">' start of program execution</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="175542">load mywork</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="175543">fetch z</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="175544">call z_square</a></div>
+      <div class="Body_Text"><a name="175545">Execution of this program begins with the </a><span class="In-line_input">load</span> statement; the subroutine definition is skipped and is executed only at the last line when it is &#8220;called.&#8221;</div>
+      <div class="Body_Text"><a name="175546">Subroutine definitions must not overlap&#8212;after the </a><span class="In-line_command">subroutine</span> keyword, there should be an <span class="In-line_command">endsub</span> before the next <span class="In-line_command">subroutine</span> declaration. Subroutines may call each other, or even call themselves.</div>
+      <div class="Body_Text"><a name="175547">Alternatively, you may place frequently used subroutines in a separate program file and use an </a><span class="In-line_input">include</span> statement to insert them at the beginning of your program. If, for example, you put the subroutine lines in the file &#8220;Powers.PRG&#8221;, then you may put the line:</div>
+      <div class="Input"><a name="175548">include powers</a></div>
+      <div class="Body_Text"><a name="175549">at the top of any other program that needs to call </a><span class="EViews_Name">Z_SQUARE</span> or <span class="EViews_Name">POWER</span>. You can use the subroutines in these programs as though they were built-in parts of the EViews programming language. </div>
+      <div class="Heading_4"><a name="1347">Global and Local Variables</a></div>
+      <div class="Body_Text"><a name="1349">Subroutines work with variables and objects that are either </a><span class="Emphasis">global</span> or <span class="Emphasis">local</span>.</div>
+      <div class="Body_Text"><span class="Definition"><a name="1353">Global variables</a></span> refer either to objects which exist in the workfile when the subroutine is called, and to objects that are created in the workfile by a subroutine. Global variables remain in the workfile when the subroutine finishes.</div>
+      <div class="Body_Text"><a name="1357">A </a><span class="Definition">local variable</span> is one that is defined within the subroutine. Local variables are deleted from the workfile once a subroutine finishes. The program that calls the subroutine will not be able to use a local variable since the local variable disappears once the subroutine finishes and the original program continues.</div>
+      <div class="Heading_4"><a name="1369">Global Subroutines</a></div>
+      <div class="Body_Text"><a name="196383">By default, subroutines in EViews are </a><span class="Emphasis">global</span>. Global subroutine may refer to any global object that exists in the workfile at the time the subroutine is called. Thus, if <span class="EViews_Name">Z</span> is a series in the workfile, the subroutine may refer to and, if desired, alter the series <span class="EViews_Name">Z</span>. Similarly, if <span class="EViews_Name">Y</span> is a global matrix that has been created by another subroutine, the current subroutine may use the matrix <span class="EViews_Name">Y</span>.</div>
+      <div class="Body_Text"><a name="196379">The rules for variables in global subroutines are:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="1375">All objects created by a global subroutine are global and will remain in the workfile when the subroutine finishes.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="1377">Global objects may be used and updated directly from within the subroutine. If, however, a global object has the same name as an argument in a subroutine, the variable name will refer to the argument and not to the global variable.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="1379">The global objects corresponding to arguments may be used and updated by referring to the arguments.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="196368">Here is a simple program that calls a global subroutine:</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1383">subroutine z_square</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1385">	series x = z^2</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1387">endsub</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1389">load mywork</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1391">fetch z</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1393">call z_square</a></div>
+      <div class="Body_Text"><span class="EViews_Name"><a name="1395">Z_SQUARE</a></span> is a global subroutine which has access to the global series <span class="EViews_Name">Z</span>. The new global series <span class="EViews_Name">X</span> contains the square of the series <span class="EViews_Name">Z</span>. Both <span class="EViews_Name">X</span> and <span class="EViews_Name">Z</span> remain in the workfile when <span class="EViews_Name">Z_SQUARE</span> is finished.</div>
+      <div class="Body_Text"><a name="1397">If one of the arguments of the subroutine has the same name as a global variable, the argument name takes precedence so that any reference to the name in the subroutine will refer to the argument, not to the global variable. For example:</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1399">subroutine sqseries(series z, string sername)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1401">	series {sername} = z^2</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1403">endsub</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1405">load mywork</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1407">fetch z</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1409">fetch y</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1411">call sqseries(y, "y2")</a></div>
+      <div class="Body_Text"><a name="1413">In this example, there is a series </a><span class="EViews_Name">Z</span> in the original workfile and <span class="EViews_Name">Z</span> is also an argument of the subroutine. Calling <span class="EViews_Name">SQSERIES</span> with the argument set to <span class="EViews_Name">Y</span> tells EViews to use the series passed-in via the argument Z instead of the global <span class="EViews_Name">Z </span>series. On completion of the routine, the new series <span class="EViews_Name">Y2</span> will contain the square of the series <span class="EViews_Name">Y</span>, not the square of the series <span class="EViews_Name">Z</span>. Since keeping track of variables can become confusing when subroutine arguments take the same name as existing workfile objects, we encourage you to name subroutine arguments as clearly and distinctly as possible.</div>
+      <div class="Body_Text"><a name="1415">Global subroutines may call global subroutines. You should make certain to pass along required arguments when you call a subroutine from within a subroutine. For example,</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1417">subroutine wgtols(series y, series wt)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1419">	equation eq1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1421">	call ols(eq1, y)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1423">	equation eq2</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1425">	series temp = y/sqr(wt)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1427">	call ols(eq2, temp) </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1429">	delete temp</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1431">endsub</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1433">subroutine ols(equation eq, series y)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1435">	eq.ls y c y(-1) y(-1)^2 y(-1)^3 </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1437">endsub</a></div>
+      <div class="Body_Text"><a name="1439">can be run by the program:</a></div>
+      <div class="Multi-line_Input"><a name="1441">load mywork</a></div>
+      <div class="Multi-line_Input"><a name="1443">fetch cpi</a></div>
+      <div class="Multi-line_Input"><a name="1445">fetch cs</a></div>
+      <div class="Multi-line_Input"><a name="1447">call wgtols(cs,cpi)</a></div>
+      <div class="Body_Text"><a name="196771">In this example, the subroutine </a><span class="EViews_Name">WGTOLS</span> must explicitly pass along arguments to the subroutine OLS so that it uses the correct series and equation objects.</div>
+      <div class="Body_Text"><a name="197072">You cannot use a subroutine to change the object type of a global variable. Suppose that we wish to declare new matrices </a><span class="EViews_Name">X</span> and <span class="EViews_Name">Y</span> by using a subroutine <span class="EViews_Name">NEWXY</span>. In this example, the declaration of matrix <span class="EViews_Name">X</span> generates an error since <span class="EViews_Name">X</span> exists and is a series, but the declaration of the matrix <span class="EViews_Name">Y</span> works (assuming there is no Y in the workfile MYWORK, or that Y exists and is already a matrix):</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1453">subroutine newxy</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1455">	matrix(2,2) x = 0 </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1457">	matrix(2,2) y = 0</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1459">endsub</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1461">load mywork</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1463">series x</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1465">call newxy</a></div>
+      <div class="Body_Text"><a name="1467">If you call this subroutine, EViews will return an error indicating that the global series </a><span class="EViews_Name">X</span> already exists and is of a different type than a matrix.</div>
+      <div class="Heading_4"><a name="1479">Local Subroutines </a></div>
+      <div class="Body_Text"><a name="197254">If you include the word </a><span class="In-line_input">local</span> in the definition of the subroutine, you create a local subroutine. Local subroutines are most useful when you wish to write a subroutine which creates many temporary objects that you do not want to keep.</div>
+      <div class="Body_Text"><a name="197463">The rules for variables in local subroutines are:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="197464">All objects created by a local subroutine will be local and will be removed from the workfile upon exit from the subroutine. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="201488">The global objects corresponding to subroutine arguments may be used and updated in the subroutine by referring to the arguments.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="203523">You may not use or update global objects that do not correspond to subroutine arguments.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="204329">There is one exception to the general inaccessibility of non-argument global variables in local subroutines. When a global group is passed as an argument to a local subroutine, all of the series in the group are accessible to the local routine. </a></div>
+      <div class="Body_Text"><a name="203519">The last two rules deserve a bit of elaboration. In general, local subroutines do not have access to any global variables unless those variables are associated with arguments passed into the subroutine. Thus, if there is a series X in the workfile, a local subroutine will not be allowed to use or modify X unless it is passed into the subroutine using a series argument. Conversely, if X is passed into the subroutine, it may be modified.</a></div>
+      <div class="Body_Text"><a name="1491">Since locally created objects will vanish upon completion of the subroutine, to save results from a local subroutine, you have to include them as arguments. For example, consider the subroutine:</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1493">subroutine local ols_local(series y, series res, scalar ssr)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1495">	equation temp_eq.ls y c y(-1) y(-1)^2 y(-1)^3</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1497">	temp_eq.makeresid res</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1499">	ssr = temp_eq.@ssr</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="197601">	scalar se = ssr/temp_eq.@df</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1501">endsub</a></div>
+      <div class="Body_Text"><a name="201226">This local subroutine takes the series </a><span class="EViews_Name">Y</span> as input and modifies the argument series <span class="EViews_Name">RES</span> and argument scalar <span class="EViews_Name">SSR</span> as output. Note that since Y, RES, and SSR are the only arguments of this local subroutine, the only global variables that may be used or modified are those associated with these arguments.The equation object <span class="EViews_Name">TEMP_EQ</span> and the scalar SE are local to the subroutine and will vanish when the subroutine finishes. </div>
+      <div class="Body_Text"><a name="200911">Here is an example program that calls this local subroutine:</a></div>
+      <div class="Multi-line_Input"><a name="1507">load mywork</a></div>
+      <div class="Multi-line_Input"><a name="1509">fetch hsf </a></div>
+      <div class="Multi-line_Input"><a name="1511">equation eq1.ls hsf c hsf(-1) </a></div>
+      <div class="Multi-line_Input"><a name="1513">eq1.makeresid rres</a></div>
+      <div class="Multi-line_Input"><a name="1515">scalar rssr = eq1.@ssr</a></div>
+      <div class="Multi-line_Input"><a name="1517">series ures</a></div>
+      <div class="Multi-line_Input"><a name="1519">scalar ussr</a></div>
+      <div class="Multi-line_Input"><a name="1521">call ols_local(hsf, ures, ussr)</a></div>
+      <div class="Body_Text"><a name="1523">Note that we first declare the series </a><span class="EViews_Name">URES</span> and scalar <span class="EViews_Name">USSR</span> before calling the local subroutine. These objects are global since they are declared outside the local subroutine. Since we call the local subroutine by passing these global objects as arguments, the subroutine can use and update these global variables.</div>
+      <div class="Body_Text"><a name="204534">Object commands that require access to global variables should be used with care in local subroutines since that the lack of access to global variables can create problems for views or procs of objects passed into the routine. For example, a subroutine of the form:</a></div>
+      <div class="Multi-line_Input"><a name="147112">subroutine local bg(equation eq)</a></div>
+      <div class="Multi-line_Input"><a name="147161">	eq.hettest z c</a></div>
+      <div class="Multi-line_Input"><a name="147182">endsub</a></div>
+      <div class="Body_Text"><a name="147190">will fail because the </a><span class="In-line_command">hettest</span> equation proc requires access to the original variables in the equation and the global variable Z, and these series are not available since they are not passed in as arguments to the subroutine.</div>
+      <div class="Body_Text"><a name="147379">Care should also be taken when using samples and local subroutines. If the workfile sample is based upon a series in the workfile (for example &#8220;smpl @all if x&gt;0&#8221;), most procedures inside the local subroutine will fail unless all of the series used in the sample are passed into the subroutine. </a></div>
+      <div class="Heading_4"><a name="147686">Local Samples</a></div>
+      <div class="Body_Text"><a name="147687">Local samples in subroutines allow you to indicate that changes to the workfile sample are temporary, with the original sample restored when you exit the routine. This feature is useful when designing subroutines which require working on a subset of observations in the original sample.</a></div>
+      <div class="Body_Text"><a name="147688">You may, in a subroutine, use the </a><span class="In-line_command">local smpl </span>statement to indicate that subsequent changes to the sample are temporary, and should be undone when exiting the subroutine. The command</div>
+      <div class="Input"><a name="147689">local smpl</a></div>
+      <div class="Body"><a name="147690">&nbsp;</a></div>
+      <div class="Body_Text"><a name="147691">makes a copy of the existing sample specification. You may then change the sample as many times as desired using the </a><span class="In-line_command">smpl</span> statement, and the original sample specification will be reapplied when existing from the subroutine.</div>
+      <div class="Body_Text"><a name="147692">You may use the </a><span class="In-line_command">global smpl </span>statement to indicate that subsequent <span class="In-line_command">smpl</span> statements will result in permanent changes to the workfile sample. Thus, the commands:</div>
+      <div class="Input"><a name="147693">global smpl</a></div>
+      <div class="Input"><a name="147694">smpl 5 100</a></div>
+      <div class="Body_Text"><a name="147695">in a subroutine permanently change the sample.</a></div>
+      <div class="Body_Text"><a name="147696">For example, consider the following program snippet which illustrates the behavior of local and global samples:</a></div>
+      <div class="Multi-line_Input"><a name="147697">workfile temp u 100</a></div>
+      <div class="Multi-line_Input"><a name="147698">call foo</a></div>
+      <div class="Multi-line_Input"><a name="147700">subroutine foo</a></div>
+      <div class="Multi-line_Input"><a name="147701">	smpl 2 100</a></div>
+      <div class="Multi-line_Input"><a name="147702">	local smpl</a></div>
+      <div class="Multi-line_Input"><a name="147703">	smpl 10 100</a></div>
+      <div class="Multi-line_Input"><a name="147704">endsub</a></div>
+      <div class="Body_Text"><a name="147705">Here, we create a workfile with 100 observations and an initial workfile sample of &#8220;1 100&#8221;, then call the subroutine FOO. Inside FOO, the first </a><span class="In-line_command">smpl</span> statement changes the workfile sample to &#8220;2 100&#8221;. We then issue the <span class="In-line_command">local</span> <span class="In-line_command">smpl</span> statement which backs up the existing sample and identifies subsequent sample changes as local. The subsequent change to the &#8220;10 100&#8221; sample is local so that when the subroutine exits, the sample is reset to &#8220;2 100&#8221;.</div>
+      <div class="Body_Text"><a name="147706">If instead we define FOO to be</a></div>
+      <div class="Multi-line_Input"><a name="147707">subroutine foo</a></div>
+      <div class="Multi-line_Input"><a name="147708">	smpl 2 100</a></div>
+      <div class="Multi-line_Input"><a name="198100">	local smpl</a></div>
+      <div class="Multi-line_Input"><a name="198101">	smpl 10 100</a></div>
+      <div class="Multi-line_Input"><a name="198102">	global smpl</a></div>
+      <div class="Multi-line_Input"><a name="147712">	smpl 5 100</a></div>
+      <div class="Multi-line_Input"><a name="198059">	local smpl</a></div>
+      <div class="Multi-line_Input"><a name="198060">	smpl 50 100</a></div>
+      <div class="Multi-line_Input"><a name="201689">endsub</a></div>
+      <div class="Body_Text"><a name="201690">As before, first </a><span class="In-line_command">smpl</span> statement changes the workfile sample to &#8220;2 100&#8221; and the <span class="In-line_command">local</span> <span class="In-line_command">smpl</span> statement and following <span class="In-line_command">smpl</span> statement set the local sample to &#8220;10 100&#8221;. The <span class="In-line_command">global smpl</span> indicates that subsequent sample statements will once again be global so the next line permanently changes the workfile sample to &#8220;5 100&#8221;. Note that the last <span class="In-line_command">local</span> <span class="In-line_command">smpl</span> and subsequent <span class="In-line_command">smpl</span> statement change the local sample only. When we exit the subroutine the sample will be set to the last global sample of &#8220;5 100&#8221;.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

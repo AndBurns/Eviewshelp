@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Matrix Commands and Functions</title>
+    <link rel="StyleSheet" href="css/cmatrix.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cmatrix-Matrix_Expressions.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cmatrix-Matrix_Views_and_Procs.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cmatrix-Matrix_Language.html">Matrix Language</a> : Matrix Commands and Functions </div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="68927">Matrix Commands and Functions </a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#148271">Utility Commands and Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#148664">Element Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#148872">Matrix Algebra Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#148337">Descriptive Statistics Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#68953">Functions versus Commands</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#68970">NA Handling</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="68928">EViews provides a number of commands and functions that allow you to work with the contents of your matrix objects. These commands and functions may be divided into roughly four distinct types: (1) utility commands and functions, (2) element functions, (3) matrix algebra functions, and (4) descriptive statistics functions.</a></div>
+      <div class="Heading_4"><a name="148271">Utility Commands and Functions</a></div>
+      <div class="Body_Text"><a name="148298">The utility commands and functions provide support for creating, manipulating, and assigning values to your matrix objects. We have already seen a number of these commands and functions, including the </a><span class="In-line_command_link"><a href="functionref_c-@convert.html#1269168" title="@convert">@convert</a></span> function and the <span class="In-line_command_link"><a href="commandcmd-stom.html#3077961" title="stom">stom</a></span> and <span class="In-line_command_link"><a href="commandcmd-stomna.html#3077998" title="stomna">stomna</a></span> commands, which convert data from series and groups into vectors and matrices, as well as <span class="In-line_command_link"><a href="functionref_v-@vec.html#1260418" title="@vec">@vec</a></span>, <span class="In-line_command_link"><a href="functionref_v-@vech.html#1260449" title="@vech">@vech</a></span>, <span class="In-line_command_link"><a href="functionref_r-@rowextract.html#1260371" title="@rowextract">@rowextract</a></span>, <span class="In-line_command_link"><a href="functionref_c-@columnextract.html#1268999" title="@columnextract">@columnextract</a></span>, and <span class="In-line_command_link"><a href="commandcmd-matplace.html#3075205" title="matplace">matplace</a></span>. </div>
+      <div class="Body_Text"><a name="148561">A random sampling of other useful commands and functions include:</a></div>
+      <div class="Input"><a name="148691">matrix a = @ones(10, 5)</a></div>
+      <div class="Body_Text"><a name="148692">which creates a <img class="Default EquationGraphic" src="images/cmatrix.092.6.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 49px; top: 0.0pt" alt="" /> matrix of ones,</a></div>
+      <div class="Input"><a name="148562">vector f = @getmaindiagonal(x)</a></div>
+      <div class="Body_Text"><a name="148680">which extracts the main diagonal from the square matrix X,</a></div>
+      <div class="Input"><a name="148681">matrix g = @explode(sym01)</a></div>
+      <div class="Body_Text"><a name="148685">which creates a square matrix from the symmetric matrix object SYM01, and </a></div>
+      <div class="Input"><a name="148604">matrix h1 = @resample(y)</a></div>
+      <div class="Input"><a name="148705">matrix h2 = @permute(y)</a></div>
+      <div class="Body_Text"><a name="148690">which create matrices by randomly drawing (with replacement) from, and by permuting, the rows of Y.</a></div>
+      <div class="Body_Text"><a name="148385">A listing of the matrix commands and functions is included in the matrix summary in&nbsp;</a><span class="Link"><a href="matrixref-Matrix_Language_Summary.html#1111384" title="Matrix Language Summary">&#8220;Matrix Language Summary&#8221;</a></span></div>
+      <div class="Heading_4"><a name="148664">Element Functions</a></div>
+      <div class="Body_Text"><a name="148666">EViews offers two types of functions that work with individual elements of a matrix object. First, most of the element functions that may be used in series expressions can used with matrix objects. When used with a matrix object, these functions will return a similar object whose elements are the values of a function evaluated at each element of the original.</a></div>
+      <div class="Body_Text"><a name="148784">For example, you may specify</a></div>
+      <div class="Input"><a name="148785">matrix f = @log(y)</a></div>
+      <div class="Body_Text"><a name="148789">to compute the logarithm of each element of the matrix Y. </a></div>
+      <div class="Body_Text"><a name="148842">Similarly,</a></div>
+      <div class="Input"><a name="148799">matrix tprob = @ctdist(x, df)</a></div>
+      <div class="Body_Text"><a name="148800">evaluates the cumulative distribution function value for the </a><span class="In-line_math">t</span>-distribution for each element of the matrix X and places the results in the corresponding cells of the matrix TPROB. Note that DF may either be a scalar, or a matrix object of the same type and size as X.</div>
+      <div class="Body_Text"><a name="148814">See </a><span class="Link"><a href="functionref_home-Function_Summaries.html#1295990" title="Function Summaries">&#8220;Element Functions&#8221;</a></span> for summaries of the various element functions.</div>
+      <div class="Body_Text"><a name="148852">Second, EViews provides a set of element functions for performing element-by-element matrix multiplication, division, inversion, and exponentiation. For example, to obtain a matrix Z containing the inverse of every element in X, you may use:</a></div>
+      <div class="Input"><a name="148853">matrix z = @einv(x)</a></div>
+      <div class="Body_Text"><a name="148854">Likewise, to compute the elementwise (Hadamard) product of the matrices A and B, you may use</a></div>
+      <div class="Input"><a name="148859">matrix ab = @emult(a, b)</a></div>
+      <div class="Body_Text"><a name="148295">The (</a><span class="In-line_math">i</span>,<span class="In-line_math">j</span>)-th element of the matrix AB will contain the product of the corresponding elements of A and B: <img class="Default EquationGraphic" src="images/cmatrix.092.6.2.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 53px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="148887">See </a><span class="Link"><a href="functionref_home-Function_Summaries.html#1314574" title="Function Summaries">&#8220;Matrix Element Functions&#8221;</a></span> for additional detail.</div>
+      <div class="Heading_4"><a name="148872">Matrix Algebra Functions</a></div>
+      <div class="Body_Text"><a name="148313">The matrix algebra functions allow you to perform common matrix algebra operations. Among other things, you can use these routines to compute eigenvalues, eigenvectors and determinants of matrices, to invert matrices, to solve linear systems of equations, and to perform singular value decompositions.</a></div>
+      <div class="Body_Text"><a name="148914">For example, to compute the inner product of two vectors A and B, you may use</a></div>
+      <div class="Input"><a name="148921">scalar ip = @inner(a, b)</a></div>
+      <div class="Body_Text"><a name="148931">To compute the Cholesky factorization of a symmetric matrix G, </a></div>
+      <div class="Input"><a name="148935">matrix cf = @cholesky(g)</a></div>
+      <div class="Body_Text"><a name="148936">The least squares coefficient vector for the data matrix X and vector Y may be computed as</a></div>
+      <div class="Input"><a name="148940">vector b = @inverse(@inner(x))*@transpose(x)*y</a></div>
+      <div class="Body_Text"><a name="162108">or</a></div>
+      <div class="Input"><a name="162112">vector b = @solvesystem(@inner(x), @transpose(x)*y)</a></div>
+      <div class="Body_Text"><a name="148915">A listing of the matrix algebra functions and commands is included in </a><span class="Link"><a href="matrixref-Matrix_Command_Summary.html#1189782" title="Matrix Command Summary">&#8220;Matrix Command Summary&#8221;</a></span> and <span class="Link"><a href="matrixref-Matrix_Function_Summary.html#1190188" title="Matrix Function Summary">&#8220;Matrix Algebra&#8221;</a></span>. </div>
+      <div class="Heading_4"><a name="148337">Descriptive Statistics Functions</a></div>
+      <div class="Body_Text"><a name="149082">The descriptive statistics functions compute summary statistics for the data in the matrix object. You can compute statistics such as the mean, median, minimum, maximum, and variance, over all of the elements in your matrix.</a></div>
+      <div class="Body_Text"><a name="149118">For example,</a></div>
+      <div class="Input"><a name="149119">scalar xmean = @mean(xmat)</a></div>
+      <div class="Body_Text"><a name="149120">computes the mean taken over all of the non-missing elements of the matrix XMAT, and assigns the values to the scalar XMEAN. Similarly, the commands</a></div>
+      <div class="Input"><a name="149128">scalar xquant95 = @quantile(xmat, .95)</a></div>
+      <div class="Body_Text"><a name="149129">computes the .95 quantile of the elements in XMAT.</a></div>
+      <div class="Body_Text"><a name="149195">Functions for computing descriptive statistics are discussed in </a><span class="Link"><a href="functionref_home-Function_Summaries.html#1296436" title="Function Summaries">&#8220;Basic Statistics&#8221;</a></span></div>
+      <div class="Body_Text"><a name="148345">In addition, there are functions for computing statistics for each column in a matrix.</a></div>
+      <div class="Input"><a name="149153">vector xmeans = @cmean(xmat)</a></div>
+      <div class="Body_Text"><a name="149154">computes the mean for each column of XMAT and assigns the values to the vector XMEANS.</a></div>
+      <div class="Input"><a name="149172">vector xmin = @cmin(xmat)</a></div>
+      <div class="Body_Text"><a name="149173">saves the column minimums in the vector XMIN. If, instead you wish to find the index of the minimum element for the column, you may use </a><span class="In-line_command">@cimin</span> instead:</div>
+      <div class="Input"><a name="149185">vector ximin = @cimin(xmat)</a></div>
+      <div class="Body_Text"><a name="149192">The column statistics are outlined in </a><span class="Link"><a href="functionref_home-Function_Summaries.html#1309370" title="Function Summaries">&#8220;Matrix Column Statistics&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="68953">Functions versus Commands</a></div>
+      <div class="Body_Text"><a name="68954">A </a><span class="Definition">function</span> generally takes arguments, and always returns a result. Functions are easily identified by the initial &#8220;@&#8221; character in the function name. </div>
+      <div class="Body_Text"><a name="68956">There are two basic ways that you can use a function. First, you may assign the result to an EViews object. This object may then be used in other EViews expressions, providing you with access to the result in subsequent calculations. For example:</a></div>
+      <div class="Input"><a name="68957">matrix y = @transpose(x)</a></div>
+      <div class="Body_Text"><a name="68958">stores the transpose of matrix </a><span class="EViews_Name">X</span> in the matrix <span class="EViews_Name">Y</span>. Since <span class="EViews_Name">Y</span> is a standard EViews matrix, it may be used in all of the usual expressions.</div>
+      <div class="Body_Text"><a name="68959">Second, you may use a function as part of a matrix expression. Since the function result is used </a><span class="Definition">in-line</span>, it will not be assigned to a named object, and will not be available for further use. For example, the command:</div>
+      <div class="Input"><a name="68960">scalar z = vec1*@inverse(v1+v2)*@transpose(vec1)</a></div>
+      <div class="Body_Text"><a name="68961">uses the results of the </a><span class="In-line_command">@inverse</span> and <span class="In-line_command">@transpose</span> functions in forming the scalar expression assigned to <span class="EViews_Name">Z</span>. These function results will not be available for subsequent computations.</div>
+      <div class="Body_Text"><a name="68962">By contrast, a </a><span class="Definition">command</span> takes object names and expressions as arguments, and operates on the named objects. Commands do not return a value. </div>
+      <div class="Body_Text"><a name="68964">Commands, which do not have a leading &#8220;@&#8221; character, must be issued alone on a line, and may not be used as part of a matrix expression. For example, to convert a series </a><span class="EViews_Name">X</span> to a vector <span class="EViews_Name">V1</span>, you would enter:</div>
+      <div class="Input"><a name="68965">stom(x, v1)</a></div>
+      <div class="Body_Text"><a name="68966">Because the command does not return any values, it may not be used in a matrix expression.</a></div>
+      <div class="Heading_4"><a name="68970">NA Handling</a></div>
+      <div class="Body_Text"><a name="68971">As noted above, most of the methods of moving data from series and groups into matrix objects will automatically drop observations containing missing values. It is still possible, however, to encounter matrices which contain missing values.</a></div>
+      <div class="Body_Text"><a name="68972">For example, the automatic NA removal may be overridden using the </a><span class="In-line_command">stomna</span> command. Additionally, some of the element operators may generate missing values as a result of standard matrix operations. For example, taking element-by-element logarithms of a matrix using <span class="In-line_command">@log</span> will generate NAs for all cells containing nonpositive values.</div>
+      <div class="Body_Text"><a name="68976">EViews follows two simple rules for handling matrices that contain NAs. For all operators, commands, and functions (</a><span class="Emphasis">with the exception of the descriptive statistics functions)</span>, EViews works with the full matrix object, processing NAs as required. For descriptive statistic functions, EViews automatically drops NAs when performing the calculation. These rules imply the following:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68977">Matrix operators will generate NAs where appropriate. Adding together two matrices that contain NAs will yield a matrix containing NAs in the corresponding cells. Multiplying two matrices will result in a matrix containing NAs in the appropriate rows and columns.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68978">All matrix algebra functions and commands will generate NAs, since these operations are undefined. For example, the Cholesky factorization of a matrix that contains NAs will contain NAs.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68979">All utility functions and commands will work as before, with NAs treated like any other value. Copying the contents of a vector into a matrix using </a><span class="In-line_command_link"><a href="commandcmd-colplace.html#3076362" title="colplace">colplace</a></span> will place the contents, including NAs, into the target matrix.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68980">All of the matrix element functions will propagate NAs when appropriate. Taking the absolute value of a matrix will yield a matrix containing absolute values for non-missing cells and NAs for cells that contain NAs.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68981">The descriptive statistics functions are based upon the non-missing subset of the elements in the matrix. You can always find out how many values were used in the computations by using the </a><span class="In-line_input">@obs</span> or the <span class="In-line_input">@nas</span> functions.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

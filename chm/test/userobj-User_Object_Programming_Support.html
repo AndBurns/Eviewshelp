@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>User Object Programming Support</title>
+    <link rel="StyleSheet" href="css/userobj.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="userobj-Defining_a_Registered_User_Object_Class.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="optimize_cr-User-Defined_Optimization.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="userobj-User_Objects.html">User Objects</a> : User Object Programming Support</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="411600">User Object Programming Support</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#410902">Declaration </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#436782">Registration</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#436479">View and Procs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#436643">Data Members</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="411601">EViews offers several programming language features that will aid you in creating, registering and working with user objects.</a></div>
+      <div class="Body_Text"><a name="434984">Note that there is additional programming language support for creating the programs that will be used to define your user object. These features are described in </a><span class="Link"><a href="addins-Add-ins_Design_Support.html#395090" title="Add-ins Design Support">&#8220;Add-ins Design Support&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="410902">Declaration </a></div>
+      <div class="Body_Text"><a name="410903">The </a><span class="In-line_command">userobj</span> command is used to create a new, unregistered user object as in</div>
+      <div class="Input"><a name="435227">userobj </a><span class="Argument">myobject</span></div>
+      <div class="Body_Text"><a name="435229">where </a><span class="Argument">myobject </span>is the name of the object to be created. A userobj created using this command will be empty, and will have no constructor or defined views and procs defined.</div>
+      <div class="Body_Text"><a name="438020">To declare a registered user object, you will use the name of the class followed by the name of the object: </a></div>
+      <div class="Indented"><span class="Argument"><a name="438021">userobj_class_name(options)</a></span> <span class="Argument">myobject [args]</span></div>
+      <div class="Body_Text"><a name="438022">Depending on how the user object is designed, the declaration program may use </a><span class="Argument">options</span> and additional arguments <span class="Argument">args</span> when running the constructor program.</div>
+      <div class="Body_Text"><a name="441043">See </a><span class="In-line_command_link"><a href="userobjcmd-userobj_2.html#114633" title="userobj">Userobj::userobj</a></span>.</div>
+      <div class="Heading_4"><a name="436782">Registration</a></div>
+      <div class="Body_Text"><a name="410946">The </a><span class="In-line_command">adduo</span> command may be used to register a user object, as in</div>
+      <div class="Input"><a name="436764">adduo(name="roll", version="1.0", desc="Rolling regression object") ./rolldef.ini</a></div>
+      <div class="Body_Text"><a name="436757">You may use the command to specify the object definition file, path, description, version number, documentation file, XML file, etc.</a></div>
+      <div class="Body_Text"><a name="441054">See </a><span class="In-line_command_link"><a href="commandcmd-adduo.html#2485815" title="adduo">adduo</a></span>.</div>
+      <div class="Heading_4"><a name="436479">View and Procs</a></div>
+      <div class="Body_Text"><a name="436483">Each type of user object will have its own views and procs:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="436484">All user objects provide a small number of generic built-in views and procs. For example, the standard EViews </a><span class="In-line_command_link"><a href="userobjcmd-label.html#116398" title="label">label</a></span> view for viewing and modifying the label contents and the <span class="In-line_command_link"><a href="userobjcmd-display.html#114472" title="display">display</a></span> view for showing output in the object window are supported.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="436485">All user objects support the </a><span class="In-line_command_link"><a href="userobjcmd-add.html#114417" title="add">add</a></span> and <span class="In-line_command_link"><a href="userobjcmd-drop.html#115717" title="drop">drop</a></span> procs which may be used to populate the user object, and the <span class="In-line_command_link"><a href="userobjcmd-extract.html#114524" title="extract">extract</a></span> proc may be employed to extract objects into the workfile. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="436545">In addition, registered user objects may provide custom views and procs. You should view the specific user object documentation file for details.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="436668">As with any EViews object, you may access the views and procs of the user object using the object </a><span class="Menu_Item">View</span> or <span class="Menu_Item">Proc</span> menu, or via the command line using the standard syntax:</div>
+      <div class="Indented"><span class="Argument"><a name="436669">myobject</a></span>.<span class="Argument">view_name(options)</span> <span class="Argument">[args]</span></div>
+      <div class="Indented"><span class="Argument"><a name="436670">myobject</a></span>.<span class="Argument">proc_name</span>(<span class="Argument">options</span>) <span class="Argument">[args]</span></div>
+      <div class="Body_Text"><a name="441094">See </a><span class="Link"><a href="userobjcmd-Userobj.html#111720" title="Userobj">&#8220;User Object Views&#8221;</a></span> and <span class="Link"><a href="userobjcmd-Userobj.html#111857" title="Userobj">&#8220;User Object Procs&#8221;</a></span> for a listing of the built-in views and procs.</div>
+      <div class="Heading_4"><a name="436643">Data Members</a></div>
+      <div class="Body_Text"><a name="436644">The </a><span class="In-line_command">@hasmember(obname)</span> function, available as a data member for all user objects, returns a boolean value depending on whether an object called <span class="In-line_input">obname</span> currently exists inside the User Object. </div>
+      <div class="Body_Text"><a name="436645">The </a><span class="In-line_command">@members</span> data member returns a space delimited string containing a list of all objects currently inside the user object.</div>
+      <div class="Body_Text"><a name="433365">See </a><span class="Link"><a href="userobjcmd-Userobj.html#111691" title="Userobj">&#8220;User Object Data Members&#8221;</a></span>.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

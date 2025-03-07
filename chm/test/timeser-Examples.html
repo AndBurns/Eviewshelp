@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/timeser.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="timeser-Equation_Diagnostics.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="timeser-Additional_Topics.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="timeser-Time_Series_Regression.html">Time Series Regression</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="231781">Examples</a></div>
+      <div class="Body_Text"><a name="230881">To illustrate the estimation of ARIMA and ARFIMA specifications in EViews we consider examples from Sowell (1992a) which model the natural logarithm of postwar quarterly U.S. real GDP from 1947q1 to 1989q4. Sowell estimates a number of models which are compared using AIC and SIC. We will focus on the ARMA(3, 2) and ARFIMA(3, <img class="Default EquationGraphic" src="images/timeser.033.07.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, 2) specifications (Table 2, p. 288 and Table 3, p. 289).</a></div>
+      <div class="Body_Text"><a name="231259">To estimate the ARMA(3, 2) we open an equation dialog by selecting </a><span class="Menu_Item">Object/New Object/Equation</span>, by selecting <span class="Menu_Item">Quick/Estimate Equation...</span>, or by typing the command keyword <span class="In-line_command">equation</span> in the command line. EViews will display the least squares dialog:</div>
+      <div class="Picture"><a name="231765"><img class="Default" src="images/timeser.033.07.02.jpg" width="100%" style="left: 0.0pt; max-height: 439px; max-width: 504px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="231115">We enter the expression for the dependent variable, followed by the AR and MA terms using ranges that include all of the desired terms, and C to indicate that we wish to include an intercept. Next, we click on the </a><span class="Menu_Item">Options</span> tab to display the estimation settings.</div>
+      <div class="Picture"><a name="232269"><img class="Default" src="images/timeser.033.07.03.jpg" width="100%" style="left: 0.0pt; max-height: 450px; max-width: 489px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="232270">First, we instruct EViews to compute coefficient standard errors using the observed Hessian by setting the Information matrix dropdown to </a><span class="Menu_Item">Hessian - observed</span>. In addition, we set the <span class="Menu_Item">Optimization method</span> to <span class="Menu_Item">BFGS</span>, the <span class="Menu_Item">Convergence tolerance</span> to &#8220;1e-8&#8221;, and the <span class="Menu_Item">ARMA Method</span> to <span class="Menu_Item">ML</span>. Click on <span class="Menu_Item">OK</span> to estimate the model.</div>
+      <div class="Body_Text"><a name="233272">EViews will perform the iterative maximum likelihood estimation using BFGS and will display the estimation results:</a></div>
+      <div class="Picture"><a name="233273"><img class="Default" src="images/timeser.033.07.04.jpg" width="100%" style="left: 0.0pt; max-height: 510px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="233274">The top portion of the output displays information about the estimation method, optimization, and covariance calculation.</a></div>
+      <div class="Body_Text"><a name="234620">The next section contains the coefficient estimates, standard errors, </a><span class="In-line_math">t</span>-statistics and corresponding <span class="In-line_math">p</span>-value. (It is worth pointing out that the reported ARMA coefficients use a different sign convention than those in Sowell so that the ARMA coefficients all have the opposite sign). </div>
+      <div class="Body_Text"><a name="238439">Notice that since we estimated the model using ML, EViews displays the estimate of the error variance as one of the estimated coefficients. You should be aware that the EViews reported </a><span class="In-line_math">p</span>-value for SIGMASQ is for the two-sided test, despite the fact that SIGMASQ must be non-negative. (If desired, you may use the reported coefficient, standard error, and the @CTDIST function to compute the appropriate one-sided <span class="In-line_math">p</span>-value.)</div>
+      <div class="Body_Text"><a name="235456">The final section shows the inverted AR and MA roots.</a></div>
+      <div class="Body_Text"><a name="261430">It may be instructive to compare these results to those obtained from an alternative conditional least squares approach to estimating the specification. To reestimate your equation using CLS, click on the </a><span class="Menu_Item">Estimate</span> button to bring up the dialog, then on the <span class="Menu_Item">Options</span> tab to show the estimation options. In the <span class="Menu_Item">ARMA</span> section of the page, we have:</div>
+      <div class="Picture"><a name="261434"><img class="Default" src="images/timeser.033.07.05.jpg" width="100%" style="left: 0.0pt; max-height: 155px; max-width: 208px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="261447">Select </a><span class="Menu_Item">CLS</span> in the <span class="Menu_Item">Method</span> dropdown, and click on <span class="Menu_Item">OK</span> to estimate the new specification.</div>
+      <div class="Body_Text"><a name="236133">Click on </a><span class="Menu_Item">OK</span> to accept the changes and re-estimate the model.</div>
+      <div class="Picture"><a name="238529"><img class="Default" src="images/timeser.033.07.06.jpg" width="100%" style="left: 0.0pt; max-height: 514px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="238624">The top of the new equation output now reports that estimation was performed using CLS and that the MA errors were initialized using backcasting. Despite the different objectives, we see that the CLS ARMA coefficient estimates are generally quite similar to those obtained from exact ML estimation. Lastly, we note that the estimate of the variance is not reported as part of the coefficient output for CLS estimation. </a></div>
+      <div class="Body_Text"><a name="238540">Next, following Sowell, we estimate an ARFIMA(3, <img class="Default EquationGraphic" src="images/timeser.033.07.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, 2). Once again, click on the </a><span class="Menu_Item">Estimate</span> button to bring up the dialog:</div>
+      <div class="Picture"><a name="237046"><img class="Default" src="images/timeser.033.07.08.jpg" width="100%" style="left: 0.0pt; max-height: 448px; max-width: 487px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="236963">and add the special </a><span class="In-line_command">d</span> keyword to the list of regressors to tell EViews that you wish to estimate the fractional integration parameter. Click on <span class="Menu_Item">OK</span> to estimate the updated equation.</div>
+      <div class="Picture"><a name="237574"><img class="Default" src="images/timeser.033.07.09.jpg" width="100%" style="left: 0.0pt; max-height: 536px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="237068">Notice first that EViews has switched from CLS estimation to ML since ARFIMA models may only be estimated using ML or GLS.</a></div>
+      <div class="Body_Text"><a name="238863">Turning to the estimate of the fractional differencing parameter, we see that it is negative and statistically significantly different from zero at the 5% level. Thus, we can reject the unit root hypothesis under this specification. Alternately, we cannot reject the time trend null hypothesis that <img class="Default EquationGraphic" src="images/timeser.033.07.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 73px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="261560">(Note: the results reported in Sowell differ slightly, presumably due to differences in the nonlinear optimization procedure in general, and the estimate of the observed Hessian in particular&#8212;for what it is worth, the EViews likelihood is slightly higher than the likelihood reported by Sowell. Notably, Sowell&#8217;s conclusions differ slightly from than those outlined here, as he finds that the unit root and trend hypotheses are both consistent with the ARFIMA estimates. Sowell does not reject the zero null at the 5% level, but does reject at the 10% level. See Sowell for detailed interpretation of results.)</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

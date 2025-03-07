@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Control of Execution</title>
+    <link rel="StyleSheet" href="css/cprogram.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cprogram-Program_Options.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-Multiple_Program_Files.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cprogram-EViews_Programming.html">EViews Programming</a> : Control of Execution</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="42738">Control of Execution</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#698">IF Statements</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#830">The FOR Loop</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#846">FOR Loops with Numerical Control Variables or Scalars</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#968">FOR Loops with String Variables and String Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#189041">The WHILE Loop</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#42840">Execution Errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#42850">Handling Errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#1098">Stopping Programs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#189080">Exiting Loops</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="7997">EViews provides you with several ways to control the execution of commands in your programs. Controlling execution in your program means that you can execute commands selectively or repeatedly under changing conditions. The tools for controlling execution will be familiar from other computer languages.</a></div>
+      <div class="Heading_4"><a name="698">IF Statements</a></div>
+      <div class="Body_Text"><a name="700">There are situations where you may want to execute commands only if some condition is satisfied. EViews uses IF and ENDIF, or IF, ELSE, and ENDIF statements to indicate the condition to be met and the commands to be executed.</a></div>
+      <div class="Body_Text"><a name="183366">An IF statement starts with the </a><span class="In-line_command">if</span> keyword, followed by an expression for the condition, and then the word <span class="In-line_command">then</span>. You may use AND/OR statements in the condition, using parentheses to group parts of the statement as necessary. </div>
+      <div class="Body_Text"><a name="103631">All comparisons in the IF statement follow the rules outlined in </a><span class="Link"><a href="dataapp-Strings.html#92523" title="Strings">&#8220;String Relational Operators&#8221;</a></span> and in <span class="Link"><a href="workdata-Numeric_Expressions.html#160599" title="Numeric Expressions">&#8220;Numeric Relational Operators&#8221;</a></span>You may perform caseless comparison using the <span class="In-line_command">@upper</span> or <span class="In-line_command">@lower</span> string functions as in</div>
+      <div class="Input"><a name="199308">if (@lower(%x) = "abc") then</a></div>
+      <div class="Body_Text"><a name="199309">or</a></div>
+      <div class="Input"><a name="199310">if (@upper(%x) = "ABC") then</a></div>
+      <div class="Body_Text"><a name="704">If the expression is true, all of the commands until the matching </a><span class="In-line_command">endif</span> are executed. If the expression is false, all of these commands are skipped. For example,</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="143877">if !stand=1 or (!rescale=1 and !redo=1) then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="143878">	series gnpstd = gnp/sqr(gvar) </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="143879">	series constd = cons/sqr(cvar)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="143874">endif</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="714">if !a&gt;5 and !a&lt;10 then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="716">	smpl 1950q1 1970q1+!a</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="718">endif</a></div>
+      <div class="Body_Text"><a name="183721">only generates the series GNPSTD and CONSTD and sets the sample if the corresponding IF statements are true. Note that we have indented the lines between the if and the endif statements. The indentation is added for program clarity and has no effect on the execution of the program lines.</a></div>
+      <div class="Body_Text"><a name="183517">The expression to be tested may also take a numerical value. In this case, 0 and NA are equivalent to false and any other non-zero value evaluates to true. For example,</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="720">if !scale then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="722">	series newage = age/!scale</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="724">endif</a></div>
+      <div class="Body_Text"><a name="732">executes the series statement if !SCALE is a non-missing, non-zero value.</a></div>
+      <div class="Body_Text"><a name="184010">An IF statement may include a matching ELSE clause containing commands to be executed if the condition is FALSE. If the condition is true, all of the commands up to the keyword </a><span class="In-line_command">else</span> will be executed. If the condition is FALSE, all of the commands between <span class="In-line_command">else</span> and <span class="In-line_command">endif</span> will be executed. For example:</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="734">if !scale&gt;0 then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="736">	series newage = age/!scale</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="738">else</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="740">	series newage = age</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="742">endif</a></div>
+      <div class="Body_Text"><a name="114032">It is worth noting that this example performs a conditional recode in which the series NEWAGE is assigned using one expression if a condition is true, and a different expression otherwise. EViews provides a built-in </a><span class="In-line_command">@recode</span> function for performing this type of evaluation; see <span class="In-line_command_link"><a href="functionref_r-@recode.html#1210940" title="@recode">@recode</a></span>.</div>
+      <div class="Body_Text"><a name="744">IF statements may also be applied to string variables:</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="746">if %0="CA" or %0="IN" then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="748">	series stateid = 1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="750">else</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="752">	if %0="MA" then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="754">		series stateid=2</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="756">	else</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="758">		if %0="IN" then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="52425">			series stateid=3</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="52426">		endif</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="52427">	endif</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="766">endif</a></div>
+      <div class="Body_Text"><a name="103876">Note that the nesting of our comparisons does not cause any difficulties.</a></div>
+      <div class="Body_Text"><a name="103878">You should note when using the IF statement with series or matrix objects that the comparison is defined on the </a><span class="Emphasis">entire</span> object and will evaluate to false unless <span class="Emphasis">every element of the element-wise comparison</span> is true. Thus, if <span class="EViews_Name">X</span> and <span class="EViews_Name">Y</span> are series, the IF statement</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="20241">if x&lt;&gt;y then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="20246">	</a><span class="Emphasis">[some program lines]</span> </div>
+      <div class="Multi-line_Input_With_Tabs"><a name="20247">endif</a></div>
+      <div class="Body_Text"><a name="20242">evaluates to false if </a><span class="Emphasis">any</span> element of <span class="EViews_Name">X</span> does not equal the corresponding value of <span class="EViews_Name">Y</span> in the default sample. If <span class="EViews_Name">X</span> and <span class="EViews_Name">Y</span> are identically sized vectors or matrices, the comparison is over each of the elements <span class="EViews_Name">X</span> and <span class="EViews_Name">Y</span>. This element-wise comparison is described in greater detail in <span class="Link"><a href="cmatrix-Matrix_Expressions.html#68912" title="Matrix Expressions">&#8220;Relational Operators (=, &gt;, &gt;=, &lt;, &lt;=, &lt;&gt;)&#8221;</a></span>. </div>
+      <div class="Body_Text"><a name="175219">If you wish to operate on individual elements of a series on the basis of element-wise conditions, you should use the </a><span class="In-line_command">@recode</span> function or use <span class="In-line_command">smpl</span> statements to set the observations you wish to change. Element-wise operations on a vector or matrix should use comparisons of individual element comparisons</div>
+      <div class="Input"><a name="184406">if x(3)=7 then</a></div>
+      <div class="Multi-line_Input"><a name="184425">	x(3) = 2</a></div>
+      <div class="Input"><a name="184436">endif</a></div>
+      <div class="Body_Text"><a name="184443">or the element-wise matrix functions (</a><span class="Link"><a href="matrixref-Matrix_Function_Summary.html#1190943" title="Matrix Function Summary">&#8220;Matrix Element&#8221;</a></span>).</div>
+      <div class="Heading_4"><a name="830">The FOR Loop</a></div>
+      <div class="Body_Text"><a name="832">The FOR loop allows you to repeat a set of commands for different values of numerical or string variables. The FOR loop begins with a </a><span class="In-line_input">for</span> statement and ends with a <span class="In-line_command">next</span> statement. Any number of commands may appear between these two statements.</div>
+      <div class="Body_Text"><a name="834">The syntax of the FOR statement differs depending upon whether it uses numerical variables or string variables.</a></div>
+      <div class="Heading_5"><a name="846">FOR Loops with Numerical Control Variables or Scalars</a></div>
+      <div class="Body_Text"><a name="848">To repeat statements for different values of a control variable, you should follow the for keyword by a control variable initialization, the word </a><span class="In-line_input">to</span>, and then an ending value. After the ending value you may include the word <span class="In-line_input">step</span> followed by a number indicating an amount to change the control variable each time the loop is executed. If you don&#8217;t include <span class="In-line_command">step</span>, the step is assumed to be 1. Consider, for example the loop:</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="850">for !j=1 to 10</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="852">	series decile{!j} = (income&lt;level{!j})</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="854">next</a></div>
+      <div class="Body_Text"><a name="119585">In this example, </a><span class="EViews_Name">step</span>=1 and the variable !<span class="EViews_Name">j</span> is twice used as a replacement variable, first for the ten series declarations DECILE1 through DECILE10 and for the ten variables LEVEL1 through LEVEL10.</div>
+      <div class="Body_Text"><a name="119610">We may add the </a><span class="In-line_command">step</span> keyword and value to the FOR loop to modify the step:</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="119611">for !j=10 to 1 step -1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="119612">	series rescale{!j}=original/!j</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="119613">next</a></div>
+      <div class="Body_Text"><a name="119614">In this example, the step is -1, and !</a><span class="EViews_Name">J </span>is used as a replacement variable in naming the ten constructed series <span class="EViews_Name">RESCALE10</span> through <span class="EViews_Name">RESCALE1</span> and as a control variable scalar divisor in the series <span class="EViews_Name">ORIGINAL</span>.</div>
+      <div class="Body_Text"><a name="119586">The commands inside the FOR loop are first executed for the initial control value (unless that value is already beyond the terminal value). After the initial execution, the control variable is incremented by </a><span class="In-line_input">step</span> and EViews compares the new control variable value to the limit. If the limit is exceeded, execution stops.</div>
+      <div class="Body_Text"><a name="872">One important use of FOR loops with control variables is to change the workfile sample using a </a><span class="In-line_command">smpl</span> command. If you add a control variable to a date in a <span class="In-line_command">smpl</span> command statement, you will get a new date as many observations forward as the current value of the control variable. Here is a FOR loop that gradually increases the size of the sample and estimates a recursive regression:</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="874">for !horizon=10 to 72</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="118739">	smpl 1970m1 1970m1+!horizon</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="118740">	equation eq{!horizon}.ls sales c orders</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="118741">next</a></div>
+      <div class="Body_Text"><a name="886">One other important case uses loops and control variables to access elements of a matrix object. For example,</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="888">!rows = @rows(vec1)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="43376">vector cumsum1 = vec1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="43377">for !i=2 to !rows</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="43378">	cumsum1(!i) = cumsum1(!i-1) + vec1(!i) </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="43379">next</a></div>
+      <div class="Body_Text"><a name="43380">computes the cumulative sum of the elements in the vector </a><span class="EViews_Name">VEC1</span> and saves it in the vector <span class="EViews_Name">CUMSUM1</span>. </div>
+      <div class="Body_Text"><a name="43351">To access an individual element of a series, you will need to use the </a><span class="In-line_command">@elem</span> function and <span class="In-line_command">@otod</span> to get the desired element</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="43384">for !i=2 to !rows</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="43385">	cumsum1(!i) = @elem(ser1, @otod(!i)) </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="43386">next</a></div>
+      <div class="Body_Text"><a name="904">The </a><span class="In-line_command">@otod</span> function returns the date associated with the observation index (counting from the beginning of the workfile), and the <span class="In-line_command">@elem</span> function extracts the series element associated with a given date.</div>
+      <div class="Body_Text"><a name="43415">You may nest FOR loops to contain loops within loops. The entire inner FOR loop is executed for each successive value of the outer FOR loop. For example:</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="906">matrix(25,10) xx</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="908">for !i=1 to 25</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="910">	for !j=1 to 10</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="912">		xx(!i,!j)=(!i-1)*10+!j</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="914">	next</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="918">next</a></div>
+      <div class="Body_Text"><a name="920">You should avoid changing the control variable within a FOR loop. Consider, for example, the commands:</a></div>
+      <div class="Program_Comment"><a name="922">' potentially confusing loop (avoid doing this)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="924">for !i=1 to 25</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="926">	vector a!i</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="928">	!i=!i+10</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="930">next</a></div>
+      <div class="Body_Text"><a name="932">Here, both the FOR assignment and the assignment statement within the loop change the value of the control variable !</a><span class="EViews_Name">i</span>. Loops of this type are difficult to follow and may produce unintended results. If you find a specific need to change a control variable inside the loop, you should consider using a WHILE loop (<span class="Link"><a href="#189041" title="Control of Execution">&#8220;The WHILE Loop&#8221;</a></span>) as an alternative to the FOR loop.</div>
+      <div class="Body_Text"><a name="938">You may execute FOR loops with scalars instead of control variables. However, you must first declare the scalar, and you may not use the scalar as a replacement variable. For example,</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="940">scalar i</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="942">scalar sum = 0</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="944">vector (10) x</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="946">for i=1 to 10</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="948">	x(i) = i</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="950">	sum = sum + i</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="952">next</a></div>
+      <div class="Body_Text"><a name="954">In this example, the scalar objects </a><span class="EViews_Name">I</span> and <span class="EViews_Name">SUM</span> remain in the workfile after the program has finished running, unless they are explicitly deleted. When using scalar objects as the looping variable you should be careful that the scalar is always available white the FOR loop is active. You should not, for example, delete the scalar or change the workfile page within the FOR loop.</div>
+      <div class="Heading_5"><a name="968">FOR Loops with String Variables and String Objects</a></div>
+      <div class="Body_Text"><a name="970">To repeat statements for different values of a string variable, you may use the FOR loop to let a string variable range over a list of string values. You should list the FOR keyword, followed by the name of the string program variable, followed by the list of values. For example,</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="972">for %y gdp gnp ndp nnp</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="974">	equation {%y}trend.ls {%y} c {%y}(-1) time</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="976">next</a></div>
+      <div class="Body_Text"><a name="978">executes the commands</a></div>
+      <div class="Multi-line_Input"><a name="980">equation gdptrend.ls gdp c gdp(-1) time</a></div>
+      <div class="Multi-line_Input"><a name="982">equation gnptrend.ls gnp c gnp(-1) time</a></div>
+      <div class="Multi-line_Input"><a name="984">equation ndptrend.ls ndp c ndp(-1) time</a></div>
+      <div class="Multi-line_Input"><a name="986">equation nnptrend.ls nnp c nnp(-1) time</a></div>
+      <div class="Body_Text"><a name="118679">You may include multiple string variables in the same FOR statement&#8212;EViews will process the string values in sets. For example, we may define a loop with list three string variables:</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="990">for %1 %2 %3 1955q1 1960q4 early 1970q2 1980q3 mid 1975q4 1995q1 late</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="992">	smpl %1 %2</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="994">	equation {%3}eq.ls sales c orders</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="996">next</a></div>
+      <div class="Body_Text"><a name="188661">In this case, the elements of the list are taken in groups of three. The loop is executed three times for the different sample pairs and equation names:</a></div>
+      <div class="Multi-line_Input"><a name="1000">smpl 1955q1 1960q4</a></div>
+      <div class="Multi-line_Input"><a name="1002">equation earlyeq.ls sales c orders</a></div>
+      <div class="Multi-line_Input"><a name="1004">smpl 1970q2 1980q3</a></div>
+      <div class="Multi-line_Input"><a name="1006">equation mideq.ls sales c orders</a></div>
+      <div class="Multi-line_Input"><a name="1008">smpl 1975q4 1995q1</a></div>
+      <div class="Multi-line_Input"><a name="1010">equation lateeq.ls sales c orders</a></div>
+      <div class="Body_Text"><a name="118808">Both string objects and replacement variables may be used to specify a list for use in loops, by surrounding the object name or replacement variable with curly braces (&#8220;{ }&#8221;). For example, </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="118813">string dates = "1960m1 1960m12"</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="118829">%label = "year1"</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="118819">for %1 %2 %3 {dates} {%label}</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="118814">	smpl {%1} {%2}</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="118815">	equation {%3}eq.ls sales c orders</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="118868">next</a></div>
+      <div class="Body_Text"><a name="118869">finds the three strings for the loop by taking two elements of the string list and one element of the string variable:</a></div>
+      <div class="Multi-line_Input"><a name="118848">smpl 1960m1 1960m12</a></div>
+      <div class="Multi-line_Input"><a name="118849">equation year1eq.ls sales c orders</a></div>
+      <div class="Body_Text"><a name="118809">Note the difference between using a FOR loop with multiple string variables and using nested FOR loops. In the multiple string variable case, all string variables are advanced at the same time, while with nested loops, the inner variable is advanced over all choices, for each value of the outer variable. For example:</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1014">!eqno = 1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1016">for %1 1955q1 1960q4 </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1018">	for %2 1970q2 1980q3 1975q4 </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="207572">		smpl %1 %2</a></div>
+      <div class="Program_Comment"><a name="207573">		'form equation name as eq1 through eq6</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="207574">		equation eq{!eqno}.ls sales c orders</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1026">		!eqno=!eqno+1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1028">	next</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1030">next</a></div>
+      <div class="Body_Text"><a name="189036">Here, the equations are estimated over the samples 1955Q1&#8211;1970Q2 for EQ1, 1955Q1&#8211;1980Q3 for EQ2, 1955Q1&#8211;1975Q4 for EQ3, 1960Q4&#8211;1970Q2 for EQ4, 1960Q4&#8211;1980Q3 for EQ5, and 1960Q4&#8211;1975Q4 for EQ6. </a></div>
+      <div class="Body_Text"><a name="189037">Note that you may use the </a><span class="In-line_command">exitloop</span> command to exit a FOR loop early. See <span class="Link"><a href="#189080" title="Control of Execution">&#8220;Exiting Loops&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="189041">The WHILE Loop</a></div>
+      <div class="Body_Text"><a name="1050">In some cases, we wish to repeat a series of commands several times, but only while one or more conditions are satisfied. Like the FOR loop, the WHILE loop allows you to repeat commands, but the WHILE loop provides greater flexibility in specifying the required conditions.</a></div>
+      <div class="Body_Text"><a name="1052">The WHILE loop begins with a </a><span class="In-line_command">while</span> statement and ends with a <span class="In-line_input">wend</span> statement. Any number of commands may appear between the two statements. WHILE loops can be nested.</div>
+      <div class="Body_Text"><a name="1056">The WHILE statement consists of the </a><span class="In-line_command">while</span> keyword followed by an expression involving a control variable or scalar object. The expression should have a logical (true/false) value or a numerical value. In the latter case, zero is considered false and any non-zero value is considered true. </div>
+      <div class="Body_Text"><a name="1058">If the expression is true, the subsequent statements, up to the matching </a><span class="In-line_input">wend</span>, will be executed, and then the procedure is repeated. If the condition is false, EViews will skip the following commands and continue on with the rest of the program following the <span class="In-line_input">wend</span> statement. For example:</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1060">!val = 1 </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1062">!a = 1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1064">while !val&lt;10000 and !a&lt;10</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1066">	smpl 1950q1 1970q1+!a</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1068">	series inc{!val} = income/!val</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1070">	!val = !val*10</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1072">	!a = !a+1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1074">wend</a></div>
+      <div class="Body_Text"><a name="1076">There are four parts to this WHILE loop. The first part is the initialization of the control variables used in the test condition. The second part is the WHILE statement which includes the test. The third part is the statements updating the control variables. Finally the end of the loop is marked by the word </a><span class="In-line_input">wend</span>. </div>
+      <div class="Body_Text"><a name="1080">Unlike a FOR statement, the WHILE statement does not update the control variable used in the test condition. You need to include an explicit statement inside the loop to change the control variable, or your loop will never terminate. Use the F1 key to break out of a program which is in an infinite loop.</a></div>
+      <div class="Body_Text"><a name="1082">Earlier, we cautioned against this behavior creating FOR loops that explicitly change the control variable inside the loop and offered an example to show the resulting lack of clarity </a><span class="Link"><a href="#920" title="Control of Execution">(here)</a></span>. Note that the equivalent WHILE loop provides a much clearer program:</div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1084">!i = 1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1086">while !i&lt;=25</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1088">	vector a{!i}</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1090">	!i = !i + 11</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1092">wend</a></div>
+      <div class="Body_Text"><a name="189174">Note that you may use the </a><span class="In-line_command">exitloop</span> command to exit a WHILE loop early. See <span class="Link"><a href="#189080" title="Control of Execution">&#8220;Exiting Loops&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="42840">Execution Errors</a></div>
+      <div class="Body_Text"><a name="42841">By default, EViews will stop executing after encountering any errors. You can instruct the program to continue running even if errors are encountered by changing the maximum error count from the </a><span class="Menu_Item">Run</span> dialog (see <span class="Link"><a href="cprogram-Program_Basics.html#9225" title="Program Basics">&#8220;Executing a Program&#8221;</a></span>), or by using the <span class="In-line_command_link"><a href="commandcmd-setmaxerrs.html#3080197" title="setmaxerrs">setmaxerrs</a></span> command inside a program.</div>
+      <div class="Heading_5"><a name="42850">Handling Errors</a></div>
+      <div class="Body_Text"><a name="189669">You may wish to perform different tasks when errors are encountered. For example, you may wish to skip a set of lines which accumulate estimation results when the estimation procedure generated errors, or you may wish to overwrite the default EViews error with one of your own, using the </a><span class="In-line_command_link"><a href="commandcmd-seterr.html#3080136" title="seterr">seterr</a></span> command.</div>
+      <div class="Body_Text"><a name="134185">EViews offers a number of different ways to test for and handle execution errors. For example, the </a><span class="In-line_command_link"><a href="functionref_l-@lasterrstr.html#1259719" title="@lasterrstr">@lasterrstr</a></span> command will return a string containing the previous line's error. If the previous line of your program did not error, this string will be empty. Alternatively you could use the <span class="In-line_command_link"><a href="functionref_e-@errorcount.html#1263549" title="@errorcount">@errorcount</a></span> function to check the number of errors currently encountered before and after a program line has been executed. </div>
+      <div class="Body_Text"><a name="42891">For example, to test whether the estimation of an equation generated an error, you can compare the number of errors before and after the command:</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="42892">!old_count = @errorcount</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="42901">equation eq1.ls y x c</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="42902">!new_count = @errorcount</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="207593">if !new_count &gt; !old_count then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="207594">	</a><span class="Argument">[various commands]</span> </div>
+      <div class="Multi-line_Input_With_Tabs"><a name="207595">endif</a></div>
+      <div class="Body_Text"><a name="42949">Here, we perform a set of commands only if the estimation of equation EQ1 incremented the error count.</a></div>
+      <div class="Body_Text"><a name="134205">For additional error handling functions, see </a><span class="Link"><a href="progref-Support_Commands.html#836494" title="Support Commands">&#8220;Support Commands&#8221;</a></span> and <span class="Link"><a href="progref-Support_Functions.html#836680" title="Support Functions">&#8220;Support Functions&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="1098">Stopping Programs</a></div>
+      <div class="Body_Text"><a name="1106">Occasionally, you may want to stop a program based on some conditions. To stop a program executing in EViews, use the </a><span class="In-line_input">stop</span> command. For example, suppose you write a program that requires the series <span class="EViews_Name">SER1</span> to have nonnegative values. The following commands check whether the series is nonnegative and halt the program if <span class="EViews_Name">SER1</span> contains any negative value: </div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1108">series test = (ser1&lt;0)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1110">if @sum(test) &lt;&gt; 0 then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1112">	stop</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1114">endif</a></div>
+      <div class="Body_Text"><a name="1116">Note that if </a><span class="EViews_Name">SER1</span> contains missing values, the corresponding elements of TEST will also be missing. But since the <span class="In-line_input">@sum</span> function ignores missing values, the program does not halt for <span class="EViews_Name">SER1</span> that has missing values, as long as there is no negative value. </div>
+      <div class="Heading_4"><a name="189080">Exiting Loops</a></div>
+      <div class="Body_Text"><a name="1128">Sometimes, you do not wish to stop the entire program when a condition is satisfied; you just wish to exit the current loop. The </a><span class="In-line_command">exitloop</span> command will exit the current <span class="In-line_input">for</span> or <span class="In-line_input">while</span> statement and continue running the program.</div>
+      <div class="Body_Text"><a name="1132">As a simple example, suppose you computed a sequence of LR test statistics </a><span class="EViews_Name">LR11</span>, <span class="EViews_Name">LR10</span>, <span class="EViews_Name">LR9</span>, ..., <span class="EViews_Name">LR1</span>, say to test the lag length of a VAR. The following program sequentially carries out the LR test starting from <span class="EViews_Name">LR11</span> and tells you the statistic that is first rejected at the 5% level: </div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1134">!df = 9</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1136">for !lag = 11 to 1 step -1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1138">	!pval = 1 - @cchisq(lr{!lag},!df)</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1140">	if !pval&lt;=.05 then</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1142">		exitloop</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1144">	endif</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1146">next</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="1148">scalar lag=!lag</a></div>
+      <div class="Body_Text"><a name="1150">Note that the scalar </a><span class="EViews_Name">LAG</span> has the value 0 if none of the test statistics are rejected.</div>
+      <div class="Body_Text"><a name="189989">If the </a><span class="In-line_command">exitloop</span> is issued inside nested loops it will stop execution of the innermost loop. Execution of the remaining loops is unaffected.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

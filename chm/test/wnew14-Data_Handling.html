@@ -1,0 +1,864 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Data Handling</title>
+    <link rel="StyleSheet" href="css/wnew14.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="wnew14-New_Features_in_EViews_14.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="wnew14-Utility_Functions.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">EViews 14 Help Topics : <a class="WebWorks_Breadcrumb_Link" href="wnew14-New_Features_in_EViews_14.html">New Features in EViews 14</a> : Data Handling</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="430996">Data Handling</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#430998">Statistics Canada (StatCan SDMX) Database Connectivity </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#431150">NOAA (National Oceanic And Atmospheric Administration)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#431178">Find Data By Location</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#431221">Locations From Stations</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#431046">Statistical Data and Metadata eXchange (SDMX) Databases</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#431082">Selecting a Database</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#431084">Categorized Datasets</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#431099">Non-Categorized Datasets</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#431107">Selecting Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#431269">JDemetra+ Seasonal Adjustment</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#431451">Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#431480">Boosted Hodrick-Prescott Filter</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="430998">Statistics Canada (StatCan SDMX) Database Connectivity </a></div>
+      <div class="Body_Text"><a name="430999">EViews 14 offers easy-to-use connectivity to online databases from Statistics Canada, the Canadian national statistical office through EViews&#8217; enhanced SDMX interface (</a><span class="Link"><a href="#431046" title="Data Handling">&#8220;Statistical Data and Metadata eXchange (SDMX) Databases&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="440537">StatCan SDMX is not available in EViews Standard Edition.</a></div>
+      <div class="Body_Text"><a name="431003">To begin, open the database windows by selecting </a><span style="font-weight: bold">File/Open Database</span> from the primary EViews menu, select <span class="Menu_Item">Statistics Canada SDMX Database </span>from the <span style="font-weight: bold">Database/File type</span> drop down menu,</div>
+      <div class="Picture"><a name="431007"><img class="Default" src="images/wnew14.003.2.01.jpg" width="100%" style="left: 0.0pt; max-height: 462px; max-width: 533px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431008">Click on </a><span class="Menu_Item">OK</span> to proceed and open the data browser</div>
+      <div class="Picture"><a name="431012"><img class="Default" src="images/wnew14.003.2.02.jpg" width="100%" style="left: 0.0pt; max-height: 433px; max-width: 704px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431013">The left-hand side of the data browser offers tree interface through which may navigate until you locate the desired dataset. </a></div>
+      <div class="Body_Text"><a name="431014">Alternately, you may use the </a><span style="font-weight: bold">Filter</span> edit box to input a keyword, enabling a search across all categories and datasets.</div>
+      <div class="Picture"><a name="431018"><img class="Default" src="images/wnew14.003.2.03.jpg" width="100%" style="left: 0.0pt; max-height: 405px; max-width: 670px; top: 0.0pt" alt="" /></a></div>
+      <div class="Picture"><a name="431019">&nbsp;</a></div>
+      <div class="Body_Text"><a name="431020">Once you locate the desired dataset, you can either double-click on the dataset in the list on the right section or select it and then click </a><span style="font-weight: bold">Next</span> to display the filter page.</div>
+      <div class="Body_Text"><a name="431021">Note that the StatCan SDMX databases offers a data browser on their official website that allows you to search for a dataset. Click on the </a><span style="font-weight: bold">Open in Browser</span> button, which will open a web browser window showing the official database website.</div>
+      <div class="Body_Text"><a name="431022">To enhance the performance of the data explorer interface, categorization information is cached when the interface is first loaded. While a remote possibility, the database information may be updated during your EViews session. To refresh the cache, you may click on circular arrow </a><span style="font-weight: bold">Refresh</span> button in the upper-right hand portion of the dialog.</div>
+      <div class="Picture"><a name="431026"><img class="Default" src="images/wnew14.003.2.04.jpg" width="100%" style="left: 0.0pt; max-height: 430px; max-width: 703px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431030">You may use the filter page to refine your search. See </a><span class="Link"><a href="#431107" title="Data Handling">&#8220;Selecting Series&#8221;</a></span> for additional detail. Once you have the data series desired, you may click on <span class="Menu_Item">Export to workfile </span>to download the data into an EViews workfile.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431037">See </a><span class="Link"><a href="database-Foreign_Format_Databases.html#58890" title="Foreign Format Databases">&#8220;Foreign Format Databases&#8221;</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431044">See also </a><span class="In-line_command_link"><a href="commandcmd-dbopen.html#2485382" title="dbopen">dbopen</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_4"><a name="431150">NOAA (National Oceanic And Atmospheric Administration)</a></div>
+      <div class="Body_Text"><a name="431151">The National Oceanic and Atmospheric Administration (NOAA) offers an extensive range of publicly available weather and climate datasets. For further details on NOAA data offerings, refer to:</a></div>
+      <div class="Indented" style="color: #0000ff; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="URL"><a href="https://www.ncdc.noaa.gov/cdo-web/webservices/v2#datasets" target="external_window" name="431153">https://www.ncdc.noaa.gov/cdo-web/webservices/v2#datasets</a></span></div>
+      <div class="Body_Text"><a name="431154">EViews 14 offers an all new interface that enables users to interact with EViews while simultaneously searching for data through the EDX dialog. This new NOAA database dialog includes a user-friendly table where all selected entries for import are recorded, facilitating the direct importation into a workfile. This process significantly enhances user workflow and efficiency, providing a seamless experience for data retrieval and integration into EViews.</a></div>
+      <div class="Body_Text"><a name="431155">To access the NOAA database, choose </a><span style="font-weight: bold">File/Open Database</span> from the main EViews menu, and then select <span class="Menu_Item">National Oceanic and Atmospheric Administration</span> from the <span style="font-weight: bold">Database/File type</span> drop down menu.</div>
+      <div class="Picture"><a name="431159"><img class="Default" src="images/wnew14.003.2.05.jpg" width="100%" style="left: 0.0pt; max-height: 460px; max-width: 531px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431160">When opening the NOAA database for the first time, you'll be asked to enter an API Key obtained from the National Oceanic and Atmospheric Administration.</a></div>
+      <div class="Body_Text"><a name="431162">To request an API Key visit: </a><span class="URL"><a href="https://www.ncdc.noaa.gov/cdo-web/token" target="external_window">https://www.ncdc.noaa.gov/cdo-web/token</a></span>.</div>
+      <div class="Body_Text"><a name="431163">Enter your API key and click </a><span style="font-weight: bold">OK</span>. The key will be saved as a user specific setting in your EViews &#8220;.ini&#8221; file. If you need to change the key later, select <span style="font-weight: bold">View/Preferences</span> from the EViews database menu to modify your settings.</div>
+      <div class="Picture"><a name="431167"><img class="Default" src="images/wnew14.003.2.06.jpg" width="100%" style="left: 0.0pt; max-height: 279px; max-width: 602px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431168">When you click on </a><span style="font-weight: bold">OK</span>, EViews will open a standard database window. </div>
+      <div class="Body_Text"><a name="431169">Click on </a><span style="font-weight: bold">Browse</span> to open the custom NOAA window:</div>
+      <div class="Picture"><a name="431173"><img class="Default" src="images/wnew14.003.2.07.jpg" width="100%" style="left: 0.0pt; max-height: 473px; max-width: 793px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431174">This custom interface will allow us to drill down through dataset, location, data type, and station selection to specify the data of interest.</a></div>
+      <div class="Body_Text"><a name="431175">When you first display this dialog, the </a><span class="Menu_Item">Selection</span> area will be empty. </div>
+      <div class="Body_Text"><a name="431176">To select the data, first specify a dataset using the </a><span style="font-weight: bold">Dataset drop </span>down menu. </div>
+      <div class="Body_Text"><a name="431177">You may then choose to </a><span style="font-weight: bold">Fi</span><span class="Menu_Item">nd Data by Location</span> by clicking on the <span class="Menu_Item">Find</span> button to select one or more locations from a list, or you elect to <span style="font-weight: bold">Load from Stations </span>by clicking on the <span class="Menu_Item">Load Stations</span> button to specify stations using Station IDs.</div>
+      <div class="Heading_5"><a name="431178">Find Data By Location</a></div>
+      <div class="Body_Text"><a name="431179">If you choose click on the </a><span class="Menu_Item">Find</span> button to <span style="font-weight: bold">Fi</span><span class="Menu_Item">nd Data by Location</span>, a dialog will be displayed to walk you through the selection process:</div>
+      <div class="Picture"><a name="431183"><img class="Default" src="images/wnew14.003.2.08.jpg" width="100%" style="left: 0.0pt; max-height: 540px; max-width: 666px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431184">The drop down menu at the top should be used to specify a </a><span style="font-weight: bold">Location Category</span> to browse: </div>
+      <div class="Picture"><a name="431188"><img class="Default" src="images/wnew14.003.2.09.jpg" width="100%" style="left: 0.0pt; max-height: 251px; max-width: 371px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431189">You may choose from a variety of location categories including, for example, </a><span class="Menu_Item">City</span>, <span class="Menu_Item">Climate Region</span>, <span class="Menu_Item">County</span>, <span class="Menu_Item">Hydrologic Region</span>, and <span class="Menu_Item">Zip Code</span>. </div>
+      <div class="Body_Text"><a name="431190">You can filter the displayed list of locations using a text string by entering the text in the </a><span class="Menu_Item">Filter by</span> edit field, and clicking on the <span class="Menu_Item">Filter</span> button.</div>
+      <div class="Body_Text"><a name="431191">Select the desired locations from the list and click </a><span style="font-weight: bold">Next</span> to continue.</div>
+      <div class="Body_Text"><a name="431192">If you select a single location, you will see a dialog prompting you to select specific data types for the selected location:</a></div>
+      <div class="Picture"><a name="431196"><img class="Default" src="images/wnew14.003.2.10.jpg" width="100%" style="left: 0.0pt; max-height: 542px; max-width: 667px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431197">You may use the filter to pare the list if desired. Click to select and deselect the entries.</a></div>
+      <div class="Body_Text"><a name="431198">If you selected multiple locations in the location step, a EViews will display a dialog with two tabs: a </a><span style="font-weight: bold">Shared</span> tab showing data types common to all of the locations, and an <span style="font-weight: bold">All Available</span> tab listing all available data types across all of the locations.</div>
+      <div class="Picture"><a name="431202"><img class="Default" src="images/wnew14.003.2.11.jpg" width="100%" style="left: 0.0pt; max-height: 542px; max-width: 663px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431203">Use the </a><span style="font-weight: bold">Filter</span> edit field and button to refine your search in the lists on both tabs, select the data types of interest, and click <span style="font-weight: bold">Next</span> to view the available NOAA stations.</div>
+      <div class="Body_Text"><a name="431204">In the next dialog, you will find the available stations that match the selected data types and locations.</a></div>
+      <div class="Picture"><a name="431208"><img class="Default" src="images/wnew14.003.2.12.jpg" width="100%" style="left: 0.0pt; max-height: 542px; max-width: 663px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431209">Choose the desired stations from which you want get data and the click </a><span style="font-weight: bold">Select</span>.</div>
+      <div class="Picture"><a name="431213"><img class="Default" src="images/wnew14.003.2.13.jpg" width="100%" style="left: 0.0pt; max-height: 266px; max-width: 451px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431214">You will be asked to select a date range in order to limit the data results. NOAA restricts requests for annual and monthly data to a ten-year range; all other frequencies are restricted to a one-year range.</a></div>
+      <div class="Body_Text"><a name="431215">Click on </a><span class="Menu_Item">OK</span> to continue and display the main NOAA dialog:</div>
+      <div class="Picture"><a name="431219"><img class="Default" src="images/wnew14.003.2.14.jpg" width="100%" style="left: 0.0pt; max-height: 436px; max-width: 775px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431220">You will see in the </a><span style="font-weight: bold">Selection</span> table the data you have just selected from your search. You can directly export these data to a workfile or find additional data before proceeding with the export. </div>
+      <div class="Heading_5"><a name="431221">Locations From Stations</a></div>
+      <div class="Body_Text"><a name="431222">If you select </a><span style="font-weight: bold">Load Stations</span>, instead of <span style="font-weight: bold">Find by Location</span>, the displayed dialog will contain a textbox where you can manually type or paste from the clipboard the station IDs from which you want to retrieve data:</div>
+      <div class="Picture"><a name="431226"><img class="Default" src="images/wnew14.003.2.15.jpg" width="100%" style="left: 0.0pt; max-height: 539px; max-width: 659px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431227">Click on </a><span class="Menu_Item">Next</span> to continue.</div>
+      <div class="Body_Text"><a name="431228">The next dialog will prompt you to select the data types. Once again, the dialog will feature one tab if there is a single location, or two tabs, a </a><span style="font-weight: bold">Shared</span> tab for data types common to all of the locations, and an <span style="font-weight: bold">All Available</span> tab for available data types across all of the locations.</div>
+      <div class="Picture"><a name="431232"><img class="Default" src="images/wnew14.003.2.16.jpg" width="100%" style="left: 0.0pt; max-height: 544px; max-width: 660px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431233">Select the desired data types and click </a><span style="font-weight: bold">Next</span> to display the next dialog where you will to select station and data type combinations:</div>
+      <div class="Picture"><a name="431237"><img class="Default" src="images/wnew14.003.2.17.jpg" width="100%" style="left: 0.0pt; max-height: 544px; max-width: 658px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431238">Click on </a><span style="font-weight: bold">Select</span> to continue to the final dialog where you will choose the date range:</div>
+      <div class="Picture"><a name="431242"><img class="Default" src="images/wnew14.003.2.18.jpg" width="100%" style="left: 0.0pt; max-height: 266px; max-width: 451px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431243">As before, note that NOAA restricts requests for annual and monthly data to a ten-year range; all other frequencies are restricted to a one-year range.</a></div>
+      <div class="Body_Text"><a name="431244">Click on </a><span class="Menu_Item">OK</span> to continue and display the main NOAA dialog:</div>
+      <div class="Picture"><a name="431248"><img class="Default" src="images/wnew14.003.2.19.jpg" width="100%" style="left: 0.0pt; max-height: 469px; max-width: 792px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431249">Click the </a><span style="font-weight: bold">Export to WorkFile</span> button to export the chosen data to either an existing or a new workfile.</div>
+      <div class="Picture"><a name="431253"><img class="Default" src="images/wnew14.003.2.20.jpg" width="100%" style="left: 0.0pt; max-height: 367px; max-width: 587px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431260">See </a><span class="Link"><a href="database-Foreign_Format_Databases.html#58890" title="Foreign Format Databases">&#8220;Foreign Format Databases&#8221;</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440897">See also </a><span class="In-line_command_link"><a href="commandcmd-dbopen.html#2485382" title="dbopen">dbopen</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_4"><a name="431046">Statistical Data and Metadata eXchange (SDMX) Databases</a></div>
+      <div class="Body_Text"><a name="431047">EViews 14 offers a new, graphical user interface (GUI) designed for navigation and retrieval of data from SDMX databases.</a></div>
+      <div class="Body_Text"><a name="431048">The GUI browser for SDMX has undergone improvements to enhance user interaction. The introduction of category-based search functionality allows users to select datasets by their topics of interest, enabling more efficient searches across categories. </a></div>
+      <div class="Body_Text"><a name="431049">Additionally, several enhancements have been made to the series visualization window, including an improved filter search that enables users to select filters before initiating a search, significantly enhancing the speed of the process compared to previous versions. Moreover, efficiency improvements in data loading have been implemented, resulting in more responsive data loading.</a></div>
+      <div class="Body_Text"><a name="431050">SDMX Databases contain a large range of publicly available data. EViews offers direct access to the following online SDMX databases:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431052">Eurostat (</a><span class="URL"><a href="http://ec.europa.eu/eurostat/data/database" target="external_window">http://ec.europa.eu/eurostat/data/database</a></span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431054">ECB (European Central Bank) (</a><span class="URL"><a href="http://ec.europa.eu/eurostat/data/database" target="external_window">http://ec.europa.eu/eurostat/data/database</a></span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431056">UN (United Nations) (</a><span class="URL"><a href="http://data.un.org/WS/" target="external_window">http://data.un.org/WS/</a></span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431058">IMF (International Monetary Fund)(</a><span class="URL"><a href="http://sdmxcentral.imf.org" target="external_window">http://sdmxcentral.imf.org</a></span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431060">OECD (Organisation for Economic Cooperation and Development) </a><span style="color: #0000ff"><a href="https://data-explorer.oecd.org/" target="external_window">(https://data&#8209;explorer.oecd.org/</a></span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431062">ABS (Australian Bureau of Statistics) (</a><span class="URL"><a href="http://abs.gov.au" target="external_window">http://abs.gov.au</a></span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431064">Deutsche Bundesbank (</a><span class="URL"><a href="http://api.statistiken.bundesbank.de" target="external_window">http://api.statistiken.bundesbank.de</a></span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431066">Insee (L&#8217;Institut national de la statistique et des études économiques) (</a><span class="URL"><a href="http://www.insee.fr/en/information/2868055" target="external_window">http://www.insee.fr/en/information/286805</a></span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431068">StatCan (Statistics Canada) </a>using SDMX Web Services (<span style="color: #0000ff"><a href="https://www150.statcan.gc.ca/n1/en/type/data" target="external_window">https://www150.statcan.gc.ca/n1/en/type/data</a></span>)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="431069">Please note that an internet connection is required to obtain SDMX online data. For more information on the datasets, please see the links above.</a></div>
+      <div class="Body_Text"><a name="431070">To begin, open the database windows by selecting </a><span style="font-weight: bold">File/Open Database</span> from the primary EViews menu, select the desired SDMX database from the <span style="font-weight: bold">Database/File type</span> drop down menu,</div>
+      <div class="Picture"><a name="431074"><img class="Default" src="images/wnew14.003.2.21.jpg" width="100%" style="left: 0.0pt; max-height: 460px; max-width: 534px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431075">and click on </a><span style="font-weight: bold">OK</span> to continue. </div>
+      <div class="Body_Text"><a name="431076">EViews displays the standard database dialog, indicating that you have an active connection to the data.</a></div>
+      <div class="Picture"><a name="431080"><img class="Default" src="images/wnew14.003.2.22.jpg" width="100%" style="left: 0.0pt; max-height: 298px; max-width: 558px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431081">Click on </a><span style="font-weight: bold">Browse</span> or <span style="font-weight: bold">Browse-Append</span> to open the database. </div>
+      <div class="Heading_5"><a name="431082">Selecting a Database</a></div>
+      <div class="Body_Text"><a name="431083">EViews offers one of two different interfaces for selecting a SDMX database: a tree structure navigator and filter for databases that offer dataset categorization information, and a simple scroll and filter interface for databases without categorization information.</a></div>
+      <div class="Heading_6"><a name="431084">Categorized Datasets</a></div>
+      <div class="Body_Text"><a name="431085">If the SDMX database offers categorized datasets, the dialog interface offers features that facilitate dataset exploration through a nested tree structure. </a></div>
+      <div class="Body_Text"><a name="431086">The tree interface makes it easy to select or search for a specific category and then navigate through the nested tree until you locate the desired dataset. Simply use the tree structure on the left-hand pane to drill down to the desired subcategory, clicking on the node indicators as needed to inspect the contents. You may also double click on folders displayed in the right-hand pane to show its contents.</a></div>
+      <div class="Picture"><a name="431090"><img class="Default" src="images/wnew14.003.2.23.jpg" width="100%" style="left: 0.0pt; max-height: 443px; max-width: 708px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431091">Alternatively, you can use the </a><span style="font-weight: bold">Filter</span> edit box to input a keyword, enabling a search across all categories and datasets.</div>
+      <div class="Picture"><a name="431095"><img class="Default" src="images/wnew14.003.2.24.jpg" width="100%" style="left: 0.0pt; max-height: 450px; max-width: 733px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431096">Once you locate the desired dataset, you can either double-click on the dataset in the list on the right section or select it and then click </a><span style="font-weight: bold">Next</span>.</div>
+      <div class="Body_Text"><a name="431097">Some SDMX databases offer a data browser on their official website that allows you to perform more advanced search. Click on the </a><span style="font-weight: bold">Open in Browser</span> button, which will open a web browser window showing the official database website.</div>
+      <div class="Body_Text"><a name="431098">To enhance the performance of the data explorer interface, categorization information is cached when the SDMX interface is first loaded. While a remote possibility, the database information may be updated during your EViews session. To refresh the cache, you may click on circular arrow </a><span style="font-weight: bold">Refresh</span> button in the upper-right hand portion of the dialog.</div>
+      <div class="Heading_6"><a name="431099">Non-Categorized Datasets</a></div>
+      <div class="Body_Text"><a name="431100">Alternatively, for SDMX databases that do not offer categorization information, the dialog interface simply offers a list of the available databases: </a></div>
+      <div class="Picture"><a name="431104"><img class="Default" src="images/wnew14.003.2.25.jpg" width="100%" style="left: 0.0pt; max-height: 493px; max-width: 600px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431105">You can type a keyword in the </a><span style="font-weight: bold">Filter</span> edit field to find a dataset. Select the dataset and click <span style="font-weight: bold">Next</span> to continue.</div>
+      <div class="Heading_5"><a name="431107">Selecting Series</a></div>
+      <div class="Body_Text"><a name="431108">In this dialog, you will choose the series to import:</a></div>
+      <div class="Picture"><a name="431112"><img class="Default" src="images/wnew14.003.2.26.jpg" width="100%" style="left: 0.0pt; max-height: 437px; max-width: 725px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431113">We begin by forming a list of potentially relevant series. By default, all of the series in the dataset will be in the list. If available, you may use filters on the left-hand side of the dialog to reduce the number of series to be read. To specify a filter, click on the </a><span class="Menu_Item">Select</span> button on the left-hand side of the dialog corresponding to a specific category. You will be presented with a dialog showing the possible filter elements:</div>
+      <div class="Picture"><a name="431117"><img class="Default" src="images/wnew14.003.2.27.jpg" width="100%" style="left: 0.0pt; max-height: 380px; max-width: 568px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431118">Click on the filter element entry to toggle the selection. You may use the </a><span class="Menu_Item">Search</span> button to locate a specific filter entry.</div>
+      <div class="Body_Text"><a name="431119">Here we use the </a><span class="Menu_Item">Adjustment indicator code list </span>to require data to be calendar and seasonally adjusted data:</div>
+      <div class="Body_Text"><a name="431120">Once the filter definition for the category is complete, click </a><span style="font-weight: bold">Save</span> to save the filter settings and return the main selection dialog.</div>
+      <div class="Picture"><a name="431124"><img class="Default" src="images/wnew14.003.2.28.jpg" width="100%" style="left: 0.0pt; max-height: 431px; max-width: 723px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431125">The dialog lists any relevant filter elements in text form under the name of the filter. If the information is not fully legible, you may hover your cursor over the text to see the full specification.</a></div>
+      <div class="Body_Text"><a name="431126">Once you finish defining any selection filters, click on the </a><span class="Menu_Item">Apply Selection </span>button to load a list of the relevant series in the dataset:</div>
+      <div class="Picture"><a name="431130"><img class="Default" src="images/wnew14.003.2.29.jpg" width="100%" style="left: 0.0pt; max-height: 453px; max-width: 721px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431131">Here, there are 167 series found in the dataset that match the current filter. Click on any of the entries on the right to display information about the individual series and to display a thumbnail graph of the series.</a></div>
+      <div class="Body_Text"><a name="431132">You may go back and specify additional filters and click on the </a><span class="Menu_Item">Apply</span> button to update the list of relevant series.</div>
+      <div class="Body_Text"><a name="431133">Finally, you may select one or more series in the list, then click on the </a><span style="font-weight: bold">Export to workfile</span> button to load the selected series into a new or existing workfile. </div>
+      <div class="Body_Text"><a name="431134">Note that the</a><span style="font-weight: bold"> Refresh Data</span> button in the upper-right corner may be used to ensure the database information is up-to-date. For some databases, there will also be an <span style="font-weight: bold">Open in Browser</span> button which will take you to the selected dataset on the database website if available. This feature is applicable only to those databases that offer an online data browser.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431141">See </a><span class="Link"><a href="database-Foreign_Format_Databases.html#58890" title="Foreign Format Databases">&#8220;Foreign Format Databases&#8221;</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431148">See also </a><span class="In-line_command_link"><a href="commandcmd-dbopen.html#2485382" title="dbopen">dbopen</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_4"><a name="431269">JDemetra+ Seasonal Adjustment</a></div>
+      <div class="Body_Text"><a name="431270">JDemetra+ is an open-source seasonal adjustment and time-series analysis package created by the European Commission. EViews incorporates a subset of the functionality provided by JDemetra+ to perform X-13 style seasonal adjustment on monthly and quarterly data. </a></div>
+      <div class="Body_Text"><a name="431271">While the results provided JDemetra+ will often be numerically identical to the results provided by Census X-13 (for identical settings), JDemetra+ offers robust handling of missing or extreme values, and computes the seasonal adjustment with reduced processing time.</a></div>
+      <div class="Body_Text"><a name="431272">When accessed from within EViews, JDemetra+ will perform seasonal adjustment on the series over the current workfile sample. In contrast to other seasonal adjustment methods, JDemetra+ offers automatic handling of missing values:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431273">For internal missing values (those not at the start or end of the sample), JDemetra+ uses interpolation to fill in the missing values.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431274">For missing values at the beginning or end of the sample, EViews will adjust the start and end of the adjustment sample. While JDemetra+ permits extrapolation of missing values at the beginning and end of the sample, EViews simply the trims the sample to remove NAs before sending the data to JDemetra+.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="431275">To perform JDemetra+ seasonal adjustment in EViews, click on </a><span style="font-weight: bold">Proc/Seasonal Adjustment/JDemetra+...</span> from the series window menu in a monthly or quarterly workfile. This will open the JDemetra+ tabbed dialog:</div>
+      <div class="Picture"><a name="431279"><img class="Default" src="images/wnew14.003.2.30.jpg" width="100%" style="left: 0.0pt; max-height: 522px; max-width: 553px; top: 0.0pt" alt="" /></a></div>
+      <div class="Table"><a name="431280">&nbsp;</a></div>
+      <div class="Body_Text"><a name="431281">The first tab, </a><span style="font-weight: bold">Base specification</span> allows you to choose one of the JDemetra+ preset specifications, as well as selecting which series to output into the workfile, and optionally specifying a suffix to be used in naming the output series.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431282">The </a><span style="font-weight: bold">X-13 spec:</span> drop down menu specifies the preset specification. JDemetra+ offers a number of specifications with settings for the pre-treatment and decomposition steps of the seasonal adjustment:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Table"><a name="431364">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 324pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 64.8pt">
+            <div class="Table_Text_Header"><a name="431285">Specification</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 64.8pt">
+            <div class="Table_Text_Header"><a name="431287">Log/Level Detection</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 64.8pt">
+            <div class="Table_Text_Header"><a name="431289">Outlier Detection</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 64.8pt">
+            <div class="Table_Text_Header"><a name="431291">Calendar Effects</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 64.8pt">
+            <div class="Table_Text_Header"><a name="431293">ARIMA Model</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431295">X-11</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431297">None</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431299">None</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431301">None</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431303">None</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431305">RSA0</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431307">None</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431309">None</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431311">None</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431313">Airline (0,1,1)(0,1,1)</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431315">RSA1</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431317">Automatic</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431319">AO/LS/TC</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431321">None</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431323">Airline (0,1,1)(0,1,1)</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431325">RSA2c</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431327">Automatic</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431329">AO/LS/TC</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431331">TD2 (weekdays vs week-ends), Easter</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431333">Airline (0,1,1)(0,1,1)</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431335">RSA3</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431337">Automatic</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431339">AO/LS/TC</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431341">None</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431343">Automatic selection</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431345">RSA4c</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431347">Automatic</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431349">AO/LS/TC</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431351">TD2 (weekdays vs week-ends), Easter</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431353">Automatic selection</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431355">RSA5</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431357">Automatic</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431359">AO/LS/TC</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431361">TD7 (7 day of week variables), Easter</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431363">Automatic selection</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="431365">For in-depth details of these specifications, we recommend browsing the JDemetra+ </a><a href="https://github.com/jdemetra" target="external_window">website (</a><span class="URL">https://github.com/jdemetra</span>).</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="467355">The </a><span style="font-weight: bold">Mode:</span> dropdown specifies the X-11 decomposition mode that will be used. JDemetra+ only allows the user to specify the decomposition mode if no pre-adjustment is being performed, so this dropdown is only enabled when the X-11 default specification is selected.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431367">The </a><span style="font-weight: bold">Series output</span> section specifies which of the output series from JDemetra+ will be exported to the workfile. By default, each output series will be created a name equal to that of the underlying series plus the type of series being created (<span class="Emphasis">e.g.</span>, if JDemetra+ is run on the series GDP, then the seasonally adjusted D11 series will be created with a name of GDP_D11). You can use the <span style="font-weight: bold">Naming suffix</span> edit field to enter an additional suffix that will be appended to the series name before the output type (<span class="Emphasis">e.g.</span>, if you enter &#8220;_JD&#8221; as the <span style="font-weight: bold">Naming suffix</span> then the D11 series for GDP will be created with a name of GDP_JD_D11).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="431374">The </a><span style="font-weight: bold">Regression</span> tab of the dialog allows you to override some of the options set by the default specifications relating to the pre-adjustment regression step of X-13 style seasonal adjustment.</div>
+      <div class="Picture"><a name="431378"><img class="Default" src="images/wnew14.003.2.31.jpg" width="100%" style="left: 0.0pt; max-height: 419px; max-width: 436px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431379">Selecting the X-13 specification on the </a><span style="font-weight: bold">Base specification</span> tab will change the settings on this tab, but you can fine tune the default settings by using the options on this tab.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431380">The </a><span style="font-weight: bold">Transformation</span> drop down menu specifies whether a log transformation should be applied to the underlying series before running the regression. <span style="font-weight: bold">Auto (Log/none)</span> instructs JDemetra+ to automatically detect whether a log transform should be applied or not.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431381">The </a><span style="font-weight: bold">Check for outliers</span> check box specifies whether JDemetra+ should automatically detect outliers. EViews' implementation of JDemetra+ supports only the Additive Outlier (AO), Level Shift (LS), and Temporary Change (TC) types of outliers, and when the option is checked, JDemetra+ will detect for all three types simultaneously.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span style="font-weight: bold"><a name="431382">Trading days</a></span> sets the type of calendar effects used in the pre-adjustment regression. These effects consist of created variables with the count of the number of days in each period. The options are:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Table"><a name="431422">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 302.4pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 72pt">
+            <div class="Table_Text_Header" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="431385">None</a></span></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 230.4pt">
+            <div class="Table_Text_Header" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-align: left; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="431387">Do not include calendar effects</a></span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431389">TD7</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431391">Create 7 calendar variables.</a></div>
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431392">The first counts the number of Mondays in the month/quarter. The second counts the number of Tuesdays, and so on.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431394">TD4</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431396">Create 4 calendar variables. </a></div>
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431397">The first counts the number of days from Monday to Thursday, the second counts the number of Fridays, the third counts Saturdays, and the fourth counts Sundays.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431399">TD3c</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431401">Create 3 calendar variables. </a></div>
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431402">The first counts the number of days from Monday to Thursday, the second counts the number of Fridays and Saturdays, and the third counts Sundays.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431404">TD3</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431406">Create 3 calendar variables. </a></div>
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431407">The first counts the number of days from Monday to Friday, the second counts the number of Saturdays, and the third counts Sundays.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431409">TD2</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431411">Create 2 calendar variables. </a></div>
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431412">The first counts the number of week days (Mon-Fri) and the second counts the number of weekend days (Sat-Sun).</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431414">TD2c</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431416">Create 2 calendar variables. </a></div>
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431417">The first counts the number of days from Monday to Saturday, and the second counts the number of Sundays.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029"><a name="431419">User variables</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text__0028Center_0029" style="text-align: left"><a name="431421">Include user-provided calendar variables only.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="431423">The created variables are compacted into a single calendar variable through a transformation. For example, TD2 creates the calendar variable as NumWeekDays-(5/2)*NumWeekends.</a></div>
+      <div class="Bullet_List_Continue"><a name="431424">If </a><span style="font-weight: bold">User variables</span> is selected as the trading day type, you must specify series to use as calendar variables on the <span style="font-weight: bold">User Regressors</span> tab.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431425">The </a><span style="font-weight: bold">Include Leap Year adjustment</span> and <span style="font-weight: bold">Include Easter</span> checkboxes control whether additional adjustments are made to the calendar effects for the impact of leap years and Easter. The <span style="font-weight: bold">Auto-adjust</span> checkbox specifies whether JDemetra will automatically determine whether to drop the leap-year adjustment.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="431426">The </a><span style="font-weight: bold">ARIMA</span> tab provides options for the estimation of the ARIMA model in the pre-adjustment step:</div>
+      <div class="Picture"><a name="431430"><img class="Default" src="images/wnew14.003.2.32.jpg" width="100%" style="left: 0.0pt; max-height: 419px; max-width: 436px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431431">The </a><span style="font-weight: bold">ARIMA Method</span> section selects the method used to specify the ARIMA model to be estimated. <span style="font-weight: bold">None</span> instructs JDemetra+ to not estimate an ARIMA model at all.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="431432">If </a><span style="font-weight: bold">Manual</span> is selected, you can enter a specific ARIMA order in (<span class="In-line_math">p</span><span style="font-style: italic">, </span><span class="In-line_math">d</span><span style="font-style: italic">, </span><span class="In-line_math">q</span>)(<span class="In-line_math">P</span><span style="font-style: italic">, </span><span class="In-line_math">D</span><span style="font-style: italic">, </span><span class="In-line_math">Q</span>) notation, where <span class="In-line_math">p</span> is the AR order, <span class="In-line_math">d</span> is the differencing level, <span class="In-line_math">q</span> is the MA order, <span class="In-line_math">P</span> is the seasonal AR order, <span class="In-line_math">D</span> is the seasonal differencing level, and <span class="In-line_math">Q</span> is the seasonal MA order.</div>
+      <div class="Bullet_List_Continue"><a name="431433">If </a><span style="font-weight: bold">X-11 Auto</span> is selected, JDemetra+ will use its default X-11 selection routine to select the most appropriate ARIMA order.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431434">The </a><span style="font-weight: bold">Forecast ARIMA model</span> checkbox instructs JDemetra+ to forecast the ARIMA model beyond the end of the series. The number of periods forecasted can be changed using the <span style="font-weight: bold">Forecast length</span> edit field. Forecasting the ARIMA model allows JDemetra+ to provide forecasts of the final seasonally adjusted series and seasonal factors. Note forecasts will only be imported into EViews if the workfile range covers the period of the forecast.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="431435">The </a><span style="font-weight: bold">User Regressors</span> tab of the dialog supports providing user-provided exogenous series to the pre-adjustment ARIMA/regression models.</div>
+      <div class="Picture"><a name="431439"><img class="Default" src="images/wnew14.003.2.33.jpg" width="100%" style="left: 0.0pt; max-height: 419px; max-width: 436px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431440">Clicking on the </a><span style="font-weight: bold">Add</span> button brings up a dialog asking you to type in the name of the workfile variable that you would like to include as a regressor:</div>
+      <div class="Picture"><a name="431444"><img class="Default" src="images/wnew14.003.2.34.jpg" width="100%" style="left: 0.0pt; max-height: 258px; max-width: 347px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431445">You may enter any valid EViews series name or expression, such as "X" or "log(X)", or "@pch(X)" in the </a><span class="Menu_Item">Series name</span> edit field. You may also type in a space delimited list to add multiple series at once.</div>
+      <div class="Body_Text"><a name="431446">The </a><span class="Menu_Item">Type</span> drop down menu should be used to specify a regressor type for the variable you are including (<span class="Emphasis">i.e.</span>, <span class="Menu_Item">Series</span>, <span class="Menu_Item">Trend</span>, <span class="Menu_Item">Seasonal</span>, etc.). Changing the type of the regressors changes the exact impact that series has on the final seasonal adjustment calculation. The JDemetra+ documentation has details on the exact calculations. </div>
+      <div class="Body_Text"><a name="431450">If you selected </a><span style="font-weight: bold">User Variables</span> as the <span style="font-weight: bold">Trading Days</span> type, you must add at least one user-regressor with a type of <span style="font-weight: bold">Calendar/TradingDay</span>.</div>
+      <div class="Heading_5"><a name="431451">Example</a></div>
+      <div class="Body_Text"><a name="431452">The workfile, "X13_Macro.wf1" includes a series called UNRATENSA which contains monthly non-seasonally adjusted US unemployment data from January 2005 to June 2012. We will use this series to demonstrate the user of JDemetra+ seasonal adjustment in EViews. We will later use the same series to demonstrate X-13 seasonal adjustment.</a></div>
+      <div class="Body_Text"><a name="431453">We will perform simple X-11 based seasonal adjustment on this series without any pre-adjustment regression options being set. To do so open the UNRATENSA series and click on </a><span class="Menu_Item">Proc/Seasonal Adjustment/JDemetra+&#8230;</span> to open the JDemetra+ dialog. </div>
+      <div class="Body_Text"><a name="431454">Simple X-11 adjustment is one of the pre-set JDemetra+ defaults, so we change the </a><span style="font-weight: bold">X-13 spec:</span> dropdown to <span style="font-weight: bold">X-11</span>. We'll elect to store the seasonally adjusted values in the workfile, and enter &#8220;_x11&#8221; in the <span class="Menu_Item">Naming suffix</span> edit field:</div>
+      <div class="Picture"><a name="431458"><img class="Default" src="images/wnew14.003.2.35.jpg" width="100%" style="left: 0.0pt; max-height: 419px; max-width: 436px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431459">Clicking </a><span class="Menu_Item">OK</span> to display the JDemetra+ graph output:</div>
+      <div class="Picture"><a name="431463"><img class="Default" src="images/wnew14.003.2.36.jpg" width="100%" style="left: 0.0pt; max-height: 759px; max-width: 552px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431464">The output is split into five graphs. The top graph displays the original unadjusted series. The second displays the decomposed trend line, the third the seasonal/cyclical factors, the fourth the irregular/residual component, and finally graph displays the seasonally adjusted values. It should be noted that this simple X-11 adjustment via JDemetra+ will give numerically identical results to using EViews&#8217; implementation of Census X-13 using the default settings.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431471">See </a><span class="Link"><a href="series-Seasonal_Adjustment.html#133132" title="Seasonal Adjustment">&#8220;Seasonal Adjustment&#8221;</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431478">See also </a><span class="In-line_command_link"><a href="seriescmd-jdemetra.html#378378" title="jdemetra">Series::jdemetra</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_4"><a name="431480">Boosted Hodrick-Prescott Filter</a></div>
+      <div class="Body_Text"><a name="431481">The Hodrick-Prescott Filter is a widely employed smoothing method for obtaining a smooth estimate of the long-term trend component of a series. The method was first proposed in a working paper (circulated in the early 1980&#8217;s and published in 1997) by Hodrick and Prescott to analyze postwar U.S. business cycles. </a></div>
+      <div class="Body_Text"><a name="431482">EViews 14 enhances the existing routines with support for the iterated (boosted) HP filter proposed by Phillips and Shi (2020).</a></div>
+      <div class="Body_Text"><a name="431483">Technically, the Hodrick-Prescott (HP) filter is a two-sided linear filter that computes the smoothed series <img class="Default EquationGraphic" src="images/wnew14.003.2.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> of <img class="Default EquationGraphic" src="images/wnew14.003.2.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> by minimizing the variance of <img class="Default EquationGraphic" src="images/wnew14.003.2.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> around <img class="Default EquationGraphic" src="images/wnew14.003.2.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, subject to a penalty that constrains the second difference of <img class="Default EquationGraphic" src="images/wnew14.003.2.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. The HP filter chooses the values of <img class="Default EquationGraphic" src="images/wnew14.003.2.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> to minimize:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/wnew14.003.2.43.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(0.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="431512">The <img class="Default EquationGraphic" src="images/wnew14.003.2.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> series is often referred to as the trend series. The cyclical component <img class="Default EquationGraphic" src="images/wnew14.003.2.45.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> of the original series can be computed as <img class="Default EquationGraphic" src="images/wnew14.003.2.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 89px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="431525">The penalty parameter <img class="Default EquationGraphic" src="images/wnew14.003.2.47.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> controls the smoothness of <img class="Default EquationGraphic" src="images/wnew14.003.2.48.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. The larger the <img class="Default EquationGraphic" src="images/wnew14.003.2.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, the smoother the <img class="Default EquationGraphic" src="images/wnew14.003.2.50.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. As <img class="Default EquationGraphic" src="images/wnew14.003.2.51.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/wnew14.003.2.52.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> approaches a linear trend.</a></div>
+      <div class="Body_Text"><a name="431535">Phillips and Shi (2020) have proposed iterating the HP filter to produce a &#8220;smarter smoothing device.&#8221; This </a><span class="Definition">boosted</span> HP filter takes the cyclical series, <img class="Default EquationGraphic" src="images/wnew14.003.2.53.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> and runs the filter on it one more time to produce a new smoothed and cycle series. The filtering process is repeated, producing a further smoothed series at each iteration. The advantage of this iterative procedure is that the final smoothed series is less reliant on the choice of <img class="Default EquationGraphic" src="images/wnew14.003.2.54.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. Phillips and Shi recommend repeating the process either after a set number of iterations, or through the use of information criteria to decide the optimal number of iterations.</div>
+      <div class="Body_Text"><a name="431542">To smooth the series using the Hodrick-Prescott filter, choose </a><span class="Menu_Item">Proc/Hodrick-Prescott Filter&#8230;</span>:</div>
+      <div class="Picture"><a name="431546"><img class="Default" src="images/wnew14.003.2.55.jpg" width="100%" style="left: 0.0pt; max-height: 576px; max-width: 344px; top: 0.0pt" alt="" /> </a></div>
+      <div class="Body_Text"><a name="431547">First, provide a name for the </a><span class="Menu_Item">Smoothed series</span>. EViews will suggest a name, but you can always enter a name of your choosing. If you wish to save a <span class="Menu_Item">Cycle series</span>, specify a name in the edit field.</div>
+      <div class="Body_Text"><a name="431554">Next, specify an integer value for the smoothing parameter, <img class="Default EquationGraphic" src="images/wnew14.003.2.56.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. You may specify <img class="Default EquationGraphic" src="images/wnew14.003.2.57.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> directly by clicking on the </a><span class="Menu_Item">Edit lambda directly</span> radio button and entering a value in the <span class="Menu_Item">Lambda</span> edit field, or you may specify a value using the frequency power rule of Ravn and Uhlig (2002) (the number of periods per year divided by 4, raised to a power, and multiplied by 1600 by clicking on the <span class="Menu_Item">Set lambda by Ravn Uhlig frequency rule</span> and entering a <span class="Menu_Item">Power</span> value in the edit field.</div>
+      <div class="Body_Text"><a name="431555">By default, EViews will fill the defaults using the Ravn and Uhlig method with a power rule of 2, yielding the original Hodrick and Prescott values for <img class="Default EquationGraphic" src="images/wnew14.003.2.58.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/wnew14.003.2.59.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(0.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="431563">Ravn and Uhlig recommend using a power value of 4. EViews will round any non-integer values that you enter. </a></div>
+      <div class="Body_Text"><a name="431564">The </a><span style="font-weight: bold">Boosting</span> section of the dialog offers settings for iterative boosting of the HP filter. You may choose between stopping based on the maximum number of iterations or using an Information criteria. </div>
+      <div class="Body_Text"><a name="431565">If you click on </a><span class="Menu_Item">Iterations</span>, EViews will stop based on the entry in the <span style="font-weight: bold">Max. Iterations</span> edit field. By default, there will be no boosting as only one iteration of the filter will be performed.</div>
+      <div class="Body_Text"><a name="431566">Selecting the </a><span style="font-weight: bold">Information criteria</span> radio button instructs EViews to select the optimal number of iterations using information criteria. The <span style="font-weight: bold">Max. Iterations</span> edit field should be used to specify the number of iterations to be considered.</div>
+      <div class="Body_Text"><a name="431567">When you click on </a><span style="font-weight: bold">OK</span>, EViews displays a graph of the filtered series together with the original series. Note that only data in the current workfile sample are filtered. Observations for the smoothed and cyclical series outside the current sample will be filled with NAs.</div>
+      <div class="Body_Text"><a name="431568">For example, we may download housing starts data from the Federal Reserve of St. Louis database:</a></div>
+      <div class="Multi-line_Input"><a name="431569">dbopen(type=fred, server=api.stlouisfed.org/fred)</a></div>
+      <div class="Multi-line_Input"><a name="431570">wfcreate m 1959M01 2024M02</a></div>
+      <div class="Multi-line_Input"><a name="431571">fetch(d=fred) houst</a></div>
+      <div class="Multi-line_Input"><a name="431572">smpl 2010 2024m02</a></div>
+      <div class="Body_Text"><a name="431573">and then perform HP filtering with 5 iterations on the HOUST series using values from 2010m01 through 2024m02:</a></div>
+      <div class="Picture"><a name="431577"><img class="Default" src="images/wnew14.003.2.60.jpg" width="100%" style="left: 0.0pt; max-height: 447px; max-width: 542px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431578">The newly created HPTREND series contains the smoothed values of HOUST.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="431585">See also </a><span class="In-line_command_link"><a href="seriescmd-hpf.html#378305" title="hpf">Series::hpf</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Residual Diagnostics</title>
+    <link rel="StyleSheet" href="css/testing.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="testing-Coefficient_Diagnostics.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="testing-Stability_Diagnostics.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="testing-Specification_and_Diagnostic_Tests.html">Specification and Diagnostic Tests</a> : Residual Diagnostics</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="182813">Residual Diagnostics</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#182819">Correlograms and Q-statistics </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#182839">Correlograms of Squared Residuals</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#182870">Histogram and Normality Test </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#182888">Serial Correlation LM Test </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#182985">Heteroskedasticity Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#182992">Breusch-Pagan-Godfrey (BPG)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183034">Harvey</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183059">Glejser</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183083">ARCH LM Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183122">White's Heteroskedasticity Test </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183167">Performing a test for Heteroskedasticity in EViews</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="182814">EViews provides tests for serial correlation, normality, heteroskedasticity, and autoregressive conditional heteroskedasticity in the residuals from your estimated equation. Not all of these tests are available for every specification.</a></div>
+      <div class="Picture"><a name="182818"><img class="Default" src="images/testing.035.5.01.jpg" width="100%" style="left: 0.0pt; max-height: 128px; max-width: 243px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="182819">Correlograms and Q-statistics </a></div>
+      <div class="Body_Text"><a name="182820">This view displays the autocorrelations and partial autocorrelations of the equation residuals up to the specified number of lags. Further details on these statistics and the Ljung-Box </a><span class="In-line_math">Q</span>-statistics that are also computed are provided in <span class="Link"><a href="series-Correlogram.html#159896" title="Correlogram">&#8220;Q-Statistics&#8221;</a></span> .</div>
+      <div class="Body_Text"><a name="182830">This view is available for the residuals from least squares, two-stage least squares, nonlinear least squares and binary, ordered, censored, and count models. In calculating the probability values for the </a><span class="In-line_math">Q</span>-statistics, the degrees of freedom are adjusted to account for estimated ARMA terms.</div>
+      <div class="Body_Text"><a name="182837">To display the correlograms and </a><span class="In-line_math">Q</span>-statistics, push <span class="Menu_Item">View/Residual Diagnostics/Correlogram-Q-statistics </span>on the equation toolbar. In the <span class="Menu_Item">Lag Specification</span> dialog box, specify the number of lags you wish to use in computing the correlogram.</div>
+      <div class="Heading_4"><a name="182839">Correlograms of Squared Residuals</a></div>
+      <div class="Body_Text"><a name="182840">This view displays the autocorrelations and partial autocorrelations of the squared residuals up to any specified number of lags and computes the Ljung-Box </a><span class="In-line_math">Q</span>-statistics for the corresponding lags. The correlograms of the squared residuals can be used to check autoregressive conditional heteroskedasticity (ARCH) in the residuals; see also <span class="Link"><a href="#183083" title="Residual Diagnostics">&#8220;ARCH LM Test&#8221;</a></span>, below. </div>
+      <div class="Body_Text"><a name="182848">If there is no ARCH in the residuals, the autocorrelations and partial autocorrelations should be zero at all lags and the </a><span class="In-line_math">Q</span>-statistics should not be significant; see <span class="Link"><a href="series-Correlogram.html#159896" title="Correlogram">&#8220;Q-Statistics&#8221;</a></span> , for a discussion of the correlograms and <span class="In-line_math">Q</span>-statistics. </div>
+      <div class="Body_Text"><a name="182861">This view is available for equations estimated by least squares, two-stage least squares, and nonlinear least squares estimation. In calculating the probability for </a><span class="In-line_math">Q</span>-statistics, the degrees of freedom are adjusted for the inclusion of ARMA terms.</div>
+      <div class="Body_Text"><a name="182868">To display the correlograms and </a><span class="In-line_math">Q</span>-statistics of the squared residuals, push <span class="Menu_Item">View/Residual Diagnostics/Correlogram Squared Residuals</span> on the equation toolbar. In the <span class="Menu_Item">Lag Specification</span> dialog box that opens, specify the number of lags over which to compute the correlograms.</div>
+      <div class="Heading_4"><a name="182870">Histogram and Normality Test </a></div>
+      <div class="Body_Text"><a name="182871">This view displays a histogram and descriptive statistics of the residuals, including the Jarque-Bera statistic for testing normality. If the residuals are normally distributed, the histogram should be bell-shaped and the Jarque-Bera statistic should not be significant; see </a><span class="Link"><a href="series-Descriptive_Statistics___Tests.html#131789" title="Descriptive Statistics &amp; Tests">&#8220;Histogram and Stats&#8221;</a></span> , for a discussion of the Jarque-Bera test.</div>
+      <div class="Body_Text"><a name="182881">To display the histogram and Jarque-Bera statistic, select</a><span class="Menu_Item"> View/Residual Diagnostics/Histogram-Normality</span>. The Jarque-Bera statistic has a <img class="Default EquationGraphic" src="images/testing.035.5.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />distribution with two degrees of freedom under the null hypothesis of normally distributed errors.</div>
+      <div class="Heading_4"><a name="182888">Serial Correlation LM Test </a></div>
+      <div class="Body_Text"><a name="182892">This test is an alternative to the </a><span class="In-line_math">Q</span>-statistics for testing serial correlation. The test belongs to the class of asymptotic (large sample) tests known as Lagrange multiplier (LM) tests. </div>
+      <div class="Body_Text"><a name="182893">Unlike the Durbin-Watson statistic for AR(1) errors, the LM test may be used to test for higher order ARMA errors and is applicable whether there are lagged dependent variables or not. Therefore, we recommend its use (in preference to the DW statistic) whenever you are concerned with the possibility that your errors exhibit autocorrelation.</a></div>
+      <div class="Body_Text"><a name="182898">The null hypothesis of the LM test is that there is no serial correlation up to lag order <img class="Default EquationGraphic" src="images/testing.035.5.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/testing.035.5.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is a pre-specified integer. The local alternative is ARMA(<img class="Default EquationGraphic" src="images/testing.035.5.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 30px; top: 0.0pt" alt="" />) errors, where the number of lag terms <img class="Default EquationGraphic" src="images/testing.035.5.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />=max(<img class="Default EquationGraphic" src="images/testing.035.5.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 30px; top: 0.0pt" alt="" />). Note that this alternative includes both AR(<img class="Default EquationGraphic" src="images/testing.035.5.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />) and MA(<img class="Default EquationGraphic" src="images/testing.035.5.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />) error processes, so that the test may have power against a variety of alternative autocorrelation structures. See Godfrey (1988), for further discussion.</a></div>
+      <div class="Body_Text"><a name="182919">The test statistic is computed by an auxiliary regression as follows. First, suppose you have estimated the regression;</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.5.10.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="182933">where <img class="Default EquationGraphic" src="images/testing.035.5.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> are the estimated coefficients and <img class="Default EquationGraphic" src="images/testing.035.5.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> are the errors. The test statistic for lag order <img class="Default EquationGraphic" src="images/testing.035.5.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is based on the auxiliary regression for the residuals <img class="Default EquationGraphic" src="images/testing.035.5.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 91px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.5.15.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="182941">Following the suggestion by Davidson and MacKinnon (1993), EViews sets any presample values of the residuals to 0. This approach does not affect the asymptotic distribution of the statistic, and Davidson and MacKinnon argue that doing so provides a test statistic which has better finite sample properties than an approach which drops the initial observations.</a></div>
+      <div class="Body_Text"><a name="182945">This is a regression of the residuals on the original regressors <img class="Default EquationGraphic" src="images/testing.035.5.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and lagged residuals up to order <img class="Default EquationGraphic" src="images/testing.035.5.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. EViews reports two test statistics from this test regression. The </a><span class="In-line_math">F</span>-statistic is an omitted variable test for the joint significance of all lagged residuals. Because the omitted variables are residuals and not independent variables, the exact finite sample distribution of the <span class="In-line_math">F</span>-statistic under <img class="Default EquationGraphic" src="images/testing.035.5.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> is still not known, but we present the <span class="In-line_math">F</span>-statistic for comparison purposes.</div>
+      <div class="Body_Text"><a name="182962">The Obs*R-squared statistic is the Breusch-Godfrey LM test statistic. This LM statistic is computed as the number of observations, times the (uncentered) <img class="Default EquationGraphic" src="images/testing.035.5.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" />from the test regression. Under quite general conditions, the LM test statistic is asymptotically distributed as a <img class="Default EquationGraphic" src="images/testing.035.5.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 45px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="182970">The serial correlation LM test is available for residuals from either least squares or two-stage least squares estimation. The original regression may include AR and MA terms, in which case the test regression will be modified to take account of the ARMA terms. Testing in 2SLS settings involves additional complications, see Wooldridge (1990) for details. </a></div>
+      <div class="Picture"><a name="182974"><img class="Default" src="images/testing.035.5.21.jpg" width="100%" style="left: 0.0pt; max-height: 176px; max-width: 204px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="182975">To carry out the test, push </a><span class="Menu_Item">View/Residual Diagnostics/Serial Correlation LM Test&#8230; </span>on the equation toolbar and specify the highest order of the AR or MA process that might describe the serial correlation. If the test indicates serial correlation in the residuals, LS standard errors are invalid and should not be used for inference.</div>
+      <div class="Body_Text"><a name="182976">To illustrate, consider the macroeconomic data in our &#8220;Basics.WF1&#8221; workfile. We begin by regressing money supply M1 on a constant, contemporaneous industrial production IP and three lags of IP using the equation specification</a></div>
+      <div class="Input"><a name="182977">m1 c ip(0 to -3)</a></div>
+      <div class="Body_Text"><a name="182978">The serial correlation LM test results for this equation with 2 lags in the test equation strongly reject the null of no serial correlation:</a></div>
+      <div class="Table"><a name="182982"><img class="Default" src="images/testing.035.5.22.jpg" width="100%" style="left: 0.0pt; max-height: 611px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="182985">Heteroskedasticity Tests</a></div>
+      <div class="Body_Text"><a name="182986">This set of tests allows you to test for a range of specifications of heteroskedasticity in the residuals of your equation. Ordinary least squares estimates are consistent in the presence of heteroskedasticity, but the conventional computed standard errors are no longer valid. If you find evidence of heteroskedasticity, you should either choose the robust standard errors option to correct the standard errors (see </a><span class="Link"><a href="Regress2-Robust_Standard_Errors.html#265857" title="Robust Standard Errors">&#8220;Heteroskedasticity Consistent Covariances&#8221;</a></span>) or you should model the heteroskedasticity to obtain more efficient estimates using weighted least squares.</div>
+      <div class="Body_Text"><a name="182990">EViews lets you employ a number of different heteroskedasticity tests, or to use our custom test wizard to test for departures from heteroskedasticity using a combination of methods. Each of these tests involve performing an auxiliary regression using the residuals from the original equation. These tests are available for equations estimated by least squares, two-stage least squares, and nonlinear least squares. The individual tests are outlined below.</a></div>
+      <div class="Heading_5"><a name="182992">Breusch-Pagan-Godfrey (BPG)</a></div>
+      <div class="Body_Text"><a name="182993">The Breusch-Pagan-Godfrey test (see Breusch-Pagan, 1979, and Godfrey, 1978) is a Lagrange multiplier test of the null hypothesis of no heteroskedasticity against heteroskedasticity of the form <img class="Default EquationGraphic" src="images/testing.035.5.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 116px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/testing.035.5.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> is a vector of independent variables. Usually this vector contains the regressors from the original least squares regression, but it is not necessary. </a></div>
+      <div class="Body_Text"><a name="183000">The test is performed by completing an auxiliary regression of the squared residuals from the original equation on <img class="Default EquationGraphic" src="images/testing.035.5.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 48px; top: 0.0pt" alt="" />. The explained sum of squares from this auxiliary regression is then divided by <img class="Default EquationGraphic" src="images/testing.035.5.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 30px; top: 0.0pt" alt="" /> to give an LM statistic, which follows a <img class="Default EquationGraphic" src="images/testing.035.5.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />-distribution with degrees of freedom equal to the number of variables in <img class="Default EquationGraphic" src="images/testing.035.5.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> under the null hypothesis of no heteroskedasticity. Koenker (1981) suggested that a more easily computed statistic of Obs*R-squared (where <img class="Default EquationGraphic" src="images/testing.035.5.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> is from the auxiliary regression) be used. Koenker's statistic is also distributed as a <img class="Default EquationGraphic" src="images/testing.035.5.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> with degrees of freedom equal to the number of variables in <img class="Default EquationGraphic" src="images/testing.035.5.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. Along with these two statistics, EViews also quotes an </a><span class="In-line_math">F</span>-statistic for a redundant variable test for the joint significance of the variables in <img class="Default EquationGraphic" src="images/testing.035.5.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> in the auxiliary regression.</div>
+      <div class="Body_Text"><a name="183028">As an example of a BPG test suppose we had an original equation of</a></div>
+      <div class="Input"><a name="183029">log(m1) = c(1) + c(2)*log(ip) + c(3)*tb3</a></div>
+      <div class="Body_Text"><a name="183030">and we believed that there was heteroskedasticity in the residuals that depended on a function of LOG(IP) and TB3, then the following auxiliary regression could be performed</a></div>
+      <div class="Input"><a name="183031">resid^2 = c(1) + c(2)*log(ip) + c(3)*tb3</a></div>
+      <div class="Body_Text"><a name="183032">Note that both the ARCH and White tests outlined below can be seen as Breusch-Pagan-Godfrey type tests, since both are auxiliary regressions of the squared residuals on a set of regressors and a constant.</a></div>
+      <div class="Heading_5"><a name="183034">Harvey</a></div>
+      <div class="Body_Text"><a name="183035">The Harvey (1976) test for heteroskedasticity is similar to the Breusch-Pagan-Godfrey test. However Harvey tests a null hypothesis of no heteroskedasticity against heteroskedasticity of the form of <img class="Default EquationGraphic" src="images/testing.035.5.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 118px; top: 0.0pt" alt="" />, where, again, <img class="Default EquationGraphic" src="images/testing.035.5.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> is a vector of independent variables.</a></div>
+      <div class="Body_Text"><a name="183042">To test for this form of heteroskedasticity, an auxiliary regression of the log of the original equation's squared residuals on <img class="Default EquationGraphic" src="images/testing.035.5.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 48px; top: 0.0pt" alt="" /> is performed. The LM statistic is then the explained sum of squares from the auxiliary regression divided by <img class="Default EquationGraphic" src="images/testing.035.5.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 55px; top: 0.0pt" alt="" />, the derivative of the log gamma function evaluated at 0.5. This statistic is distributed as a <img class="Default EquationGraphic" src="images/testing.035.5.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> with degrees of freedom equal to the number of variables in <img class="Default EquationGraphic" src="images/testing.035.5.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. EViews also quotes the Obs*R-squared statistic, and the redundant variable </a><span class="In-line_math">F</span>-statistic.</div>
+      <div class="Heading_5"><a name="183059">Glejser</a></div>
+      <div class="Body_Text"><a name="183060">The Glejser (1969) test is also similar to the Breusch-Pagan-Godfrey test. This test tests against an alternative hypothesis of heteroskedasticity of the form <img class="Default EquationGraphic" src="images/testing.035.5.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 33px; max-width: 133px; top: 0.0pt" alt="" /> with <img class="Default EquationGraphic" src="images/testing.035.5.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 74px; top: 0.0pt" alt="" />. The auxiliary regression that Glejser proposes regresses the absolute value of the residuals from the original equation upon <img class="Default EquationGraphic" src="images/testing.035.5.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 48px; top: 0.0pt" alt="" />. An LM statistic can be formed by dividing the explained sum of squares from this auxiliary regression by <img class="Default EquationGraphic" src="images/testing.035.5.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 106px; top: 0.0pt" alt="" />. As with the previous tests, this statistic is distributed from a chi-squared distribution with degrees of freedom equal to the number of variables in <img class="Default EquationGraphic" src="images/testing.035.5.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. EViews also quotes the Obs*R-squared statistic, and the redundant variable </a><span class="In-line_math">F</span>-statistic.</div>
+      <div class="Heading_5"><a name="183083">ARCH LM Test</a></div>
+      <div class="Body_Text"><a name="183084">The ARCH test is a Lagrange multiplier (LM) test for autoregressive conditional heteroskedasticity (ARCH) in the residuals (Engle 1982). This particular heteroskedasticity specification was motivated by the observation that in many financial time series, the magnitude of residuals appeared to be related to the magnitude of recent residuals. ARCH in itself does not invalidate standard LS inference. However, ignoring ARCH effects may result in loss of efficiency; see </a><span class="Link"><a href="arch-ARCH_and_GARCH_Estimation.html#48636" title="ARCH and GARCH Estimation">&#8220;ARCH and GARCH Estimation&#8221;</a></span> for a discussion of estimation of ARCH models in EViews. </div>
+      <div class="Body_Text"><a name="183089">The ARCH LM test statistic is computed from an auxiliary test regression. To test the null hypothesis that there is no ARCH up to order <img class="Default EquationGraphic" src="images/testing.035.5.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> in the residuals, we run the regression:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.5.45.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183100">where <img class="Default EquationGraphic" src="images/testing.035.5.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the residual. This is a regression of the squared residuals on a constant and lagged squared residuals up to order <img class="Default EquationGraphic" src="images/testing.035.5.47.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. EViews reports two test statistics from this test regression. The </a><span class="In-line_math">F</span>-statistic is an omitted variable test for the joint significance of all lagged squared residuals. The Obs*R-squared statistic is Engle&#8217;s LM test statistic, computed as the number of observations times the <img class="Default EquationGraphic" src="images/testing.035.5.48.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" />from the test regression. The exact finite sample distribution of the <span class="In-line_math">F</span>-statistic under <img class="Default EquationGraphic" src="images/testing.035.5.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> is not known, but the LM test statistic is asymptotically distributed as a <img class="Default EquationGraphic" src="images/testing.035.5.50.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 44px; top: 0.0pt" alt="" /> under quite general conditions.</div>
+      <div class="Heading_5"><a name="183122">White's Heteroskedasticity Test </a></div>
+      <div class="Body_Text"><a name="183123">White&#8217;s (1980) test is a test of the null hypothesis of no heteroskedasticity against heteroskedasticity of unknown, general form. The test statistic is computed by an auxiliary regression, where we regress the squared residuals on all possible (nonredundant) cross products of the regressors. For example, suppose we estimated the following regression:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.5.51.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183135">where the <img class="Default EquationGraphic" src="images/testing.035.5.52.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> are the estimated parameters and <img class="Default EquationGraphic" src="images/testing.035.5.53.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> the residual. The test statistic is then based on the auxiliary regression:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.5.54.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183140">Prior to EViews 6, White tests always included the level values of the regressors (</a><span class="Emphasis">i.e.</span> the cross product of the regressors and a constant) whether the original regression included a constant term. This is no longer the case&#8212;level values are only included if the original regression included a constant.</div>
+      <div class="Body_Text"><a name="183144">EViews reports three test statistics from the test regression. The </a><span class="In-line_math">F</span>-statistic is a redundant variable test for the joint significance of all cross products, excluding the constant. It is presented for comparison purposes.</div>
+      <div class="Body_Text"><a name="183145">The Obs*R-squared statistic is White&#8217;s test statistic, computed as the number of observations times the centered <img class="Default EquationGraphic" src="images/testing.035.5.55.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> from the test regression. The exact finite sample distribution of the </a><span class="In-line_math">F</span>-statistic under <img class="Default EquationGraphic" src="images/testing.035.5.56.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> is not known, but White&#8217;s test statistic is asymptotically distributed as a <img class="Default EquationGraphic" src="images/testing.035.5.57.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />with degrees of freedom equal to the number of slope coefficients (excluding the constant) in the test regression.</div>
+      <div class="Body_Text"><a name="183159">The third statistic, an LM statistic, is the explained sum of squares from the auxiliary regression divided by <img class="Default EquationGraphic" src="images/testing.035.5.58.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 30px; top: 0.0pt" alt="" />. This, too, is distributed as chi-squared distribution with degrees of freedom equal to the number of slope coefficients (minus the constant) in the auxiliary regression.</a></div>
+      <div class="Body_Text"><a name="183164">White also describes this approach as a general test for model misspecification, since the null hypothesis underlying the test assumes that the errors are both homoskedastic and independent of the regressors, and that the linear specification of the model is correct. Failure of any one of these conditions could lead to a significant test statistic. Conversely, a non-significant test statistic implies that none of the three conditions is violated.</a></div>
+      <div class="Body_Text"><a name="183166">When there are redundant cross-products, EViews automatically drops them from the test regression. For example, the square of a dummy variable is the dummy variable itself, so EViews drops the squared term to avoid perfect collinearity.</a></div>
+      <div class="Heading_5"><a name="183167">Performing a test for Heteroskedasticity in EViews</a></div>
+      <div class="Body_Text"><a name="183168">To carry out any of the heteroskedasticity tests, select </a><span class="Menu_Item">View/Residual Diagnostics/Heteroskedasticity Tests</span>. This will bring you to the following dialog:</div>
+      <div class="Picture"><a name="183172"><img class="Default" src="images/testing.035.5.59.jpg" width="100%" style="left: 0.0pt; max-height: 366px; max-width: 416px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183173">You may choose which type of test to perform by clicking on the name in the </a><span class="Menu_Item">Test type</span> box. The remainder of the dialog will change, allowing you to specify various options for the selected test.</div>
+      <div class="Body_Text"><a name="183174">The BPG, Harvey and Glejser tests allow you to specify which variables to use in the auxiliary regression. Note that you may choose to add all of the variables used in the original equation by pressing the </a><span class="Menu_Item">Add equation regressors</span> button. If the original equation was non-linear this button will add the coefficient gradients from that equation. Individual gradients can be added by using the <span class="In-line_command">@grad</span> keyword to add the <span class="In-line_math">i</span>-th gradient (<span class="Emphasis">e.g.</span>, &#8220;@grad(2)&#8221;).</div>
+      <div class="Body_Text"><a name="183181">The ARCH test simply lets you specify the number of lags to include for the ARCH specification. </a></div>
+      <div class="Body_Text"><a name="183182">The White test lets you choose whether to include cross terms or no cross terms using the </a><span class="Menu_Item">Include cross terms</span> checkbox. The cross terms version of the test is the original version of White's test that includes all of the cross product terms. However, the number of cross-product terms increases with the square of the number of right-hand side variables in the regression; with large numbers of regressors, it may not be practical to include all of these terms. The no cross terms specification runs the test regression using only squares of the regressors.</div>
+      <div class="Body_Text"><a name="183184">The </a><span class="Menu_Item">Custom Test Wizard</span> lets you combine or specify in greater detail the various tests. The following example, using EQ1 from the &#8220;Basics.WF1&#8221; workfile, shows how to use the Custom Wizard. The equation has the following specification:</div>
+      <div class="Input"><a name="183185">log(m1) = c(1) + c(2)*log(ip) + c(3)*tb3</a></div>
+      <div class="Body_Text"><a name="183186">The first page of the wizard allows you to choose which transformation of the residuals you want to use as the dependent variable in the auxiliary regression. Note this is really a choice between doing a Breusch-Pagan-Godfrey, a Harvey, or a Glejser type test. In our example we choose to use the LOG of the squared residuals:</a></div>
+      <div class="Picture"><a name="183190"><img class="Default" src="images/testing.035.5.60.jpg" width="100%" style="left: 0.0pt; max-height: 417px; max-width: 461px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183191">Once you have chosen a dependent variable, click on </a><span class="Menu_Item">Next</span>. Step two of the wizard lets you decide whether to include a White specification. If you check the <span class="Menu_Item">Include White specification </span>checkbox and click on Next, EViews will display the <span class="Menu_Item">White Specification </span>page which lets you specify options for the test. If you do not elect to include a White specification and click on <span class="Menu_Item">Next</span>, EViews will skip the <span class="Menu_Item">White Specification</span> page, and continue on to the next section of the wizard.</div>
+      <div class="Picture"><a name="183195"><img class="Default" src="images/testing.035.5.61.jpg" width="100%" style="left: 0.0pt; max-height: 416px; max-width: 466px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183196">There are two parts to the dialog. In the upper section you may use the </a><span class="Dialog_Item">Type of White Test </span>dropdown menu to select the basic test. </div>
+      <div class="Picture"><a name="183200"><img class="Default" src="images/testing.035.5.62.jpg" width="100%" style="left: 0.0pt; max-height: 97px; max-width: 244px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183201">You may choose to include cross terms or not, whether to run an EViews 5 compatible test (as noted above, the auxiliary regression run by EViews differs slightly in Version 6 and later when there is no constant in the original equation), or, by choosing </a><span class="Menu_Item">Custom</span>, whether to include a set of variables not identical to those used in the original equation. The custom test allows you to perform a test where you include the squares and cross products of an arbitrary set of regressors. Note if you when you provide a set of variables that differs from those in the original equation, the test is no longer a White test, but could still be a valid test for heteroskedasticity. For our example we choose to include C and LOG(IP) as regressors, and choose to use cross terms. </div>
+      <div class="Body_Text"><a name="183202">Click on </a><span class="Menu_Item">Next</span> to continue to the next section of the wizard. EViews prompts you for whether you wish to add any other variables as part of a Harvey (Breusch-Pagan-Godfrey/Harvey/Glejser) specification. If you elect to do so, EViews will display a dialog prompting you to add additional regressors. Note that if you have already included a White specification and your original equation had a constant term, your auxiliary regression will already include level values of the original equation regressors (since the cross-product of the constant term and those regressors is their level values). In our example we choose to add the variable Y to the auxiliary regression:</div>
+      <div class="Picture"><a name="183206"><img class="Default" src="images/testing.035.5.63.jpg" width="100%" style="left: 0.0pt; max-height: 416px; max-width: 462px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183207">Next we can add ARCH terms to the auxiliary regression. The ARCH specification lets you specify a lag structure. You can either specify a number of lags, so that the auxiliary regression will include lagged values of the squared residuals up to the number you choose, or you may provide a custom lag structure. Custom structures are entered in pairs of lags. In our example we choose to include lags of 1, 2, 3 and 6:</a></div>
+      <div class="Picture"><a name="183211"><img class="Default" src="images/testing.035.5.64.jpg" width="100%" style="left: 0.0pt; max-height: 417px; max-width: 462px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183212">The final step of the wizard is to view the final specification of the auxiliary regression, with all the options you have previously chosen, and make any modifications. For our choices, the final specification looks like this:</a></div>
+      <div class="Picture"><a name="183216"><img class="Default" src="images/testing.035.5.65.jpg" width="100%" style="left: 0.0pt; max-height: 418px; max-width: 461px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183217">Our ARCH specification with lags of 1, 2, 3, 6 is shown first, followed by the White specification, and then the additional term, Y. Upon clicking </a><span class="Dialog_Item">Finish</span> the main <span class="Dialog_Item">Heteroskedasticity Tests</span> dialog has been filled out with our specification:</div>
+      <div class="Picture"><a name="183221"><img class="Default" src="images/testing.035.5.66.jpg" width="100%" style="left: 0.0pt; max-height: 371px; max-width: 413px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183222">Note, rather than go through the wizard, we could have typed this specification directly into the dialog.</a></div>
+      <div class="Body_Text"><a name="183223">This test results in the following output:</a></div>
+      <div class="Table"><a name="183227"><img class="Default" src="images/testing.035.5.67.jpg" width="100%" style="left: 0.0pt; max-height: 686px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183228">This output contains both the set of test statistics, and the results of the auxiliary regression on which they are based. All three statistics reject the null hypothesis of homoskedasticity.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

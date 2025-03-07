@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/arch.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="arch-Additional_ARCH_Models.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="arch-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="arch-ARCH_and_GARCH_Estimation.html">ARCH and GARCH Estimation</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="165971">Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#194731">Standard ARCH</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#194630">MIDAS GARCH</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="194731">Standard ARCH</a></div>
+      <div class="Picture"><a name="177810"><img class="Default" src="images/arch.037.6.01.jpg" width="100%" style="left: 0.0pt; max-height: 359px; max-width: 422px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177811">As an illustration of ARCH modeling in EViews, we estimate a model for the daily S&amp;P 500 stock index from 1990 to 1999 (in the workfile &#8220;Stocks.WF1&#8221;). The dependent variable is the daily continuously compounding return, <img class="Default EquationGraphic" src="images/arch.037.6.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 96px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/arch.037.6.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> is the daily close of the index. A graph of the return series clearly shows volatility clustering.</a></div>
+      <div class="Body_Text"><a name="166041">We will specify our mean equation with a simple constant:</a></div>
+      <div class="Equation_No_Number"><a name="166045"><img class="Default EquationGraphic" src="images/arch.037.6.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 169px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="165994">For the variance specification, we employ an EGARCH(1, 1) model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/arch.037.6.05.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(27.44)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="166181">When we previously estimated a GARCH(1,1) model with the data, the standardized residual showed evidence of excess kurtosis. To model the thick tail in the residuals, we will assume that the errors follow a Student's </a><span class="In-line_math">t</span>-distribution.</div>
+      <div class="Body_Text"><a name="166258">To estimate this model, open the GARCH estimation dialog, enter the mean specification:</a></div>
+      <div class="Input"><a name="166238">dlog(spx) c</a></div>
+      <div class="Body_Text"><a name="166277">select the </a><span class="Menu_Item">EGARCH</span> method, enter 1 for the <span class="Menu_Item">ARCH</span> and <span class="Menu_Item">GARCH</span> orders and the <span class="Menu_Item">Asymmetric order</span>, and select <span class="Menu_Item">Student&#8217;s t</span> for the <span class="Menu_Item">Error distribution</span>. Click on <span class="Menu_Item">OK</span> to continue. </div>
+      <div class="Body_Text"><a name="166300">EViews displays the results of the estimation procedure. The top portion contains a description of the estimation specification, including the estimation sample, error distribution assumption, and backcast assumption. </a></div>
+      <div class="Body_Text"><a name="177286">Below the header information are the results for the mean and the variance equations, followed by the results for any distributional parameters. Here, we see that the relatively small degrees of freedom parameter for the </a><span class="In-line_math">t</span>-distribution suggests that the distribution of the standardized errors departs significantly from normality.</div>
+      <div class="Table"><a name="177293"><img class="Default" src="images/arch.037.6.06.jpg" width="100%" style="left: 0.0pt; max-height: 616px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="177294">To test whether there any remaining ARCH effects in the residuals, select </a><span class="Menu_Item">View/Residual Diagnostics/ARCH LM Test...</span> and specify the order to test. EViews will open the general Heteroskedasticity Tests dialog opened to the ARCH page. Enter &#8220;7&#8221; in the dialog for the number of lags and click on <span class="Menu_Item">OK</span>. </div>
+      <div class="Picture"><a name="184244"><img class="Default" src="images/arch.037.6.07.jpg" width="100%" style="left: 0.0pt; max-height: 446px; max-width: 479px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184246">The top portion of the output from testing up-to an ARCH(7) is given by:</a></div>
+      <div class="Table"><a name="166471"><img class="Default" src="images/arch.037.6.08.jpg" width="100%" style="left: 0.0pt; max-height: 115px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="166472">so there is little evidence of remaining ARCH effects.</a></div>
+      <div class="Body_Text"><a name="166492">One way of further examining the distribution of the residuals is to plot the quantiles. First, save the standardized residuals by clicking on </a><span class="Menu_Item">Proc/Make Residual Series...</span>, select the <span class="Menu_Item">Standardized</span> option, and specify a name for the resulting series. EViews will create a series containing the desired residuals; in this example, we create a series named RESID02. Then open the residual series window and select <span class="Menu_Item">View/Graph... </span>and <span class="Menu_Item">Quantile-Quantile/Theoretical </span>from the list of graph types on the left-hand side of the dialog.</div>
+      <div class="Picture"><a name="166537"><img class="Default" src="images/arch.037.6.09.jpg" width="100%" style="left: 0.0pt; max-height: 381px; max-width: 451px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="166557">If the residuals are normally distributed, the points in the QQ-plots should lie alongside a straight line; see </a><span class="Link"><a href="graphs-Graph_Types.html#141002" title="Graph Types">&#8220;Quantile-Quantile (Theoretical)&#8221;</a></span> for details on QQ-plots. The plot indicates that it is primarily large negative shocks that are driving the departure from normality. Note that we have modified the QQ-plot slightly by setting identical axes to facilitate comparison with the diagonal line.</div>
+      <div class="Body_Text"><a name="166594">We can also plot the residuals against the quantiles of the </a><span class="In-line_math">t</span>-distribution. Instead of using the built-in QQ-plot for the <span class="In-line_math">t</span>-distribution, you could instead simulate a draw from a <span class="In-line_math">t</span>-distribution and examine whether the quantiles of the simulated observations match the quantiles of the residuals (this technique is useful for distributions not supported by EViews). The command:</div>
+      <div class="Input"><a name="166559">series tdist = @qtdist(rnd, 6.7)</a></div>
+      <div class="Body_Text"><a name="166561">simulates a random draw from the </a><span class="In-line_math">t</span>-distribution with 6.7 degrees of freedom. Then, create a group containing the series RESID02 and TDIST. Select <span class="Menu_Item">View/Graph... </span>and choose <span class="Menu_Item">Quantile-Quantile </span>from the left-hand side of the dialog and <span class="Dialog_Item">Empirical</span> from the <span class="Dialog_Item">Q-Q graph </span>dropdown on the right-hand side.</div>
+      <div class="Picture"><a name="166564"><img class="Default" src="images/arch.037.6.10.jpg" width="100%" style="left: 0.0pt; max-height: 392px; max-width: 370px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="171156">The large negative residuals more closely follow a straight line. On the other hand, one can see a slight deviation from </a><span class="In-line_math">t</span>-distribution for large positive shocks. This is expected, as the previous QQ-plot suggested that, with the exception of the large negative shocks, the residuals were close to normally distributed.</div>
+      <div class="Body_Text"><a name="166567">To see how the model might fit real data, we examine static forecasts for out-of-sample data. Click on the </a><span class="Menu_Item">Forecast</span> button on the equation toolbar, type in &#8220;SPX_VOL&#8221; in the GARCH field to save the forecasted conditional variance, change the sample to the post-estimation sample period &#8220;1/1/2000 1/1/2002&#8221; and click on <span class="Menu_Item">Static</span> to select a static forecast.</div>
+      <div class="Body_Text"><a name="173965">Since the actual volatility is unobserved, we will use the squared return series (DLOG(SPX)^2) as a proxy for the realized volatility. A plot of the proxy against the forecasted volatility for the years 2000 and 2001 provides an indication of the model&#8217;s ability to track variations in market volatility.</a></div>
+      <div class="Picture"><a name="177781"><img class="Default" src="images/arch.037.6.11.jpg" width="100%" style="left: 0.0pt; max-height: 451px; max-width: 518px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="194630">MIDAS GARCH</a></div>
+      <div class="Body_Text"><a name="194631">The following commands will (</a><span class="Emphasis">as of </span>2004-04-03) contact the Federal Reserve Data server, fetch the daily SP500 index data (SP500) and the monthly industrial production data (INDPRO) and create new returns series based on the logarithmic changes in those series:</div>
+      <div class="Multi-line_Input"><a name="194632">dbopen(type=fred, server=api.stlouisfed.org/fred)</a></div>
+      <div class="Multi-line_Input"><a name="194633">wfcreate(page=daily) d5 2013 @now</a></div>
+      <div class="Multi-line_Input"><a name="194634">fetch sp500</a></div>
+      <div class="Multi-line_Input"><a name="194635">pagecontract if sp500&lt;&gt;na</a></div>
+      <div class="Multi-line_Input"><a name="194636">series returns = dlog(sp500)*100</a></div>
+      <div class="Multi-line_Input"><a name="194637">pagecreate(page=monthly) m 2013 @now</a></div>
+      <div class="Multi-line_Input"><a name="194638">fetch indpro</a></div>
+      <div class="Multi-line_Input"><a name="194639">series d_indpro = dlog(indpro)*100</a></div>
+      <div class="Multi-line_Input"><a name="194640">pageselect daily</a></div>
+      <div class="Body_Text"><a name="194641">We may then estimate a MIDAS GARCH model for the daily returns, using 12 lags of the monthly industrial production changes as explanatory variables in the permanent component specification.</a></div>
+      <div class="Body_Text"><a name="194642">The MIDAS GARCH dialog may be filled out as follows, with D_INDPRO on the MONTHLY page specified as our low-frequency MIDAS regressor:</a></div>
+      <div class="Picture"><a name="194646"><img class="Default" src="images/arch.037.6.12.jpg" width="100%" style="left: 0.0pt; max-height: 572px; max-width: 586px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="194647">and click on </a><span class="Menu_Item">OK</span> to perform the estimation using the remaining default settings.</div>
+      <div class="Body_Text"><a name="194648">Alternately, you may issue the following commands to perform the estimation procedure and display results:</a></div>
+      <div class="Multi-line_Input"><a name="194649">smpl @first 2018</a></div>
+      <div class="Multi-line_Input"><a name="194650">equation ex1.arch(midas) returns c @ monthly\d_indpro</a></div>
+      <div class="Multi-line_Input"><a name="194651">show ex1</a></div>
+      <div class="Body_Text"><a name="194652">Following estimation, EViews will display the results view. The top portion of the results shows the estimation settings, sample information, computation information, and a brief text description of the transitory and permanent component specifications:</a></div>
+      <div class="Table"><a name="194656"><img class="Default" src="images/arch.037.6.13.jpg" width="100%" style="left: 0.0pt; max-height: 245px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="194657">Note that the long-run component TAU is described as the exponential function evaluated at the sum of an intercept term M and a function which depends on a slope coefficient <img class="Default EquationGraphic" src="images/arch.037.6.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />, the parameter THETA2 (<img class="Default EquationGraphic" src="images/arch.037.6.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />), and the low frequency series MONTHLY\INDPRO. The variance is described as the product of the long-run component TAU, and the short-run GARCH(1,1) component.</a></div>
+      <div class="Body_Text"><a name="194664">The next section shows standard coefficient results for the mean equation, transitory portion of the variance equation, and the permanent component, as well as summary statistics for the estimated equation:</a></div>
+      <div class="Table"><a name="194668"><img class="Default" src="images/arch.037.6.16.jpg" width="100%" style="left: 0.0pt; max-height: 477px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="194669">As is the case with other EViews estimators, you may find it useful to use the </a><span class="Menu_Item">Coefficient Labels</span> view to see the mapping of the results in the output to the underlying coefficients. </div>
+      <div class="Body_Text"><a name="194673">The bottom portion of the results show the distribution of the weight values <img class="Default EquationGraphic" src="images/arch.037.6.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> for various lags given the estimated <img class="Default EquationGraphic" src="images/arch.037.6.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" />, SLOPE (<img class="Default EquationGraphic" src="images/arch.037.6.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />), and THETA2 (<img class="Default EquationGraphic" src="images/arch.037.6.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />):</a></div>
+      <div class="Picture"><a name="194686"><img class="Default" src="images/arch.037.6.21.jpg" width="100%" style="left: 0.0pt; max-height: 266px; max-width: 458px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="194690">Following convention, the &#8220;Lag 0&#8221; coefficient corresponds the <img class="Default EquationGraphic" src="images/arch.037.6.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> coefficient weight on MONTHLY\D_INDPRO(-1), &#8220;Lag 1&#8221; corresponds to <img class="Default EquationGraphic" src="images/arch.037.6.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> and MONTHLY\D_INDPRO(-2), and so forth. The distribution of weights shows that the permanent component in generally increasing in the lags of D_INDPRO, and is most pronounced at D_INDPRO(-12).</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

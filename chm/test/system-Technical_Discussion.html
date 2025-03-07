@@ -1,0 +1,784 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Technical Discussion</title>
+    <link rel="StyleSheet" href="css/system.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="system-Working_With_Systems.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="system-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="system-System_Estimation.html">System Estimation</a> : Technical Discussion</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="148713">Technical Discussion</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37382">Ordinary Least Squares</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37405">Weighted Least Squares</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37465">Seemingly Unrelated Regression (SUR)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37511">Two-Stage Least Squares (TSLS) and Weighted TSLS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37576">Three-Stage Least Squares (3SLS)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160176">Full Information Maximum Likelihood)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160955">Generalized Method of Moments (GMM)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37695">White&#8217;s Heteroskedasticity Consistent Covariance Matrix</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37716">Heteroskedasticity and Autocorrelation Consistent (HAC) Covariance Matrix </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#37736">Kernel Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#37763">Bandwidth Selection</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#154451">Prewhitening</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#149062">Multivariate ARCH</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#151234">Diagonal VECH</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#150547">Constant Conditional Correlation (CCC)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#149473">Diagonal BEKK</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="37307">While the discussion to follow is expressed in terms of a balanced system of linear equations, the analysis carries forward in a straightforward way to unbalanced systems containing nonlinear equations.</a></div>
+      <div class="Body_Text"><a name="37308">Denote a system of <img class="Default EquationGraphic" src="images/system.055.6.001.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> equations in stacked form as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.002.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37328">where <img class="Default EquationGraphic" src="images/system.055.6.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> is <img class="Default EquationGraphic" src="images/system.055.6.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> vector, <img class="Default EquationGraphic" src="images/system.055.6.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 28px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/system.055.6.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 54px; top: 0.0pt" alt="" /> matrix, and <img class="Default EquationGraphic" src="images/system.055.6.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/system.055.6.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> vector of coefficients. The error terms <img class="Default EquationGraphic" src="images/system.055.6.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> have an <img class="Default EquationGraphic" src="images/system.055.6.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 80px; top: 0.0pt" alt="" /> covariance matrix <img class="Default EquationGraphic" src="images/system.055.6.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />. The system may be written in compact form as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.012.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37339">Under the standard assumptions, the residual variance matrix from this stacked system is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.013.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37344">Other residual structures are of interest. First, the errors may be heteroskedastic across the <img class="Default EquationGraphic" src="images/system.055.6.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> equations. Second, they may be heteroskedastic and contemporaneously correlated. We can characterize both of these cases by defining the <img class="Default EquationGraphic" src="images/system.055.6.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 54px; top: 0.0pt" alt="" /> matrix of contemporaneous correlations, <img class="Default EquationGraphic" src="images/system.055.6.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, where the (</a><span class="In-line_math">i</span>,<span class="In-line_math">j</span>)-th element of <img class="Default EquationGraphic" src="images/system.055.6.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is given by <img class="Default EquationGraphic" src="images/system.055.6.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 110px; top: 0.0pt" alt="" /> for all <img class="Default EquationGraphic" src="images/system.055.6.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. If the errors are contemporaneously uncorrelated, then, <img class="Default EquationGraphic" src="images/system.055.6.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 60px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/system.055.6.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, and we can write:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.022.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.11)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37367">More generally, if the errors are heteroskedastic and contemporaneously correlated:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.023.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.12)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37372">Lastly, at the most general level, there may be heteroskedasticity, contemporaneous correlation, and autocorrelation of the residuals. The general variance matrix of the residuals may be written:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.024.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.13)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37380">where <img class="Default EquationGraphic" src="images/system.055.6.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> is an autocorrelation matrix for the </a><span class="In-line_math">i</span>-th and <span class="In-line_math">j</span>-th equations.</div>
+      <div class="Heading_4"><a name="37382">Ordinary Least Squares</a></div>
+      <div class="Body_Text"><a name="37383">The OLS estimator of the estimated variance matrix of the parameters is valid under the assumption that <img class="Default EquationGraphic" src="images/system.055.6.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 95px; top: 0.0pt" alt="" />. The estimator for <img class="Default EquationGraphic" src="images/system.055.6.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is given by,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.028.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37395">and the variance estimator is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.029.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37403">where <img class="Default EquationGraphic" src="images/system.055.6.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 19px; top: 0.0pt" alt="" />is the residual variance estimate for the stacked system.</a></div>
+      <div class="Heading_4"><a name="37405">Weighted Least Squares</a></div>
+      <div class="Body_Text"><a name="37406">The weighted least squares estimator is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.031.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37420">where <img class="Default EquationGraphic" src="images/system.055.6.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 242px; top: 0.0pt" alt="" /> is a consistent estimator of <img class="Default EquationGraphic" src="images/system.055.6.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/system.055.6.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is the residual variance estimator:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.035.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37426">where the inner product is taken over the non-missing common elements of <img class="Default EquationGraphic" src="images/system.055.6.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/system.055.6.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. The max function in </a><span class="Link"><a href="#37425" title="Technical Discussion">Equation&nbsp;(43.17)</a></span> is designed to handle the case of unbalanced data by down-weighting the covariance terms. Provided the missing values are asymptotically negligible, this yields a consistent estimator of the variance elements. Note also that there is no adjustment for degrees of freedom.</div>
+      <div class="Body_Text"><a name="37433">When specifying your estimation specification, you are given a choice of which coefficients to use in computing the <img class="Default EquationGraphic" src="images/system.055.6.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />. If you choose not to iterate the weights, the OLS coefficient estimates will be used to estimate the variances. If you choose to iterate the weights, the current parameter estimates (which may be based on the previously computed weights) are used in computing the <img class="Default EquationGraphic" src="images/system.055.6.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />. This latter procedure may be iterated until the weights and coefficients converge.</a></div>
+      <div class="Body_Text"><a name="37437">The estimator for the coefficient variance matrix is:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.040.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.18)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37443">The weighted least squares estimator is efficient, and the variance estimator consistent, under the assumption that there is heteroskedasticity, but no serial or contemporaneous correlation in the residuals.</a></div>
+      <div class="Body_Text"><a name="37444">It is worth pointing out that if there are no cross-equation restrictions on the parameters of the model, weighted LS on the entire system yields estimates that are identical to those obtained by equation-by-equation LS. Consider the following simple model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.041.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37458">If <img class="Default EquationGraphic" src="images/system.055.6.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/system.055.6.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> are unrestricted, the WLS estimator given in </a><span class="Link"><a href="#37442" title="Technical Discussion">Equation&nbsp;(43.18)</a></span> yields:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.044.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37463">The expression on the right is equivalent to equation-by-equation OLS. Note, however, that even without cross-equation restrictions, the standard errors are not the same in the two cases.</a></div>
+      <div class="Heading_4"><a name="37465">Seemingly Unrelated Regression (SUR)</a></div>
+      <div class="Body_Text"><a name="37469">SUR is appropriate when all the right-hand side regressors <img class="Default EquationGraphic" src="images/system.055.6.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> are assumed to be exogenous, and the errors are heteroskedastic and contemporaneously correlated so that the error variance matrix is given by <img class="Default EquationGraphic" src="images/system.055.6.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 95px; top: 0.0pt" alt="" />. Zellner&#8217;s SUR estimator of <img class="Default EquationGraphic" src="images/system.055.6.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> takes the form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.048.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37489">where <img class="Default EquationGraphic" src="images/system.055.6.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 16px; top: 0.0pt" alt="" /> is a consistent estimate of <img class="Default EquationGraphic" src="images/system.055.6.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> with typical element <img class="Default EquationGraphic" src="images/system.055.6.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, for all <img class="Default EquationGraphic" src="images/system.055.6.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/system.055.6.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="37490">If you include AR terms in equation <img class="Default EquationGraphic" src="images/system.055.6.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, EViews transforms the model (see </a><span class="Link"><a href="timeser-Estimating_ARIMA_and_ARFIMA_Models_in_EViews.html#246532" title="Estimating ARIMA and ARFIMA Models in EViews">&#8220;Specifying AR Terms&#8221;</a></span>) and estimates the following equation:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.055.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37498">where <img class="Default EquationGraphic" src="images/system.055.6.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 16px; top: 0.0pt" alt="" /> is assumed to be serially independent, but possibly correlated contemporaneously across equations. At the beginning of the first iteration, we estimate the equation by nonlinear LS and use the estimates to compute the residuals <img class="Default EquationGraphic" src="images/system.055.6.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 20px; max-width: 12px; top: 0.0pt" alt="" />. We then construct an estimate of <img class="Default EquationGraphic" src="images/system.055.6.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> using <img class="Default EquationGraphic" src="images/system.055.6.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 192px; top: 0.0pt" alt="" /> and perform nonlinear GLS to complete one iteration of the estimation procedure. These iterations may be repeated until the coefficients and weights converge.</a></div>
+      <div class="Heading_4"><a name="37511">Two-Stage Least Squares (TSLS) and Weighted TSLS</a></div>
+      <div class="Body_Text"><a name="37512">TSLS is a single equation estimation method that is appropriate when some of the variables in <img class="Default EquationGraphic" src="images/system.055.6.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> are endogenous. Write the </a><span class="In-line_math">j</span>-th equation of the system as,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.061.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37520">or, alternatively:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.062.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37537">where <img class="Default EquationGraphic" src="images/system.055.6.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 131px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/system.055.6.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 106px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/system.055.6.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 121px; top: 0.0pt" alt="" />and <img class="Default EquationGraphic" src="images/system.055.6.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 112px; top: 0.0pt" alt="" />. <img class="Default EquationGraphic" src="images/system.055.6.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is the matrix of endogenous variables and <img class="Default EquationGraphic" src="images/system.055.6.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is the matrix of exogenous variables; <img class="Default EquationGraphic" src="images/system.055.6.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is the matrix of endogenous variables not including <img class="Default EquationGraphic" src="images/system.055.6.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="37541">In the first stage, we regress the right-hand side endogenous variables <img class="Default EquationGraphic" src="images/system.055.6.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> on all exogenous variables <img class="Default EquationGraphic" src="images/system.055.6.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and get the fitted values:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.073.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37555">In the second stage, we regress <img class="Default EquationGraphic" src="images/system.055.6.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/system.055.6.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 22px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/system.055.6.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> to get:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.077.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37563">where <img class="Default EquationGraphic" src="images/system.055.6.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 105px; top: 0.0pt" alt="" />. The residuals from an equation using these coefficients are used for form weights.</a></div>
+      <div class="Body_Text"><a name="37564">Weighted TSLS applies the weights in the second stage so that:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.079.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37569">where the elements of the variance matrix are estimated in the usual fashion using the residuals from unweighted TSLS. </a></div>
+      <div class="Body_Text"><a name="37573">If you choose to iterate the weights, <img class="Default EquationGraphic" src="images/system.055.6.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is estimated at each step using the current values of the coefficients and residuals.</a></div>
+      <div class="Heading_4"><a name="37576">Three-Stage Least Squares (3SLS)</a></div>
+      <div class="Body_Text"><a name="37577">Since TSLS is a single equation estimator that does not take account of the covariances between residuals, it is not, in general, fully efficient. 3SLS is a system method that estimates all of the coefficients of the model, then forms weights and reestimates the model using the estimated weighting matrix. It should be viewed as the endogenous variable analogue to the SUR estimator described above. </a></div>
+      <div class="Body_Text"><a name="37578">The first two stages of 3SLS are the same as in TSLS. In the third stage, we apply feasible generalized least squares (FGLS) to the equations in the system in a manner analogous to the SUR estimator.</a></div>
+      <div class="Body_Text"><a name="37579">SUR uses the OLS residuals to obtain a consistent estimate of the cross-equation covariance matrix <img class="Default EquationGraphic" src="images/system.055.6.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. This covariance estimator is not, however, consistent if any of the right-hand side variables are endogenous. 3SLS uses the 2SLS residuals to obtain a consistent estimate of <img class="Default EquationGraphic" src="images/system.055.6.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="142918">In the balanced case, we may write the equation as,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.083.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37593">where <img class="Default EquationGraphic" src="images/system.055.6.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 16px; top: 0.0pt" alt="" /> has typical element:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.085.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37599">If you choose to iterate the weights, the current coefficients and residuals will be used to estimate <img class="Default EquationGraphic" src="images/system.055.6.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_4"><a name="160176">Full Information Maximum Likelihood)</a></div>
+      <div class="Body_Text"><a name="160776">Following the discussion in Amemiya (1997), recall that we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.087.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="160790">where <img class="Default EquationGraphic" src="images/system.055.6.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is a vector of endogenous variables, <img class="Default EquationGraphic" src="images/system.055.6.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is a vector of exogenous variables. The Full Information Maximum Likelihood (FIML) estimator finds the vector of parameters <img class="Default EquationGraphic" src="images/system.055.6.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> by maximizing the likelihood under the assumption that <img class="Default EquationGraphic" src="images/system.055.6.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> is a vector of </a><span class="Emphasis">i.i.d.</span> multivariate normal random variables with covariance matrix <img class="Default EquationGraphic" src="images/system.055.6.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="160886">Under the normality assumption, the log-likelihood is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.093.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="160239">where <img class="Default EquationGraphic" src="images/system.055.6.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 117px; top: 0.0pt" alt="" />. Note that the log determinant of the derivatives of <img class="Default EquationGraphic" src="images/system.055.6.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 15px; top: 0.0pt" alt="" /> captures the simultaneity in the system of equations.</a></div>
+      <div class="Body_Text"><a name="161007">For the unrestricted and diagonal restricted covariance variants of the model, we may use the first-order conditions for the variance parameters and rewrite the likelihood in concentrated form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.096.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="161155">The diagonal restricted estimator replaces the off diagonal terms in the latter matrix with zeros. The corresponding FIML estimator maximizes the concentrated likelihood with respect to the <img class="Default EquationGraphic" src="images/system.055.6.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> (or equivalently, the full likelihood with respect to <img class="Default EquationGraphic" src="images/system.055.6.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and the free parameters of <img class="Default EquationGraphic" src="images/system.055.6.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />).</a></div>
+      <div class="Body_Text"><a name="166728">The FIML estimator for models with user restricted covariances maximizes the full likelihood in </a><span class="Link"><a href="#160937" title="Technical Discussion">Equation&nbsp;(43.31)</a></span> with respect to <img class="Default EquationGraphic" src="images/system.055.6.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> given the user specified value for <img class="Default EquationGraphic" src="images/system.055.6.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="161311">The estimator for <img class="Default EquationGraphic" src="images/system.055.6.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is asymptotically normally distributed with coefficient covariance typically computed using the partitioned inverse of the outer-product of the gradient of the full likelihood (OPG) or the inverse of the negative of the observed Hessian of the concentrated likelihood. EViews employs the OPG covariance by default, but there is evidence that one should take seriously the choice of method (Calzolari and Panattoni, 1988). In addition, EViews offers a QML covariance computation that employs a Huber-White sandwich using both the OPG and the inverse negative Hessian.</a></div>
+      <div class="Body_Text"><a name="162496">Over the years, a number of approaches for FIML estimation have been proposed (see, for example, Parke 1982, Belsley 1980, Dagenais 1978, or Amemiya 1977). EViews offers standard BFGS, Newton-Raphson, and OPG/BHHH algorithms with various step methods in trust region form, as well as a simple implementation of BHHH with Marquardt and line search steps (</a><span class="Link"><a href="optimize-Optimization_Algorithms.html#137130" title="Optimization Algorithms">&#8220;Optimization Algorithms&#8221;</a></span>). See Calzolari and Panattoni (1987) and Weihs, Calzolari, and Panattoni (1986) for simulation results for the performance of various estimators. </div>
+      <div class="Body_Text"><a name="163707">Whichever method you select, we encourage you to perform sensitivity analysis.</a></div>
+      <div class="Heading_4"><a name="160955">Generalized Method of Moments (GMM)</a></div>
+      <div class="Body_Text"><a name="37606">The basic idea underlying GMM is simple and intuitive. We have a set of theoretical moment conditions that the parameters of interest <img class="Default EquationGraphic" src="images/system.055.6.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> should satisfy. We denote these moment conditions as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.104.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="121137">The method of moments estimator is defined by replacing the moment condition </a><span class="Link"><a href="#37614" title="Technical Discussion">(43.33)</a></span> by its sample analog:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.105.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="121146">However, condition </a><span class="Link"><a href="#121142" title="Technical Discussion">(43.34)</a></span> will not be satisfied for any <img class="Default EquationGraphic" src="images/system.055.6.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />when there are more restrictions <img class="Default EquationGraphic" src="images/system.055.6.107.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> than there are parameters <img class="Default EquationGraphic" src="images/system.055.6.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. To allow for such overidentification, the GMM estimator is defined by minimizing the following criterion function:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.109.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.35)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37635">which measures the &#8220;distance&#8221; between <img class="Default EquationGraphic" src="images/system.055.6.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> and zero. <img class="Default EquationGraphic" src="images/system.055.6.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is a weighting matrix that weights each moment condition. Any symmetric positive definite matrix <img class="Default EquationGraphic" src="images/system.055.6.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> will yield a consistent estimate of <img class="Default EquationGraphic" src="images/system.055.6.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. However, it can be shown that a necessary (but not sufficient) condition to obtain an (asymptotically) efficient estimate of <img class="Default EquationGraphic" src="images/system.055.6.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is to set <img class="Default EquationGraphic" src="images/system.055.6.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> equal to the inverse of the covariance matrix <img class="Default EquationGraphic" src="images/system.055.6.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> of the sample moments <img class="Default EquationGraphic" src="images/system.055.6.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />. This follows intuitively, since we want to put less weight on the conditions that are more imprecise. </a></div>
+      <div class="Body_Text"><a name="37647">To obtain GMM estimates in EViews, you must be able to write the moment conditions in </a><span class="Link"><a href="#37614" title="Technical Discussion">Equation&nbsp;(43.33)</a></span> as an orthogonality condition between the residuals of a regression equation, <img class="Default EquationGraphic" src="images/system.055.6.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 76px; top: 0.0pt" alt="" />, and a set of instrumental variables, <img class="Default EquationGraphic" src="images/system.055.6.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, so that:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.120.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37661">For example, the OLS estimator is obtained as a GMM estimator with the orthogonality conditions:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.121.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37666">For the GMM estimator to be identified, there must be at least as many instrumental variables <img class="Default EquationGraphic" src="images/system.055.6.122.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> as there are parameters <img class="Default EquationGraphic" src="images/system.055.6.123.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. See the section on </a><span class="Link"><a href="gmmiv-Generalized_Method_of_Moments.html#168446" title="Generalized Method of Moments">&#8220;Generalized Method of Moments&#8221;</a></span> for additional examples of GMM orthogonality conditions.</div>
+      <div class="Body_Text"><a name="37680">An important aspect of specifying a GMM problem is the choice of the weighting matrix <img class="Default EquationGraphic" src="images/system.055.6.124.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />. EViews uses the optimal <img class="Default EquationGraphic" src="images/system.055.6.125.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 70px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/system.055.6.126.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 16px; top: 0.0pt" alt="" /> is the estimated long-run covariance matrix of the sample moments <img class="Default EquationGraphic" src="images/system.055.6.127.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />. EViews uses the consistent TSLS estimates for the initial estimate of <img class="Default EquationGraphic" src="images/system.055.6.128.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> in forming the estimate of <img class="Default EquationGraphic" src="images/system.055.6.129.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Heading_5"><a name="37695">White&#8217;s Heteroskedasticity Consistent Covariance Matrix</a></div>
+      <div class="Body_Text"><a name="37699">If you choose the </a><span class="Menu_Item">GMM-Cross section</span> option, EViews estimates <img class="Default EquationGraphic" src="images/system.055.6.130.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> using White&#8217;s heteroskedasticity consistent covariance matrix:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.131.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.38)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37710">where <img class="Default EquationGraphic" src="images/system.055.6.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is the vector of residuals, and <img class="Default EquationGraphic" src="images/system.055.6.133.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/system.055.6.134.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> matrix such that the <img class="Default EquationGraphic" src="images/system.055.6.135.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> moment conditions at <img class="Default EquationGraphic" src="images/system.055.6.136.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> may be written as <img class="Default EquationGraphic" src="images/system.055.6.137.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 244px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="37716">Heteroskedasticity and Autocorrelation Consistent (HAC) Covariance Matrix </a></div>
+      <div class="Body_Text"><a name="37720">If you choose the </a><span class="Dialog_Item">GMM-Time series</span> option, EViews estimates <img class="Default EquationGraphic" src="images/system.055.6.138.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> by,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.139.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.39)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37725">where:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.140.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.40)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37733">You also need to specify the </a><span class="Definition">kernel function </span><img class="Default EquationGraphic" src="images/system.055.6.141.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> and the <span class="Definition">bandwidth</span> <img class="Default EquationGraphic" src="images/system.055.6.142.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. </div>
+      <div class="Heading_6"><a name="37736">Kernel Options</a></div>
+      <div class="Body_Text"><a name="37743">The kernel function <img class="Default EquationGraphic" src="images/system.055.6.143.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is used to weight the covariances so that <img class="Default EquationGraphic" src="images/system.055.6.144.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 16px; top: 0.0pt" alt="" /> is ensured to be positive semi-definite. EViews provides two choices for the kernel, Bartlett and quadratic spectral (QS). The Bartlett kernel is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.145.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.41)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37752">while the quadratic spectral (QS) kernel is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.146.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.42)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37760">where <img class="Default EquationGraphic" src="images/system.055.6.147.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 67px; top: 0.0pt" alt="" />. The QS has a faster rate of convergence than the Bartlett and is smooth and not truncated (Andrews 1991). Note that even though the QS kernel is not truncated, it still depends on the bandwidth <img class="Default EquationGraphic" src="images/system.055.6.148.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> (which need not be an integer). </a></div>
+      <div class="Heading_6"><a name="37763">Bandwidth Selection</a></div>
+      <div class="Body_Text"><a name="37764">The bandwidth <img class="Default EquationGraphic" src="images/system.055.6.149.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> determines how the weights given by the kernel change with the lags in the estimation of <img class="Default EquationGraphic" src="images/system.055.6.150.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. Newey-West fixed bandwidth is based solely on the number of observations in the sample and is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.151.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.43)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37776">where int( ) denotes the integer part of the argument. </a></div>
+      <div class="Body_Text"><a name="37777">EViews also provides two &#8220;automatic&#8221;, or data dependent bandwidth selection methods that are based on the autocorrelations in the data. Both methods select the bandwidth according to the rule:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.152.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.44)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37785">The two methods, Andrews and Variable-Newey-West, differ in how they estimate <img class="Default EquationGraphic" src="images/system.055.6.153.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/system.055.6.154.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="37790">Andrews (1991) is a parametric method that assumes the sample moments follow an AR(1) process. We first fit an AR(1) to each sample moment </a><span class="Link"><a href="#37660" title="Technical Discussion">(43.36)</a></span> and estimate the autocorrelation coefficients <img class="Default EquationGraphic" src="images/system.055.6.155.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 18px; top: 0.0pt" alt="" /> and the residual variances <img class="Default EquationGraphic" src="images/system.055.6.156.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 20px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/system.055.6.157.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 109px; top: 0.0pt" alt="" />. Then <img class="Default EquationGraphic" src="images/system.055.6.158.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/system.055.6.159.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" /> are estimated by:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.160.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.45)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37813">Note that we weight all moments equally, including the moment corresponding to the constant. </a></div>
+      <div class="Body_Text"><a name="37815">Newey-West (1994) is a nonparametric method based on a truncated weighted sum of the estimated cross-moments <img class="Default EquationGraphic" src="images/system.055.6.161.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 36px; top: 0.0pt" alt="" />. <img class="Default EquationGraphic" src="images/system.055.6.162.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/system.055.6.163.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" /> are estimated by,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.164.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.46)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37838">where <img class="Default EquationGraphic" src="images/system.055.6.165.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> is a vector of ones and: </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.166.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.47)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="121219">for <img class="Default EquationGraphic" src="images/system.055.6.167.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 69px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="37839">One practical problem with the Newey-West method is that we have to choose a lag selection parameter <img class="Default EquationGraphic" src="images/system.055.6.168.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. The choice of <img class="Default EquationGraphic" src="images/system.055.6.169.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is arbitrary, subject to the condition that it grow at a certain rate. EViews sets the lag parameter to:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.170.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.48)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37852">where <img class="Default EquationGraphic" src="images/system.055.6.171.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 72px; top: 0.0pt" alt="" /> for the Bartlett kernel and <img class="Default EquationGraphic" src="images/system.055.6.172.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 80px; top: 0.0pt" alt="" /> for the quadratic spectral kernel.</a></div>
+      <div class="Heading_6"><a name="154451">Prewhitening</a></div>
+      <div class="Body_Text"><a name="37853">You can also choose to prewhiten the sample moments <img class="Default EquationGraphic" src="images/system.055.6.173.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> to &#8220;soak up&#8221; the correlations in <img class="Default EquationGraphic" src="images/system.055.6.174.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> prior to GMM estimation. We first fit a VAR(1) to the sample moments:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.175.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.49)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="37867">Then the variance <img class="Default EquationGraphic" src="images/system.055.6.176.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 16px; top: 0.0pt" alt="" /> of <img class="Default EquationGraphic" src="images/system.055.6.177.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> is estimated by <img class="Default EquationGraphic" src="images/system.055.6.178.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 192px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/system.055.6.179.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 24px; top: 0.0pt" alt="" /> is the long-run variance of the residuals <img class="Default EquationGraphic" src="images/system.055.6.180.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> computed using any of the above methods. The GMM estimator is then found by minimizing the criterion function:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.181.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.50)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="149054">Note that while Andrews and Monahan (1992) adjust the VAR estimates to avoid singularity when the moments are near unit root processes, EViews does not perform this eigenvalue adjustment.</a></div>
+      <div class="Heading_4"><a name="149062">Multivariate ARCH</a></div>
+      <div class="Body_Text"><a name="151281">ARCH estimation uses maximum likelihood to jointly estimate the parameters of the mean and the variance equations.</a></div>
+      <div class="Body_Text"><a name="151261">Assuming multivariate normality, the log likelihood contributions for GARCH models are given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.182.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.51)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="151269">where </a><span class="EquationVariables">m</span> is the number of mean equations, and <img class="Default EquationGraphic" src="images/system.055.6.183.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /><span class="EquationVariables"> i</span>s the <img class="Default EquationGraphic" src="images/system.055.6.184.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> vector of mean equation residuals. For Student's <span class="In-line_math">t</span>-distribution, the contributions are of the form:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.185.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.52)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="151277">where <img class="Default EquationGraphic" src="images/system.055.6.186.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the estimated degree of freedom.</a></div>
+      <div class="Body_Text"><a name="149075">Given a specification for the mean equation and a distributional assumption, all that we require is a specification for the conditional covariance matrix. We consider, in turn, each of the three basic specifications: Diagonal VECH, Constant Conditional Correlation (CCC), and Diagonal BEKK.</a></div>
+      <div class="Heading_5"><a name="151234">Diagonal VECH</a></div>
+      <div class="Body_Text"><a name="151230">Bollerslev, </a><span class="Emphasis">et. al</span> (1988) introduce a restricted version of the general multivariate VECH model of the conditional covariance with the following formulation:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.187.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.53)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="149093">where the coefficient matrices <img class="Default EquationGraphic" src="images/system.055.6.188.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/system.055.6.189.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/system.055.6.190.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> are <img class="Default EquationGraphic" src="images/system.055.6.191.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 49px; top: 0.0pt" alt="" /> symmetric matrices, and the operator &#8220;&#8226;&#8221;</a><span class="MT_Symbols">&#x0020;</span>is the element by element (Hadamard) product. The coefficient matrices may be parametrized in several ways. The most general way is to allow the parameters in the matrices to vary without any restrictions, <span class="Emphasis">i.e.</span> parameterize them as indefinite matrices. In that case the model may be written in single equation format as:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.192.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.54)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="149161">where, for instance, <img class="Default EquationGraphic" src="images/system.055.6.193.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 45px; top: 0.0pt" alt="" /> is the </a><span class="In-line_math">i</span>-th row and <span class="In-line_math">j</span>-th column of matrix <img class="Default EquationGraphic" src="images/system.055.6.194.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="149162">Each matrix contains <img class="Default EquationGraphic" src="images/system.055.6.195.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 93px; top: 0.0pt" alt="" /> parameters. This model is the most unrestricted version of a Diagonal VECH model. At the same time, it does not ensure that the conditional covariance matrix is positive semidefinite (PSD). As summarized in Ding and Engle (2001), there are several approaches for specifying coefficient matrices that restrict <img class="Default EquationGraphic" src="images/system.055.6.196.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> to be PSD, possibly by reducing the number of parameters. One example is:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.197.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.55)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="149222">where raw matrices <img class="Default EquationGraphic" src="images/system.055.6.198.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 18px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/system.055.6.199.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 17px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/system.055.6.200.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 16px; top: 0.0pt" alt="" /> are any matrix up to rank <img class="Default EquationGraphic" src="images/system.055.6.201.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />. For example, one may use the rank <img class="Default EquationGraphic" src="images/system.055.6.202.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> Cholesky factorized matrix of the coefficient matrix. This method is labeled the </a><span class="Dialog_Item">Full Rank Matrix</span> in the coefficient <span class="Dialog_Item">Restriction</span> selection of the system ARCH dialog. While this method contains the same number of parameters as the indefinite version, it does ensure that the conditional covariance is PSD.</div>
+      <div class="Body_Text"><a name="149224">A second method, which we term </a><span class="Dialog_Item">Rank One</span>, reduces the number of parameter estimated to <img class="Default EquationGraphic" src="images/system.055.6.203.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and guarantees that the conditional covariance is PSD. In this case, the estimated raw matrix is restricted, with all but the first column of coefficients equal to zero.</div>
+      <div class="Body_Text"><a name="149226">In both of these specifications, the reported raw variance coefficients are elements of <img class="Default EquationGraphic" src="images/system.055.6.204.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 18px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/system.055.6.205.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 17px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/system.055.6.206.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 16px; top: 0.0pt" alt="" />. These coefficients must be transformed to obtain the matrix of interest: <img class="Default EquationGraphic" src="images/system.055.6.207.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 77px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/system.055.6.208.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 76px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/system.055.6.209.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 71px; top: 0.0pt" alt="" />. These transformed coefficients are reported in the extended variance coefficient section at the end of the system estimation results.</a></div>
+      <div class="Body_Text"><a name="149228">There are two other covariance specifications that you may employ. First, the values in the <img class="Default EquationGraphic" src="images/system.055.6.210.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 49px; top: 0.0pt" alt="" /> matrix may be a constant, so that:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.211.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.56)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="149364">where <img class="Default EquationGraphic" src="images/system.055.6.212.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a scalar and <img class="Default EquationGraphic" src="images/system.055.6.213.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> is an <img class="Default EquationGraphic" src="images/system.055.6.214.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 45px; top: 0.0pt" alt="" /> vector of ones. This </a><span class="Menu_Item">Scalar</span> specification implies that for a particular term, the parameters of the variance and covariance equations are restricted to be the same. Alternately, the matrix coefficients may be parameterized as <span class="Menu_Item">Diagonal</span> so that all off diagonal elements are restricted to be zero. In both of these parameterizations, the coefficients are not restricted to be positive, so that <img class="Default EquationGraphic" src="images/system.055.6.215.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is not guaranteed to be PSD.</div>
+      <div class="Body_Text"><a name="149365">Lastly, for the constant matrix <img class="Default EquationGraphic" src="images/system.055.6.216.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, we may also impose a </a><span class="Menu_Item">Variance Target</span> on the coefficients which restricts the values of the coefficient matrix so that:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.217.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.57)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="149396">where <img class="Default EquationGraphic" src="images/system.055.6.218.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is the unconditional sample variance of the residuals. When using this option, the constant matrix is not estimated, reducing the number of estimated parameters.</a></div>
+      <div class="Body_Text"><a name="149398">You may specify a different type of coefficient matrix for each term. For example, if one estimates a multivariate GARCH(1,1) model with indefinite matrix coefficient for the constant while specifying the coefficients of the ARCH and GARCH term to be rank one matrices, then the number of parameters will be <img class="Default EquationGraphic" src="images/system.055.6.219.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 147px; top: 0.0pt" alt="" />, instead of <img class="Default EquationGraphic" src="images/system.055.6.220.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 116px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="150547">Constant Conditional Correlation (CCC)</a></div>
+      <div class="Body_Text"><a name="151235">Bollerslev (1990) specifies the elements of the conditional covariance matrix as follows:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.221.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.58)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="149389">Restrictions may be imposed on the constant term using variance targeting so that:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.222.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.59)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="149440">where <img class="Default EquationGraphic" src="images/system.055.6.223.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 20px; top: 0.0pt" alt="" /> is the unconditional variance.</a></div>
+      <div class="Body_Text"><a name="149442">When exogenous variables are included in the variance specification, the user may choose between </a><span class="Definition">individua</span>l coefficients and <span class="Definition">common</span> coefficients. For common coefficients, exogenous variables are assumed to have the same slope, <img class="Default EquationGraphic" src="images/system.055.6.224.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, for every equation. Individual coefficients allow each exogenous variable effect <img class="Default EquationGraphic" src="images/system.055.6.225.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> to differ across equations.</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.226.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.60)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_5"><a name="149473">Diagonal BEKK</a></div>
+      <div class="Body_Text"><a name="149465">BEKK (Engle and Kroner, 1995) is defined as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/system.055.6.227.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(43.61)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="149495">EViews does not estimate the general form of BEKK in which <img class="Default EquationGraphic" src="images/system.055.6.228.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/system.055.6.229.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> are unrestricted. However, a common and popular form, diagonal BEKK, may be specified that restricts <img class="Default EquationGraphic" src="images/system.055.6.230.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/system.055.6.231.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> to be diagonals. This Diagonal BEKK model is identical to the Diagonal VECH model where the coefficient matrices are rank one matrices. For convenience, EViews provides an option to estimate the Diagonal VECH model, but display the result in Diagonal BEKK form.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>An Example</title>
+    <link rel="StyleSheet" href="css/mixvar.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="mixvar-Estimating_a_Mixed_Frequency_VAR_in_EViews.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="mixvar-Technical_Background.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="mixvar-Mixed_Frequency_VAR.html">Mixed Frequency VAR</a> : An Example</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="298071">An Example</a></div>
+      <div class="Body_Text"><a name="298094">As an example of using Mixed Frequency VARs in EViews, we will perform similar analysis to that in Ghysels (2016). The analysis involves monthly industrial production, inflation and unemployment data for the US between 1949 and 2011, and quarterly US GDP data over the same period. The data are provided in the two-page workfile &#8220;Kansfed.WF1&#8221;. </a></div>
+      <div class="Body_Text"><a name="298073">Following Ghysels, we will estimate a mixed frequency VAR model with a single lag. Ensuring we have the </a><span class="Menu_Item">quarterly</span> page selected, we click on <span class="Menu_Item">Quick/Estimate VAR&#8230;</span> menu item and fill in the details of our VAR. To begin we will estimate a U-MIDAS model with the single quarterly variable, GDP, and three monthly variables:</div>
+      <div class="Picture"><a name="298075"><img class="Default" src="images/mixvar.061.3.1.jpg" width="100%" style="left: 0.0pt; max-height: 493px; max-width: 505px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298077">Clicking on </a><span class="Menu_Item">OK</span> produces the result:</div>
+      <div class="Picture"><a name="297907"><img class="Default" src="images/mixvar.061.3.2.jpg" width="100%" style="left: 0.0pt; max-height: 908px; max-width: 796px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298393">Each of the monthly variables, IP, INFL and UNEMP have been transformed into three separate variables in the quarterly VAR, one variable for each month in the quarter. The &#8220;_i&#8221; suffix is used to distinguish each month.</a></div>
+      <div class="Body_Text"><a name="298397">In his paper, rather than estimating with U-MIDAS, Ghysels estimates using a Bayesian prior, which we can replicate by clicking </a><span class="Menu_Item">Estimate</span> to bring up the <span class="Menu_Item">VAR Specification</span> dialog and selecting <span class="Menu_Item">Bayesian</span> as the <span class="Menu_Item">Estimation type</span>:</div>
+      <div class="Picture"><a name="298399"><img class="Default" src="images/mixvar.061.3.3.jpg" width="100%" style="left: 0.0pt; max-height: 485px; max-width: 505px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="297742">Clicking on </a><span class="Menu_Item">OK</span> produces:</div>
+      <div class="Picture"><a name="298520"><img class="Default" src="images/mixvar.061.3.4.jpg" width="100%" style="left: 0.0pt; max-height: 731px; max-width: 825px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="298545">These results are in line with those reported in Table 5 of Ghysels and show a reasonable difference from the U-MIDAS/classical VAR we first estimated &#8211; for example the coefficient on the first monthly observation of IP on a single quarterly lag of itself changes from -0.17 to -0.25.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

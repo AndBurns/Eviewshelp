@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Forecast Averaging</title>
+    <link rel="StyleSheet" href="css/series.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="series-Automatic_Forecasting.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="series-Exponential_Smoothing.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_data.html">Basic Data Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="series-Series.html">Series</a> : Forecast Averaging</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="154210">Forecast Averaging</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#154214">Methodology</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#154218">Simple Mean</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#154220">Trimmed Mean</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#154228">Simple Median</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#154230">Least Squares Weights</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#154233">Mean Square Error (MSE) Weights</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#154246">MSE Ranks</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#154248">Smoothed AIC Weights</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#154255">Approximate Bayesian Model Averaging Weights</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#154262">Forecast Averaging in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#154280">An Example</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="154211">Economic forecasters often have a variety of different models and forecasts of the same variable from which to choose. These models and forecasts may differ in the underlying assumptions, or may employ different information. Traditionally the forecasting decision was to pick which single forecast was &#8220;best&#8221; out of the individual forecasts available.</a></div>
+      <div class="Body_Text"><a name="154212">However, a number of studies have shown that averaging forecasts is more accurate than choosing a single best forecast. Timmermann (2006) offers a good overview of such studies, citing Clemen (1989) and Makridakis and Hibon (2000) in particular.</a></div>
+      <div class="Body_Text"><a name="154213">Forecast averaging, or forecast combining, is a methodology for combining multiple forecasts into a single forecast. The methods and ideas behind forecast averaging are founded in forecast evaluation and model selection techniques. Rather than calculating a measure of how good each forecast is, and then selecting the best forecast, the forecast evaluation measures are used to produce weights for calculating a weighted average of all the forecasts.</a></div>
+      <div class="Heading_4"><a name="154214">Methodology</a></div>
+      <div class="Body_Text"><a name="154215">Forecast averaging methods typically employ a simple weighted average computation&#8212;at each observation of the forecast sample, the cross-forecast average is computed, with different forecasts assigned different weights. </a></div>
+      <div class="Body_Text"><a name="154216">It is possible to compute complicated weighting schemes that allow the weights to vary through the forecast period. EViews, however, offers methods that generally employ constant weights through time: simple mean, least squares, mean square error, mean square error ranks, smoothed AIC, approximate Bayesian model averaging. Notable exceptions where weights are time-varying are the trimmed mean and simple median methods).</a></div>
+      <div class="Body_Text"><a name="154217">We will briefly discuss each method in turn.</a></div>
+      <div class="Heading_5"><a name="154218">Simple Mean</a></div>
+      <div class="Body_Text"><a name="154219">The simple mean averaging method takes the arithmetic mean of the forecasts at each observation in the forecast sample. Note that in the simple mean method, every forecast is given the same weight.</a></div>
+      <div class="Heading_5"><a name="154220">Trimmed Mean</a></div>
+      <div class="Body_Text"><a name="154221">The trimmed mean is calculated in the same way as the simple mean, but at each observation the highest <img class="Default EquationGraphic" src="images/series.017.31.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />% and the lowest <img class="Default EquationGraphic" src="images/series.017.31.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />% of the forecast values are dropped from the mean calculation. Note that the selection of which forecasts to remove as part of the trimming is recalculated at each observation in the forecast sample so that the weights are time-varying&#8212;each forecast method may appear in the averaging calculation for some observations but not at others.</a></div>
+      <div class="Heading_5"><a name="154228">Simple Median</a></div>
+      <div class="Body_Text"><a name="154229">The simple median method calculates the median of the forecasts at every observation in the forecast sample. The implicit (0, 1) weights are time-varying as each forecast method may be the median for some observations but not others.</a></div>
+      <div class="Heading_5"><a name="154230">Least Squares Weights</a></div>
+      <div class="Body_Text"><a name="154231">Least squares weighting requires knowledge of the true values of the forecasted variable for some of the forecast period. It is calculated by regressing the forecasts against the actual values and then using the coefficients from the regression as weights. Details of this method are outlined in the Handbook of Economic Forecasting, Vol 1, page 159. EViews calculates the most general model which includes an intercept to the regression. </a></div>
+      <div class="Body_Text"><a name="154232">This method does not require that the underlying individual forecasts are unbiased, and the resulting average can lie outside the range of the underlying forecasts.</a></div>
+      <div class="Heading_5"><a name="154233">Mean Square Error (MSE) Weights</a></div>
+      <div class="Body_Text"><a name="154234">MSE weighting, proposed by Stock-Watson (2001), compares the individual forecasts with the actual values over some forecast period. The MSE of each forecast is computed and used to form individual forecast weights:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.31.03.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.51)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="154245"><img class="Default EquationGraphic" src="images/series.017.31.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is used to raise the MSE to different powers. <img class="Default EquationGraphic" src="images/series.017.31.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" /> is the most commonly used power, and yields a weight based on the ratio of each forecast&#8217;s MSE to the total of all the MSEs. </a></div>
+      <div class="Heading_5"><a name="154246">MSE Ranks</a></div>
+      <div class="Body_Text"><a name="154247">Aiolfi and Timmermann&#8217;s (2006) MSE ranks method is similar to the MSE Weights method outlined above, but rather than computing the ratio of MSE vales, this method computes the MSE of each forecast, ranks them, and then computes the ratio of the inverse of the ranks. so that each forecast&#8217;s weight is its rank divided by the sum of all ranks.</a></div>
+      <div class="Heading_5"><a name="154248">Smoothed AIC Weights</a></div>
+      <div class="Body_Text"><a name="154249">Smoothed AIC weights use the Akaike information criterion from the original estimation/model that produced each forecast, then calculates the weights as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.31.06.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.52)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="154254">Smoothed AIC weights can only be computed if EViews has access to the underlying estimation results with associated AIC values.</a></div>
+      <div class="Heading_5"><a name="154255">Approximate Bayesian Model Averaging Weights</a></div>
+      <div class="Body_Text"><a name="154256">EViews calculates BMA weights in a similar fashion to Smoothed AIC weights, but uses the Schwarz criterion instead of the AIC:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.31.07.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.53)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="154261">The approximate BMA uses the BIC to give a large sample approximation to computing Bayes factors. In finite samples the BIC may overly weight parsimonious models.</a></div>
+      <div class="Heading_4"><a name="154262">Forecast Averaging in EViews</a></div>
+      <div class="Body_Text"><a name="154263">To perform forecast averaging in EViews, you must start with a series representing the data to be forecasted. Some of the forecast weighting techniques require actual data to calculate the weights, and in these cases this series should contain actual values for the variable being forecasted for at least some of the observations for which forecast values are available. </a></div>
+      <div class="Body_Text"><a name="154264">To begin, open up the series and click on </a><span class="Menu_Item">Proc/Forecast Averaging...</span>, which will open the <span class="Dialog_Item">Forecast Averaging </span>dialog box:</div>
+      <div class="Picture"><a name="154268"><img class="Default" src="images/series.017.31.08.jpg" width="100%" style="left: 0.0pt; max-height: 319px; max-width: 498px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="154269">The </a><span class="Dialog_Item">Forecast data objects</span> box specifies the forecasts to be used for averaging. Forecasts can be entered either as a collection of series (in which case the names of the series, a series naming pattern, or the name of a group are entered), or as a list of equation objects. If equation objects are entered, EViews will automatically perform a dynamic forecast over the forecast period from each of those equation objects to generate the forecast data. </div>
+      <div class="Body_Text"><a name="154270">When using equation objects, rather than forecast series, as the forecast data, the following should be noted:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="154271">Each equation must have an identical dependent variable, which is identical to the series from which you are performing the forecast evaluation. i.e., if you are forecasting from series Y, each equation must have Y as the dependent variable. Currently transformations (such as LOG(Y)) are not allowed.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="154272">If using smoothed AIC or BMA/SIC averaging methods, the weight calculations are only strictly valid if the underlying estimation objects were estimated on identical samples. It is up to the user to ensure that the samples are identical.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="154273">Only equation objects are allowed. If a different type of estimation object (system, VAR, Sspace, </a><span class="Emphasis">etc.</span>) is used, or if forecast was obtained from a non-EViews estimation source, the forecasts cannot be specified by equation.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="154274">If using one of the MSE based or the OLS based weighting methods, historical forecasts (along with actual values) are needed for use in the weighting calculation. Note that EViews will not re-estimate the equations, it will use the same coefficient values for both the historical forecast and the actual forecasts, based on whatever sample was used when the equation were originally estimated. If you wish to use different estimation samples for the comparison forecast and actual forecast, you must perform the estimation and forecasts manually and specify the forecast data by series.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="154275">The </a><span class="Dialog_Item">Forecast sample</span> box specifies the sample over which the forecasts will be averaged.</div>
+      <div class="Body_Text"><a name="154276">The </a><span class="Dialog_Item">Averaging method</span> area specifies the forecast averaging procedure. The first dropdown selects the specific method of averaging. If the <span class="Dialog_Item">Trimmed mean</span> averaging method is selected, the <span class="Dialog_Item">Percent:</span> box specifies the level of trimming (from both ends). If the <span class="Dialog_Item">Mean square error </span>method is selected, the Power: box specifies the power to which the MSE is raised. </div>
+      <div class="Body_Text"><a name="154277">Note the </a><span class="Dialog_Item">Smooth AIC weights </span>and <span class="Dialog_Item">SIC weights </span>selections are only available if a list of equations is entered in the <span class="Dialog_Item">Forecast data objects </span>box, since they require information from the estimation rather than just the raw forecast data.</div>
+      <div class="Body_Text"><a name="154278">The Least-squares, Mean square error, MSE ranks, Smooth AIC weights, and SIC weights averaging methods require a training sample - a sample over which the averaging weights are computed. If any of these averaging methods are selected, a sample must be entered in the </a><span class="Dialog_Item">Training sample:</span> box. If a list of equations is entered in the <span class="Dialog_Item">Forecast data objects </span>box, the <span class="Dialog_Item">Training forecast type:</span> radio buttons select which type of forecast is used over the training sample.</div>
+      <div class="Body_Text"><a name="154279">The </a><span class="Dialog_Item">Output</span> section allows specification of the name of the final averaged forecast series (by default given a name equal to the underlying series plus &#8220;_f&#8221;. If the selected averaging method requires calculation of averaging weights, the weighting vector can be saved into the workfile by entering a name in the <span class="Dialog_Item">Weight vector (optional):</span> box.</div>
+      <div class="Heading_4"><a name="154280">An Example</a></div>
+      <div class="Body_Text"><a name="154281">As an example of forecast averaging in EViews, we average six monthly forecasts of electricity demand in England and Wales, using the workfile elecdmd.wf1. This workfile contains monthly electricity demand data from April 2005 until April 2014 (in the series ELECDMD), along with five evaluation sample forecasts of electricity demand (series ELECF_FE1-5), and five out-of-sample forecasts (series ELECF_FF1-5). The different forecast series correspond to different five different models used to generate forecasts. </a></div>
+      <div class="Body_Text"><a name="154282">Each of the out-of-sample forecast series contains actual data until April 2013, and then forecast data from May 2013 until December 2015. There is a year of overlap (May 2013 until April 2014) where actual data exists during the forecast period.</a></div>
+      <div class="Body_Text"><a name="154283">We will use forecast averaging to create a combination forecast from our five individual forecast series. To begin, we open the ELECDMD series and click on </a><span class="Menu_Item">Proc/Forecast Averaging...</span> and enter the names of our forecast series in the<span class="Dialog_Item"> Forecast data</span> objects box of the <span class="Dialog_Item">Forecast Averaging</span> dialog, using the naming patter ELEC_FF* (to indicate any series matching that pattern):</div>
+      <div class="Picture"><a name="154287"><img class="Default" src="images/series.017.31.09.jpg" width="100%" style="left: 0.0pt; max-height: 319px; max-width: 498px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="154288">We set the forecast sample to &#8220;2014m5 2015m12&#8221;. We select </a><span class="Menu_Item">Mean square error</span> as the average method, with data between 2013M5 and 2014M4 used to calculate the MSE. We save the final averaged series in a new series called ELECDMD_F.</div>
+      <div class="Body_Text"><a name="154289">The output of the procedure is as follows:</a></div>
+      <div class="Picture"><a name="154293"><img class="Default" src="images/series.017.31.10.jpg" width="100%" style="left: 0.0pt; max-height: 510px; max-width: 782px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="154294">The top of the output provides summary information about the averaging procedure, including the time and date it was performed, the number of observations included (20 in this case) and the number of forecasts used in the averaging calculation, as well as the method used.</a></div>
+      <div class="Body_Text"><a name="154295">EViews also produces a graph of each of the individual forecasts, and the calculated average, allowing a quick visual comparison.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Working with Pooled Data</title>
+    <link rel="StyleSheet" href="css/pool.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="pool-Setting_up_a_Pool_Workfile.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="pool-Pooled_Estimation.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="pool-Pooled_Time_Series,_Cross-Section_Data.html">Pooled Time Series, Cross-Section Data</a> : Working with Pooled Data</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="190870">Working with Pooled Data</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186899">Generating Pooled Data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186934">Examining Your Data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186936">Examining Unstacked Data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186938">Examining Stacked Data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186946">Calculating Descriptive Statistics</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186977">Computing Unit Root Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186990">Performing Cointegration Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#187005">Making a Group of Pool Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#187011">Making Period Stats</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#187021">Making a System</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#187033">Deleting/Storing/Fetching Pool Data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#187040">Exporting Pooled Data</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="186896">The underlying series for each cross-section member are ordinary series, so all of the EViews tools for working with the individual cross-section series are available. In addition, EViews provides you with a number of specialized tools which allow you to work with your pool data. Using EViews, you can perform, in a single step, similar operations on all the series corresponding to a particular pooled variable.</a></div>
+      <div class="Heading_4"><a name="186899">Generating Pooled Data</a></div>
+      <div class="Body_Text"><a name="186900">You can generate or modify pool series using the pool series genr procedure. Click on </a><span class="Menu_Item">PoolGenr</span> on the pool toolbar and enter a formula as you would for a regular genr, using pool series names as appropriate. Using our example from above, entering:</div>
+      <div class="Input"><a name="186901">ratio? = g?/g_usa</a></div>
+      <div class="Body_Text"><a name="186902">is equivalent to entering the following four commands:</a></div>
+      <div class="Multi-line_Input"><a name="186903">ratio_usa = g_usa/g_usa</a></div>
+      <div class="Multi-line_Input"><a name="186904">ratio_uk = g_uk/g_usa</a></div>
+      <div class="Multi-line_Input"><a name="186905">ratio_jpn = g_jpn/g_usa</a></div>
+      <div class="Multi-line_Input"><a name="186906">ratio_kor = g_kor/g_usa</a></div>
+      <div class="Body_Text"><a name="186907">Generation of a pool series applies the formula you supply using an implicit loop across cross-section identifiers, creating or modifying one or more series as appropriate. </a></div>
+      <div class="Body_Text"><a name="186908">You may use pool and ordinary genr together to generate new pool variables. For example, to create a dummy variable that is equal to 1 for the US and 0 for all other countries, first select </a><span class="Menu_Item">PoolGenr</span> and enter: </div>
+      <div class="Input"><a name="186911">dum? = 0</a></div>
+      <div class="Body_Text"><a name="186912">to initialize all four of the dummy variable series to 0. Then, to set the US values to 1, select </a><span class="Menu_Item">Quick/Generate Series&#8230;</span> from the main menu, and enter:</div>
+      <div class="Input"><a name="186913">dum_usa = 1</a></div>
+      <div class="Body_Text"><a name="186914">It is worth pointing out that a superior method of creating this pool series is to use @GROUP to define a group called US containing only the &#8220;_USA&#8221; identifier (see </a><span class="Link"><a href="pool-The_Pool_Object.html#186679" title="The Pool Object">&#8220;Group Definitions&#8221;</a></span>), then to use the @INGRP function:</div>
+      <div class="Input"><a name="186918">dum? = @ingrp(us)</a></div>
+      <div class="Body_Text"><a name="186922">to generate and implicitly refer to the four series (see </a><span class="Link"><a href="pool-Pooled_Data.html#186716" title="Pooled Data">&#8220;Pool Series&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="186923">To modify a set of series using a pool, select </a><span class="Menu_Item">PoolGenr</span>, and enter the new pool series expression:</div>
+      <div class="Input"><a name="186924">dum? = dum? * (g? &gt; c?)</a></div>
+      <div class="Body_Text"><a name="186925">It is worth the reminder that the method used by the pool genr is to perform an implicit loop across the cross-section identifiers. This implicit loop may be exploited in various ways, for example, to perform calculations across cross-sectional units in a given period. Suppose, we have an </a><span class="Emphasis">ordinary</span> series SUM which is initialized to zero. The pool genr expression:</div>
+      <div class="Input"><a name="186926">sum = sum + c?</a></div>
+      <div class="Body_Text"><a name="186927">is equivalent to the following four ordinary genr statements:</a></div>
+      <div class="Multi-line_Input"><a name="186928">sum = sum + c_usa</a></div>
+      <div class="Multi-line_Input"><a name="186929">sum = sum + c_uk</a></div>
+      <div class="Multi-line_Input"><a name="186930">sum = sum + c_jpn</a></div>
+      <div class="Multi-line_Input"><a name="186931">sum = sum + c_kor</a></div>
+      <div class="Body_Text"><a name="186932">Bear in mind that this example is provided merely to illustrate the notion of implicit looping, since EViews provides built-in features to compute period-specific statistics.</a></div>
+      <div class="Heading_4"><a name="186934">Examining Your Data</a></div>
+      <div class="Body_Text"><a name="186935">Pool workfiles provide you with the flexibility to examine cross-section specific series as individual time series or as part of a larger set of series.</a></div>
+      <div class="Heading_5"><a name="186936">Examining Unstacked Data</a></div>
+      <div class="Body_Text"><a name="186937">Simply open an individual series and work with it using the standard tools available for examining a series object. Or create a group of series and work with the tools for a group object. One convenient way to create groups of series is to use tools for creating groups out of pool and ordinary series; another is to use wildcards expressions in forming the group.</a></div>
+      <div class="Heading_5"><a name="186938">Examining Stacked Data</a></div>
+      <div class="Body_Text"><a name="186942">As demonstrated in </a><span class="Link"><a href="pool-Setting_up_a_Pool_Workfile.html#186794" title="Setting up a Pool Workfile">&#8220;Stacked Data&#8221;</a></span>, you may use your pool object to view your data in stacked spreadsheet form. Select <span class="Menu_Item">View/Spreadsheet View&#8230;</span>, and list the series you wish to display. The names can include both ordinary and pool series names. Click on the <span class="Menu_Item">Order +/&#8211;</span> button to toggle between stacking your observations by cross-section and by date.</div>
+      <div class="Body_Text"><a name="186943">We emphasize that stacking your data only provides an alternative view of the data, and does not change the structure of the individual series in your workfile. Stacking data is not necessary for any of the data management or estimation procedures described below.</a></div>
+      <div class="Heading_4"><a name="186946">Calculating Descriptive Statistics</a></div>
+      <div class="Body_Text"><a name="186947">EViews provides convenient built-in features for computing various descriptive statistics for pool series using a pool object. To display the </a><span class="Menu_Item">Pool Descriptive Statistics</span> dialog, select <span class="Menu_Item">View/Descriptive Statistics&#8230;</span> from the pool toolbar.</div>
+      <div class="Picture"><a name="186951"><img class="Default" src="images/pool.066.6.1.jpg" width="100%" style="left: 0.0pt; max-height: 312px; max-width: 323px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186952">In the edit box, you should list the ordinary and pooled series for which you want to compute the descriptive statistics. EViews will compute the mean, median, minimum, maximum, standard deviation, skewness, kurtosis, and the Jarque-Bera statistic for these series.</a></div>
+      <div class="Body_Text"><a name="186953">First, you should choose between the three sample options on the right of the dialog:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186955">Individual:</a></span> uses the maximum number of observations available. If an observation on a variable is available for a particular cross-section, it is used in computation. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186957">Common: </a></span>uses an observation only if data on the variable are available for all cross-sections in the same period. This method is equivalent to performing listwise exclusion by variable, then cross-sectional casewise exclusion within each variable.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186960">Balanced</a></span>: includes observations when data on all variables in the list are available for all cross-sections in the same period. The balanced option performs casewise exclusion by both variable and cross-section.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="186961">Next, you should choose the computational method corresponding to one of the four data structures:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186964">Stacked data</a></span>: display statistics for each variable in the list, computed over all cross-sections and periods. These are the descriptive statistics that you would get if you ignored the pooled nature of the data, stacked the data, and computed descriptive statistics. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186965">Stacked &#8211; means removed</a></span>: compute statistics for each variable in the list after removing the cross-sectional means, taken over all cross-sections and periods.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186967">Cross-section specific</a></span>: show the descriptive statistics for each cross-sectional variable, computed across all periods. These are the descriptive statistics derived by computing statistics for the individual series.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Dialog_Item"><a name="186969">Time period specific</a></span>: compute period-specific statistics. For each period, compute the statistic using data on the variable from all the cross-sectional units in the pool.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="186970">Click on </a><span class="Menu_Item">OK</span>, and EViews will display a pool view containing tabular output with the requested statistics. If you select <span class="Dialog_Item">Stacked data</span> or <span class="Dialog_Item">Stacked - means removed</span>, the view will show a single column containing the descriptive statistics for each ordinary and pool series in the list, computed from the stacked data. If you select <span class="Menu_Item">Cross-section specific</span>, EViews will show a single column for each ordinary series, and multiple columns for each pool series. If you select <span class="Dialog_Item">Time period specific</span>, the view will show a single column for each ordinary or pool series statistic, with each row of the column corresponding to a period in the workfile. Note that there will be a separate column for each statistic computed for an ordinary or pool series; a column for the mean, a column for the variance, <span class="Argument">etc</span>.</div>
+      <div class="Body_Text"><a name="186971">You should be aware that the latter two methods may produce a great deal of output. Cross-section specific computation generates a set of statistics for each pool series/cross-section combination. If you ask for statistics for three pool series and there are 20 cross-sections in your pool, EViews will display 60 columns of descriptive statistics. For time period specific computation, EViews computes a set of statistics for each date/series combination. If you have a sample with 100 periods and you provide a list of three pool series, EViews will compute and display a view with columns corresponding to 3 sets of statistics, each of which contains values for 100 periods.</a></div>
+      <div class="Body_Text"><a name="186972">If you wish to compute period-specific statistics, you may save the results in series objects. See </a><span class="Link"><a href="#187011" title="Working with Pooled Data">&#8220;Making Period Stats&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="186977">Computing Unit Root Tests</a></div>
+      <div class="Body_Text"><a name="186978">EViews provides convenient tools for computing multiple-series unit root tests for pooled data using a pool object. You may use the pool to compute independent cross-section tests from Levin, Lin and Chu (2002), Breitung (2000), Im, Pesaran and Shin (2003), Fisher-type tests using ADF and PP tests&#8212;Maddala and Wu (1999) and Choi (2001), and Hadri (2000), or you may compute dependent cross-sections tests from Bai and Ng&#8217;s (2004) Panel Analysis of Nonstationarity in Idiosyncratic and Common Components (PANIC), and Pesaran&#8217;s (2007) Cross-sectionally Augmented IPS (CIPS).</a></div>
+      <div class="Body_Text"><a name="186979">To compute the unit root test, select </a><span class="Menu_Item">View/Unit Root Test...</span> from the menu of a pool object.</div>
+      <div class="Picture"><a name="186983"><img class="Default" src="images/pool.066.6.2.jpg" width="100%" style="left: 0.0pt; max-height: 400px; max-width: 479px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186984">Enter the name of an ordinary or pool series in the topmost edit field, then specify the remaining settings in the dialog.</a></div>
+      <div class="Body_Text"><a name="186985">These tests, along with the settings in the dialog, are described in considerable detail in </a><span class="Link"><a href="advtimeser-Cross-sectionally_Independent_Panel_Unit_Root_Te.html#185476" title="Cross-sectionally Independent Panel Unit Root Testing">&#8220;Cross-sectionally Independent Panel Unit Root Testing&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="186990">Performing Cointegration Tests</a></div>
+      <div class="Body_Text"><a name="186992">Panel cointegration tests are available as a view of a group in a panel workfile or for a group of pooled series defined using a pool object. EViews allows you to conduct several different tests: Pedroni (1999, 2004), Kao (1999) and Fisher-type test using Johansen&#8217;s test methodology (Maddala and Wu, 1999). </a></div>
+      <div class="Picture"><a name="186996"><img class="Default" src="images/pool.066.6.3.jpg" width="100%" style="left: 0.0pt; max-height: 464px; max-width: 494px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186997">To compute the panel cointegration test for pooled data, select </a><span class="Menu_Item">Views/Cointegration Test&#8230;</span> from the menu of a pool object. Enter the names of at least two pool series or a combination of at least two pool and ordinary series in the topmost <span class="Menu_Item">Variables</span> field, then specify the rest of the options.</div>
+      <div class="Body_Text"><a name="186998">The remaining options are identical to those encountered when performing panel cointegration testing using a group in a panel-structured workfile. For details, see </a><span class="Link"><a href="coint-References.html#190643" title="References">&#8220;References&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="187002">In this example, specify two pool variables &#8220;IVM?&#8221; and &#8220;MM?&#8221; and one ordinary variable &#8220;X&#8221;, so that EViews tests for cointegration between the pool series IVM? against pool series MM? and the stacked common series X. </a></div>
+      <div class="Heading_4"><a name="187005">Making a Group of Pool Series</a></div>
+      <div class="Body_Text"><a name="187007">If you click on </a><span class="Menu_Item">Proc/Make Group&#8230;</span> and enter the names of ordinary and pool series. EViews will use the pool definitions to create an untitled group object containing the specified series. This procedure is useful when you wish to work with a set of pool series using the tools provided for groups.</div>
+      <div class="Body_Text"><a name="187008">Suppose, for example, that you wish to compute the covariance matrix for the C? series. Simply open the </a><span class="Menu_Item">Make Group</span> dialog, and enter the pool series name &#8220;C?&#8221;. EViews will create a group containing the set of cross-section specific series, with names beginning with &#8220;C&#8221; and ending with a cross-section identifier.</div>
+      <div class="Body_Text"><a name="187009">Then, in the new group object, you may select </a><span class="Menu_Item">View/Covariance Analysis... </span>to compute the covariance matrix of the series in the group. EViews will perform the analysis using all of the individual series in the group.</div>
+      <div class="Heading_4"><a name="187011">Making Period Stats</a></div>
+      <div class="Body_Text"><a name="187012">To save period-specific statistics in series in the workfile, select </a><span class="Menu_Item">Proc/Make Period Stats Series&#8230;</span> from the pool window, and fill out the dialog.</div>
+      <div class="Picture"><a name="187016"><img class="Default" src="images/pool.066.6.4.jpg" width="100%" style="left: 0.0pt; max-height: 315px; max-width: 331px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="187017">In the edit window, list the series for which you wish to calculate period-statistics. Next, select the particular statistics you wish to compute, and choose a sample option. </a></div>
+      <div class="Body_Text"><a name="187018">EViews will save your statistics in new series and will open an untitled group window to display the results. The series will be named automatically using the base name followed by the name of the statistic (MEAN, MED, VAR, SD, OBS, SKEW, KURT, JARQ, MAX, MIN). In this example, EViews will save the statistics using the names CMEAN, GMEAN, CVAR, GVAR, CMAX, GMAX, CMIN, and GMIN.</a></div>
+      <div class="Heading_4"><a name="187021">Making a System</a></div>
+      <div class="Body_Text"><a name="187022">Suppose that you wish to estimate a complex specification that cannot easily be estimated using the built-in features of the pool object. For example, you may wish to estimate a pooled equation imposing arbitrary coefficient restrictions, or using specialized GMM techniques that are not available in pooled estimation.</a></div>
+      <div class="Body_Text"><a name="187023">In these circumstances, you may use the pool to create a system object using both common and cross-section specific coefficients, AR terms, and instruments. The resulting system object may then be further customized, and estimated using all of the techniques available for system estimation.</a></div>
+      <div class="Picture"><a name="187027"><img class="Default" src="images/pool.066.6.5.jpg" width="100%" style="left: 0.0pt; max-height: 399px; max-width: 502px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="187028">Select </a><span class="Menu_Item">Proc/Make System&#8230;</span> and fill out the dialog. You may enter the dependent variable, common and cross-section specific variables, and use the checkbox to allow for cross-sectional fixed effects. You may also enter a list of common and cross-section specific instrumental variables, and instruct EViews to add lagged dependent and independent regressors as instruments in models with AR specifications. </div>
+      <div class="Body_Text"><a name="187029">When you click on </a><span class="Menu_Item">OK</span>, EViews will take your specification and create a new system object containing a single equation for each cross-section, using the specification provided.</div>
+      <div class="Heading_4"><a name="187033">Deleting/Storing/Fetching Pool Data</a></div>
+      <div class="Body_Text"><a name="187034">Pools may be used to delete, store, or fetch sets of series. Simply select </a><span class="Menu_Item">Proc/Delete pool series&#8230;</span>, <span class="Menu_Item">Proc/Store pool series (DB)&#8230;</span>, or <span class="Menu_Item">Proc/Fetch pool series (DB)&#8230;</span> as appropriate, and enter the ordinary and pool series names of interest.</div>
+      <div class="Body_Text"><a name="187035">If, for example, you instruct EViews to delete the pool series C?, EViews will loop through all of the cross-section identifiers and delete all series whose names begin with the letter &#8220;C&#8221; and end with the cross-section identifier.</a></div>
+      <div class="Heading_4"><a name="187040">Exporting Pooled Data</a></div>
+      <div class="Body_Text"><a name="187041">You can export your data into a disk file, or into a new workfile or workfile page, by reversing one of the procedures described above for data input.</a></div>
+      <div class="Picture"><a name="187045"><img class="Default" src="images/pool.066.6.6.jpg" width="100%" style="left: 0.0pt; max-height: 369px; max-width: 515px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="187046">To write pooled data in stacked form into an ASCII text, Excel, or Lotus worksheet file, first open the pool object, then from the pool menu, select </a><span class="Menu_Item">Proc/Export Pool data (ASCII, .XLS, .WK?)&#8230;</span>. Note that in order to access the pool specific export tools, you must select this procedure from the pool menu, not from the workfile menu.</div>
+      <div class="Body_Text"><a name="187047">EViews will first open a file dialog prompting you to specify a file name and type. If you provide a new name, EViews will create the file; otherwise it will prompt you to overwrite the existing file. </a></div>
+      <div class="Body_Text"><a name="187048">Once you have specified your file, a pool write dialog will be displayed. Here we see the </a><span class="Menu_Item">Excel Spreadsheet Export</span> dialog. Specify the format of your data, including whether to write series in columns or in rows, and whether to stack by cross-section or by period. Then list the ordinary series, groups, and pool series to be written to the file, the sample of observations to be written, and select any export options. When you click on OK, EViews will write the specified file.</div>
+      <div class="Body_Text"><a name="187049">Since EViews allows you to both read and write data that are unstacked, stacked by cross-section, or stacked by date, you may use the pool import and export procedures to restructure your data in accordance with your needs.</a></div>
+      <div class="Body_Text"><a name="187050">Alternatively, you may use the workfile reshaping tools to stack the pooled data in a new workfile page. From the main workfile menu, select </a><span class="Menu_Item">Proc/Reshape Current Page/Stack in New Page..</span>. to open the <span class="Menu_Item">Workfile Stack</span> dialog, and enter the name of a pool object in the top edit field, and the names of the ordinary series, groups, and pool series to be stacked in the second edit field.</div>
+      <div class="Picture"><a name="187054"><img class="Default" src="images/pool.066.6.7.jpg" width="100%" style="left: 0.0pt; max-height: 422px; max-width: 408px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="187055">The </a><span class="Menu_Item">Order of obs</span> option allows you to order the data in <span class="Menu_Item">Stacked</span> form (stacking the data by series, which orders by cross-section), or in <span class="Menu_Item">Interleaved</span> format (stacked the data by interleaving series, which orders the data by period or date).</div>
+      <div class="Body_Text"><a name="187056">The default naming rule for series in the destination is to use the base name. For example, if you stack the pool series &#8220;SALES?&#8221; and the individual series GENDER, the corresponding stacked series will, by default, be named &#8220;SALES&#8221;, and &#8220;GENDER&#8221;. If use of the default naming convention will create problems in the destination workfile, you should use the </a><span class="Menu_Item">Name for stacked series</span> field to specify an alternative. If, for example, you enter &#8220;_NEW&#8221;, the target names will be formed by taking the base name, and appending the additional text, as in &#8220;SALES_NEW&#8221; and &#8220;GENDER_NEW&#8221;.</div>
+      <div class="Body_Text"><a name="187063">See </a><span class="Link"><a href="workadv-Reshaping_a_Workfile.html#118907" title="Reshaping a Workfile">&#8220;Stacking a Workfile&#8221;</a></span> for a more detailed discussion of the workfile stacking procedure.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

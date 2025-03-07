@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Estimating Quantile Regression in EViews</title>
+    <link rel="StyleSheet" href="css/quantreg.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="quantreg-Quantile_Regression.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="quantreg-Views_and_Procedures.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="quantreg-Quantile_Regression.html">Quantile Regression</a> : Estimating Quantile Regression in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="184610">Estimating Quantile Regression in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#184617">Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#184622">Estimation Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#184624">Quantile Regression Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#184640">Iteration Control</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#184642">Bootstrap Settings</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#184662">Estimation Output</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="184611">To estimate a quantile regression specification in EViews you may select </a><span class="Menu_Item">Object/New Object.../Equation</span> or <span class="Menu_Item">Quick/Estimate Equation&#8230;</span> from the main menu, or simply type the keyword <span class="In-line_command">equation</span> in the command window. From the main estimation dialog you should select <span class="Menu_Item">QREG - Quantile Regression (including LAD)</span>. Alternately, you may type <span class="In-line_command">qreg </span>in the command window.</div>
+      <div class="Picture"><a name="184615"><img class="Default" src="images/quantreg.050.2.1.jpg" width="100%" style="left: 0.0pt; max-height: 472px; max-width: 498px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184616">EViews will open the quantile regression form of the </a><span class="Menu_Item">Equation Estimation</span> dialog.</div>
+      <div class="Heading_4"><a name="184617">Specification</a></div>
+      <div class="Body_Text"><a name="184618">The dialog has two pages. The first page, depicted here, is used to specify the variables in the conditional quantile function, the quantile to estimate, and the sample of observations to use.</a></div>
+      <div class="Body_Text"><a name="184619">You may enter the </a><span class="Menu_Item">Equation specification</span> using a list of the dependent and regressor variables, as depicted here, or you may enter an explicit expression. Note that if you enter an explicit expression it must be linear in the coefficients.</div>
+      <div class="Body_Text"><a name="184620">The </a><span class="Menu_Item">Quantile to estimate</span> edit field is where you will enter your desired quantile. By default, EViews estimates the median regression as depicted here, but you may enter any value between 0 and 1 (though values very close to 0 and 1 may cause estimation difficulties).</div>
+      <div class="Body_Text"><a name="184621">Here we specify a conditional median function for Y that depends on a constant term and the series X. EViews will estimate the LAD estimator for the entire sample of 235 observations.</a></div>
+      <div class="Heading_4"><a name="184622">Estimation Options</a></div>
+      <div class="Body_Text"><a name="184623">Most of the quantile regression settings are set using this page. The options on the left-hand side of the page control the method for computing the coefficient covariances, allow you to specify a weight series for weighted estimation, and specify the method for computing scalar sparsity estimates.</a></div>
+      <div class="Heading_5"><a name="184624">Quantile Regression Options</a></div>
+      <div class="Picture"><a name="184628"><img class="Default" src="images/quantreg.050.2.2.jpg" width="100%" style="left: 0.0pt; max-height: 349px; max-width: 264px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184629">The dropdown menu labeled </a><span class="Menu_Item">Coefficient Covariance</span> is where you will choose your method of computing covariances: computing<span class="Menu_Item"> Ordinary (IID)</span> covariances, using a <span class="Menu_Item">Huber Sandwich</span> method, or using <span class="Menu_Item">Bootstrap</span> resampling. By default, EViews uses the <span class="Menu_Item">Huber Sandwich </span>calculations which are valid under independent but non-identical sampling.</div>
+      <div class="Body_Text"><a name="184630">Just below the dropdown menu is an section </a><span class="Menu_Item">Weight</span>, where you may define observations weights. The data will be transformed prior to estimation using this specification. (See <span class="Link"><a href="Regress2-Weighted_Least_Squares.html#266407" title="Weighted Least Squares">&#8220;Weighted Least Squares&#8221;</a></span> for a discussion of the settings). </div>
+      <div class="Body_Text"><a name="184634">The remaining settings in this section control the estimation of the scalar sparsity value. Different options are available for different </a><span class="Menu_Item">Coefficient Covariance</span> settings. For ordinary or bootstrap covariances you may choose either <span class="Menu_Item">Siddiqui (mean fitted)</span>, <span class="Menu_Item">Kernel (residual)</span>, or <span class="Menu_Item">Siddiqui (residual)</span> as your sparsity estimation method, while if the covariance method is set to <span class="Menu_Item">Huber Sandwich</span>, only the <span class="Menu_Item">Siddiqui (mean fitted)</span> and <span class="Menu_Item">Kernel (residual)</span> methods are available. </div>
+      <div class="Body_Text"><a name="184635">There are additional options for the bandwidth method (and associated size parameter if relevant), the method for computing empirical quantiles (used to estimate the sparsity or the kernel bandwidth), and the choice of kernel function. Most of these settings should be self-explanatory; if necessary, see the discussion in </a><span class="Link"><a href="quantreg-Background.html#184975" title="Background">&#8220;Sparsity Estimation&#8221;</a></span> for details.</div>
+      <div class="Body_Text"><a name="184639">It is worth mentioning that the sparsity estimation options are always relevant, since EViews always computes and reports a scalar sparsity estimate, even if it is not used in computing the covariance matrix. In particular, a sparsity value is estimated even when you compute the asymptotic covariance using a Huber Sandwich method. The sparsity estimate will be used in non-robust quasi-likelihood ratio tests statistics as necessary.</a></div>
+      <div class="Heading_5"><a name="184640">Iteration Control</a></div>
+      <div class="Body_Text"><a name="184641">The iteration control section offers the standard edit field for changing the maximum number of iterations, a dropdown menu for specifying starting values, and a check box for displaying the estimation settings in the output. Note that the default starting value for quantile regression is 0, but you may choose a fraction of the OLS estimates, or provide a set of user specified values.</a></div>
+      <div class="Heading_5"><a name="184642">Bootstrap Settings</a></div>
+      <div class="Body_Text"><a name="184643">When you select </a><span class="Menu_Item">Bootstrap</span> in the <span class="Menu_Item">Coefficient Covariance</span> dropdown, the right side of the dialog changes to offer a set of bootstrap options.</div>
+      <div class="Picture"><a name="184647"><img class="Default" src="images/quantreg.050.2.3.jpg" width="100%" style="left: 0.0pt; max-height: 233px; max-width: 248px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184648">You may use the </a><span class="Menu_Item">Method</span> dropdown menu to choose from one of four bootstrap methods: <span class="Menu_Item">Residual</span>, <span class="Menu_Item">XY-pair</span>, <span class="Menu_Item">MCMB</span>, <span class="Menu_Item">MCMB-A</span>.<span class="Menu_Item"> </span>See <span class="Link"><a href="quantreg-Background.html#185234" title="Background">&#8220;Bootstrapping&#8221;</a></span> for a discussion of the various methods. The default method is <span class="Menu_Item">XY-pair</span>.</div>
+      <div class="Body_Text"><a name="184652">Just below the dropdown menu are two edit fields labeled </a><span class="Menu_Item">Replications</span> and <span class="Menu_Item">No. of obs.</span> By default, EViews will perform 100 bootstrap replications, but you may override this by entering your desired value. The <span class="Menu_Item">No. of obs.</span> edit field controls the size of the bootstrap sample. If the edit field is left blank, EViews will draw samples of the same size as the original data. There is some evidence that specifying a bootstrap sample size smaller than the original data may produce more accurate results, especially for very large sample sizes; Koenker (2005, p. 108) provides a brief summary.</div>
+      <div class="Body_Text"><a name="184659">To save the results of your bootstrap replications in a matrix object, enter the name in the </a><span class="Menu_Item">Output</span> edit field.</div>
+      <div class="Body_Text"><a name="184660">The last two items control the generation of random numbers. The </a><span class="Menu_Item">Random generator</span> dropdown should be self-explanatory. Simply use the dropdown to choose your desired generator. EViews will initialize the dropdown using the default settings for the choice of generator.</div>
+      <div class="Body_Text"><a name="184661">By default, the first time that you perform a bootstrap for a given equation, the </a><span class="Menu_Item">Seed</span> edit field will be blank; you may provide your own integer value, if desired. If an initial seed is not provided, EViews will randomly select a seed value. The value of this initial seed will be saved with the equation so that by default, subsequent estimation will employ the same seed, allowing you to replicate results when re-estimating the equation, and when performing tests. If you wish to use a different seed, simply enter a value in the <span class="Menu_Item">Seed</span> edit field or press the <span class="Menu_Item">Clear</span> button to have EViews draw a new random seed value.</div>
+      <div class="Heading_4"><a name="184662">Estimation Output</a></div>
+      <div class="Body_Text"><a name="184663">Once you have provided your quantile regression specification and specified your options, you may click on </a><span class="Menu_Item">OK</span> to estimate your equation. Unless you are performing bootstrapping with a very large number of observations, the estimation results should be displayed shortly.</div>
+      <div class="Body_Text"><a name="184664">Our example uses the Engel dataset containing food expenditure and household income considered by Koenker (2005, p. 78-79, 297-307). The default model estimates the median of food expenditure Y as a function of a constant term and household income X.</a></div>
+      <div class="Table"><a name="184668"><img class="Default" src="images/quantreg.050.2.4.jpg" width="100%" style="left: 0.0pt; max-height: 432px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184669">The top portion of the output displays the estimation settings. Here we see that our estimates use the Huber sandwich method for computing the covariance matrix, with individual sparsity estimates obtained using kernel methods. The bandwidth uses the Hall and Sheather formula, yielding a value of 0.15744.</a></div>
+      <div class="Body_Text"><a name="184673">Below the header information are the coefficients, along with standard errors, </a><span class="In-line_math">t</span>-statistics and associated <span class="In-line_math">p</span>-values. We see that both coefficients are statistically significantly different from zero and conventional levels.</div>
+      <div class="Body_Text"><a name="184677">The bottom portion of the output reports the Koenker and Machado (1999) goodness-of-fit measure (pseudo R-squared), and adjusted version of the statistic, as well as the scalar estimate of the sparsity using the kernel method. Note that this scalar estimate is not used in the computation of the standard errors in this case since we are employing the Huber sandwich method.</a></div>
+      <div class="Body_Text"><a name="184678">Also reported are the minimized value of the objective function (&#8220;Objective&#8221;), the minimized constant-only version of the objective (&#8220;Restr. objective&#8221;), the constant-only coefficient estimate (&#8220;Quantile dependent var&#8221;), and the corresponding <img class="Default EquationGraphic" src="images/quantreg.050.2.5.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 45px; top: 0.0pt" alt="" /> form of the Quasi-LR statistic and associated probability for the difference between the two specifications (Koenker and Machado, 1999). Note that despite the fact that the coefficient covariances are computed using the robust Huber Sandwich, the QLR statistic assumes </a><span class="Emphasis">i.i.d.</span> errors and uses the estimated value of the sparsity.</div>
+      <div class="Body_Text"><a name="184682">The reported S.E. of the regression is based on the usual d.f. adjusted sample variance of the residuals. This measure of scale is used in forming standardized residuals and forecast standard errors. It is replaced by the Koenker and Machado (1999) scale estimator in the computation of the <img class="Default EquationGraphic" src="images/quantreg.050.2.6.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 46px; top: 0.0pt" alt="" /> form of the QLR statistics (see </a><span class="Link"><a href="quantreg-Views_and_Procedures.html#184701" title="Views and Procedures">&#8220;Standard Views and Procedures&#8221;</a></span> and <span class="Link"><a href="quantreg-Background.html#185418" title="Background">&#8220;Quasi-Likelihood Ratio Tests&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="184692">We may elect instead to perform bootstrapping to obtain the covariance matrix. Click on the </a><span class="Menu_Item">Estimate</span> button to bring up the dialog, then on <span class="Menu_Item">Estimation Options</span> to show the options tab. Select Bootstrap as the <span class="Menu_Item">Coefficient Covariance</span>, then choose <span class="Menu_Item">MCMB-A</span> as the bootstrap method. Next, we increase the number of replications to 500. Lastly, to see the effect of using a different estimator of the sparsity, we change the scalar sparsity estimation method to <span class="Menu_Item">Siddiqui (mean fitted)</span>. Click on <span class="Menu_Item">OK</span> to estimate the specification.</div>
+      <div class="Table"><a name="184696"><img class="Default" src="images/quantreg.050.2.7.jpg" width="100%" style="left: 0.0pt; max-height: 450px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="184697">For the most part the results are quite similar. The header information shows the different method of computing coefficient covariances and sparsity estimates. The Huber Sandwich and bootstrap standard errors are reasonably close (24.03 versus 22.02, and 0.031 versus 0.024). There are moderate differences between the two sparsity estimates, with the Siddiqui estimator of the sparsity roughly 25% higher (267.83 versus 209.35), but this difference has no substantive impact on the probability of the QLR statistic.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

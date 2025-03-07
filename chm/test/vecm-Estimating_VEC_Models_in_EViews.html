@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Estimating VEC Models in EViews</title>
+    <link rel="StyleSheet" href="css/vecm.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="vecm-Background.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="vecm-VEC_Estimation_Output.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="vecm-Vector_Error_Correction_Models_(VECMs).html">Vector Error Correction Models (VECMs)</a> : Estimating VEC Models in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="274094">Estimating VEC Models in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#274102">Basic Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#274107">Cointegration Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#274119">VEC Restrictions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#274141">Specifying VEC Restrictions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#274150">Restrictions on the Cointegrating Vector</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#274176">Restrictions on the Adjustment Coefficients</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#274243">Identifying Restrictions and Binding Restrictions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#274249">Options for Restricted Estimation</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="274095">Estimation of VEC model in EViews is a special case of estimation in a var object. From the main application menu of an existing var object, click on the </a><span class="Menu_Item">Estimate</span> button to open the <span class="Menu_Item">VAR Specification</span> estimation dialog. Alternately, you may create a new VAR object by selecting Object/New Object... group, then selecting <span class="Menu_Item">VAR</span>. Once the dialog appears, select <span class="Menu_Item">Vector Error Correction</span> in the <span class="Menu_Item">Method</span> dropdown menu to display the VEC estimation dialog:</div>
+      <div class="Picture"><a name="274099"><img class="Default" src="images/vecm.057.3.01.jpg" width="100%" style="left: 0.0pt; max-height: 496px; max-width: 505px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="274100">Once you have filled the in the dialog, simply click </a><span class="Dialog_Item">OK</span> to estimate the VEC. Estimation of a VEC model is carried out in two steps. In the first step, we estimate the cointegrating relations from the Johansen procedure as used in the cointegration test. We then construct the error correction terms from the estimated cointegrating relations and estimate a VAR in first differences including the error correction terms as regressors.</div>
+      <div class="Body_Text"><a name="274101">There are three tabs in the dialog: </a><span class="Menu_Item">Basics</span>, <span class="Menu_Item">Cointegration</span>, and <span class="Menu_Item">VEC Restrictions</span>. We discuss each of these tabs in turn.</div>
+      <div class="Heading_4"><a name="274102">Basic Specification</a></div>
+      <div class="Body_Text"><a name="274103">In the </a><span class="Dialog_Item">Basics</span> tab, you will provide the usual information about the <span class="Menu_Item">Lag intervals</span>, <span class="Menu_Item">Estimation sample</span>,<span class="Menu_Item"> Endogenous variables, </span>and lists of different types of <span class="Menu_Item">Exogenous variables</span>:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="274104">Importantly, in contrast to the standard VAR case, the </a><span class="Menu_Item">Lag intervals</span> specification refers to <span class="Emphasis">lags of the first difference terms</span> in the conditional EC representation of the VEC. For example, the lag specification &#8220;<span class="In-line_input">1 1</span>&#8221; will include lagged first difference terms on the right-hand side of the VEC. Rewritten in levels, this VEC is a restricted VAR with two lags. To estimate a VEC with no lagged first difference terms, specify the lag as &#8220;<span class="In-line_input">0 0</span>&#8221;</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="274105">The </a><span class="Menu_Item">Exogenous variables</span> section allows you to specify exogenous variables that are not included in the standard in-built deterministic trend cases. This convention means that the constant and linear trend term should <span class="Emphasis">not</span> be included in the <span class="Dialog_Item">Exogenous variables</span> edit boxes. The constant and trend specification for VECs should be specified using the dropdown menu in the <span class="Dialog_Item">Cointegration</span> tab.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="274106">You should enter any other variables in the edit field corresponding to whether they appear in the </a><span class="Menu_Item">Short-run</span>, <span class="Menu_Item">Long-run</span>, or <span class="Menu_Item">Both log-run and short-run</span> lists of variables.</div>
+      <div class="Bullet_List_Continue"><a name="277588">Note that the exogenous variables entered in the VEC estimation dialog refer to short-run variables added to the VEC difference specification </a><span class="Link"><a href="vecm-Background.html#273646" title="Background">Equation&nbsp;(45.41)</a></span>. This treatment is in contrast to that of built-in deterministics in VEC estimation and of exogenous variables when estimating a VAR, where the specified variables are entered into the levels equation <span class="Link"><a href="vecm-Background.html#272929" title="Background">Equation&nbsp;(45.1)</a></span>. (See <span class="Link"><a href="vecm-Background.html#277205" title="Background">&#8220;Exogenous Variables in VECMs&#8221;</a></span> for further discussion.)</div>
+      <div class="Heading_4"><a name="274107">Cointegration Options</a></div>
+      <div class="Body_Text"><a name="274108">Important options related to cointegration can be accessed by clicking on the Cointegration tab:</a></div>
+      <div class="Picture"><a name="274112"><img class="Default" src="images/vecm.057.3.02.jpg" width="100%" style="left: 0.0pt; max-height: 496px; max-width: 503px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="274113">A fundamental prerequisite of VECM estimation is </a><span class="Emphasis">a priori</span> knowledge of the number of cointegrating relations <img class="Default EquationGraphic" src="images/vecm.057.3.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. You may use the dropdown menu to select the appropriate <span class="Menu_Item">Number of cointegrating relations</span> (see <span class="Link"><a href="coint-Johansen_Cointegration_Test.html#189915" title="Johansen Cointegration Test">&#8220;Johansen Cointegration Test&#8221;</a></span> for determination of cointegrating rank).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="274114">The </a><span style="font-weight: bold">Deterministic trend specification </span>governs the use of trend terms in the CEC specification as described in <span class="Link"><a href="vecm-Background.html#273841" title="Background">&#8220;Popular VECM Deterministic Assumptions&#8221;</a></span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="277125">Note that as you make a selection in the dropdown, the text below will change to give you a more detailed description of the assumptions underlying the choice.</a></div>
+      <div class="Heading_4"><a name="274119">VEC Restrictions</a></div>
+      <div class="Body_Text"><a name="274123">Since the cointegrating vector <img class="Default EquationGraphic" src="images/vecm.057.3.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is not fully identified, EViews applies standard normalizations to identify the remaining coefficients. Alternately, you may wish to impose your own identifying restrictions when performing estimation. Restrictions may be imposed on the cointegrating vector (elements of the <img class="Default EquationGraphic" src="images/vecm.057.3.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> matrix) and/or on the adjustment coefficients (elements of the <img class="Default EquationGraphic" src="images/vecm.057.3.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> matrix). </a></div>
+      <div class="Body_Text"><a name="274130">To impose restrictions in estimation, click on the </a><span class="Menu_Item">VEC Restrictions</span> tab to display the restrictions dialog. You will enter your restrictions in the edit box that appears when you check the <span class="Menu_Item">Impose Restrictions</span> box:</div>
+      <div class="Picture"><a name="274134"><img class="Default" src="images/vecm.057.3.07.jpg" width="100%" style="left: 0.0pt; max-height: 496px; max-width: 504px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><span class="Link"><a href="#274141" title="Estimating VEC Models in EViews" name="274138">&#8220;Specifying VEC Restrictions&#8221;</a></span> describes the syntax for specifying these restrictions in greater detail. </div>
+      <div class="Heading_4"><a name="274141">Specifying VEC Restrictions</a></div>
+      <div class="Body_Text"><a name="274145">Restrictions can be imposed on the cointegrating vector (elements of the <img class="Default EquationGraphic" src="images/vecm.057.3.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> matrix) and/or on the adjustment coefficients (elements of the <img class="Default EquationGraphic" src="images/vecm.057.3.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> matrix).</a></div>
+      <div class="Heading_5"><a name="274150">Restrictions on the Cointegrating Vector</a></div>
+      <div class="Body_Text"><a name="274157">To impose restrictions on the cointegrating vector <img class="Default EquationGraphic" src="images/vecm.057.3.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, you must refer to the (</a><span class="In-line_math">i</span>,<span class="In-line_math">j</span>)-th element of the <span class="Emphasis">transpose</span> of the <img class="Default EquationGraphic" src="images/vecm.057.3.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> matrix by <span class="In-line_input">B(i,j)</span>. The <span class="In-line_math">i</span>-th cointegrating relation has the representation:</div>
+      <div class="Input"><a name="274164">B(i,1)*y1 + B(i,2)*y2 + ... + B(i,k)*yk </a></div>
+      <div class="Body_Text"><a name="274165">where </a><span class="In-line_input">y1</span>, <span class="In-line_input">y2</span>, ... are the (lagged) endogenous variable. Then, if you want to impose the restriction that the coefficient on <span class="In-line_input">y1</span> for the second cointegrating equation is 1, you would type the following in the edit box:</div>
+      <div class="Input"><a name="274166">B(2,1) = 1 </a></div>
+      <div class="Body_Text"><a name="274167">You can impose multiple restrictions by separating each restriction with a comma on the same line or typing each restriction on a separate line. For example, if you want to impose the restriction that the coefficients on </a><span class="In-line_input">y1</span> for the first and second cointegrating equations are 1, you would type:</div>
+      <div class="Multi-line_Input"><a name="274168">B(1,1) = 1 </a></div>
+      <div class="Multi-line_Input"><a name="274169">B(2,1) = 1 </a></div>
+      <div class="Body_Text"><a name="274173">Currently </a><span class="Emphasis">all restrictions must be linear (or more precisely affine) in the elements of the <img class="Default EquationGraphic" src="images/vecm.057.3.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> matrix</span>. So for example</div>
+      <div class="Input"><a name="274174">B(1,1) * B(2,1) = 1 </a></div>
+      <div class="Body_Text"><a name="274175">will return a syntax error.</a></div>
+      <div class="Heading_5"><a name="274176">Restrictions on the Adjustment Coefficients</a></div>
+      <div class="Body_Text"><a name="274180">To impose restrictions on the adjustment coefficients, you must refer to the (</a><span class="In-line_math">i</span>,<span class="In-line_math">j</span>)-th elements of the <img class="Default EquationGraphic" src="images/vecm.057.3.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> matrix by <span class="In-line_input">A(i,j)</span>. The error correction terms in the <span class="In-line_math">i</span>-th VEC equation will have the representation:</div>
+      <div class="Input"><a name="274187">A(i,1)*CointEq1 + A(i,2)*CointEq2 + ... + A(i,r)*CointEqr </a></div>
+      <div class="Body_Text"><span class="Emphasis"><a name="274188">Restrictions on the adjustment coefficients are currently limited to linear homogeneous restrictions</a></span> so that you must be able to write your restriction as <img class="Default EquationGraphic" src="images/vecm.057.3.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 117px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/vecm.057.3.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is a known <img class="Default EquationGraphic" src="images/vecm.057.3.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 48px; top: 0.0pt" alt="" /> matrix. This condition implies, for example, that the restriction,</div>
+      <div class="Input"><a name="274198">A(1,1) = A(2,1) </a></div>
+      <div class="Body_Text"><a name="274199">is valid but:</a></div>
+      <div class="Input"><a name="274200">A(1,1) = 1 </a></div>
+      <div class="Body_Text"><a name="274201">will return a restriction syntax error.</a></div>
+      <div class="Body_Text"><a name="274208">One restriction of particular interest is whether the </a><span class="In-line_math">i</span>-th row of the <img class="Default EquationGraphic" src="images/vecm.057.3.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> matrix is all zero. If this is the case, then the <span class="In-line_math">i</span>-th endogenous variable is said to be <span class="Emphasis">weakly exogenous with respect to the <img class="Default EquationGraphic" src="images/vecm.057.3.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> parameters</span>. See Johansen (1995) for the definition and implications of weak exogeneity. For example, if we assume that there is only one cointegrating relation in the VEC, to test whether the second endogenous variable is weakly exogenous with respect to <img class="Default EquationGraphic" src="images/vecm.057.3.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> you would enter:</div>
+      <div class="Input"><a name="274218">A(2,1) = 0 </a></div>
+      <div class="Body_Text"><a name="274219">To impose multiple restrictions, you may either separate each restriction with a comma on the same line or type each restriction on a separate line. For example, to test whether the second endogenous variable is weakly exogenous with respect to <img class="Default EquationGraphic" src="images/vecm.057.3.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> in a VEC with two cointegrating relations, you can type:</a></div>
+      <div class="Multi-line_Input"><a name="274223">A(2,1) = 0 </a></div>
+      <div class="Multi-line_Input"><a name="274224">A(2,2) = 0 </a></div>
+      <div class="Body_Text"><a name="274237">You may also impose restrictions on both <img class="Default EquationGraphic" src="images/vecm.057.3.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> </a><span class="Emphasis">and</span> <img class="Default EquationGraphic" src="images/vecm.057.3.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. However, the restrictions on <img class="Default EquationGraphic" src="images/vecm.057.3.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.3.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> must be <span class="Emphasis">independent</span>. So for example,</div>
+      <div class="Multi-line_Input"><a name="274238">A(1,1) = 0 </a></div>
+      <div class="Multi-line_Input"><a name="274239">B(1,1) = 1 </a></div>
+      <div class="Body_Text"><a name="274240">is a valid restriction but:</a></div>
+      <div class="Input"><a name="274241">A(1,1) = B(1,1) </a></div>
+      <div class="Body_Text"><a name="274242">will return a restriction syntax error.</a></div>
+      <div class="Heading_5"><a name="274243">Identifying Restrictions and Binding Restrictions</a></div>
+      <div class="Body_Text"><a name="274244">EViews will check to see whether the restrictions you provided identify all cointegrating vectors for each possible rank. The identification condition is checked numerically by the rank of the appropriate Jacobian matrix; see Boswijk (1995) for the technical details. Asymptotic standard errors for the estimated cointegrating parameters will be reported only if the restrictions identify the cointegrating vectors.</a></div>
+      <div class="Body_Text"><a name="274245">If the restrictions are binding, EViews will report the LR statistic to test the binding restrictions. The LR statistic is reported if the degrees of freedom of the asymptotic <img class="Default EquationGraphic" src="images/vecm.057.3.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 23px; max-width: 21px; top: 0.0pt" alt="" />-distribution is positive. Note that the restrictions can be binding even if they are not identifying, (</a><span class="Emphasis">e.g.</span> when you impose restrictions on the adjustment coefficients but not on the cointegrating vector).</div>
+      <div class="Heading_5"><a name="274249">Options for Restricted Estimation</a></div>
+      <div class="Body_Text"><a name="274256">Estimation of the restricted cointegrating vectors <img class="Default EquationGraphic" src="images/vecm.057.3.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and adjustment coefficients <img class="Default EquationGraphic" src="images/vecm.057.3.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> generally involves an iterative process. The </a><span class="Menu_Item">VEC Restrictions</span> tab provides iteration control for the maximum number of iterations and the convergence criterion. EViews estimates the restricted <img class="Default EquationGraphic" src="images/vecm.057.3.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.3.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> using the switching algorithm as described in Boswijk (1995). Each step of the algorithm is guaranteed to increase the likelihood and the algorithm should eventually converge (though convergence may be to a local rather than a global optimum). You may need to increase the number of iterations in case you are having difficulty achieving convergence at the default settings.</div>
+      <div class="Body_Text"><a name="274263">Once you have filled the dialog, simply click </a><span class="Dialog_Item">OK</span> to estimate the VEC. Estimation of a VEC model is carried out in two steps. In the first step, we estimate the cointegrating relations from the Johansen procedure as used in the cointegration test. We then construct the error correction terms from the estimated cointegrating relations and estimate a VAR in first differences including the error correction terms as regressors.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

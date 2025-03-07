@@ -1,0 +1,895 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Stability Diagnostics</title>
+    <link rel="StyleSheet" href="css/testing.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="testing-Residual_Diagnostics.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="testing-Applications.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="testing-Specification_and_Diagnostic_Tests.html">Specification and Diagnostic Tests</a> : Stability Diagnostics</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="183231">Stability Diagnostics</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#183265">Chow's Breakpoint Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#183341">Quandt-Andrews Breakpoint Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186159">Multiple Breakpoint Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186160">Background</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#186202">Global Maximizer Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#186246">Global L Breaks vs. None</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#186315">Information Criteria</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#186323">Sequential Testing Procedures</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#186344">Global Plus Sequential Testing</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186360">Computing Multiple Breakpoint Tests in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#186368">Test Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#186416">Breakpoint Variables </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#186422">Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186476">Examples</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#186501">Sequential Bai-Perron</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#186538">Global Bai-Perron L Breaks vs. None</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#186579">Global Information Criteria</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#183427">Chow's Forecast Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#183489">Ramsey's RESET Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#183623">Recursive Least Squares</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183720">Recursive Residuals</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183726">CUSUM Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183775">CUSUM of Squares Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183815">One-Step Forecast Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183834">N-Step Forecast Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183841">Recursive Coefficient Estimates</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#183852">Save Results as Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#183859">Leverage Plots</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#183937">Influence Statistics</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="183232">EViews provides several test statistic views that examine whether the parameters of your model are stable across various subsamples of your data.</a></div>
+      <div class="Body_Text"><a name="183236">One common approach is to split the <img class="Default EquationGraphic" src="images/testing.035.6.001.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> observations in your data set of observations into <img class="Default EquationGraphic" src="images/testing.035.6.002.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> observations to be used for estimation, and <img class="Default EquationGraphic" src="images/testing.035.6.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 101px; top: 0.0pt" alt="" /> observations to be used for testing and evaluation. In time series work, you will usually take the first <img class="Default EquationGraphic" src="images/testing.035.6.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> observations for estimation and the last <img class="Default EquationGraphic" src="images/testing.035.6.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> for testing. With cross-section data, you may wish to order the data by some variable, such as household income, sales of a firm, or other indicator variables and use a subset for testing. </a></div>
+      <div class="Body_Text"><a name="183249">Note that the alternative of using all available sample observations for estimation promotes a search for a specification that best fits that specific data set, but does not allow for testing predictions of the model against data that have not been used in estimating the model. Nor does it allow one to test for parameter constancy, stability and robustness of the estimated relationship. </a></div>
+      <div class="Body_Text"><a name="183256">There are no hard and fast rules for determining the relative sizes of <img class="Default EquationGraphic" src="images/testing.035.6.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" />. In some cases there may be obvious points at which a break in structure might have taken place&#8212;a war, a piece of legislation, a switch from fixed to floating exchange rates, or an oil shock. Where there is no reason </a><span class="Emphasis">a priori</span> to expect a structural break, a commonly used rule-of-thumb is to use 85 to 90 percent of the observations for estimation and the remainder for testing.</div>
+      <div class="Picture"><a name="183260"><img class="Default" src="images/testing.035.6.008.jpg" width="100%" style="left: 0.0pt; max-height: 213px; max-width: 285px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183261">EViews provides built-in procedures which facilitate variations on this type of analysis.</a></div>
+      <div class="Heading_4"><a name="183265">Chow's Breakpoint Test</a></div>
+      <div class="Body_Text"><a name="183266">The idea of the breakpoint Chow test is to fit the equation separately for each subsample and to see whether there are significant differences in the estimated equations. A significant difference indicates a structural change in the relationship. For example, you can use this test to examine whether the demand function for energy was the same before and after the oil shock. The test may be used with least squares and two-stage least squares regressions; equations estimated using GMM offer a related test (see </a><span class="Link"><a href="gmmiv-IV_Diagnostics_and_Tests.html#179082" title="IV Diagnostics and Tests">&#8220;GMM Breakpoint Test&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="183270">By default the Chow breakpoint test tests whether there is a structural change in all of the equation parameters. However if the equation is linear EViews allows you to test whether there has been a structural change in a subset of the parameters.</a></div>
+      <div class="Body_Text"><a name="183271">To carry out the test, we partition the data into two or more subsamples. Each subsample must contain more observations than the number of coefficients in the equation so that the equation can be estimated. The Chow breakpoint test compares the sum of squared residuals obtained by fitting a single equation to the entire sample with the sum of squared residuals obtained when separate equations are fit to each subsample of the data.</a></div>
+      <div class="Body_Text"><a name="183275">EViews reports three test statistics for the Chow breakpoint test. The </a><span class="In-line_math">F</span>-statistic is based on the comparison of the restricted and unrestricted sum of squared residuals and in the simplest case involving a single breakpoint, is computed as:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.009.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183286">where <img class="Default EquationGraphic" src="images/testing.035.6.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 30px; top: 0.0pt" alt="" /> is the restricted sum of squared residuals, <img class="Default EquationGraphic" src="images/testing.035.6.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> is the sum of squared residuals from subsample <img class="Default EquationGraphic" src="images/testing.035.6.012.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/testing.035.6.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is the total number of observations, and <img class="Default EquationGraphic" src="images/testing.035.6.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the number of parameters in the equation. This formula can be generalized naturally to more than one breakpoint. The </a><span class="In-line_math">F</span>-statistic has an exact finite sample <span class="In-line_math">F</span>-distribution if the errors are independent and identically distributed normal random variables.</div>
+      <div class="Body_Text"><a name="183302">The log likelihood ratio statistic is based on the comparison of the restricted and unrestricted maximum of the (Gaussian) log likelihood function. The LR test statistic has an asymptotic <img class="Default EquationGraphic" src="images/testing.035.6.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />distribution with degrees of freedom equal to <img class="Default EquationGraphic" src="images/testing.035.6.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 68px; top: 0.0pt" alt="" /> under the null hypothesis of no structural change, where <img class="Default EquationGraphic" src="images/testing.035.6.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> is the number of subsamples.</a></div>
+      <div class="Body_Text"><a name="183312">The Wald statistic is computed from a standard Wald test of the restriction that the coefficients on the equation parameters are the same in all subsamples. As with the log likelihood ratio statistic, the Wald statistic has an asymptotic <img class="Default EquationGraphic" src="images/testing.035.6.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />distribution with <img class="Default EquationGraphic" src="images/testing.035.6.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 68px; top: 0.0pt" alt="" /> degrees of freedom, where <img class="Default EquationGraphic" src="images/testing.035.6.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> is the number of subsamples.</a></div>
+      <div class="Body_Text"><a name="183322">One major drawback of the breakpoint test is that each subsample requires at least as many observations as the number of estimated parameters. This may be a problem if, for example, you want to test for structural change between wartime and peacetime where there are only a few observations in the wartime sample. The Chow forecast test, discussed below, should be used in such cases. </a></div>
+      <div class="Picture"><a name="183326"><img class="Default" src="images/testing.035.6.021.jpg" width="100%" style="left: 0.0pt; max-height: 335px; max-width: 339px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183327">To apply the Chow breakpoint test, push </a><span class="Menu_Item">View/Stability Diagnostics/Chow Breakpoint Test&#8230; </span>on the equation toolbar. In the dialog that appears, list the dates or observation numbers for the breakpoints in the upper edit field, and the regressors that are allowed to vary across breakpoints in the lower edit field.</div>
+      <div class="Body_Text"><a name="183328">For example, if your original equation was estimated from 1950 to 1994, entering: </a></div>
+      <div class="Input" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="In-line_input"><a name="183329">1960</a></span></div>
+      <div class="Body_Text"><a name="183330">in the dialog specifies two subsamples, one from 1950 to 1959 and one from 1960 to 1994. Typing:</a></div>
+      <div class="Input"><a name="183331">1960 1970</a></div>
+      <div class="Body_Text"><a name="183332">specifies three subsamples, 1950 to 1959, 1960 to 1969, and 1970 to 1994.</a></div>
+      <div class="Body_Text"><a name="183333">The results of a test applied to EQ1 in the workfile &#8220;Coef_test.WF1&#8221;, using the settings above are:</a></div>
+      <div class="Picture"><a name="183337"><img class="Default" src="images/testing.035.6.022.jpg" width="100%" style="left: 0.0pt; max-height: 188px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183338">Indicating that the coefficients are not stable across regimes.</a></div>
+      <div class="Heading_4"><a name="183341">Quandt-Andrews Breakpoint Test</a></div>
+      <div class="Body_Text"><a name="183342">The Quandt-Andrews Breakpoint Test tests for one or more unknown structural breakpoints in the sample for a specified equation. The idea behind the Quandt-Andrews test is that a single Chow Breakpoint Test is performed at every observation between two dates, or observations, <img class="Default EquationGraphic" src="images/testing.035.6.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />. The <img class="Default EquationGraphic" src="images/testing.035.6.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> test statistics from those Chow tests are then summarized into one test statistic for a test against the null hypothesis of no breakpoints between <img class="Default EquationGraphic" src="images/testing.035.6.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="183358">By default the test tests whether there is a structural change in all of the original equation parameters. For linear specifications, EViews also allows you to test whether there has been a structural change in a subset of the parameters.</a></div>
+      <div class="Body_Text"><a name="183359">From each individual Chow Breakpoint Test two statistics are retained, the Likelihood Ratio </a><span class="In-line_math">F</span>-statistic and the Wald <span class="In-line_math">F</span>-statistic. The Likelihood Ratio <span class="In-line_math">F</span>-statistic is based on the comparison of the restricted and unrestricted sums of squared residuals. The Wald <span class="In-line_math">F</span>-statistic is computed from a standard Wald test of the restriction that the coefficients on the equation parameters are the same in all subsamples. Note that in linear equations these two statistics will be identical. For more details on these statistics, see <span class="Link"><a href="#183265" title="Stability Diagnostics">&#8220;Chow's Breakpoint Test&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="183375">The individual test statistics can be summarized into three different statistics; the Sup or Maximum statistic, the Exp Statistic, and the Ave statistic (see Andrews, 1993 and Andrews and Ploberger, 1994). The Maximum statistic is simply the maximum of the individual Chow </a><span class="In-line_math">F</span>-statistics:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.028.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183383">The Exp statistic takes the form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.029.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183391">The Ave statistic is the simple average of the individual </a><span class="In-line_math">F</span>-statistics:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.030.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183396">The distribution of these test statistics is non-standard. Andrews (1993) developed their true distribution, and Hansen (1997) provided approximate asymptotic </a><span class="In-line_math">p</span>-values. EViews reports the Hansen <span class="In-line_math">p</span>-values. The distribution of these statistics becomes degenerate as <img class="Default EquationGraphic" src="images/testing.035.6.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> approaches the beginning of the equation sample, or <img class="Default EquationGraphic" src="images/testing.035.6.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> approaches the end of the equation sample. To compensate for this behavior, it is generally suggested that the ends of the equation sample not be included in the testing procedure. A standard level for this &#8220;trimming&#8221; is 15%, where we exclude the first and last 15% of the observations. EViews sets trimming at 15% by default, but also allows the user to choose other levels. Note EViews only allows symmetric trimming, <span class="Emphasis">i.e.</span> the same number of observations are removed from the beginning of the estimation sample as from the end.</div>
+      <div class="Picture"><a name="183412"><img class="Default" src="images/testing.035.6.033.jpg" width="100%" style="left: 0.0pt; max-height: 299px; max-width: 512px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183413">The Quandt-Andrews Breakpoint Test can be evaluated for an equation by selecting </a><span class="Menu_Item">View/Stability Diagnostics/Quandt-Andrews Breakpoint Test&#8230;</span> from the equation toolbar. The resulting dialog allows you to choose the level of symmetric observation trimming for the test, and, if your original equation was linear, which variables you wish to test for the unknown break point. You may also choose to save the individual Chow Breakpoint test statistics into new series within your workfile by entering a name for the new series.</div>
+      <div class="Body_Text"><a name="183414">As an example we estimate a consumption function, EQ02 in the workfile &#8220;DEMO.WF1&#8221;, using quarterly data from 1952Q1 to 1992Q4. To test for an unknown structural break point amongst all the original regressors we run the Quandt-Andrews test with 15% trimming. This test gives the following results:</a></div>
+      <div class="Table"><a name="183415">&nbsp;</a></div>
+      <div class="Body_Text"><a name="183416">Note all three of the summary statistic measures fail to reject the null hypothesis of no structural breaks at the 1% level within the 113 possible dates tested. The maximum statistic was in 1982Q2, and that is the most likely breakpoint location. Also, since the original equation was linear, note that the p-value for the LR </a><span class="In-line_math">F</span>-statistic is identical to the Wald <span class="In-line_math">F</span>-statistic.</div>
+      <div class="Heading_4"><a name="186159">Multiple Breakpoint Tests</a></div>
+      <div class="Body_Text"><a name="186744">Tests for parameter instability and structural change in regression models have been an important part of applied econometric work dating back to Chow (1960), who tested for regime change at </a><span class="Emphasis">a priori</span> known dates using an <span class="In-line_math">F</span>-statistic. To relax the requirement that the candidate breakdate be known, Quandt (1960) modified the Chow framework to consider the <span class="In-line_math">F</span>-statistic with the largest value over all possible breakdates. Andrews (1993) and Andrews and Ploberger (1994) derived the limiting distribution of the Quandt and related test statistics. The EViews tools for performing these tests are described in <span class="Link"><a href="#183265" title="Stability Diagnostics">&#8220;Chow's Breakpoint Test&#8221;</a></span> and <span class="Link"><a href="#183341" title="Stability Diagnostics">&#8220;Quandt-Andrews Breakpoint Test&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="186767">More recently, Bai (1997) and Bai and Perron (1998, 2003a) provide theoretical and computational results that further extend the Quandt-Andrews framework by allowing for </a><span class="Emphasis">multiple</span> unknown breakpoints. The remainder of this section offers a brief outline of the Bai and Bai-Perron approach to structural break testing as implemented in EViews. Perron (2006) offers a useful survey of the literature and provides references for those requiring additional discussion.</div>
+      <div class="Heading_5"><a name="186160">Background</a></div>
+      <div class="Body_Text"><a name="186167">We consider a standard multiple linear regression model with <img class="Default EquationGraphic" src="images/testing.035.6.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> periods and <img class="Default EquationGraphic" src="images/testing.035.6.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> potential breaks (producing <img class="Default EquationGraphic" src="images/testing.035.6.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 46px; top: 0.0pt" alt="" /> regimes). For the observations <img class="Default EquationGraphic" src="images/testing.035.6.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 172px; top: 0.0pt" alt="" /> in regime <img class="Default EquationGraphic" src="images/testing.035.6.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> we have the regression model</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.039.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186185">for the regimes <img class="Default EquationGraphic" src="images/testing.035.6.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 97px; top: 0.0pt" alt="" />. Note that the regressors are divided into two groups. The <img class="Default EquationGraphic" src="images/testing.035.6.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> variables are those whose parameters do not vary across regimes, while the <img class="Default EquationGraphic" src="images/testing.035.6.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> variables have coefficients that are regime specific.</a></div>
+      <div class="Body_Text"><a name="187352">While it is slightly more convenient to define breakdates to be the last date of a regime, we follow EViews&#8217;s convention in defining the breakdate to be the first date of the subsequent regime. We tie down the endpoints by setting <img class="Default EquationGraphic" src="images/testing.035.6.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 61px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.044.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 115px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="186199">The multiple breakpoint tests that we consider may broadly be divided into three categories: tests that employ global maximizers for the breakpoints, test that employ sequentially determined breakpoints, and hybrid tests, which combine the two approaches.</a></div>
+      <div class="Heading_6"><a name="186202">Global Maximizer Tests</a></div>
+      <div class="Body_Text"><a name="186206">Bai and Perron (1998) describe global optimization procedures for identifying the <img class="Default EquationGraphic" src="images/testing.035.6.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> multiple breaks which minimize the sums-of-squared residuals of the regression model </a><span class="Link"><a href="#186181" title="Stability Diagnostics">Equation&nbsp;(26.29)</a></span>.</div>
+      <div class="Body_Text"><a name="189413">Briefly, for a </a><span class="Emphasis">specific</span> set of <img class="Default EquationGraphic" src="images/testing.035.6.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> breakpoints, say <img class="Default EquationGraphic" src="images/testing.035.6.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 165px; top: 0.0pt" alt="" />, we may minimize the sum-of-squared residuals:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.048.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="189424">using standard least squares regression to obtain estimates <img class="Default EquationGraphic" src="images/testing.035.6.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 45px; top: 0.0pt" alt="" />. The global <img class="Default EquationGraphic" src="images/testing.035.6.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />-break optimizers are the set of breakpoints and corresponding coefficient estimates that minimize sum-of-squares across </a><span class="Emphasis">all</span> possible sets of <img class="Default EquationGraphic" src="images/testing.035.6.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />-break partitions. </div>
+      <div class="Body_Text"><a name="186237">Note that the number of comparison models increases rapidly in both <img class="Default EquationGraphic" src="images/testing.035.6.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> so that efficient algorithms for computing the optimizers are required. Practical algorithms for computing the global optimizers for multiple breakpoint models are outlined in Bai and Perron (2003a).</a></div>
+      <div class="Body_Text"><a name="186238">These global breakpoint estimates are then used as the basis for several breakpoint tests. EViews supports both the Bai and Perron (1998) tests of <img class="Default EquationGraphic" src="images/testing.035.6.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" />-breaks versus none test (along with the double maximum variants of this test in which <img class="Default EquationGraphic" src="images/testing.035.6.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> is determined as part of the testing procedure), and information criterion methods (Yao, 1988 and Liu, Wi, and Zidek, 1997) for determining the number of breaks.</a></div>
+      <div class="Heading_7"><a name="186246">Global L Breaks vs. None</a></div>
+      <div class="Body_Text"><a name="186247">Bai and Perron (1998) describe a generalization of the Quandt-Andrews test (Andrews, 1993) in which we test for equality of the <img class="Default EquationGraphic" src="images/testing.035.6.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> across multiple regimes. For a test of the null of no breaks against an alternative of <img class="Default EquationGraphic" src="images/testing.035.6.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> breaks, we employ an </a><span class="In-line_math">F</span>-statistic to evaluate the null hypothesis that <img class="Default EquationGraphic" src="images/testing.035.6.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 158px; top: 0.0pt" alt="" />. The general form of the statistic (Bai-Perron 2003a) is:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.059.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186277">where <img class="Default EquationGraphic" src="images/testing.035.6.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 13px; top: 0.0pt" alt="" /> is the optimal <img class="Default EquationGraphic" src="images/testing.035.6.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" />-break estimate of <img class="Default EquationGraphic" src="images/testing.035.6.062.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/testing.035.6.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 249px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/testing.035.6.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> is an estimate of the variance covariance matrix of <img class="Default EquationGraphic" src="images/testing.035.6.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 13px; top: 0.0pt" alt="" /> which may be robust to serial correlation and heteroskedasticity, whose form depends on assumptions about the distribution of the data and the errors across segments. (We do not reproduce the formulae for the estimators of the variance matrices here as there are a large number of cases to consider; Bai-Perron (2003a) offer detailed descriptions of the various cases.)</a></div>
+      <div class="Body_Text"><a name="186287">A single test of no breaks against an alternative of <img class="Default EquationGraphic" src="images/testing.035.6.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> breaks assumes that the alternative number of breakpoints <img class="Default EquationGraphic" src="images/testing.035.6.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> is pre-specified. In cases where <img class="Default EquationGraphic" src="images/testing.035.6.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> is not known, we may test the null of no structural change against an unknown number of breaks up to some upper-bound, <img class="Default EquationGraphic" src="images/testing.035.6.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 27px; top: 0.0pt" alt="" />. This type of testing is termed </a><span class="Emphasis">double maximum</span> since it involves maximization both for a given <img class="Default EquationGraphic" src="images/testing.035.6.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> and across various values of the test statistic for <img class="Default EquationGraphic" src="images/testing.035.6.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="186306">The equal-weighted version of the test, termed <img class="Default EquationGraphic" src="images/testing.035.6.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 63px; top: 0.0pt" alt="" /> chooses the alternative that maximizes the statistic across the number of breakpoints. An alternative approach, denoted <img class="Default EquationGraphic" src="images/testing.035.6.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 67px; top: 0.0pt" alt="" /> applies weights to the individual statistics so that the implied marginal <img class="Default EquationGraphic" src="images/testing.035.6.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />-values are equal prior to taking the maximum.</a></div>
+      <div class="Body_Text"><a name="186313">The distributions of these test statistics are non-standard, but Bai and Perron (2003b) provide critical value and response surface computations for various trimming parameters (minimum sample sizes for estimating a break), numbers of regressors, and numbers of breaks.</a></div>
+      <div class="Heading_7"><a name="186315">Information Criteria</a></div>
+      <div class="Body_Text"><a name="186319">Yao (1988) shows that under relatively strong conditions, the number of breaks <img class="Default EquationGraphic" src="images/testing.035.6.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 11px; top: 0.0pt" alt="" /> that minimizes the Schwarz criterion is a consistent estimator of the true number of breaks in a breaking mean model. </a></div>
+      <div class="Body_Text"><a name="186320">More generally, Liu, Wu, and Zidek (1997) propose use of modified Schwarz criterion for determining the number of breaks in a regression framework. LWZ offer theoretical results showing consistency of the estimated number of breakpoints, and provide simulation results to guide the choice of the modified penalty criterion.</a></div>
+      <div class="Heading_6"><a name="186323">Sequential Testing Procedures</a></div>
+      <div class="Body_Text"><a name="186324">Bai (1997) describes an intuitive approach for detecting more than one break. The procedure involves </a><span class="Emphasis">sequential</span> application of breakpoint tests. </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186325">Begin with the full sample and perform a test of parameter constancy with unknown break. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186326">If the test rejects the null hypothesis of constancy, determine the breakdate, divide the sample into two samples and perform single unknown breakpoint tests in each subsample. Each of these tests may be viewed as a test of the alternative of <img class="Default EquationGraphic" src="images/testing.035.6.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 74px; top: 0.0pt" alt="" /> versus the null hypothesis of <img class="Default EquationGraphic" src="images/testing.035.6.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 47px; top: 0.0pt" alt="" /> breaks. Add a breakpoint whenever a subsample null is rejected. (Alternately, one could test only the single subsample which shows the greatest improvement in the sum-of-squared residuals.)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186333">Repeat the procedure until all of the subsamples do not reject the null hypothesis, or until the maximum number of breakpoints allowed or maximum subsample intervals to test is reached. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="186334">If the number of breakpoints is pre-specified, we simply estimate the specified number of breakpoints using the one-at-a-time method.</a></div>
+      <div class="Body_Text"><a name="186335">Once the sequential breakpoints have been determined, Bai recommends a refinement procedure whereby breakpoints are re-estimated if they are obtained from a subsample containing more than one break. This procedure is required so that the breakpoint estimates have the same limiting distribution as those obtained from the global optimization procedure.</a></div>
+      <div class="Body_Text"><a name="186342">Note that EViews uses the (potentially robust) </a><span class="In-line_math">F</span>-statistic in <span class="Link"><a href="#186264" title="Stability Diagnostics">Equation&nbsp;(26.31)</a></span> for the test in place of the difference in sums-of-squared residuals described in Bai (1997) and Bai and Perron (1998). Critical value and response surface computations are again provided by Bai and Perron (2003b).</div>
+      <div class="Heading_6"><a name="186344">Global Plus Sequential Testing</a></div>
+      <div class="Body_Text"><a name="186345">Bai and Perron (1998) describe a modified Bai (1997) approach in which, at each test step, the <img class="Default EquationGraphic" src="images/testing.035.6.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> breakpoints under the null are obtained by global minimization of the sum-of-squared residuals. We may therefore view this approach as an <img class="Default EquationGraphic" src="images/testing.035.6.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> versus <img class="Default EquationGraphic" src="images/testing.035.6.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> test procedure that combines the global and sequential testing approaches.</a></div>
+      <div class="Body_Text"><a name="186358">Each test begins with the set of <img class="Default EquationGraphic" src="images/testing.035.6.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> global optimizing breakpoints and performs a single test of parameter constancy using the subsample break that most reduces the-sum-of-squared residuals. Note that in this case, we only test for constancy in a single subsample.</a></div>
+      <div class="Heading_5"><a name="186360">Computing Multiple Breakpoint Tests in EViews</a></div>
+      <div class="Body_Text"><a name="186361">To use the EViews tools for testing for multiple breaks, you must use an equation that is specified by list and estimated by least squares. Note in particular that this latter restriction means that models with AR and MA terms are not eligible for multiple break testing.</a></div>
+      <div class="Body_Text"><a name="186362">From an estimated equation, bring up the multiple break testing dialog, by clicking on </a><span class="Menu_Item">View/Stability Diagnostics/Multiple Breakpoint Test..</span>.</div>
+      <div class="Picture"><a name="186366"><img class="Default" src="images/testing.035.6.082.jpg" width="100%" style="left: 0.0pt; max-height: 294px; max-width: 495px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186367">The dialog is divided into the </a><span class="Menu_Item">Test specification</span>, <span class="Menu_Item">Breakpoint variables</span>, and <span class="Menu_Item">Options</span> sections.</div>
+      <div class="Heading_6"><a name="186368">Test Specification</a></div>
+      <div class="Picture"><a name="186372"><img class="Default" src="images/testing.035.6.083.jpg" width="100%" style="left: 0.0pt; max-height: 146px; max-width: 269px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186373">The </a><span class="Menu_Item">Test specification</span> section contains a <span class="Menu_Item">Method</span> drop-down where you may specify the type of test you wish to perform. You may choose between: </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="186374">Sequential L+1 breaks vs. L</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="186375">Sequential tests all subsets</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="186376">Global L breaks vs. none</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="186377">L+1 breaks vs. global L</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="186378">Global information criteria</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="186379">The two sequential tests are based on the Bai sequential methodology as described in </a><span class="Link"><a href="#186323" title="Stability Diagnostics">&#8220;Sequential Testing Procedures&#8221;</a></span> above. The methods differ in whether, for a given <img class="Default EquationGraphic" src="images/testing.035.6.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> breakpoints, we test for an additional breakpoint in each of the <img class="Default EquationGraphic" src="images/testing.035.6.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> segments (<span class="Menu_Item">Sequential tests all subsets</span>), or whether we test for the single added breakpoint that most reduces the sum-of-squares (<span class="Menu_Item">Sequential L+1 breaks vs. L</span>).</div>
+      <div class="Body_Text"><a name="186392">The </a><span class="Menu_Item">Global L breaks vs. none</span> choice implements the Bai-Perron tests of <img class="Default EquationGraphic" src="images/testing.035.6.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> globally optimized breaks against the null of no structural breaks, along with the corresponding <img class="Default EquationGraphic" src="images/testing.035.6.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 63px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 67px; top: 0.0pt" alt="" /> tests (<span class="Link"><a href="#186246" title="Stability Diagnostics">&#8220;Global L Breaks vs. None&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="186412">The </a><span class="Menu_Item">L+1 breaks vs. global L</span> choice implements the Bai-Perron <img class="Default EquationGraphic" src="images/testing.035.6.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> vs. <img class="Default EquationGraphic" src="images/testing.035.6.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> testing procedure outlined in <span class="Link"><a href="#186344" title="Stability Diagnostics">&#8220;Global Plus Sequential Testing&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="187404">The </a><span class="Menu_Item">Global information criteria</span> uses the information criteria computed from the global optimizers to determine the number of breaks (<span class="Link"><a href="#186315" title="Stability Diagnostics">&#8220;Information Criteria&#8221;</a></span>).</div>
+      <div class="Heading_6"><a name="186416">Breakpoint Variables </a></div>
+      <div class="Body_Text"><a name="186417">EViews supports the testing of partial structural change models in which only a subset of the variables in the regression are subject to change across regimes. The variables which have regime specific coefficients should be listed in the </a><span class="Menu_Item">Regressors to vary across breakpoints</span> edit field.</div>
+      <div class="Body_Text"><a name="186418">By default, all of the variables in your specification will be included in this list. To treat some of these variables as non-varying <img class="Default EquationGraphic" src="images/testing.035.6.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />&#8216;s, you may simply delete them from the list. Note that there must be at least one variable in the list.</a></div>
+      <div class="Heading_7"><a name="186422">Options</a></div>
+      <div class="Picture"><a name="186426"><img class="Default" src="images/testing.035.6.092.jpg" width="100%" style="left: 0.0pt; max-height: 197px; max-width: 213px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186427">The </a><span class="Menu_Item">Options</span> section of the dialog allow you to specify the maximum number of breaks or break levels to consider, the trimming percentage of the sample, the significance level for any test computations (if relevant), and assumptions regarding the computation of the variance matrices used in testing (if relevant):</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186428">The </a><span class="Menu_Item">Maximum breaks</span> limits the number of breakpoints allowed via global testing and in sequential or mixed <img class="Default EquationGraphic" src="images/testing.035.6.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> vs. <img class="Default EquationGraphic" src="images/testing.035.6.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> testing. If you have selected the <span class="Menu_Item">Sequential tests all subsets</span> method, the edit field will be labeled <span class="Menu_Item">Maximum levels</span> to indicate that the restriction is on the maximum number of break levels allowed. This change in labeling reflects the fact that the Bai all subsets approach potentially adds <img class="Default EquationGraphic" src="images/testing.035.6.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> breaks for a given set of <img class="Default EquationGraphic" src="images/testing.035.6.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> breaks.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186447">The </a><span class="Menu_Item">Trimming percentage,</span> <img class="Default EquationGraphic" src="images/testing.035.6.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 114px; top: 0.0pt" alt="" /> implicitly determines <img class="Default EquationGraphic" src="images/testing.035.6.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, the minimum segment length permitted when constructing a test. Small values of the trimming percentage can lead to estimates of coefficients and variances which are based on very few observations.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="186448">In testing settings, you will be prompted to specify a test size, and to make assumptions about the distribution of the errors across segments which determine the form for the estimator <img class="Default EquationGraphic" src="images/testing.035.6.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> in </a><span class="Link"><a href="#186264" title="Stability Diagnostics">Equation&nbsp;(26.31)</a></span>.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186455">The </a><span class="Menu_Item">Significance level</span> drop-down menu should be used to choose between test size values of (0.01, 0.025, 0.05, and 0.10). This menu is not relevant for tests which select between models using information criteria.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="186456">The </a><span class="Menu_Item">Allow error distributions to differ across breaks</span> lets you specify different error distributions for different regimes (which in turn implies using different estimators for <img class="Default EquationGraphic" src="images/testing.035.6.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" />; see Bai and Perron, 2003b for details). Selecting this option will provide robustness of the test to error distribution variation at the cost of power if the error distributions are the same across regimes.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="186460">We remind you that EViews will employ the coefficient covariance settings in the original equation when determining whether to allow for heteroskedasticity alone or heteroskedasticity and serial correlation. Thus, if you estimated your original equation using White standard errors, EViews will compute the breakpoint tests using an statistic which is robust to heteroskedasticity. Similarly, if you estimated your original equation with Newey-West standard errors, EViews will compute the breakpoint tests using a HAC robust test statistic.</a></div>
+      <div class="Body_Text"><a name="187441">One final note. EViews will, by default, estimate the robust specification assuming heterogeneous distributions for the <img class="Default EquationGraphic" src="images/testing.035.6.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />. Bai and Perron (2003a) who, with one exception, do not impose the restriction that the distribution of the <img class="Default EquationGraphic" src="images/testing.035.6.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> is the same across regimes. In cases where you are testing using robust variances, EViews will offer you a choice of whether to assume a common distribution for the data across regimes. </a></div>
+      <div class="Picture"><a name="186472"><img class="Default" src="images/testing.035.6.103.jpg" width="100%" style="left: 0.0pt; max-height: 197px; max-width: 213px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186473">Bai and Perron do impose the homogeneity data restriction when computing heteroskedasticity and HAC robust variances estimators assuming homogeneous errors. To match the Bai-Perron common error assumptions, you will have to select the </a><span class="Menu_Item">Assume common data distribution checkbox</span>.</div>
+      <div class="Body_Text"><a name="186474">(Note that EViews does not allow you to specify heterogeneous error distributions and robust covariances in partial switching models.)</a></div>
+      <div class="Heading_5"><a name="186476">Examples</a></div>
+      <div class="Body_Text"><a name="186477">To illustrate the use of these tools in practice, we consider a simple model of the U.S. </a><span class="Emphasis">ex-post</span> real interest rate from Garcia and Perron (1996) that is used as an example by Bai and Perron (2003a). The data, which consist of observations for the three-month treasury rate deflated by the CPI for the period 1961q1&#8211;1983q3, are provided in the series RATES in the workfile &#8220;realrate.WF1&#8221;. The regression model consists of a constant regressor, and allows for serial correlation that differs across regimes through the use of HAC covariance estimation. We allow up to 5 breaks in the model, and employ a trimming percentage of 15% <img class="Default EquationGraphic" src="images/testing.035.6.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 66px; top: 0.0pt" alt="" />. Since there are 103 observations in the sample, the trimming value implies that regimes are restricted to have at least 15 observations.</div>
+      <div class="Picture"><a name="186484"><img class="Default" src="images/testing.035.6.105.jpg" width="100%" style="left: 0.0pt; max-height: 424px; max-width: 494px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186485">Following Bai and Perron (2003a), we begin by estimating the equation specification using least squares. Our equation specification consists of the dependent variable and a single (constant) regressor, so we enter </a></div>
+      <div class="Input"><a name="186486">rate c</a></div>
+      <div class="Body_Text"><a name="186487">in the specification dialog</a></div>
+      <div class="Body_Text"><a name="186488">Since we wish to allow for serial correlation in the errors, we specify a quadratic spectral kernel based HAC covariance estimation using prewhitened residuals. The kernel bandwith is determined automatically using the Andrews AR(1) method. </a></div>
+      <div class="Body_Text"><a name="186489">The covariance options may be specified in the </a><span class="Menu_Item">Equation Estimation</span> dialog by selecting the <span class="Menu_Item">Options</span> tab, clicking on the <span class="Menu_Item">HAC options</span> button and filling out the dialog as shown:</div>
+      <div class="Picture"><a name="186493"><img class="Default" src="images/testing.035.6.106.jpg" width="100%" style="left: 0.0pt; max-height: 381px; max-width: 333px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186494">Click on </a><span class="Menu_Item">OK</span> to accept the HAC settings, and then on <span class="Menu_Item">OK</span> to estimate the equation. The estimation results should be as depicted below:</div>
+      <div class="Picture"><a name="186498"><img class="Default" src="images/testing.035.6.107.jpg" width="100%" style="left: 0.0pt; max-height: 397px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186499">To construct multiple breakpoint tests for this equation, select </a><span class="Menu_Item">View/Stability Diagnostics/Multiple Breakpoint Test...</span> from the equation dialog. We consider examples for three different approaches for multiple breakpoint testing with this equation.</div>
+      <div class="Heading_6"><a name="186501">Sequential Bai-Perron</a></div>
+      <div class="Body_Text"><a name="186502">The default </a><span class="Menu_Item">Method</span> setting (<span class="Menu_Item">Sequential L+1 breaks vs. L</span>) instructs EViews to perform sequential testing of <img class="Default EquationGraphic" src="images/testing.035.6.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> versus <img class="Default EquationGraphic" src="images/testing.035.6.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> breaks using the methods outlined by Bai (1997) and Bai and Perron (1998).</div>
+      <div class="Picture"><a name="186512"><img class="Default" src="images/testing.035.6.110.jpg" width="100%" style="left: 0.0pt; max-height: 294px; max-width: 495px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186513">There is a single regressor &#8220;C&#8221; which we require to be in the list of breaking variables.</a></div>
+      <div class="Body_Text"><a name="186514">By default, the tests allow for a maximum number of 5 breaks, employ a trimming percentage of 15%, and use the 0.05 significance level for the sequential testing. We will leave these options at their default settings. We do, however, select the </a><span class="Menu_Item">Allow error distributions to differ across breaks</span> checkbox to allow for error heterogeneity. </div>
+      <div class="Body_Text"><a name="186515">Click on </a><span class="Menu_Item">OK</span> to accept the test specification and display the test results. The top portion of the dialog shows the test settings, including the test method, breakpoint variables, test options, and method of computing test covariances. Note that the test employs the same HAC covariance settings used in the original equation but assume regime specific error distributions:</div>
+      <div class="Picture"><a name="186519"><img class="Default" src="images/testing.035.6.111.jpg" width="100%" style="left: 0.0pt; max-height: 298px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186520">The middle section of the table presents the actual sequential test results:</a></div>
+      <div class="Picture"><a name="186524"><img class="Default" src="images/testing.035.6.112.jpg" width="100%" style="left: 0.0pt; max-height: 259px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186531">EViews displays the </a><span class="In-line_math">F</span>-statistic, along with the <span class="In-line_math">F</span>-statistic scaled by the number of varying regressors (which is the same in this case, since we only have the single, varying regressor), and the Bai-Perron critical value for the scaled statistic. The sequential test results indicate that there are three breakpoints: we reject the nulls of 0, 1, and 2 breakpoints in favor of the alternatives of 1, 2, and 3 breakpoints, but the test of 4 versus 3 breakpoints does not reject the null.</div>
+      <div class="Body_Text"><a name="186532">The bottom portion of the output shows the estimated breakdates:</a></div>
+      <div class="Picture"><a name="186536"><img class="Default" src="images/testing.035.6.113.jpg" width="100%" style="left: 0.0pt; max-height: 125px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186537">EViews displays both the breakdates obtained from the original sequential procedure, and those obtained following the repartition procedure. In this case, the dates do not change. Again bear in mind that the results follow the EViews convention in defining breakdates to be the first date of the subsequent regime.</a></div>
+      <div class="Heading_6"><a name="186538">Global Bai-Perron L Breaks vs. None</a></div>
+      <div class="Body_Text"><a name="186542">To perform the Bai-Perron tests of <img class="Default EquationGraphic" src="images/testing.035.6.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> globally optimized breaks against the null of no structural breaks, along with the corresponding <img class="Default EquationGraphic" src="images/testing.035.6.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 63px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 67px; top: 0.0pt" alt="" /> tests, simply call up the dialog and change the </a><span class="Menu_Item">Method</span> drop-down to <span class="Menu_Item">Global L breaks vs. none</span>:</div>
+      <div class="Picture"><a name="186552"><img class="Default" src="images/testing.035.6.117.jpg" width="100%" style="left: 0.0pt; max-height: 294px; max-width: 495px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186553">We again leave the remaining settings at their default values with the exception of the </a><span class="Menu_Item">Allow error distributions to differ across breaks</span> checkbox which is selected. Click on <span class="Menu_Item">OK</span> to perform the test.</div>
+      <div class="Body_Text"><a name="186554">The top portion of the output, which shows the test settings, is almost identical to the output for the previous example. The only difference is a line identifying the test method as being &#8220;Bai-Perron tests of 1 to M globally determined breaks.&#8221;</a></div>
+      <div class="Body_Text"><a name="189096">The middle portion of the output contains the test results:</a></div>
+      <div class="Picture"><a name="189101"><img class="Default" src="images/testing.035.6.118.jpg" width="100%" style="left: 0.0pt; max-height: 409px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186561">The first four lines summarize the results for different approaches to determining the number of breaks. The &#8220;Sequential&#8221; result is obtained by performing tests from 1 to the maximum number until we cannot reject the null; the &#8220;Significant&#8221; result chooses the largest statistically significant breakpoint. In both cases, the multiple breakpoint test indicates that there are 5 breaks. The &#8220;UDmax&#8221; and &#8220;WDmax&#8221; results show the number of breakpoints as determined by application of the unweighted and weighted maximized statistics. The maximized statistics both indicate the presence of a single break.</a></div>
+      <div class="Body_Text"><a name="186562">The remaining lines show the individual test statistics (original, scaled, weighted) along with the critical values for the scaled statistics. In each case, the statistics far exceed the critical value so that we reject the null of no breaks. Note that the values corresponding to the <img class="Default EquationGraphic" src="images/testing.035.6.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 63px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 67px; top: 0.0pt" alt="" /> statistics are shaded for easy identification. </a></div>
+      <div class="Body_Text"><a name="186569">The last two lines of output show the test results for double maximum statistics. In both cases, the maximized value clearly exceeds the critical value, so that we reject the null of no breaks in favor of the alternative of a single break.</a></div>
+      <div class="Body_Text"><a name="186570">The bottom of the portion shows the global optimizers for the breakpoints for each number of breaks:</a></div>
+      <div class="Picture"><a name="186574"><img class="Default" src="images/testing.035.6.121.jpg" width="100%" style="left: 0.0pt; max-height: 155px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186575">Note that the three-break global optimizers are the same as those obtained in the sequential testing example (</a><span class="Link"><a href="#186501" title="Stability Diagnostics">&#8220;Sequential Bai-Perron&#8221;</a></span>). This equivalence will not hold in general.</div>
+      <div class="Heading_6"><a name="186579">Global Information Criteria</a></div>
+      <div class="Body_Text"><a name="186580">Lastly, we consider using information criteria to select the number of breaks.</a></div>
+      <div class="Picture"><a name="186584"><img class="Default" src="images/testing.035.6.122.jpg" width="100%" style="left: 0.0pt; max-height: 294px; max-width: 495px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186585">Here we see the dialog when we select </a><span class="Menu_Item">Global information criteria</span> in the <span class="Menu_Item">Method</span> drop-down menu. Note that there are no options for computing the coefficient covariances since this method does not require their calculation. Click on <span class="Menu_Item">OK</span> to construct the table of results.</div>
+      <div class="Body_Text"><a name="186586">The top and bottom portions of the output are similar to the results seen previously so we focus only on the test summaries themselves:</a></div>
+      <div class="Picture"><a name="186590"><img class="Default" src="images/testing.035.6.123.jpg" width="100%" style="left: 0.0pt; max-height: 315px; max-width: 1005px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186591">The two summary rows show that both the Schwarz and the LWZ information criteria select 2 breaks. The remainder of the output shows, for each break, the number of estimated coefficients, the optimized sum-of-squared residuals and likelihood, and the values of the information criteria. The minimized Schwarz and LWZ values are shaded for easy identification.</a></div>
+      <div class="Heading_4"><a name="183427">Chow's Forecast Test</a></div>
+      <div class="Body_Text"><a name="183431">The Chow forecast test estimates two models&#8212;one using the full set of data <img class="Default EquationGraphic" src="images/testing.035.6.124.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />, and the other using a long subperiod <img class="Default EquationGraphic" src="images/testing.035.6.125.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" />. Differences between the results for the two estimated models casts doubt on the stability of the estimated relation over the sample period. The Chow forecast test can be used with least squares and two-stage least squares regressions.</a></div>
+      <div class="Body_Text"><a name="183438">EViews reports two test statistics for the Chow forecast test. The </a><span class="In-line_math">F</span>-statistic is computed as</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.126.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183449">where <img class="Default EquationGraphic" src="images/testing.035.6.127.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 30px; top: 0.0pt" alt="" /> is the residual sum of squares when the equation is fitted to all <img class="Default EquationGraphic" src="images/testing.035.6.128.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> sample observations, <img class="Default EquationGraphic" src="images/testing.035.6.129.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 30px; top: 0.0pt" alt="" /> is the residual sum of squares when the equation is fitted to <img class="Default EquationGraphic" src="images/testing.035.6.130.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> observations, and <img class="Default EquationGraphic" src="images/testing.035.6.131.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the number of estimated coefficients. This </a><span class="In-line_math">F</span>-statistic follows an exact finite sample <span class="In-line_math">F</span>-distribution if the errors are independent, and identically, normally distributed.</div>
+      <div class="Body_Text"><a name="183465">The log likelihood ratio statistic is based on the comparison of the restricted and unrestricted maximum of the (Gaussian) log likelihood function. Both the restricted and unrestricted log likelihood are obtained by estimating the regression using the whole sample. The restricted regression uses the original set of regressors, while the unrestricted regression adds a dummy variable for each forecast point. The LR test statistic has an asymptotic <img class="Default EquationGraphic" src="images/testing.035.6.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />distribution with degrees of freedom equal to the number of forecast points <img class="Default EquationGraphic" src="images/testing.035.6.133.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> under the null hypothesis of no structural change. </a></div>
+      <div class="Body_Text"><a name="183472">To apply Chow&#8217;s forecast test, push </a><span class="Menu_Item">View/Stability Diagnostics/Chow Forecast Test&#8230; </span>on the equation toolbar and specify the date or observation number for the beginning of the forecasting sample. The date should be within the current sample of observations.</div>
+      <div class="Body_Text"><a name="183473">As an example, using the &#8220;Coef_test2.WF1&#8221; workfile, suppose we estimate a consumption function, EQ1, using quarterly data from 1947q1 to 1994q4 and specify 1973q1 as the first observation in the forecast period. The test reestimates the equation for the period 1947q1 to 1972q4, and uses the result to compute the prediction errors for the remaining quarters, and the top portion of the table shows the following results:</a></div>
+      <div class="Table"><a name="183477"><img class="Default" src="images/testing.035.6.134.jpg" width="100%" style="left: 0.0pt; max-height: 461px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183478">Neither of the forecast test statistics reject the null hypothesis of no structural change in the consumption function before and after 1973q1. </a></div>
+      <div class="Body_Text"><a name="183479">If we test the same hypothesis using the Chow breakpoint test, the result is:</a></div>
+      <div class="Table"><a name="183483"><img class="Default" src="images/testing.035.6.135.jpg" width="100%" style="left: 0.0pt; max-height: 206px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183484">Note that the breakpoint test statistics decisively reject the hypothesis from above. This example illustrates the possibility that the two Chow tests may yield conflicting results.</a></div>
+      <div class="Heading_4"><a name="183489">Ramsey's RESET Test</a></div>
+      <div class="Body_Text"><a name="183490">RESET stands for </a><span class="Definition">Regression Specification Error Test</span> and was proposed by Ramsey (1969). The classical normal linear regression model is specified as:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.136.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183498">where the disturbance vector <img class="Default EquationGraphic" src="images/testing.035.6.137.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is presumed to follow the multivariate normal distribution <img class="Default EquationGraphic" src="images/testing.035.6.138.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 73px; top: 0.0pt" alt="" />. Specification error is an omnibus term which covers any departure from the assumptions of the maintained model. Serial correlation, heteroskedasticity, or non-normality of all violate the assumption that the disturbances are distributed <img class="Default EquationGraphic" src="images/testing.035.6.139.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 73px; top: 0.0pt" alt="" />. Tests for these specification errors have been described above. In contrast, RESET is a general test for the following types of specification errors:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="183509">Omitted variables; <img class="Default EquationGraphic" src="images/testing.035.6.140.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> does not include all relevant variables.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="183517">Incorrect functional form; some or all of the variables in <img class="Default EquationGraphic" src="images/testing.035.6.141.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.142.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> should be transformed to logs, powers, reciprocals, or in some other way.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="183524">Correlation between <img class="Default EquationGraphic" src="images/testing.035.6.143.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.144.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, which may be caused, among other things, by measurement error in <img class="Default EquationGraphic" src="images/testing.035.6.145.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, simultaneity, or the presence of lagged <img class="Default EquationGraphic" src="images/testing.035.6.146.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> values and serially correlated disturbances.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="183532">Under such specification errors, LS estimators will be biased and inconsistent, and conventional inference procedures will be invalidated. Ramsey (1969) showed that any or all of these specification errors produce a non-zero mean vector for <img class="Default EquationGraphic" src="images/testing.035.6.147.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. Therefore, the null and alternative hypotheses of the RESET test are:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.148.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183541">The test is based on an augmented regression:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.149.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.35)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183549">The test of specification error evaluates the restriction <img class="Default EquationGraphic" src="images/testing.035.6.150.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 52px; top: 0.0pt" alt="" />. The crucial question in constructing the test is to determine what variables should enter the <img class="Default EquationGraphic" src="images/testing.035.6.151.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> matrix. Note that the <img class="Default EquationGraphic" src="images/testing.035.6.152.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> matrix may, for example, be comprised of variables that are not in the original specification, so that the test of <img class="Default EquationGraphic" src="images/testing.035.6.153.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 52px; top: 0.0pt" alt="" /> is simply the omitted variables test described above. </a></div>
+      <div class="Body_Text"><a name="183559">In testing for incorrect functional form, the nonlinear part of the regression model may be some function of the regressors included in <img class="Default EquationGraphic" src="images/testing.035.6.154.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />. For example, if a linear relation,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.155.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183567">is specified instead of the true relation:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.156.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183575">the augmented model has <img class="Default EquationGraphic" src="images/testing.035.6.157.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 63px; top: 0.0pt" alt="" /> and we are back to the omitted variable case. A more general example might be the specification of an additive relation,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.158.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.38)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183580">instead of the (true) multiplicative relation:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.159.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.39)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183585">A Taylor series approximation of the multiplicative relation would yield an expression involving powers and cross-products of the explanatory variables. Ramsey's suggestion is to include powers of the predicted values of the dependent variable (which are, of course, linear combinations of powers and cross-product terms of the explanatory variables) in <img class="Default EquationGraphic" src="images/testing.035.6.160.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.161.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.40)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183602">where <img class="Default EquationGraphic" src="images/testing.035.6.162.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the vector of fitted values from the regression of <img class="Default EquationGraphic" src="images/testing.035.6.163.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/testing.035.6.164.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />. The superscripts indicate the powers to which these predictions are raised. The first power is not included since it is perfectly collinear with the <img class="Default EquationGraphic" src="images/testing.035.6.165.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> matrix. </a></div>
+      <div class="Body_Text"><a name="183609">Output from the test reports the test regression and the </a><span class="In-line_math">F</span>-statistic and log likelihood ratio for testing the hypothesis that the coefficients on the powers of fitted values are all zero. A study by Ramsey and Alexander (1984) showed that the RESET test could detect specification error in an equation which was known <span class="Emphasis">a priori</span> to be misspecified but which nonetheless gave satisfactory values for all the more traditional test criteria&#8212;goodness of fit, test for first order serial correlation, high <span class="In-line_math">t</span>-ratios. </div>
+      <div class="Body_Text"><a name="183610">To apply the test, select </a><span class="Menu_Item">View/Stability Diagnostics/Ramsey RESET Test&#8230;</span> and specify the number of fitted terms to include in the test regression. The fitted terms are the powers of the fitted values from the original regression, starting with the square or second power. For example, if you specify 1, then the test will add <img class="Default EquationGraphic" src="images/testing.035.6.166.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> in the regression, and if you specify 2, then the test will add <img class="Default EquationGraphic" src="images/testing.035.6.167.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/testing.035.6.168.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> in the regression, and so on. If you specify a large number of fitted terms, EViews may report a near singular matrix error message since the powers of the fitted values are likely to be highly collinear. The Ramsey RESET test is only applicable to equations estimated using selected methods.</div>
+      <div class="Heading_4"><a name="183623">Recursive Least Squares</a></div>
+      <div class="Body_Text"><a name="183624">In recursive least squares the equation is estimated repeatedly, using ever larger subsets of the sample data. If there are <img class="Default EquationGraphic" src="images/testing.035.6.169.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> coefficients to be estimated in the <img class="Default EquationGraphic" src="images/testing.035.6.170.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> vector, then the first <img class="Default EquationGraphic" src="images/testing.035.6.171.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> observations are used to form the first estimate of <img class="Default EquationGraphic" src="images/testing.035.6.172.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. The next observation is then added to the data set and <img class="Default EquationGraphic" src="images/testing.035.6.173.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> observations are used to compute the second estimate of <img class="Default EquationGraphic" src="images/testing.035.6.174.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. This process is repeated until all the <img class="Default EquationGraphic" src="images/testing.035.6.175.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> sample points have been used, yielding <img class="Default EquationGraphic" src="images/testing.035.6.176.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 70px; top: 0.0pt" alt="" /> estimates of the <img class="Default EquationGraphic" src="images/testing.035.6.177.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> vector. At each step the last estimate of <img class="Default EquationGraphic" src="images/testing.035.6.178.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> can be used to predict the next value of the dependent variable. The one-step ahead forecast error resulting from this prediction, suitably scaled, is defined to be a </a><span class="Definition">recursive residual.</span></div>
+      <div class="Body_Text"><a name="183663">More formally, let <img class="Default EquationGraphic" src="images/testing.035.6.179.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" /> denote the <img class="Default EquationGraphic" src="images/testing.035.6.180.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 78px; top: 0.0pt" alt="" /> matrix of the regressors from period 1 to period <img class="Default EquationGraphic" src="images/testing.035.6.181.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/testing.035.6.182.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> the corresponding vector of observations on the dependent variable. These data up to period <img class="Default EquationGraphic" src="images/testing.035.6.183.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> give an estimated coefficient vector, denoted by <img class="Default EquationGraphic" src="images/testing.035.6.184.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 36px; top: 0.0pt" alt="" />. This coefficient vector gives you a forecast of the dependent variable in period <img class="Default EquationGraphic" src="images/testing.035.6.185.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. The forecast is <img class="Default EquationGraphic" src="images/testing.035.6.186.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 55px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/testing.035.6.187.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is the row vector of observations on the regressors in period <img class="Default EquationGraphic" src="images/testing.035.6.188.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. The forecast error is <img class="Default EquationGraphic" src="images/testing.035.6.189.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 86px; top: 0.0pt" alt="" />, and the forecast variance is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.190.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.41)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183698">The recursive residual <img class="Default EquationGraphic" src="images/testing.035.6.191.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is defined in EViews as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.192.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.42)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183706">These residuals can be computed for <img class="Default EquationGraphic" src="images/testing.035.6.193.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 122px; top: 0.0pt" alt="" />. If the maintained model is valid, the recursive residuals will be independently and normally distributed with zero mean and constant variance <img class="Default EquationGraphic" src="images/testing.035.6.194.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Picture"><a name="183713"><img class="Default" src="images/testing.035.6.195.jpg" width="100%" style="left: 0.0pt; max-height: 254px; max-width: 393px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183714">To calculate the recursive residuals, press </a><span class="Menu_Item">View/Stability Diagnostics/Recursive Estimates (OLS only)&#8230;</span> on the equation toolbar. There are six options available for the recursive estimates view. The recursive estimates view is only available for equations estimated by ordinary least squares without AR and MA terms. The <span class="Dialog_Item">Save Results as Series</span> option allows you to save the recursive residuals and recursive coefficients as named series in the workfile; see <span class="Link"><a href="#183852" title="Stability Diagnostics">&#8220;Save Results as Series&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="183720">Recursive Residuals</a></div>
+      <div class="Body_Text"><a name="183721">This option shows a plot of the recursive residuals about the zero line. Plus and minus two standard errors are also shown at each point. Residuals outside the standard error bands suggest instability in the parameters of the equation. </a></div>
+      <div class="Heading_5"><a name="183726">CUSUM Test</a></div>
+      <div class="Body_Text"><a name="183727">The CUSUM test (Brown, Durbin, and Evans, 1975) is based on the cumulative sum of the recursive residuals. This option plots the cumulative sum together with the 5% critical lines. The test finds parameter instability if the cumulative sum goes outside the area between the two critical lines.</a></div>
+      <div class="Body_Text"><a name="183728">The CUSUM test is based on the statistic:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.196.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.43)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183739">for <img class="Default EquationGraphic" src="images/testing.035.6.197.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 122px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/testing.035.6.198.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is the recursive residual defined above, and</a><span class="In-line_math"> s</span> is the standard deviation of the recursive residuals <img class="Default EquationGraphic" src="images/testing.035.6.199.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />. If the <img class="Default EquationGraphic" src="images/testing.035.6.200.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> vector remains constant from period to period, <img class="Default EquationGraphic" src="images/testing.035.6.201.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 90px; top: 0.0pt" alt="" />, but if <img class="Default EquationGraphic" src="images/testing.035.6.202.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> changes, <img class="Default EquationGraphic" src="images/testing.035.6.203.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> will tend to diverge from the zero mean value line. The significance of any departure from the zero line is assessed by reference to a pair of 5% significance lines, the distance between which increases with <img class="Default EquationGraphic" src="images/testing.035.6.204.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. The 5% significance lines are found by connecting the points:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.205.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.44)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183765">Movement of <img class="Default EquationGraphic" src="images/testing.035.6.206.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> outside the critical lines is suggestive of coefficient instability. A sample CUSUM is given below:</a></div>
+      <div class="Picture"><a name="183769"><img class="Default" src="images/testing.035.6.207.jpg" width="100%" style="left: 0.0pt; max-height: 336px; max-width: 429px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183770">The test clearly indicates instability in the equation during the sample period.</a></div>
+      <div class="Heading_5"><a name="183775">CUSUM of Squares Test</a></div>
+      <div class="Body_Text"><a name="183776">The CUSUM of squares test (Brown, Durbin, and Evans, 1975) is based on the test statistic:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.208.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.45)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183784">The expected value of <img class="Default EquationGraphic" src="images/testing.035.6.209.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> under the hypothesis of parameter constancy is:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.210.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.46)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="183798">which goes from zero at <img class="Default EquationGraphic" src="images/testing.035.6.211.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 47px; top: 0.0pt" alt="" /> to unity at <img class="Default EquationGraphic" src="images/testing.035.6.212.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 52px; top: 0.0pt" alt="" />. The significance of the departure of <img class="Default EquationGraphic" src="images/testing.035.6.213.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> from its expected value is assessed by reference to a pair of parallel straight lines around the expected value. See Brown, Durbin, and Evans (1975) or Johnston and DiNardo (1997, Table D.8) for a table of significance lines for the CUSUM of squares test. </a></div>
+      <div class="Body_Text"><a name="183805">The CUSUM of squares test provides a plot of <img class="Default EquationGraphic" src="images/testing.035.6.214.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> against <img class="Default EquationGraphic" src="images/testing.035.6.215.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> and the pair of 5 percent critical lines. As with the CUSUM test, movement outside the critical lines is suggestive of parameter or variance instability.</a></div>
+      <div class="Picture"><a name="183809"><img class="Default" src="images/testing.035.6.216.jpg" width="100%" style="left: 0.0pt; max-height: 331px; max-width: 391px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183810">The cumulative sum of squares is generally within the 5% significance lines, suggesting that the residual variance is somewhat stable.</a></div>
+      <div class="Heading_5"><a name="183815">One-Step Forecast Test</a></div>
+      <div class="Body_Text"><a name="183816">If you look back at the definition of the recursive residuals given above, you will see that each recursive residual is the error in a one-step ahead forecast. To test whether the value of the dependent variable at time <img class="Default EquationGraphic" src="images/testing.035.6.217.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> might have come from the model fitted to all the data up to that point, each error can be compared with its standard deviation from the full sample.</a></div>
+      <div class="Body_Text"><a name="183820">The </a><span class="Dialog_Item">One-Step Forecast Test</span> option produces a plot of the recursive residuals and standard errors and the sample points whose probability value is at or below 15 percent. The plot can help you spot the periods when your equation is least successful. For example, the one-step ahead forecast test might look like this:</div>
+      <div class="Picture"><a name="183824"><img class="Default" src="images/testing.035.6.218.jpg" width="100%" style="left: 0.0pt; max-height: 348px; max-width: 410px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183825">The upper portion of the plot (right vertical axis) repeats the recursive residuals and standard errors displayed by the </a><span class="Dialog_Item">Recursive Residuals</span> option. The lower portion of the plot (left vertical axis) shows the probability values for those sample points where the hypothesis of parameter constancy would be rejected at the 5, 10, or 15 percent levels. The points with <span class="In-line_math">p</span>-values less the 0.05 correspond to those points where the recursive residuals go outside the two standard error bounds. </div>
+      <div class="Body_Text"><a name="183829">For the test equation, there is evidence of instability early in the sample period. </a></div>
+      <div class="Heading_5"><a name="183834">N-Step Forecast Test</a></div>
+      <div class="Body_Text"><a name="183835">This test uses the recursive calculations to carry out a sequence of Chow Forecast tests. In contrast to the single Chow Forecast test described earlier, this test does not require the specification of a forecast period&#8212; it automatically computes all feasible cases, starting with the smallest possible sample size for estimating the forecasting equation and then adding one observation at a time. The plot from this test shows the recursive residuals at the top and significant probabilities (based on the </a><span class="In-line_math">F</span>-statistic) in the lower portion of the diagram. </div>
+      <div class="Heading_5"><a name="183841">Recursive Coefficient Estimates</a></div>
+      <div class="Body_Text"><a name="183842">This view enables you to trace the evolution of estimates for any coefficient as more and more of the sample data are used in the estimation. The view will provide a plot of selected coefficients in the equation for all feasible recursive estimations. Also shown are the two standard error bands around the estimated coefficients. </a></div>
+      <div class="Body_Text"><a name="183843">If the coefficient displays significant variation as more data is added to the estimating equation, it is a strong indication of instability. Coefficient plots will sometimes show dramatic jumps as the postulated equation tries to digest a structural break.</a></div>
+      <div class="Body_Text"><a name="183844">To view the recursive coefficient estimates, click the </a><span class="Dialog_Item">Recursive Coefficients</span> option and list the coefficients you want to plot in the <span class="Dialog_Item">Coefficient Display List</span> field of the dialog box. The recursive estimates of the marginal propensity to consume (coefficient C(2)), from the sample consumption function are provided below:</div>
+      <div class="Picture"><a name="183848"><img class="Default" src="images/testing.035.6.219.jpg" width="100%" style="left: 0.0pt; max-height: 324px; max-width: 382px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183849">The estimated propensity to consume rises steadily as we add more data over the sample period, approaching a value of one. </a></div>
+      <div class="Heading_5"><a name="183852">Save Results as Series</a></div>
+      <div class="Body_Text"><a name="183853">The </a><span class="Dialog_Item">Save Results as Series</span> checkbox will do different things depending on the plot you have asked to be displayed. When paired with the <span class="Dialog_Item">Recursive Coefficients</span> option, <span class="Menu_Item">Save Results as Series</span> will instruct EViews to save all recursive coefficients and their standard errors in the workfile as named series. EViews will name the coefficients using the next available name of the form, R_C1, R_C2, &#8230;, and the corresponding standard errors as R_C1SE, R_C2SE, and so on. </div>
+      <div class="Body_Text"><a name="183855">If you check the </a><span class="Dialog_Item">Save Results as Series </span>box with any of the other options, EViews saves the recursive residuals and the recursive standard errors as named series in the workfile. EViews will name the residual and standard errors as R_RES and R_RESSE, respectively.</div>
+      <div class="Body_Text"><a name="183856">Note that you can use the recursive residuals to reconstruct the CUSUM and CUSUM of squares series. </a></div>
+      <div class="Heading_4"><a name="183859">Leverage Plots</a></div>
+      <div class="Body_Text"><a name="183860">Leverage plots are the multivariate equivalent of a simple residual plot in a univariate regression. Like influence statistics, leverage plots can be used as a method for identifying influential observations or outliers, as well as a method of graphically diagnosing any potential failures of the underlying assumptions of a regression model. </a></div>
+      <div class="Body_Text"><a name="183861">Leverage plots are calculated by, in essence, turning a multivariate regression into a collection of univariate regressions. Following the notation given in Belsley, Kuh and Welsch 2004 (Section 2.1), the leverage plot for the </a><span class="In-line_math">k</span>-th coefficient is computed as follows:</div>
+      <div class="Body_Text"><a name="183874">Let <img class="Default EquationGraphic" src="images/testing.035.6.220.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> be the </a><span class="In-line_math">k</span>-th column of the data matrix (the <span class="In-line_math">k</span>-th variable in a linear equation, or the <span class="In-line_math">k</span>-th gradient in a non-linear), and <img class="Default EquationGraphic" src="images/testing.035.6.221.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> be the remaining columns. Let <img class="Default EquationGraphic" src="images/testing.035.6.222.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> be the residuals from a regression of the dependent variable, <img class="Default EquationGraphic" src="images/testing.035.6.223.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/testing.035.6.224.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />, and let <img class="Default EquationGraphic" src="images/testing.035.6.225.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> be the residuals from a regression of <img class="Default EquationGraphic" src="images/testing.035.6.226.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/testing.035.6.227.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />. The leverage plot for the <span class="In-line_math">k</span>-th coefficient is then a scatter plot of <img class="Default EquationGraphic" src="images/testing.035.6.228.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/testing.035.6.229.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="183914">It can easily be shown that in an auxiliary regression of <img class="Default EquationGraphic" src="images/testing.035.6.230.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> on a constant and <img class="Default EquationGraphic" src="images/testing.035.6.231.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, the coefficient on <img class="Default EquationGraphic" src="images/testing.035.6.232.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> will be identical to the </a><span class="In-line_math">k</span>-th coefficient from the original regression. Thus the original regression can be represented as a series of these univariate auxiliary regressions.</div>
+      <div class="Body_Text"><a name="183921">In a univariate regression, a plot of the residuals against the explanatory variable is often used to check for outliers (any observation whose residual is far from the regression line), or to check whether the model is possibly mis-specified (for example to check for linearity). Leverage plots can be used in the same way in a multivariate regression, since each coefficient has been modelled in a univariate auxiliary regression.</a></div>
+      <div class="Picture"><a name="183925"><img class="Default" src="images/testing.035.6.233.jpg" width="100%" style="left: 0.0pt; max-height: 347px; max-width: 330px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183926">To display leverage plots in EViews select </a><span class="Menu_Item">View/Stability Diagnostics/Leverage Plots...</span>. EViews will then display a dialog which lets you choose some simple options for the leverage plots.</div>
+      <div class="Body_Text"><a name="183927">The </a><span class="Menu_Item">Variables to plot</span> box lets you enter which variables, or coefficients in a non-linear equation, you wish to plot. By default this box will be filled in with the original regressors from your equation. Note that EViews will let you enter variables that were not in the original equation, in which case the plot will simply show the original equation residuals plotted against the residuals from a regression of the new variable against the original regressors.</div>
+      <div class="Body_Text"><a name="183928">To add a regression line to each scatter plot, select the </a><span class="Menu_Item">Add fit lines</span> checkbox. If you do not wish to create plots of the partialed variables, but would rather plot the original regression residuals against the raw regressors, unselect the <span class="Menu_Item">Partial out variables</span> checkbox.</div>
+      <div class="Body_Text"><a name="183929">Finally, if you wish to save the partial residuals for each variable into a series in the workfile, you may enter a naming suffix in the </a><span class="Menu_Item">Enter a naming suffix to save the variables as a series</span> box. EViews will then append the name of each variable to the suffix you entered as the name of the created series.</div>
+      <div class="Body_Text"><a name="183930">We illustrate using an example taken from Wooldridge (2000, Example 9.8) for the regression of R&amp;D expenditures (RDINTENS) on sales (SALES), profits (PROFITMARG), and a constant (using the workfile &#8220;Rdchem.WF1&#8221;). The leverage plots for equation E1 are displayed here:</a></div>
+      <div class="Picture"><a name="183934"><img class="Default" src="images/testing.035.6.234.jpg" width="100%" style="left: 0.0pt; max-height: 658px; max-width: 458px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="183937">Influence Statistics</a></div>
+      <div class="Body_Text"><a name="183938">Influence statistics are a method of discovering influential observations, or outliers. They are a measure of the difference that a single observation makes to the regression results, or how different an observation is from the other observations in an equation&#8217;s sample. EViews provides a selection of six different influence statistics: RStudent, DRResid, DFFITS, COVRATIO, HatMatrix and DFBETAS.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="183939">RStudent is the studentized residual; the residual of the equation at that observation divided by an estimate of its standard deviation:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.235.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.47)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List_Continue"><a name="183950">where <img class="Default EquationGraphic" src="images/testing.035.6.236.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> is the original residual for that observation, <img class="Default EquationGraphic" src="images/testing.035.6.237.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 32px; top: 0.0pt" alt="" /> is the variance of the residuals that would have resulted had observation <img class="Default EquationGraphic" src="images/testing.035.6.238.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> not been included in the estimation, and <img class="Default EquationGraphic" src="images/testing.035.6.239.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is the </a><span class="In-line_math">i</span>-th diagonal element of the Hat Matrix, <span class="Emphasis">i.e.</span> <img class="Default EquationGraphic" src="images/testing.035.6.240.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 87px; top: 0.0pt" alt="" />. The RStudent is also numerically identical to the <span class="In-line_math">t</span>-statistic that would result from putting a dummy variable in the original equation which is equal to 1 on that particular observation and zero elsewhere. Thus it can be interpreted as a test for the significance of that observation.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="183966">DFFITS is the scaled difference in fitted values for that observation between the original equation and an equation estimated without that observation, where the scaling is done by dividing the difference by an estimate of the standard deviation of the fit: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.241.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.48)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="183971">DRResid is the dropped residual, an estimate of the residual for that observation had the equation been run without that observation&#8217;s data.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="183972">COVRATIO is the ratio of the determinant of the covariance matrix of the coefficients from the original equation to the determinant of the covariance matrix from an equation without that observation.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="183979">HatMatrix reports the </a><span class="In-line_math">i</span>-th diagonal element of the Hat Matrix: <img class="Default EquationGraphic" src="images/testing.035.6.242.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 89px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="183980">DFBETAS are the scaled difference in the estimated betas between the original equation and an equation estimated without that observation: </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/testing.035.6.243.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(26.49)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List_Continue"><a name="183991">where <img class="Default EquationGraphic" src="images/testing.035.6.244.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is the original equation&#8217;s coefficient estimate, and <img class="Default EquationGraphic" src="images/testing.035.6.245.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 39px; top: 0.0pt" alt="" /> is the coefficient estimate from an equation without observation <img class="Default EquationGraphic" src="images/testing.035.6.246.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Picture"><a name="183998"><img class="Default" src="images/testing.035.6.247.jpg" width="100%" style="left: 0.0pt; max-height: 339px; max-width: 486px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="183999">To display influence statistics in EViews select </a><span class="Menu_Item">View/Stability Diagnostics/Influence Statistics</span>. EViews will bring up a dialog where you can choose how you wish to display the statistics. The <span class="Menu_Item">Output statistics </span>box lets you choose which statistics you would like to calculate, and whether to store them as a series in your workfile. Simply check the check box next to the statistics you would like to calculate, and, optionally, enter the name of the series you would like to be created. Note that for the DFBETAS statistics you should enter a naming suffix, rather than the name of the series. EViews will then create the series with the name of the coefficient followed by the naming suffix you provide.</div>
+      <div class="Body_Text"><a name="184000">The </a><span class="Menu_Item">Output type </span>box lets you select whether to display the statistics in graph form, or in table form, or both. If both boxes are checked, EViews will create a spool object containing both tables and graphs.</div>
+      <div class="Body_Text"><a name="184001">If you select to display the statistics in tabular form, then a new set of options will be enabled, governing how the table is formed. By default, EViews will only display 100 rows of the statistics in the table (although note that if your equation has less than 100 observations, all of the statistics will be displayed). You can change this number by changing the </a><span class="Menu_Item">Number of obs to include</span> dropdown menu. EViews will display the statistics sorted from highest to lowest, where the Residuals are used for the sort order. You can change which statistic is used to sort by using the <span class="Menu_Item">Select by</span> dropdown menu. Finally, you can change the sort order to be by observation order rather than by one of the statistics by using the <span class="Menu_Item">Display in observation order </span>check box.</div>
+      <div class="Body_Text"><a name="184002">We illustrate using the equation E1 from the &#8220;Rdchem.WF1&#8221; workfile. A plot of the DFFITS and COVRATIOs clearly shows that observation 10 is an outlier.</a></div>
+      <div class="Picture"><a name="184006"><img class="Default" src="images/testing.035.6.248.jpg" width="100%" style="left: 0.0pt; max-height: 487px; max-width: 460px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

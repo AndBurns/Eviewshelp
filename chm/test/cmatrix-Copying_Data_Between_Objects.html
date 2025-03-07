@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Copying Data Between Objects</title>
+    <link rel="StyleSheet" href="css/cmatrix.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cmatrix-Assigning_Matrix_Values.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cmatrix-Matrix_Expressions.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cmatrix-Matrix_Language.html">Matrix Language</a> : Copying Data Between Objects</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="68646">Copying Data Between Objects</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#68653">Copying Data From Matrix Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#68711">Extracting Part of a Matrix Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#163142">Basic Submatrix Extraction </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#163196">Submatrix Extraction using Utility Functions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#165162">Assigning to Part of a Matrix Objects</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#68753">Copying Data Between Matrices and Series/Groups </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#68756">Direct Assignment</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#68779">Copy using @convert</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#68798">Copy using Commands</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="68647">In addition to the basic assignment statements described in the previous section, EViews provides you with a large set of tools for copying data to and from matrix objects. </a></div>
+      <div class="Body_Text"><a name="68648">At times, you may wish to move data between different types of matrix objects. For example, you may wish to take the data from a vector and put it in a matrix. EViews has a number of built-in rules which make these conversions automatically.</a></div>
+      <div class="Body_Text"><a name="68649">At other times, you may wish to move data between a matrix object and an EViews series or group object. There are a separate set of tools which allow you to convert data across a variety of object types.</a></div>
+      <div class="Heading_4"><a name="68653">Copying Data From Matrix Objects</a></div>
+      <div class="Body_Text"><a name="68654">Data may be moved between different types of matrix objects using assignment statements. If possible, EViews will resize the target object so that it contains the same information as the object on the right side of the equation.</a></div>
+      <div class="Body_Text"><a name="68655">The basic rules governing expressions of the form &#8220;Y=X&#8221; may be summarized as follows:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68656">The object type of the target Y cannot change.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68657">The target object </a><span class="EViews_Name">Y</span> will, if possible, be resized to match the object <span class="EViews_Name">X</span>; otherwise, EViews will issue an error. Thus, assigning a vector to a matrix will resize the matrix, but assigning a matrix to a vector will generate an error if the matrix has more than one column.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68658">The data in </a><span class="EViews_Name">X</span> will be copied to <span class="EViews_Name">Y</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="68659">Specific exceptions to the rules given above are:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68660">If </a><span class="EViews_Name">X</span> is a scalar, <span class="EViews_Name">Y</span> will keep its original size and will be filled with the value of <span class="EViews_Name">X</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68661">If </a><span class="EViews_Name">X</span> and <span class="EViews_Name">Y</span> are both vector or rowvector objects, <span class="EViews_Name">Y</span> will be changed to the same type as <span class="EViews_Name">X</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="68666">Here are some simple examples illustrating the rules for matrix assignment:</a></div>
+      <div class="Multi-line_Input"><a name="68667">vector(3) x</a></div>
+      <div class="Multi-line_Input"><a name="68668">x(1) = 1</a></div>
+      <div class="Multi-line_Input"><a name="68669">x(2) = 2</a></div>
+      <div class="Multi-line_Input"><a name="68670">x(3) = 3</a></div>
+      <div class="Multi-line_Input"><a name="68671">vector y = x</a></div>
+      <div class="Multi-line_Input"><a name="68672">matrix z = x</a></div>
+      <div class="Body_Text"><span class="EViews_Name"><a name="68673">Y</a></span> is now a 3 element vector because it has the same dimension and values as <span class="EViews_Name">X</span>. EViews automatically resizes the <span class="EViews_Name">Z</span> Matrix to conform to the dimensions of <span class="EViews_Name">X</span> so that <span class="EViews_Name">Z</span> is now a <img class="Default EquationGraphic" src="images/cmatrix.092.4.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> matrix containing the contents of <span class="EViews_Name">X</span>: <span class="EViews_Name">Z</span>(1,1)=1, <span class="EViews_Name">Z</span>(2,1)=2, <span class="EViews_Name">Z</span>(3,1)=3. </div>
+      <div class="Body_Text"><a name="68677">Here are some further examples where automatic resizing is allowed:</a></div>
+      <div class="Multi-line_Input"><a name="68678">vector(7) y = 2</a></div>
+      <div class="Multi-line_Input"><a name="68679">scalar value = 4</a></div>
+      <div class="Multi-line_Input"><a name="68680">matrix(10,10) w = value</a></div>
+      <div class="Multi-line_Input"><a name="68681">w = y</a></div>
+      <div class="Multi-line_Input"><a name="68682">matrix(2,3) x = 1</a></div>
+      <div class="Multi-line_Input"><a name="68683">rowvector(10) t = 100</a></div>
+      <div class="Multi-line_Input"><a name="68684">x = t</a></div>
+      <div class="Body_Text"><span class="EViews_Name"><a name="68691">W</a></span> is declared as a <img class="Default EquationGraphic" src="images/cmatrix.092.4.2.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 57px; top: 0.0pt" alt="" /> matrix of 4&#8217;s, but it is then reset to be a <img class="Default EquationGraphic" src="images/cmatrix.092.4.3.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> matrix of 2&#8217;s. <span class="EViews_Name">X</span> is a <img class="Default EquationGraphic" src="images/cmatrix.092.4.4.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 49px; top: 0.0pt" alt="" /> matrix of 100&#8217;s.</div>
+      <div class="Body_Text"><a name="68695">Lastly, consider the commands:</a></div>
+      <div class="Multi-line_Input"><a name="68696">vector(7) y = 2</a></div>
+      <div class="Multi-line_Input"><a name="68697">rowvector(12) z = 3</a></div>
+      <div class="Multi-line_Input"><a name="68698">coef(20) beta</a></div>
+      <div class="Multi-line_Input"><a name="68699">y = z</a></div>
+      <div class="Multi-line_Input"><a name="68700">z = beta</a></div>
+      <div class="Body_Text"><span class="EViews_Name"><a name="68701">Y</a></span> will be a rowvector of length 3, containing the original contents of <span class="EViews_Name">Z</span>, and <span class="EViews_Name">Z</span> will be a column vector of length 20 containing the contents of <span class="EViews_Name">BETA</span>.</div>
+      <div class="Body_Text"><a name="68702">There are some cases where EViews will be unable to perform the specified assignment because the resize operation is ill defined. For example, suppose that </a><span class="EViews_Name">X</span> is a <img class="Default EquationGraphic" src="images/cmatrix.092.4.5.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> matrix. Then the assignment statement:</div>
+      <div class="Input"><a name="68706">vector(7) y = x</a></div>
+      <div class="Body_Text"><a name="68707">will result in an error. EViews cannot change </a><span class="EViews_Name">Y</span> from a vector to a matrix and there is no way to assign directly the 4 elements of the matrix X to the vector Y. Other examples of invalid assignment statements involve assigning matrix objects to scalars or sym objects to vector objects.</div>
+      <div class="Body_Text"><a name="154147">It may be possible, however, to use the </a><span class="In-line_command_link"><a href="functionref_v-@vec.html#1260418" title="@vec">@vec</a></span>, <span class="In-line_command_link"><a href="functionref_v-@vech.html#1260449" title="@vech">@vech</a></span>, <span class="In-line_command_link"><a href="functionref_u-@unvec.html#1259276" title="@unvec">@unvec</a></span>, and <span class="In-line_command_link"><a href="functionref_u-@unvech.html#1259318" title="@unvech">@unvech</a></span> functions to reshape matrices and vectors into forms that permit assignment.</div>
+      <div class="Heading_4"><a name="68711">Extracting Part of a Matrix Objects</a></div>
+      <div class="Body_Text"><a name="163141">The best way to extract data from a matrix object is to use matrix object member functions.</a></div>
+      <div class="Heading_5"><a name="163142">Basic Submatrix Extraction </a></div>
+      <div class="Body_Text"><a name="163149">The relevant functions for all matrix objects are:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Argument"><a name="163150">obj</a></span>.<span class="Command_Summary">@col</span>(<span class="Argument_Opt">arg</span>) &#8211; returns matrix object containing column(s) of <span class="Argument">obj</span> associated with <span class="Argument">arg</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Argument"><a name="163151">obj</a></span>.<span class="Command_Summary">@row</span>(<span class="Argument">arg</span>) &#8211; returns matrix object containing row(s) of <span class="Argument">obj</span> associated with <span class="Argument">arg</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Argument"><a name="163152">obj</a></span>.<span class="Command_Summary">@sub</span>(<span class="Argument">arg1</span>, <span class="Argument">arg2</span>) &#8211; returns matrix object containing row(s) and col(s) of <span class="Argument">obj </span>associated with <span class="Argument">arg1 </span>and <span class="Argument">arg2, </span>respectively</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Argument"><a name="163153">obj</a></span>.<span class="Command_Summary">@dropcol</span>(<span class="Argument_Opt">arg</span>) &#8211; returns matrix object containing column(s) of <span class="Argument">obj</span> not associated with <span class="Argument">arg</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Argument"><a name="163154">obj</a></span>.<span class="Command_Summary">@droprow</span>(<span class="Argument">arg</span>) &#8211; returns matrix object containing row(s) of <span class="Argument">obj</span> not associated with <span class="Argument">arg</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Argument"><a name="163155">obj</a></span>.<span class="Command_Summary">@dropboth</span>(<span class="Argument">arg1</span>, <span class="Argument">arg2</span>) &#8211; returns matrix object containing row(s) and col(s) of <span class="Argument">obj</span> not associated with <span class="Argument">arg1 </span>and <span class="Argument">arg2, </span>respectively</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="163156">For symmetric matrices, we also have the functions</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Argument"><a name="163157">obj</a></span>.<span class="Command_Summary">@sub</span>(<span class="Argument">arg</span>) &#8211; returns sym object containing row(s) and col(s) of <span class="Argument">obj </span>associated with <span class="Argument">arg, </span>respectively</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Argument"><a name="163158">obj</a></span>.<span class="Command_Summary">@dropboth</span>(<span class="Argument">arg</span>) &#8211; returns sym object containing row(s) and col(s) of <span class="Argument">obj</span> not associated with <span class="Argument">arg, </span>respectively</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="163159">where</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Argument"><a name="163160">obj i</a></span>s the name of a matrix object in the workfile</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Argument"><a name="163161">arg, arg1, arg2</a></span> are integers, scalar objects, vectors, strings, or svectors</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="163162">For cases where </a><span class="Argument">args </span>are numeric (integers, scalars, vectors), the <span class="Argument">arg</span> values act as row or column indices. Focusing on column functions, for example, </div>
+      <div class="Input"><a name="163163">vector v1 = x.@col(3)</a></div>
+      <div class="Input"><a name="163164">matrix m1 = x.@col(cid)</a></div>
+      <div class="Body_Text"><a name="163165">where X is a matrix and CID is a vector of column indices, and the two lines return the vector V1 and matrix M1 containing the 3rd column of X, and the columns of X referenced in CID, respectively. Note that the elements of CID must be integers from 1 to the number of columns of X.</a></div>
+      <div class="Body_Text"><a name="163166">For cases where </a><span class="Argument">args </span>are strings (string literal, string object, svector), the <span class="Argument">arg</span> values are examined to find matches in the corresponding row or column labels . For example, the commands</div>
+      <div class="Input"><a name="163170">vector v2 = x.@col("apple")</a></div>
+      <div class="Input"><a name="163171">matrix m2 = x.@col(scid)</a></div>
+      <div class="Body_Text"><a name="163172">where SCID is a svector of strings, produce the vector V2 and matrix M2 containing the 3rd column of X, and the columns of X with labels that match the elements of SCID, respectively. Note that all of the elements of SCID must be strings that match the column names previously assigned to X.</a></div>
+      <div class="Body_Text"><a name="163173">You may mix the types of </a><span class="Argument">arg1</span> and <span class="Argument">arg2</span> in data member functions that take two arguments so that, for example,</div>
+      <div class="Input"><a name="163174">matrix m3 = x.@sub(3, "apple")</a></div>
+      <div class="Body_Text"><a name="163175">returns M3 containing the element of X in row 3 and column with label &#8220;apple&#8221;.</a></div>
+      <div class="Body_Text"><a name="163176">Similarly, the commands</a></div>
+      <div class="Input"><a name="163177">matrix v1d = x.@dropcol(3)</a></div>
+      <div class="Input"><a name="163178">matrix m1d = x.@dropcol(cid)</a></div>
+      <div class="Input"><a name="163179">matrix v2d = x.@dropcol("apple")</a></div>
+      <div class="Input"><a name="163180">matrix m2d = x.@dropcol(scid)</a></div>
+      <div class="Input"><a name="163181">matrix m3d = x.@dropboth(5, "apple"</a>)</div>
+      <div class="Body_Text"><a name="163182">return the matrix objects</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="163183">V1D, the matrix X with column 3 dropped</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="163184">M1D, the matrix X with columns referenced by CID dropped</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="163185">V2D, the matrix X with the column with label &#8220;apple&#8221; dropped</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="163186">M2D, the matrix X with the columns with labels in SCID dropped</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="163187">M3D, the matrix with the row 5 dropped and the column labeled &#8220;apple&#8221; dropped</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="163188">The special symmetric matrix versions of these functions return syms:</a></div>
+      <div class="Multi-line_Input"><a name="163189">sym sym1 = symorig.@sub(cid)</a></div>
+      <div class="Input"><a name="163190">sym sym2 = symorig.@dropcol(3)</a></div>
+      <div class="Input"><a name="163191">sym sym3 = symorig.@dropcol(cid)</a></div>
+      <div class="Body_Text"><a name="163192">return the sym objects</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="163193">SYM1, the columns (and corresponding rows) of SYMORIG referenced by CID</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="163194">SYM2, the contents of SYMORIG after dropping column and row 3</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="163195">V2D, the contents of SYMORIG after dropping columns and rows referenced by CID</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="163196">Submatrix Extraction using Utility Functions</a></div>
+      <div class="Body_Text"><a name="163200">Combining matrix utility functions (</a><span class="Link"><a href="cmatrix-Assigning_Matrix_Values.html#163663" title="Assigning Matrix Values">&#8220;Initialize Using Creation Functions&#8221;</a></span>) with the matrix extraction data members offers flexible methods for obtaining data from matrices.</div>
+      <div class="Body_Text"><a name="163201">Consider, for example, the extraction of multiple columns from the matrix X using the </a><span class="In-line_command">@col</span> data member function:</div>
+      <div class="Multi-line_Input"><a name="163202">vector xid = @fill(1, 3, 5, 9)</a></div>
+      <div class="Multi-line_Input"><a name="163203">matrix xsub = x.@col(xid)</a></div>
+      <div class="Body_Text"><a name="163204">extracts columns {1, 3, 5, 9} from the matrix X. </a></div>
+      <div class="Body_Text"><a name="163205">Since the </a><span class="Argument">args</span> in the member data extraction functions may themselves be expressions, we may combine the two lines into a single expression:</div>
+      <div class="Input"><a name="163206">matrix xsub1 = x.@col(@fill(1, 3, 5, 9))</a></div>
+      <div class="Body_Text"><a name="163207">Similarly, extracting or dropping the 7 through 9th columns of X may be done using</a></div>
+      <div class="Input"><a name="163208">matrix xsub2 = x.@col(@range(7, 9))</a></div>
+      <div class="Input"><a name="163209">matrix xsub3 = x.@dropcol(@range(7, 9))</a></div>
+      <div class="Body_Text"><a name="163210">We can perform the same compound extractions in 2-dimensions, as in</a></div>
+      <div class="Input"><a name="163211">matrix xsub4 = x.@sub(@range(3, 6), @sfill("apple", "orange"))</a></div>
+      <div class="Input"><a name="163212">matrix xsub5 = x.@dropboth(4, @sfill("apple", "orange"))</a></div>
+      <div class="Body_Text"><a name="163213">which create XSUB4 containing rows 3 to 6 and columns with labels matching &#8220;apple&#8221; and &#8220;orange&#8221; of X, and XSUB5 containing X after dropping row 4 and the columns with matching labels.</a></div>
+      <div class="Heading_4"><a name="165162">Assigning to Part of a Matrix Objects</a></div>
+      <div class="Body_Text"><a name="68740">Data from a matrix may be assigned to part of another matrix object using the commands </a><span class="In-line_command_link"><a href="commandcmd-colplace.html#3076362" title="colplace">colplace</a></span>, <span class="In-line_command_link"><a href="commandcmd-rowplace.html#3076094" title="rowplace">rowplace</a></span>, and <span class="In-line_command_link"><a href="commandcmd-matplace.html#3075205" title="matplace">matplace</a></span>. Consider the commands:</div>
+      <div class="Multi-line_Input"><a name="68741">matrix(100,5) m1 = 0</a></div>
+      <div class="Multi-line_Input"><a name="68742">matrix(100,2) m2 = 1</a></div>
+      <div class="Multi-line_Input"><a name="68743">vector(100) v1 = 3</a></div>
+      <div class="Multi-line_Input"><a name="68744">rowvector(100) v2 = 4</a></div>
+      <div class="Multi-line_Input"><a name="68745">matplace(m1,m2,1,3)</a></div>
+      <div class="Multi-line_Input"><a name="68746">colplace(m1,v1,3)</a></div>
+      <div class="Multi-line_Input"><a name="68747">rowplace(m1,v2,80)</a></div>
+      <div class="Body_Text"><a name="68748">The </a><span class="In-line_command">matplace</span> command places <span class="EViews_Name">M2</span> in <span class="EViews_Name">M1</span> beginning at row 1 and column 3. <span class="EViews_Name">V1</span> is placed in column 3 of <span class="EViews_Name">M1</span>, while <span class="EViews_Name">V2</span> is placed in row 80 of <span class="EViews_Name">M1</span>.</div>
+      <div class="Body_Text"><a name="157284">You may combine </a><span class="In-line_command">matplace</span> with <span class="In-line_command_link"><a href="functionref_f-@fill.html#1259808" title="@fill">@fill</a></span> and the <span class="In-line_command">@row</span>, <span class="In-line_command">@col</span>, <span class="In-line_command">@droprow</span>, or <span class="In-line_command">@dropcol </span>data members to perform complex subsetting and filling</div>
+      <div class="Input"><a name="157303">matplace(z, x.@row(@fill(1, 3, 4)), 1, 1)</a></div>
+      <div class="Body_Text"><a name="157438">puts rows 1, 3, and 4 of the matrix X into the upper-left hand corner of Z. Note that Z must be large enough to hold the X subset.</a></div>
+      <div class="Heading_4"><a name="68753">Copying Data Between Matrices and Series/Groups </a></div>
+      <div class="Body_Text"><a name="68754">The previous sections described techniques for copying data between matrix objects such as vectors, matrices and scalars. In this section, we describe techniques for copying data between matrix objects and workfile-based EViews objects such as series and groups. </a></div>
+      <div class="Body_Text"><a name="68755">Keep in mind that there are two primary differences between the ordinary series or group objects and the matrix objects. First, operations involving series and groups use information about the current workfile sample, while matrix objects do not. Second, there are important differences in the handling of missing values (NAs) between the two types of objects.</a></div>
+      <div class="Heading_5"><a name="68756">Direct Assignment</a></div>
+      <div class="Body_Text"><a name="68757">The easiest method to copy data from series or group objects to a matrix object is to use direct assignment. Place the destination matrix object on the left side of an equal sign, and place the series or group to be converted on the right.</a></div>
+      <div class="Body_Text"><a name="68758">If you use a series object on the right-hand side and a vector on the left, EViews will only use observations from the current sample to make the vector. If you place a group object on the right and a matrix on the left, EViews will create a rectangular matrix out of the group using observations from the current sample. </a></div>
+      <div class="Body_Text"><a name="68759">While direct assignment is straightforward and convenient, there are two principal limitations to the approach. First, EViews uses only the observations in the current sample when copying the data. Second, observations containing missing data (NAs) for a series, or for any series in the group, are dropped. Thus, if the current sample contains 20 observations, but the series or group contains missing data, the dimension of the output vector or matrix will be less than 20. (Below, we describe methods which allow you to override the current sample and to retain missing values.)</a></div>
+      <div class="Body_Text"><a name="68760">Examples:</a></div>
+      <div class="Multi-line_Input"><a name="68761">smpl 1963m03 1993m06</a></div>
+      <div class="Multi-line_Input"><a name="68762">fetch hsf gmpyq</a></div>
+      <div class="Multi-line_Input"><a name="68763">group mygrp hsf gmpyq</a></div>
+      <div class="Multi-line_Input"><a name="68764">vector xvec = gmpyq</a></div>
+      <div class="Multi-line_Input"><a name="68765">matrix xmat = mygrp</a></div>
+      <div class="Body_Text"><a name="68766">These statements create the vector </a><span class="EViews_Name">XVEC</span> and the two column matrix <span class="EViews_Name">XMAT</span> containing the non-missing series and group data from 1963M03 to 1993M06. Note that if <span class="EViews_Name">GMPYQ</span> has a missing value in 1970M01, and <span class="EViews_Name">HSF</span> contains a missing value in 1980M01, both observations for both series will be excluded from <span class="EViews_Name">XMAT</span>.</div>
+      <div class="Body_Text"><a name="68767">When performing matrix assignment, you may refer to an element of a series, just as you would refer to an element of a vector, by placing an index value in parentheses after the name. An index value </a><span class="In-line_math">i</span> refers to the <span class="In-line_math">i</span>-th element of the series from the beginning of the workfile <span class="Emphasis">range,</span> not the current sample. For example, if the range of the current annual workfile is 1961 to 1980, the expression <span class="EViews_Name">GNP</span>(6) refers to the 1966 value of <span class="EViews_Name">GNP</span>. These series element expressions may be used in assigning specific series values to matrix elements, or to assign matrix values to a specific series element. For example: </div>
+      <div class="Multi-line_Input"><a name="68771">matrix(5,10) x</a></div>
+      <div class="Multi-line_Input"><a name="68772">series yser = nrnd</a></div>
+      <div class="Multi-line_Input"><a name="68773">x(1,1) = yser(4)</a></div>
+      <div class="Multi-line_Input"><a name="68774">yser(5) = x(2,3)</a></div>
+      <div class="Multi-line_Input"><a name="68775">yser(6) = 4000.2</a></div>
+      <div class="Body_Text"><a name="68776">assigns the fourth value of the series </a><span class="EViews_Name">YSER</span> to <span class="EViews_Name">X</span>(1,1), and assigns to the fifth and sixth values of <span class="EViews_Name">YSER</span>, the <span class="EViews_Name">X</span>(2,3) value and the scalar value &#8220;4000.2&#8221;, respectively.</div>
+      <div class="Body_Text"><a name="68777">While matrix assignments allow you to refer to elements of series as though they were elements of vectors, you cannot generally use series in place of vectors. Most vector and matrix operations will error if you use a series in place of a vector. For example, you cannot perform a </a><span class="In-line_input">rowplace</span> command using a series name. </div>
+      <div class="Body_Text"><a name="68778">Furthermore, note that when you are not performing matrix assignment, a series name followed by a number in parentheses will indicate that the lag/lead operator be applied to the entire series. Thus, when used in generating series or in an equation, system, or model specification, </a><span class="EViews_Name">GNP</span>(6) refers to the sixth lead of the <span class="EViews_Name">GNP</span> series. To refer to specific elements of the <span class="EViews_Name">GNP</span> series in these settings, you should use the @elem function.</div>
+      <div class="Heading_5"><a name="68779">Copy using @convert</a></div>
+      <div class="Body_Text"><a name="68780">The </a><span class="In-line_command_link"><a href="functionref_c-@convert.html#1269168" title="@convert">@convert</a></span> function takes a series or group object and, optionally, a sample object, and returns a vector or rectangular matrix. If no sample is provided, <span class="In-line_command">@convert</span> will use the workfile sample. The sample determines which series elements are included in the matrix. Example:</div>
+      <div class="Multi-line_Input"><a name="68781">smpl 61 90</a></div>
+      <div class="Multi-line_Input"><a name="68782">group groupx inv gdp m1</a></div>
+      <div class="Multi-line_Input"><a name="68783">vector v = @convert(gdp)</a></div>
+      <div class="Multi-line_Input"><a name="68784">matrix x = @convert(groupx)</a></div>
+      <div class="Body_Text"><span class="EViews_Name"><a name="68788">X</a></span> is a <img class="Default EquationGraphic" src="images/cmatrix.092.4.6.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 49px; top: 0.0pt" alt="" /> matrix with the first column containing data from <span class="EViews_Name">INV</span>, the second column from <span class="EViews_Name">GDP</span>, and the third column from <span class="EViews_Name">M1</span>. </div>
+      <div class="Body_Text"><a name="68789">As with direct assignment, </a><span class="In-line_command">@convert</span> excludes observations for which the series or any of the series in the group contain missing data. If, in the example above, <span class="EViews_Name">INV</span> contains missing observations in 1970 and 1980, <span class="EViews_Name">V</span> would be a 29 element vector while <span class="EViews_Name">X</span> would be a <img class="Default EquationGraphic" src="images/cmatrix.092.4.7.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 49px; top: 0.0pt" alt="" />matrix. This will cause errors in subsequent operations that require <span class="EViews_Name">V</span> and <span class="EViews_Name">X</span> to have a common row dimension.</div>
+      <div class="Body_Text"><a name="68793">There are two primary advantages of using </a><span class="In-line_command">@convert</span> over direct assignment. First, since <span class="In-line_command">@convert</span> is a function, it may be used in the middle of a matrix expression. Second, an optional second argument allows you to specify a sample to be used in conversion. For example:</div>
+      <div class="Multi-line_Input"><a name="68794">sample s1.set 1950 1990</a></div>
+      <div class="Multi-line_Input"><a name="68795">matrix x = @convert(grp, s1) </a></div>
+      <div class="Multi-line_Input"><a name="68796">sym y = @inverse(@inner(@convert(grp, s1)))</a></div>
+      <div class="Body_Text"><a name="68797">performs the conversion using the sample defined in </a><span class="EViews_Name">S1</span>.</div>
+      <div class="Heading_5"><a name="68798">Copy using Commands</a></div>
+      <div class="Body_Text"><a name="68799">EViews also provides three useful commands that perform explicit conversions between series and matrices with control over both the sample and the handling of NAs.</a></div>
+      <div class="Body_Text"><span class="In-line_command_link"><a href="commandcmd-stom.html#3077961" title="stom" name="68801">stom</a></span> (<span class="Emphasis">S</span>eries <span class="Emphasis">TO</span> <span class="Emphasis">M</span>atrix) takes a series or group object and copies its data to a vector or matrix using either the current workfile sample, or the optionally specified sample. As with direct assignment, the <span class="In-line_command">stom</span> command excludes observations for which the series or any of the series in the group contain missing data.</div>
+      <div class="Body_Text"><a name="68802">Example:</a></div>
+      <div class="Multi-line_Input"><a name="68803">sample smpl_cnvrt.set 1950 1995</a></div>
+      <div class="Multi-line_Input"><a name="68804">smpl 1961 1990</a></div>
+      <div class="Multi-line_Input"><a name="68805">group group1 gnp gdp money</a></div>
+      <div class="Multi-line_Input"><a name="68806">vector(46) vec1</a></div>
+      <div class="Multi-line_Input"><a name="68807">matrix(3,30) mat1</a></div>
+      <div class="Multi-line_Input"><a name="68808">stom(gdp, vec1, smpl_cnvrt)</a></div>
+      <div class="Multi-line_Input"><a name="68809">stom(group1, mat1)</a></div>
+      <div class="Body_Text"><a name="68810">While the operation of </a><span class="In-line_command">stom </span>is similar to <span class="In-line_command">@convert</span>, <span class="In-line_command">stom</span> is a command and cannot be included in a matrix expression. Furthermore, unlike <span class="In-line_command">@convert</span>, the destination matrix or vector must already exist <span class="Emphasis">and have the proper dimension</span>. </div>
+      <div class="Body_Text"><span class="In-line_command_link"><a href="commandcmd-stomna.html#3077998" title="stomna" name="68811">stomna</a></span> (<span class="Emphasis">S</span>eries <span class="Emphasis">TO</span> <span class="Emphasis">M</span>atrix with <span class="Emphasis">NA</span>s) works identically to <span class="In-line_command">stom</span>, but does not exclude observations for which there are missing values. The elements of the series for the relevant sample will map directly into the target vector or matrix. Thus, </div>
+      <div class="Multi-line_Input"><a name="68812">smpl 1951 2000</a></div>
+      <div class="Multi-line_Input"><a name="68813">vector(50) gvector</a></div>
+      <div class="Multi-line_Input"><a name="68814">stom(gdp, gvector)</a></div>
+      <div class="Body_Text"><a name="68815">will always create a 50 element vector </a><span class="EViews_Name">GVECTOR</span> that contains the values of <span class="EViews_Name">GDP</span> from 1951 to 2000, including observations with NAs.</div>
+      <div class="Body_Text"><span class="In-line_command_link"><a href="commandcmd-mtos.html#3079235" title="mtos" name="68816">mtos</a></span> (<span class="Emphasis">M</span>atrix <span class="Emphasis">TO</span> <span class="Emphasis">S</span>eries) takes a matrix or vector and copies its data into an existing series or group, using the current workfile sample or a sample that you provide.</div>
+      <div class="Body_Text"><a name="68817">Example:</a></div>
+      <div class="Multi-line_Input"><a name="68818">mtos(mat1, group1)</a></div>
+      <div class="Multi-line_Input"><a name="68819">mtos(vec1, resid)</a></div>
+      <div class="Multi-line_Input"><a name="68820">mtos(mat2, group1, smpl1)</a></div>
+      <div class="Body_Text"><a name="68821">As with </a><span class="In-line_command">stom</span> the destination dimension given by the sample must match that of the source vector or matrix.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

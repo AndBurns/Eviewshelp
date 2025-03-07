@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Specification</title>
+    <link rel="StyleSheet" href="css/loglike.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="loglike-Overview.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="loglike-Estimation.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="loglike-The_Log_Likelihood_(LogL)_Object.html">The Log Likelihood (LogL) Object</a> : Specification</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="15418">Specification</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#279">Specifying the Likelihood</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#297">Parameter Names</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#327">Order of Evaluation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#359">Analytic Derivatives</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#213719">Derivative Step Sizes</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="9619">To create a likelihood object, choose </a><span class="Menu_Item">Object/New Object&#8230;/LogL</span> or type the keyword <span class="In-line_command">logl</span> in the command window. The likelihood window will open with a blank specification view. The specification view is a text window into which you enter a list of statements which describe your statistical model, and in which you set options which control various aspects of the estimation procedure.</div>
+      <div class="Heading_4"><a name="279">Specifying the Likelihood</a></div>
+      <div class="Body_Text"><a name="281">As described in the overview above, the core of the likelihood specification is a set of assignment statements which, when evaluated, generate a series containing the log likelihood contribution of each observation in the sample. There can be as many or as few of these assignment statements as you wish.</a></div>
+      <div class="Body_Text"><a name="283">Each likelihood specification must contain a control statement which provides the name of the series which is used to contain the likelihood contributions. The format of this statement is:</a></div>
+      <div class="Input"><a name="285">@logl series_name</a></div>
+      <div class="Body_Text"><a name="287">where </a><span class="In-line_input">series_name</span> is the name of the series which will contain the contributions. This control statement may appear anywhere in the logl specification.</div>
+      <div class="Body_Text"><a name="289">Whenever the specification is evaluated, whether for estimation or for carrying out a View or Proc, each assignment statement will be evaluated at the current parameter values, and the results stored in a series with the specified name. If the series does not exist, it will be created automatically. If the series already exists, EViews will use the existing series for storage, and will overwrite the data contained in the series. </a></div>
+      <div class="Body_Text"><a name="291">If you would like to remove one or more of the series used in the specification after evaluation, you can use the </a><span class="In-line_input">@temp</span> statement, as in:</div>
+      <div class="Input"><a name="293">@temp series_name1 series_name2</a></div>
+      <div class="Body_Text"><a name="295">This statement tells EViews to delete any series in the list after evaluation of the specification is completed. Deleting these series may be useful if your logl creates a lot of intermediate results, and you do not want the series containing these results to clutter your workfile.</a></div>
+      <div class="Heading_4"><a name="297">Parameter Names</a></div>
+      <div class="Body_Text"><a name="299">In the example above, we used the coefficients C(1) to C(5) as names for our unknown parameters. More generally, any element of a named coefficient vector which appears in the specification will be treated as a parameter to be estimated.</a></div>
+      <div class="Body_Text"><a name="301">In the conditional heteroskedasticity example, you might choose to use coefficients from three different coefficient vectors: one vector for the mean equation, one for the variance equation, and one for the variance parameters. You would first create three named coefficient vectors by the commands:</a></div>
+      <div class="Multi-line_Input"><a name="303">coef(3) beta</a></div>
+      <div class="Multi-line_Input"><a name="305">coef(1) scale</a></div>
+      <div class="Multi-line_Input"><a name="307">coef(1) alpha</a></div>
+      <div class="Body_Text"><a name="309">You could then write the likelihood specification as:</a></div>
+      <div class="Multi-line_Input"><a name="311">@logl logl1</a></div>
+      <div class="Multi-line_Input"><a name="313">res = y - beta(1) - beta(2)*x - beta(3)*z</a></div>
+      <div class="Multi-line_Input"><a name="315">var = scale(1)*z^alpha(1)</a></div>
+      <div class="Multi-line_Input"><a name="317">logl1 = log(@dnorm(res/@sqrt(var))) - log(var)/2</a></div>
+      <div class="Body_Text"><a name="319">Since all elements of named coefficient vectors in the specification will be treated as parameters, you should make certain that all coefficients really do affect the value of one or more of the likelihood contributions. If a parameter has no effect upon the likelihood, you will experience a singularity error when you attempt to estimate the parameters. </a></div>
+      <div class="Body_Text"><a name="321">Note that all objects other than coefficient elements will be considered fixed and will not be updated during estimation. For example, suppose that SIGMA is a named scalar in your workfile. Then if you redefine the subexpression for VAR as:</a></div>
+      <div class="Input"><a name="323">var = sigma*z^alpha(1)</a></div>
+      <div class="Body_Text"><a name="325">EViews will not estimate SIGMA. The value of SIGMA will remain fixed at its value at the start of estimation.</a></div>
+      <div class="Heading_4"><a name="327">Order of Evaluation</a></div>
+      <div class="Body_Text"><a name="329">The logl specification contains one or more assignment statements which generate the series containing the likelihood contributions. EViews always evaluates from top to bottom when executing these assignment statements, so expressions which are used in subsequent calculations should always be placed first.</a></div>
+      <div class="Body_Text"><a name="331">EViews must also iterate through the observations in the sample. Since EViews iterates through both the equations in the specification and the observations in the sample, you will need to specify the order in which the evaluation of observations and equations occurs.</a></div>
+      <div class="Body_Text"><a name="333">By default, EViews evaluates the specification </a><span class="Emphasis">by observation</span> so that <span class="Emphasis">all of the assignment statements</span> are evaluated for the <span class="Emphasis">first observation</span>, then for the second observation, and so on across all the observations in the estimation sample. This is the correct order for recursive models where the likelihood of an observation depends on previously observed (lagged) values, as in AR or ARCH models.</div>
+      <div class="Body_Text"><a name="335">You can change the order of evaluation so EViews evaluates the specification </a><span class="Emphasis">by equation,</span> so <span class="Emphasis">the first assignment statement</span> is evaluated <span class="Emphasis">for all the observations</span>, then the second assignment statement is evaluated for all the observations, and so on for each of the assignment statements in the specification. This is the correct order for models where aggregate statistics from intermediate series are used as input to subsequent calculations.</div>
+      <div class="Body_Text"><a name="337">You can control the method of evaluation by adding a statement to the likelihood specification. To force evaluation by equation, simply add a line containing the keyword &#8220;@byeqn&#8221;. To explicitly state that you require evaluation by observation, the &#8220;@byobs&#8221; keyword can be used. If no keyword is provided, </a><span class="In-line_input">@byobs</span> is assumed.</div>
+      <div class="Body_Text"><a name="339">In the conditional heteroskedasticity example above, it does not matter whether the assignment statements are evaluated by equation (line by line) or by observation, since the results do not depend upon the order of evaluation.</a></div>
+      <div class="Body_Text"><a name="341">However, if the specification has a recursive structure, or if the specification requires the calculation of aggregate statistics based on intermediate series, you must select the appropriate evaluation order if the calculations are to be carried out correctly.</a></div>
+      <div class="Body_Text"><a name="343">As an example of the </a><span class="In-line_input">@byeqn</span> statement, consider the following specification:</div>
+      <div class="Multi-line_Input"><a name="345">@logl robust1</a></div>
+      <div class="Multi-line_Input"><a name="347">@byeqn</a></div>
+      <div class="Multi-line_Input"><a name="349">res1 = y-c(1)-c(2)*x</a></div>
+      <div class="Multi-line_Input"><a name="351">delta = @abs(res1)/6/@median(@abs(res1))</a></div>
+      <div class="Multi-line_Input"><a name="353">weight = (delta&lt;1)*(1-delta^2)^2</a></div>
+      <div class="Multi-line_Input"><a name="355">robust1 = -(weight*res1^2)</a></div>
+      <div class="Body_Text"><a name="357">This specification performs robust regression by downweighting outlier residuals at each iteration. The assignment statement for </a><span class="EViews_Name">delta</span> computes the median of the absolute value of the residuals in each iteration, and this is used as a reference point for forming a weighting function for outliers. The <span class="In-line_input">@byeqn</span> statement instructs EViews to compute all residuals RES1 at a given iteration before computing the median of those residuals when calculating the DELTA series.</div>
+      <div class="Heading_4"><a name="359">Analytic Derivatives</a></div>
+      <div class="Body_Text"><a name="361">By default, when maximizing the likelihood and forming estimates of the standard errors, EViews computes numeric derivatives of the likelihood function with respect to the parameters. If you would like to specify an analytic expression for one or more of the derivatives, you may use the </a><span class="In-line_command">@deriv</span> statement. The <span class="In-line_command">@deriv</span> statement has the form:</div>
+      <div class="Input"><a name="363">@deriv pname1 sname1 pname2 sname2 &#8230;</a></div>
+      <div class="Body_Text"><a name="365">where </a><span class="In-line_input">pname</span> is a parameter in the model and <span class="In-line_input">sname</span> is the name of the corresponding derivative series generated by the specification. </div>
+      <div class="Body_Text"><a name="367">For example, consider the following likelihood object that specifies a multinomial logit model:</a></div>
+      <div class="Multi-line_Input"><a name="369">' multinomial logit with 3 outcomes</a></div>
+      <div class="Multi-line_Input"><a name="371">@logl logl1</a></div>
+      <div class="Multi-line_Input"><a name="373">xb2 = b2(1)+b2(2)*x1+b2(3)*x2</a></div>
+      <div class="Multi-line_Input"><a name="375">xb3 = b3(1)+b3(2)*x1+b3(3)*x2</a></div>
+      <div class="Multi-line_Input"><a name="377">denom = 1+exp(xb2)+exp(xb3)</a></div>
+      <div class="Multi-line_Input"><a name="379">' derivatives wrt the 2nd outcome params</a></div>
+      <div class="Multi-line_Input"><a name="381">@deriv b2(1) grad21 b2(2) grad22 b2(3) grad23</a></div>
+      <div class="Multi-line_Input"><a name="383">grad21 = d2-exp(xb2)/denom</a></div>
+      <div class="Multi-line_Input"><a name="385">grad22 = grad21*x1</a></div>
+      <div class="Multi-line_Input"><a name="387">grad23 = grad21*x2</a></div>
+      <div class="Multi-line_Input"><a name="389">' derivatives wrt the 3rd outcome params</a></div>
+      <div class="Multi-line_Input"><a name="391">@deriv b3(1) grad31 b3(2) grad32 b3(3) grad33</a></div>
+      <div class="Multi-line_Input"><a name="393">grad31 = d3-exp(xb3)/denom</a></div>
+      <div class="Multi-line_Input"><a name="395">grad32 = grad31*x1</a></div>
+      <div class="Multi-line_Input"><a name="397">grad33 = grad31*x2</a></div>
+      <div class="Multi-line_Input"><a name="399">' specify log likelihood</a></div>
+      <div class="Multi-line_Input"><a name="401">logl1 = d2*xb2+d3*xb3-log(1+exp(xb2)+exp(xb3))</a></div>
+      <div class="Body_Text"><a name="403">See Greene (2008), Chapter 23.11.1 for a discussion of multinomial logit models. There are three possible outcomes, and the parameters of the three regressors (X1, X2 and the constant) are normalized relative to the first outcome. The analytic derivatives are particularly simple for the multinomial logit model and the two </a><span class="In-line_input">@deriv</span> statements in the specification instruct EViews to use the expressions for GRAD21, GRAD22, GRAD23, GRAD31, GRAD32, and GRAD33, instead of computing numeric derivatives.</div>
+      <div class="Body_Text"><a name="213718">When working with analytic derivatives, you may wish to check the validity of your expressions for the derivatives by comparing them with numerically computed derivatives. EViews provides you with tools which will perform this comparison at the current values of parameters or at the specified starting values. See the discussion of the </a><span class="Menu_Item">Check Derivatives</span> view of the likelihood object in <span class="Link"><a href="loglike-LogL_Specific_Views_and_Procedures.html#98285" title="LogL Specific Views and Procedures">&#8220;Check Derivatives&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="213719">Derivative Step Sizes</a></div>
+      <div class="Body_Text"><a name="4400">If analytic derivatives are not specified for any of your parameters, EViews numerically evaluates the derivatives of the likelihood function for those parameters. The step sizes used in computing the derivatives are controlled by two parameters: <img class="Default EquationGraphic" src="images/loglike.051.03.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> (relative step size) and m (minimum step size). Let <img class="Default EquationGraphic" src="images/loglike.051.03.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 27px; top: 0.0pt" alt="" /> denote the value of the parameter <img class="Default EquationGraphic" src="images/loglike.051.03.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> at iteration <img class="Default EquationGraphic" src="images/loglike.051.03.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. Then the step size at iteration <img class="Default EquationGraphic" src="images/loglike.051.03.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" /> is determined by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/loglike.051.03.06.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(41.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="4511">The two-sided numeric derivative is evaluated as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/loglike.051.03.07.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(41.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="5977">The one-sided numeric derivative is evaluated as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/loglike.051.03.08.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(41.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="429">where <img class="Default EquationGraphic" src="images/loglike.051.03.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> is the likelihood function. Two-sided derivatives are more accurate, but require roughly twice as many evaluations of the likelihood function and so take about twice as long to evaluate.</a></div>
+      <div class="Body_Text"><a name="431">The </a><span class="In-line_input">@derivstep</span> statement can be used to control the step size and method used to evaluate the derivative at each iteration. The <span class="In-line_input">@derivstep</span> keyword should be followed by sets of three arguments: the name of the parameter to be set (or the keyword <span class="In-line_input">@all</span>), the relative step size, and the minimum step size.</div>
+      <div class="Body_Text"><a name="433">The default setting is (approximately):</a></div>
+      <div class="Input"><a name="435">@derivstep(1) @all 1.49e-8 1e-10</a></div>
+      <div class="Body_Text"><a name="439">where &#8220;</a><span class="In-line_input">1</span>&#8221; in the parentheses indicates that one-sided numeric derivatives should be used and <span class="In-line_input">@all</span> indicates that the following setting applies to all of the parameters. The first number following <span class="In-line_input">@all</span> is the relative step size and the second number is the minimum step size. The default relative step size is set to the square root of machine epsilon <img class="Default EquationGraphic" src="images/loglike.051.03.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 97px; top: 0.0pt" alt="" /> and the minimum step size is set to <img class="Default EquationGraphic" src="images/loglike.051.03.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 83px; top: 0.0pt" alt="" />. </div>
+      <div class="Body_Text"><a name="441">The step size can be set separately for each parameter in a single or in multiple </a><span class="In-line_input">@derivstep</span> statements. The evaluation method option specified in parentheses is a global option; it cannot be specified separately for each parameter. </div>
+      <div class="Body_Text"><a name="443">For example, if you include the line:</a></div>
+      <div class="Input"><a name="445">@derivstep(2) c(2) 1e-7 1e-10</a></div>
+      <div class="Body_Text"><a name="14059">the relative step size for coefficient C(2) will be increased to <img class="Default EquationGraphic" src="images/loglike.051.03.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 77px; top: 0.0pt" alt="" /> and a two-sided derivative will be used to evaluate the derivative. In a more complex example,</a></div>
+      <div class="Input"><a name="450">@derivstep(2) @all 1.49e-8 1e-10 c(2) 1e-7 1e-10 c(3) 1e-5 1e-8</a></div>
+      <div class="Body_Text"><a name="452">computes two-sided derivatives using the default step sizes for all coefficients except C(2) and C(3). The values for these latter coefficients are specified directly.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

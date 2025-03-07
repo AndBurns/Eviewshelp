@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Working with Elastic Net Equations</title>
+    <link rel="StyleSheet" href="css/enet.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="enet-How_to_Estimate_an_Elastic_Net_Specification_in.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="enet-Examples.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="enet-Elastic_Net_and_Lasso.html">Elastic Net and Lasso</a> : Working with Elastic Net Equations</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="456808">Working with Elastic Net Equations</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#475691">Estimation Output</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#466470">Elastic Net Views and Procs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#466055">Coefficient Path</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#467502">Graphs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#467542">Lambda Path Matrix</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#467344">Lambda Path</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#467507">Graphs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#467608">Fit Summary</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#511002">Estimation Summary</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#467357">Model Selection</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#467512">Criteria Graph</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#467645">Summary Table</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#467661">Cross-validation Graph</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#505827">Forecast</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="448463">An elastic net equation estimated by EViews is a penalized regression specification featuring a number of specialized views and procedures. We describe below the basics of working with your estimated equation</a></div>
+      <div class="Heading_4"><a name="475691">Estimation Output</a></div>
+      <div class="Body_Text"><a name="457609">After you estimate your elastic net specification, EViews will display the main estimation output table which is customized for penalized regression. Alternatively, you can display the output by clicking on </a><span class="Menu_Item">View/Estimation Output</span>.</div>
+      <div class="Body_Text"><a name="457732">If you specify a single penalty parameter, EViews will display a single column of results:</a></div>
+      <div class="Table"><a name="457123"><img class="Default" src="images/enet.047.4.01.jpg" width="100%" style="left: 0.0pt; max-height: 551px; max-width: 1003px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="519537">Note that estimation at a single penalty value as illustrated here is not recommended by Hastie, Tibshirani, and Friedman (2010). For a variety of reasons, they recommend estimating models for an entire <img class="Default EquationGraphic" src="images/enet.047.4.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-path.</a></div>
+      <div class="Body_Text"><a name="519967">The header portion of the output describes the underlying equation specification information, including the sample information, the penalty specification, the specified penalty parameter, and any scaling of dependent variable or regressor scaling. </a></div>
+      <div class="Body_Text"><a name="459794">Here, we have estimated an elastic net model with <img class="Default EquationGraphic" src="images/enet.047.4.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" /> and user-specified <img class="Default EquationGraphic" src="images/enet.047.4.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" />. There was no dependent variable scaling and the regressors were scaled using the population standard deviation. </a></div>
+      <div class="Body_Text"><a name="458567">The next section of the output shows the </a><span class="Emphasis">non-zero estimated coefficients</span> reported at the original data scale. Notably, AGE, LBPH, and the other variables with zero coefficient are omitted. Note that standard errors are not provided for the penalized regression estimators since they may be misleading given the inherently biased nature of the estimator.</div>
+      <div class="Body_Text"><a name="459605">Below the coefficients section are reports of the usual measures of fit (</a><span class="Menu_Item">R-squared</span>, <span class="Menu_Item">Adjusted R-squared</span>, <span class="Menu_Item">S.E. of regression</span>, <span class="Menu_Item">Sum squared resid</span>), along with information on the number of <span class="Menu_Item">Non-zero coefficients</span> and <span class="Menu_Item">Zero coefficients</span>. In this case, in addition to the 3 displayed non-zero coefficients, there are 6 coefficients that estimation set to zero.</div>
+      <div class="Body_Text"><a name="459660">If you specify more than one penalty parameter, EViews will display modified output:</a></div>
+      <div class="Table"><a name="457119"><img class="Default" src="images/enet.047.4.05.jpg" width="100%" style="left: 0.0pt; max-height: 645px; max-width: 1003px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="461870">In addition to basic information, the header section now describes the path used in estimation. Here we see that the <img class="Default EquationGraphic" src="images/enet.047.4.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values are automatically determined, that the optimal <img class="Default EquationGraphic" src="images/enet.047.4.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> of 0.11228 is selected using K-Fold cross-validation using a mean-squared error objective function and 5 folds.</a></div>
+      <div class="Body_Text"><a name="466070">If 3 or more penalties are provided, the coefficient output will have 3 columns of output. The first column shows estimation results for the optimal <img class="Default EquationGraphic" src="images/enet.047.4.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. The remaining columns illustrate the trade-off between higher penalties and poorer values of the cross-validation selection objective by displaying results for the most penalized specifications with objective values within 1 and 2 standard deviations of the optimum.</a></div>
+      <div class="Body_Text"><a name="458098">Here, 0.367659 is the largest <img class="Default EquationGraphic" src="images/enet.047.4.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> yielding a cross-validation MSE within 1 standard deviation of the optimum, and 0.521147 is the largest <img class="Default EquationGraphic" src="images/enet.047.4.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> producing a cross-validation MSE within 2 standard deviations of the optimum.</a></div>
+      <div class="Body_Text"><a name="466232">For 3 or fewer penalties, the output will display a column for each penalty value.</a></div>
+      <div class="Body_Text"><a name="464987">The coefficients section of the output shows estimates for </a><span class="Emphasis">all coefficients which are non-zero for at least one of the displayed penalty values</span>. The coefficients for LBPH and PGG45, for example, are non-zero at the optimal <img class="Default EquationGraphic" src="images/enet.047.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> value, but are 0 for the two other higher penalized specifications. Similarly the estimated coefficient for LWEIGHT is non-zero for the two lower <img class="Default EquationGraphic" src="images/enet.047.4.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values, but is 0 for the larger penalty.</div>
+      <div class="Body_Text"><a name="465668">The summary section at the bottom of the table shows the measures of fit, and information about the number of zero and non-zero coefficients for each value of <img class="Default EquationGraphic" src="images/enet.047.4.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="465799">The columns in this table may show results for only a subset of the <img class="Default EquationGraphic" src="images/enet.047.4.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> in the path. Additional information about the full set of path coefficients, measures of fit, and cross-validation information is available in other equation views.</a></div>
+      <div class="Heading_4"><a name="466470">Elastic Net Views and Procs</a></div>
+      <div class="Body_Text"><a name="466471">While many of the views and procs for other equation estimators are not applicable in elastic net equations, most of those that are supported are based on the results for the optimal <img class="Default EquationGraphic" src="images/enet.047.4.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, but are otherwise self-explanatory. For example, the </a><span class="Menu_Item">Actual-Fitted-Residuals</span> and <span class="Menu_Item">Representations </span>views simply shows the standard views using residuals computed using results for the optimal <img class="Default EquationGraphic" src="images/enet.047.4.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. Similarly, the <span class="Menu_Item">Forecast</span> proc produces forecasts using coefficients obtained using the sole or optimal <img class="Default EquationGraphic" src="images/enet.047.4.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="467092">We focus here on the views specific to elastic net estimators. The views are divided into three main categories: coefficient path, lambda path, and model selection.</a></div>
+      <div class="Heading_5"><a name="466055">Coefficient Path</a></div>
+      <div class="Body_Text"><a name="467582">The </a><span class="Menu_Item">Coefficient Path</span> views show the behavior of the coefficient estimates along the <img class="Default EquationGraphic" src="images/enet.047.4.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-path. The results are displayed in graphical or matrix table form:</div>
+      <div class="Heading_6"><a name="467502">Graphs</a></div>
+      <div class="Body_Text"><a name="467927">If you select </a><span class="Menu_Item">View/Coefficient Path/Graphs</span> EViews displays a spool containing graphs of coefficient values against various values defined along the <img class="Default EquationGraphic" src="images/enet.047.4.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-path:</div>
+      <div class="Picture"><a name="468204"><img class="Default" src="images/enet.047.4.20.jpg" width="100%" style="left: 0.0pt; max-height: 487px; max-width: 704px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="468242">The </a><span class="Menu_Item">Lambda</span> graph is a plot of each of the coefficients (excluding the intercept) against the log of the penalty parameter showing the effect of increasing the penalty parameter on the estimates; as the value of the regularization penalty increases, the absolute value of each of the coefficients decreases, with coefficient driven to zero for large enough penalties.</div>
+      <div class="Body_Text"><a name="475325">Note that EViews will only display non-intercept coefficients that have a non-zero value in the path; coefficients that are always zero are not displayed and the graph titles will be modified to reflect this fact. </a></div>
+      <div class="Body_Text"><a name="470303">The vertical line shows the value of the log lambda at the cross-validation optimum.</a></div>
+      <div class="Body_Text"><a name="468783">The next set of graphs plot coefficients against various measures of fit such as the </a><span class="Menu_Item">R&#8209;squared</span>, <span class="Menu_Item">Adjusted R-squared</span>, and <span class="Menu_Item">S.E. of Regression</span>:</div>
+      <div class="Picture"><a name="469063"><img class="Default" src="images/enet.047.4.21.jpg" width="100%" style="left: 0.0pt; max-height: 455px; max-width: 661px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="469599">The remaining graphs plot the non-intercept coefficients against the components of the estimation objective function: the </a><span class="Menu_Item">Sum-of-squared Residuals</span>, the <span class="Menu_Item">L1-norm</span> of the coefficients, the <span class="Menu_Item">Squared L2-norm</span> of the coefficients, and the <span class="Menu_Item">Estimation Objective</span>:</div>
+      <div class="Picture"><a name="469430"><img class="Default" src="images/enet.047.4.22.jpg" width="100%" style="left: 0.0pt; max-height: 459px; max-width: 657px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="468983">All of these graphs display a vertical line at the value corresponding to the cross-validation optimum <img class="Default EquationGraphic" src="images/enet.047.4.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_6"><a name="467542">Lambda Path Matrix</a></div>
+      <div class="Body_Text"><a name="467577">To display the coefficient values for the entire path of <img class="Default EquationGraphic" src="images/enet.047.4.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values, select </a><span class="Menu_Item">View/Coefficient Path/Lambda Path Matrix</span>.</div>
+      <div class="Picture"><a name="469896"><img class="Default" src="images/enet.047.4.25.jpg" width="100%" style="left: 0.0pt; max-height: 369px; max-width: 586px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="467500">The sheet shows the values of the coefficients along with the corresponding values of <img class="Default EquationGraphic" src="images/enet.047.4.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. If there are coefficients that have only zero values along the path, they will be dropped and the title will change to reflect this fact.</a></div>
+      <div class="Heading_5"><a name="467344">Lambda Path</a></div>
+      <div class="Body_Text"><a name="470315">The </a><span class="Menu_Item">Lambda Path</span> views show the behavior of various log values along the <img class="Default EquationGraphic" src="images/enet.047.4.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-path. The results are displayed in graphical or table form:</div>
+      <div class="Heading_6"><a name="467507">Graphs</a></div>
+      <div class="Body_Text"><a name="471680">If you select </a><span class="Menu_Item">View/Lambda Path/Graphs</span>, EViews displays a spool containing graphs of various values against the log <img class="Default EquationGraphic" src="images/enet.047.4.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values in the path:</div>
+      <div class="Picture"><a name="471916"><img class="Default" src="images/enet.047.4.29.jpg" width="100%" style="left: 0.0pt; max-height: 440px; max-width: 700px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="471778">All of the graphs display results plotted against the corresponding values of the log <img class="Default EquationGraphic" src="images/enet.047.4.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> in the path:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="472171">The </a><span class="Menu_Item">Non-zero Coefficients </span>graph plots the number of non-zero coefficients.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="471933">The </a><span class="Menu_Item">Model Selection</span> graph plots the model selection objective.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="472200">The </a><span class="Menu_Item">Fit Statistics</span> graph plots the <img class="Default EquationGraphic" src="images/enet.047.4.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> and Adjusted <img class="Default EquationGraphic" src="images/enet.047.4.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="472316">The </a><span class="Menu_Item">Sum-of-squared Residuals</span>, <span class="Menu_Item">L1-norm</span>, <span class="Menu_Item">Squared L2-norm</span>, and <span class="Menu_Item">Estimation Objective</span> display the corresponding elements of the estimation objective function.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="471660"><img class="Default" src="images/enet.047.4.33.jpg" width="100%" style="left: 0.0pt; max-height: 440px; max-width: 697px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="471932">The vertical line shows the value of the log of lambda at the cross-validation optimum.</a></div>
+      <div class="Heading_6"><a name="467608">Fit Summary</a></div>
+      <div class="Body_Text"><a name="472640">Selecting </a><span class="Menu_Item">View/Lambda Path/Fit Summary </span>displays a table showing the number of non-zero coefficients, the <img class="Default EquationGraphic" src="images/enet.047.4.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> and adjusted <img class="Default EquationGraphic" src="images/enet.047.4.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> fit statistics, and the SSR for the <img class="Default EquationGraphic" src="images/enet.047.4.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values in the path:</div>
+      <div class="Picture"><a name="472543"><img class="Default" src="images/enet.047.4.37.jpg" width="100%" style="left: 0.0pt; max-height: 371px; max-width: 552px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="472537">The row containing the selected optimal penalty will be highlighted.</a></div>
+      <div class="Heading_6"><a name="511002">Estimation Summary</a></div>
+      <div class="Body_Text"><a name="472885">Selecting </a><span class="Menu_Item">View/Lambda Path/Estimation Summary </span>displays a table showing the number of non-zero coefficients, estimation objective, components of the estimation objective, and the convergence status of the estimates for each <img class="Default EquationGraphic" src="images/enet.047.4.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> value in the path:</div>
+      <div class="Picture"><a name="467505"><img class="Default" src="images/enet.047.4.39.jpg" width="100%" style="left: 0.0pt; max-height: 369px; max-width: 551px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="473073">The </a><span class="Menu_Item">SSR Penalty</span>, <span class="Menu_Item">L1-norm Penalty</span>, and <span class="Menu_Item">L2-norm Penalty</span> are the individual components of the <span class="Menu_Item">Estimation Objective</span> in <span class="Link"><a href="enet-Background.html#439587" title="Background">Equation&nbsp;(37.1)</a></span>.</div>
+      <div class="Body_Text"><a name="511050">The row containing the selected optimal penalty will be highlighted.</a></div>
+      <div class="Heading_5"><a name="467357">Model Selection</a></div>
+      <div class="Body_Text"><a name="473456">The </a><span class="Menu_Item">Model Selection</span> views summarize results from the model selection procedure used to determine the optimal value of <img class="Default EquationGraphic" src="images/enet.047.4.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. While some of these views are standard model selection views, others have been customized for the current setting.</div>
+      <div class="Heading_6"><a name="467512">Criteria Graph</a></div>
+      <div class="Body_Text"><a name="473442">Click on </a><span class="Menu_Item">View/Model Selection/Criteria Graph</span> to show the top values for the model selection criteria along the corresponding <img class="Default EquationGraphic" src="images/enet.047.4.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />:</div>
+      <div class="Picture"><a name="473753"><img class="Default" src="images/enet.047.4.42.jpg" width="100%" style="left: 0.0pt; max-height: 412px; max-width: 514px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_6"><a name="467645">Summary Table</a></div>
+      <div class="Body_Text"><a name="474064">Selecting </a><span class="Menu_Item">View/Model Selection/Summary Table</span> to show a table of model selection and fit statistics:</div>
+      <div class="Picture"><a name="473445"><img class="Default" src="images/enet.047.4.43.jpg" width="100%" style="left: 0.0pt; max-height: 378px; max-width: 609px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="474479">The </a><span class="Menu_Item">Selection Objective</span> column shows the values of the objective, in this case the K-Fold MSE, for each value of <img class="Default EquationGraphic" src="images/enet.047.4.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. Also displayed are the number of <span class="Menu_Item">Non-zero Coefs</span> associated with this specification.</div>
+      <div class="Body_Text"><a name="474335">The columns for </a><span class="Menu_Item">SSR</span>, <span class="Menu_Item">MSE (df)</span>, <span class="Menu_Item">R-squared</span>, <span class="Menu_Item">Adj. R-sq</span> are measures of fit for the models associated with <img class="Default EquationGraphic" src="images/enet.047.4.45.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. They repeat the information from the <span class="Menu_Item">Lambda Path Fit Summary</span> to provide additional context to the model selection results.</div>
+      <div class="Body_Text"><a name="511066">The row containing the selected optimal penalty will be highlighted.</a></div>
+      <div class="Heading_6"><a name="467661">Cross-validation Graph</a></div>
+      <div class="Body_Text"><a name="467510">The cross-validation error graph (</a><span class="Menu_Item">View/Model Selection/Cross-validation Graph</span>), offers additional information about the distribution of the cross-validation results, showing the mean and +/- 1 standard deviation of the objective for each value of log <img class="Default EquationGraphic" src="images/enet.047.4.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</div>
+      <div class="Picture"><a name="475031"><img class="Default" src="images/enet.047.4.47.jpg" width="100%" style="left: 0.0pt; max-height: 417px; max-width: 538px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="511529">The vertical line shows the value of the log of the penalty parameter at the cross-validation optimum.</a></div>
+      <div class="Heading_4"><a name="505827">Forecast</a></div>
+      <div class="Body_Text"><a name="505842">Clicking on </a><span class="Menu_Item">Proc/Forecast</span> brings up the standard forecast dialog. EViews will produce a forecast using the coefficients associated with the optimal penalty parameter if estimates are available for more than one <img class="Default EquationGraphic" src="images/enet.047.4.48.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>import</title>
+    <link rel="StyleSheet" href="css/commandcmd.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="commandcmd-hpf.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="commandcmd-importattr.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : Command Reference</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Command_Title_Box"><a name="2160001">&nbsp;</a></div>
+      <table class="Command_Heading" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 108pt">
+            <div class="Command_Name"><a name="2159995">import</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 252pt">
+            <div class="Command_Header"><span class="Command_Header_link"><a href="commandcmd-Command_Reference.html#2023547" title="Command Reference" name="2160000">Object Container, Data, and File Commands</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Description"><a name="2160002">Imports data from a foreign file or a previously saved workfile into the current default workfile. The import command lets you perform four different types of data importing: dated reads, match-merge reads, sequential reads, and appends. </a></div>
+      <div class="Body_Text"><a name="2161027">Dated imports can only be performed if the destination workfile is a dated workfile. You must specify the date structure of the source data as part of the import command. EViews will then match the date structure of the source with that of the destination, and perform frequency conversion if necessary.</a></div>
+      <div class="Body_Text"><a name="2161028">Match-merge imports require both a source ID series and a destination ID series. EViews will read the source data into the destination workfile based upon matched values of the two ID series.</a></div>
+      <div class="Body_Text"><a name="2161029">Sequential imports will read the source data into the destination workfile by matching the first observation of the source file to the first observation in the destination workfile's current sample, then the second observation of the source with the second observation in the destination's current sample, and so on.</a></div>
+      <div class="Body_Text"><a name="2161030">Appended imports simply append the source data to the end of the destination workfile.</a></div>
+      <div class="Object_Section"><a name="2160003">Syntax</a></div>
+      <div class="Body_Text"><a name="2160884">The general form of the </a><span class="Command_Summary">import</span> command is:</div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2161276">import</a></span><span class="Argument" style="font-weight: normal">([type=], options) source_description import_specification [</span><span class="Command_Summary">@smpl</span><span class="Menu_Item" style="color: #000000; font-style: normal"> </span><span class="Argument" style="font-weight: normal">smpl_string] [</span><span class="Menu_Item" style="color: #000000; font-style: normal">@genr </span><span class="Argument" style="font-weight: normal">genr_string] [</span><span class="Command_Summary">@rename</span> <span class="Argument">rename_string]</span></div>
+      <div class="Body_Text"><a name="2160892">where the syntax for </a><span class="Argument">import_specification</span> depends on whether the read is a dated (<span class="Link"><a href="#2160007" title="import">&#8220;Dated Imports&#8221;</a></span>), match-merge (<span class="Link"><a href="#2160069" title="import">&#8220;Match-Merge Import&#8221;</a></span>), sequential (<span class="Link"><a href="#2160129" title="import">&#8220;Sequential Read&#8221;</a></span>), or appended import (<span class="Link"><a href="#2160167" title="import">&#8220;Appended Read&#8221;</a></span>).</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Argument"><a name="2161062">Source_description</a></span> should contain a description of the file from which the data is to be imported. The specification of the description is usually just the path and file name of the file, however you can also specify more precise information. See <span class="In-line_command_link"><a href="commandcmd-wfopen.html#2872547" title="wfopen">wfopen</a></span> for more details on the specification of <span class="Argument">source_description</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2161045">The optional &#8220;type=&#8221; option may be used to specify a source type. For the most part, you should not need to specify a &#8220;type=&#8221; option as EViews will automatically determine the type from the filename. The following table summaries the various source formats and along with the corresponding &#8220;type=&#8221; keywords:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Table"><a name="2160998">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 201.6pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 108pt">
+            <div class="Table_Text"><a name="2160895">&nbsp;</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 93.6pt">
+            <div class="Table_Text_Header"><a name="2160897"> Option Keywords</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160899">Access</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160901">&#8220;access&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160903">Aremos-TSD</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160905">&#8220;a&#8221;, &#8220;aremos&#8221;, &#8220;tsd&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160907">Binary</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160909">&#8220;binary&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160911">dBASE</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160913">&#8220;dbase&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160915">Excel (through 2003)</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160917">&#8220;excel&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160919">Excel 2007 (xml)</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160921">&#8220;excelxml&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160923">EViews Workfile</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160925">---</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160927">Gauss Dataset</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160929">&#8220;gauss&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160931">GiveWin/PcGive</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160933">&#8220;g&#8221;, &#8220;give&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160935">HTML</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160937">&#8220;html&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160939">Lotus 1-2-3</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160941">&#8220;lotus&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160943">ODBC Dsn File</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160945">&#8220;dsn&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160947">ODBC Query File</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160949">&#8220;msquery&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160951">ODBC Data Source</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160953">&#8220;odbc&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160955">MicroTSP Workfile</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160957">&#8220;dos&#8221;, &#8220;microtsp&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160959">MicroTSP Mac Workfile</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160961">&#8220;mac&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160963">RATS 4.x</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160965">&#8220;r&#8221;, &#8220;rats&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160967">RATS Portable / TROLL</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160969">&#8220;l&#8221;, &#8220;trl&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160971">SAS Program</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160973">&#8220;sasprog&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160975">SAS Transport</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160977">&#8220;sasxport&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160979">SPSS</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160981">&#8220;spss&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160983">SPSS Portable</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160985">&#8220;spssport&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160987">Stata</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160989">&#8220;stata&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160991">Text / ASCII</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160993">&#8220;text&#8221;</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="2160995">TSP Portable</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text_Center__0028small_0029"><a name="2160997">&#8220;t&#8221;, &#8220;tsp&#8221;</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2161295">The optional </a><span class="Command_Summary">@smpl</span> keyword may be used to specify that data is only imported for the observations specified by <span class="Argument">smpl_string</span>. By default, the import will use all of the observations in the workfile. If <span class="Command_Summary">@smpl </span>is included, but no <span class="Argument">smpl_string</span> is included, then the current default workfile sample is used.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2161296">The optional </a><span class="Command_Summary">@genr </span>keyword may be used to generate a new series in the workfile as part of the import procedure. <span class="Argument">genr_string</span> may be any valid series creation expression, and can be an expression based upon one of the imported series. See <span class="In-line_command_link"><a href="commandcmd-genr.html#2019890" title="genr">genr</a></span> for information on valid expressions.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="2161300">The optional </a><span class="Command_Summary">@rename</span> keyword may be used to rename some of the imported series where <span class="Argument">rename_string</span> contains pairs of old object names followed by the new names. See <span class="In-line_command_link"><a href="commandcmd-rename.html#2016846" title="rename">rename</a></span> for additional discussion.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="2161281">In the remainder of this discussion, we examine each of the different import types in greater depth.</a></div>
+      <div class="Command_Section"><a name="2160007">Dated Imports</a></div>
+      <div class="Body_Text"><a name="2161076">The syntax for a dated import command is:</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2160009">import</a></span><span class="Argument" style="font-weight: normal">([type=], options) source_description </span><span class="Command_Summary">@freq </span><span class="Argument" style="font-weight: normal">frequency start_date</span> <span class="Argument">[</span><span class="Command_Summary">@smpl</span> <span class="Argument">smpl_string]</span> <span class="Argument">[</span><span class="Menu_Item" style="color: #000000; font-style: normal">@genr </span><span class="Argument" style="font-weight: normal">genr_string] [</span><span class="Command_Summary">@rename</span> <span class="Argument">rename_string]</span></div>
+      <div class="Body_Text"><a name="2160014">The </a><span class="Argument">import_specification</span> consists of the <span class="Command_Summary">@freq</span> keyword followed by a <span class="Argument">frequency</span> argument specifying the frequency of the source data and a <span class="Argument">start_date</span> to specify the starting date of the source data. See <span class="In-line_command_link"><a href="commandcmd-wfcreate.html#2481007" title="wfcreate">wfcreate</a></span> for details on the forms that <span class="Argument">frequency</span> may take.</div>
+      <div class="Command_Subsection"><a name="2160027">Basic Options</a></div>
+      <div class="Table"><a name="2160045">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text"><a name="2199284">resize</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2199286">Extend the destination workfile (if necessary) to include the entire range of the source data.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2514846">link</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2514848">Link the object to the source data so that the values can be refreshed at a later time.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199288">mode=</a><span class="Argument_Opt">arg (default=</span>&#8220;o&#8221;<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199290">Set the behavior for handling name conflicts when an imported series already exists in the destination workfile. </a><span class="Argument_Opt">arg</span> can be &#8220;o&#8221; (Completely replace existing series with source series. Note that values outside of the range of the source data will be overwritten with NAs), &#8220;u&#8221; (Overwrite existing series only for values within the range of the source data. Destination values outside of the source range will be unchanged), &#8220;ms&#8221; (Overwrite existing series, unless source value is an NA, in which case keep destination values), &#8220;md&#8221; (Only overwrite NA values in destination series), &#8220;r&#8221; (rename any conflicts), or &#8220;p&#8221; (do not import any series which have a name conflict).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199292">page=</a><span class="Argument_Opt">page_name</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199294">Optional name for the page into which the data should be imported.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709925">tr=</a><span class="Argument_Opt">integer</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2709927">Truncate long series names to </a><span class="Emphasis_Table">integer</span><span class="Argument_Opt"> </span><span class="Body_Text">characters</span>. The default value of <span class="Emphasis_Table">integer</span> is 24.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2421354">prompt</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2421356">Force the dialog to appear from within a program.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="2160046">Frequency Conversion Options</a></div>
+      <div class="Body_Text"><a name="2514410">The following options control the frequency conversion method when copying series and group objects into a workfile page and converting from </a><span class="Emphasis">low</span> to <span class="Emphasis">high</span> frequency:</div>
+      <div class="Table"><a name="2514420">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 81.36pt">
+            <div class="Table_Text"><a name="2514413">c=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2634415">Low to high conversion methods: &#8220;r&#8221; or &#8220;repeata&#8221; (constant match average), &#8220;d&#8221; or &#8220;repeats&#8221; (constant match sum), &#8220;q&#8221; or &#8220;quada&#8221; (quadratic match average), &#8220;t&#8221; or &#8220;quads&#8221; (quadratic match sum), &#8220;linearf&#8221; (linear match first), &#8220;i&#8221; or &#8220;linearl&#8221; (linear match last), &#8220;cubicf&#8221; (cubic match first), &#8220;c&#8221; or &#8220;cubicl&#8221; (cubic match last), &#8220;pointf&#8221; (point first), &#8220;pointl&#8221; (point last).</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2160054">When importing data from a higher frequency source into a lower frequency destination:</a></div>
+      <div class="Table"><a name="2160061">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 81.36pt">
+            <div class="Table_Text"><a name="2199300">c=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><span class="Emphasis_Table"><a name="2199302">High to low conversion methods removing NAs:</a></span> &#8220;a&#8221; (average of the nonmissing observations), &#8220;s&#8221; (sum of the nonmissing observations), &#8220;f&#8221; (first nonmissing observation), &#8220;l&#8221; (last nonmissing observation), &#8220;x&#8221; (maximum nonmissing observation), &#8220;m&#8221; (minimum nonmissing observation).</div>
+            <div class="Table_Text"><span class="Emphasis_Table"><a name="2199303">High to low conversion methods propagating NAs</a></span>: &#8220;an&#8221; or &#8220;na&#8221; (average, propagating missings), &#8220;sn&#8221; or &#8220;ns&#8221; (sum, propagating missings), &#8220;fn&#8221; or &#8220;nf&#8221; (first, propagating missings), &#8220;ln&#8221; or &#8220;nl&#8221; (last, propagating missings), &#8220;xn&#8221; or &#8220;nx&#8221; (maximum, propagating missings), &#8220;mn&#8221; or &#8220;nm&#8221; (minimum, propagating missings).</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="2160062">Examples</a></div>
+      <div class="Input"><a name="2160063">import c:\temp\quarterly.xls @freq q 1990</a></div>
+      <div class="Body_Text"><a name="2160064">will import the file QUARTERLY.XLS into the current default workfile. The source file has a quarterly frequency, starting at 1990. </a></div>
+      <div class="Multi-line_Input"><a name="2160065">import(c=s) c:\temp\quarterly.xls range="GDP_SHEET" @freq q 1990 @rename gdp_per_capita gdp</a></div>
+      <div class="Body_Text"><a name="2160066">will import from same file, but instead will use the data on the Excel sheet called &#8220;GDP_SHEET&#8221;, and will rename the series GDP_PER_CAPITA to GDP. A frequency conversion method using the sum of the nonmissing observations is used rather than the default average.</a></div>
+      <div class="Input"><a name="2160067">import(mode=p) c:\temp\annual.txt @freq a 1990 @smpl 1994 1996</a></div>
+      <div class="Body_Text"><a name="2160068">will import data from a text file called annual.txt, into the current default workfile. Any data in the text file that already exists in the destination workfile will be ignored, and for the remaining series, only the dates between 1994 and 1996 will be imported.</a></div>
+      <div class="Body_Text"><a name="2709938">Additionally, specifying the &#8220;tr&#8221; option causes EViews 10 to truncate long series names to 24 characters (by default) instead of 300. This will let programs written for EViews 9 continue to work with EViews 10:</a></div>
+      <div class="Input"><a name="2709939">fetch(d=eia, link, tr) coal.average_employees.al-tot.a</a></div>
+      <div class="Body_Text"><a name="2709940">The &#8220;tr&#8221; option can also be set to a number between 0 and 300:</a></div>
+      <div class="Input"><a name="2709941">fetch(d=eia, link, tr=20) coal.average_employees.al-tot.a</a></div>
+      <div class="Command_Section"><a name="2160069">Match-Merge Import</a></div>
+      <div class="Command_Subsection"><a name="2160070">Syntax</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2160071">import</a></span><span class="Argument" style="font-weight: normal">(options) source_description </span><span class="Command_Summary">@id </span><span class="Argument" style="font-weight: normal">id </span><span class="Command_Summary">@destid</span> <span class="Argument">destid [</span><span class="Menu_Item" style="color: #000000; font-style: normal">@smpl </span><span class="Argument" style="font-weight: normal">smpl_string] [</span><span class="Menu_Item" style="color: #000000; font-style: normal">@genr </span><span class="Argument" style="font-weight: normal">genr_string] [</span><span class="Command_Summary">@rename</span> <span class="Argument">rename_string]</span></div>
+      <div class="Body_Text"><a name="2160072">The </a><span class="Argument">import_specification</span> consists of the <span class="Command_Summary">@id</span> keyword and at least one ID series in the source file, followed by the <span class="Command_Summary">@destid </span>keyword and at least one ID series in the destination workfile. The two sets of ID series should be compatible, in that they should contain a subset of identical values that provide information on how observations from the two files should be matched. If one of the ID series is a date series, you should surround it with the <span class="Command_Summary">@date( ) </span>keyword.</div>
+      <div class="Command_Subsection"><a name="2160086">Options</a></div>
+      <div class="Table"><a name="2160120">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text"><a name="2199305">resize</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2199307">Extend the destination workfile (if necessary) to include the entire range of the source data.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2514885">link</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2514887">Link the object to the source data so that the values can be refreshed at a later time.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199309">mode=</a><span class="Argument_Opt">arg (default=</span>&#8220;o&#8221;<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199311">Set the behavior for handling name conflicts when an imported series already exists in the destination workfile. </a><span class="Argument_Opt">arg</span> can be &#8220;o&#8221; (Completely replace existing series with source series. Note that values outside of the range of the source data will be overwritten with NAs), &#8220;u&#8221; (Overwrite existing series only for values within the range of the source data. Destination values outside of the source range will be unchanged), &#8220;ms&#8221; (Overwrite existing series, unless source value is an NA, in which case keep destination values), &#8220;md&#8221; (Only overwrite NA values in destination series), &#8220;r&#8221; (rename any conflicts), or &#8220;p&#8221; (do not import any series which have a name conflict).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199313">nacat</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199315">Treat &#8220;NA&#8221; values as a category when copying using general match merge operations.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199317">propnas</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199319">Propogate NAs / partial periods evaluate to NAs when converting.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199321">c=</a><span class="Argument_Opt">arg</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199323">Set the match merge contraction method. </a></div>
+            <div class="Table_Text"><a name="2199324">If you are importing a numeric source series by general match merge, the argument can be one of: &#8220;mean&#8221;, &#8220;med&#8221;</a></div>
+            <div class="Table_Text"><a name="2199325">(median), &#8220;max&#8221;, &#8220;min&#8221;, &#8220;sum&#8221;, &#8220;sumsq&#8221; (sum-of squares), &#8220;var&#8221; (variance), &#8220;sd&#8221; (standard deviation), &#8220;skew&#8221; (skewness), &#8220;kurt&#8221; (kurtosis), &#8220;quant&#8221; (quantile, used with &#8220;quant=&#8221; option), &#8220;obs&#8221; (number of observations), &#8220;nas&#8221; (number of NA values), &#8220;first&#8221; (first observation in group), &#8220;last&#8221; (last observation in group), unique&#8221; (single unique group value, if present), &#8220;none&#8221; (disallow contractions). </a></div>
+            <div class="Table_Text"><a name="2199326">If importing an alpha series, only the non-summary methods &#8220;max&#8221;, &#8220;min&#8221;, &#8220;obs&#8221;, &#8220;nas&#8221;, first&#8221;, &#8220;last&#8221;, &#8220;unique&#8221; and &#8220;none&#8221; are supported. </a></div>
+            <div class="Table_Text"><a name="2199327">For importing of numeric series, the default contraction method is &#8220;c=mean&#8221;; for copying of alpha series, the default is &#8220;c=unique&#8221;.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199329">page=</a><span class="Argument_Opt">page_name</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199331">Optional name for the page into which the data should be imported.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2421362">prompt</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2421364">Force the dialog to appear from within a program.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="2160121">Most of the conversion options should be self-explanatory. As for the others: &#8220;first&#8221; and &#8220;last&#8221; give the first and last non-missing observed for a given group ID; &#8220;obs&#8221; provides the number of non-missing values for a given group; &#8220;nas&#8221; reports the number of NAs in the group; &#8220;unique&#8221; will provide the value in the source series if it is the identical for all observations in the group, and will return NA otherwise; &#8220;none&#8221; will cause the import to fail if there are multiple observations in any group&#8212;this setting may be used if you wish to prohibit all contractions.</a></div>
+      <div class="Command_Subsection"><a name="2160122">Examples</a></div>
+      <div class="Multi-line_Input"><a name="2160123">import(c=max, type=excel) c:\data\stateunemp.xls @id states @destid states</a></div>
+      <div class="Body_Text"><a name="2160124">will import the file STATEUNEMP.XLS using the ID series STATES in both files as the match merge criteria. The maximum value is used as a contraction method. Note that although the &#8220;type=excel&#8221; option was used, it was not necessary since EViews will automatically detect the file type based on the file's extension (.xls).</a></div>
+      <div class="Multi-line_Input"><a name="2160125">import c:\data\stategdp.txt colhead=3 delim=comma @id states @date(year) @destid states @date</a></div>
+      <div class="Body_Text"><a name="2160126">will import the file STATEGDP.TXT, specifying that there are three lines of column headers, and the delimiter for the text file is a comma. The series STATES is used as an ID series in both files, along with a date series (YEAR for the source file, and the default EViews date series, @DATE, for the destination workfile). Note that this type of import, with both a cross-section ID and a date ID is most commonly employed for importing data into panel workfiles.</a></div>
+      <div class="Input"><a name="2160127">import c:\data\cagdp.xls @id states @date(year) @destid states @date @genr states="CA"</a></div>
+      <div class="Body_Text"><a name="2160128">will import the file CAGDP.XLS into the current workfile. In this particular case the source file is a time series file for a single state, California. Since the importing is being done into a panel workfile, the </a><span class="In-line_command">@genr</span> keyword is used to generate a series containing the state identifier, CA, which is then used as the source ID.</div>
+      <div class="Command_Section"><a name="2160129">Sequential Read</a></div>
+      <div class="Command_Subsection"><a name="2160130">Syntax</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2160131">import</a></span><span class="Argument" style="font-weight: normal">(options) source_description [</span><span class="Command_Summary">@smpl</span><span class="Menu_Item" style="color: #000000; font-style: normal"> </span><span class="Argument" style="font-weight: normal">smpl_string] [</span><span class="Command_Summary">@genr</span><span class="Menu_Item" style="color: #000000; font-style: normal"> </span><span class="Argument" style="font-weight: normal">genr_string] [</span><span class="Command_Summary">@rename</span> <span class="Argument">rename_string]</span></div>
+      <div class="Body_Text"><a name="2160132">No </a><span class="Argument">import_specification</span> is required for a sequential read.</div>
+      <div class="Command_Subsection"><a name="2160145">Options</a></div>
+      <div class="Table"><a name="2160163">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text"><a name="2199333">resize</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2199335">Extend the destination workfile (</a><span class="Emphasis_Table">if necessary</span>) to include the entire range of the source data.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2514893">link</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2514895">Link the object to the source data so that the values can be refreshed at a later time.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199337">mode=</a><span class="Argument_Opt">arg (default=</span>&#8220;o&#8221;<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199339">Set the behavior for handling name conflicts when an imported series already exists in the destination workfile. </a><span class="Argument_Opt">arg</span> can be &#8220;o&#8221; (Completely replace existing series with source series. Note that values outside of the range of the source data will be overwritten with NAs), &#8220;u&#8221; (Overwrite existing series only for values within the range of the source data. Destination values outside of the source range will be unchanged), &#8220;ms&#8221; (Overwrite existing series, unless source value is an NA, in which case keep destination values), &#8220;md&#8221; (Only overwrite NA values in destination series), &#8220;r&#8221; (rename any conflicts), or &#8220;p&#8221; (do not import any series which have a name conflict).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199341">page=</a><span class="Argument_Opt">page_name</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199343">Optional name for the page into which the data should be imported.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2421366">prompt</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2421368">Force the dialog to appear from within a program.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="2160164">Examples</a></div>
+      <div class="Multi-line_Input"><a name="2160165">import(resize) sales.dta @smpl @all</a></div>
+      <div class="Body_Text"><a name="2160166">will import the Stata file SALES.DTA into the current workfile, using the entire workfile range. If the sales.dta file contains more observations that the current workfile, the current workfile is resized to accommodate the extra rows of data.</a></div>
+      <div class="Command_Section"><a name="2160167">Appended Read</a></div>
+      <div class="Command_Subsection"><a name="2160168">Syntax</a></div>
+      <div class="Command_Types"><span class="Command_Summary"><a name="2160169">import</a></span><span class="Argument" style="font-weight: normal">(options) source_description </span><span class="Command_Summary">@append</span><span class="Menu_Item" style="color: #000000; font-style: normal"> </span><span class="Argument" style="font-weight: normal">[</span><span class="Command_Summary">@genr</span><span class="Menu_Item" style="color: #000000; font-style: normal"> </span><span class="Argument" style="font-weight: normal">genr_string] [</span><span class="Command_Summary">@rename</span> <span class="Argument">rename_string]</span></div>
+      <div class="Body_Text"><a name="2161390">The </a><span class="Argument">import_specification</span> consists of the <span class="Command_Summary">@append</span> keyword. Note that the <span class="Command_Summary">@smpl</span> keyword is not supported for appended import.</div>
+      <div class="Command_Subsection"><a name="2160183">Options</a></div>
+      <div class="Table"><a name="2160197">&nbsp;</a></div>
+      <table class="Options_Table" cellspacing="0" summary="">
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 86.4pt">
+            <div class="Table_Text"><a name="2514897">link</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top; width: 234pt">
+            <div class="Table_Text"><a name="2514899">Link the object to the source data so that the values can be refreshed at a later time.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199345">mode=</a><span class="Argument_Opt">arg (default=</span>&#8220;o&#8221;<span class="Argument_Opt">)</span></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199347">Set the behavior for handling name conflicts when an imported series already exists in the destination workfile. </a><span class="Argument_Opt">arg</span> can be &#8220;o&#8221; (Completely replace existing series with source series. Note that values outside of the range of the source data will be overwritten with NAs), &#8220;r&#8221; (rename any conflicts), or &#8220;p&#8221; (do not import any series which have a name conflict).</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199349">page=</a><span class="Argument_Opt">page_name</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2199351">Optional name for the page into which the data should be imported.</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2421370">prompt</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 4pt; padding-right: 4px; padding-top: 4pt; vertical-align: top">
+            <div class="Table_Text"><a name="2421372">Force the dialog to appear from within a program.</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Subsection"><a name="2160198">Examples</a></div>
+      <div class="Multi-line_Input"><a name="2160199">import(page=demand) demand.txt @append</a></div>
+      <div class="Body_Text"><a name="2160200">will append the text file, DEMAND.TXT, to the bottom of the page &#8220;demand&#8221; in the current workfile.</a></div>
+      <div class="Command_Section"><a name="2160201">Cross-references</a></div>
+      <div class="Body_Text"><a name="2160208">See </a><span class="Link"><a href="workfile-Workfile_Basics.html#113414" title="Workfile Basics">&#8220;Workfile Basics&#8221;</a></span> for a discussion of workfiles. </div>
+      <div class="Body_Text"><a name="2160223">See also </a><span class="In-line_command_link"><a href="commandcmd-wfopen.html#2872547" title="wfopen">wfopen</a></span>, <span class="In-line_command_link"><a href="commandcmd-copy.html#2081738" title="copy">copy</a></span>, <span class="In-line_command_link"><a href="commandcmd-pageload.html#2872489" title="pageload">pageload</a></span>, <span class="In-line_command_link"><a href="commandcmd-read.html#2020991" title="read">read</a></span>, <span class="In-line_command_link"><a href="commandcmd-fetch.html#2019478" title="fetch">fetch</a></span>, <span class="In-line_command_link"><a href="commandcmd-wfsave.html#2638923" title="wfsave">wfsave</a></span>, and <span class="In-line_command_link"><a href="commandcmd-pagesave.html#2638010" title="pagesave">pagesave</a></span>.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

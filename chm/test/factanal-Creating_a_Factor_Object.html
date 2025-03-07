@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Creating a Factor Object</title>
+    <link rel="StyleSheet" href="css/factanal.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="factanal-Factor_Analysis.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="factanal-Rotating_Factors.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_othermult.html">Advanced Multivariate Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="factanal-Factor_Analysis.html">Factor Analysis</a> : Creating a Factor Object</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="190703">Creating a Factor Object</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#190710">Specifying the Model</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190713">Data Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190715">Covariance Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#190726">Method</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#190732">Variables</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#190735">Sample</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#190737">Partialing</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#190740">Weighting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level4">
+          <a class="WebWorks_MiniTOC_Link" href="#190742">Degrees-of-Freedom Correction</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190744">User-matrix Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190753">Estimation Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190756">Method</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190764">Number of Factors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190789">Initial Communalities</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190807">Estimation Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190811">Scaling</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190816">Heywood Case Handling</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="190704">Factor analysis in EViews is carried out using a factor object. You may create and specify the factor object in a number of ways. The easiest methods are:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190705">Select </a><span class="Menu_Item">Object/New Object</span> from the workfile menu, choose <span class="Menu_Item">Factor</span>, and enter the specification in the<span class="Menu_Item"> Factor Specification</span> dialog.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190706">Highlight several series, right-click, select </a><span class="Menu_Item">Open/as Factor...,</span> and enter the specification in the dialog.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190707">Open an existing group object, select </a><span class="Menu_Item">Proc/Make Factor...,</span> and enter the specification in the dialog.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="190708">You may also use the commands </a><span class="In-line_command">factor</span> or <span class="In-line_command">factest</span> to create and specify your factor object.</div>
+      <div class="Heading_4"><a name="190710">Specifying the Model</a></div>
+      <div class="Body_Text"><a name="190711">There are two distinct parts of a factor object specification. The first part of the specification describes which measure of association or dispersion, typically a correlation or covariance matrix, EViews should fit using the factor model. The second part of the specification defines the properties of the factor model. </a></div>
+      <div class="Body_Text"><a name="190712">The dispersion measure of interest is specified using the </a><span class="Menu_Item">Data</span> tab of the dialog, and the factor model is defined using the <span class="Menu_Item">Estimation</span> tab. The following sections describe these settings in detail.</div>
+      <div class="Heading_5"><a name="190713">Data Specification</a></div>
+      <div class="Body_Text"><a name="190714">The first item in the </a><span class="Menu_Item">Data</span> tab is the <span class="Menu_Item">Type</span> dropdown menu, which is used to specify whether you wish to compute a <span class="Menu_Item">Correlation</span> or <span class="Menu_Item">Covariance</span> matrix from the series data, or to provide a <span class="Menu_Item">User-matrix</span> containing a previously computed measure of association. </div>
+      <div class="Heading_6"><a name="190715">Covariance Specification</a></div>
+      <div class="Picture"><a name="190719"><img class="Default" src="images/factanal.074.02.1.jpg" width="100%" style="left: 0.0pt; max-height: 464px; max-width: 525px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190720">Here we see the dialog layout when </a><span class="Menu_Item">Correlation</span> or <span class="Menu_Item">Covariance</span> is selected. </div>
+      <div class="Body_Text"><a name="190721">Most of these fields should be familiar from the Covariance Analysis view of a group. Additional details on all of these settings may be found in </a><span class="Link"><a href="groups-Covariance_Analysis.html#170464" title="Covariance Analysis">&#8220;Covariance Analysis&#8221;</a></span>.</div>
+      <div class="Heading_7"><a name="190726">Method</a></div>
+      <div class="Body_Text"><a name="190727">You may use the </a><span class="Menu_Item">Method</span> dropdown to specify the calculation method: ordinary Pearson covariances, uncentered covariances, Spearman rank-order covariances, and Kendall&#8217;s tau measures of association.</div>
+      <div class="Body_Text"><a name="190731">Note that the computation of factor scores (</a><span class="Link"><a href="factanal-Background.html#191955" title="Background">&#8220;Scoring&#8221;</a></span>) is not supported for factor models fit to Spearman or Kendall&#8217;s tau measures. If you wish to compute scores for measures based on these methods you may, however, estimate a factor model fit to a user-specified matrix.</div>
+      <div class="Heading_7"><a name="190732">Variables</a></div>
+      <div class="Body_Text"><a name="190733">You should enter the list of series or groups containing series that you wish to employ for analysis. </a></div>
+      <div class="Body_Text"><a name="190734">(Note that when you create your factor object from a group object or a set of highlighted series, EViews assumes that you wish to compute a measure of association from the specified series and will initialize the edit field using the series names.)</a></div>
+      <div class="Heading_7"><a name="190735">Sample</a></div>
+      <div class="Body_Text"><a name="190736">You should specify a sample of observations and indicate whether you wish to balance the sample. By default, EViews will perform listwise deletion when it encounters missing values. This option is ignored when performing partial analysis (which may only be computed for balanced samples).</a></div>
+      <div class="Heading_7"><a name="190737">Partialing</a></div>
+      <div class="Body_Text"><a name="190738">Partial covariances or correlations may be computed for each pair of analysis variables by entering a list of conditioning variables in the edit field. </a></div>
+      <div class="Body_Text"><a name="190739">Computation of factor scores is not supported for models fit to partial covariances or correlations. To compute scores for measures in this setting you may, however, estimate a factor model fit to a user-specified matrix.</a></div>
+      <div class="Heading_7"><a name="190740">Weighting</a></div>
+      <div class="Body_Text"><a name="190741">When you specify a weighting method, you will be prompted to enter the name of a weight series. There are five different weight choices: frequency, variance, standard deviation, scaled variance, and scaled standard deviation. </a></div>
+      <div class="Heading_7"><a name="190742">Degrees-of-Freedom Correction</a></div>
+      <div class="Body_Text"><a name="190743">You may choose to compute covariances using the maximum likelihood estimator or the degree-of-freedom corrected formula. By default, EViews computes ML estimates (no d.f. correction) of the covariances. Note that this choice may be relevant even if you will be working with a correlation matrix since standardized data may be used when constructing factor scores.</a></div>
+      <div class="Heading_6"><a name="190744">User-matrix Specification</a></div>
+      <div class="Picture"><a name="190748"><img class="Default" src="images/factanal.074.02.2.jpg" width="100%" style="left: 0.0pt; max-height: 459px; max-width: 522px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><span class="Menu_Item"><a name="190749">User-matrix</a></span> in the Type dropdown, the dialog changes, prompting you for the name of the matrix and optional information for the number of observations, the degrees-of-freedom adjustment, and column names.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190750">You should specify the name of an EViews matrix object containing the measure of association to be fit. The matrix should be square and symmetric, though it need not be a sym matrix object.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190751">You may enter a scalar value for the number of observations, or a matrix containing the pairwise numbers of observations. A number of results will not be computed if a number of observations is not provided. If the pairwise number of observations is not constant, EViews will use the minimum number of observations when computing statistics.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190752">Column names may be provided for labeling results. If not provided, variables will be labeled &#8220;V1&#8221;, &#8220;V2&#8221;, </a><span class="Emphasis">etc.</span> You need not provide names for all columns; the generic names will be replaced with the specified names in the order they are provided.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="190753">Estimation Specification</a></div>
+      <div class="Body_Text"><a name="190754">The main estimation settings are displayed when you click on the </a><span class="Menu_Item">Estimation</span> tab of the <span class="Menu_Item">Factor Specification</span> dialog. There are four sections in the dialog allowing you to control the method, number of factors, initial communalities, and other options. We describe each in turn.</div>
+      <div class="Heading_6"><a name="190756">Method</a></div>
+      <div class="Picture"><a name="190760"><img class="Default" src="images/factanal.074.02.3.jpg" width="100%" style="left: 0.0pt; max-height: 461px; max-width: 527px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190761">In the </a><span class="Menu_Item">Method</span> dropdown menu, you should select your estimation method. EViews supports estimation using <span class="Menu_Item">Maximum likelihood</span>, <span class="Menu_Item">Generalized least squares</span>, <span class="Menu_Item">Unweighted least squares</span>, <span class="Menu_Item">Principal factors</span>, <span class="Menu_Item">Iterated principal factors</span>, and <span class="Menu_Item">Partitioned (PACE)</span> methods.</div>
+      <div class="Body_Text"><a name="190763">Depending on the method, different settings may appear in the </a><span class="Menu_Item">Options</span> section to the right. </div>
+      <div class="Heading_6"><a name="190764">Number of Factors</a></div>
+      <div class="Body_Text"><a name="190765">EViews supports a variety of methods for selecting the number of factors. By default, EViews uses Velicer&#8217;s (1976) minimum average partial method (MAP). Simulation evidence suggests that MAP (along with parallel analysis) is more accurate than more commonly used methods such as Kaiser-Guttman (Zwick and Velicer, 1986). See </a><span class="Link"><a href="factanal-Background.html#191406" title="Background">&#8220;Number of Factors&#8221;</a></span> for a brief summary of the various methods.</div>
+      <div class="Picture"><a name="190772"><img class="Default" src="images/factanal.074.02.4.jpg" width="100%" style="left: 0.0pt; max-height: 166px; max-width: 173px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190773">You may change the default by selecting an alternative method from the dropdown menu. The dialog may change to prompt you for additional input:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190774">The </a><span class="Menu_Item">Minimum eigenvalue</span> method allows you to employ a modified Kaiser-Guttman rule that uses a different threshold. Simply enter your threshold in the <span class="Menu_Item">Cutoff</span> edit field.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190775">If you select </a><span class="Menu_Item">Fraction of total variance</span>, EViews will prompt you to enter the target threshold.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190777">If you select either </a><span class="Menu_Item">Parallel analysis (mean)</span> or <span class="Menu_Item">Parallel analysis (quantile)</span> from the dropdown menu, the dialog page will change to provide you with a number of additional options. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="190781"><img class="Default" src="images/factanal.074.02.5.jpg" width="100%" style="left: 0.0pt; max-height: 462px; max-width: 527px; top: 0.0pt" alt="" /></a></div>
+      <div class="List_Continue"><a name="190782">In the </a><span class="Menu_Item">Number of factor</span> sections, EViews will prompt you for the number of simulations to run, and, where appropriate, the quantile of the empirical distribution to use for comparison.</div>
+      <div class="List_Continue"><a name="190783">By default, EViews compares the eigenvalues of the </a><span class="Emphasis">reduced</span> matrix against simulated eigenvalues. This approach is in the spirit of Humphreys and Ilgen (1969), who use the SMC reduced matrix. If you wish to use the eigenvalues of the original (unreduced) matrix, simply check <span class="Menu_Item">Use unreduced matrix</span>.</div>
+      <div class="List_Continue"><a name="190784">The </a><span class="Menu_Item">Options</span> section of the page provides options for the random number generator and the random seed. While the <span class="Menu_Item">Random generator</span> dropdown should be self-explanatory, the <span class="Menu_Item">Seed</span> field requires some discussion.</div>
+      <div class="List_Continue"><a name="190785">By default, the first time that you estimate a given factor model, the </a><span class="Menu_Item">Seed</span> edit field will be blank; you may provide your own integer value, if desired. If an initial seed is not provided, EViews will randomly select a seed value at estimation time. The value of this initial seed will be saved with the factor object so that by default, subsequent estimation will employ the same seed. If you wish to use a different value, simply enter a new value in the <span class="Menu_Item">Seed</span> edit field or press the <span class="Menu_Item">Clear</span> button to have EViews draw a new random seed value. </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="197717">If you select either </a><span class="Menu_Item">Bai and Ng </span>or <span class="Menu_Item">Ahn and Horenstein </span>from the dropdown menu, the dialog page will offer different options.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="197811"><img class="Default" src="images/factanal.074.02.6.jpg" width="100%" style="left: 0.0pt; max-height: 466px; max-width: 529px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="198723">The dialog settings are described in detail in </a><span class="Link"><a href="groups-Principal_Components.html#190512" title="Principal Components">&#8220;Bai and Ng&#8221;</a></span> and <span class="Link"><a href="groups-Principal_Components.html#190649" title="Principal Components">&#8220;Ahn and Horenstein&#8221;</a></span> .</div>
+      <div class="Heading_6"><a name="190789">Initial Communalities</a></div>
+      <div class="Body_Text"><a name="190790">Initial estimates of the common variances are required for most estimation methods. For iterative methods like ML and GLS, the initial communalities are simply starting values for the estimation of uniquenesses. For principal factor estimation, the initial communalities are fundamental to the construction of the estimates (see </a><span class="Link"><a href="factanal-Background.html#191468" title="Background">&#8220;Principal Factors&#8221;</a></span>).</div>
+      <div class="Picture"><a name="190797"><img class="Default" src="images/factanal.074.02.7.jpg" width="100%" style="left: 0.0pt; max-height: 111px; max-width: 192px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="190798">By default, EViews will compute SMC based estimates of the communalities. You may select a different method using the </a><span class="Menu_Item">Initial communalities</span> dropdown menu. Most of the methods should be self-explanatory; a few require additional comment.</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="190799">Partitioned (PACE)</a></span> performs a non-iterative PACE estimation of the factor model and uses the fitted estimates of the common variances. The number of factors used is taken from the main estimation settings.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190800">The </a><span class="Menu_Item">Random diagonal fractions</span> setting instructs EViews to use a different random fraction of each diagonal element of the original dispersion matrix.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="190801">The </a><span class="Menu_Item">User-specified uniqueness</span> values will be subtracted from the original variances to form communality estimates. You will specify the name of the vector containing the uniquenesses in the <span class="Menu_Item">Vector</span> edit field. By default, EViews will look at the first elements of the C coefficient vector for uniqueness values. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Continue"><a name="190802">To facilitate the use of this option, EViews will place the estimated uniqueness values in the coefficient vector C. In addition, you may use the equation data member </a><span class="In-line_command">@unique</span> to access the estimated uniqueness from a named factor object.</div>
+      <div class="Body_Text"><a name="190806">See </a><span class="Link"><a href="factanal-Background.html#191487" title="Background">&#8220;Communality Estimation&#8221;</a></span> for additional discussion.</div>
+      <div class="Heading_5"><a name="190807">Estimation Options</a></div>
+      <div class="Body_Text"><a name="190808">We have already seen the iteration control and random number options that are available for various estimation and number of factor methods. The remaining options concern the scaling of results and the handling of Heywood cases.</a></div>
+      <div class="Heading_6"><a name="190811">Scaling</a></div>
+      <div class="Body_Text"><a name="190812">Some estimation methods guarantee that the sums of the uniqueness estimates and the estimated communalities equal the diagonal dispersion matrix elements; for example, principal factors models compute the uniqueness estimates as the residual after accounting for the estimated communalities. </a></div>
+      <div class="Body_Text"><a name="190813">In other cases, the uniqueness and loadings are both estimated directly. In these settings, it is possible for the sum of the components to differ substantively from the original variances.</a></div>
+      <div class="Body_Text"><a name="190814">You can enforce the adding up condition by checking the </a><span class="Menu_Item">Scale estimates to match observed variances</span> box. If this option is selected, EViews will automatically adjust your uniqueness and loadings estimates so the sum of the unique and common variances matches the diagonals of the dispersion matrix. Note that when scaling has been applied, the reported uniquenesses and loadings will differ from those used to compute fit statistics; the main estimation output will indicate the presence of scaled results.</div>
+      <div class="Heading_6"><a name="190816">Heywood Case Handling</a></div>
+      <div class="Body_Text"><a name="190817">In the course of iterating principal factor estimation, one may encounter estimated communalities which implies that at least one unique variance is less than zero; these situations are referred to as </a><span class="Definition">Heywood cases</span>. </div>
+      <div class="Body_Text"><a name="190818">When you encounter a Heywood case in EViews, there are several approaches that you may take. By default, EViews will stop iterating and report the final set of estimates (</a><span class="Menu_Item">Stop and report final</span>), along with a warning that the results may be inappropriate. Alternately, you may instruct EViews to report the previous iteration&#8217;s results (<span class="Menu_Item">Stop and report last)</span>, to set the results to zero and continue (<span class="Menu_Item">Set to zero, continue</span>), or to ignore the negative unique variance and continue (<span class="Menu_Item">Ignore and continue</span>).</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/swvar.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="swvar-Post-Estimation_Results.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="swvar-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="swvar-Switching_VAR.html">Switching VAR</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="330028">Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#330031">Markov Switching Intercept</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#330069">Markov Switching Mean</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="352745">To illustrate switching VAR estimation, we consider examples using quarterly GDP data for a subset of G7 countries obtained from the OECD National Accounts Statistics (</a><span class="URL"><a href="https://data.oecd.org/gdp/quarterly-gdp.htm" target="external_window">https://data.oecd.org/gdp/quarterly-gdp.htm</a></span>).</div>
+      <div class="Body_Text"><a name="354650">We first estimate a Markov switching intercept model with varying intercepts, and then a Markov switching mean model with regime specific intercepts and lagged endogenous.</a></div>
+      <div class="Heading_4"><a name="330031">Markov Switching Intercept</a></div>
+      <div class="Body_Text"><a name="330032">The data for this example consists of 1960q4&#8211;2018q4 quarterly percent change in GDP for Canada (DPCAN), Germany (DPDEU), Japan (DPJPN), and the US (DPUSA). The data may be found in the workfile &#8220;msvar_G7.WF1&#8221;.</a></div>
+      <div class="Body_Text"><a name="330033">To estimate the first model, open the switching VAR dialog and enter the specification as depicted below:</a></div>
+      <div class="Picture"><a name="354804"><img class="Default" src="images/swvar.062.5.01.jpg" width="100%" style="left: 0.0pt; max-height: 489px; max-width: 507px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="330038">The specification consists of a two-state Markov switching intercept VAR(2) with a single switching mean regressor C. The error variance is assumed to be common across the regimes. Adopting the general Krolzig (1997) taxonomy, we may term this an MSI-VAR(2) specification&#8212;Markov switching intercept, VAR(2). The only probability regressor is the constant C since we have time-invariant regime transition probabilities.</a></div>
+      <div class="Body_Text"><a name="330039">With the exception of the convergence tolerance which we set to 1e-8, we leave the rest of the settings at their default values. Click on </a><span class="Menu_Item">OK</span> to estimate the equation and display the estimation results.</div>
+      <div class="Body_Text"><a name="330040">The top portion of the output describes the estimation settings:</a></div>
+      <div class="Picture"><a name="330044"><img class="Default" src="images/swvar.062.5.02.jpg" width="100%" style="left: 0.0pt; max-height: 267px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="330045">(Bear in mind that if you attempt replicate this estimation using the default settings, you may obtain different results due to the different set of random starting values. You may use the random number generator seed settings to obtain the same starting values.)</a></div>
+      <div class="Body_Text"><a name="330046">The middle section displays the coefficients for the regime specific mean and the invariant error distribution coefficients with columns corresponding to endogenous variables. We see, in the differences in the regime specific means, corresponding to fast and slow growth rates:</a></div>
+      <div class="Table"><a name="355167"><img class="Default" src="images/swvar.062.5.03.jpg" width="100%" style="left: 0.0pt; max-height: 327px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Picture"><a name="330050">&nbsp;</a></div>
+      <div class="Body_Text"><a name="355441">Next are the regime invariant (common) VAR lag coefficients and error covariance matrix:</a></div>
+      <div class="Table"><a name="355500"><img class="Default" src="images/swvar.062.5.04.jpg" width="100%" style="left: 0.0pt; max-height: 1015px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="330051">The remaining results show the parameters of the transition matrix and summary statistics for the estimated VAR.</a></div>
+      <div class="Picture"><a name="330055"><img class="Default" src="images/swvar.062.5.05.jpg" width="100%" style="left: 0.0pt; max-height: 294px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="330056">Instead of focusing on the transition matrix parameters, we examine the transition matrix probabilities directly by selecting </a><span class="Menu_Item">View/Regime Results/Transition Results... </span>and clicking on <span class="Menu_Item">OK</span> to display the default summary view:</div>
+      <div class="Picture"><a name="330060"><img class="Default" src="images/swvar.062.5.06.jpg" width="100%" style="left: 0.0pt; max-height: 458px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="330061">Here, we see the transition probability matrix and the expected durations. Note that there is considerable state dependence in the transition probabilities with a higher probability of remaining in the high growth regime (0.95), but less so for the low growth regime (0.39). The corresponding expected durations in a regime are approximately 10.4 and 4.1 quarters, respectively.</a></div>
+      <div class="Body_Text"><a name="330062">Lastly, we display the filtered and full sample estimates of the probabilities of being in the two regimes. First select </a><span class="Menu_Item">View/Regime Results/Regime Probabilities... </span>and choose the smoothed results. We will display the results only for the second regime.</div>
+      <div class="Body_Text"><a name="330063">After saving the view as a graph and applying the RecShade add-in,</a></div>
+      <div class="Indented" style="color: #0000ff; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="URL"><a href="http://www.eviews.com/Addins/addins.shtml" target="external_window" name="356547">http://www.eviews.com/Addins/addins.shtml</a></span></div>
+      <div class="Body_Text"><a name="356550">to label the NBER recessions, we see that the predicted probabilities of being in the low output state generally coincide with the commonly employed definition of US recessions:</a></div>
+      <div class="Picture"><a name="330068"><img class="Default" src="images/swvar.062.5.07.jpg" width="100%" style="left: 0.0pt; max-height: 425px; max-width: 498px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="358878">We may examine the impulse responses for this VAR in the usual fashion. Click on </a><span class="Menu_Item">View/Impulse Response...</span> edit the fields to show the impulses and responses for the first two endogenous variables, and click on <span class="Menu_Item">OK</span> to display the results:</div>
+      <div class="Picture"><a name="359240"><img class="Default" src="images/swvar.062.5.08.jpg" width="100%" style="left: 0.0pt; max-height: 491px; max-width: 690px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="330069">Markov Switching Mean</a></div>
+      <div class="Body_Text"><a name="356846">We may estimate a two-state Markov switching mean VAR(2) with switching mean regressor C, switching VAR lag coefficients. and common error variance (MSMA-VAR(2)).</a></div>
+      <div class="Picture"><a name="356713"><img class="Default" src="images/swvar.062.5.09.jpg" width="100%" style="left: 0.0pt; max-height: 486px; max-width: 507px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="330087">We leave the remaining settings at their defaults and click on </a><span class="Menu_Item">OK</span> to estimate the equation. Following estimation, EViews displays the results.</div>
+      <div class="Body_Text"><a name="357019">First, the top portion shows the specification settings:</a></div>
+      <div class="Picture"><a name="357077"><img class="Default" src="images/swvar.062.5.10.jpg" width="100%" style="left: 0.0pt; max-height: 262px; max-width: 1001px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="357098">The next section contains results for the regime varying results; first for regime 1,</a></div>
+      <div class="Picture"><a name="357192">&nbsp;</a></div>
+      <div class="Table"><a name="363849"><img class="Default" src="images/swvar.062.5.11.jpg" width="100%" style="left: 0.0pt; max-height: 841px; max-width: 1001px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="357166">and then for regime 2,</a></div>
+      <div class="Picture"><a name="357252"><img class="Default" src="images/swvar.062.5.12.jpg" width="100%" style="left: 0.0pt; max-height: 780px; max-width: 1001px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="330093">and then the common coefficients and summary statistics</a></div>
+      <div class="Picture"><a name="363946"><img class="Default" src="images/swvar.062.5.13.jpg" width="100%" style="left: 0.0pt; max-height: 623px; max-width: 1001px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="363941">We can examine directly the transition probabilities. The default transition probability summary (</a><span class="Menu_Item">View/Regime Results/Transition Results...</span>) shows descriptive statistics for the elements of the transition matrix:</div>
+      <div class="Picture"><a name="357306"><img class="Default" src="images/swvar.062.5.14.jpg" width="100%" style="left: 0.0pt; max-height: 488px; max-width: 1001px; top: 0.0pt" alt="" /></a></div>
+      <div class="Picture"><a name="330097">&nbsp;</a></div>
+      <div class="Body_Text"><a name="330103">The filtered probabilities of being in the regime 1, with NBER recession shading are:</a></div>
+      <div class="Picture"><a name="357631"><img class="Default" src="images/swvar.062.5.15.jpg" width="100%" style="left: 0.0pt; max-height: 404px; max-width: 515px; top: 0.0pt" alt="" /></a></div>
+      <div class="Picture"><a name="330107">&nbsp;</a></div>
+      <div class="Body_Text"><a name="359280">Examining the impulse responses, we click on </a><span class="Menu_Item">View/Impulse Response...</span> edit the fields to show the impulses and responses for the first two endogenous variables, and click on <span class="Menu_Item">OK</span> to display the results:</div>
+      <div class="Picture"><a name="359272"><img class="Default" src="images/swvar.062.5.16.jpg" width="100%" style="left: 0.0pt; max-height: 447px; max-width: 652px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="359408">Notice that the results are displayed in a spool, with impulse responses computed for each set of regime-specific coefficients. </a></div>
+      <div class="Picture"><a name="330167">&nbsp;</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

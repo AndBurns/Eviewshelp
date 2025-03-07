@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Using Add-ins</title>
+    <link rel="StyleSheet" href="css/addins.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="addins-Getting_Started_with_Add-ins.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="addins-Add-ins_Examples.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="addins-Add-ins.html">Add-ins</a> : Using Add-ins</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="393143">Using Add-ins</a></div>
+      <div class="Body_Text"><a name="393144">Add-ins are integrated into the EViews menus and command line so that they work much like built-in routines. To run an Add-in program, simply select the corresponding menu entry or issue the appropriate command.</a></div>
+      <div class="Body_Text"><a name="410756">Beyond that, working with Add-ins menu and command entries does require some understanding of the difference between the two types of Add-ins: </a><span class="Emphasis">object-specific</span> and <span class="Definition">global</span>. As the names suggest, object-specific Add-ins are designed to work with a single object type, while global Add-ins are designed to work more generally with more than one object or object type. </div>
+      <div class="Body_Text"><a name="410959">For example, an Add-in that computes a spline using data in a series is likely to be object-specific, since it operates on a single series, while an Add-in that copies tables, graphs, and spools into an RTF file would naturally be defined as global.</a></div>
+      <div class="Body_Text"><a name="411033">The menu entries and form of commands differs between the two Add-in types. </a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="412013">Global Add-ins have menu entries that appear only in the main Add-ins menu. Global add-in commands follow the EViews command syntax:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Multi-line_Input_With_Tabs" style="color: #000000; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="Argument"><a name="411869">	command(options) [args]</a></span></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="410978">Object-specific Add-ins have menu entries that appear in </a><span class="Emphasis">both</span> the main Add-ins menu and in the menu of objects of the specified object type. Object-specific Add-in commands follow the standard EViews object command syntax:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Multi-line_Input_With_Tabs" style="color: #000000; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="Emphasis"><a name="393149">	object_name.command(options) [args]</a></span></div>
+      <div class="Body_Text"><a name="411972">Suppose, for example, we have a global </a><span class="Menu_Item">Generate time-series data</span> Add-in with associated command <span class="In-line_command">tsdgp</span>. Since the Add-in is global, it will have a menu item in the main Add-ins menu,</div>
+      <div class="Picture"><a name="411503"><img class="Default" src="images/addins.089.4.1.jpg" width="100%" style="left: 0.0pt; max-height: 487px; max-width: 596px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="411348">Moreover, the global command</a></div>
+      <div class="Input"><a name="411349">tsdgp(diff="2", seed=100, meanconst="2", ar="0.1", ma="0.15", varconst="0.8", arch = "0.15", garch="0.2 0.2") y</a></div>
+      <div class="Body_Text"><a name="411326">will run the Add-in program with the specified options.</a></div>
+      <div class="Body_Text"><a name="411923">Suppose, in addition, that we have two equation-specific Add-ins, </a><span class="Menu_Item">Simple rolling regression </span>and <span class="Menu_Item">Advanced rolling regression</span>, with associated object-specific commands, <span class="In-line_command">roll</span> and <span class="In-line_command">advroll</span>. If equation EQ1 is the active object, the main <span class="Menu_Item">Add-ins</span> menu will contain <span class="Emphasis">both</span> the global (<span class="Menu_Item">Generate time series data</span>) and the two equation-specific entries (<span class="Menu_Item">Simple rolling regression </span>and <span class="Menu_Item">Advanced rolling regression</span>):</div>
+      <div class="Picture"><a name="411927"><img class="Default" src="images/addins.089.4.2.jpg" width="100%" style="left: 0.0pt; max-height: 516px; max-width: 629px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="411928">In contrast, the EQ1 equation object will have an object </a><span class="Menu_Item">Add-ins</span> menu contains only the two object-specific entries:</div>
+      <div class="Picture"><a name="411932"><img class="Default" src="images/addins.089.4.3.jpg" width="100%" style="left: 0.0pt; max-height: 519px; max-width: 632px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="411933">To run the simple rolling regression Add-in you may select either the main or the equation menu Add-ins entries, or you may enter the equation object command:</a></div>
+      <div class="Input"><a name="411934">eq1.roll</a></div>
+      <div class="Body_Text"><a name="411935">in the EViews command window.</a></div>
+      <div class="Body_Text"><a name="411301">If you wish to see the available Add-ins and their types, you may click on the </a><span class="Menu_Item">Add-ins/Manage Add-ins...</span> entry in the main menu to display the Add-ins management dialog. EViews will display the list of installed Add-ins with a <span class="Menu_Item">Type</span> column showing the type associated with each entry:</div>
+      <div class="Picture"><a name="393160"><img class="Default" src="images/addins.089.4.4.jpg" width="100%" style="left: 0.0pt; max-height: 522px; max-width: 689px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="393163">Note that you may use the </a><span class="Menu_Item">Add-in type</span> drop-down to filter the display.</div>
+      <div class="Body_Text"><a name="427480">In this example, the Recshade (Add USA Recession Shading, ROLL (Simple Rolling Regression), and Advroll (Advanced Rolling Regression), Add-ins are all object-specific, while the Tsdgp (Generate time series data) Add-in is global.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

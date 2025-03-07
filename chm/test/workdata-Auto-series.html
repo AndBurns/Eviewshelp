@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Auto-series</title>
+    <link rel="StyleSheet" href="css/workdata.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="workdata-Series.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="workdata-Groups.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="workdata-Working_with_Data.html">Working with Data</a> : Auto-series</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="160883">Auto-series</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160892">Creating Auto-series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160936">Auto-series Across Pages</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#172514">Naming an Auto-series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160944">Using Auto-series in Groups</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#160958">Using Auto-Series in Estimation</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="160884">Another important method of working with expressions is to use an expression </a><span class="Emphasis">in place of</span> a series. EViews&#8217; powerful tools for expression handling allow you to substitute expressions virtually any place you would use a series&#8212;as a series object, as a group element, in equation specifications and estimation, and in models.</div>
+      <div class="Body_Text"><a name="160885">We term expressions that are used in place of series as </a><span class="Definition">auto-series</span>, since the transformations in the expressions are <span class="Emphasis">automatically</span> calculated without an explicit assignment statement.</div>
+      <div class="Body_Text"><a name="160886">Auto-series are most useful when you wish to see the behavior of an expression involving one ore more series, but do not want to keep the transformed series, or in cases where the underlying series data change frequently. Since the auto-series expressions are automatically recalculated whenever the underlying data change, they are never out-of-date.</a></div>
+      <div class="Body_Text"><a name="160890">See </a><span class="Link"><a href="newser-Auto-Updating_Series.html#134974" title="Auto-Updating Series">&#8220;Auto-Updating Series&#8221;</a></span> for a more advanced method of handling series and expressions.</div>
+      <div class="Heading_4"><a name="160892">Creating Auto-series</a></div>
+      <div class="Body_Text"><a name="160893">It is easy to create and use an auto-series&#8212;anywhere you might use a series name, simply enter an EViews expression. For example, suppose that you wish to plot the log of CP against time for the period 1953M01 to 1958M12. There are two ways in which you might plot these values. </a></div>
+      <div class="Body_Text"><a name="160894">One way to plot these values is to generate an ordinary series, as described earlier in </a><span class="Link"><a href="workdata-Series.html#160810" title="Series">&#8220;Basic Assignment&#8221;</a></span>, and then to plot its values. To generate an ordinary series containing the log of CP, say with the name LOGCP, select <span class="Menu_Item">Quick/Generate series...</span> from the main menu, and enter,</div>
+      <div class="Input"><a name="160898">logcp = log(cp)</a></div>
+      <div class="Body_Text"><a name="160899">or type the command,</a></div>
+      <div class="Input"><a name="160900">series logcp = log(cp)</a></div>
+      <div class="Body_Text"><a name="160901">in the command window. EViews will evaluate the expression LOG(CP) for the current values of CP, and will place these values into the series LOGCP. To view a line graph view of the series, open the series LOGCP and select </a><span class="Menu_Item">View/Graph/Line</span>. </div>
+      <div class="Body_Text"><a name="160902">Note that the values of the ordinary series LOGCP will not change when CP is altered. If you wish to update the values in LOGCP to reflect subsequent changes in CP, you will need to issue another </a><span class="In-line_input">series</span> or <span class="In-line_input">genr</span> assignment statement.</div>
+      <div class="Body_Text"><a name="160903">Alternatively, you may create and use an auto-series by clicking on the </a><span class="Menu_Item">Show</span> button on the toolbar, or selecting <span class="Menu_Item">Quick/Show&#8230;</span> and entering the command,</div>
+      <div class="Input"><a name="160904">log(cp)</a></div>
+      <div class="Body_Text"><a name="160905">or by typing</a></div>
+      <div class="Input"><a name="160906">show log(cp)</a></div>
+      <div class="Body_Text"><a name="160907">in the command window. EViews will open a series window in spreadsheet view:</a></div>
+      <div class="Picture"><a name="160911"><img class="Default" src="images/workdata.011.4.1.jpg" width="100%" style="left: 0.0pt; max-height: 322px; max-width: 476px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="160912">Note that in place of an actual series name, EViews substitutes the expression used to create the auto-series.</a></div>
+      <div class="Body_Text"><a name="164756">An auto-series may be treated as a standard series window so all of the series views and procedures are immediately available. To display a time series graph of the LOG(CP) auto-series, simply select </a><span class="Menu_Item">View/Graph...</span> from the series window toolbar and click <span class="Menu_Item">OK </span>to create a line graph:</div>
+      <div class="Picture"><a name="164760"><img class="Default" src="images/workdata.011.4.2.jpg" width="100%" style="left: 0.0pt; max-height: 398px; max-width: 488px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="160918">All of the standard series views and procedures are also accessible from the menus.</a></div>
+      <div class="Body_Text"><a name="160919">Note that if the data in the CP series are altered, the auto-series will reflect these changes. Suppose, for example, that we take the first four years of the CP series, and multiply theme by a factor of 10:</a></div>
+      <div class="Multi-line_Input"><a name="160920">smpl 1953m01 1956m12</a></div>
+      <div class="Multi-line_Input"><a name="160921">cp = cp*10</a></div>
+      <div class="Multi-line_Input"><a name="160922">smpl 1953m01 1958m12</a></div>
+      <div class="Body_Text"><a name="160923">The auto-series graph will automatically change to reflect the new data:</a></div>
+      <div class="Picture"><a name="160927"><img class="Default" src="images/workdata.011.4.3.jpg" width="100%" style="left: 0.0pt; max-height: 402px; max-width: 490px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="160928">In contrast, the values of the ordinary series LOGCP are not affected by the changes in the CP data.</a></div>
+      <div class="Body_Text"><a name="160929">Similarly, you may use an auto-series to compute a 12-period, backward-looking, geometric moving average of the </a><span class="Emphasis">updated </span>CP data. The command:</div>
+      <div class="Input"><a name="160930">show @exp(@movav(@log(cp),12))</a></div>
+      <div class="Body_Text"><a name="160931">will display the auto-series containing the geometric moving average. To view a line graph of the auto-series, select </a><span class="Menu_Item">View/Graph...</span> from the series window toolbar and click <span class="Menu_Item">OK</span>:</div>
+      <div class="Picture"><a name="160935"><img class="Default" src="images/workdata.011.4.4.jpg" width="100%" style="left: 0.0pt; max-height: 405px; max-width: 487px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="160936">Auto-series Across Pages</a></div>
+      <div class="Body_Text"><a name="172559">You may define use series in different workfile pages using the syntax </a><span class="Definition">pagename\seriesname</span>. Examples of useful places to use this functionality include group definitions, equation specifications, or when generating a new series.</div>
+      <div class="Body_Text"><a name="172560">If the two workfile pages are of differing frequency, EViews will use the default frequency conversion method for the series to convert the frequencies. There is no way to specify a different conversion method for auto-series. If you wish to fine-tune the frequency conversion, you must create a series link (</a><span class="Link"><a href="links-Series_Links.html#173163" title="Series Links">&#8220;Series Links&#8221;</a></span>) or copy the series from the other page. Notably, auto-series defined between panel and non-panel workfiles may not frequency convert as intended so we recommend the use of links in this setting.</div>
+      <div class="Body_Text"><a name="172878">An auto-series across pages may only be used to refer to the series itself and may not be used in an auto-series expression. You may not, for example, use an expression which takes the log of an auto-series across pages as a regressor in an equation. You may, however, use the auto-series in a series assignment, as in</a></div>
+      <div class="Input"><a name="173402">series myser = log(otherpage\yourser)</a></div>
+      <div class="Heading_4"><a name="172514">Naming an Auto-series</a></div>
+      <div class="Body_Text"><a name="160937">The auto-series is deleted from your computer memory when you close the series window containing the auto-series. For more permanent expression handling, you may convert the auto-series into an auto-updating series that will be kept in the workfile, by assigning a name to the auto-series. </a></div>
+      <div class="Body_Text"><a name="160938">Simply click on the </a><span class="Menu_Item">Name</span> button on the series toolbar, or select <span class="Menu_Item">Object/Name... </span>from the main menu, and provide a name. EViews will create an auto-updating series with that name in the workfile, and will assign the auto-series expression as the formula used in updating the series. For additional details, see <span class="Link"><a href="newser-Auto-Updating_Series.html#134974" title="Auto-Updating Series">&#8220;Auto-Updating Series&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="160944">Using Auto-series in Groups</a></div>
+      <div class="Body_Text"><a name="160945">One of the more useful ways of working with auto-series is to include them in a group. Simply create the group as usual, using an expression in place of a series name, as appropriate. For example, if you select </a><span class="Menu_Item">Object/New Object.../Group</span>, and enter:</div>
+      <div class="Input"><a name="160946">cp @exp(@movav(@log(cp),12))</a></div>
+      <div class="Body_Text"><a name="160947">you will create a group containing two series: the ordinary series CP, and the auto-series representing the geometric moving average. We may then use the group object graphing routines to compare the original series with the smoothed series. Select </a><span class="Menu_Item">View/Graph...</span> from the group window toolbar and click <span class="Menu_Item">OK</span>:</div>
+      <div class="Picture"><a name="160953"><img class="Default" src="images/workdata.011.4.5.jpg" width="100%" style="left: 0.0pt; max-height: 412px; max-width: 492px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><span class="Link"><a href="workdata-Groups.html#160972" title="Groups" name="160957">&#8220;Groups&#8221;</a></span> below describes other useful techniques for working with auto-series.</div>
+      <div class="Heading_4"><a name="160958">Using Auto-Series in Estimation</a></div>
+      <div class="Body_Text"><a name="160961">One method of using auto-series in estimation is to allow expressions as right-hand side variables. Thus, you could estimate an equation with </a><span class="In-line_input">log(x)</span> or <span class="In-line_input">exp(x+z)</span> as an explanatory variable.</div>
+      <div class="Body_Text"><a name="160962">EViews goes a step beyond this use of auto-series, by allowing you to use auto-series as the dependent variable in estimation. Thus, if you want to regress the log of Y on explanatory variables, you don&#8217;t have to create a new variable LOGY. Instead, you can use the expression </a><span class="In-line_input">log(y)</span>as your dependent variable.</div>
+      <div class="Body_Text"><a name="160963">When you forecast using an equation with an auto-series dependent variable, EViews will, if possible, forecast the untransformed dependent variable and adjust the estimated confidence interval accordingly. For example, if the dependent variable is specified as </a><span class="In-line_input">log(y)</span>, EViews will allow you to forecast the level of Y, and will compute the asymmetric confidence interval. See <span class="Link"><a href="Forecast-Forecasting_from_an_Equation.html#181233" title="Forecasting from an Equation">&#8220;Forecasting from an Equation&#8221;</a></span> for additional details.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,964 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Background</title>
+    <link rel="StyleSheet" href="css/vecm.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="vecm-Vector_Error_Correction_Models_(VECMs).html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="vecm-Estimating_VEC_Models_in_EViews.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="vecm-Vector_Error_Correction_Models_(VECMs).html">Vector Error Correction Models (VECMs)</a> : Background</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="272816">Background</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#272817">Cointegration</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#272915">The VECM Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#272920">The Basic VECM</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#273219">Basic VECM Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#273337">VECMs with Deterministics</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#273339">The Classical Approach</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#273520">The Johansen, Hendry, and Juselius Approach</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#273631">Estimating VECM with Deterministics</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#273841">Popular VECM Deterministic Assumptions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#277205">Exogenous Variables in VECMs</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="272817">Cointegration</a></div>
+      <div class="Body_Text"><a name="272818">An understanding of VECMs requires a discussion of the notion of system-wide integration and equilibrium. Some important definitions will set the stage for our discussion:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="272831">An individual time series <img class="Default EquationGraphic" src="images/vecm.057.2.001.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> is said to be integrated of order <img class="Default EquationGraphic" src="images/vecm.057.2.002.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.003.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 73px; top: 0.0pt" alt="" />, if <img class="Default EquationGraphic" src="images/vecm.057.2.004.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 43px; top: 0.0pt" alt="" /> is stationary, or <img class="Default EquationGraphic" src="images/vecm.057.2.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, while <img class="Default EquationGraphic" src="images/vecm.057.2.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 62px; top: 0.0pt" alt="" /> is non-stationary. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="272844">A system of <img class="Default EquationGraphic" src="images/vecm.057.2.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> time series <img class="Default EquationGraphic" src="images/vecm.057.2.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 173px; top: 0.0pt" alt="" /> is said to be integrated of order <img class="Default EquationGraphic" src="images/vecm.057.2.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 67px; top: 0.0pt" alt="" />, if at least one of its constituent series <img class="Default EquationGraphic" src="images/vecm.057.2.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> is <img class="Default EquationGraphic" src="images/vecm.057.2.012.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, and no series is <img class="Default EquationGraphic" src="images/vecm.057.2.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/vecm.057.2.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" />. Note that this definition does not preclude a subset of the system series from being of lower order (or even stationary).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="272866">An <img class="Default EquationGraphic" src="images/vecm.057.2.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> system is said to be cointegrated if a linear combination of the constituent series is integrated of (lower) order, <img class="Default EquationGraphic" src="images/vecm.057.2.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/vecm.057.2.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />. Further, a system <img class="Default EquationGraphic" src="images/vecm.057.2.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> that is integrated of order <img class="Default EquationGraphic" src="images/vecm.057.2.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> is said to be cointegrated of order <img class="Default EquationGraphic" src="images/vecm.057.2.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> if there exists a cointegrating <img class="Default EquationGraphic" src="images/vecm.057.2.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />-vector <img class="Default EquationGraphic" src="images/vecm.057.2.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> such that <img class="Default EquationGraphic" src="images/vecm.057.2.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 81px; top: 0.0pt" alt="" />. Notice that <img class="Default EquationGraphic" src="images/vecm.057.2.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is not unique since multiplication by any nonzero constant yields a different cointegrating vector.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="272897">To simplify the following discussion, we will, without loss of generality, restrict <img class="Default EquationGraphic" src="images/vecm.057.2.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> to 1 and <img class="Default EquationGraphic" src="images/vecm.057.2.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> to 0 so that <img class="Default EquationGraphic" src="images/vecm.057.2.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 67px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 79px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="272907">The concept of cointegration introduced above is closely related to the notion of economic equilibrium. While individual economic processes may have volatile paths of evolution, there may be global forces which eventually produce stable paths of evolution. In particular, a group of economic variables may individually be <img class="Default EquationGraphic" src="images/vecm.057.2.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, or non-stationary, but there may exist cointegrated processes (linear combinations) which are <img class="Default EquationGraphic" src="images/vecm.057.2.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, or stationary. In this case, the cointegrated process is mean-reverting so that it while it may deviate from its expected value in the short-run, it eventually settles at its long-run (asymptotic) expected value.</a></div>
+      <div class="Heading_4"><a name="272915">The VECM Specification</a></div>
+      <div class="Body_Text"><a name="272919">When <img class="Default EquationGraphic" src="images/vecm.057.2.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 67px; top: 0.0pt" alt="" />, the traditional levels-form VAR process is not the most useful representation since both the number and explicit form of any cointegrating relations are not easily obtained from this specification. Consequently, when analyzing cointegrating relationships we typically work with the VECM representation of the process.</a></div>
+      <div class="Heading_5"><a name="272920">The Basic VECM</a></div>
+      <div class="Body_Text"><a name="272924">Consider a VAR process of order <img class="Default EquationGraphic" src="images/vecm.057.2.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.033.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="272939">where <img class="Default EquationGraphic" src="images/vecm.057.2.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 173px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/vecm.057.2.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />-vector of endogenous variables, <img class="Default EquationGraphic" src="images/vecm.057.2.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 82px; top: 0.0pt" alt="" /> are <img class="Default EquationGraphic" src="images/vecm.057.2.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" /> matrices of coefficients, and the residual vector <img class="Default EquationGraphic" src="images/vecm.057.2.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 176px; top: 0.0pt" alt="" /> is distributed with mean 0 and variance matrix <img class="Default EquationGraphic" src="images/vecm.057.2.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />. Note that for simplicity, we assume that there are no deterministic terms in the VAR. This restriction is relaxed in the discussion of </a><span class="Link"><a href="#273337" title="Background">&#8220;VECMs with Deterministics&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="272952">The stability of the system is determined by the solutions to the determinant of the characteristic polynomial,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.040.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="272958">The process is said to be </a><span class="Definition">stable</span> if the roots of the polynomial lie outside the complex unit circle, or have modulus greater than 1.</div>
+      <div class="Body_Text"><a name="272965">Note that when at least one constituent series <img class="Default EquationGraphic" src="images/vecm.057.2.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 25px; top: 0.0pt" alt="" /> is <img class="Default EquationGraphic" src="images/vecm.057.2.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, the VAR process is </a><span class="Definition">unstable</span> since we may show that</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.043.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.3)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="272976">is singular, <img class="Default EquationGraphic" src="images/vecm.057.2.044.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 88px; top: 0.0pt" alt="" />, and </a><span class="Link"><a href="#272957" title="Background">Equation&nbsp;(45.2)</a></span> is satisfied for roots lying on the unit circle.</div>
+      <div class="Body_Text"><a name="272980">In general, <img class="Default EquationGraphic" src="images/vecm.057.2.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> plays a key role in identifying both the number and nature of any cointegrating relationships. To better understand this role, we subtract <img class="Default EquationGraphic" src="images/vecm.057.2.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> from both sides of the VAR representation </a><span class="Link"><a href="#272929" title="Background">Equation&nbsp;(45.1)</a></span> and rearrange terms to obtain the VECM representation:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.047.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.4)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="272992">where</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.048.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273000">for <img class="Default EquationGraphic" src="images/vecm.057.2.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 118px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="273001">To obtain this representation, we first take the VAR representation and subtract off the lag of the endogenous variables from both sides:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.050.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273007">Next, we reparameterize the model by rewriting the remaining elements of the right-hand side as differences. Rewriting with the last two elements of the expression, we have</a></div>
+      <div class="Multi-line_Eq_No_Number"><a name="273011"><img class="Default EquationGraphic" src="images/vecm.057.2.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 534px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="273012">where</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.052.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273018">Similarly, we may transform the last two non-difference terms in this new expression. Focusing on just those two terms, we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.053.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273023">Define </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.054.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273032">Then we may rewrite the <img class="Default EquationGraphic" src="images/vecm.057.2.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 65px; top: 0.0pt" alt="" /> term as a difference using</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.056.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273037">Notice that this process of rewriting the last two non-difference terms forms a recursion. For the remaining non-difference pairs, we may write,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.057.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.11)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273052">for <img class="Default EquationGraphic" src="images/vecm.057.2.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 118px; top: 0.0pt" alt="" />. Substituting recursion </a><span class="Link"><a href="#273042" title="Background">Equation&nbsp;(45.11)</a></span> into <span class="Link"><a href="#273006" title="Background">Equation&nbsp;(45.6)</a></span>, we have:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.059.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.12)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273067">Then, using the initial value <img class="Default EquationGraphic" src="images/vecm.057.2.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" /> from </a><span class="Link"><a href="#273017" title="Background">Equation&nbsp;(45.7)</a></span> and the recursion <span class="Link"><a href="#273028" title="Background">Equation&nbsp;(45.9)</a></span>, we have</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.061.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.13)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273072">Note that we may recover the parameters of the VAR from the parameters of the VECM using the relations</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.062.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273080">for <img class="Default EquationGraphic" src="images/vecm.057.2.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 91px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="273090">To see the central role of <img class="Default EquationGraphic" src="images/vecm.057.2.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> in cointegration analysis, we focus on <img class="Default EquationGraphic" src="images/vecm.057.2.065.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, the matrix rank of <img class="Default EquationGraphic" src="images/vecm.057.2.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/vecm.057.2.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 71px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="273106">Since our discussion assumes that <img class="Default EquationGraphic" src="images/vecm.057.2.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is <img class="Default EquationGraphic" src="images/vecm.057.2.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, it follows that <img class="Default EquationGraphic" src="images/vecm.057.2.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 88px; top: 0.0pt" alt="" />, and the <img class="Default EquationGraphic" src="images/vecm.057.2.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 45px; top: 0.0pt" alt="" /> are <img class="Default EquationGraphic" src="images/vecm.057.2.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> for all <img class="Default EquationGraphic" src="images/vecm.057.2.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" />. There are two important implications of these conditions. First, since <img class="Default EquationGraphic" src="images/vecm.057.2.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 88px; top: 0.0pt" alt="" />, it follows that <img class="Default EquationGraphic" src="images/vecm.057.2.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> has reduced rank (<img class="Default EquationGraphic" src="images/vecm.057.2.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" />). Second, since the <img class="Default EquationGraphic" src="images/vecm.057.2.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 45px; top: 0.0pt" alt="" /> are all <img class="Default EquationGraphic" src="images/vecm.057.2.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />, to balance the order of both sides of </a><span class="Link"><a href="#272991" title="Background">Equation&nbsp;(45.4)</a></span>, <img class="Default EquationGraphic" src="images/vecm.057.2.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 50px; top: 0.0pt" alt="" /> must also be <img class="Default EquationGraphic" src="images/vecm.057.2.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />. </div>
+      <div class="Body_Text"><a name="273152">For any <img class="Default EquationGraphic" src="images/vecm.057.2.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />, there exist <img class="Default EquationGraphic" src="images/vecm.057.2.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> matrices <img class="Default EquationGraphic" src="images/vecm.057.2.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> each of rank <img class="Default EquationGraphic" src="images/vecm.057.2.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, such that </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.086.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273160">where <img class="Default EquationGraphic" src="images/vecm.057.2.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> is the transpose operator. Then we may write</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.088.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273171">and given our assumptions, <img class="Default EquationGraphic" src="images/vecm.057.2.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 52px; top: 0.0pt" alt="" /> must be an <img class="Default EquationGraphic" src="images/vecm.057.2.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> linear combination of the series in the system, with <img class="Default EquationGraphic" src="images/vecm.057.2.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> representing the cointegrating rank, and <img class="Default EquationGraphic" src="images/vecm.057.2.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> the <img class="Default EquationGraphic" src="images/vecm.057.2.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> cointegrating matrix. <img class="Default EquationGraphic" src="images/vecm.057.2.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is typically referred to as the loading matrix.</a></div>
+      <div class="Body_Text"><a name="273187">Note that although <img class="Default EquationGraphic" src="images/vecm.057.2.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is not unique, a suitable normalization is possible by rearranging the variables so that the first <img class="Default EquationGraphic" src="images/vecm.057.2.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> rows of the matrix are linearly independent:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.097.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273201">where <img class="Default EquationGraphic" src="images/vecm.057.2.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 52px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/vecm.057.2.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 83px; top: 0.0pt" alt="" /> matrix. See Lütkepohl (2005) for details.</a></div>
+      <div class="Body_Text"><a name="273211">Lastly if <img class="Default EquationGraphic" src="images/vecm.057.2.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 50px; top: 0.0pt" alt="" />, balancing both sides of </a><span class="Link"><a href="#273006" title="Background">Equation&nbsp;(45.6)</a></span> requires <img class="Default EquationGraphic" src="images/vecm.057.2.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 54px; top: 0.0pt" alt="" />. In this case we say that there are no cointegrating relations since no linear combinations of <img class="Default EquationGraphic" src="images/vecm.057.2.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> are <img class="Default EquationGraphic" src="images/vecm.057.2.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />.</div>
+      <div class="Heading_5"><a name="273219">Basic VECM Estimation</a></div>
+      <div class="Body_Text"><a name="273220">While there are several methods for estimation of VECMs, we focus on the maximum likelihood (ML) variant, also known as </a><span class="Definition">reduced rank regression </span>(RRR) (see Johansen (1995) and Lütkepohl (2005) for a detailed exposition). </div>
+      <div class="Body_Text"><a name="273224">Formally, RRR assumes a known cointegration rank <img class="Default EquationGraphic" src="images/vecm.057.2.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, Gaussian innovation vectors <img class="Default EquationGraphic" src="images/vecm.057.2.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, a time dimension of length <img class="Default EquationGraphic" src="images/vecm.057.2.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />, and is best described using the VECM matrix representation (</a><span class="Link"><a href="#272991" title="Background">Equation&nbsp;(45.4)</a></span>):</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.107.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.18)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273239">where</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.108.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273249">The RRR estimator is then the maximizer of the log-likelihood objective function:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.109.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273255">Johanson (1995) shows that optimizing the likelihood is equivalent to solving the eigenvalue problem</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.110.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273269">under the constraint <img class="Default EquationGraphic" src="images/vecm.057.2.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 104px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/vecm.057.2.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 127px; top: 0.0pt" alt="" /> are the <img class="Default EquationGraphic" src="images/vecm.057.2.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> eigenvalues associated with eigenvector matrix <img class="Default EquationGraphic" src="images/vecm.057.2.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 127px; top: 0.0pt" alt="" />, and</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.115.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273281">Solving the constrained eigenvalue problem yields <img class="Default EquationGraphic" src="images/vecm.057.2.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> that are the eigenvalues of the symmetric matrix</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.117.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273296">In terms of computation, note that <img class="Default EquationGraphic" src="images/vecm.057.2.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> are the residuals from regression of the <img class="Default EquationGraphic" src="images/vecm.057.2.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 28px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.121.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 31px; top: 0.0pt" alt="" /> on the <img class="Default EquationGraphic" src="images/vecm.057.2.122.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 28px; top: 0.0pt" alt="" />. Further, <img class="Default EquationGraphic" src="images/vecm.057.2.123.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 42px; top: 0.0pt" alt="" /> may be obtained by first diagonalizing <img class="Default EquationGraphic" src="images/vecm.057.2.124.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> using the solution to the auxiliary eigenvalue problem</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.125.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.24)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273316">to obtain eigenvalues <img class="Default EquationGraphic" src="images/vecm.057.2.126.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 125px; top: 0.0pt" alt="" /> and associated eigenvector matrix <img class="Default EquationGraphic" src="images/vecm.057.2.127.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 138px; top: 0.0pt" alt="" />. The square root of the inverse of <img class="Default EquationGraphic" src="images/vecm.057.2.128.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 27px; top: 0.0pt" alt="" /> can then be estimated as</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.129.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.25)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273330">and the log-likelihood </a><span class="Link"><a href="#273254" title="Background">Equation&nbsp;(45.20)</a></span> is maximized at</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.130.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.26)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_4"><a name="273337">VECMs with Deterministics</a></div>
+      <div class="Body_Text"><a name="273338">The discussion thus far has ignored the presence of deterministic terms in the VAR specification. The inclusion of deterministics has important implications for the estimation and interpretation of VECMs, and there are different approaches to incorporating these terms.</a></div>
+      <div class="Heading_5"><a name="273339">The Classical Approach</a></div>
+      <div class="Body_Text"><a name="273340">Following Lütkepohl (2005), the classical approach to incorporating deterministic terms in VECMs is to let <img class="Default EquationGraphic" src="images/vecm.057.2.131.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> follow a basic VAR(<img class="Default EquationGraphic" src="images/vecm.057.2.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />) as in </a><span class="Link"><a href="#272929" title="Background">Equation&nbsp;(45.1)</a></span>, and to work with the augmented process,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.133.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273360">where <img class="Default EquationGraphic" src="images/vecm.057.2.134.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" /> denotes any <img class="Default EquationGraphic" src="images/vecm.057.2.135.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />-dimensional deterministic function of time, often a low-order polynomial in <img class="Default EquationGraphic" src="images/vecm.057.2.136.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="273370">Substituting <img class="Default EquationGraphic" src="images/vecm.057.2.137.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 111px; top: 0.0pt" alt="" /> into the VECM </a><span class="Link"><a href="#272991" title="Background">Equation&nbsp;(45.4)</a></span>, we obtain:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.138.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273388">For example, if <img class="Default EquationGraphic" src="images/vecm.057.2.139.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" /> is a constant function, <img class="Default EquationGraphic" src="images/vecm.057.2.140.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 76px; top: 0.0pt" alt="" />, then <img class="Default EquationGraphic" src="images/vecm.057.2.141.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 78px; top: 0.0pt" alt="" /> for all <img class="Default EquationGraphic" src="images/vecm.057.2.142.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, and we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.143.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273397">In this case, the constant function <img class="Default EquationGraphic" src="images/vecm.057.2.144.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" /> may either be viewed as an intercept inside the cointegrating relation, <img class="Default EquationGraphic" src="images/vecm.057.2.145.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 107px; top: 0.0pt" alt="" />, or simply as an overall intercept <img class="Default EquationGraphic" src="images/vecm.057.2.146.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> in the VECM. Importantly, in the latter case, the overall <img class="Default EquationGraphic" src="images/vecm.057.2.147.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is said to be </a><span class="Emphasis">restricted</span> since it must satisfy the restriction <img class="Default EquationGraphic" src="images/vecm.057.2.148.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 87px; top: 0.0pt" alt="" /> imposed by the cointegrating relationship.</div>
+      <div class="Body_Text"><a name="273422">Likewise, if <img class="Default EquationGraphic" src="images/vecm.057.2.149.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" /> is a linear trend, <img class="Default EquationGraphic" src="images/vecm.057.2.150.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 119px; top: 0.0pt" alt="" />, then <img class="Default EquationGraphic" src="images/vecm.057.2.151.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 87px; top: 0.0pt" alt="" /> for all <img class="Default EquationGraphic" src="images/vecm.057.2.152.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.153.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273431">In this case, the trend function <img class="Default EquationGraphic" src="images/vecm.057.2.154.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" /> may be included as a term in the cointegrating relation, <img class="Default EquationGraphic" src="images/vecm.057.2.155.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 148px; top: 0.0pt" alt="" /> along with the <img class="Default EquationGraphic" src="images/vecm.057.2.156.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 41px; max-width: 118px; top: 0.0pt" alt="" /> term appearing in the short-run dynamics, or as an overall intercept and trend in VECM (<img class="Default EquationGraphic" src="images/vecm.057.2.157.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 59px; top: 0.0pt" alt="" />). Notably, while the overall trend coefficient <img class="Default EquationGraphic" src="images/vecm.057.2.158.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is restricted by the cointegrating relationship, the constant <img class="Default EquationGraphic" src="images/vecm.057.2.159.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is </a><span class="Definition">unrestricted</span> as it contains free parameters unrelated to <img class="Default EquationGraphic" src="images/vecm.057.2.160.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> from the short-run dynamics.</div>
+      <div class="Body_Text"><a name="273450">Lütkepohl (2005) emphasizes the importance of the cointegrating restrictions in governing the dynamic behavior of the levels of <img class="Default EquationGraphic" src="images/vecm.057.2.161.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 26px; top: 0.0pt" alt="" />, noting that their removal induces additional deterministics in the integrated VAR representation of the VECM. For example, if the restriction on <img class="Default EquationGraphic" src="images/vecm.057.2.162.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> in </a><span class="Link"><a href="#273393" title="Background">Equation&nbsp;(45.29)</a></span> is removed, the corresponding integrated VAR specification will have a deterministic trend in the mean. Similarly, removing the restriction on <img class="Default EquationGraphic" src="images/vecm.057.2.163.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> in <span class="Link"><a href="#273427" title="Background">Equation&nbsp;(45.30)</a></span> will generate a quadratic trend in the VAR.</div>
+      <div class="Body_Text"><a name="273466">We can make the separation between restricted and unrestricted deterministics concrete by re-parameterizing </a><span class="Link"><a href="#273375" title="Background">Equation&nbsp;(45.28)</a></span> to provide a general framework for a VECM with deterministics:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.164.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273481">where <img class="Default EquationGraphic" src="images/vecm.057.2.165.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 33px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.166.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 42px; top: 0.0pt" alt="" /> are vector-valued functions denoting unrestricted and restricted deterministics, respectively, with corresponding coefficients <img class="Default EquationGraphic" src="images/vecm.057.2.167.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.168.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. <img class="Default EquationGraphic" src="images/vecm.057.2.169.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 33px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.170.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 42px; top: 0.0pt" alt="" /> are assumed to be exclusive so that any deterministic function in <img class="Default EquationGraphic" src="images/vecm.057.2.171.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 33px; top: 0.0pt" alt="" /> is not included in <img class="Default EquationGraphic" src="images/vecm.057.2.172.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 42px; top: 0.0pt" alt="" />, and vice versa. For the constant function <img class="Default EquationGraphic" src="images/vecm.057.2.173.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 76px; top: 0.0pt" alt="" /> above, <img class="Default EquationGraphic" src="images/vecm.057.2.174.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 33px; top: 0.0pt" alt="" /> is empty and <img class="Default EquationGraphic" src="images/vecm.057.2.175.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 92px; top: 0.0pt" alt="" />. For the linear trend function <img class="Default EquationGraphic" src="images/vecm.057.2.176.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 119px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.177.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 84px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/vecm.057.2.178.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 90px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="273518">Lastly, note that while this discussion has focused on deterministic functions of time, the framework allows for the consideration of other types of exogenous variables which enter either the restricted cointegrating or the unrestricted transitory space.</a></div>
+      <div class="Heading_5"><a name="273520">The Johansen, Hendry, and Juselius Approach</a></div>
+      <div class="Body_Text"><a name="273521">An alternative treatment of deterministics follows the conventions outlined in Johansen (1995), Hendry and Juselius (2001), and Juselius (2006), which we will term the JHJ approach. The approach </a><span class="Emphasis">begins</span> with the VECM specification:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.179.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273533">By virtue of cointegration, both <img class="Default EquationGraphic" src="images/vecm.057.2.180.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 32px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.181.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 52px; top: 0.0pt" alt="" /> are stationary around their expected values. Taking expectations of </a><span class="Link"><a href="#273526" title="Background">Equation&nbsp;(45.32)</a></span> yields:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.182.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="277948">for</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.183.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273545">where <img class="Default EquationGraphic" src="images/vecm.057.2.184.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is the lag operator.</a></div>
+      <div class="Body_Text"><a name="273555">Let <img class="Default EquationGraphic" src="images/vecm.057.2.185.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 111px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.186.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 136px; top: 0.0pt" alt="" /> be the expected value paths of <img class="Default EquationGraphic" src="images/vecm.057.2.187.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 28px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.188.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 52px; top: 0.0pt" alt="" />. Then rewriting </a><span class="Link"><a href="#273541" title="Background">Equation&nbsp;(45.33)</a></span> in terms of the deterministic component <img class="Default EquationGraphic" src="images/vecm.057.2.189.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" /> yields,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.190.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.35)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="278574">Johansen (1995) and Juselius (2006) show that <img class="Default EquationGraphic" src="images/vecm.057.2.191.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 33px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.192.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 34px; top: 0.0pt" alt="" /> may be thought of as decompositions of <img class="Default EquationGraphic" src="images/vecm.057.2.193.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" /> into components in the orthogonal directions of <img class="Default EquationGraphic" src="images/vecm.057.2.194.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.195.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" />. Since <img class="Default EquationGraphic" src="images/vecm.057.2.196.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is the weighting matrix for the expected congregating relation <img class="Default EquationGraphic" src="images/vecm.057.2.197.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 34px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.198.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> are orthogonal weights for the expected common trends <img class="Default EquationGraphic" src="images/vecm.057.2.199.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 33px; top: 0.0pt" alt="" /> (transitory variables).</a></div>
+      <div class="Body_Text"><a name="278111">It follows that this expression additively decomposes the deterministic function <img class="Default EquationGraphic" src="images/vecm.057.2.200.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" /> into the space spanned by the transitory variables <img class="Default EquationGraphic" src="images/vecm.057.2.201.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 28px; top: 0.0pt" alt="" />, and the space spanned by the cointegrating relations <img class="Default EquationGraphic" src="images/vecm.057.2.202.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 52px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="278100">What distinguishes this decomposition from the classical approach is that each coefficient vector <img class="Default EquationGraphic" src="images/vecm.057.2.203.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" /> can itself be decomposed into the spaces spanned by <img class="Default EquationGraphic" src="images/vecm.057.2.204.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.205.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" />. As discussed in Johansen (1995) and Juselius (2006), this result follows from a family of identities similar to</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.206.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="278972">Thus, each deterministic term can be decomposed into orthogonal components so that it appears simultaneously in the unrestricted (transitory) and restricted (cointegrated) spaces.</a></div>
+      <div class="Body_Text"><a name="273606">For example, when <img class="Default EquationGraphic" src="images/vecm.057.2.207.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 76px; top: 0.0pt" alt="" /> is a constant function, we have the decomposition,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.208.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="279210">where <img class="Default EquationGraphic" src="images/vecm.057.2.209.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 136px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.210.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 140px; top: 0.0pt" alt="" />. In other words, <img class="Default EquationGraphic" src="images/vecm.057.2.211.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 87px; top: 0.0pt" alt="" /> <img class="Default EquationGraphic" src="images/vecm.057.2.212.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 163px; top: 0.0pt" alt="" /> and the VECM in </a></span><span class="Link"><a href="#273526" title="Background">Equation&nbsp;(45.32)</a></span> may be written as:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.213.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.38)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273620">Similarly, when <img class="Default EquationGraphic" src="images/vecm.057.2.214.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 119px; top: 0.0pt" alt="" /> is a linear trend function, the following decompositions follow:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.215.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.39)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="279350">so that <img class="Default EquationGraphic" src="images/vecm.057.2.216.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 204px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.217.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 141px; top: 0.0pt" alt="" />. In this case the VECM in </a><span class="Link"><a href="#273526" title="Background">Equation&nbsp;(45.32)</a></span> is given by</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.218.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.40)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_5"><a name="273631">Estimating VECM with Deterministics</a></div>
+      <div class="Body_Text"><a name="273632">Estimation of VECMs with deterministics requires modification of the approach outlined in </a><span class="Link"><a href="#273219" title="Background">&#8220;Basic VECM Estimation&#8221;</a></span>. </div>
+      <div class="Body_Text"><a name="273639">Deterministic specifications which derive from the classical approach in </a><span class="Link"><a href="#273375" title="Background">Equation&nbsp;(45.28)</a></span> are accommodated by including the restricted deterministic regressors in the cointegrating space, and the unrestricted deterministics in the overall VECM. We modify <span class="Link"><a href="#273238" title="Background">Equation&nbsp;(45.18)</a></span> to provide:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.219.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.41)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273647">where</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.220.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.42)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273665">where <img class="Default EquationGraphic" src="images/vecm.057.2.221.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.222.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 33px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.223.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.224.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 42px; top: 0.0pt" alt="" /> are the unrestricted and restricted deterministic components and coefficients, respectively.</a></div>
+      <div class="Body_Text"><a name="273666">When deterministics are incorporated using the JHJ convention, the estimator must allow for the possibility that the same deterministic term can appear both inside the cointegrating equation and outside it. </a></div>
+      <div class="Body_Text"><a name="273667">It is useful to divide the cointegrating regressors and coefficients into those present only inside the cointegrating equation (<img class="Default EquationGraphic" src="images/vecm.057.2.225.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 28px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.226.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />), those present only outside the equation (<img class="Default EquationGraphic" src="images/vecm.057.2.227.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.228.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />), and those that are both inside and outside the cointegrating relation (<img class="Default EquationGraphic" src="images/vecm.057.2.229.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 28px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.230.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/vecm.057.2.231.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />) so that we have <img class="Default EquationGraphic" src="images/vecm.057.2.232.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 134px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.233.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 117px; top: 0.0pt" alt="" />, with coefficients <img class="Default EquationGraphic" src="images/vecm.057.2.234.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 98px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/vecm.057.2.235.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 96px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="273701">One estimation approach hinges on the ideas that the cointegrating (equilibrium) equation is stable around its mean of zero:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.236.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.43)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273706">Given this requirement, estimation may be conducted in three steps:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273710">Step 1: All dual deterministic regressors <img class="Default EquationGraphic" src="images/vecm.057.2.237.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 28px; top: 0.0pt" alt="" /> are first removed from inside the cointegrating relationship, but retained outside. Then <img class="Default EquationGraphic" src="images/vecm.057.2.238.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.239.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.240.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> are estimated using the classical approach outlined in </a><span class="Link"><a href="#273335" title="Background">Equation&nbsp;(45.26)</a></span> and <span class="Link"><a href="#273652" title="Background">Equation&nbsp;(45.42)</a></span> using deterministics <img class="Default EquationGraphic" src="images/vecm.057.2.241.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 28px; top: 0.0pt" alt="" /> and coefficients <img class="Default EquationGraphic" src="images/vecm.057.2.242.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273741">Step 2: Given the estimates <img class="Default EquationGraphic" src="images/vecm.057.2.243.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 15px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.244.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> from Step 1, <img class="Default EquationGraphic" src="images/vecm.057.2.245.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> is estimated by choosing values of the coefficients so that the cointegrating equation has conditional mean zero:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.246.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.44)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273749">Step 3: Using the estimates from Steps 1 and 2, the short-run coefficients <img class="Default EquationGraphic" src="images/vecm.057.2.247.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 25px; top: 0.0pt" alt="" /> are estimated using appropriately modified versions of the expressions in </a><span class="Link"><a href="#273335" title="Background">Equation&nbsp;(45.26)</a></span> and <span class="Link"><a href="#273652" title="Background">Equation&nbsp;(45.42)</a></span> with deterministics <img class="Default EquationGraphic" src="images/vecm.057.2.248.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> and coefficients <img class="Default EquationGraphic" src="images/vecm.057.2.249.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="273762">While there is no single approach for estimating the coefficients in Step 2 above, a simple linear regression of <img class="Default EquationGraphic" src="images/vecm.057.2.250.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 156px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/vecm.057.2.251.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 83px; top: 0.0pt" alt="" /> satisfies the desired condition. When the deterministic regressors are the usual constant and trend, this regression reduces to a familiar least squares detrending of the cointegrating relation. See also Proposition 7.5 in Lütkepohl (2005). This is the method employed by EViews.</a></div>
+      <div class="Body_Text"><a name="273769">For example, consider a model where the constant and trend terms appear both inside and outside the cointegrating equation:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.252.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.45)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273774">Step 1 estimates the classical model,</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.253.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.46)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="273797">to obtain estimates <img class="Default EquationGraphic" src="images/vecm.057.2.254.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 15px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.255.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, along with <img class="Default EquationGraphic" src="images/vecm.057.2.256.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.257.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/vecm.057.2.258.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 20px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/vecm.057.2.259.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 118px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273798">Step 2 uses the least squares regression,</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.260.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.47)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="273809">to obtain estimates <img class="Default EquationGraphic" src="images/vecm.057.2.261.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.262.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273819">Step 3 updates the estimates of <img class="Default EquationGraphic" src="images/vecm.057.2.263.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.264.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, and the <img class="Default EquationGraphic" src="images/vecm.057.2.265.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> using standard regression,</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.266.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.48)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="273836">The final coefficient estimates are given by <img class="Default EquationGraphic" src="images/vecm.057.2.267.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 15px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.268.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> from Step 1, <img class="Default EquationGraphic" src="images/vecm.057.2.269.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.270.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> from Step 2, and <img class="Default EquationGraphic" src="images/vecm.057.2.271.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 25px; top: 0.0pt" alt="" /> from Step 3.</a></div>
+      <div class="Heading_5"><a name="273841">Popular VECM Deterministic Assumptions</a></div>
+      <div class="Body_Text"><a name="273842">The empirical literature has centered around five scenarios involving deterministic terms:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273849">Case 1: No deterministics, so that <img class="Default EquationGraphic" src="images/vecm.057.2.272.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 68px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.273.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 149px; top: 0.0pt" alt="" /> in the classical framework, and <img class="Default EquationGraphic" src="images/vecm.057.2.274.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 128px; top: 0.0pt" alt="" /> in the JHJ approach.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273862">Case 2: Restricted constant, so that <img class="Default EquationGraphic" src="images/vecm.057.2.275.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 84px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.276.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 92px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.277.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" /> in the classical formulation, and <img class="Default EquationGraphic" src="images/vecm.057.2.278.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 71px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.279.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 105px; top: 0.0pt" alt="" /> under JHJ.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="273869">Here, the constant is restricted to the cointegrating space and does not appear in the transitory space. The cointegrating mean is non-zero and the cointegrating equation restriction ensures that no linear trends exist in the corresponding VAR.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273879">Case 3: Unrestricted constant, so that <img class="Default EquationGraphic" src="images/vecm.057.2.280.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 84px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.281.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 48px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.282.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 92px; top: 0.0pt" alt="" /> in the classical approach, and <img class="Default EquationGraphic" src="images/vecm.057.2.283.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 105px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.284.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 71px; top: 0.0pt" alt="" /> for JHJ.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="273886">In this case, the constant appears in the transitory space but does not appear in the cointegrating space. The model has no deterministics in the cointegrating space, and exhibits a linear trend in the VAR representation.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273887">Case 3 (JHJ): Unrestricted constant in both the transitory and the cointegrating space so that <img class="Default EquationGraphic" src="images/vecm.057.2.285.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 105px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.286.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 105px; top: 0.0pt" alt="" />. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="273894">This JHJ model has a non-zero mean in the cointegrating relations, and has a linear trend in the corresponding VAR. Note that this case reduces to classical Case 3 when the restriction <img class="Default EquationGraphic" src="images/vecm.057.2.287.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 57px; top: 0.0pt" alt="" /> is imposed.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273904">Case 4: Unrestricted constant and restricted trend so that <img class="Default EquationGraphic" src="images/vecm.057.2.288.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 84px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.289.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 48px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.290.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 90px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.291.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 48px; top: 0.0pt" alt="" /> in the classical approach; <img class="Default EquationGraphic" src="images/vecm.057.2.292.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 105px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.293.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 85px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/vecm.057.2.294.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" /> under JHJ.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="273920">Here, a constant appears in the transitory space but does not appear in the cointegrating space, and the trend term appears only in the cointegrating space. This model has a linear trend in the cointegrating relations, and has a linear trend in the corresponding VAR representation.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273924">Case 4 (JHJ): Unrestricted constant and restricted trend so that <img class="Default EquationGraphic" src="images/vecm.057.2.295.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 105px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.296.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 118px; top: 0.0pt" alt="" /> in the JHJ framework. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="273928">The constant appears in both the transitory space and the cointegrating space, while the trend term appears only in the cointegrating space. The model has a non-zero mean and non-zero trend in the cointegrating relations, and has a linear trend in the corresponding VAR formulation. Note that this case reduces to classical Case 4 when the restriction <img class="Default EquationGraphic" src="images/vecm.057.2.297.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 57px; top: 0.0pt" alt="" /> is imposed.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273938">Case 5: Unrestricted constant and trend, so that <img class="Default EquationGraphic" src="images/vecm.057.2.298.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 99px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.299.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 74px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.300.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 92px; top: 0.0pt" alt="" /> in the classical approach; <img class="Default EquationGraphic" src="images/vecm.057.2.301.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 119px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.302.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 74px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.303.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 71px; top: 0.0pt" alt="" /> under JHJ.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="273951">Here, the constant and trend appears in the transitory space. The model has a non-zero mean and non-zero trend in the cointegrating relations, and has a quadratic trend in the corresponding VAR.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="273958">Case 5 (JHJ): Unrestricted constant and trend, so that <img class="Default EquationGraphic" src="images/vecm.057.2.304.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 119px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.305.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 74px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.306.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 118px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/vecm.057.2.307.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 72px; top: 0.0pt" alt="" />. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="273965">In this case, the constant and trend appear in both the transitory and cointegrating spaces. The model has a non-zero mean and non-zero trend in the cointegrating relations, and has a quadratic trend in the corresponding VAR formulation. Note that this case reduces to classical Case 5 when the restrictions <img class="Default EquationGraphic" src="images/vecm.057.2.308.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 82px; top: 0.0pt" alt="" /> are imposed.</a></div>
+      <div class="Heading_4"><a name="277205">Exogenous Variables in VECMs</a></div>
+      <div class="Body_Text"><a name="277238">The endogenous variables <img class="Default EquationGraphic" src="images/vecm.057.2.309.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> in our VEC model are the variables whose dynamics and evolution are determined within the VEC system. Given the autoregressive nature of the model, these variables are necessarily correlated with the errors <img class="Default EquationGraphic" src="images/vecm.057.2.310.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="277356">Accordingly, a particularly convenient (albeit slightly restrictive) definition of the exogenous variables in a VEC setting is any set of variables <img class="Default EquationGraphic" src="images/vecm.057.2.311.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> which are independent of the error process <img class="Default EquationGraphic" src="images/vecm.057.2.312.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, and included in the VEC specification and estimated alongside their endogenous counterparts. Notice by this definition, deterministic regressors are examples of exogenous variables in VEC models. </a></div>
+      <div class="Body_Text"><a name="279503">The discussion on deterministics in </a><span class="Link"><a href="#273337" title="Background">&#8220;</a></span><span class="Default_Paragraph_Font" style="color: #0000ff"><a href="#273337" title="Background">Vector Error Correction Models (VECMs)</a></span><span class="Link"><a href="#273337" title="Background">&#8221;</a></span> is applicable to arbitrary exogenous regressors, not just those which are deterministic regressors involving explicit polynomials of time. Thus incorporation of exogenous variables requires no meaningful adjustment to the estimation procedures outlined in <span class="Link"><a href="#273631" title="Background">&#8220;Estimating VECM with Deterministics&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="277873">More formally, let <img class="Default EquationGraphic" src="images/vecm.057.2.313.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> denote a set of exogenous variables, and for generality, suppose we wish to include an order </a><span class="In-line_math">q </span>distributed lag of <img class="Default EquationGraphic" src="images/vecm.057.2.314.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> in the VECM. </div>
+      <div class="Body_Text"><a name="282682">Starting with the classical convention for deterministics in </a><span class="Link"><a href="#273353" title="Background">Equation&nbsp;(45.27)</a></span>, we specify a VAR(p) process where the endogenous variables are autoregressive of order p and whose difference specification includes exogenous variables that are distributed lag variables of order q. Then the exogenous component is assumed to be:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.315.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.49)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="998402">where <img class="Default EquationGraphic" src="images/vecm.057.2.316.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> are coefficient matrices associated with the lags of the exogenous variables. </a></div>
+      <div class="Body_Text"><a name="282540">Lütkepohl (2005) argues that the VEC representation of this model can assume two forms. In the first form, the endogenous variables <img class="Default EquationGraphic" src="images/vecm.057.2.317.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> are cointegrated among themselves, but not with the set of exogenous variables <img class="Default EquationGraphic" src="images/vecm.057.2.318.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> In this case, the VEC representation is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.319.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.50)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="281069">In the second form the endogenous variables are not only cointegrated among themselves, but also with the exogenous variables <img class="Default EquationGraphic" src="images/vecm.057.2.320.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />. Here the VEC representation is: </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.321.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.51)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="281242">Notice that both of these specifications are embedded in the general classical framework for deterministics described above (</a><span class="Link"><a href="#273339" title="Background">&#8220;The Classical Approach&#8221;</a></span>):</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.322.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.52)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="281431">where in the first form, we have,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.323.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.53)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="279902">while in the second form, we have,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/vecm.057.2.324.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(45.54)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="282168">Similarly, it is possible to decompose each of the coefficient matrices <img class="Default EquationGraphic" src="images/vecm.057.2.325.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> in (18) into the spaces spanned by <img class="Default EquationGraphic" src="images/vecm.057.2.326.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/vecm.057.2.327.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> as in </a><span class="Link"><a href="#273520" title="Background">&#8220;The Johansen, Hendry, and Juselius Approach&#8221;</a></span>. This decomposition would produce a model in which exogenous regressors appear both among the long-run and short-run regressors.</div>
+      <div class="Body_Text"><a name="282181">While we see that exogenous regressors are conceptually analogous to deterministic regressors, caution must be exercised when augmenting VEC models with deterministic regressors. Notably, since the deterministic regressors enter into the differenced VEC models (</a><span class="Link"><a href="#273353" title="Background">Equation&nbsp;(45.27)</a></span> and <span class="Link"><a href="#273353" title="Background">Equation&nbsp;(45.27)</a></span>), their inclusion will have implications for the behavior of the equivalent VAR level form that should be considered. These nuances are analogous to role of deterministics in the unit root literature where, for instance, a constant term in a random walk will generate a linear trend in the mean. While these considerations are also present for the deterministic trend regressors, the implications for trend regressors are more obvious as the inclusion of the trends is generally described in terms of the effects on both the levels and the differences.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

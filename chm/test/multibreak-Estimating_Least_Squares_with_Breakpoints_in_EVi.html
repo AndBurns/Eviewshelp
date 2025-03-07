@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Estimating Least Squares with Breakpoints in EViews</title>
+    <link rel="StyleSheet" href="css/multibreak.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="multibreak-Background.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="multibreak-Working_with_Breakpoint_Equations.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="multibreak-Least_Squares_with_Breakpoints.html">Least Squares with Breakpoints</a> : Estimating Least Squares with Breakpoints in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="250275">Estimating Least Squares with Breakpoints in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#206310">Coefficient Covariance Matrix</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#245422">Break Specification</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="264607">To estimate an equation using least squares with breakpoints, select </a><span class="Menu_Item">Object/New Object.../Equation</span> or <span class="Menu_Item">Quick/Estimate Equation&#8230;</span> from the main EViews menu, then select <span class="Menu_Item">BREAKLS - Least Squares with Breakpoints</span> in the <span class="Menu_Item">Method</span> drop-down menu, or simply type the keyword <span class="In-line_input">breakls</span> in the command window:</div>
+      <div class="Picture"><a name="243458"><img class="Default" src="images/multibreak.044.3.01.jpg" width="100%" style="left: 0.0pt; max-height: 455px; max-width: 495px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="243355">You should enter the dependent variable followed by a list of variables with breaking regressors in the top edit field, and optionally, a list of non-breaking regressors in the bottom edit field.</a></div>
+      <div class="Body_Text"><a name="243800">Next, click on the </a><span class="Menu_Item">Options</span> tab to display additional settings for calculation of the coefficient covariance matrix, specification of the breakpoints, weighting, and the coefficient name. </div>
+      <div class="Picture"><a name="245808"><img class="Default" src="images/multibreak.044.3.02.jpg" width="100%" style="left: 0.0pt; max-height: 455px; max-width: 495px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="245813">The weighting and coefficient name settings are common to other EViews estimators so we focus on the covariance computation and break specification.</a></div>
+      <div class="Heading_4"><a name="206310">Coefficient Covariance Matrix</a></div>
+      <div class="Body_Text"><a name="245440">The </a><span class="Menu_Item">Coefficient</span> covariance matrix section of the page offers various computation settings. </div>
+      <div class="Picture"><a name="249283"><img class="Default" src="images/multibreak.044.3.03.jpg" width="100%" style="left: 0.0pt; max-height: 179px; max-width: 197px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="245542">The top drop-down menu should be used to specify the estimator for the coefficient covariances. The </a><span class="Menu_Item">Estimation default </span>is to use the conventional estimator for least squares regression. You may instead elect to use heteroskedasticity robust <span class="Menu_Item">White</span> or <span class="Menu_Item">HAC (Newey-West)</span> covariance calculations. If you specify HAC covariances, EViews will display the <span class="Menu_Item">HAC options</span> button which you may press to bring up a dialog for customizing your calculation.</div>
+      <div class="Body_Text"><a name="245235">By default, the covariances will be computed assuming homogeneous errors variances with a common distribution across regimes. You may use the </a><span class="Menu_Item">Allow error distributions to differ across breaks</span> to relax this common distribution restriction.</div>
+      <div class="Body_Text"><a name="245854">If you specify either the White or HAC form of robust covariance, EViews will commonly display the </a><span class="Menu_Item">Assume common data distributions</span> checkbox. EViews generally follow Bai and Perron (2003a) who, with one exception, do not impose the restriction that the distribution of the <img class="Default EquationGraphic" src="images/multibreak.044.3.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> is the same across regimes. In cases where you employ robust variances, EViews will offer you a choice of whether to assume a common distribution for the data across regimes. </div>
+      <div class="Body_Text"><a name="245858">Bai and Perron do impose the homogeneity data restriction when computing HAC robust variances estimators with homogeneous errors. To match the Bai-Perron common error assumptions, you will have to select the </a><span class="Menu_Item">Assume common data distribution checkbox</span>.</div>
+      <div class="Body_Text"><a name="245859">(Note that EViews does not allow you to specify heterogeneous error distributions and robust covariances in partial breaking models.)</a></div>
+      <div class="Heading_4"><a name="245422">Break Specification</a></div>
+      <div class="Picture"><a name="245945"><img class="Default" src="images/multibreak.044.3.05.jpg" width="100%" style="left: 0.0pt; max-height: 218px; max-width: 263px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="245985">The </a><span class="Menu_Item">Break specification</span> section of the dialog contains a <span class="Menu_Item">Method</span> drop-down where you may specify the type of test you wish to perform. You may choose between: </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="245946">Sequential L+1 breaks vs. L</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="245947">Sequential tests all subsets</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="245948">Global L breaks vs. none</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="245949">L+1 breaks vs. global L</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="245950">Global information criteria</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="246011">Fixed number - sequential</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="246041">Fixed number - global</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="246065">User-specified</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="246110">The first two entries determine the optimal number of breaks based on the sequential methodology as described in </a><span class="Link"><a href="multibreak-Background.html#207372" title="Background">&#8220;Sequential Determination&#8221;</a></span> above. The methods differ in whether, for a given <img class="Default EquationGraphic" src="images/multibreak.044.3.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> breakpoints, we test for an additional breakpoint in each of the <img class="Default EquationGraphic" src="images/multibreak.044.3.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> segments (<span class="Menu_Item">Sequential tests all subsets</span>), or whether we test the single added breakpoint that most reduces the sum-of-squares (<span class="Menu_Item">Sequential L+1 breaks vs. L</span>).</div>
+      <div class="Body_Text"><a name="246123">The next three methods employ the global optimizers to determine the number and identities of breaks as described in </a><span class="Link"><a href="multibreak-Background.html#207098" title="Background">&#8220;Global Maximization&#8221;</a></span>. If you select one of the global methods, you will see a second drop-down prompting you to specify a sub-method.</div>
+      <div class="Picture"><a name="246827"><img class="Default" src="images/multibreak.044.3.08.jpg" width="100%" style="left: 0.0pt; max-height: 218px; max-width: 263px; top: 0.0pt" alt="" /></a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="246850">For the </a><span class="Menu_Item">Global L breaks vs. none</span> method, there are four possible sub-methods. The <span class="Menu_Item">Sequential evaluation</span> method chooses the last significant number of breaks, determined sequentially. Selecting <span class="Menu_Item">Highest significant</span> chooses the number of breaks that is largest from amongst the significant tests. The latter two settings choose the number of breaks using the corresponding double max test.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="247406">Similarly, if you select the </a><span class="Menu_Item">L+1 breaks vs. none</span> method, a drop-down offers a choice between <span class="Menu_Item">Sequential evaluation</span> and <span class="Menu_Item">Highest significant</span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="247856">The </a><span class="Menu_Item">Global information criteria</span> method lets you choose between using the <span class="Menu_Item">Schwarz criterion</span> or the <span class="Menu_Item">LWZ criterion</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="249898">The next two methods, </a><span class="Menu_Item">Fixed number - sequential</span> and <span class="Menu_Item">Fixed number - global</span>, pre-specify the number of breaks and choose the breakpoint dates using the specified method.</div>
+      <div class="Body_Text"><a name="250031">The </a><span class="Menu_Item">User-specified</span> method allows you to specify your own break dates.</div>
+      <div class="Body_Text"><a name="250021">Depending on your choice of method, you may be prompted to provide information on one or more additional settings: </a></div>
+      <div class="Picture"><a name="248138"><img class="Default" src="images/multibreak.044.3.09.jpg" width="100%" style="left: 0.0pt; max-height: 218px; max-width: 262px; top: 0.0pt" alt="" /></a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="248312">If you specify one of the two fixed number of break methods, you will be prompted for the number of breakpoints (not depicted).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="248472">The </a><span class="Menu_Item">Trimming percentage,</span> <img class="Default EquationGraphic" src="images/multibreak.044.3.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 114px; top: 0.0pt" alt="" /> implicitly determines <img class="Default EquationGraphic" src="images/multibreak.044.3.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, the minimum segment length permitted when constructing a test. Small values of the trimming percentage can lead to estimates of coefficients and variances which are based on very few observations.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="248430">The </a><span class="Menu_Item">Maximum breaks</span> and <span class="Menu_Item">Maximum levels</span> setting limits the number of breakpoints allowed via global testing, and in sequential or mixed <img class="Default EquationGraphic" src="images/multibreak.044.3.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 10px; top: 0.0pt" alt="" /> vs. <img class="Default EquationGraphic" src="images/multibreak.044.3.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 37px; top: 0.0pt" alt="" /> testing. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="248569">The </a><span class="Menu_Item">Significance level</span> drop-down menu should be used to choose between test size values of (0.01, 0.025, 0.05, and 0.10). This setting is not relevant for methods which do not employ testing.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="248388">Additional detail on all of the methodologies outlined above is provided in </a><span class="Link"><a href="testing-Stability_Diagnostics.html#186159" title="Stability Diagnostics">&#8220;Multiple Breakpoint Tests&#8221;</a></span>.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

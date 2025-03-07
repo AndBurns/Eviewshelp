@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Working with Panel Data</title>
+    <link rel="StyleSheet" href="css/panelwf.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="panelwf-Panel_Workfile_Information.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="panelwf-Panel_Data_Analysis.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="panelwf-Working_with_Panel_Data.html">Working with Panel Data</a> : Working with Panel Data</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="188521">Working with Panel Data</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#188525">Lags and Leads</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#188541">Panel Samples</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#188543">Dated Panel Samples</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#188592">Undated Panel Samples</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#193529">Panel Spreadsheets</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#193533">Trends</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#188637">By-Group Statistics</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#188676">Cross-section and Period Summaries</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#188687">Viewing Summaries</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#188699">Saving Summaries</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#188701">Creating Pages for Summaries</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#188725">Computing Summaries using Links</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#188747">Merging Data into the Panel</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="188522">For the most part, you will find working with data in a panel workfile to be identical to working with data in any other workfile. There are, however, some differences in behavior that require discussion. In addition, we describe useful approaches to working with panel data using standard, non panel-specific tools.</a></div>
+      <div class="Heading_4"><a name="188525">Lags and Leads</a></div>
+      <div class="Body_Text"><a name="188526">For the most part, expressions involving lags and leads should operate as expected (see </a><span class="Link"><a href="workadv-Structuring_a_Workfile.html#101147" title="Structuring a Workfile">&#8220;Lags, Leads, and Panel Structured Data&#8221;</a></span> for a full discussion). In particular note that lags and leads do not cross group boundaries so that they will never involve data from a different cross-section (<span class="Emphasis">i.e.</span>, lags of the first observation in a cross-section are always NAs, as are leads of the last observation in a cross-section).</div>
+      <div class="Body_Text"><a name="188533">Since EViews automatically sorts your data by cross-section and cell/date ID, observations in a panel dataset are always stacked by cross-section, with the cell IDs sorted within each cross-section. Accordingly, lags and leads within a cross-section are defined over the sorted values of the cell ID. Lags of an observation are always associated with lower value of the cell ID, and leads always involve a higher value (the first lag observation has the next lowest cell ID value and the first lead has the next highest value). </a></div>
+      <div class="Body_Text"><a name="188534">Lags and leads are specified in the usual fashion, using an offset in parentheses. To assign the sum of the first lag of Y and the second lead of X to the series Z, you may use the command:</a></div>
+      <div class="Input"><a name="188535">series z = y(-1) + x(2)</a></div>
+      <div class="Body_Text"><a name="188536">Similarly, you may use lags to obtain the name of the previous child in household cross-sections. The command:</a></div>
+      <div class="Input"><a name="188537">alpha older = childname(-1)</a></div>
+      <div class="Body_Text"><a name="188538">assigns to the alpha series OLDER the name of the preceding observation. Note that since lags never cross over cross-section boundaries, the first value of OLDER in a household will be missing.</a></div>
+      <div class="Heading_4"><a name="188541">Panel Samples</a></div>
+      <div class="Body_Text"><a name="188542">The description of the current workfile sample in the workfile window provides an obvious indication that samples for dated and undated workfiles are specified in different ways.</a></div>
+      <div class="Heading_5"><a name="188543">Dated Panel Samples</a></div>
+      <div class="Body_Text"><a name="188544">For dated workfiles, you may specify panel samples using date pairs to define the earliest and latest dates to be included. For example, in our dated panel example from above, if we issue the sample statement:</a></div>
+      <div class="Input"><a name="188545">smpl 1940 1954</a></div>
+      <div class="Body_Text"><a name="188546">EViews will exclude all observations that are dated from 1935 through 1939. We see that the new sample has eliminated observations for those dates from each cross-section.</a></div>
+      <div class="Picture"><a name="188550"><img class="Default" src="images/panelwf.067.5.01.jpg" width="100%" style="left: 0.0pt; max-height: 114px; max-width: 522px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188551">As in non-panel workfiles, you may combine the date specification with additional &#8220;if&#8221; conditions to exclude additional observations. For example:</a></div>
+      <div class="Input"><a name="188552">smpl 1940 1945 1950 1954 if i&gt;50</a></div>
+      <div class="Body_Text"><a name="188553">uses any panel observations that are dated from 1940 to 1945 or 1950 to 1954 that have values of the series I that are greater than 50.</a></div>
+      <div class="Body_Text"><a name="188554">Additionally, you may use special keywords to refer to the first and last observations for cross-sections. For dated panels, the sample keywords </a><span class="In-line_command">@first</span> and <span class="In-line_command">@last</span> refer to the set of first and last observations for each cross-section. For example, you may specify the sample:</div>
+      <div class="Input"><a name="188555">smpl @first 2000</a></div>
+      <div class="Body_Text"><a name="188556">to use data from the first observation in each cross-section and observations up through the end of the year 2000. Likewise, the two sample statements:</a></div>
+      <div class="Multi-line_Input"><a name="188557">smpl @first @first+5</a></div>
+      <div class="Multi-line_Input"><a name="188558">smpl @last-5 @last</a></div>
+      <div class="Body_Text"><a name="188559">use (at most) the first five and the last five observations in each cross-section, respectively.</a></div>
+      <div class="Body_Text"><a name="188560">Note that the included observations for each cross-section may begin at a different date, and that:</a></div>
+      <div class="Multi-line_Input"><a name="188561">smpl @all</a></div>
+      <div class="Multi-line_Input"><a name="188562">smpl @first @last</a></div>
+      <div class="Body_Text"><a name="188563">are equivalent.</a></div>
+      <div class="Body_Text"><a name="188564">The sample statement keywords </a><span class="In-line_command">@firstmin</span> and <span class="In-line_command">@lastmax</span> are used to refer to the earliest of the start and latest of the end dates observed over all cross-sections, so that the sample:</div>
+      <div class="Input"><a name="188565">smpl @firstmin @firstmin+20</a></div>
+      <div class="Body_Text"><a name="188566">sets the start date to the earliest observed date, and includes the next 20 observations in each cross-section. The command:</a></div>
+      <div class="Input"><a name="188567">smpl @lastmax-20 @lastmax</a></div>
+      <div class="Body_Text"><a name="188568">includes the last observed date, and the previous 20 observations in each cross-section.</a></div>
+      <div class="Body_Text"><a name="188569">Similarly, you may use the keywords </a><span class="In-line_command">@firstmax</span> and <span class="In-line_command">@lastmin</span> to refer to the latest of the cross-section start dates, and earliest of the end dates. For example, with <span class="Emphasis">regular</span> annual data that begin and end at different dates, you may balance the starts and ends of your data using the statement:</div>
+      <div class="Input"><a name="188570">smpl @firstmax @lastmin</a></div>
+      <div class="Body_Text"><a name="188571">which sets the sample to begin at the latest observed start date, and to end at the earliest observed end date.</a></div>
+      <div class="Body_Text"><a name="188572">The special keywords are perhaps most usefully combined with observation offsets. By adding plus and minus terms to the keywords, you may adjust the sample by dropping or adding observations within each cross-section. For example, to drop the first observation from each cross-section, you may use the sample statement:</a></div>
+      <div class="Input"><a name="188573">smpl @first+1 @last</a></div>
+      <div class="Body_Text"><a name="188574">The following commands generate a series containing cumulative sums of the series X for each cross-section:</a></div>
+      <div class="Multi-line_Input"><a name="188575">smpl @first @first</a></div>
+      <div class="Multi-line_Input"><a name="188576">series xsum = x</a></div>
+      <div class="Multi-line_Input"><a name="188577">smpl @first+1 @last</a></div>
+      <div class="Multi-line_Input"><a name="188578">xsum = xsum(-1) + x</a></div>
+      <div class="Body_Text"><a name="188579">The first two commands initialize the cumulative sum for the first observation in each cross-section. The last two commands accumulate the sum of values of X over the remaining observations.</a></div>
+      <div class="Body_Text"><a name="188580">Similarly, if you wish to estimate your equation on a subsample of data and then perform cross-validation on the last 20 observations in each cross-section, you may use the sample defined by,</a></div>
+      <div class="Input"><a name="188581">smpl @first @last-20</a></div>
+      <div class="Body_Text"><a name="188582">to perform your estimation, and the sample,</a></div>
+      <div class="Input"><a name="188583">smpl @last-19 @last</a></div>
+      <div class="Body_Text"><a name="188584">to perform your forecast evaluation.</a></div>
+      <div class="Body_Text"><a name="188585">Note that the processing of sample offsets for each cross-section follows the same rules as for non-panel workfiles </a><span class="Link"><a href="Basedata-Samples.html#233747" title="Samples">&#8220;Sample Offsets&#8221;</a></span> .</div>
+      <div class="Heading_5"><a name="188592">Undated Panel Samples</a></div>
+      <div class="Body_Text"><a name="188593">For undated workfiles, you must specify the sample range pairs using observation numbers defined over the entire workfile. For example, in our undated 506 observation panel example, you may issue the sample statement:</a></div>
+      <div class="Input"><a name="188594">smpl 10 500</a></div>
+      <div class="Body_Text"><a name="188595">to drop the first 9 and the last 6 observations in the workfile from the current sample. </a></div>
+      <div class="Body_Text"><a name="188597">One consequence of the use of observation pairs in undated panels is that the keywords </a><span class="In-line_command">@first</span>, <span class="In-line_command">@firstmin</span>, and <span class="In-line_command">@firstmax</span> all refer to observation 1, and <span class="In-line_command">@last</span>, <span class="In-line_command">@lastmin</span>, and <span class="In-line_command">@lastmax</span>, refer to the last observation in the workfile. Thus, in our example, the command:</div>
+      <div class="Input"><a name="188598">smpl @first+9 @lastmax-6</a></div>
+      <div class="Body_Text"><a name="188599">will also drop the first 9 and the last 6 observations in the workfile from the current sample. </a></div>
+      <div class="Body_Text"><a name="188600">Undated panel sample restrictions of this form are not particularly interesting since they require detailed knowledge of the pattern of observation numbers across those cross-sections. Accordingly, most sample statements in undated workfiles will employ &#8220;IF conditions&#8221; in place of range pairs. </a></div>
+      <div class="Body_Text"><a name="188601">For example, the sample statement,</a></div>
+      <div class="Input"><a name="188602">smpl if townid&lt;&gt;10 and lstat &gt;-.3</a></div>
+      <div class="Body_Text"><a name="188603">is equivalent to either of the commands,</a></div>
+      <div class="Multi-line_Input"><a name="188604">smpl @all if townid&lt;&gt;10 and lstat &gt;-.3</a></div>
+      <div class="Multi-line_Input"><a name="188605">smpl 1 506 if townid&lt;&gt;10 and lstat &gt;-.3</a></div>
+      <div class="Body_Text"><a name="188606">and selects all observations with TOWNID values not equal to 10, and LSTAT values greater than -0.3.</a></div>
+      <div class="Picture"><a name="188610"><img class="Default" src="images/panelwf.067.5.02.jpg" width="100%" style="left: 0.0pt; max-height: 112px; max-width: 488px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188611">You may combine the sample &#8220;IF conditions&#8221; with the special functions that return information about the observations in the panel. For example, we may use the </a><span class="In-line_command">@obsid</span> workfile function to identify each observation in a cross-section, so that:</div>
+      <div class="Input"><a name="188612">smpl if @obsid&gt;1</a></div>
+      <div class="Body_Text"><a name="188613">drops the first observation for each cross-section.</a></div>
+      <div class="Body_Text"><a name="188614">Alternately, to drop the last observation in each cross-section, you may use:</a></div>
+      <div class="Input"><a name="188615">smpl if @obsid &lt; @maxsby(townid, townid, "@all")</a></div>
+      <div class="Body_Text"><a name="188616">The </a><span class="In-line_command">@maxsby</span> function returns the number of non-NA observations for each TOWNID value. Note that we employ the &#8220;@ALL&#8221; sample to ensure that we compute the <span class="In-line_command">@maxsby</span> over the entire workfile sample.</div>
+      <div class="Heading_4"><a name="193529">Panel Spreadsheets</a></div>
+      <div class="Body_Text"><a name="193539">When looking at the spreadsheet view of a series in a panel workfile the default view will be to show the &#8220;stacked&#8221; form of the series - each cross-section&#8217;s data will be below the previous cross-section&#8217;s data. </a></div>
+      <div class="Picture"><a name="193543"><img class="Default" src="images/panelwf.067.5.03.jpg" width="100%" style="left: 0.0pt; max-height: 321px; max-width: 386px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="193680">You may change this by clicking on the </a><span class="Menu_Item">Wide +/-</span> button (you will almost certainly need to widen the window to see the button as it is far to the right of the more commonly used buttons). The first time you click the button, EViews will change the display of the series such that each row of the spreadsheet contains data for a specific date, and each column contains data for a cross-section. </div>
+      <div class="Picture"><a name="193684"><img class="Default" src="images/panelwf.067.5.04.jpg" width="100%" style="left: 0.0pt; max-height: 298px; max-width: 451px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="193549">Clicking the </a><span class="Menu_Item">Wide +/-</span> button a second time transposes this so cross-sections are now shown per row, and dates per column.</div>
+      <div class="Picture"><a name="193553"><img class="Default" src="images/panelwf.067.5.05.jpg" width="100%" style="left: 0.0pt; max-height: 273px; max-width: 495px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="193530">A third click of the button takes the view back to the original stacked form.</a></div>
+      <div class="Heading_4"><a name="193533">Trends</a></div>
+      <div class="Body_Text"><a name="188620">EViews provides several functions that may be used to construct a time trend in your panel structured workfile. A trend in a panel workfile has the property that the values are initialized at the start of a cross-section, increase for successive observations in the specific cross-section, and are reset at the start of the next cross section. </a></div>
+      <div class="Body_Text"><a name="188621">You may use the following to construct your time trend:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="188622">The </a><span class="In-line_command">@obsid</span> function may be used to return the simplest notion of a trend in which the values for each cross-section begin at one and increase by one for successive observations in the cross-section.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="188623">The </a><span class="In-line_command">@trendc</span> function computes trends in which values for observations with the earliest observed date are normalized to zero, and values for successive observations are incremented based on the calendar associated with the workfile frequency.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="188624">The </a><span class="In-line_command">@cellid</span> and <span class="In-line_command">@trend</span> functions return time trends in which the values increase based on a calender defined by the observed dates in the workfile.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="188631">See also </a><span class="Link"><a href="wffunctions-Panel_Workfile_Functions.html#68262" title="Panel Workfile Functions">&#8220;Panel Workfile Functions&#8221;</a></span> and <span class="Link"><a href="wffunctions-Panel_Workfile_Functions.html#53942" title="Panel Workfile Functions">&#8220;Panel Trend Functions&#8221;</a></span> for discussion.</div>
+      <div class="Heading_4"><a name="188637">By-Group Statistics</a></div>
+      <div class="Body_Text"><a name="188643">The &#8220;by-group&#8221; statistical functions (</a><span class="Link"><a href="functionref_home-Function_Summaries.html#1303915" title="Function Summaries">&#8220;By-Group Statistics&#8221;</a></span> ) may be used to compute the value of a statistic for observations in a subgroup, and to assign the computed value to individual observations. </div>
+      <div class="Body_Text"><a name="188645">While not strictly panel functions, these tools deserve a place in the current discussion since they are well suited for working with panel data. To use the by-group statistical functions in a panel context, you need only specify the group ID series as the classifier series in the function.</a></div>
+      <div class="Body_Text"><a name="188646">Suppose, for example, that we have the undated panel structured workfile with the group ID series TOWNID, and that you wish to assign to each observation in the workfile the mean value of LSTAT in the corresponding town. You may perform the series assignment using the command,</a></div>
+      <div class="Input"><a name="188647">series meanlstat = @meansby(lstat, townid, "@all")</a></div>
+      <div class="Body_Text"><a name="188648">or equivalently,</a></div>
+      <div class="Input"><a name="188649">series meanlstat = @meansby(lstat, @crossid, "@all")</a></div>
+      <div class="Body_Text"><a name="188650">to assign the desired values. EViews will compute the mean value of LSTAT for observations with each TOWNID (or equivalently </a><span class="In-line_command">@crossid</span>, since the workfile is structured using TOWNID) value, and will match merge these values to the corresponding observations.</div>
+      <div class="Body_Text"><a name="188651">Likewise, we may use the by-group statistics functions to compute the variance of LSTAT or the number of non-NA values for LSTAT for each subgroup using the assignment statements:</a></div>
+      <div class="Multi-line_Input"><a name="188652">series varlstat = @varsby(lstat, townid, "@all")</a></div>
+      <div class="Multi-line_Input"><a name="188653">series nalstat = @nasby(lstat, @crossid, "@all")</a></div>
+      <div class="Body_Text"><a name="188654">To compute the statistic over subsamples of the workfile data, simply include a sample string or object as an argument to the by-group statistic, or set the workfile sample prior to issuing the command,</a></div>
+      <div class="Multi-line_Input"><a name="188655">smpl @all if zn=0</a></div>
+      <div class="Multi-line_Input"><a name="188656">series meanlstat1 = @meansby(lstat, @cellid)</a></div>
+      <div class="Body_Text"><a name="188657">is equivalent to:</a></div>
+      <div class="Multi-line_Input"><a name="188658">smpl @all</a></div>
+      <div class="Multi-line_Input"><a name="188659">series meanlstat2 = @meansby(lstat, @cellid, "@all if zn=0")</a></div>
+      <div class="Body_Text"><a name="188660">In the former example, the by-group function uses the workfile sample to compute the statistic for each cell ID value, while in the latter, the optional argument explicitly overrides the workfile sample.</a></div>
+      <div class="Body_Text"><a name="188661">One important application of by-group statistics is to compute the &#8220;within&#8221; deviations for a series by subtracting off panel group means or medians. The following lines:</a></div>
+      <div class="Multi-line_Input"><a name="188662">smpl @all</a></div>
+      <div class="Multi-line_Input"><a name="188663">series withinlstat1 = lstat - @meansby(lstat, townid)</a></div>
+      <div class="Multi-line_Input"><a name="188664">series withinlstat2 = lstat - @mediansby(lstat, townid)</a></div>
+      <div class="Body_Text"><a name="188665">compute deviations from the TOWNID specific means and medians. In this example, we omit the optional sample argument from the by-group statistics functions since the workfile sample is previously set to use all observations.</a></div>
+      <div class="Body_Text"><a name="188666">Combined with standard EViews tools, the by-group statistics allow you to perform quite complex calculations with little effort. For example, the panel &#8220;within&#8221; standard deviation for LSTAT may be computed from the single command:</a></div>
+      <div class="Input"><a name="188667">series temp = lstat - @meansby(lstat, townid, "@all")</a></div>
+      <div class="Input"><a name="188668">scalar within_std = @stdev(temp)</a></div>
+      <div class="Body_Text"><a name="188669">while the &#8220;between&#8221; standard deviation may be calculated from</a></div>
+      <div class="Multi-line_Input"><a name="188670">smpl if @obsid = 1</a></div>
+      <div class="Multi-line_Input"><a name="188671">series temp = lstat - @meansby(lstat, @crossid, "@all")</a></div>
+      <div class="Multi-line_Input"><a name="188672">scalar between_std = @stdev(temp)</a></div>
+      <div class="Body_Text"><a name="188673">The first line sets the sample to the first observation in each cross-section. The second line calculates the standard deviation of the group means using the single cross-sectional observations. Note that the group means are calculated over the entire sample. An alternative approach to performing this calculation is described in the next section.</a></div>
+      <div class="Heading_4"><a name="188676">Cross-section and Period Summaries</a></div>
+      <div class="Body_Text"><a name="188677">One of the most important tasks in working with panel data is to compute and save summary data, for example, computing means of a series by cross-section or period. In </a><span class="Link"><a href="#188637" title="Working with Panel Data">&#8220;By-Group Statistics&#8221;</a></span>, we outlined tools for computing by-group statistics using the cross-section ID and match merging them back into the original panel workfile page.</div>
+      <div class="Body_Text"><a name="188681">Additional tools are available for displaying tables summarizing the by-group statistics or for saving these statistics into new workfile pages.</a></div>
+      <div class="Picture"><a name="188685"><img class="Default" src="images/panelwf.067.5.06.jpg" width="100%" style="left: 0.0pt; max-height: 296px; max-width: 394px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188686">In illustrating these tools, we will work with the familiar Grunfeld data containing data on R&amp;D expenditure and other economic measures for 10 firms for the years 1935 to 1954 (provided in the workfile &#8220;Grunfeld_Baltagi_Panel.WF1&#8221;). These 200 observations form a balanced annual workfile that is structured using the firm number FN as the cross-section ID series, and the date series DATEID to identify the year.</a></div>
+      <div class="Heading_5"><a name="188687">Viewing Summaries</a></div>
+      <div class="Body_Text"><a name="188688">The easiest way to compute by-group statistics is to use the standard by-group statistics view of a series. Simply open the series window for the series of interest and select </a><span class="Menu_Item">View/Descriptive Statistics &amp; Tests/Stats by Classification...</span> to open the <span class="Menu_Item">Statistics by Classification</span> dialog.</div>
+      <div class="Picture"><a name="188692"><img class="Default" src="images/panelwf.067.5.07.jpg" width="100%" style="left: 0.0pt; max-height: 360px; max-width: 493px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188693">First, you should enter the classifier series in the </a><span class="Menu_Item">Series/Group to classify</span> edit field. Here, we use FN, so that EViews will compute means, standard deviations, and number of observations for each cross-section in the panel workfile. Note that we have unchecked the <span class="Menu_Item">Group into bins</span> options so that EViews will not combine periods. The result of this computation for the series F is given by:</div>
+      <div class="Table"><a name="188697"><img class="Default" src="images/panelwf.067.5.08.jpg" width="100%" style="left: 0.0pt; max-height: 422px; max-width: 935px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188698">Alternately, to compute statistics for each period in the panel, you should enter &#8220;DATEID&#8221; instead of &#8220;FN&#8221; as the classifier series.</a></div>
+      <div class="Heading_5"><a name="188699">Saving Summaries</a></div>
+      <div class="Body_Text"><a name="188700">Alternately, you may wish to compute the by-group panel statistics and save them in their own workfile page. The standard EViews tools for working with workfiles and creating series links make this task virtually effortless.</a></div>
+      <div class="Heading_6"><a name="188701">Creating Pages for Summaries</a></div>
+      <div class="Body_Text"><a name="188702">Since we will be computing both by-firm and by-period descriptive statistics, the first step is to create workfile pages to hold the results from our two sets of calculations. The firm page will contain observations corresponding to the unique values of the firm identifier found in the panel page; the annual page will contain observations corresponding to the observed years.</a></div>
+      <div class="Picture"><a name="188706"><img class="Default" src="images/panelwf.067.5.09.jpg" width="100%" style="left: 0.0pt; max-height: 362px; max-width: 514px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188707">To create a page for the firm data, click on the </a><span class="Menu_Item">New Page</span> tab in the workfile window, and select <span class="Menu_Item">Specify by Identifier series...</span>. EViews opens the <span class="Menu_Item">Workfile Page Create by ID</span> dialog, with the identifiers pre-filled with the series used in the panel workfile structure&#8212;the <span class="Menu_Item">Date series</span> field contains the name of the series used to identify dates in the panel, while the <span class="Menu_Item">Cross-section ID</span> series field contains the name of the series used to identify firms.</div>
+      <div class="Picture"><a name="188711"><img class="Default" src="images/panelwf.067.5.10.jpg" width="100%" style="left: 0.0pt; max-height: 111px; max-width: 352px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188712">The default </a><span class="Menu_Item">Method</span> is set to<span class="Menu_Item"> Unique values of ID series from one page</span>, which instructs EViews to simply look at the unique values of the ID series in the specified ID page. Alternately, you may provide multiple pages and take the union or intersection of IDs (<span class="Menu_Item">Union of common ID series from multiple pages</span> and <span class="Menu_Item">Intersection of common ID series from multiple pages</span>). You may also elect to create observations associated with the crosses of values for multiple series; the different choices permit you to treat date and non-date series asymmetrically when forming these categories (<span class="Menu_Item">Cross of two non-date ID series</span>, <span class="Menu_Item">Cross of one date and one non-date ID series</span>, <span class="Menu_Item">Cross of ID series with a date range</span>). If you select the latter, the dialog will change, prompting you to specify a frequency, start date and end date.</div>
+      <div class="Body_Text"><a name="188713">To create a new workfile page using only the values in the FN series, you should delete the </a><span class="Menu_Item">Date series</span> specification &#8220;DATEID&#8221; from the dialog. Next, provide a name for the new page by entering &#8220;firm&#8221; in the <span class="Menu_Item">Page</span> edit field. Now click on <span class="Menu_Item">OK</span>.</div>
+      <div class="Body_Text"><a name="188714">EViews will examine the FN series to find its unique values, and will create and structure a workfile page to hold those values.</a></div>
+      <div class="Picture"><a name="188718"><img class="Default" src="images/panelwf.067.5.11.jpg" width="100%" style="left: 0.0pt; max-height: 612px; max-width: 736px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188719">Here, we see the newly created FIRM page and newly created FN series containing the unique values from FN in the other page. Note that the new page is structured as an </a><span class="Menu_Item">Undated with ID series</span> page, using the new FN series.</div>
+      <div class="Picture"><a name="188723"><img class="Default" src="images/panelwf.067.5.12.jpg" width="100%" style="left: 0.0pt; max-height: 411px; max-width: 514px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188724">Repeating this process using the DATEID series will create an annual page. First click on the original panel page to make it active, then select </a><span class="Menu_Item">New Page/Specify by Identifier series... </span>to bring up the previous dialog. Delete the <span class="Menu_Item">Cross-section ID series </span>specification &#8220;FN&#8221; from the dialog, provide a name for the new page by entering &#8220;annual&#8221; in the <span class="Menu_Item">Page</span> edit field, and click on <span class="Menu_Item">OK</span>. EViews creates the third page, a regular frequency annual page dated 1935 to 1954.</div>
+      <div class="Heading_6"><a name="188725">Computing Summaries using Links</a></div>
+      <div class="Body_Text"><a name="188726">Once the firm and annual pages have been created, it is a simple task to create by-group summaries of the panel data using series links. While links are described elsewhere in greater depth (</a><span class="Link"><a href="links-Series_Links.html#173163" title="Series Links">&#8220;Series Links&#8221;</a></span> ), we provide a brief description of their use in a panel data context.</div>
+      <div class="Body_Text"><a name="188733">To create links containing the desired summaries, first click on the original panel page tab to make it active, select one or more series of interest, then right mouse click and select </a><span class="Menu_Item">Copy</span>. Next, click on either the firm or the annual page, right mouse click, and select <span class="Menu_Item">Paste Special...</span>. Alternately, right-click to select the series then drag the selected series onto the tab for the destination page. EViews will open the <span class="Menu_Item">Link Dialog</span>, prompting you to specify a method for summarizing the data.</div>
+      <div class="Picture"><a name="188737"><img class="Default" src="images/panelwf.067.5.13.jpg" width="100%" style="left: 0.0pt; max-height: 330px; max-width: 458px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188738">Suppose, for example, that you select the C01, F, and I series from the panel page and then </a><span class="Menu_Item">Paste Special...</span> in the firm page. In this case, EViews analyzes the two pages, and determines that most likely, we wish to match merge the contracted data from the first page into the second page. Accordingly, EViews sets the <span class="Menu_Item">Merge by</span> setting to <span class="Menu_Item">General match merge criteria</span>, and prefills the <span class="Menu_Item">Source ID</span> and <span class="Menu_Item">Destination ID</span> series with two FN cross-section ID series. The default<span class="Menu_Item"> Contraction method</span> is set to compute the mean values of the series for each value of the ID.</div>
+      <div class="Body_Text"><a name="188739">You may provide a different pattern to be used in naming the link series, a contraction method, and a sample over which the contraction should be calculated. Here, we create new series with the same names as the originals, computing means over the entire sample in the panel page. Click on </a><span class="Menu_Item">OK to All</span> to link all three series into the firm page, yielding:</div>
+      <div class="Picture"><a name="188743"><img class="Default" src="images/panelwf.067.5.14.jpg" width="100%" style="left: 0.0pt; max-height: 669px; max-width: 781px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="188744">You may compute other summary statistics by repeating the copy-and-paste-special procedure using alternate contraction methods. For example, selecting the </a><span class="Menu_Item">Standard Deviation </span>contraction computes the standard deviation for each cross-section and specified series and uses the linking to merge the results into the firm page. Saving them using the pattern &#8220;*SD&#8221; will create links named &#8220;C01SD&#8221;, &#8220;FSD&#8221;, and &#8220;ISD&#8221;.</div>
+      <div class="Body_Text"><a name="188745">Likewise, to compute summary statistics across cross-sections for each year, first create an annual page using </a><span class="Menu_Item">New Page/Specify by Identifier series..., </span>then paste-special the panel page series as links in the annual page.</div>
+      <div class="Heading_4"><a name="188747">Merging Data into the Panel</a></div>
+      <div class="Body_Text"><a name="188748">To merge data into the panel, simply create links from other pages into the panel page. Linking from the annual page into the panel page will repeat observations for each year across firms. Similarly, linking from the cross-section firm page to the panel page will repeat observations for each firm across all years.</a></div>
+      <div class="Body_Text"><a name="188749">In our example, we may link the FSD link from the firm page back into the panel page. Select FSD, switch to the panel page, and paste-special. Click </a><span class="Menu_Item">OK</span> to accept the defaults in the <span class="Menu_Item">Paste Special</span> dialog.</div>
+      <div class="Body_Text"><a name="188750">EViews match merges the data from the firm page to the panel page, matching FN values. Since the merge is from one-to-many, EViews simply repeats the values of FSD in the panel page.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

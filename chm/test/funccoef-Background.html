@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Background</title>
+    <link rel="StyleSheet" href="css/funccoef.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="funccoef-Functional_Coefficient_Regression.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="funccoef-Estimating_Functional_Coefficients_Models_in_EVi.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="funccoef-Functional_Coefficient_Regression.html">Functional Coefficient Regression</a> : Background</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="280549">Background</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#280659">Bandwidth Selection</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#280677">Final Bandwidth</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#280705">Pilot Bandwidth</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#280772">Auxiliary Polynomial Degree</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#280783">Forecasting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#280799">Point Forecasts</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#281003">Confidence Intervals</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="280550">Traditional linear regression postulates that the relationship between a dependent variable <img class="Default EquationGraphic" src="images/funccoef.048.2.001.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and explanatory variables <img class="Default EquationGraphic" src="images/funccoef.048.2.002.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is linear:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/funccoef.048.2.003.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(38.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="280562">While this framework is typically sufficient for most applications, the requirement that coefficients be the same for all observations is quite restrictive and often violated in practice.</a></div>
+      <div class="Body_Text"><a name="280563">Alternatively, nonparametric modeling is agnostic as to the nature of the relationship between variables, assuming a general functional relationship between the dependent and explanatory variables:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/funccoef.048.2.004.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(38.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="280568">The flexibility of this specification comes at a cost as it can be difficult to interpret nonparametric estimates. For example, describing the marginal effects of a given variable upon <img class="Default EquationGraphic" src="images/funccoef.048.2.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> can be challenging.</a></div>
+      <div class="Body_Text"><a name="280572">A flexible, middle ground between these two extremes is the functional coefficients model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/funccoef.048.2.006.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(38.3)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="280583">where the <img class="Default EquationGraphic" src="images/funccoef.048.2.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> are no longer simple coefficients, but are instead functions of the variable <img class="Default EquationGraphic" src="images/funccoef.048.2.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />. Here, the relationship is linear in variables, but non-linear in parameters. In contrast to the linear regression specification </a><span class="Link"><a href="#280561" title="Background">Equation&nbsp;(38.1)</a></span>, the coefficients are no longer constant, but instead vary across observations. Non-linear phenomena are easily accommodated in this framework, coefficient relationships are dynamic, and interpretation of coefficient relationships is still intuitive. </div>
+      <div class="Body_Text"><a name="280587">Estimation of functional coefficient models is based on local polynomial regression, and incorporates two distinct techniques:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280591">Approximate the non-linear functions <img class="Default EquationGraphic" src="images/funccoef.048.2.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" /> using Taylor&#8217;s Theorem</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280592">Estimate local regressions where we penalize observations using a kernel function</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="280596">The basic idea is that for each <img class="Default EquationGraphic" src="images/funccoef.048.2.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> of interest, we estimate a local regression with kernel weighted squared residuals. Then, estimating this regression for a set of <img class="Default EquationGraphic" src="images/funccoef.048.2.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> traces out the functional coefficients relationship.</a></div>
+      <div class="Body_Text"><a name="280600">For example, suppose we have the single regressor functional coefficients model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/funccoef.048.2.012.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(38.4)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="280612">We will approximate the coefficient functions <img class="Default EquationGraphic" src="images/funccoef.048.2.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 51px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/funccoef.048.2.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 51px; top: 0.0pt" alt="" /> with a linear Taylor expansion at <img class="Default EquationGraphic" src="images/funccoef.048.2.015.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. The resulting objective function is:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/funccoef.048.2.016.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(38.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="280621">Minimizing this objective provides estimates of the coefficients at that point,</a></div>
+      <div class="Multi-line_Eq_No_Number"><a name="280625"><img class="Default EquationGraphic" src="images/funccoef.048.2.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 37px; max-width: 368px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="280629">We may repeat this minimization for various <img class="Default EquationGraphic" src="images/funccoef.048.2.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="280630">There are several points that we wish to emphasize:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280631">The functional coefficient estimate is a set of coefficients estimated at a corresponding set of points <img class="Default EquationGraphic" src="images/funccoef.048.2.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. </a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280638">The objective function depends on the kernel </a></span><span class="Definition">bandwidth</span> <img class="Default EquationGraphic" src="images/funccoef.048.2.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280639">In this example, the objective contains twice as many coefficients as the base model to account for the presence of the first derivatives in the Taylor approximation. We are, however, typically interested only in <img class="Default EquationGraphic" src="images/funccoef.048.2.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/funccoef.048.2.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, and not in the corresponding <img class="Default EquationGraphic" src="images/funccoef.048.2.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 31px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/funccoef.048.2.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 31px; top: 0.0pt" alt="" />.</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="280652">In this example, we employ a linear Taylor expansion, but EViews supports an arbitrary polynomial degree <img class="Default EquationGraphic" src="images/funccoef.048.2.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> in </a><span class="Link"><a href="#280620" title="Background">Equation&nbsp;(38.5)</a></span>.</div>
+      <div class="Heading_4"><a name="280659">Bandwidth Selection</a></div>
+      <div class="Body_Text"><a name="280660">By far the most important step in estimating functional coefficient regressions is optimal selection of the bandwidth parameter <img class="Default EquationGraphic" src="images/funccoef.048.2.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 79px; top: 0.0pt" alt="" />. At one extreme, when <img class="Default EquationGraphic" src="images/funccoef.048.2.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 48px; top: 0.0pt" alt="" />, the functional coefficient estimator reduces to interpolating the data points in <img class="Default EquationGraphic" src="images/funccoef.048.2.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> (small bias, large variance). Alternatively, when <img class="Default EquationGraphic" src="images/funccoef.048.2.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 52px; top: 0.0pt" alt="" />, the functional coefficient estimator reduces to the mean of <img class="Default EquationGraphic" src="images/funccoef.048.2.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> (large bias, small variance). Between these two extremes we may select a bandwidth that balances bias and variance. </a></div>
+      <div class="Heading_5"><a name="280677">Final Bandwidth</a></div>
+      <div class="Body_Text"><a name="280681">The bandwidth employed in </a><span class="Link"><a href="#280620" title="Background">Equation&nbsp;(38.5)</a></span> may be termed the estimation <span class="Definition">final bandwidth</span>. There are several popular methods used to select an optimal final bandwidth:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280682">Minimize Integrated Mean Square Error (IMSE)</a></span>: selects for the value which minimizes the integrated (or summed) mean squared error (IMSE) of the functional coefficient estimates, where the IMSE is defined as the average of the squared bias and variance contributions from each functional coefficient estimate at each function evaluation point <img class="Default EquationGraphic" src="images/funccoef.048.2.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280686">Leave-One-Out (LOO)</a></span>: a leave-one-out variant of the IMSE bandwidth optimizer which minimizes the IMSE defined by averaging the squared bias and variance contributions from leave-one-out functional coefficients obtained at each observation evaluation point <img class="Default EquationGraphic" src="images/funccoef.048.2.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280690">Non-parametric Akaike Information Criterion (AIC)</a></span>: computes the optimal bandwidth using a non-parametric AIC with non-parametric degrees of freedom. The idea stems from the Hastie and Tibshirani (1990) degrees of freedom smoothers literature, with the actual bandwidth methodology suggested in Cai, Fan and Yao (2000) and Cai (2003). Briefly, for each evaluation point <img class="Default EquationGraphic" src="images/funccoef.048.2.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, and some bandwidth <img class="Default EquationGraphic" src="images/funccoef.048.2.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, we estimate functional coefficients and use these to compute the standard error of the local polynomial regression residuals. The standard error and an estimated non-parametric degrees of freedom is then used to obtain a functional AIC value. The optimal bandwidth is obtained as the <img class="Default EquationGraphic" src="images/funccoef.048.2.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> which minimizes the AIC summed over the <img class="Default EquationGraphic" src="images/funccoef.048.2.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="280703">In addition to these methods, you may employ any of the pilot methods described below which do not require preliminary functional coefficient estimates.</a></div>
+      <div class="Heading_5"><a name="280705">Pilot Bandwidth</a></div>
+      <div class="Body_Text"><a name="280706">It is important to note that the optimal estimation bandwidth estimators themselves require functional coefficient estimates to obtain standard errors, covariance matrix, and bias estimates. These preliminary estimates require their own </a><span class="Definition">pilot bandwidth </span><img class="Default EquationGraphic" src="images/funccoef.048.2.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" />. </div>
+      <div class="Body_Text"><a name="280710">The pilot bandwidth is often determined using one of the following methods which do not depend on other bandwidths:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280711">(Simple) Rule of Thumb (ROT)</a></span>: This method selects the pilot bandwidth using the asymptotic IMSE (AIMSE) Gaussian kernel as a reference. For a given bandwidth <img class="Default EquationGraphic" src="images/funccoef.048.2.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, we compute the residual standard error of the functional coefficients regression obtained at each evaluation point <img class="Default EquationGraphic" src="images/funccoef.048.2.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> and sum these values. We search for the value of <img class="Default EquationGraphic" src="images/funccoef.048.2.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 22px; top: 0.0pt" alt="" /> which minimizes this sum, and use this value to obtain an optimal <img class="Default EquationGraphic" src="images/funccoef.048.2.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" />value. For non-Gaussian kernels, the optimal bandwidth employs canonical kernel transformations as outlined in Marron and Nolan (1988), using the constants in Härdle, <span class="Emphasis">et al.</span>(1991, p. 76).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280727">(Robust) Rule of Thumb (RROT):</a></span> A modified version of ROT which computes the objective by summing over the minimum of the residual standard error and <img class="Default EquationGraphic" src="images/funccoef.048.2.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 81px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/funccoef.048.2.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 39px; top: 0.0pt" alt="" /> is the inter-quartile range of the residuals.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280734">Residual Squares Criterion (RSC)</a></span>: A bandwidth estimator proposed by Fan and Gijbels (1995b). For each evaluation point <img class="Default EquationGraphic" src="images/funccoef.048.2.044.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> and bandwidth <img class="Default EquationGraphic" src="images/funccoef.048.2.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />, we compute a functional RSC value that depends on the residual variance, the polynomial degree of the functional coefficients estimation, and a number representing the effective number of local observations. The optional pilot bandwidth <img class="Default EquationGraphic" src="images/funccoef.048.2.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> is chosen to be the value that minimizes the sum of these values.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280744">Modified Multi-Cross-Validation (MMCV):</a></span> The MMCV was proposed by Cai, Fan, and Yao (2000). The cross-validation procedure estimates, for each evaluation point <img class="Default EquationGraphic" src="images/funccoef.048.2.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, a functional coefficient model using <img class="Default EquationGraphic" src="images/funccoef.048.2.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> different sub-series of lengths <img class="Default EquationGraphic" src="images/funccoef.048.2.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 58px; top: 0.0pt" alt="" /> and then computes the average mean square error (AMSE) from the <img class="Default EquationGraphic" src="images/funccoef.048.2.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />-step ahead forecast errors starting at observation <img class="Default EquationGraphic" src="images/funccoef.048.2.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 85px; top: 0.0pt" alt="" />. The resulting <img class="Default EquationGraphic" src="images/funccoef.048.2.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> AMSE values are summed to form a functional objective value at <img class="Default EquationGraphic" src="images/funccoef.048.2.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. The optimal pilot bandwidth <img class="Default EquationGraphic" src="images/funccoef.048.2.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> is the value that minimizes the sum of these functional objectives across the <img class="Default EquationGraphic" src="images/funccoef.048.2.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="280772">Auxiliary Polynomial Degree</a></div>
+      <div class="Body_Text"><a name="280773">The estimation auxiliary regressions using pilot bandwidths also require the specification of a pilot polynomial degree. For reasons outlined in Fan and Gijbels (1995a) and Fan and Gijbels (1996), the pilot polynomial order <img class="Default EquationGraphic" src="images/funccoef.048.2.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> should exceed the estimation order <img class="Default EquationGraphic" src="images/funccoef.048.2.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> by an even integer, <img class="Default EquationGraphic" src="images/funccoef.048.2.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 105px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_4"><a name="280783">Forecasting</a></div>
+      <div class="Body_Text"><a name="280784">Forecasting functional coefficient models, and in general, forecasting non-linear models, is considerably more difficult than forecasting linear models.</a></div>
+      <div class="Body_Text"><a name="280791">In particular, consider a series <img class="Default EquationGraphic" src="images/funccoef.048.2.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is observed over the period <img class="Default EquationGraphic" src="images/funccoef.048.2.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 95px; top: 0.0pt" alt="" />, and suppose a forecast is required for <img class="Default EquationGraphic" src="images/funccoef.048.2.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 41px; top: 0.0pt" alt="" /> for some integer <img class="Default EquationGraphic" src="images/funccoef.048.2.062.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="280799">Point Forecasts</a></div>
+      <div class="Body_Text"><a name="280800">The optimal predictor is given by the familiar conditional expectation of the forecast value conditional on the observable information up to time <img class="Default EquationGraphic" src="images/funccoef.048.2.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />. We may evaluate this predictor in one of the following ways:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280807">Plug-in Method</a></span>: Following Fan and Yao (2003), a <img class="Default EquationGraphic" src="images/funccoef.048.2.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />-step ahead forecast can be obtained by substituting for the conditional expectation the corresponding fitted values</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/funccoef.048.2.065.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(38.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280818">For static forecasting, <img class="Default EquationGraphic" src="images/funccoef.048.2.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 43px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/funccoef.048.2.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 50px; top: 0.0pt" alt="" /> are set to the available actual values.</a></span></div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280822">For dynamic forecasting where the forecast sample evaluation points <img class="Default EquationGraphic" src="images/funccoef.048.2.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 43px; top: 0.0pt" alt="" /> or data <img class="Default EquationGraphic" src="images/funccoef.048.2.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 45px; top: 0.0pt" alt="" />, depend on the lagged endogenous variable, they may be set to the actual lagged endogenous <img class="Default EquationGraphic" src="images/funccoef.048.2.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 63px; top: 0.0pt" alt="" /> or lagged forecast values <img class="Default EquationGraphic" src="images/funccoef.048.2.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 63px; top: 0.0pt" alt="" /> as appropriate.</a></span></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280835">Monte Carlo &#8211; Bootstrap</a></span>: For each forecast step <img class="Default EquationGraphic" src="images/funccoef.048.2.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, the idea is to simulate a large number, say <img class="Default EquationGraphic" src="images/funccoef.048.2.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" /> of draws of <img class="Default EquationGraphic" src="images/funccoef.048.2.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 45px; top: 0.0pt" alt="" />. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280848">The <img class="Default EquationGraphic" src="images/funccoef.048.2.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />-step ahead forecast is obtained as the mean of the <img class="Default EquationGraphic" src="images/funccoef.048.2.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 20px; top: 0.0pt" alt="" /> simulated series at that horizon of interest,</a></span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/funccoef.048.2.077.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(38.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280859">where the simulated residual <img class="Default EquationGraphic" src="images/funccoef.048.2.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 47px; top: 0.0pt" alt="" /> is the <img class="Default EquationGraphic" src="images/funccoef.048.2.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />-th draw (with replacement) from the within sample estimation residuals (Huang and Shen, 2004; Harvill and Ray, 2005).</a></span></div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280866">The <img class="Default EquationGraphic" src="images/funccoef.048.2.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/funccoef.048.2.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 19px; top: 0.0pt" alt="" /> are functional coefficients estimates computed at the evaluation points <img class="Default EquationGraphic" src="images/funccoef.048.2.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 43px; top: 0.0pt" alt="" /> using the original data <img class="Default EquationGraphic" src="images/funccoef.048.2.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 149px; top: 0.0pt" alt="" />. </a></span></div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280879">As with the Plug-in Method, the <img class="Default EquationGraphic" src="images/funccoef.048.2.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 43px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/funccoef.048.2.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 50px; top: 0.0pt" alt="" /> are actual values, if available, for static forecasting. For dynamic forecasting, <img class="Default EquationGraphic" src="images/funccoef.048.2.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 43px; top: 0.0pt" alt="" /> or <img class="Default EquationGraphic" src="images/funccoef.048.2.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 45px; top: 0.0pt" alt="" /> will be set to the actual lagged endogenous <img class="Default EquationGraphic" src="images/funccoef.048.2.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 63px; top: 0.0pt" alt="" /> or lagged forecast values <img class="Default EquationGraphic" src="images/funccoef.048.2.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 63px; top: 0.0pt" alt="" /> as appropriate.</a></span></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280892">Monte Carlo &#8211; Asymptotic</a></span>: Similar to the <span class="Menu_Item">Monte Carlo &#8211; Bootstrap</span> approach, but with the simulated residual <img class="Default EquationGraphic" src="images/funccoef.048.2.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 47px; top: 0.0pt" alt="" /> drawn from a mean zero Gaussian distribution with standard deviation <img class="Default EquationGraphic" src="images/funccoef.048.2.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> obtained as the standard error of the estimation residuals.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span class="Menu_Item"><a name="280899">Full Bootstrap</a></span>: In contrast to the Monte Carlo bootstrap methods which generate simulated values through the residual process, the full bootstrap forecast is the average of forecasts using bootstrap draws of the dependent variable. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280903">As in the Monte Carlo - Bootstrap, for the <img class="Default EquationGraphic" src="images/funccoef.048.2.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />-th draw, we generate a bootstrap draw of the dependent variable <img class="Default EquationGraphic" src="images/funccoef.048.2.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 53px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/funccoef.048.2.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 87px; top: 0.0pt" alt="" /> using</a></span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/funccoef.048.2.095.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(38.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280917">where the set of simulated residuals <img class="Default EquationGraphic" src="images/funccoef.048.2.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 104px; top: 0.0pt" alt="" />, are a draw (with replacement) from the within sample estimation residuals. </a></span></div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280924">The <img class="Default EquationGraphic" src="images/funccoef.048.2.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/funccoef.048.2.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 19px; top: 0.0pt" alt="" /> are functional coefficients estimates computed at the evaluation points <img class="Default EquationGraphic" src="images/funccoef.048.2.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> using the original data <img class="Default EquationGraphic" src="images/funccoef.048.2.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 149px; top: 0.0pt" alt="" />. </a></span></div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280937">The data for the <img class="Default EquationGraphic" src="images/funccoef.048.2.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />-th simulation are then given by <img class="Default EquationGraphic" src="images/funccoef.048.2.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 188px; top: 0.0pt" alt="" />, where the <img class="Default EquationGraphic" src="images/funccoef.048.2.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 34px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/funccoef.048.2.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 36px; top: 0.0pt" alt="" /> are the original <img class="Default EquationGraphic" src="images/funccoef.048.2.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/funccoef.048.2.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" />, or are lags of <img class="Default EquationGraphic" src="images/funccoef.048.2.107.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 36px; top: 0.0pt" alt="" /> if the originals contain lags of <img class="Default EquationGraphic" src="images/funccoef.048.2.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" />.</a></span></div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280962">The corresponding <img class="Default EquationGraphic" src="images/funccoef.048.2.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />-step ahead individual forecast for the <img class="Default EquationGraphic" src="images/funccoef.048.2.110.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" />-th simulation is given by the fitted values: </a></span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/funccoef.048.2.111.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(38.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280973">The <img class="Default EquationGraphic" src="images/funccoef.048.2.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 33px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/funccoef.048.2.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 33px; top: 0.0pt" alt="" /> are functional coefficients estimated using the bootstrap simulation data <img class="Default EquationGraphic" src="images/funccoef.048.2.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 188px; top: 0.0pt" alt="" /> and evaluated at <img class="Default EquationGraphic" src="images/funccoef.048.2.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 51px; top: 0.0pt" alt="" />. </a></span></div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280986">Once again, in dynamic forecasting settings, <img class="Default EquationGraphic" src="images/funccoef.048.2.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 51px; top: 0.0pt" alt="" /> or <img class="Default EquationGraphic" src="images/funccoef.048.2.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 53px; top: 0.0pt" alt="" /> that depend on lagged endogenous variables will be set to actual values or lagged forecast values <img class="Default EquationGraphic" src="images/funccoef.048.2.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 30px; max-width: 72px; top: 0.0pt" alt="" />, as appropriate. For static forecasting, <img class="Default EquationGraphic" src="images/funccoef.048.2.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 51px; top: 0.0pt" alt="" /> or <img class="Default EquationGraphic" src="images/funccoef.048.2.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 53px; top: 0.0pt" alt="" /> will be set to actuals.</a></span></div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="280996">The forecast is obtained by averaging over the individual simulated forecasts:</a></span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/funccoef.048.2.121.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(38.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="281001">Note that the two bootstrap methods are not available in cases where the equation is specified using a dependent variable expression that is not normalizable.</a></div>
+      <div class="Heading_5"><a name="281003">Confidence Intervals</a></div>
+      <div class="Body_Text"><a name="281004">For forecasts that are obtained by Monte Carlo simulation methods, forecast confidence intervals may be obtained using the empirical distribution of the simulation results. </a></div>
+      <div class="Body_Text"><a name="281005">Monte Carlo forecast confidence intervals only consider residual uncertainty since resampling only involves a resampling from the residuals.</a></div>
+      <div class="Body_Text"><a name="281006">Confidence intervals for the full bootstrap are obtained by adapting the results in Davidson and Hinkley (1997) to functional coefficient models. Note that the full bootstrap introduces both coefficient and residual uncertainty into the calculation.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

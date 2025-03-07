@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>replacevar</title>
+    <link rel="StyleSheet" href="css/modelcmd.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="modelcmd-replacelink.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="modelcmd-revert.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cobjpreface.html">Object Reference</a> : Object View and Procedure Reference : <a class="WebWorks_Breadcrumb_Link" href="cobjects.html">Object View and Procedure Reference</a> : Model</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Command_Title_Box"><a name="216053">&nbsp;</a></div>
+      <table class="Command_Heading" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 108pt">
+            <div class="Command_Name"><a name="216047">replacevar</a></div>
+          </td>
+          <td style="border-bottom-color: Black; border-bottom-style: solid; border-bottom-width: thin; border-left-color: Black; border-left-style: solid; border-left-width: thin; border-right-color: Black; border-right-style: solid; border-right-width: thin; border-top-color: Black; border-top-style: solid; border-top-width: thin; padding-bottom: 5px; padding-left: 2pt; padding-right: 4px; padding-top: 5pt; vertical-align: middle; width: 252pt">
+            <div class="Command_Header"><span class="Command_Header_link"><a href="modelcmd-Model.html#176304" title="Model" name="216052">Model Procs</a></span></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Command_Description"><a name="216054">Replace all instances of a variable in the text specification of a model with a different variable.</a></div>
+      <div class="Command_Section"><a name="216055">Syntax</a></div>
+      <div class="Command_Types"><a name="216056">model_name.</a><span class="Command_Summary">replacevar</span> <span class="Argument">oldvar newvar</span></div>
+      <div class="Body_Text"><span class="In-line_command"><a name="216057">replacevar</a></span> can only replace variables defined by a text specification inside the model. It will not replace variables contained inside linked objects. Note that <span class="In-line_command">replacevar</span> does not do a simple text substitution, and is capable of determining full variable names from other pieces of text.</div>
+      <div class="Command_Section"><a name="216058">Examples</a></div>
+      <div class="Input"><a name="216059">Model m1</a></div>
+      <div class="Input"><a name="216060">M1.append y = 3*x</a></div>
+      <div class="Input"><a name="216061">M1.replacevar x z</a></div>
+      <div class="Body_Text"><a name="216062">this example creates a model, M1, and adds a text specification for the variable Y, setting it equal to 3*X. It then replaces all occurrences of X with Z, changing the specification of Y to be equal to 3*Z.</a></div>
+      <div class="Input"><a name="216063">M1.append y=3*log(x(-2))</a></div>
+      <div class="Input"><a name="216064">m1.append w = 4*x1</a></div>
+      <div class="Input"><a name="216065">M1.replacevar x z</a></div>
+      <div class="Body_Text"><a name="216066">this example generates a specification for Y, setting it equal to 3 times the log of the twice lagged value of X, and a specification for W, setting it equal to 4 times X1.&nbsp; It then replaces all instances of the variable X with the variable Z, changing the specification of Y to be equal to 3 times the log of twice lagged Z.&nbsp; Note that the specification of W does not change, since X1 is a different variable from X.</a></div>
+      <div class="Command_Section"><a name="216067">Cross-references</a></div>
+      <div class="Body_Text"><a name="300275">See also </a><span class="In-line_command_link"><a href="modelcmd-append.html#175548" title="append">Model::append</a></span>, <span class="In-line_command_link"><a href="modelcmd-replacelink.html#216029" title="replacelink">Model::replacelink</a></span> and <span class="In-line_command_link"><a href="#216047" title="replacevar">Model::replacevar</a></span>.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

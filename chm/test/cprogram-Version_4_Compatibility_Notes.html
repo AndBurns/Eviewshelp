@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Version 4 Compatibility Notes</title>
+    <link rel="StyleSheet" href="css/cprogram.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cprogram-User-Defined_Dialogs.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cprogram-EViews_Programming.html">EViews Programming</a> : Version 4 Compatibility Notes</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="140405">Version 4 Compatibility Notes</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#140407">String vs. Replacement Variables</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#140441">String Variables in String Expressions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#140453">Case-Sensitive String Comparison</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#140464">Comparisons Involving NAs/Missing Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#140487">Version 4 Compatibility Mode</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="140406">While the underlying concepts behind strings, string variables, and replacement variables have not changed since the first version of EViews, there were three important changes in the implementation of these concepts introduced in EViews 5. In addition, there has been an important change in the handling of boolean comparisons involving numeric NA values, and blank string values.</a></div>
+      <div class="Heading_5"><a name="140407">String vs. Replacement Variables</a></div>
+      <div class="Body_Text"><a name="140408">First, the use of contextual information to distinguish between the use of string and replacement variables has been eliminated.</a></div>
+      <div class="Body_Text"><a name="140409">Prior to EViews 5, the underlying notion that the expression &#8220;%X&#8221; refers exclusively to the string variable %X while the expression &#8220;{%X}&#8221; refers to the corresponding replacement variable was modified slightly to account for the context in which the expression was used. In particular, the string variable expression &#8220;%X&#8221; was treated as a string variable in cases where a string was expected, </a><span class="Argument">but was treated as a replacement variable</span> in other settings.</div>
+      <div class="Body_Text"><a name="140410">For example, suppose that we have the string variables:</a></div>
+      <div class="Multi-line_Input"><a name="140411">%y = "cons"</a></div>
+      <div class="Multi-line_Input"><a name="140412">%x = "income"</a></div>
+      <div class="Body_Text"><a name="140413">When used in settings where a string is expected, all versions of EViews treat %X and %Y as string variables. Thus, in table assignment, the command,</a></div>
+      <div class="Input"><a name="140414">table1(2, 3) = %x + " " + %y</a></div>
+      <div class="Body_Text"><a name="140415">is equivalent to the expression,</a></div>
+      <div class="Input"><a name="140416">table1(2, 3) = "cons" + " " + "income"</a></div>
+      <div class="Body_Text"><a name="140417">However, when string variables were used in other settings, early versions of EViews used the context to determine that the string variable should be treated as a replacement variable; for example, the three commands</a></div>
+      <div class="Multi-line_Input"><a name="140418">equation eq1.ls %y c %x</a></div>
+      <div class="Multi-line_Input"><a name="140419">equation eq1.ls {%y} c {%x}</a></div>
+      <div class="Multi-line_Input"><a name="140420">equation eq1.ls cons c income</a></div>
+      <div class="Body_Text"><a name="140421">were all viewed as equivalent. Strictly speaking, the first command should have generated an error since string variable substitution would replace %Y with the double-quote delimited string &#8220;cons&#8221; and %X with the string &#8220;income&#8221;, as in</a></div>
+      <div class="Input"><a name="140422">equation eq1.ls "cons" c "income"</a></div>
+      <div class="Body_Text"><a name="140423">Instead, EViews determined that the only valid interpretation of %Y and %X in the first command was as replacement variables so EViews simply substituted the names for %Y and %X.</a></div>
+      <div class="Body_Text"><a name="140424">Similarly, the commands,</a></div>
+      <div class="Multi-line_Input"><a name="140425">series %y = %x</a></div>
+      <div class="Multi-line_Input"><a name="140426">series {%y} = {%x}</a></div>
+      <div class="Multi-line_Input"><a name="140427">series cons = income</a></div>
+      <div class="Body_Text"><a name="140428">all yielded the same result, since %Y and %X were treated as replacement variables in the first line, not as string variables.</a></div>
+      <div class="Body_Text"><a name="140429">The contextual interpretation of string variables was convenient since, as seen from the examples above, it meant that users rarely needed to use braces around string variables. The EViews 5 introduction of alphanumeric series meant, however, that the existing interpretation of string variables was no longer tenable. The following example clearly shows the problem:</a></div>
+      <div class="Multi-line_Input"><a name="140430">alpha parent = "mother"</a></div>
+      <div class="Multi-line_Input"><a name="140431">%x = "parent"</a></div>
+      <div class="Multi-line_Input"><a name="140432">alpha temp = %x</a></div>
+      <div class="Body_Text"><a name="140433">Note that in the final assignment statement, the command context alone is not sufficient to determine whether %X should refer to the string variable value &#8220;parent&#8221; or to the replacement variable PARENT, which is an Alpha series containing the string &#8220;mother&#8221;.</a></div>
+      <div class="Body_Text"><a name="140434">Consequently, in EViews 5 and later, users must now always use the expression &#8220;{%X}&#8221; to refer to the replacement variable corresponding to the value of %X. Thus, under the new interpretation, the final line in the example above resolves to</a></div>
+      <div class="Multi-line_Input"><a name="140435">alpha temp = "parent"</a></div>
+      <div class="Body_Text"><a name="140436">Under the EViews 4 interpretation of the final line, &#8220;%X&#8221; would have been treated as a replacement variable so that TEMP would contain the value &#8220;mother&#8221;.</a></div>
+      <div class="Body_Text"><a name="140437">To interpret the last line as a replacement variable in EViews 5 and later, you must now explicitly provide braces around the string variable</a></div>
+      <div class="Input"><a name="140438">alpha temp = {%x}</a></div>
+      <div class="Body_Text"><a name="140439">to resolve to the command</a></div>
+      <div class="Input"><a name="140440">alpha temp = parent</a></div>
+      <div class="Heading_5"><a name="140441">String Variables in String Expressions</a></div>
+      <div class="Body_Text"><a name="140442">The second major change in EViews 5 is that text in a string expression is now treated as a literal string. The important implication of this rule is that string variable text is no longer substituted for inside a string expression.</a></div>
+      <div class="Body_Text"><a name="140443">Consider the assignment statements</a></div>
+      <div class="Multi-line_Input"><a name="140444">%b = "mom!"</a></div>
+      <div class="Multi-line_Input"><a name="140445">%a = "hi %b"</a></div>
+      <div class="Multi-line_Input"><a name="140446">table(1, 2) = %a</a></div>
+      <div class="Body_Text"><a name="140447">In EViews 4 and earlier, the &#8220;%B&#8221; text in the string expression was treated as a string variable, not as literal text. Accordingly, the EViews 4 string variable %A contains the text &#8220;hi mom!&#8221;. One consequence of this approach is that there was no way to get the literal text of the form &#8220;%B&#8221; into a string using a program in EViews 4.</a></div>
+      <div class="Body_Text"><a name="140448">Beginning in EViews 5, the &#8220;%B&#8221; in the second string variable assignment is treated as literal text. The string variable %A will contain the text &#8220;hi %b&#8221;. Obtaining a %A that contains the EViews 4 result is straightforward. Simply move the first string variable %B outside of the string expression, and use the string concatenation operator:</a></div>
+      <div class="Multi-line_Input"><a name="140449">%a = "hi " + %b</a></div>
+      <div class="Body_Text"><a name="140450">assigns the text &#8220;hi mom!&#8221; to the string variable %A. This expression yields identical results in all versions of EViews.</a></div>
+      <div class="Heading_5"><a name="140453">Case-Sensitive String Comparison</a></div>
+      <div class="Body_Text"><a name="140454">In early versions of EViews, program statements could involve string comparisons. For example, you might use an if-statement to compare a string variable to a specific value, or you could use a string comparison to assign a boolean value to a cell in a matrix or to a numeric series. In all of these settings, the string comparisons were performed caselessly, so that the string &#8220;Abc&#8221; was viewed as equal to &#8220;ABC&#8221; and &#8220;abc&#8221;.</a></div>
+      <div class="Body_Text"><a name="140455">The introduction of mixed case alpha series in EViews 5 meant that caseless string comparisons could no longer be supported. Accordingly, the behavior has been changed so that all EViews 5 and later string comparisons are case-sensitive. </a></div>
+      <div class="Body_Text"><a name="199141">If you wish to perform caseless comparison in newer versions of EViews, you can use the </a><span class="In-line_command">@upper</span> or <span class="In-line_command">@lower</span> string functions, as in</div>
+      <div class="Input"><a name="199218">if (@lower(%x) = "abc") then</a></div>
+      <div class="Body_Text"><a name="199251">or</a></div>
+      <div class="Input"><a name="199255">if (@upper(%x) = "ABC") then</a></div>
+      <div class="Body_Text"><a name="140456">Alternately, programs may be run in version 4 compatibility mode to enable caseless comparisons for element operations (see </a><span class="Link"><a href="#140487" title="Version 4 Compatibility Notes">&#8220;Version 4 Compatibility Mode&#8221;</a></span>). For example, the if-statement comparison:</div>
+      <div class="Input"><a name="140457">if (%x = "abc") then</a></div>
+      <div class="Body_Text"><a name="140458">will be performed caselessly in compatibility mode.</a></div>
+      <div class="Body_Text"><a name="140459">Note that compatibility mode does not apply to string comparisons that assign values into an entire EViews series. Thus, even in compatibility mode, the statement:</a></div>
+      <div class="Input"><a name="140460">series y = (alphaser = "abc")</a></div>
+      <div class="Body_Text"><a name="140461">will be evaluated using case-sensitive comparisons for each value of ALPHASER.</a></div>
+      <div class="Heading_5"><a name="140464">Comparisons Involving NAs/Missing Values</a></div>
+      <div class="Body_Text"><a name="140465">Prior to EViews 5, NA values were always treated as ordinary values for purposes of numeric equality (&#8220;=&#8221;) and inequality (&#8220;&lt;&gt;&#8221;) testing. In addition, when performing string comparisons in earlier versions of EViews, empty strings were treated as ordinary blank strings and not as a missing value. In these versions of EViews, the comparison operators (&#8220;=&#8221; and &#8220;&lt;&gt;&#8221;) always returned a 0 or a 1.</a></div>
+      <div class="Body_Text"><a name="140466">In EViews 5 and later, the behavior of numeric and string inequality comparisons involving NA values or blank strings has been changed so that comparisons involving two variables propagate missing values. To support the earlier behavior, the </a><span class="In-line_command">@eqna</span> and <span class="In-line_command">@neqna</span> functions are provided so that users may perform comparisons without propagating missing values. Complete details on these rules are provided in <span class="Link"><a href="dataapp-Strings.html#92523" title="Strings">&#8220;String Relational Operators&#8221;</a></span> and in <span class="Link"><a href="workdata-Numeric_Expressions.html#160599" title="Numeric Expressions">&#8220;Numeric Relational Operators&#8221;</a></span></div>
+      <div class="Body_Text"><a name="140479">Programs may be run in version 4 compatibility mode to enable the earlier behavior of comparisons for element operations. For example, the if-statement comparison:</a></div>
+      <div class="Input"><a name="140480">if (!x = !z) then</a></div>
+      <div class="Body_Text"><a name="140481">will not propagate NA values in compatibility mode.</a></div>
+      <div class="Body_Text"><a name="140482">Note that compatibility mode does not apply to comparisons that assign values into an EViews numeric or alpha series. Thus, even in compatibility mode, the statement:</a></div>
+      <div class="Input"><a name="140483">series y = (x = z)</a></div>
+      <div class="Body_Text"><a name="140484">will propagate NA values from either X or Z into Y.</a></div>
+      <div class="Heading_5"><a name="140487">Version 4 Compatibility Mode</a></div>
+      <div class="Body_Text"><a name="140488">While the changes to the handling of string variables and element boolean comparisons are required for extending the programming language to handle the new features of the EViews 5 and later, we recognize that users may have a large library of existing programs which make use of the previous behavior.</a></div>
+      <div class="Body_Text"><a name="140489">Accordingly, EViews provides a version 4 compatibility mode in which you may run EViews programs using the previous context sensitive handling of string and substitution variables, the earlier rules for resolving string variables in string expressions, and the rules for caseless string comparison and propagation of missing values in element comparisons.</a></div>
+      <div class="Body_Text"><a name="140490">There are two ways to ensure that your program is run in version 4 compatibility mode. First, you may specify version 4 compatibility mode at the time the program is run. Compatibility may be set interactively from the </a><span class="Menu_Item">Run Program</span> dialog (<span class="Link"><a href="cprogram-Program_Basics.html#9225" title="Program Basics">&#8220;Executing a Program&#8221;</a></span>) by selecting the <span class="Menu_Item">Version 4 compatible variable substitution</span><span class="Dialog_Item"> and program boolean comparisons</span> checkbox, or in a program using the &#8220;ver4&#8221; option (see <span class="In-line_command_link"><a href="commandcmd-run.html#2017022" title="run">run</a></span>).</div>
+      <div class="Body_Text"><a name="140499">Alternatively, you may include &#8220;MODE VER4&#8221; statement in your program. See </a><span class="Link"><a href="cprogram-Program_Modes.html#103355" title="Program Modes">&#8220;Program Modes&#8221;</a></span> for details.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

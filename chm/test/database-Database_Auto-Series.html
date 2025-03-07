@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Database Auto-Series</title>
+    <link rel="StyleSheet" href="css/database.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="database-Working_with_Objects_in_Databases.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="database-The_Database_Registry.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="database-EViews_Databases.html">EViews Databases</a> : Database Auto-Series</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="37293">Database Auto-Series</a></div>
+      <div class="Body_Text"><a name="37294">We have described how to fetch series into a workfile. There is an alternative way of working with databases which allows you to make direct use of the series contained in a database without first copying the series. The advantage of this approach is that you need not go through the process of importing the data every time the database is revised. This approach follows the model of auto-series in EViews as described in </a><span class="Link"><a href="workdata-Auto-series.html#160883" title="Auto-series">&#8220;Auto-series&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="37295">There are many places in EViews where you can use a series expression, such as log(X), instead of a simple series name, and EViews will automatically create a temporary auto-series for use in the procedure. This functionality has been extended so that you can now directly refer to a series in a database using the syntax:</a></div>
+      <div class="Input"><a name="37296">db_name::object_name</a></div>
+      <div class="Body_Text"><a name="37297">where </a><span class="In-line_input">db_name</span> is the shorthand associated with the database. If you omit the database name and simply prefix the object name with a double colon like this:</div>
+      <div class="Input"><a name="37298">::object_name</a></div>
+      <div class="Body_Text"><a name="37299">EViews will look for the object in the default database.</a></div>
+      <div class="Body_Text"><a name="37301">A simple example is to generate a new series:</a></div>
+      <div class="Input"><a name="37302">series lgdp = log(macro_db::gdp)</a></div>
+      <div class="Body_Text"><a name="37303">EViews will fetch the series named GDP from the database with the shorthand MACRO_DB, and put the log of GDP in a new series named LGDP in the workfile. It then deletes the series GDP from memory, unless it is in use by another object. Note that the generated series LGDP only contains data for observations within the current workfile sample.</a></div>
+      <div class="Body_Text"><a name="37305">You can also use auto-series in a regression. For example:</a></div>
+      <div class="Input"><a name="37306">equation eq1.ls log(db1::y) c log(db2::x)</a></div>
+      <div class="Body_Text"><a name="37307">This will fetch the series named Y and X from the databases named DB1 and DB2, perform any necessary frequency conversions and end point truncation so that they are suitable for use in the current workfile, take the log of each of the series, then run the requested regression. Y and X are then deleted from memory unless they are otherwise in use.</a></div>
+      <div class="Body_Text"><a name="37308">The auto-series feature can be further extended to include automatic searching of databases according to rules set in the database registry (see </a><span class="Link"><a href="database-The_Database_Registry.html#101571" title="The Database Registry">&#8220;The Database Registry&#8221;</a></span>). Using the database registry you can specify a list of databases to search whenever a series you request cannot be found in the workfile. With this feature enabled, the <span class="In-line_input">series</span> command:</div>
+      <div class="Input"><a name="37315">series lgdp = log(gdp)</a></div>
+      <div class="Body_Text"><a name="37316">looks in the workfile for a series named GDP. If it is not found, EViews will search through the list of databases one by one until a series called GDP is found. When found, the series will be fetched into EViews so that the expression can be evaluated. Similarly, the regression:</a></div>
+      <div class="Input"><a name="37317">equation logyeq.ls log(y) c log(x)</a></div>
+      <div class="Body_Text"><a name="37318">will fetch Y and X from the list of databases in the registry if they are not found in the workfile. Note that the regression output will label all variables with the database name from which they were imported.</a></div>
+      <div class="Body_Text"><a name="37319">In general, using auto-series directly from the database has the advantage that the data will be completely up to date. If the series in the database are revised, you do not need to repeat the step of importing the data into the workfile. You can simply reestimate the equation or model, and EViews will automatically retrieve new copies of any data which are required. </a></div>
+      <div class="Body_Text"><a name="37320">There is one complication to this discussion which results from the rules which regulate the updating and deletion of auto-series in general. If there is an existing copy of an auto-series already in use in EViews, a second use of the same expression will not cause the expression to be reevaluated (in this case reloaded from the database); it will simply make use of the existing copy. If the data in the database have changed since the last time the auto-series was loaded, the new expression will use the old data.</a></div>
+      <div class="Body_Text"><a name="37321">One implication of this behavior is that a copy of a series from a database can persist for any length of time if it is stored as a member in a group. For example, if you type:</a></div>
+      <div class="Input"><a name="37322">show db1::y db2::x</a></div>
+      <div class="Body_Text"><a name="37323">this will create an untitled group in the workfile containing the expressions </a><span class="In-line_input">db1::y</span> and <span class="In-line_input">db2::x</span>. If the group window is left open and the data in the database are modified (for example by a <span class="In-line_input">store</span> or a <span class="In-line_input">copy</span> command), the group and its window will not update automatically. Furthermore, if the regression:</div>
+      <div class="Input"><a name="37324">equation logyeq.ls log(db1::y) c log(db2::x)</a></div>
+      <div class="Body_Text"><a name="101565">is run again, this will use the copies of the series contained in the untitled group; it will not re-fetch the series from the database. </a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/enet.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="enet-Working_with_Elastic_Net_Equations.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="enet-Cross-validation_Settings.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="enet-Elastic_Net_and_Lasso.html">Elastic Net and Lasso</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="479901">Examples</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#493408">Ridge Regression</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#493427">Lasso</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#493434">Elastic Net</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="493047">We provide some examples of elastic net estimation using the prostate cancer data from Stamey et al, (1989), which also serve as example data in Hastie, Tibshirani, and Friedman (2009, p. 3).</a></div>
+      <div class="Body_Text"><a name="494011">The &#8220;Prostate.WF1&#8221; workfile containing these data obtained from the authors&#8217; website is provided with your EViews example data.</a></div>
+      <div class="Body_Text"><a name="493343">The dependent variable is the logarithm of prostate-specific antigen (LPSA). The regressors are log(cancer volume) (LCAVOL), log(prostate weight) (LWEIGHT), age, the logarithm of the amount of benign prostatic hyperplasia (LBPH), seminal vesicle invasion (SVI), log(casular penetration) (LCP), Gleason score (GLEASON) and percentage Gleason score 4 or 5 (PGG45). Following Hastie, Tibrshirani, and Friedman we standardize the regressors over the full data, creating corresponding series with the original names appended with &#8220;_S&#8221;.</a></div>
+      <div class="Heading_4"><a name="493408">Ridge Regression</a></div>
+      <div class="Body_Text"><a name="493489">We begin with a simple ridge regression example. Open the equation estimation dialog, select </a><span class="Menu_Item">ENET - Elastic Net Regularization </span>in the <span class="Menu_Item">Method</span> drop-down menu, and fill out the dialog as follows:</div>
+      <div class="Picture"><a name="494623"><img class="Default" src="images/enet.047.5.01.jpg" width="100%" style="left: 0.0pt; max-height: 615px; max-width: 576px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="493653">We list the dependent variable followed by standardized variables as regressors</a></div>
+      <div class="Input"><a name="998406">lpsa c lcavol_s lweight_s age_s lbph_s svi_s lcp_s gleason_s pgg45_s</a></div>
+      <div class="Body_Text"><a name="494565">in the </a><span class="Menu_Item">Equation specification</span> edit field, and choose <span class="Menu_Item">Ridge regression</span> in the Type drop-down menu.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="494825">We leave the </a><span class="Menu_Item">Lambda</span> edit field blank so that EViews will determine the lambda path of values to consider.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="494739">We set the estimation sample to the observations where the TRAIN series takes the value &#8220;T&#8221;.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="494744">On the </a><span class="Menu_Item">Penalty</span> tab we change the <span class="Menu_Item">Regressor scaling</span> drop-down to <span class="Menu_Item">None</span> since the data are pre-scaled.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="520569">We change the </a><span class="Menu_Item">Path min/max ratio</span> to 0.0001.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="498905">We will leave the remaining settings at their defaults. Click on </a><span class="Menu_Item">OK</span> to estimate the equation. EViews will display the main estimation output.</div>
+      <div class="Picture"><a name="495280"><img class="Default" src="images/enet.047.5.02.jpg" width="100%" style="left: 0.0pt; max-height: 684px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="498815">The top portion of the output shows that we are estimating a ridge regression model with automatic path estimation. The optimal value of 14.23403 is computed from 5-fold cross-validation using a mean square error objective. Since the regressors are already standardized, we have specified no regressor scaling and there is no dependent variable scaling.</a></div>
+      <div class="Body_Text"><a name="499306">The output shows the results for estimation using the optimal penalty of 61.62 and the largest penalty values (279.4198 and 1358.707) with cross-validation mean square errors that are 1 and 2 standard deviations from the mean. </a></div>
+      <div class="Body_Text"><a name="499976">In all three cases, all of the coefficients are included in the specification, as expected for ridge regression, and the results clearly show the reduction in both the coefficient values and the goodness of fit measures as we increase the value of <img class="Default EquationGraphic" src="images/enet.047.5.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="500081">Click on </a><span class="Menu_Item">View/Coefficient Path/Graphs</span> to show the coefficients plotted against various values in the <span class="Menu_Item">Lambda</span> graph:</div>
+      <div class="Picture"><a name="499592">i<img class="Default" src="images/enet.047.5.04.jpg" width="100%" style="left: 0.0pt; max-height: 484px; max-width: 699px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="500383">The vertical line shows the optimal value for log <img class="Default EquationGraphic" src="images/enet.047.5.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="500915">We may also see the relationship between the penalty and the fit measures. Select </a><span class="Menu_Item">View/Lambda Path/Graphs</span> and select the <span class="Menu_Item">Fit Statistics</span> node to see the relationship between the <img class="Default EquationGraphic" src="images/enet.047.5.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and the squared deviation based measure of fit:</div>
+      <div class="Picture"><a name="501197"><img class="Default" src="images/enet.047.5.07.jpg" width="100%" style="left: 0.0pt; max-height: 489px; max-width: 757px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="501152">Note that both measures are monotonically decreasing in the penalty, and the adjusted <img class="Default EquationGraphic" src="images/enet.047.5.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" /> is negative for larger values.</a></div>
+      <div class="Body_Text"><a name="501486">The cross-validation views provide more insight into the effect of increasing penalty. Click on </a><span class="Menu_Item">View/Model Selection/Cross-validation Error Graph</span> to show the cross-validation objective plotted against the penalty:</div>
+      <div class="Picture"><a name="501721"><img class="Default" src="images/enet.047.5.09.jpg" width="100%" style="left: 0.0pt; max-height: 453px; max-width: 524px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="501747">The plot shows the average mean square error obtained from the K-fold cross-validation, again with the vertical line corresponding to the optimal log <img class="Default EquationGraphic" src="images/enet.047.5.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_4"><a name="493427">Lasso</a></div>
+      <div class="Body_Text"><a name="501894">Next, we estimate a modified specification using the Lasso penalty function. We change the penalty specification </a><span class="Menu_Item">Type</span> to <span class="Menu_Item">Lasso</span>, and fill out the main estimation dialog with the same variables as before, but increasing the relative penalty of PGG45_S, by entering </div>
+      <div class="Multi-line_Input"><a name="502333">lpsa c lcavol_s lweight_s age_s lbph_s svi_s lcp_s gleason_s  @vw(pgg45_s, 1.2)</a></div>
+      <div class="Body_Text"><a name="502386">into the </a><span class="Menu_Item">Equation specification</span> edit field. </div>
+      <div class="Body_Text"><a name="502608">We use here the simple form of the </a><span class="In-line_command">@vw</span> specification in which the single argument is assumed to be the weight value. Note that we set individual weight <img class="Default EquationGraphic" src="images/enet.047.5.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> for PGG45_S to 1.2, so that the variable is more heavily penalized. EViews will apply the specified weight, and then normalize all of the non-zero weights so that they sum to the number of penalized variables.</div>
+      <div class="Body_Text"><a name="502896">For added clarity, we may alter the specification to use the option form of the weight specification:</a></div>
+      <div class="Multi-line_Input"><a name="503112">lpsa c lcavol_s lweight_s age_s lbph_s svi_s lcp_s gleason_s  @vw(pgg45_s, w=1.2)</a></div>
+      <div class="Body_Text"><a name="502606">All of the remaining settings are as in the original ridge regression example in </a><span class="Link"><a href="#493408" title="Examples">&#8220;Ridge Regression&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="502601">Click on </a><span class="Menu_Item">OK</span> to estimate the equation.</div>
+      <div class="Picture"><a name="501970">&nbsp;</a></div>
+      <div class="Picture"><a name="503252"><img class="Default" src="images/enet.047.5.12.jpg" width="100%" style="left: 0.0pt; max-height: 652px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="503272">The top of the output is mostly familiar, but has an added line noting the higher individual penalty weight for PGG45_S.</a></div>
+      <div class="Body_Text"><a name="503379">As expected, the Lasso penalty produces more 0-valued coefficients than does the ridge penalty. The main estimation output table drops AGE_S, LCP_S and GLEASON_S from the display since the corresponding coefficient is 0 for all three models. As the penalty increases in the rightward columns, additional coefficients are set to 0. For a <img class="Default EquationGraphic" src="images/enet.047.5.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> of 0.491487, the only remaining coefficients are for the unpenalized intercept, LCAVOL_S, and LWEIGHT_S.</a></div>
+      <div class="Body_Text"><a name="506215">Selecting </a><span class="Menu_Item">View/Coefficient Path/Graphs</span> and examining the <span class="Menu_Item">Lambda</span> graph shows the coefficients plotted against various values of the penalty parameter: </div>
+      <div class="Picture"><a name="503274"><img class="Default" src="images/enet.047.5.14.jpg" width="100%" style="left: 0.0pt; max-height: 491px; max-width: 693px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="503276">Of particular interest are the values of log lambda where the lines intersect the horizontal axis. We see, for example, that GLEASON_S is the first variable to drop out as we increase the penalty, followed significantly later by LCP_S and then AGE_S. The remaining variables have coefficients which reach zero only at log <img class="Default EquationGraphic" src="images/enet.047.5.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values greater than the optimum.</a></div>
+      <div class="Body_Text"><a name="513329">We can see an overview of this behavior by looking at the graph of the number of non-zero coefficients against the values of log <img class="Default EquationGraphic" src="images/enet.047.5.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> (</a><span class="Menu_Item">View/Lambda Path/Graphs)</span>:</div>
+      <div class="Picture"><a name="513523"><img class="Default" src="images/enet.047.5.17.jpg" width="100%" style="left: 0.0pt; max-height: 468px; max-width: 743px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="506675">Looking at the cross-validation results </a><span class="Menu_Item">View/Model Selection/Cross-validation Criteria Graph</span> shows the behavior of the top 20 models</div>
+      <div class="Picture"><a name="520978"><img class="Default" src="images/enet.047.5.18.jpg" width="100%" style="left: 0.0pt; max-height: 441px; max-width: 565px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="521022">and </a><span class="Menu_Item">View/Model Selection/Cross-validation Error Graph </span>shows the behavior of the cross-validation objective along the path.</div>
+      <div class="Picture"><a name="506996"><img class="Default" src="images/enet.047.5.19.jpg" width="100%" style="left: 0.0pt; max-height: 433px; max-width: 561px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="507184">The cross-validation table results (</a><span class="Menu_Item">View/Model Selection/Criteria Table</span>) show the objective and various measures of fit for all of the values of the penalty:</div>
+      <div class="Picture"><a name="512735"><img class="Default" src="images/enet.047.5.20.jpg" width="100%" style="left: 0.0pt; max-height: 302px; max-width: 608px; top: 0.0pt" alt="" /></a></div>
+      <div class="Picture"><a name="512737"><img class="Default" src="images/enet.047.5.21.jpg" width="100%" style="left: 0.0pt; max-height: 214px; max-width: 591px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="493434">Elastic Net</a></div>
+      <div class="Body_Text"><a name="493048">To estimate this model, open the elastic net dialog and fill it out as depicted:</a></div>
+      <div class="Multi-line_Input"><a name="502313">lpsa c lcavol_s lweight_s @vw(age_s, cmax=0.4) lbph_s svi_s lcp_s gleason_s  @vw(pgg45_s, cmax=0.1, w=1.2)</a></div>
+      <div class="Body_Text"><a name="507480">In this specification, we restrict the AGE_S variable to have a coefficient less than or equal to 0.4, and we assign an individual weight to PGG45_S of 1.2, with a coefficient maximum value of 0.1.</a></div>
+      <div class="Body_Text"><a name="521144">Again, we leave the </a><span class="Menu_Item">Lambda</span> edit field blank so that EViews will determine the lambda path of values to consider and we set the estimation sample to the observations where the TRAIN series takes the value &#8220;T&#8221;. The remaining settings are as in the original ridge regression example in <span class="Link"><a href="#493408" title="Examples">&#8220;Ridge Regression&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="507915">Click on </a><span class="Menu_Item">OK</span> to estimate the equation.</div>
+      <div class="Table"><a name="507961"><img class="Default" src="images/enet.047.5.22.jpg" width="100%" style="left: 0.0pt; max-height: 710px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="507925">The output should be familiar. Note the line in the header displaying the individual weights and coefficient limits for LCAVOL_S and PGG45_S.</a></div>
+      <div class="Body_Text"><a name="508143">We see here that the upper coefficient limit is binding for LCAVOL_S at both the optimal and the &#8220;+1 SE&#8221; penalties, but that at the &#8220;+2 SE&#8221; penalty, the limit is no longer relevant. The PGG45_S coefficient limit is binding at the optimal, but not for the two higher penalties.</a></div>
+      <div class="Body_Text"><a name="508494">Click on </a><span class="Menu_Item">View/Coefficient Path/Graphs</span> and select the Lambda graph to show the coefficients along the <img class="Default EquationGraphic" src="images/enet.047.5.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> path: </div>
+      <div class="Picture"><a name="507927"><img class="Default" src="images/enet.047.5.24.jpg" width="100%" style="left: 0.0pt; max-height: 485px; max-width: 698px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="507929">Notable are the paths of the LCAAVOL_S and the PGG45_S in which the restrictions are binding along the path until the penalty is large enough to shrink the coefficient within the bounds. As expected, as the penalization increases, the complexity of the model decreases and coefficients gradually shrink to 0.</a></div>
+      <div class="Body_Text"><a name="509248">The cross-validation error graph (</a><span class="Menu_Item">View/Model Selection/Cross-validation Error</span>) shows the behavior of the mean square error along the path:</div>
+      <div class="Picture"><a name="509426"><img class="Default" src="images/enet.047.5.25.jpg" width="100%" style="left: 0.0pt; max-height: 405px; max-width: 537px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

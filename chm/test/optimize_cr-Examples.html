@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Examples</title>
+    <link rel="StyleSheet" href="css/optimize_cr.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="optimize_cr-The_Optimize_Command.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="optimize_cr-Technical_Details.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="optimize_cr-User-Defined_Optimization.html">User-Defined Optimization</a> : Examples</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="239284">Examples</a></div>
+      <div class="Body_Text"><a name="239285">We demonstrate the use of the </a><span class="In-line_command">optimize</span> command with several examples. To begin, we consider a regression problem using a workfile created with the following set of commands:</div>
+      <div class="Multi-line_Example"><a name="239286">wfcreate u 100</a></div>
+      <div class="Multi-line_Example"><a name="239287">rndseed 1</a></div>
+      <div class="Multi-line_Example"><a name="239288">series e = nrnd</a></div>
+      <div class="Multi-line_Example"><a name="239289">series x1 = 100*rnd</a></div>
+      <div class="Multi-line_Example"><a name="239290">series x2 = 30*nrnd</a></div>
+      <div class="Multi-line_Example"><a name="239291">series x3 = -4*rnd</a></div>
+      <div class="Multi-line_Example"><a name="239292">group xs x1 x2 x3</a></div>
+      <div class="Multi-line_Example"><a name="239293">series y = 3 + 2*x1 + 4*x2 + 5*x3 + e</a></div>
+      <div class="Multi-line_Example"><a name="239294">equation eq1.ls y c x1 x2 x3</a></div>
+      <div class="Body_Text"><a name="239295">These commands create a workfile with 100 observations, and then generate some random data for series X1, X2 and X3, and E (where E is drawn from the standard normal distribution). The series Y is created as 3+2*X1+4*X2+5*X3 + E.</a></div>
+      <div class="Body_Text"><a name="239296">To establish a baseline set of results for comparison, we regress Y against a constant, X1, X2, and X3 using the built-in least squares method of the EViews equation object. The results view for the resulting equation EQ1 contains the regression output:</a></div>
+      <div class="Picture"><a name="239300"><img class="Default" src="images/optimize_cr.091.4.01.jpg" width="100%" style="left: 0.0pt; max-height: 418px; max-width: 489px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="239301">Next we use the </a><span class="In-line_command">optimize</span> command with the least squares method to estimate the coefficients in the regression problem. Running a program with the following commands produces the same results as the built-in regression estimator:</div>
+      <div class="Multi-line_Example"><a name="239302">subroutine leastsquares(series r, vector beta, series dep, group regs)</a></div>
+      <div class="Multi-line_Example"><a name="239303">	r = dep - beta(1) - beta(2)*regs(1) - beta(3)*regs(2) - &nbsp;&nbsp;&nbsp;beta(4)*regs(3)</a></div>
+      <div class="Multi-line_Example"><a name="239304">endsub</a></div>
+      <div class="Multi-line_Example"><a name="239305">&nbsp;</a></div>
+      <div class="Multi-line_Example"><a name="239306">series LSresid</a></div>
+      <div class="Multi-line_Example"><a name="239307">vector(4) LSCoefs</a></div>
+      <div class="Multi-line_Example"><a name="239308">lscoefs = 1</a></div>
+      <div class="Multi-line_Example"><a name="239309">optimize(ls=1, finalh=lshess) leastsquares(LSresid, lscoefs, y, xs)</a></div>
+      <div class="Multi-line_Example"><a name="239310">scalar sig = @sqrt(@sumsq(LSresid)/(@obs(LSresid)-@rows(LSCoefs)))</a></div>
+      <div class="Multi-line_Example"><a name="239311">vector LSSE = @sqrt(@getmaindiagonal(2*sig^2*@inverse(lshess)))</a></div>
+      <div class="Body_Text"><a name="239312">We begin by defining the LEASTSQUARES subroutine which computes the regression residual series R, using the parameters given by the vector BETA, the dependent variable given by the series DEP, and the regressors provided by the group REGS. All of these objects are arguments of the subroutine which are passed in when the subroutine is called.</a></div>
+      <div class="Body_Text"><a name="239313">Next, we declare the LSRESID series and a vector of coefficients, LSCOEFS, which we arbitrarily initialize at a value of 1 as starting values.</a></div>
+      <div class="Body_Text"><a name="239314">The </a><span class="In-line_command">optimize</span> command is called with the &#8220;ls&#8221; option to indicate that we wish to perform a least squares optimization. The &#8220;finalh&#8221; option is included so that we save the estimated Hessian matrix in the workfile for use in computing standard errors of the estimates. <span class="In-line_command">optimize</span> will find the values of LSCOEFS that minimize the sum of squared values of LSRESID as computed using the LEASTSQUARES subroutine.</div>
+      <div class="Body_Text"><a name="239315">Once optimization is complete, LSCOEFS contains the point estimates of the coefficients. For least squares regression, the standard error of the regression <img class="Default EquationGraphic" src="images/optimize_cr.091.4.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is calculated as the square root of the sum of squares of the residuals, divided by <img class="Default EquationGraphic" src="images/optimize_cr.091.4.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 43px; top: 0.0pt" alt="" />. We store <img class="Default EquationGraphic" src="images/optimize_cr.091.4.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> in the scalar SIG. Standard errors may be calculated from the Hessian as the square root of the diagonal of <img class="Default EquationGraphic" src="images/optimize_cr.091.4.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 55px; top: 0.0pt" alt="" />. We store these values in the vector LSSE. </a></div>
+      <div class="Body_Text"><a name="239331">The coefficients in LSCOEFS, standard error of the regression <img class="Default EquationGraphic" src="images/optimize_cr.091.4.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> in SIG, and coefficient standard errors in LSSE, all match the results in EQ1.</a></div>
+      <div class="Picture"><a name="239335"><img class="Default" src="images/optimize_cr.091.4.07.jpg" width="100%" style="left: 0.0pt; max-height: 306px; max-width: 618px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="239336">Alternately, we may use </a><span class="In-line_command">optimize</span> to estimate the maximum likelihood estimates of the regression model coefficients. Under standard assumptions, an observation-based contribution to the log-likelihood for a regression with normal error terms is of the form:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize_cr.091.4.08.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(10.1)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="239341">The following code obtains the maximum likelihood estimates for this model:</a></div>
+      <div class="Multi-line_Example"><a name="239342">subroutine loglike(series logl, vector beta, series dep, group regs)</a></div>
+      <div class="Multi-line_Example"><a name="239343">	series r = dep - beta(1) - beta(2)*regs(1) - beta(3)*regs(2) - &nbsp;&nbsp;&nbsp;beta(4)*regs(3)</a></div>
+      <div class="Multi-line_Example"><a name="239344">	logl = @log((1/beta(5))*@dnorm(r/beta(5)))</a></div>
+      <div class="Multi-line_Example"><a name="239345">endsub</a></div>
+      <div class="Multi-line_Example"><a name="239346">&nbsp;</a></div>
+      <div class="Multi-line_Example"><a name="239347">series LL</a></div>
+      <div class="Multi-line_Example"><a name="239348">vector(5) MLCoefs</a></div>
+      <div class="Multi-line_Example"><a name="239349">MLCoefs = 1</a></div>
+      <div class="Multi-line_Example"><a name="239350">MLCoefs(5) = 100</a></div>
+      <div class="Multi-line_Example"><a name="239351">optimize(ml=1, finalh=mlhess, hess=numeric) loglike(LL, MLCoefs, y, xs)</a></div>
+      <div class="Multi-line_Example"><a name="239352">vector MLSE = @sqrt(@getmaindiagonal(-@inverse(mlhess)))</a></div>
+      <div class="Multi-line_Example"><a name="239353">scalar ubsig = mlcoefs(5)*@sqrt(@obs(LL)/(@obs(LL) - @rows(MLCoefs) + 1))</a></div>
+      <div class="Multi-line_Example"><a name="239354">%status = @optmessage</a></div>
+      <div class="Multi-line_Example"><a name="239355">statusline {%status}</a></div>
+      <div class="Body_Text"><a name="239356">The subroutine LOGLIKE computes the regression residuals using the coefficients in the vector BETA, the dependent variable series given by DEP, and the regressors in the group REGS. Given R, the subroutine evaluates the individual log-likelihood contributions and puts the results in the argument series LOGL. </a></div>
+      <div class="Body_Text"><a name="239357">The next lines declare the series LL to hold the likelihood contributions and the coefficient vector BETA to hold the controls. Note that the coefficient vector, BETA, has five elements instead of the four used in least-squares optimization, since we are simultaneously estimating the four regression coefficients and the error standard deviation <img class="Default EquationGraphic" src="images/optimize_cr.091.4.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. We arbitrarily initialize the regression coefficients to 1 and the distribution standard deviation to 100.</a></div>
+      <div class="Body_Text"><a name="239361">We set the maximizer to perform a maximum likelihood based estimation using the &#8220;ml=&#8221; option and to store the OPG Hessian in the workfile in the sym objected MLHESS. The coefficient standard errors for the maximum likelihood estimates may be calculated as the square root of the main diagonal of the negative of the inverse of MLHESS. We store the estimated standard errors in the vector MLSE. </a></div>
+      <div class="Body_Text"><a name="239362">Although the regression coefficient estimates match those in the baseline, the ML estimate of <img class="Default EquationGraphic" src="images/optimize_cr.091.4.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> in the fifth element of BETA differs. You may obtain the corresponding unbiased estimate of sigma by multiplying the ML estimate by multiplying BETA(5) by <img class="Default EquationGraphic" src="images/optimize_cr.091.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 93px; top: 0.0pt" alt="" />, which we calculate and store in the scalar UBSIG.</a></div>
+      <div class="Picture"><a name="239372"><img class="Default" src="images/optimize_cr.091.4.12.jpg" width="100%" style="left: 0.0pt; max-height: 301px; max-width: 726px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="239373">Note also that we use </a><span class="In-line_command">@optmessage</span> to obtain the status of estimation, whether convergence was achieved and if so, how many iterations were required. The status is reported on the statusline after the <span class="In-line_command">optimize</span> estimation is completed. </div>
+      <div class="Body_Text"><a name="239374">The next example we provide shows the use of the &#8220;grads=&#8221; option. This example re-calculates the least-squares example above, but provides analytic gradients inside the subroutine. Note that for a linear least squares problem, the derivatives of the objective with respect to the coefficients are the regressors themselves (and a series of ones for the constant):</a></div>
+      <div class="Multi-line_Example"><a name="239375">subroutine leastsquareswithgrads(series r, vector beta, group grads, series dep, group regs)</a></div>
+      <div class="Multi-line_Example"><a name="239376">	r = dep - beta(1) - beta(2)*regs(1) - beta(3)*regs(2) - &nbsp;&nbsp;&nbsp;beta(4)*regs(3)</a></div>
+      <div class="Multi-line_Example"><a name="239377">	grads(1) = 1</a></div>
+      <div class="Multi-line_Example"><a name="239378">	grads(2) = regs(1)</a></div>
+      <div class="Multi-line_Example"><a name="239379">	grads(3) = regs(2)</a></div>
+      <div class="Multi-line_Example"><a name="239380">	grads(4) = regs(3)</a></div>
+      <div class="Multi-line_Example"><a name="239381">endsub</a></div>
+      <div class="Multi-line_Example"><a name="239382">&nbsp;</a></div>
+      <div class="Multi-line_Example"><a name="239383">series LSresid</a></div>
+      <div class="Multi-line_Example"><a name="239384">vector(4) LSCoefs</a></div>
+      <div class="Multi-line_Example"><a name="239385">lscoefs = 1</a></div>
+      <div class="Multi-line_Example"><a name="239386">series grads1</a></div>
+      <div class="Multi-line_Example"><a name="239387">series grads2</a></div>
+      <div class="Multi-line_Example"><a name="239388">series grads3</a></div>
+      <div class="Multi-line_Example"><a name="239389">series grads4</a></div>
+      <div class="Multi-line_Example"><a name="239390">group grads grads1 grads2 grads3 grads4</a></div>
+      <div class="Multi-line_Example"><a name="239391">optimize(ls=1, grads=3) leastsquareswithgrads(LSresid, lscoefs, grads, y, xs)</a></div>
+      <div class="Body_Text"><a name="239392">Note that the series for the gradients, and the group containing those series, were declared prior to calling the </a><span class="In-line_command">optimize</span> command, and that the subroutine fills in the values of the series inside the gradient group.</div>
+      <div class="Body_Text"><a name="239393">Up to this point, our examples have involved the evaluation of series expressions. The optimizer does, however, work with other EViews commands. We could, for example, compute the least squares estimates using the optimizer to &#8220;solve&#8221; the normal equation <img class="Default EquationGraphic" src="images/optimize_cr.091.4.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 120px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/optimize_cr.091.4.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. While the optimizer is not a solver, we can trick it into solving that equation by creating a vector of residuals equal to <img class="Default EquationGraphic" src="images/optimize_cr.091.4.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 110px; top: 0.0pt" alt="" />, and asking the optimizer to find the values of <img class="Default EquationGraphic" src="images/optimize_cr.091.4.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> that minimize the square of those residuals:</a></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239406">subroutine local matrixsolve(vector rvec, vector beta, series dep, group regs)</a></span></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239407">	stom(regs, xmat)</a></span></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239408">	xmat = @hcat(@ones(100), xmat)</a></span></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239409">	stom(dep, yvec)</a></span></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239410">	rvec = @transpose(xmat)*xmat*beta - @transpose(xmat)*yvec</a></span></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239411">	rvec = @epow(rvec,2)</a></span></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239412">endsub</a></span></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239413">vector(4) MSCoefs</a></span></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239414">MSCoefs = 1</a></span></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239415">vector(4) rvec</a></span></div>
+      <div class="Multi-line_Example"><span class="In-line_command"><a name="239416">optimize(min=1) matrixsolve(rvec, mscoefs, y, xs)</a></span></div>
+      <div class="Body_Text"><a name="239417">Since we will be using matrix manipulation for the objective function, the first few lines of the subroutine convert the input dependent variable series and regressor group into matrices. Note that the regressor group does not contain a constant term upon input, so we append a column of ones to the regression matrix XMAT, using the </a><span class="In-line_command">@hcat</span> command.</div>
+      <div class="Body_Text"><a name="239418">Lastly, we use the </a><span class="In-line_command">optimize</span> command to find the minimum of a simply function of a single variable. We define a subroutine containing the quadratic form, and use the optimize command to find the value that minimizes the function:</div>
+      <div class="Multi-line_Input"><a name="239419">subroutine f(scalar !y, scalar !x)</a></div>
+      <div class="Multi-line_Input"><a name="239420">	!y = 5*!x^2 - 3*!x - 2</a></div>
+      <div class="Multi-line_Input"><a name="239421">endsub</a></div>
+      <div class="Multi-line_Input"><a name="239422">create u 1</a></div>
+      <div class="Multi-line_Input"><a name="239423">scalar in = 0</a></div>
+      <div class="Multi-line_Input"><a name="239424">scalar out = 0</a></div>
+      <div class="Multi-line_Input"><a name="239425">optimize(min) f(out, in)</a></div>
+      <div class="Body_Text"><a name="239426">This example first creates an empty workfile and declares two scalar objects, IN and OUT, for use by the optimizer. IN will be used as the parameter for optimization, and is given an arbitrary starting value of 0. The subroutine F calculates the simple quadratic formula:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize_cr.091.4.17.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(10.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="239431">After running this program the value of IN will be 0.3, and the final value of OUT (evaluated at the optimal IN value) is -2.45. As a check we can manually calculate the minimal value of the function by taking derivatives with respect to X, setting equal to zero, and solving for X:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize_cr.091.4.18.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(10.3)</div>
+          </td>
+        </tr>
+      </table>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

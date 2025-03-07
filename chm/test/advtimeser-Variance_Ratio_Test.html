@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Variance Ratio Test</title>
+    <link rel="StyleSheet" href="css/advtimeser.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="advtimeser-Cross-sectionally_Dependent_Panel_Unit_Root_Test.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="advtimeser-BDS_Independence_Test.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_univar.html">Advanced Univariate Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="advtimeser-Univariate_Time_Series_Analysis.html">Univariate Time Series Analysis</a> : Variance Ratio Test</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="186053">Variance Ratio Test</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186062">Performing Variance Ratio Tests in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186086">An Example</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186163">Technical Details</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186188">The Basic Test Statistic</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186259">Joint Variance Ratio Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186291">Wild Bootstrap</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186300">Rank and Rank Score Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186329">Sign Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#186340">Panel Statistics</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="186054">The question of whether asset prices are predictable has long been the subject of considerable interest. One popular approach to answering this question, the Lo and MacKinlay (1988, 1989) overlapping variance ratio test, examines the predictability of time series data by comparing variances of differences of the data (returns) calculated over different intervals. If we assume the data follow a random walk, the variance of a <img class="Default EquationGraphic" src="images/advtimeser.053.10.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-period difference should be <img class="Default EquationGraphic" src="images/advtimeser.053.10.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> times the variance of the one-period difference. Evaluating the empirical evidence for or against this restriction is the basis of the variance ratio test.</a></div>
+      <div class="Body_Text"><a name="186061">EViews allows you to perform the Lo and MacKinlay variance ratio test for homoskedastic and heteroskedastic random walks, using the asymptotic normal distribution (Lo and MacKinlay, 1988) or wild bootstrap (Kim, 2006) to evaluate statistical significance. In addition, you may compute the rank, rank-score, or sign-based forms of the test (Wright, 2000), with bootstrap evaluation of significance. In addition, EViews offers Wald and multiple comparison variance ratio tests (Richardson and Smith, 1991; Chow and Denning, 1993), so you may perform joint tests of the variance ratio restriction for several intervals.</a></div>
+      <div class="Heading_4"><a name="186062">Performing Variance Ratio Tests in EViews</a></div>
+      <div class="Body_Text"><a name="186063">First, open the series which contains the data which you wish to test and click on </a><span class="Menu_Item">View/Variance Ratio Test&#8230;</span> Note that EViews allows you to perform the test using the differences, log differences, or original data in your series as the random walk innovations.</div>
+      <div class="Picture"><a name="186067"><img class="Default" src="images/advtimeser.053.10.03.jpg" width="100%" style="left: 0.0pt; max-height: 434px; max-width: 505px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186068">The </a><span class="Menu_Item">Output</span> dropdown determines whether you wish to see your test output in <span class="Menu_Item">Table</span> or <span class="Menu_Item">Graph</span> form. (As we discuss below, the choices differ slightly in a panel workfile.)</div>
+      <div class="Body_Text"><a name="186069">The </a><span class="Menu_Item">Data specification</span> section describes the properties of the data in the series. By default, EViews assumes you wish to test whether the data in the series follow a <span class="Menu_Item">Random walk</span>, so that variances are computed for differences of the data. Alternately, you may assume that the data follow an <span class="Menu_Item">Exponential random walk</span> so that the innovations are obtained by taking log differences, or that the series contains the <span class="Menu_Item">Random walk innovations</span> themselves.</div>
+      <div class="Body_Text"><a name="186070">The </a><span class="Menu_Item">Test specification</span> section describes the method used to compute your test. By default, EViews computes the basic Lo and MacKinlay variance ratio statistic assuming heteroskedastic increments to the random walk. The default calculations also allow for a non-zero innovation mean and bias correct the variance estimates.</div>
+      <div class="Body_Text"><a name="186071">The </a><span class="Menu_Item">Compute using</span> dropdown, which defaults to <span class="Menu_Item">Original data</span>, instructs EViews to use the original Lo and MacKinlay test statistic based on the innovations obtained from the original data. You may instead use the <span class="Menu_Item">Compute using</span> dropdown to instruct EViews to perform the variance ratio test using <span class="Menu_Item">Ranks</span>, <span class="Menu_Item">Rank scores</span> (van der Waerden scores), or <span class="Menu_Item">Signs</span> of the data.</div>
+      <div class="Body_Text"><a name="186072">For the Lo and MacKinlay test statistic, the three checkboxes directly beneath the dropdown allow you to choose whether to bias-correct the variance estimates, to construct the test using the heteroskedasticity robust test standard error, and to allow for non-zero means in the innovations. The </a><span class="Menu_Item">Probabilities</span> dropdown may be used to select between computing the test probabilities using the default <span class="Menu_Item">Asymptotic normal</span> results (Lo and MacKinlay 1988), or using the <span class="Menu_Item">Wild bootstrap</span> (Kim 2006). If you choose to perform a wild bootstrap, the <span class="Menu_Item">Options</span> portion on the lower right of the dialog will prompt you to choose a bootstrap error distribution (<span class="Menu_Item">Two-point</span>, <span class="Menu_Item">Rademacher</span>, <span class="Menu_Item">Normal</span>), number of replications, random number generator, and to specify an optional random number generator seed.</div>
+      <div class="Picture"><a name="186076"><img class="Default" src="images/advtimeser.053.10.04.jpg" width="100%" style="left: 0.0pt; max-height: 441px; max-width: 509px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186077">For variance ratio test computed using </a><span class="Menu_Item">Ranks</span>, <span class="Menu_Item">Rank scores</span> (van der Waerden scores), or <span class="Menu_Item">Signs</span> of the data, the probabilities will be computed by permutation bootstrapping using the settings specified under <span class="Menu_Item">Options</span>. For the ranks and rank scores tests, there is an additional <span class="Menu_Item">Tie handling</span> option for the method of assigning ranks in the presence of tied data.</div>
+      <div class="Body_Text"><a name="186078">Lastly, the </a><span class="Menu_Item">Test periods</span> section identifies the intervals whose variances you wish to compare to the variance of the one-period innovations. You may specify a single period or more than one period; if there is more than one period, EViews will perform one ore more joint tests of the variance ratio restrictions for the specified periods.</div>
+      <div class="Body_Text"><a name="186079">There are two ways to specify the periods to test. First, you may provide a user-specified list of values or name of a vector containing the values. The default settings, depicted above, are to compute the test for periods &#8220;2 4 8 16.&#8221; Alternately, you may click on the </a><span class="Menu_Item">Equal-spaced grid</span> radio, and enter a minimum, maximum, and step.</div>
+      <div class="Picture"><a name="186083"><img class="Default" src="images/advtimeser.053.10.05.jpg" width="100%" style="left: 0.0pt; max-height: 80px; max-width: 209px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186084">If you are performing your test on a series in a panel workfile, the </a><span class="Menu_Item">Output</span> options differ slightly. If you wish to produce output in tabular form, you can choose to compute individual variance ratio tests for each cross-section and form a Fisher Combined test (<span class="Menu_Item">Table - Fisher Combined</span>), or you can choose to stack the cross-sections into a single series and perform the test on the stacked panel (<span class="Menu_Item">Table - Stacked Panel</span>). Note that the stacked panel method assumes that all means and variances are the same across all cross-sections; the only adjustment for the panel structure is in data handling that insures that lags never cross the seams between cross-sections. There are two graphical counterparts to the table choices: <span class="Menu_Item">Graph - Individual</span>, which produces a graph for each cross-section, and <span class="Menu_Item">Graph - Stacked Panel</span>, which produces a graph of the results for the stacked analysis.</div>
+      <div class="Heading_4"><a name="186086">An Example</a></div>
+      <div class="Body_Text"><a name="186087">In our example, we employ the time series data on nominal exchange rates used by Wright (2000) to illustrate his modified variance ratio tests (&#8220;Wright.WF1&#8221;). The data in the first page (WRIGHT) of the workfile provide the relative-to-U.S. exchange rates for the Canadian dollar, French franc, German mark, Japanese yen, and the British pound for the 1,139 weeks from August 1974 through May 1996. Of interest is whether the exchange rate returns, as measured by the log differences of the rates, are </a><span class="Emphasis">i.i.d.</span> or martingale difference, or alternately, whether the exchange rates themselves follow an exponential random walk.</div>
+      <div class="Picture"><a name="186091"><img class="Default" src="images/advtimeser.053.10.06.jpg" width="100%" style="left: 0.0pt; max-height: 441px; max-width: 509px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186092">We begin by performing tests on the Japanese yen. Open the JP series, then select </a><span class="Menu_Item">View/Variance Ratio</span>... to display the dialog. We will make a few changes to the default settings to match Wright&#8217;s calculations. First, select <span class="Menu_Item">Exponential random walk</span> in the <span class="Menu_Item">Data specification</span> section to tell EViews that you wish to work with the log returns. Next, uncheck the <span class="Menu_Item">Use unbiased variances</span> and <span class="Menu_Item">Use heteroskedastic robust S.E.</span> checkboxes to perform the <span class="Emphasis">i.i.d.</span> version of the Lo-MacKinlay test with no bias correction. Lastly, change the user-specified test periods to &#8220;2 5 10 30&#8221; to match the test periods examined by Wright. Click on <span class="Menu_Item">OK</span> to compute and display the results.</div>
+      <div class="Body_Text"><a name="186093">The top portion of the output shows the test settings and basic test results.</a></div>
+      <div class="Table"><a name="186097"><img class="Default" src="images/advtimeser.053.10.07.jpg" width="100%" style="left: 0.0pt; max-height: 418px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186098">Since we have specified more than one test period, there are two sets of test results. The &#8220;Joint Tests&#8221; are the tests of the joint null hypothesis for all periods, while the &#8220;Individual Tests&#8221; are the variance ratio tests applied to individual periods. Here, the Chow-Denning maximum <img class="Default EquationGraphic" src="images/advtimeser.053.10.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 24px; top: 0.0pt" alt="" /> statistic of 4.295 is associated with the period 5 individual test. The approximate </a><span class="In-line_math">p</span>-value of 0.0001 is obtained using the studentized maximum modulus with infinite degrees of freedom so that we strongly reject the null of a random walk. The results are quite similar for the Wald test statistic for the joint hypotheses. The individual statistics generally reject the null hypothesis, though the period 2 variance ratio statistic <span class="In-line_math">p</span>-value is slightly greater than 0.05.</div>
+      <div class="Body_Text"><a name="186108">The bottom portion of the output shows the intermediate results for the variance ratio test calculations, including the estimated mean, individual variances, and number of observations used in each calculation.</a></div>
+      <div class="Table"><a name="186112"><img class="Default" src="images/advtimeser.053.10.09.jpg" width="100%" style="left: 0.0pt; max-height: 180px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186113">Alternately, we may display a graph of the test statistics using the same settings. Simply click again on </a><span class="Menu_Item">View/Variance Ratio Test...</span>, change the <span class="Menu_Item">Output</span> dropdown from <span class="Menu_Item">Table</span> to <span class="Menu_Item">Graph</span>, then fill out the dialog as before and click on <span class="Menu_Item">OK</span>:</div>
+      <div class="Picture"><a name="186117"><img class="Default" src="images/advtimeser.053.10.10.jpg" width="100%" style="left: 0.0pt; max-height: 414px; max-width: 452px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186118">EViews displays a graph of the variance ratio statistics and plus or minus two asymptotic standard error bands, along with a horizontal reference line at 1 representing the null hypothesis. Here, we see a graphical representation of the fact that with the exception of the test against period 2, the null reference line lies outside the bands.</a></div>
+      <div class="Body_Text"><a name="186119">Next, we repeat the previous analysis but allow for heteroskedasticity in the data and use bootstrapping to evaluate the statistical significance. Fill out the dialog as before, but enable the </a><span class="Menu_Item">Use heteroskedastic robust S.E.</span> checkbox and use the <span class="Menu_Item">Probabilities</span> dropdown to select <span class="Menu_Item">Wild bootstrap</span> (with the two-point distribution, 5000 replications, the Knuth generator, and a seed for the random number generator of 1000 specified in the <span class="Menu_Item">Options</span> section). The top portion of the results is depicted here:</div>
+      <div class="Table"><a name="186123"><img class="Default" src="images/advtimeser.053.10.11.jpg" width="100%" style="left: 0.0pt; max-height: 396px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186124">Note that the Wald test is no longer displayed since the test methodology is not consistent with the use of heteroskedastic robust standard errors in the individual tests. The </a><span class="In-line_math">p</span>-values for the individual variance ratio tests, which are all generated using the wild bootstrap, are generally consistent with the previous results, albeit with probabilities that are slightly higher than before. The individual period 2 test, which was borderline (in)significant in the homoskedastic test, is no longer significant at conventional levels. The Chow-Denning joint test statistic of 3.647 has a bootstrap <span class="In-line_math">p</span>-value of 0.0012 and strongly rejects the null hypothesis that the log of JP is a martingale.</div>
+      <div class="Body_Text"><a name="186131">Lastly, we perform Wright&#8217;s rank variance ratio test with ties replaced by the average of the tied ranks. The test probabilities for this test are computed using the permutation bootstrap, whose settings we select to match those for the previous bootstrap:</a></div>
+      <div class="Table"><a name="186135"><img class="Default" src="images/advtimeser.053.10.12.jpg" width="100%" style="left: 0.0pt; max-height: 405px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186139">The standard errors employed in forming the individual </a><span class="In-line_math">z</span>-statistics (and those displayed in the corresponding graph view) are obtained from the asymptotic normal results. The probabilities for the individual <span class="In-line_math">z</span>-statistics and the joint max <img class="Default EquationGraphic" src="images/advtimeser.053.10.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 24px; top: 0.0pt" alt="" /> and Wald statistics, which all strongly reject the null hypothesis, are obtained from the permutation bootstrap.</div>
+      <div class="Body_Text"><a name="186146">The preceding analysis may be extended to tests that jointly consider all five exchange rates in a panel setting. The second page (WRIGHT_STK) of the &#8220;Wright.WF1&#8221; workfile contains the panel dataset of the relative-to-U.S. exchange rates described above (Canada, Germany, France, Japan, U.K.). Click on the WRIGHT_STK tab to make the second page active, double click on the EXCHANGE series to open the stacked exchange rates series, then select </a><span class="Menu_Item">View/Variance Ratio Test...</span></div>
+      <div class="Body_Text"><a name="186147">We will redo the heterogeneous Lo and MacKinlay test example from above using the panel data series. Select </a><span class="Menu_Item">Table - Fisher Combined</span> in the <span class="Menu_Item">Output</span> dropdown then fill out the remainder of the dialog as before, then click on <span class="Menu_Item">OK</span>. The output, which takes a moment to generate since we are performing 5000 bootstrap replications for each cross-section, consists of two distinct parts. The top portion of the output:</div>
+      <div class="Table"><a name="186151"><img class="Default" src="images/advtimeser.053.10.14.jpg" width="100%" style="left: 0.0pt; max-height: 308px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186152">shows the test settings and provides the joint Fisher combined test statistic which, in this case, strongly rejects the joint null hypothesis that all of the cross-sections are martingales.</a></div>
+      <div class="Body_Text"><a name="186153">The bottom portion of the output:</a></div>
+      <div class="Table"><a name="186157"><img class="Default" src="images/advtimeser.053.10.15.jpg" width="100%" style="left: 0.0pt; max-height: 196px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="186161">depicts the max <img class="Default EquationGraphic" src="images/advtimeser.053.10.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 24px; top: 0.0pt" alt="" /> statistics for the individual cross-sections, along with corresponding wild bootstrap probabilities. Note that four of the five individual test statistics do not reject the joint hypothesis at conventional levels. It would therefore appear that the Japanese yen result is the driving force behind the Fisher combined test rejection.</a></div>
+      <div class="Heading_4"><a name="186163">Technical Details</a></div>
+      <div class="Body_Text"><a name="186167">Suppose we have the time series <img class="Default EquationGraphic" src="images/advtimeser.053.10.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 216px; top: 0.0pt" alt="" /> satisfying</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.10.18.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.108)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186175">where <img class="Default EquationGraphic" src="images/advtimeser.053.10.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is an arbitrary drift parameter. The key properties of a random walk that we would like to test are <img class="Default EquationGraphic" src="images/advtimeser.053.10.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 80px; top: 0.0pt" alt="" /> for all <img class="Default EquationGraphic" src="images/advtimeser.053.10.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.10.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 108px; top: 0.0pt" alt="" /> for any positive <img class="Default EquationGraphic" src="images/advtimeser.053.10.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Heading_5"><a name="186188">The Basic Test Statistic</a></div>
+      <div class="Body_Text"><a name="186189">Lo and MacKinlay (1988) formulate two test statistics for the random walk properties that are applicable under different sets of null hypothesis assumptions about <img class="Default EquationGraphic" src="images/advtimeser.053.10.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />:</a></div>
+      <div class="Body_Text"><a name="186196">First, Lo and MacKinlay make the strong assumption that the <img class="Default EquationGraphic" src="images/advtimeser.053.10.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> are i.i.d. Gaussian with variance <img class="Default EquationGraphic" src="images/advtimeser.053.10.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> (though the normality assumption is not strictly necessary). Lo and MacKinlay term this the homoskedastic random walk hypothesis, though others refer to this as the </a><span class="Emphasis">i.i.d.</span> null.</div>
+      <div class="Body_Text"><a name="186200">Alternately, Lo and MacKinlay outline a heteroskedastic random walk hypothesis where they weaken the </a><span class="Emphasis">i.i.d.</span> assumption and allow for fairly general forms of conditional heteroskedasticity and dependence. This hypothesis is sometimes termed the martingale null, since it offers a set of sufficient (but not necessary), conditions for <img class="Default EquationGraphic" src="images/advtimeser.053.10.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> to be a martingale difference sequence (<span class="Emphasis">m.d.s.</span>).</div>
+      <div class="Body_Text"><a name="186204">We may define estimators for the mean of first difference and the scaled variance of the <img class="Default EquationGraphic" src="images/advtimeser.053.10.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />&#8209;th difference:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.10.29.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.109)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186216">and the corresponding variance ratio <img class="Default EquationGraphic" src="images/advtimeser.053.10.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 170px; top: 0.0pt" alt="" />. The variance estimators may be adjusted for bias, as suggested by Lo and MacKinlay, by replacing <img class="Default EquationGraphic" src="images/advtimeser.053.10.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> in </a><span class="Link"><a href="#186212" title="Variance Ratio Test">Equation&nbsp;(42.109)</a></span> with <img class="Default EquationGraphic" src="images/advtimeser.053.10.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 84px; top: 0.0pt" alt="" /> in the no-drift case, or with <img class="Default EquationGraphic" src="images/advtimeser.053.10.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 157px; top: 0.0pt" alt="" /> in the drift case.</div>
+      <div class="Body_Text"><a name="186232">Lo and MacKinlay show that the variance ratio </a><span class="In-line_math">z</span>-statistic:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.10.34.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.110)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186243">is asymptotically <img class="Default EquationGraphic" src="images/advtimeser.053.10.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 59px; top: 0.0pt" alt="" /> for appropriate choice of estimator <img class="Default EquationGraphic" src="images/advtimeser.053.10.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 41px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="186244">Under the </a><span class="Emphasis">i.i.d.</span> hypothesis we have the estimator,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.10.37.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.111)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186249">while under the </a><span class="Emphasis">m.d.s.</span> assumption we may use the kernel estimator,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.10.38.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.112)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186254">where</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.10.39.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.113)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_5"><a name="186259">Joint Variance Ratio Tests</a></div>
+      <div class="Body_Text"><a name="186263">Since the variance ratio restriction holds for every difference <img class="Default EquationGraphic" src="images/advtimeser.053.10.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />, it is common to evaluate the statistic at several selected values of <img class="Default EquationGraphic" src="images/advtimeser.053.10.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="186267">To control the size of the joint test, Chow and Denning (1993) propose a (conservative) test statistic that examines the maximum absolute value of a set of multiple variance ratio statistics. The </a><span class="In-line_math">p</span>-value for the Chow-Denning statistic using <img class="Default EquationGraphic" src="images/advtimeser.053.10.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> variance ratio statistics is bounded from above by the probability for the Studentized Maximum Modulus (SMM) distribution with parameter <img class="Default EquationGraphic" src="images/advtimeser.053.10.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/advtimeser.053.10.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> degrees-of-freedom. Following Chow and Denning, we approximate this bound using the asymptotic <img class="Default EquationGraphic" src="images/advtimeser.053.10.45.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" /> SMM distribution.</div>
+      <div class="Body_Text"><a name="186283">An second approach is available for variance ratio tests of the </a><span class="Emphasis">i.i.d.</span> null. Under this set of assumptions, we may form the joint covariance matrix of the variance ratio test statistics as in Richardson and Smith (1991), and compute the standard Wald statistic for the joint hypothesis that all <img class="Default EquationGraphic" src="images/advtimeser.053.10.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> variance ratio statistics equal 1. Under the null, the Wald statistic is asymptotic Chi-square with <img class="Default EquationGraphic" src="images/advtimeser.053.10.47.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 19px; top: 0.0pt" alt="" /> degrees-of-freedom.</div>
+      <div class="Body_Text"><a name="186290">For a detailed discussion of these tests, see Fong, Koh, and Ouliaris (1997).</a></div>
+      <div class="Heading_5"><a name="186291">Wild Bootstrap</a></div>
+      <div class="Body_Text"><a name="186292">Kim (2006) offers a wild bootstrap approach to improving the small sample properties of variance ratio tests. The approach involves computing the individual (Lo and MacKinlay) and joint (Chow and Denning, Wald) variance ratio test statistics on samples of <img class="Default EquationGraphic" src="images/advtimeser.053.10.48.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> observations formed by weighting the original data by mean 0 and variance 1 random variables, and using the results to form bootstrap distributions of the test statistics. The bootstrap </a><span class="In-line_math">p</span>-values are computed directly from the fraction of replications falling outside the bounds defined by the estimated statistic.</div>
+      <div class="Body_Text"><a name="186299">EViews offers three distributions for constructing wild bootstrap weights: the two-point, the Rademacher, and the normal. Kim&#8217;s simulations indicate that the test results are generally insensitive to the choice of wild bootstrap distribution.</a></div>
+      <div class="Heading_5"><a name="186300">Rank and Rank Score Tests</a></div>
+      <div class="Body_Text"><a name="186301">Wright (2000) proposes modifying the usual variance ratio tests using standardized ranks of the increments, <img class="Default EquationGraphic" src="images/advtimeser.053.10.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" />. Letting <img class="Default EquationGraphic" src="images/advtimeser.053.10.50.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 56px; top: 0.0pt" alt="" /> be the rank of the <img class="Default EquationGraphic" src="images/advtimeser.053.10.51.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" /> among all <img class="Default EquationGraphic" src="images/advtimeser.053.10.52.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> values, we define the standardized rank <img class="Default EquationGraphic" src="images/advtimeser.053.10.53.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> and van der Waerden rank scores <img class="Default EquationGraphic" src="images/advtimeser.053.10.54.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.10.55.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.114)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186327">In cases where there are tied ranks, the denominator in <img class="Default EquationGraphic" src="images/advtimeser.053.10.56.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 24px; top: 0.0pt" alt="" /> may be modified slightly to account for the tie handling.</a></div>
+      <div class="Body_Text"><a name="186328">The Wright variance ratio test statistics are obtained by computing the Lo and MacKinlay homoskedastic test statistic using the ranks or rank scores in place of the original data. Under the </a><span class="Emphasis">i.i.d.</span> null hypothesis, the exact sampling distribution of the statistics may be approximated using a permutation bootstrap.</div>
+      <div class="Heading_5"><a name="186329">Sign Test</a></div>
+      <div class="Body_Text"><a name="186330">Wright also proposes a modification of the homoskedastic Lo and MacKinlay statistic in which each <img class="Default EquationGraphic" src="images/advtimeser.053.10.57.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" /> is replaced by its sign. This statistic is valid under the </a><span class="Emphasis">m.d.s.</span> null hypothesis, and under the assumption that <img class="Default EquationGraphic" src="images/advtimeser.053.10.58.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 52px; top: 0.0pt" alt="" />, the exact sampling distribution may also be approximated using a permutation bootstrap. (EViews does not allow for non-zero means when performing the sign test since allowing <img class="Default EquationGraphic" src="images/advtimeser.053.10.59.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> introduces a nuisance parameter into the sampling distribution.)</div>
+      <div class="Heading_5"><a name="186340">Panel Statistics</a></div>
+      <div class="Body_Text"><a name="186341">EViews offers two approaches to variance ratio testing in panel settings. </a></div>
+      <div class="Body_Text"><a name="186342">First, under the assumption that cross-sections are independent, with cross-section heterogeneity of the processes, we may compute separate joint variance ratio tests for each cross-section, then combine the </a><span class="In-line_math">p</span>-values from cross-section results using the Fisher approach as in Maddala and Wu (1999). If we define <img class="Default EquationGraphic" src="images/advtimeser.053.10.60.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> to be a <span class="In-line_math">p</span>-value from the <span class="In-line_math">i</span>-th cross-section, then under the hypothesis that the null hypothesis holds for all <img class="Default EquationGraphic" src="images/advtimeser.053.10.61.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> cross-sections,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/advtimeser.053.10.62.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(42.115)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="186365">as <img class="Default EquationGraphic" src="images/advtimeser.053.10.63.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 55px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="186366">Alternately, if we assume homogeneity across all cross-sections, we may stack the panel observations and compute the variance ratio test for the stacked data. In this approach, the only adjustment for the panel nature of the stacked data is in ensuring that lag calculations do not span cross-section boundaries.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>LogL Specific Views and Procedures</title>
+    <link rel="StyleSheet" href="css/loglike.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="loglike-LogL_Procs.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="loglike-Troubleshooting.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="loglike-The_Log_Likelihood_(LogL)_Object.html">The Log Likelihood (LogL) Object</a> : LogL Specific Views and Procedures</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="228658">LogL Specific Views and Procedures</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#529">Estimation Output</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#122643">Gradients</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#98285">Check Derivatives</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="228659">Most of the views and procedures of the logl object should be familiar to you from other EViews estimation objects. We describe here features that are specific to the logl object.</a></div>
+      <div class="Heading_4"><a name="529">Estimation Output</a></div>
+      <div class="Body_Text"><a name="224037">In addition to the coefficient and standard error estimates, the standard output for the logl object describes the method of estimation, sample used in estimation, date and time that the logl was estimated, evaluation order, information about the convergence of the estimation procedure, and the method used to compute the coefficient covariance matrix.</a></div>
+      <div class="Table"><a name="224038"><img class="Default" src="images/loglike.051.07.1.jpg" width="100%" style="left: 0.0pt; max-height: 403px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="224039">EViews also provides the log likelihood value, average log likelihood value, number of coefficients, and three Information Criteria. By default, the starting values are not displayed. Here, we have used the </a><span class="Menu_Item">Estimation Options</span> dialog to instruct EViews to display the estimation starting values in the output.</div>
+      <div class="Heading_4"><a name="122643">Gradients</a></div>
+      <div class="Body_Text"><a name="98315">The gradient summary table and gradient summary graph view allow you to examine the gradients of the likelihood. These gradients are computed at the current parameter values (if the model has not yet been estimated), or at the converged parameter values (if the model has been estimated). See </a><span class="Link"><a href="gradapp-Gradients_and_Derivatives.html#150570" title="Gradients and Derivatives">Appendix&nbsp;D. &#8220;Gradients and Derivatives&#8221;</a></span> for additional details.</div>
+      <div class="Picture"><a name="202349"><img class="Default" src="images/loglike.051.07.2.jpg" width="100%" style="left: 0.0pt; max-height: 361px; max-width: 520px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="202361">You may find this view to be a useful diagnostic tool when experiencing problems with convergence or singularity. One common problem leading to singular matrices is a zero derivative for a parameter due to an incorrectly specified likelihood, poor starting values, or a lack of model identification. See the discussion below for further details.</a></div>
+      <div class="Heading_4"><a name="98285">Check Derivatives</a></div>
+      <div class="Body_Text"><a name="5132">You can use the </a><span class="Menu_Item">Check Derivatives</span> view to examine your numeric derivatives or to check the validity of your expressions for the analytic derivatives. If the logl specification contains a <span class="In-line_input">@param</span> statement, the derivatives will be evaluated at the specified values, otherwise, the derivatives will be computed at the current coefficient values.</div>
+      <div class="Picture"><a name="29424"><img class="Default" src="images/loglike.051.07.3.jpg" width="100%" style="left: 0.0pt; max-height: 451px; max-width: 508px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="4660">Consider the derivative view for coefficients estimated using the logl specification. The first part of this view displays the names of the user supplied derivatives, step size parameters, and the coefficient values at which the derivatives are evaluated. The relative and minimum step sizes shown in this example are the default settings. </a></div>
+      <div class="Body_Text"><a name="556">The second part of the view computes the sum (over all individuals in the sample) of the numeric and, if applicable, the analytic derivatives for each coefficient. If appropriate, EViews will also compute the largest individual difference between the analytic and the numeric derivatives in both absolute, and percentage terms. </a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

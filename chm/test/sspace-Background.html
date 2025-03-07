@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Background</title>
+    <link rel="StyleSheet" href="css/sspace.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="sspace-State_Space_Models_and_the_Kalman_Filter.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="sspace-Specifying_a_State_Space_Model_in_EViews.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="sspace-State_Space_Models_and_the_Kalman_Filter.html">State Space Models and the Kalman Filter</a> : Background</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="23194">Background</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#23197">Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#25377">Filtering</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#24801">Fixed-Interval Smoothing</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#41814">Forecasting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#42724">n-Step Ahead Forecasting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#64216">Dynamic Forecasting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#42774">Smoothed Forecasting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#42913">Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#36837">Initial Conditions</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="23195">We present here a very brief discussion of the specification and estimation of a linear state space model. Those desiring greater detail are directed to Harvey (1989), Hamilton (1994a, Chapter 13; 1994b), and especially the excellent treatment of Koopman, Shephard, and Doornik (1999), whose approach we largely follow.</a></div>
+      <div class="Heading_4"><a name="23197">Specification</a></div>
+      <div class="Body_Text"><a name="23201">A linear state space representation of the dynamics of the <img class="Default EquationGraphic" src="images/sspace.063.2.001.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 42px; top: 0.0pt" alt="" /> vector <img class="Default EquationGraphic" src="images/sspace.063.2.002.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is given by the system of equations:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.003.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.1)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.004.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="24515">where <img class="Default EquationGraphic" src="images/sspace.063.2.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> is an <img class="Default EquationGraphic" src="images/sspace.063.2.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 46px; top: 0.0pt" alt="" /> vector of possibly unobserved state variables, where <img class="Default EquationGraphic" src="images/sspace.063.2.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/sspace.063.2.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/sspace.063.2.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.2.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> are conformable vectors and matrices, and where <img class="Default EquationGraphic" src="images/sspace.063.2.011.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.2.012.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> are vectors of mean zero, Gaussian disturbances. Note that the unobserved state vector is assumed to move over time as a first-order vector autoregression. </a></div>
+      <div class="Body_Text"><a name="24520">We will refer to the first set of equations as the &#8220;signal&#8221; or &#8220;observation&#8221; equations and the second set as the &#8220;state&#8221; or &#8220;transition&#8221; equations. The disturbance vectors <img class="Default EquationGraphic" src="images/sspace.063.2.013.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.2.014.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> are assumed to be serially independent, with contemporaneous variance structure:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.015.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.3)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="109443">where <img class="Default EquationGraphic" src="images/sspace.063.2.016.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> is an <img class="Default EquationGraphic" src="images/sspace.063.2.017.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 43px; top: 0.0pt" alt="" /> symmetric variance matrix, <img class="Default EquationGraphic" src="images/sspace.063.2.018.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is an <img class="Default EquationGraphic" src="images/sspace.063.2.019.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 51px; top: 0.0pt" alt="" /> symmetric variance matrix, and <img class="Default EquationGraphic" src="images/sspace.063.2.020.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is an <img class="Default EquationGraphic" src="images/sspace.063.2.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 47px; top: 0.0pt" alt="" /> matrix of covariances.</a></div>
+      <div class="Body_Text"><a name="160936">Note that the updating equation for the states is for the states in period <img class="Default EquationGraphic" src="images/sspace.063.2.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" />, given the errors specified in period <img class="Default EquationGraphic" src="images/sspace.063.2.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />. This particular timing convention, which follows Koopman, Shephard, and Doornik (1999), has important implications for the interpretation of correlations between errors in the signal and state equations <img class="Default EquationGraphic" src="images/sspace.063.2.024.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> as discussed in </a><span class="Link"><a href="sspace-Specifying_a_State_Space_Model_in_EViews.html#159573" title="Specifying a State Space Model in EViews">&#8220;A Note on Correlated Errors&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="109456">In the discussion that follows, we will generalize the specification given in </a><span class="Link"><a href="#24486" title="Background">(51.1)</a></span>&#8212;<span class="Link"><a href="#24566" title="Background">(51.3)</a></span> by allowing the system matrices and vectors <img class="Default EquationGraphic" src="images/sspace.063.2.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 224px; top: 0.0pt" alt="" /> to depend upon observable explanatory variables <img class="Default EquationGraphic" src="images/sspace.063.2.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> and unobservable parameters <img class="Default EquationGraphic" src="images/sspace.063.2.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. Estimation of the parameters <img class="Default EquationGraphic" src="images/sspace.063.2.028.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is discussed in <span class="Link"><a href="#42913" title="Background">&#8220;Estimation&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="25377">Filtering</a></div>
+      <div class="Body_Text"><a name="26831">Consider the conditional distribution of the state vector <img class="Default EquationGraphic" src="images/sspace.063.2.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> given information available at time <img class="Default EquationGraphic" src="images/sspace.063.2.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. We can define the mean and variance matrix of the conditional distribution as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.031.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.4)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.032.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="26845">where the subscript below the expectation operator indicates that expectations are taken using the conditional distribution for that period.</a></div>
+      <div class="Body_Text"><a name="27048">One important conditional distribution is obtained by setting <img class="Default EquationGraphic" src="images/sspace.063.2.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 73px; top: 0.0pt" alt="" />, so that we obtain the </a><span class="Definition">one-step ahead mean </span><img class="Default EquationGraphic" src="images/sspace.063.2.034.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 47px; top: 0.0pt" alt="" /> and <span class="Definition">one-step ahead variance </span><img class="Default EquationGraphic" src="images/sspace.063.2.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 50px; top: 0.0pt" alt="" /> of the states <img class="Default EquationGraphic" src="images/sspace.063.2.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />. Under the Gaussian error assumption, <img class="Default EquationGraphic" src="images/sspace.063.2.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 47px; top: 0.0pt" alt="" /> is also the minimum mean square error estimator of <img class="Default EquationGraphic" src="images/sspace.063.2.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.2.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 50px; top: 0.0pt" alt="" /> is the mean square error (MSE) of <img class="Default EquationGraphic" src="images/sspace.063.2.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 47px; top: 0.0pt" alt="" />. If the normality assumption is dropped, <img class="Default EquationGraphic" src="images/sspace.063.2.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 47px; top: 0.0pt" alt="" /> is still the minimum mean square <span class="Emphasis">linear</span> estimator of <img class="Default EquationGraphic" src="images/sspace.063.2.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="27025">Given the one-step ahead state conditional mean, we can also form the (linear) minimum MSE </a><span class="Definition">one-step ahead estimate</span> of <img class="Default EquationGraphic" src="images/sspace.063.2.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.044.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="27033">The </a><span class="Definition">one-step ahead prediction error</span> is given by,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.045.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="27038">and the </a><span class="Definition">prediction error variance</span> is defined as:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.046.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="151201">The Kalman (Bucy) filter is a recursive algorithm for sequentially updating the one-step ahead estimate of the state mean and variance given new information. Details on the recursion are provided in the references above. For our purposes, it is sufficient to note that given initial values for the state mean and covariance, values for the system matrices <img class="Default EquationGraphic" src="images/sspace.063.2.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, and observations on <img class="Default EquationGraphic" src="images/sspace.063.2.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />, the Kalman filter may be used to compute one-step ahead estimates of the state and the associated mean square error matrix, <img class="Default EquationGraphic" src="images/sspace.063.2.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 119px; top: 0.0pt" alt="" />, the contemporaneous or </a><span class="Definition">filtered</span> state mean and variance, <img class="Default EquationGraphic" src="images/sspace.063.2.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 62px; top: 0.0pt" alt="" />, and the one-step ahead prediction, prediction error, and prediction error variance, <img class="Default EquationGraphic" src="images/sspace.063.2.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 167px; top: 0.0pt" alt="" />. Note that we may also obtain the standardized prediction residual, <img class="Default EquationGraphic" src="images/sspace.063.2.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 46px; top: 0.0pt" alt="" />, by dividing <img class="Default EquationGraphic" src="images/sspace.063.2.053.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 45px; top: 0.0pt" alt="" /> by the square-root of the corresponding diagonal element of <img class="Default EquationGraphic" src="images/sspace.063.2.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 49px; top: 0.0pt" alt="" />.</div>
+      <div class="Heading_4"><a name="24801">Fixed-Interval Smoothing</a></div>
+      <div class="Body_Text"><a name="25626">Suppose that we observe the sequence of data up to time period <img class="Default EquationGraphic" src="images/sspace.063.2.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />. The process of using this information to form expectations at any time period up to <img class="Default EquationGraphic" src="images/sspace.063.2.056.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is known as </a><span class="Definition">fixed-interval smoothing</span>. Despite the fact that there are a variety of other distinct forms of smoothing (<span class="Emphasis">e.g.</span>, fixed-point, fixed-lag), we will use the term <span class="Definition">smoothing </span>to refer to fixed-interval smoothing.</div>
+      <div class="Body_Text"><a name="26658">Additional details on the smoothing procedure are provided in the references given above. For now, note that smoothing uses all of the information in the sample to provide </a><span class="Definition">smoothed estimates of the states, </span><img class="Default EquationGraphic" src="images/sspace.063.2.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 135px; top: 0.0pt" alt="" />, and <span class="Definition">smoothed estimates of the state variances</span>, <img class="Default EquationGraphic" src="images/sspace.063.2.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 103px; top: 0.0pt" alt="" />. The matrix <img class="Default EquationGraphic" src="images/sspace.063.2.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> may also be interpreted as the MSE of the smoothed state estimate <img class="Default EquationGraphic" src="images/sspace.063.2.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="26665">As with the one-step ahead states and variances above, we may use the smoothed values to form s</a><span class="Definition">moothed estimates of the signal variables</span>,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.061.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.9)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="26538">and to compute the </a><span class="Definition">variance of the smoothed signal estimates:</span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.062.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.10)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="26450">Lastly, the smoothing procedure allows us to compute </a><span class="Definition">smoothed disturbance estimates</span>, <img class="Default EquationGraphic" src="images/sspace.063.2.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 126px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.2.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 129px; top: 0.0pt" alt="" />, and a corresponding <span class="Definition">smoothed disturbance variance matrix</span>:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.065.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.11)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="25807">Dividing the smoothed disturbance estimates by the square roots of the corresponding diagonal elements of the smoothed variance matrix yields the </a><span class="Definition">standardized smoothed disturbance estimates</span> <img class="Default EquationGraphic" src="images/sspace.063.2.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.2.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 17px; top: 0.0pt" alt="" />.</div>
+      <div class="Heading_4"><a name="41814">Forecasting</a></div>
+      <div class="Body_Text"><a name="27313">There are a variety of types of forecasting which may be performed with state space models. These methods differ primarily in what and how information is used. We will focus on the three methods that are supported by EViews built-in forecasting routines.</a></div>
+      <div class="Heading_5"><a name="42724">n-Step Ahead Forecasting</a></div>
+      <div class="Body_Text"><a name="64201">Earlier, we examined the notion of one-step ahead prediction. Consider now the notion of multi-step ahead prediction of observations, in which we take a fixed set of information available at a given period, and forecast several periods ahead. Modifying slightly the expressions in </a><span class="Link"><a href="#26839" title="Background">(51.4)</a></span>&#8212;<span class="Link"><a href="#27042" title="Background">(51.8)</a></span> yields the <span class="Definition">n-step ahead state conditional mean and variance:</span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.068.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.12)</div>
+          </td>
+        </tr>
+      </table>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.069.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.13)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="27350">the </a><span class="Definition">n-step ahead forecast,</span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.070.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="27255">and the corresponding </a><span class="Definition">n-step ahead forecast MSE matrix:</span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.071.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="109520">for <img class="Default EquationGraphic" src="images/sspace.063.2.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 96px; top: 0.0pt" alt="" />. As before, <img class="Default EquationGraphic" src="images/sspace.063.2.073.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 48px; top: 0.0pt" alt="" /> may also be interpreted as the minimum MSE estimate of <img class="Default EquationGraphic" src="images/sspace.063.2.074.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> based on the information set available at time <img class="Default EquationGraphic" src="images/sspace.063.2.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/sspace.063.2.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 51px; top: 0.0pt" alt="" /> is the MSE of the estimate. </a></div>
+      <div class="Body_Text"><a name="42814">It is worth emphasizing that the definitions given above for the forecast MSE matrices <img class="Default EquationGraphic" src="images/sspace.063.2.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 50px; top: 0.0pt" alt="" /> do not account for extra variability introduced in the estimation of any unknown parameters <img class="Default EquationGraphic" src="images/sspace.063.2.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. In this setting, the <img class="Default EquationGraphic" src="images/sspace.063.2.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 50px; top: 0.0pt" alt="" /> will understate the true variability of the forecast, and should be viewed as being computed conditional on the specific value of the estimated parameters.</a></div>
+      <div class="Body_Text"><a name="42644">It is also worth noting that the </a><span class="In-line_math">n</span>-step ahead forecasts may be computed using a slightly modified version of the basic Kalman recursion (Harvey 1989). To forecast at period <img class="Default EquationGraphic" src="images/sspace.063.2.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 75px; top: 0.0pt" alt="" />, simply initialize a Kalman filter at time <img class="Default EquationGraphic" src="images/sspace.063.2.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" /> with the values of the predicted states and state covariances using information at time <img class="Default EquationGraphic" src="images/sspace.063.2.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, and run the filter forward <img class="Default EquationGraphic" src="images/sspace.063.2.083.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> additional periods using no additional signal information. This procedure is repeated for each observation in the forecast sample, <img class="Default EquationGraphic" src="images/sspace.063.2.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 151px; top: 0.0pt" alt="" />.</div>
+      <div class="Heading_5"><a name="64216">Dynamic Forecasting</a></div>
+      <div class="Body_Text"><a name="64217">The concept of </a><span class="Definition">dynamic forecasting</span> should be familiar to you from other EViews estimation objects. In dynamic forecasting, we start at the beginning of the forecast sample <img class="Default EquationGraphic" src="images/sspace.063.2.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, and compute a complete <span class="Emphasis">set</span> of <span class="In-line_math">n</span>-period ahead forecasts for each period <img class="Default EquationGraphic" src="images/sspace.063.2.086.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 105px; top: 0.0pt" alt="" /> in the forecast interval. Thus, if we wish to start at period <img class="Default EquationGraphic" src="images/sspace.063.2.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> and forecast dynamically to <img class="Default EquationGraphic" src="images/sspace.063.2.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 47px; top: 0.0pt" alt="" />, we would compute a one-step ahead forecast for <img class="Default EquationGraphic" src="images/sspace.063.2.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" />, a two-step ahead forecast for <img class="Default EquationGraphic" src="images/sspace.063.2.090.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" />, and so forth, up to an <img class="Default EquationGraphic" src="images/sspace.063.2.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 23px; top: 0.0pt" alt="" />-step ahead forecast for <img class="Default EquationGraphic" src="images/sspace.063.2.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 47px; top: 0.0pt" alt="" />. It may be useful to note that as with <span class="In-line_math">n</span>-step ahead forecasting, we simply initialize a Kalman filter at time <img class="Default EquationGraphic" src="images/sspace.063.2.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" /> and run the filter forward additional periods using no additional signal information. For dynamic forecasting, however, only one <span class="In-line_math">n</span>-step ahead forecast is required to compute all of the forecast values since the information set is not updated from the beginning of the forecast period.</div>
+      <div class="Heading_5"><a name="42774">Smoothed Forecasting</a></div>
+      <div class="Body_Text"><a name="64224">Alternatively, we can compute </a><span class="Definition">smoothed forecasts</span> which use all available signal data over the forecast sample (for example, <img class="Default EquationGraphic" src="images/sspace.063.2.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 74px; top: 0.0pt" alt="" />). These forward looking forecasts may be computed by initializing the states at the start of the forecast period, and performing a Kalman smooth over the entire forecast period using all relevant signal data. This technique is useful in settings where information on the entire path of the signals is used to interpolate values throughout the forecast sample.</div>
+      <div class="Body_Text"><a name="42911">We make one final comment about the forecasting methods described above. For traditional </a><span class="In-line_math">n</span>-step ahead and dynamic forecasting, the states are typically initialized using the one-step ahead forecasts of the states and variances at the start of the forecast window. For smoothed forecasts, one would generally initialize the forecasts using the corresponding smoothed values of states and variances. There may, however, be situations where you wish to choose a different set of initial values for the forecast filter or smoother. The EViews forecasting routines (described in <span class="Link"><a href="sspace-Working_with_the_State_Space.html#41979" title="Working with the State Space">&#8220;State Space Procedures&#8221;</a></span>) provide you with considerable control over these initial settings. Be aware, however, that the interpretation of the forecasts in terms of the available information will change if you choose alternative settings.</div>
+      <div class="Heading_4"><a name="42913">Estimation</a></div>
+      <div class="Body_Text"><a name="27006">To implement the Kalman filter and the fixed-interval smoother, we must first replace any unknown elements of the system matrices by their estimates. Under the assumption that the <img class="Default EquationGraphic" src="images/sspace.063.2.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.2.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> are Gaussian, the sample log likelihood:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.2.097.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="26902">may be evaluated using the Kalman filter. Using numeric derivatives, standard iterative techniques may be employed to maximize the likelihood with respect to the unknown parameters <img class="Default EquationGraphic" src="images/sspace.063.2.098.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> (see </a><span class="Link"><a href="optimize-Optimization_Algorithms.html#137130" title="Optimization Algorithms">Appendix&nbsp;C. &#8220;Estimation and Solution Options&#8221;</a></span>).</div>
+      <div class="Heading_4"><a name="36837">Initial Conditions</a></div>
+      <div class="Body_Text"><a name="36879">Evaluation of the Kalman filter, smoother, and forecasting procedures all require that we provide the initial one-step ahead predicted values for the states <img class="Default EquationGraphic" src="images/sspace.063.2.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 34px; top: 0.0pt" alt="" /> and variance matrix <img class="Default EquationGraphic" src="images/sspace.063.2.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 35px; top: 0.0pt" alt="" />. With some stationary models, steady-state conditions allow us to use the system matrices to solve for the values of <img class="Default EquationGraphic" src="images/sspace.063.2.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 34px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.2.102.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 35px; top: 0.0pt" alt="" />. In other cases, we may have preliminary estimates of <img class="Default EquationGraphic" src="images/sspace.063.2.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 34px; top: 0.0pt" alt="" />, along with measures of uncertainty about those estimates. But in many cases, we may have no information, or </a><span class="Emphasis">diffuse priors</span>, about the initial conditions. </div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Database Basics</title>
+    <link rel="StyleSheet" href="css/database.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="database-Database_Overview.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="database-Working_with_Objects_in_Databases.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="database-EViews_Databases.html">EViews Databases</a> : Database Basics</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="36975">Database Basics</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#36976">What is an EViews Database?</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#36984">Creating a Database</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37007">The Database Window</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#58643">Database Shorthands</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#58584">The Default Database</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#58614">EViews .DB? files</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="36976">What is an EViews Database?</a></div>
+      <div class="Body_Text"><a name="58477">An EViews native format database consists of a set of files on disk. There is a main file with the extension .EDB which contains the actual object data, and a number of index files with extensions such as .E0, .E1A and .E1B which are used to speed up searching operations on the database. In normal use, EViews manages these files for the user, so there is no need to be aware of this structure. However, if you are copying, moving, renaming, or deleting an EViews database from outside of EViews (using Windows Explorer for example), you should perform the operation on both the main database file and all the index files associated with the database. If you accidentally delete or damage an index file, EViews can regenerate it for you from the main data file using the repair command (see </a><span class="Link"><a href="database-Maintaining_the_Database.html#37599" title="Maintaining the Database">&#8220;Maintaining the Database&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="36982">The fact that EViews databases are kept on disk rather than in memory has some important consequences. Any changes made to a database cause immediate changes to be made to the disk files associated with the database. Therefore, unlike workfiles, once a change is made to a database, there is no possibility of discarding the change and going back to the previously saved version. Because of this, you should take care when modifying a database, and should consider keeping regular backup copies of databases which you modify frequently.</a></div>
+      <div class="Body_Text"><a name="58524">EViews also allows you to deal with a variety of foreign format databases through the same interface provided to EViews&#8217; native format databases. Foreign databases can have many different forms, including files on disk, or data made available through some sort of network server. See </a><span class="Link"><a href="database-Foreign_Format_Databases.html#58890" title="Foreign Format Databases">&#8220;Foreign Format Databases&#8221;</a></span> for a discussion of the different types of foreign databases that EViews can access.</div>
+      <div class="Heading_4"><a name="36984">Creating a Database</a></div>
+      <div class="Body_Text"><a name="36985">To create a database, simply select </a><span class="Menu_Item">File/New/Database&#8230;</span> from the main menu.</div>
+      <div class="Picture"><a name="68449"><img class="Default" src="images/database.015.03.1.jpg" width="100%" style="left: 0.0pt; max-height: 296px; max-width: 364px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="68455">For a native EViews database, simply enter a name for the database in the field labeled </a><span class="Dialog_Item">DB File name/path</span>, then click on the button marked <span class="Dialog_Item">OK</span>. This will create a new EViews database in the current path.</div>
+      <div class="Body_Text"><a name="36991">To create a database in a different directory, you can enter the full path and database name in the </a><span class="Menu_Item">DB File name/path</span> edit field. Alternatively, you can browse to the desired directory. Simply click on the <span class="Dialog_Item">Browse Files</span> button to call up the common file dialog, and then navigate to the target directory. Enter the name of the new database in the <span class="Menu_Item">File name</span> edit field, then click on the <span class="Menu_Item">OK</span> button to accept the information and close the file dialog. EViews will put the new path and filename in the <span class="Menu_Item">DB File name/path</span> edit field.</div>
+      <div class="Body_Text"><a name="36994">The </a><span class="Dialog_Item">Database/File Type</span> field allows you to create different types of databases. See <span class="Link"><a href="database-Foreign_Format_Databases.html#58890" title="Foreign Format Databases">&#8220;Foreign Format Databases&#8221;</a></span> for a discussion of working with different database types.</div>
+      <div class="Body_Text"><a name="58755">The </a><span class="Dialog_Item">Open As</span> field allows you to specify the shorthand that will be associated with this database. A shorthand is a short text label which is used to refer to the database in commands and programs. If you leave this field blank, a default shorthand will be assigned automatically (see <span class="Link"><a href="#58643" title="Database Basics">&#8220;Database Shorthands&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="36996">The </a><span class="Dialog_Item">Browse Registry</span> and <span class="Dialog_Item">Add to Registry</span> buttons provide a convenient way to recall information associated with a previously registered database or to include the new database in the database registry (see <span class="Link"><a href="database-The_Database_Registry.html#101571" title="The Database Registry">&#8220;The Database Registry&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="37000">A database can also be created from the command line or in a program using the command:</a></div>
+      <div class="Input"><a name="37001">dbcreate db_name</a></div>
+      <div class="Body_Text"><a name="37004">where db_name is the name of the database using the same rules given above.</a></div>
+      <div class="Heading_4"><a name="37007">The Database Window</a></div>
+      <div class="Body_Text"><a name="37009">When you create a new database, a database window will open on the screen.</a></div>
+      <div class="Picture"><a name="37013"><img class="Default" src="images/database.015.03.2.jpg" width="100%" style="left: 0.0pt; max-height: 217px; max-width: 492px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="37014">The database window provides a graphical interface which allows you to query the database, copy-and-paste objects to and from your workfile, and perform basic maintenance on the database. Note that some database operations can also be carried out directly without first opening the database window.</a></div>
+      <div class="Body_Text"><a name="58557">To open a database window for an existing database, select </a><span class="Menu_Item">File/Open/Database&#8230;</span> from the main menu. The same dialog will appear as was used during database creation. To open an EViews database, use the <span class="Menu_Item">Browse Files</span> button to select a file using the common file dialog, then click on <span class="Dialog_Item">OK</span> to open the file. A new window should appear representing the open database.</div>
+      <div class="Body_Text"><a name="37018">From the command line or in a program, you can open a database window by typing:</a></div>
+      <div class="Input"><a name="37019">dbopen db_name</a></div>
+      <div class="Body_Text"><a name="37020">Unlike a workfile window, a database window does not display the contents of the database when it is first opened, although it does tell you how many objects are in the database. The second line of the window text shows the number of objects currently displayed (zero when the window is first opened) followed by the total number of objects stored in the database.</a></div>
+      <div class="Body_Text"><a name="37021">You can bring up an alphabetical listing of every object in the database by clicking on the </a><span class="Menu_Item">All</span> button:</div>
+      <div class="Picture"><a name="37026"><img class="Default" src="images/database.015.03.3.jpg" width="100%" style="left: 0.0pt; max-height: 345px; max-width: 483px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="37027">As for a workfile, each object is preceded by a small icon that identifies the type of the object. When performing an </a><span class="Menu_Item">All</span> query, no other information about the object is visible. However, by double clicking on an object you can bring up a description of the object including its name, type, modification date, frequency, start and end date (for series), update and write times, metadata, and a preview of the data and a graph (if available).</div>
+      <div class="Body_Text"><a name="37028">For large databases, the </a><span class="Menu_Item">All</span> button generally displays too many objects and not enough information about each object. The database query features (<span class="Link"><a href="database-Querying_the_Database.html#37366" title="Querying the Database">&#8220;Querying the Database&#8221;</a></span>) allow you to control precisely which objects should be displayed, and what information about each object should be visible. The text form of the query currently being displayed is always visible in the top line of the database window.</div>
+      <div class="Body_Text"><a name="58886">When working with foreign databases, the object names may appear in color to indicate that they are illegal names or that an alias has been attached to an object name (see </a><span class="Link"><a href="database-Object_Aliases_and_Illegal_Names.html#58493" title="Object Aliases and Illegal Names">&#8220;Object Aliases and Illegal Names&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="37030">The &#8220;Packable space&#8221; field in the database window displays the percentage of unused space in the database that can be recovered by a database pack operation (see </a><span class="Link"><a href="database-Maintaining_the_Database.html#37614" title="Maintaining the Database">&#8220;Packing the Database&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="60446">A brief technical note: having a database window open in EViews generally does not keep a file open at the operating system level. EViews will normally open files only when it is performing operations on those files. Consequently, multiple users may have a database open at the same time and can perform operations simultaneously. There are some limits imposed by the fact that one user cannot read from a database that another user is writing to at the same time. However, EViews will detect this situation and continue to retry the operation until the database becomes available. If the database does not become available within a specified time, EViews will generate an error stating that a &#8220;sharing violation&#8221; on the database has occurred.</a></div>
+      <div class="Body_Text"><a name="60449">For some foreign formats, even minor operations on a database may require full rewriting of the underlying file. In these cases, EViews will hold the file open as long as the database window is open in order to improve efficiency. The formats that currently behave this way are Aremos TSD files, RATS Portable files and TSP portable files. When using these formats, only one user at a time may have an open database window for the file.</a></div>
+      <div class="Heading_4"><a name="58643">Database Shorthands</a></div>
+      <div class="Body_Text"><a name="58644">In many situations, EViews allows you to prefix an object name with a database identifier to indicate where the series is located. These database identifiers are referred to as &#8220;shorthands&#8221;. For example, the command:</a></div>
+      <div class="Input"><a name="58646">fetch db1::x db2::y</a></div>
+      <div class="Body_Text"><a name="58821">indicates to EViews that the object named </a><span class="EViews_Name">X</span> is located in the database with the shorthand db1 and the object named y is located in the database with the shorthand db2.</div>
+      <div class="Body_Text"><a name="58822">Whenever a database is opened or created, it is assigned a shorthand. The shorthand can be specified by the user in the </a><span class="Dialog_Item">Open as</span> field when opening a database, or using the &#8220;As&#8221; clause in the <span class="In-line_input">dbopen</span> command (see <span class="In-line_command_link"><a href="commandcmd-dbopen.html#2485382" title="dbopen">dbopen</a></span>). If a shorthand is explicitly specified when opening a database, an error will occur if the shorthand is already in use.</div>
+      <div class="Body_Text"><a name="58742">If no shorthand is provided by the user, a shorthand is assigned automatically. The default value will be the name of the database after any path or extension information has been removed. If this shorthand is already in use, either because a database is already open with the same name, or because an entry in the database registry already uses the name, then a numerical suffix is appended to the shorthand, counting upwards until an unused shorthand is found.</a></div>
+      <div class="Body_Text"><a name="58654">For example, if we open two databases with the same name in a program:</a></div>
+      <div class="Multi-line_Input"><a name="58656">dbopen test.edb</a></div>
+      <div class="Multi-line_Input"><a name="58792">dbopen test.dat</a></div>
+      <div class="Body_Text"><a name="58659">then the first database will receive the shorthand &#8220;TEST&#8221; and the second database will receive the shorthand &#8220;TEST1&#8221;. If we then issue the command:</a></div>
+      <div class="Input"><a name="160699">fetch test::x</a></div>
+      <div class="Body_Text"><a name="160700">the object X will be fetched from the EViews database TEST.EDB. To fetch X from the Haver database TEST.DAT we would use:</a></div>
+      <div class="Input"><a name="58665">fetch test1::x</a></div>
+      <div class="Body_Text"><a name="58667">To minimize confusion, you should assign explicit shorthands to databases whenever ambiguity could arise. For example, we could explicitly assign the shorthand </a><span class="EViews_Name">test_haver</span> to the second database by replacing the second dbopen command with:</div>
+      <div class="Input"><a name="58805">dbopen test.dat as test_haver</a></div>
+      <div class="Body_Text"><a name="58839">The shorthand attached to a database remains in effect until the database is closed. The shorthand assigned to an open database is displayed in the title bar of the database window.</a></div>
+      <div class="Heading_4"><a name="58584">The Default Database</a></div>
+      <div class="Body_Text"><a name="37040">In order to simplify common operations, EViews uses the concept of a </a><span class="Definition">default database</span>. The default database is used in several places, the most important of which is as the default source or destination for store or fetch operations when an alternative database is not explicitly specified.</div>
+      <div class="Body_Text"><a name="58612">The default database is set by opening a new database window, or by clicking on an already open database window if there are multiple databases open on the screen. The name of the default database is listed in the status line at the bottom of the main EViews window (see </a><span class="Link"><a href="objects-Object_Basics.html#36959" title="Object Basics">&#8220;Object Basics&#8221;</a></span>, for details). The concept is similar to that of the current workfile with one exception: when there are no currently open databases there is still a default database; when there are no currently open workfiles, the current workfile is listed as &#8220;none.&#8221;</div>
+      <div class="Heading_4"><a name="58614">EViews .DB? files</a></div>
+      <div class="Body_Text"><a name="58615">Early versions of EViews and MicroTSP supported a much more limited set of database operations. Objects could be stored on disk in individual files, with one object per file. Essentially, the disk directory system was used as a database and each database entry had its own file. These files had the extension &#8220;.DB&#8221; for series, and .DB followed by an additional character for other types of objects. EViews refers to these collectively as .DB? files. </a></div>
+      <div class="Body_Text"><a name="37046">While the new database features added to EViews provide a superior method of archiving and managing your data, .DB? files provide backward compatibility and a convenient method of distributing data to other programs. Series .DB files are now supported by a large number of programs including TSP, RATS, and SHAZAM. Additionally, some organizations such as the National Bureau of Economic Research (NBER), distribute data in .DB format.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

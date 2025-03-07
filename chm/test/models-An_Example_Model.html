@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>An Example Model</title>
+    <link rel="StyleSheet" href="css/models.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="models-Overview.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="models-Building_a_Model.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="models-Models.html">Models</a> : An Example Model</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="51147">An Example Model</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#103860">Estimating the Equations</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#103866">Creating the Model</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#103900">Linking the Equations</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#103904">Adding the Identity</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#103927">Performing a Static Solution </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#103936">Examining the Solution Results</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#95063">Performing a Dynamic Solution</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#104424">Forecasting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#104926">Filling in Exogenous Data</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#104440">Producing Endogenous Forecasts</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#104209">Using Add Factors to Model Equation Residuals</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#51285">Performing a Stochastic Simulation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#51296">Using Scenarios for Alternate Assumptions</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="99384">In this section, we demonstrate how we can use the EViews model object to implement a simple macroeconomic model of the U.S. economy. The specification of the model is taken from Pindyck and Rubinfeld (1998, p. 390). We have provided the data and other objects relating to the model in the sample workfile &#8220;Macromod.WF1&#8221;. You may find it useful to follow along with the steps in the example, and you can use the workfile to experiment further with the model object.</a></div>
+      <div class="Body_Text"><a name="108555">(A second, simpler example may be found in </a><span class="Link"><a href="limdep-Binary_Dependent_Variable_Models.html#37517" title="Binary Dependent Variable Models">&#8220;Plotting Probability Response Curves&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="51149">The macro model contains three stochastic equations and one identity. In EViews notation, these can be written:</a></div>
+      <div class="Multi-line_Input"><a name="51150">cn = c(1) + c(2)*y + c(3)*cn(-1)</a></div>
+      <div class="Multi-line_Input"><a name="51151">i = c(4) + c(5)*(y(-1)-y(-2)) + c(6)*y + c(7)*r(-4)</a></div>
+      <div class="Multi-line_Input"><a name="51152">r = c(8) + c(9)*y + c(10)*(y-y(-1)) + c(11)*(m-m(-1)) + c(12)* (r(-1)+r(-2))</a></div>
+      <div class="Multi-line_Input"><a name="51153">y = cn + i + g</a></div>
+      <div class="Body_Text"><a name="51154">where:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="51155">CN is real personal consumption</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="51156">I is real private investment</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="51157">G is real government expenditure</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="51158">Y is real GDP less net exports</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="51159">R is the interest rate on three-month treasury bills</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="51160">M is the real money supply, narrowly defined (M1)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="51161">and the C(i) are the unknown coefficients.</a></div>
+      <div class="Body_Text"><a name="51162">The model follows the structure of a simple textbook ISLM macroeconomic model, with expenditure equations relating consumption and investment to GDP and interest rates, and a money market equation relating interest rates to GDP and the money supply. The fourth equation is the national accounts expenditure identity which ensures that the components of GDP add to total GDP. The model differs from a typical textbook model in its more dynamic structure, with many of the variables appearing in lagged or differenced form.</a></div>
+      <div class="Heading_4"><a name="103860">Estimating the Equations</a></div>
+      <div class="Body_Text"><a name="51163">To begin, we must first estimate the unknown coefficients in the stochastic equations. For simplicity, we estimate the coefficients by simple single equation OLS. Note that this approach is not strictly valid, since Y appears on the right-hand side of several of the equations as an independent variable but is endogenous to the system as a whole. Because of this, we would expect Y to be correlated with the residuals of the equations, which violates the assumptions of OLS estimation. To adjust for this, we would need to use some form of instrumental variables or system estimation (for details, see the discussion of single equation </a><span class="Link"><a href="gmmiv-Two-stage_Least_Squares.html#168132" title="Two-stage Least Squares">&#8220;Two-stage Least Squares&#8221;</a></span> and system <span class="Link"><a href="system-System_Estimation_Methods.html#63530" title="System Estimation Methods">&#8220;Two-Stage Least Squares&#8221;</a></span> and related sections beginning on <span class="Link"><a href="system-System_Estimation_Methods.html#63530" title="System Estimation Methods">(here)</a></span>).</div>
+      <div class="Body_Text"><a name="51173">To estimate the equations in EViews, we create three new equation objects in the workfile (using </a><span class="Menu_Item">Object/New Object.../Equation</span>), and then enter the appropriate specifications. Since all three equations are linear, we can specify them using list form. To minimize confusion, we will name the three equations according to their endogenous variables. The resulting names and specifications are:</div>
+      <div class="Table"><a name="51187">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 234pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 90pt">
+            <div class="Table_Text"><a name="51176">Equation EQCN:</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 144pt">
+            <div class="Table_Text"><a name="51178">cn c y cn(-1)</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="51180">Equation EQI:</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="51182">i c y(-1)-y(-2) y r(-4)</a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="51184">Equation EQR:</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="51186">r c y y-y(-1) m-m(-1) r(-1)+r(-2)</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="51188">The three equations estimate satisfactorily and provide a reasonably close fit to the data, although much of the fit probably comes from the lagged endogenous variables. The consumption and investment equations show signs of heteroskedasticity, possibly indicating that we should be modeling the relationships in log form. All three equations show signs of serial correlation. We will ignore these problems for the purpose of this example, although you may like to experiment with alternative specifications and compare their performance.</a></div>
+      <div class="Heading_4"><a name="103866">Creating the Model</a></div>
+      <div class="Body_Text"><a name="51189">Now that we have estimated the three equations, we can proceed to the model itself. To create the model, we simply select </a><span class="Menu_Item">Object/New Object.../Model</span> from the menus. To keep the model permanently in the workfile, we name the model by clicking on the <span class="Menu_Item">Name</span> button, enter the name MODEL1, and click on <span class="Menu_Item">OK</span>.</div>
+      <div class="Body_Text"><a name="51190">When first created, the model object defaults to </a><span class="Definition">equation view</span>. Equation view allows us to browse through the specifications and properties of the equations contained in the model. Since we have not yet added any equations to the model, this window will appear empty.</div>
+      <div class="Heading_5"><a name="103900">Linking the Equations</a></div>
+      <div class="Body_Text"><a name="100503">To add our estimated stochastic equations to the model, we can simply copy-and-paste or drag-and-drop them from the workfile window. To copy-and-paste, first select the objects in the workfile window, and then use </a><span class="Menu_Item">Edit/Copy</span> or the right mouse button menu to copy the objects to the clipboard. Click anywhere in the model object window, and use <span class="Menu_Item">Edit/Paste</span> or the right mouse button menu to paste the objects into the model object window. To drag-and-drop, simply select the equation objects, then drag into the model window. Click on <span class="Menu_Item">OK</span> when prompted to link the equation to the object.</div>
+      <div class="Body_Text"><a name="94872">Alternatively, we could have combined the two steps by first highlighting the three equations, right-mouse clicking, and selecting </a><span class="Menu_Item">Open as Model</span>. EViews will create a new unnamed model containing the three equations. Press on the <span class="Menu_Item">Name</span> button to name the model object.</div>
+      <div class="Picture"><a name="51195"><img class="Default" src="images/models.064.03.01.jpg" width="100%" style="left: 0.0pt; max-height: 239px; max-width: 448px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="51196">The three estimated equations should now appear in the equation window. Each equation appears on a line with an icon showing the type of object, its name, its equation number, and a symbolic representation of the equation in terms of the variables that it contains. Double clicking on any equation will bring up a dialog of properties of that equation. For the moment, we do not need to alter any of these properties.</a></div>
+      <div class="Body_Text"><a name="51197">We have added our three equations as linked equations. This means if we go back and reestimate one or more of the equations, we can automatically update the equations in the model to the new estimates by using the procedure </a><span class="Menu_Item">Proc/Links/Update All Links</span>.</div>
+      <div class="Heading_5"><a name="103904">Adding the Identity</a></div>
+      <div class="Body_Text"><a name="51198">To complete the model, we must add our final equation, the national accounts expenditure identity. There is no estimation involved in this equation, so instead of including the equation via a link to an external object, we merely add the equation as inline text.</a></div>
+      <div class="Body_Text"><a name="51199">To add the identity, we click with the right mouse button anywhere in the equation window, and select </a><span class="Menu_Item">Insert&#8230;</span>. A dialog box will appear titled <span class="Menu_Item">Model Source Edit</span> which contains a text box with the heading <span class="Menu_Item">Enter one or more lines</span>. Simply type the identity, &#8220;Y = CN + I + G&#8221;, into the text box, then click on <span class="Menu_Item">OK</span> to add it to the model.</div>
+      <div class="Picture"><a name="83692"><img class="Default" src="images/models.064.03.02.jpg" width="100%" style="left: 0.0pt; max-height: 241px; max-width: 449px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="51204">The equation should now appear in the model window. The appearance differs slightly from the other equations, which is an indicator that the new equation is an inline text equation rather than a link.</a></div>
+      <div class="Body_Text"><a name="51205">Our model specification is now complete. At this point, we can proceed straight to solving the model.</a></div>
+      <div class="Heading_4"><a name="103927">Performing a Static Solution </a></div>
+      <div class="Body_Text"><a name="103911">To solve the model, simply click on the </a><span class="Menu_Item">Solve</span> button in the model window button bar. </div>
+      <div class="Picture"><a name="51209"><img class="Default" src="images/models.064.03.03.jpg" width="100%" style="left: 0.0pt; max-height: 426px; max-width: 482px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="52057">There are many options available from the dialog, but for the moment we will consider only the basic settings. As our first exercise in assessing our model, we would like to examine the ability of our model to provide one-period ahead forecasts of our endogenous variables. To do this, we can look at the predictions of our model against our historical data, using actual values for both the exogenous and the lagged endogenous variables of the model. In EViews, we refer to this as a </a><span class="Definition">static</span> simulation. We may easily perform this type of simulation by choosing <span class="Menu_Item">Static solution</span> in the <span class="Menu_Item">Dynamics</span> box of the dialog.</div>
+      <div class="Body_Text"><a name="52056">We must also adjust the sample over which to solve the model, so as to avoid initializing our solution with missing values from our data. Most of our series are defined over the range of 1947Q1 to 1999Q4, but our money supply series is available only from 1959Q1. Because of this, we set the sample to 1960Q1 to 1999Q4, allowing a few extra periods prior to the sample for any lagged variables.</a></div>
+      <div class="Body_Text"><a name="51212">We are now ready to solve the model. Simply click on </a><span class="Menu_Item">OK</span> to start the calculations. The model window will switch to the <span class="Menu_Item">Solution Messages</span> view.</div>
+      <div class="Picture"><a name="56161"><img class="Default" src="images/models.064.03.04.jpg" width="100%" style="left: 0.0pt; max-height: 306px; max-width: 469px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="51216">The output should be fairly self-explanatory. In this case, the solution took less than a second and there were no errors while performing the calculations.</a></div>
+      <div class="Heading_5"><a name="103936">Examining the Solution Results</a></div>
+      <div class="Body_Text"><a name="104452">Now that we have solved the model, we would like to look at the results. When we solved the model, the results for the endogenous variables were placed into series in the workfile with names determined by the name aliasing rules of the model. Since these series are ordinary EViews objects, we could use the workfile window to open the series and examine them directly. However, the model object provides a much more convenient way to work with the series through a view called the </a><span class="Menu_Item">Variable View</span>.</div>
+      <div class="Body_Text"><a name="104779">The easiest way to switch to the variable view is to select </a><span class="Menu_Item">View/Variables</span> or to click on the button labeled <span class="Menu_Item">Variables</span> on the model window button bar.</div>
+      <div class="Picture"><a name="104806"><img class="Default" src="images/models.064.03.05.jpg" width="100%" style="left: 0.0pt; max-height: 267px; max-width: 653px; top: 0.0pt" alt="" /> </a></div>
+      <div class="Body_Text"><a name="104797">In the variable view, each line in the window is used to represent a variable. The line contains an icon indicating the variable type (endogenous, exogenous or add factor), the name of the variable, the equation with which the variable is associated (if any), and the description field from the label of the underlying series (if available). The name of the variable may be colored according to its status, indicating whether it is being traced (blue) or whether it has been overridden (red). In our model, we can see that CN, I, R and Y are endogenous variables in the model, while G and M are exogenous.</a></div>
+      <div class="Body_Text"><a name="51224">Much of the convenience of the variable view comes from the fact that it allows you to work directly with the names of the variables in the model, rather than the names of series in the workfile. This is useful because when working with a model, there are different series associated with each variable. For endogenous variables, there will be the actual historical values and one or more series of solution values. For exogenous variables, there may be several alternative scenarios for the variable. The variable view and its associated procedures help you move between these different sets of series without having to worry about the many different names involved.</a></div>
+      <div class="Picture"><a name="95303"><img class="Default" src="images/models.064.03.06.jpg" width="100%" style="left: 0.0pt; max-height: 384px; max-width: 516px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="95317">For example, to look at graphs containing the actual and fitted values for the endogenous variables in our model, we select the four variables (by holding down the control key and clicking on the variable names), then use </a><span class="Menu_Item">Proc/Make Graph&#8230;</span> to enter the dialog. </div>
+      <div class="Body_Text"><a name="105191">(The names of the four series will be pre-filled in the </a><span class="Menu_Item">Model variables</span> section. Alternately, we could have simply selected <span class="Menu_Item">Proc/Make Graph...</span> then set the <span class="Menu_Item">Model variables</span> dropdown to <span class="Menu_Item">Endogenous variable</span>s.)</div>
+      <div class="Body_Text"><a name="104880">Again, the dialog has many options, but for our current purposes, we can leave most settings at their default values. Simply make sure that the </a><span class="Menu_Item">Actuals</span> and <span class="Menu_Item">Active</span> checkboxes are checked, set the sample for the graph to &#8220;1960 1999&#8221;, then click on <span class="Menu_Item">OK</span>. </div>
+      <div class="Picture"><a name="104889"><img class="Default" src="images/models.064.03.07.jpg" width="100%" style="left: 0.0pt; max-height: 497px; max-width: 545px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="95332">The graphs show that as a one-step ahead predictor, the model performs quite well, although the ability of the model to predict investment deteriorates during the second half of the sample.</a></div>
+      <div class="Heading_4"><a name="95063">Performing a Dynamic Solution</a></div>
+      <div class="Body_Text"><a name="103973">An alternative way of evaluating the model is to examine how the model performs when used to forecast many periods into the future. To do this, we must use our forecasts from previous periods, not actual historical data, when assigning values to the lagged endogenous terms in our model. In EViews, we refer to such a forecast as a </a><span class="Definition">dynamic</span> forecast.</div>
+      <div class="Body_Text"><a name="51234">To perform a dynamic forecast, we will the model with a slightly different set of options. Return to the model window and again click on the </a><span class="Menu_Item">Solve</span> button. In the model solution dialog, choose <span class="Menu_Item">Dynamic solution</span> in the <span class="Menu_Item">Dynamics</span> section of the dialog, and set the solution sample to &#8220;1985 1999&#8221;. </div>
+      <div class="Picture"><a name="104712"><img class="Default" src="images/models.064.03.08.jpg" width="100%" style="left: 0.0pt; max-height: 489px; max-width: 559px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="104733">Click on </a><span class="Menu_Item">OK</span> to solve the model. To examine the results, we will use <span class="Menu_Item">Proc/Make Graph&#8230;</span> exactly as above to display the actuals and the baseline solutions for the endogenous variables. Make sure the sample is set to 1985Q1 to 1999Q4 then click on <span class="Menu_Item">OK</span>. The results illustrate how our model would have performed if we had used it back in 1985 to make a forecast for the economy over the next fifteen years, assuming that we had used the correct paths for the exogenous variables (in reality, we would not have known these values at the time the forecasts were generated). Not surprisingly, the results show substantial deviations from the actual outcomes, although they do seem to follow the general trends in the data.</div>
+      <div class="Heading_5"><a name="104424">Forecasting</a></div>
+      <div class="Body_Text"><a name="95212">Once we are satisfied with the performance of our model against historical data, we can use the model to forecast future values of our endogenous variables. The first step in producing such a forecast is to decide on values for our exogenous variables during the forecast period. These may be based on our best guess as to what will actually happen, or they may be simply one particular possibility that we are interested in considering. Often we will be interested in constructing several different paths and then comparing the results.</a></div>
+      <div class="Heading_6"><a name="104926">Filling in Exogenous Data</a></div>
+      <div class="Body_Text"><a name="95075">In our model, we must provide future values for our two exogenous variables: government expenditure (G), and the real money supply (M). For our example, we will try to construct a set of paths that broadly follow the trends of the historical data.</a></div>
+      <div class="Picture"><a name="95076"><img class="Default" src="images/models.064.03.09.jpg" width="100%" style="left: 0.0pt; max-height: 419px; max-width: 506px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="95077">A quick look at our historical series for G suggests that the growth rate of G has been fairly constant since 1960, so that the log of G roughly follows a linear trend. Where G deviates from the trend, the deviations seem to follow a cyclical pattern.</a></div>
+      <div class="Body_Text"><a name="51246">As a simple model of this behavior, we can regress the log of G against a constant and a time trend, using an AR(4) error structure to model the cyclical deviations. This gives an equation object, which we save in the workfile as EQG, with the representation:</a></div>
+      <div class="Input"><a name="51247">log(g) = 6.252335363 + 0.004716422189*@trend + [ar(1)=1.169491542,ar(2)=0.1986105964,ar(3)=0.239913126,ar(4)=-0.2453607091]</a></div>
+      <div class="Body_Text"><a name="51248">To produce a set of future values for G, we can use this equation to perform a dynamic forecast for G from 2000Q1 to 2005Q4, saving the results back into G itself; see </a><span class="Link"><a href="Forecast-Forecasting_from_an_Equation.html#181233" title="Forecasting from an Equation">&#8220;Forecasting from an Equation&#8221;</a></span> for details. Later we will show you how to instruct the model to use the data in a different series, say G_1, in place of the data in G (<span class="Link"><a href="#51296" title="An Example Model">&#8220;Using Scenarios for Alternate Assumptions&#8221;</a></span>), so that you may preserve the original state of the series G.</div>
+      <div class="Picture"><a name="83734"><img class="Default" src="images/models.064.03.10.jpg" width="100%" style="left: 0.0pt; max-height: 419px; max-width: 472px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="83729">The historical path of the real M1 money supply, M, is quite different from G, showing spurts of growth followed by periods of stability. For now, we will assume that the real money supply simply remains at its last observed historical value over the entire forecast period.</a></div>
+      <div class="Body_Text"><a name="51256">We can use an EViews series statement to fill in this path for the post 1999 period. The following lines will fill the series M from 2000Q1 to the last observation in the sample with the last observed historical value for M:</a></div>
+      <div class="Multi-line_Input"><a name="51257">smpl 2000q1 @last</a></div>
+      <div class="Multi-line_Input"><a name="51258">series m = m(-1)</a></div>
+      <div class="Multi-line_Input"><a name="51259">smpl @all</a></div>
+      <div class="Body_Text"><a name="94941">We now have a set of possible values for our exogenous variables over the forecast period.</a></div>
+      <div class="Heading_6"><a name="104440">Producing Endogenous Forecasts</a></div>
+      <div class="Body_Text"><a name="104094">To produce forecasts for our </a><span class="Emphasis">endogenous</span> variables, we return to the model window, click on <span class="Menu_Item">Solve</span>, choose <span class="Menu_Item">Dynamic Solution</span>, set the forecast sample for 2000Q1 to 2005Q4, and then click on <span class="Menu_Item">OK</span>. The Solution Messages screen should appear, indicating that the model was successfully solved.</div>
+      <div class="Body_Text"><a name="95358">To examine the results in a graph, we again use </a><span class="Menu_Item">Proc/Make Graph&#8230;</span> from the variables view, select <span class="Menu_Item">Endogenous variables</span> in the <span class="Menu_Item">Model variables</span> section, then set the sample to 1995Q1 to 2005Q4 (so that we include five years of historical data). We will only display the baseline results so uncheck the <span class="Menu_Item">Actuals</span> box, then click on <span class="Menu_Item">OK</span> to produce the graphs.</div>
+      <div class="Body_Text"><a name="105000">Click on the middle of the graph and select </a><span class="Menu_Item">Add lines &amp; shading to all graphs...</span>. After adding a line in 1999Q4 to separate historical and actual results, we get a graph showing the results:</div>
+      <div class="Picture"><a name="95270"><img class="Default" src="images/models.064.03.11.jpg" width="100%" style="left: 0.0pt; max-height: 622px; max-width: 705px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="51924">We observe strange behavior in the results. At the beginning of the forecast period, we see a heavy dip in investment, GDP, and interest rates. This is followed by a series of oscillations in these series with a period of about a year, which die out slowly during the forecast period. This is not a particularly convincing forecast.</a></div>
+      <div class="Body_Text"><a name="104208">There is little in the paths of our exogenous variables or the history of our endogenous variables that would lead to this sharp dip, suggesting that the problem may lie with the residuals of our equations. Our investment equation is the most likely candidate, as it has a large, persistent positive residual near the end of the historical data (see figure below). This residual will be set to zero over the forecast period when solving the model, which might be the cause of the sudden drop in investment at the beginning of the forecast.</a></div>
+      <div class="Heading_4"><a name="104209">Using Add Factors to Model Equation Residuals</a></div>
+      <div class="Picture"><a name="104213"><img class="Default" src="images/models.064.03.12.jpg" width="100%" style="left: 0.0pt; max-height: 420px; max-width: 459px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="51928">One way of dealing with this problem would be to change the specification of the investment equation. The simplest modification would be to add an autoregressive component to the equation, which would help reduce the persistence of the error. A better alternative would be to try to modify the variables in the equation so that the equation can provide some explanation for the sharp rise in investment during the 1990s.</a></div>
+      <div class="Body_Text"><a name="105099">An alternative approach to the problem is to leave the equation as it is, but to include an add factor in the equation so that we can model the path of the residual by hand. To include the add factor, we switch to the equation view of the model, double click on the investment equation, EQI, select the </a><span class="Menu_Item">Add factors</span> tab. Under <span class="Dialog_Item">Factor type</span>, choose <span class="Dialog_Item">Equation intercept (residual shift)</span>. A prompt will appear asking if we would like to create the add factor series (if the series I_A does not already exist in the workfile). Click on <span class="Menu_Item">OK</span> to create the series. When you return to the variable view, you should see that a new variable, I_A, has been added to the list of variables in the model.</div>
+      <div class="Body_Text"><a name="51276">Using the add factor, we can specify any path we choose for the residual of the investment equation during the forecast period. By examining the </a><span class="Menu_Item">Actual/Fitted/Residual Graph</span> view from the equation object, we see that near the end of the historical data, the residual appears to be hovering around a value of about 160. We will assume that this value holds throughout the forecast period. We can set the add factor using a few simple EViews commands:</div>
+      <div class="Multi-line_Input"><a name="95279">smpl 2000q1 @last</a></div>
+      <div class="Multi-line_Input"><a name="95280">i_a = 160</a></div>
+      <div class="Multi-line_Input"><a name="95281">smpl @all</a></div>
+      <div class="Body_Text"><a name="51280">With the add factor in place, we can follow exactly the same procedure that we followed above to produce a new set of solutions for the model and a new graph for the results. </a></div>
+      <div class="Picture"><a name="52127"><img class="Default" src="images/models.064.03.13.jpg" width="100%" style="left: 0.0pt; max-height: 577px; max-width: 649px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="51284">Including the add factor in the model has made the results far more appealing. The sudden dip in the first period of the forecast that we saw above has been removed. The oscillations are still apparent, but are much less pronounced.</a></div>
+      <div class="Heading_4"><a name="51285">Performing a Stochastic Simulation</a></div>
+      <div class="Body_Text"><a name="104148">So far, we have been working under the assumption that our stochastic equations hold exactly over the forecast period. In reality, we would expect to see the same sort of errors occurring in the future as we have seen in history. We have also been ignoring the fact that some of the coefficients in our equations are estimated, rather than fixed at known values. We may like to reflect this uncertainty about our coefficients in some way in the results from our model.</a></div>
+      <div class="Body_Text"><a name="51286">We can incorporate these features into our EViews model using stochastic simulation.</a></div>
+      <div class="Body_Text"><a name="51287">Up until now, we have thought of our model as forecasting a single point for each of our endogenous variables at each observation. As soon as we add uncertainty to the model, we should think instead of our model as predicting a whole distribution of outcomes for each variable at each observation. Our goal is to summarize these distributions using appropriate statistics.</a></div>
+      <div class="Body_Text"><a name="51288">If the model is linear (as in our example) and the errors are normal, then the endogenous variables will follow a normal distribution, and the mean and standard deviation of each distribution should be sufficient to describe the distribution completely. In this case, the mean will actually be equal to the deterministic solution to the model. If the model is not linear, then the distributions of the endogenous variables need not be normal. In this case, the quantiles of the distribution may be more informative than the first two moments, since the distributions may have tails which are very different from the normal case. In a non-linear model, the mean of the distribution need not match up to the deterministic solution of the model.</a></div>
+      <div class="Body_Text"><a name="51289">EViews makes it easy to calculate statistics to describe the distributions of your endogenous variables in an uncertain environment. To simulate the distributions, the model object uses a Monte Carlo approach, where the model is solved many times with pseudo-random numbers substituted for the unknown errors at each repetition. This method provides only approximate results. However, as the number of repetitions is increased, we would expect the results to approach their true values.</a></div>
+      <div class="Body_Text"><a name="51290">To return to our simple macroeconomic model, we can use a stochastic simulation to provide some measure of the uncertainty in our results by adding error bounds to our predictions. From the model window, click on the </a><span class="Menu_Item">Solve</span> button. When the model solution dialog appears, choose <span class="Menu_Item">Stochastic</span> for the simulation type and choose <span class="Menu_Item">Dynamic</span> solution for the sample &#8220;2000 2005&#8221;. In the <span class="Menu_Item">Solution scenarios &amp; output</span> box on the right-hand side of the dialog, make sure that the <span class="Menu_Item">Std. Dev.</span> checkbox in the <span class="Menu_Item">Active</span> section is checked. Click on <span class="Menu_Item">OK</span> to begin the simulation.</div>
+      <div class="Body_Text"><a name="51291">Status messages will appear to indicate progress of the simulation. When the simulation is complete select </a><span class="Menu_Item">Proc/Make Graph&#8230;</span> to display the results. As before, we will set the <span class="Menu_Item">Model variables</span> to <span class="Menu_Item">Endogenous variables</span> and the sample to &#8220;1995 2005&#8221;. In addition, you should choose <span class="Menu_Item">Mean +- 2 standard deviations</span> in the <span class="Menu_Item">Solution Series</span> box, check the <span class="Menu_Item">Actuals</span> and <span class="Menu_Item">Active</span> scenario boxes, and set the latter to <span class="Menu_Item">Baseline</span>. Click on <span class="Menu_Item">OK</span> to produce the graph.</div>
+      <div class="Picture"><a name="51932"><img class="Default" src="images/models.064.03.14.jpg" width="100%" style="left: 0.0pt; max-height: 579px; max-width: 643px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="94966">The error bounds in the resulting output graph show that we should be reluctant to place too much weight on the point forecasts of our model, since the bounds are quite wide on several of the variables. Much of the uncertainty is probably due to the large residual in the investment equation, which is creating a lot of variation in investment and interest rates in the stochastic simulation.</a></div>
+      <div class="Heading_4"><a name="51296">Using Scenarios for Alternate Assumptions</a></div>
+      <div class="Body_Text"><a name="104164">Another exercise we might like to consider when working with our model is to examine how the model behaves under alternative assumptions with respect to the exogenous variables. One approach to this would be to directly edit the exogenous series so that they contain the new values, and then resolve the model, overwriting any existing results. The problem with this approach is that it makes it awkward to manage the data and to compare the different sets of outcomes.</a></div>
+      <div class="Body_Text"><a name="51297">EViews provides a better way of carrying out exercises such as this through the use of model scenarios. Using a model scenario, you can override a subset of the exogenous variables in a model to give them new values, while using the values stored in the actual series for the remainder of the variables. When you solve for a scenario, the values of the endogenous variables are assigned into workfile series with an extension specific to that scenario, making it easy to keep multiple solutions for the model within a single workfile.</a></div>
+      <div class="Picture"><a name="104487"><img class="Default" src="images/models.064.03.15.jpg" width="100%" style="left: 0.0pt; max-height: 408px; max-width: 489px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="104502">To create a scenario, we begin by selecting </a><span class="Menu_Item">View/Scenarios&#8230;</span> from the model object menus. The <span class="Menu_Item">Scenario Specification</span> dialog will appear with a list of the scenarios currently defined in the model. You can use this dialog to select which scenario is currently active, or to create, rename, copy, and delete scenarios.</div>
+      <div class="Body_Text"><a name="104480">There are two special scenarios that are always present in the model: </a><span class="Menu_Item">Actuals</span> and <span class="Menu_Item">Baseline</span>. These two scenarios are special in that they cannot contain any overridden variables. The two scenarios differ in that the &#8220;Actuals&#8221; scenario writes its solution values directly into the workfile series with the same names as the endogenous variables, while the &#8220;Baseline&#8221; scenario writes its solution values back into workfile series with the names appended by the extension &#8220;_0&#8221;.</div>
+      <div class="Body_Text"><a name="51304">To add a new scenario to the model, simply click on the button labeled </a><span class="Dialog_Item">Create New Scenario</span>. A new scenario will be created with the default name &#8220;Scenario 1&#8221;. Once we have created the scenario, we can modify the scenario from the baseline settings by overriding one of our exogenous variables. To add an override for the series M, first make certain that &#8220;Scenario 1&#8221; is active (highlighted in the <span class="Menu_Item">Scenario Specification</span> dialog) then click on the Overrides tab and enter &#8220;M&#8221; in the dialog. Click on <span class="Menu_Item">OK</span> to accept your changes.</div>
+      <div class="Body_Text"><a name="104563">Alternately, after exiting the </a><span class="Menu_Item">Scenario Specification</span> dialog, you may <span class="Menu_Item">View/Variables</span> to return to the variable window of the model, click on the variable M, use the right mouse button to call up the <span class="Menu_Item">Properties</span> dialog for the variable, and then in the <span class="Menu_Item">Scenario</span> box, click on the checkbox for<span class="Menu_Item"> Use override series in scenario</span>. A message will appear asking if you would like to create the new series. Click on <span class="Dialog_Item">Yes</span> to create the series, then <span class="Menu_Item">OK</span> to return to the variable window.</div>
+      <div class="Body_Text"><a name="104590">In the variable window, the variable name &#8220;M&#8221; should now appear in red, indicating that it has been overridden in the active scenario. This means that the variable M will now be bound to the series M_1 instead of the series M when solving the model using &#8220;Scenario 1&#8221;. </a></div>
+      <div class="Body_Text"><a name="104599">(You may use the </a><span class="Menu_Item">Aliasing</span> tab to change the extension from &#8220;_1&#8221;. Note also that depending on how you created the override, you may still need to create the series M_1 in your workfile by copying the values of M.)</div>
+      <div class="Body_Text"><a name="113721">For example, in our previous forecast for M, we assumed that the real money supply would be kept at a constant level during the forecast period. For our alternative scenario, we are going to assume that the real money supply is contracted sharply at the beginning of the forecast period, and held at this lower value throughout the forecast. We can set the new values using a few simple commands:</a></div>
+      <div class="Multi-line_Input"><a name="51307">smpl 2000q1 2005q4</a></div>
+      <div class="Multi-line_Input"><a name="51308">series m_1 = 900</a></div>
+      <div class="Multi-line_Input"><a name="51309">smpl @all</a></div>
+      <div class="Body_Text"><a name="54217">As before, we can solve the model by clicking on the </a><span class="Menu_Item">Solve</span> button. Restore the <span class="Menu_Item">Simulation type</span> to deterministic, make sure that &#8220;Scenario 1&#8221; is the active scenario, and &#8220;Baseline&#8221; is the alternate scenario, and that <span class="Menu_Item">Solve for Alternate along with Active</span> is checked. Set the solution sample to &#8220;2000 2005&#8221;. Click on <span class="Menu_Item">OK</span> to solve.</div>
+      <div class="Body_Text"><a name="105441">Once the solution is complete, we can use </a><span class="Menu_Item">Proc/Make Graph&#8230;</span> to display the results following the same procedure as above. First, set the <span class="Menu_Item">Model variables</span> selection to display the <span class="Menu_Item">Endogenous variables</span>. Next, set the <span class="Menu_Item">Solution series</span> list box to the setting <span class="Menu_Item">Deterministic solutions</span>, then check both the <span class="Menu_Item">Active</span> and <span class="Menu_Item">Compare</span> solution check boxes, making sure that the active scenario is set to &#8220;Scenario 1&#8221;, and the comparison scenario is set to &#8220;Baseline&#8221;. Set the sample to 1995Q1 to 2005Q4, then click on <span class="Menu_Item">OK</span>. The following graph should be displayed:</div>
+      <div class="Picture"><a name="51943"><img class="Default" src="images/models.064.03.16.jpg" width="100%" style="left: 0.0pt; max-height: 577px; max-width: 642px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="51314">The simulation results suggest that the cut in the money supply causes a substantial increase in interest rates, which creates a small reduction in investment and a relatively minor drop in income and consumption. Overall, the predicted effects of changes in the money supply on the real economy are relatively minor in this model.</a></div>
+      <div class="Body_Text"><a name="95293">This concludes the discussion of our example model. The remainder of this chapter provides detailed information about working with particular features of the EViews model object.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Forecast Evaluation</title>
+    <link rel="StyleSheet" href="css/series.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="series-Duplicates_Analysis.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="series-Outlier_Detection.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_data.html">Basic Data Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="series-Series.html">Series</a> : Forecast Evaluation</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="153658">Forecast Evaluation</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#153845">Methodology</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#153848">Forecast Evaluation Statistics</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#153897">Combination Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#158571">Diebold-Mariano Test</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#153913">Forecast Evaluation in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#153720">An Example</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="153844">When constructing a forecast of future values of a variable, economic decision makers often have access to different forecasts; perhaps from different models they have created themselves or from forecasts obtained from external sources. When faced with competing forecasts of a single variable, it can be difficult to decide which single or composite forecast is &#8220;best&#8221;. Fortunately, EViews provides tools for evaluating the quality of a forecast which can help you determine which single forecast to use, or whether constructing a composite forecast by averaging would be more appropriate.</a></div>
+      <div class="Heading_4"><a name="153845">Methodology</a></div>
+      <div class="Body_Text"><a name="153846">Evaluation of the quality of a forecast requires comparing the forecast values to actual values of the target value over a forecast period. A standard procedure is to set aside some history of your actual data for use as a </a><span class="Definition">comparison sample</span> in which you will compare of the true and forecasted values. </div>
+      <div class="Body_Text"><a name="153847">EViews allows you to use the comparison sample to: (1) construct a forecast evaluation statistic to provide a measure of forecast accuracy, and (2) perform Combination testing to determine whether a composite average of forecasts outperforms single forecasts.</a></div>
+      <div class="Heading_5"><a name="153848">Forecast Evaluation Statistics</a></div>
+      <div class="Body_Text"><a name="153849">EViews offers four different measures of forecast accuracy; RMSE (Root Mean Squared Error), MAE (Mean Absolute Error), MAPE (Mean Absolute Percentage Error), and the Theil Inequality Coefficient. These statistics all provide a measure of the distance of the true from the forecasted values.</a></div>
+      <div class="Body_Text"><a name="153853">Suppose the forecast sample is <img class="Default EquationGraphic" src="images/series.017.08.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 201px; top: 0.0pt" alt="" />, and denote the actual and forecasted value in period <img class="Default EquationGraphic" src="images/series.017.08.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> as <img class="Default EquationGraphic" src="images/series.017.08.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/series.017.08.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 18px; top: 0.0pt" alt="" />, respectively. The forecast evaluation measures are defined as:</a></div>
+      <div class="Table"><a name="153896">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 324pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 115.2pt">
+            <div class="Table_Text"><a name="153866">Root Mean Squared Error </a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 208.8pt">
+            <div class="Table_Multi-Line_Equation"><a name="153871"><img class="Default EquationGraphic" src="images/series.017.08.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 38px; max-width: 168px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="153874">Mean Absolute Error</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="153879"><img class="Default EquationGraphic" src="images/series.017.08.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 41px; max-width: 155px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="153881">Mean Absolute Percentage Error</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="153887"><img class="Default EquationGraphic" src="images/series.017.08.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 50px; max-width: 172px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="153890">Theil Inequality Coefficient</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="153895"><img class="Default EquationGraphic" src="images/series.017.08.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 75px; max-width: 262px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="Heading_5"><a name="153897">Combination Tests</a></div>
+      <div class="Body_Text"><a name="153898">To test whether an average, or combination, of the individual forecasts may perform better than the individual forecasts themselves, EViews offers the Combination Test, or Forecast Encompassing Test of Chong and Hendry (1986) and refined by Timmermann (2006). The idea underlying this test is that if a single forecast contains all information contained in the other individual forecasts, that forecast will be just as good as a combination of all of the forecasts. A test of this hypothesis can be conducted by performing a regression of the model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.08.09.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="153909">where <img class="Default EquationGraphic" src="images/series.017.08.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 42px; top: 0.0pt" alt="" /> is the vector of actual values over the forecast period and <img class="Default EquationGraphic" src="images/series.017.08.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 52px; top: 0.0pt" alt="" /> is the vector of forecast values over the same period for forecast </a><span class="In-line_math">i. </span>A test for whether forecast <span class="In-line_math">i</span> contains all the information of the other forecasts may be performed by testing whether <img class="Default EquationGraphic" src="images/series.017.08.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 120px; top: 0.0pt" alt="" />; if the difference between the true values and the forecasted values from forecast <span class="In-line_math">i</span> is not related to the forecasts from all other models, then forecast <span class="In-line_math">i</span> can be used individually. If the differences are affected by the other forecasts, then the latter forecasts should be included in the formation of a composite forecast.</div>
+      <div class="Heading_5"><a name="158571">Diebold-Mariano Test</a></div>
+      <div class="Body_Text"><a name="158613">The Diebold-Mariano test is a test of whether two competing forecasts have equal predictive accuracy. For one-step ahead forecasts, the test statistic is computed as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.08.13.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="158615">where </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.08.14.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="158711">and <img class="Default EquationGraphic" src="images/series.017.08.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/series.017.08.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" /> is either a squared or absolute difference between the forecast and the actual,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.08.17.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="158877">or </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/series.017.08.18.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(11.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="158737">where <img class="Default EquationGraphic" src="images/series.017.08.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 14px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/series.017.08.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> are the mean and sample standard deviation of <img class="Default EquationGraphic" src="images/series.017.08.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />. (Note that while Diebold and Mariano define an <img class="Default EquationGraphic" src="images/series.017.08.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-step statistic, EViews only computes the one-step version.)</a></div>
+      <div class="Body_Text"><a name="158625">Following Harvey, Leybourne, and Newbold (HLN), EViews calculates the standard deviation using a small-sample bias corrected variance calculation.</a></div>
+      <div class="Body_Text"><a name="158627">The test-statistic follows a Student&#8217;s </a><span class="In-line_math">t</span>-distribution with <img class="Default EquationGraphic" src="images/series.017.08.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> degrees of freedom.</div>
+      <div class="Body_Text"><a name="158602">EViews will only display the Diebold-Mariano test statistic if exactly two forecasts are being evaluated.</a></div>
+      <div class="Heading_4"><a name="153913">Forecast Evaluation in EViews</a></div>
+      <div class="Body_Text"><a name="153914">To perform forecast evaluation in EViews, you must have a series containing the observed values of the variable for which you wish to evaluate forecasts. To begin, open up the series and click on </a><span class="Menu_Item">View/Forecast Evaluation...</span>, which will open the <span class="Dialog_Item">Forecast Evaluation</span> dialog box:</div>
+      <div class="Picture"><a name="153918"><img class="Default" src="images/series.017.08.24.jpg" width="100%" style="left: 0.0pt; max-height: 369px; max-width: 489px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="153919">The </a><span class="Dialog_Item">Forecast data objects</span> box specifies the forecasts to be used for evaluation. Forecasts can be entered either as a collection of series (in which case the names of the series, a series naming pattern, or the name of a group are entered), or as a list of equation objects. If equation objects are entered, EViews will automatically perform a dynamic forecast over the forecast period from each of those equation objects to generate the forecast data. </div>
+      <div class="Body_Text"><a name="153920">When using equation objects, rather than forecast series, as the forecast data, the following should be noted:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="153958">Each equation must have an identical dependent variable, which is identical to the series from which you are performing the forecast evaluation. i.e., if you are forecasting from series Y, each equation must have Y as the dependent variable. Currently transformations (such as LOG(Y)) are not allowed.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="153713">If using smoothed AIC or BMA/SIC averaging methods, the weight calculations are only strictly valid if the underlying estimation objects were estimated on identical samples. It is up to the user to ensure that the samples are identical.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="153714">Only equation objects are allowed. If a different type of estimation object (system, VAR, Sspace, </a><span class="Emphasis">etc.</span>) is used, or if forecast was obtained from a non-EViews estimation source, the forecasts cannot be specified by equation.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="153715">If using one of the MSE based or the OLS based weighting methods, historical forecasts (along with actual values) are needed for use in the weighting calculation. Note that EViews will not re-estimate the equations, it will use the same coefficient values for both the historical forecast and the actual forecasts, based on whatever sample was used when the equation were originally estimated. If you wish to use different estimation samples for the comparison forecast and actual forecast, you must perform the estimation and forecasts manually and specify the forecast data by series.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="153716">The </a><span class="Dialog_Item">Evaluation sample</span> box specifies the sample over which the forecasts will be evaluated.</div>
+      <div class="Body_Text"><a name="153717">The </a><span class="Dialog_Item">Averaging methods (optional)</span> area selects which forecast averaging methods to evaluate. For more details on each averaging method, see FORECAST AVERAGING ENTRY. If the <span class="Dialog_Item">Trimmed mean</span> averaging method is selected, the <span class="Dialog_Item">Percent:</span> box specifies the level of trimming (from both ends). If the <span class="Dialog_Item">Mean square error </span>method is selected, the Power: box specifies the power to which the MSE is raised. </div>
+      <div class="Body_Text"><a name="153718">Note the </a><span class="Dialog_Item">Smooth AIC weights </span>and <span class="Dialog_Item">SIC weights </span>options are only available if a list of equations is entered in the <span class="Dialog_Item">Forecast data objects </span>box, since they require information from the estimation rather than just the raw forecast data.</div>
+      <div class="Body_Text"><a name="153719">The Least-squares, Mean square error, MSE ranks, Smooth AIC weights, and SIC weights averaging methods require a training sample - a sample over which the averaging weights are computed. If any of these averaging methods are selected, a sample must be entered in the </a><span class="Dialog_Item">Training sample </span>box. If a list of equations is entered in the <span class="Dialog_Item">Forecast data objects </span>box, the <span class="Dialog_Item">Training forecast type </span>radio buttons select which type of forecast is used over the training sample.</div>
+      <div class="Heading_4"><a name="153720">An Example</a></div>
+      <div class="Body_Text"><a name="153721">As an example of forecast evaluation in EViews, we evaluate six monthly forecasts of electricity demand in England and Wales, using the workfile &#8220;elecdmd.wf1&#8221;. This workfile contains monthly electricity demand data from April 2005 until April 2014 (in the series ELECDMD), along with five evaluation sample forecasts of electricity demand (series ELECF_FE1&#8211;ELECF_FE5), and five out-of-sample forecasts (series ELECF_FF1&#8211;ELECF_FF5). The different forecast series correspond to different five different models used to generate forecasts. </a></div>
+      <div class="Body_Text"><a name="153722">Each of the evaluation sample forecast series contains actual data until December 2011, and then forecast data from January 2012 until December 2013.</a></div>
+      <div class="Body_Text"><a name="153723">We will evaluate the five models&#8217; forecast accuracy using the evaluation sample forecast series. To begin, we open the ELECDMD series and click on </a><span class="Menu_Item">View/Forecast Evaluation...</span> and enter the names of our forecast series in the<span class="Dialog_Item"> Forecast data</span> objects box of the <span class="Dialog_Item">Forecast Evaluation</span> dialog:</div>
+      <div class="Picture"><a name="153727"><img class="Default" src="images/series.017.08.25.jpg" width="100%" style="left: 0.0pt; max-height: 369px; max-width: 489px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="153728">We set the evaluation sample to &#8220;2013M1 2013M12&#8221;, giving us twelve months of forecasts to evaluate. We choose to evaluate each of the available averaging methods, and set the training sample for the </a><span class="Menu_Item">Least-squares</span>, <span class="Menu_Item">Mean square error </span>and <span class="Menu_Item">MSE ranks</span> methods to be &#8220;2012M1 2012M12&#8221;.</div>
+      <div class="Body_Text"><a name="155453">The top of the output provides summary information about the evaluation performed, including the time and date it was performed, the number of observations included (12 in this case) and the number of forecasts evaluated, including the averaging methods.</a></div>
+      <div class="Picture"><a name="155454"><img class="Default" src="images/series.017.08.26.jpg" width="100%" style="left: 0.0pt; max-height: 150px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="158497">The &#8220;Combination tests&#8221; section displays the results of the combination test for each of the individual forecasts. In our case the null hypothesis is non-rejected for each of the forecasts, other than the first, which is rejected at a 5% level.</a></div>
+      <div class="Picture"><a name="158501"><img class="Default" src="images/series.017.08.27.jpg" width="100%" style="left: 0.0pt; max-height: 228px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="153736">The &#8220;Evaluation statistics&#8221; section shows the RMSE, MAE, MAPE and Theil statistics for each of the five forecasts, along with the five averaging methods. The trimmed mean averaging method could not be calculated with only 5 forecast series. </a></div>
+      <div class="Picture"><a name="155500"><img class="Default" src="images/series.017.08.28.jpg" width="100%" style="left: 0.0pt; max-height: 321px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="153737">EViews has shaded the forecast or averaging method that performed the best under each of the evaluation statistics. In our case the MSE ranks method outperforms every other forecast or averaging method in each of the evaluation criteria. </a></div>
+      <div class="Body_Text"><a name="153738">EViews also produces a graph of each of the individual forecasts, the averages, and the actual values over the training and evaluation periods, allowing a quick visual comparison of each:</a></div>
+      <div class="Picture"><a name="153742"><img class="Default" src="images/series.017.08.29.jpg" width="100%" style="left: 0.0pt; max-height: 495px; max-width: 529px; top: 0.0pt" alt="" /></a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

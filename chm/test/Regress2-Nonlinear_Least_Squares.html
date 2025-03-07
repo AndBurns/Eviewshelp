@@ -1,0 +1,437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Nonlinear Least Squares</title>
+    <link rel="StyleSheet" href="css/Regress2.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="Regress2-Weighted_Least_Squares.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="Regress2-Indicator_Saturation.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="Regress2-Additional_Regression_Tools.html">Additional Regression Tools</a> : Nonlinear Least Squares</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="266568">Nonlinear Least Squares</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#266692">Estimating NLS Models in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#266700">Specifying Nonlinear Least Squares </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#266739">Estimation Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#266747">Coefficient Covariance</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#266766">Optimization</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#266795">Derivative Methods</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#266805">Starting Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#266819">Output from NLS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#266830">NLS with ARMA errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#266844">Weighted NLS</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#266885">Solving Estimation Problems</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#266888">Starting Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#266894">Model Identification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#266910">Optimization Algorithm</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#266918">Convergence Criterion</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="266569">Suppose that we have the regression specification:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266583">where <img class="Default EquationGraphic" src="images/Regress2.030.5.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> is a general function of the explanatory variables <img class="Default EquationGraphic" src="images/Regress2.030.5.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> and the parameters <img class="Default EquationGraphic" src="images/Regress2.030.5.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. Least squares estimation chooses the parameter values that minimize the sum of squared residuals:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.05.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266591">We say that a model is </a><span class="Definition">linear in parameters</span> if the derivatives of <img class="Default EquationGraphic" src="images/Regress2.030.5.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> with respect to the parameters do not depend upon <img class="Default EquationGraphic" src="images/Regress2.030.5.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />; if the derivatives are functions of <img class="Default EquationGraphic" src="images/Regress2.030.5.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, we say that the model is <span class="Definition">nonlinear in parameters</span>.</div>
+      <div class="Body_Text"><a name="266598">For example, consider the model given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.09.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266603">It is easy to see that this model is linear in its parameters, implying that it can be estimated using ordinary least squares.</a></div>
+      <div class="Body_Text"><a name="266604">In contrast, the equation specification:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.10.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266612">has derivatives that depend upon the elements of <img class="Default EquationGraphic" src="images/Regress2.030.5.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. There is no way to rearrange the terms in this model so that ordinary least squares can be used to minimize the sum-of-squared residuals. We must use nonlinear least squares techniques to estimate the parameters of the model. </a></div>
+      <div class="Body_Text"><a name="266613">Nonlinear least squares minimizes the sum-of-squared residuals with respect to the choice of parameters <img class="Default EquationGraphic" src="images/Regress2.030.5.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. While there is no closed form solution for the parameters, estimates my be obtained from iterative methods as described in </a><span class="Link"><a href="optimize-Optimization_Algorithms.html#137130" title="Optimization Algorithms">&#8220;Optimization Algorithms&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="266620">Estimates of the coefficient covariance take the general form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.13.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266631">where <img class="Default EquationGraphic" src="images/Regress2.030.5.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is an estimate of the information, <img class="Default EquationGraphic" src="images/Regress2.030.5.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is the variance of the residual weighted gradients, and <img class="Default EquationGraphic" src="images/Regress2.030.5.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a scale parameter.</a></div>
+      <div class="Body_Text"><a name="266638">For the ordinary covariance estimator, we assume that <img class="Default EquationGraphic" src="images/Regress2.030.5.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 58px; top: 0.0pt" alt="" />. Then we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.18.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266646">where <img class="Default EquationGraphic" src="images/Regress2.030.5.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is an estimator of the residual variance (with or without degree-of-freedom correction).</a></div>
+      <div class="Body_Text"><a name="266650">As in Amemiya (1983), we may estimate <img class="Default EquationGraphic" src="images/Regress2.030.5.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> using the outer-product of the gradients (OPG) so we have</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.21.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266658">where the derivatives are evaluated at <img class="Default EquationGraphic" src="images/Regress2.030.5.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="266662">Similarly, we may set <img class="Default EquationGraphic" src="images/Regress2.030.5.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> to the one-half of the Hessian matrix of second derivatives of the sum-of-squares function:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.24.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.35)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266670">evaluated at <img class="Default EquationGraphic" src="images/Regress2.030.5.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 47px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="266677">Alternately, we may assume distinct <img class="Default EquationGraphic" src="images/Regress2.030.5.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/Regress2.030.5.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> and employ a White or HAC sandwich estimator for the coefficient covariance as in </a><span class="Link"><a href="Regress2-Robust_Standard_Errors.html#265803" title="Robust Standard Errors">&#8220;Robust Standard Errors&#8221;</a></span>. In this case, <img class="Default EquationGraphic" src="images/Regress2.030.5.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is estimated using the OPG or Hessian, and the <img class="Default EquationGraphic" src="images/Regress2.030.5.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is a robust estimate of the variance of the gradient weighted residuals. In this case, <img class="Default EquationGraphic" src="images/Regress2.030.5.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a scalar representing the degree-of-freedom correction, if employed.</div>
+      <div class="Body_Text"><a name="266690">For additional discussion of nonlinear estimation, see Pindyck and Rubinfeld (1998, p. 265-273), Davidson and MacKinnon (1993), or Amemiya(1983).</a></div>
+      <div class="Heading_4"><a name="266692">Estimating NLS Models in EViews</a></div>
+      <div class="Body_Text"><a name="266693">It is easy to tell EViews that you wish to estimate the parameters of a model using nonlinear least squares. EViews automatically applies nonlinear least squares to any regression equation that is nonlinear in its coefficients. Simply select </a><span class="Menu_Item">Object/New Object.../Equation</span>, enter the equation in the equation specification dialog box, and click <span class="Dialog_Item">OK</span>. EViews will do all of the work of estimating your model using an iterative algorithm.</div>
+      <div class="Body_Text"><a name="266696">A full technical discussion of iterative estimation procedures is provided in </a><span class="Link"><a href="optimize-Estimation_and_Solution_Options.html#36924" title="Estimation and Solution Options">Appendix&nbsp;C. &#8220;Estimation and Solution Options&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="266700">Specifying Nonlinear Least Squares </a></div>
+      <div class="Body_Text"><a name="266701">For nonlinear regression models, you will have to enter your specification in equation form using EViews expressions that contain direct references to coefficients. You may use elements of the default coefficient vector C (e.g. C(1), C(2), C(34), C(87)), or you can define and use other coefficient vectors. For example:</a></div>
+      <div class="Input"><a name="266702">y = c(1) + c(2)*(k^c(3)+l^c(4))</a></div>
+      <div class="Body_Text"><a name="266703">is a nonlinear specification that uses the first through the fourth elements of the default coefficient vector, C. </a></div>
+      <div class="Body_Text"><a name="266704">To create a new coefficient vector, select </a><span class="Menu_Item">Object/New Object.../Matrix-Vector-Coef</span> in the main menu and provide a name. You may now use this coefficient vector in your specification. For example, if you create a coefficient vector named CF, you can rewrite the specification above as:</div>
+      <div class="Input"><a name="266705">y = cf(11) + cf(12)*(k^cf(13)+l^cf(14))</a></div>
+      <div class="Body_Text"><a name="266706">which uses the eleventh through the fourteenth elements of CF. </a></div>
+      <div class="Body_Text"><a name="266707">You can also use multiple coefficient vectors in your specification:</a></div>
+      <div class="Input"><a name="266708">y = c(11) + c(12)*(k^cf(1)+l^cf(2))</a></div>
+      <div class="Body_Text"><a name="266709">which uses both C and CF in the specification.</a></div>
+      <div class="Body_Text"><a name="266710">It is worth noting that EViews implicitly adds an additive disturbance to your specification. For example, the input</a></div>
+      <div class="Input"><a name="266711">y = (c(1)*x + c(2)*z + 4)^2</a></div>
+      <div class="Body_Text"><a name="266715">is interpreted as <img class="Default EquationGraphic" src="images/Regress2.030.5.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 231px; top: 0.0pt" alt="" />, and EViews will minimize:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.32.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266720">If you wish, the equation specification may be given by a simple expression that does not include a dependent variable. For example, the input,</a></div>
+      <div class="Input"><a name="266721">(c(1)*x + c(2)*z + 4)^2</a></div>
+      <div class="Body_Text"><a name="266725">is interpreted by EViews as <img class="Default EquationGraphic" src="images/Regress2.030.5.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 208px; top: 0.0pt" alt="" />, and EViews will minimize:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.34.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266730">While EViews will estimate the parameters of this last specification, the equation cannot be used for forecasting and cannot be included in a model. This restriction also holds for any equation that includes coefficients to the left of the equal sign. For example, if you specify,</a></div>
+      <div class="Input"><a name="266731">x + c(1)*y = z^c(2)</a></div>
+      <div class="Body_Text"><a name="266732">EViews will find the values of C(1) and C(2) that minimize the sum of squares of the implicit equation:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.35.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.38)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266737">The estimated equation cannot be used in forecasting or included in a model, since there is no dependent variable.</a></div>
+      <div class="Heading_5"><a name="266739">Estimation Options</a></div>
+      <div class="Body_Text"><a name="266740">Clicking on the </a><span class="Menu_Item">Options</span> tab displays the nonlinear least squares estimation options:</div>
+      <div class="Picture"><a name="266744"><img class="Default" src="images/Regress2.030.5.36.jpg" width="100%" style="left: 0.0pt; max-height: 427px; max-width: 494px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_6"><a name="266747">Coefficient Covariance</a></div>
+      <div class="Body_Text"><a name="266748">EViews allows you to compute ordinary coefficient covariances using the inverse of either the OPG of the mean function or the observed Hessian of the objective function, or to compute robust sandwich estimators for the covariance matrix using White or HAC (Newey-West) estimators.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="266749">The topmost </a><span class="Menu_Item">Covariance method</span> dropdown menu should be used to choose between the default <span class="Menu_Item">Ordinary</span> or the robust <span class="Menu_Item">Huber-White</span> or <span class="Menu_Item">HAC (Newey-West)</span> methods. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="266750">In the </a><span class="Menu_Item">Information matrix</span> menu you should choose between the <span class="Menu_Item">OPG</span> and the <span class="Menu_Item">Hessian - observed</span> estimators for the information. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="266751">If you select </a><span class="Menu_Item">HAC (Newey-West)</span>, you will be presented with a <span class="Menu_Item">HAC options</span> button that, if pressed, brings up a dialog to allow you to control the long-run variance computation.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="266755"><img class="Default" src="images/Regress2.030.5.37.jpg" width="100%" style="left: 0.0pt; max-height: 184px; max-width: 238px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="266759">See </a><span class="Link"><a href="Regress2-Robust_Standard_Errors.html#265803" title="Robust Standard Errors">&#8220;Robust Standard Errors&#8221;</a></span> for a discussion of White and HAC standard errors.</div>
+      <div class="Body_Text"><a name="266760">You may use the </a><span class="Menu_Item">d.f. Adjustment</span> checkbox to enable or disable the degree-of-freedom correction for the coefficient covariance. For the <span class="Menu_Item">Ordinary</span> method, this setting amounts to determining whether the residual variance estimator is or is not degree-of-freedom corrected. For the sandwich estimators, the degree-of-freedom correction is applied to the entire matrix.</div>
+      <div class="Heading_6"><a name="266766">Optimization</a></div>
+      <div class="Body_Text"><a name="266767">You may control the iterative process by specifying the optimization method, convergence criterion, and maximum number of iterations. </a></div>
+      <div class="Picture"><a name="266771"><img class="Default" src="images/Regress2.030.5.38.jpg" width="100%" style="left: 0.0pt; max-height: 181px; max-width: 238px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="266772">The </a><span class="Menu_Item">Optimization method</span> dropdown menu lets you choose between the default <span class="Menu_Item">Gauss-Newton</span> and <span class="Menu_Item">BFGS</span>, <span class="Menu_Item">Newton-Raphson</span>, and <span class="Menu_Item">EViews legacy</span> methods. </div>
+      <div class="Body_Text"><a name="266773">In general, the differences between the estimates should be small for well-behaved nonlinear specifications, but if you are experiencing trouble, you may wish to experiment with methods. Note that EViews legacy is a particular implementation of Gauss-Newton with Marquardt or line search steps, and is provided for backward estimation compatibility.</a></div>
+      <div class="Body_Text"><a name="266774">The </a><span class="Menu_Item">Step method</span> menu allows you to select the approach for candidate iterative steps. The default method is <span class="Menu_Item">Marquardt</span>, but you may instead select <span class="Menu_Item">Dogleg</span> or <span class="Menu_Item">Line Search</span>.</div>
+      <div class="Body_Text"><a name="266781">See </a><span class="Link"><a href="optimize-Setting_Estimation_Options.html#146519" title="Setting Estimation Options">&#8220;Optimization Method&#8221;</a></span>, and <span class="Link"><a href="optimize-Optimization_Algorithms.html#137130" title="Optimization Algorithms">&#8220;Optimization Algorithms&#8221;</a></span> for related discussion.</div>
+      <div class="Body_Text"><a name="266782">EViews will report that the estimation procedure has converged if the convergence test value is below your convergence tolerance. While there is no best choice of convergence tolerance, and the choice is somewhat individual, as a guideline note that we generally set ours something on the order of 1e&#8209;8 or so and then adjust it upward if necessary for models with difficult to compute numeric derivatives. </a></div>
+      <div class="Body_Text"><a name="274521">See </a><span class="Link"><a href="optimize-Setting_Estimation_Options.html#146961" title="Setting Estimation Options">&#8220;Iteration and Convergence&#8221;</a></span> for additional discussion.</div>
+      <div class="Body_Text"><a name="266787">In most cases, you need not change the maximum number of iterations. However, for some difficult to estimate models, the iterative procedure may not converge within the maximum number of iterations. If your model does not converge within the allotted number of iterations, one solution is to click the </a><span class="Menu_Item">Estimate</span> button and increase the maximum number of iterations. Click <span class="Menu_Item">OK</span> to accept the options, and <span class="Dialog_Item">OK</span> again to begin estimation. EViews will start estimation using the last set of parameter values as starting values.</div>
+      <div class="Body_Text"><a name="266793">These options may also be set from the global options dialog. See </a><span class="Link"><a href="globalapp-Global_Options.html#122437" title="Global Options">Appendix&nbsp;A</a></span>, <span class="Link"><a href="globalapp-The_Options_Menu.html#143414" title="The Options Menu">&#8220;Estimation Defaults&#8221;</a></span> for details.</div>
+      <div class="Heading_6"><a name="266795">Derivative Methods</a></div>
+      <div class="Body_Text"><a name="266796">Estimation in EViews requires computation of the derivatives of the regression function with respect to the parameters.</a></div>
+      <div class="Body_Text"><a name="266797">In most cases, you need not worry about the settings for the derivative computation. The EViews estimation engine will employ analytic expressions for the derivatives, if possible, or will compute high numeric derivatives, switching between lower precision computation early in the iterative procedure and higher precision computation for later iterations and final computation. You may elect to use only numeric derivatives.</a></div>
+      <div class="Body_Text"><a name="266801">See </a><span class="Link"><a href="optimize-Setting_Estimation_Options.html#137109" title="Setting Estimation Options">&#8220;Derivative Computation&#8221;</a></span> for additional discussion.</div>
+      <div class="Heading_6"><a name="266805">Starting Values</a></div>
+      <div class="Body_Text"><a name="266806">Iterative estimation procedures require starting values for the coefficients of the model. The closer to the true values the better, so if you have reasonable guesses for parameter values, these can be useful. In some cases, you can obtain good starting values by estimating a restricted version of the model using least squares. In general, however, you may need to experiment in order to find starting values.</a></div>
+      <div class="Body_Text"><a name="266807">There are no general rules for selecting starting values for parameters so there are no settings in this page for choosing values. EViews uses the values in the coefficient vector at the time you begin the estimation procedure as starting values for the iterative procedure. It is easy to examine and change these coefficient starting values. To see the current starting values, double click on the coefficient vector in the workfile directory. If the values appear to be reasonable, you can close the window and proceed with estimating your model. </a></div>
+      <div class="Body_Text"><a name="266809">If you wish to change the starting values, first make certain that the spreadsheet view of your coefficients is in edit mode, then enter the coefficient values. When you are finished setting the initial values, close the coefficient vector window and estimate your model. </a></div>
+      <div class="Body_Text"><a name="266812">You may also set starting coefficient values from the command window using the PARAM command. Simply enter the PARAM keyword, followed by each coefficient and desired value. For example, if your default coefficient vector is C, the statement:</a></div>
+      <div class="Input"><a name="266813">param c(1) 153 c(2) .68 c(3) .15</a></div>
+      <div class="Body_Text"><a name="266814">sets C(1)=153, C(2)=.68, and C(3)=.15.</a></div>
+      <div class="Body_Text"><a name="266818">See </a><span class="Link"><a href="optimize-Estimation_and_Solution_Options.html#36924" title="Estimation and Solution Options">Appendix C, &#8220;Estimation and Solution Options&#8221;</a></span>, for further details.</div>
+      <div class="Heading_5"><a name="266819">Output from NLS</a></div>
+      <div class="Body_Text"><a name="266820">Once your model has been estimated, EViews displays an equation output screen showing the results of the nonlinear least squares procedure. Below is the output from a regression of LOG(CS) on C, and the Box-Cox transform of GDP using the data in the workfile &#8220;Chow_var.WF1&#8221;:</a></div>
+      <div class="Table"><a name="266824"><img class="Default" src="images/Regress2.030.5.39.jpg" width="100%" style="left: 0.0pt; max-height: 454px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="266825">If the estimation procedure has converged, EViews will report this fact, along with the number of iterations that were required. If the iterative procedure did not converge, EViews will report &#8220;Convergence not achieved after&#8221; followed by the number of iterations attempted.</a></div>
+      <div class="Body_Text"><a name="266826">Below the line describing convergence, and a description of the method employed in computing the coefficient covariances, EViews will repeat the nonlinear specification so that you can easily interpret the estimated coefficients of your model. </a></div>
+      <div class="Body_Text"><a name="266827">EViews provides you with all of the usual summary statistics for regression models. Provided that your model has converged, the standard statistical results and tests are asymptotically valid.</a></div>
+      <div class="Heading_4"><a name="266830">NLS with ARMA errors</a></div>
+      <div class="Body_Text"><a name="266831">EViews will estimate nonlinear regression models with autoregressive error terms. Simply select </a><span class="Menu_Item">Object/New Object.../Equation&#8230;</span> or <span class="Menu_Item">Quick/Estimate&nbsp;Equation&#8230;</span> and specify your model using EViews expressions, followed by an additive term describing the AR correction enclosed in square brackets. The AR term should consist of a coefficient assignment for each AR term, separated by commas. For example, if you wish to estimate,</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.40.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.39)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266836">you should enter the specification:</a></div>
+      <div class="Input"><a name="266837">cs = c(1) + gdp^c(2) + [ar(1)=c(3), ar(2)=c(4)]</a></div>
+      <div class="Body_Text"><span class="Link"><a href="timeser-Estimation_Method_Details.html#242317" title="Estimation Method Details" name="266841">See &#8220;Initializing the AR Errors&#8221;</a></span> for additional details. EViews does not currently estimate nonlinear models with MA errors, nor does it estimate weighted models with AR terms&#8212;if you add AR terms to a weighted nonlinear model, the weighting series will be ignored.</div>
+      <div class="Heading_4"><a name="266844">Weighted NLS</a></div>
+      <div class="Body_Text"><a name="266845">Weights can be used in nonlinear estimation in a manner analogous to weighted linear least squares in equations without ARMA terms. To estimate an equation using weighted nonlinear least squares, enter your specification, press the </a><span class="Menu_Item">Options </span>button and fill in the weight specification.</div>
+      <div class="Body_Text"><a name="266846">EViews minimizes the sum of the weighted squared residuals:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.41.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.40)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266860">with respect to the parameters <img class="Default EquationGraphic" src="images/Regress2.030.5.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/Regress2.030.5.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> are the values of the weight series and <img class="Default EquationGraphic" src="images/Regress2.030.5.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 22px; top: 0.0pt" alt="" /> is the diagonal matrix of weights. The first-order conditions are given by,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.45.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.41)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266866">and the default OPG d.f. corrected covariance estimate is computed as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.46.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.42)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266871">and the corresponding Hessian estimate is</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.47.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.43)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266879">for the weighted objective function given in </a><span class="Link"><a href="#266865" title="Nonlinear Least Squares">Equation&nbsp;(21.41)</a></span>.</div>
+      <div class="Body_Text"><a name="266880">One may elect, of course, to compute a White or HAC sandwich estimator for the coefficient covariance as in </a><span class="Link"><a href="Regress2-Robust_Standard_Errors.html#265803" title="Robust Standard Errors">&#8220;Robust Standard Errors&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="266885">Solving Estimation Problems</a></div>
+      <div class="Body_Text"><a name="266886">EViews may not be able to estimate your nonlinear equation on the first attempt. Sometimes, the nonlinear least squares procedure will stop immediately. Other times, EViews may stop estimation after several iterations without achieving convergence. EViews might even report that it cannot improve the sums-of-squares. While there are no specific rules on how to proceed if you encounter these estimation problems, there are a few general areas you might want to examine.</a></div>
+      <div class="Heading_5"><a name="266888">Starting Values</a></div>
+      <div class="Body_Text"><a name="266889">If you experience problems with the very first iteration of a nonlinear procedure, the problem is almost certainly related to starting values. See the discussion in </a><span class="Link"><a href="#266805" title="Nonlinear Least Squares">&#8220;Starting Values&#8221;</a></span> for details on how to examine and change your starting values. </div>
+      <div class="Heading_5"><a name="266894">Model Identification</a></div>
+      <div class="Body_Text"><a name="266895">If EViews goes through a number of iterations and then reports that it encounters a &#8220;Near Singular Matrix&#8221;, you should check to make certain that your model is identified. Models are said to be non-identified if there are multiple sets of coefficients which identically yield the minimized sum-of-squares value. If this condition holds, it is impossible to choose between the coefficients on the basis of the minimum sum-of-squares criterion.</a></div>
+      <div class="Body_Text"><a name="266897">For example, the nonlinear specification:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/Regress2.030.5.48.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(21.44)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="266905">is not identified, since any coefficient pair <img class="Default EquationGraphic" src="images/Regress2.030.5.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 60px; top: 0.0pt" alt="" /> is indistinguishable from the pair <img class="Default EquationGraphic" src="images/Regress2.030.5.50.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 78px; top: 0.0pt" alt="" /> in terms of the sum-of-squared residuals. </a></div>
+      <div class="Body_Text"><a name="266909">For a thorough discussion of identification of nonlinear least squares models, see Davidson and MacKinnon (1993, Sections 2.3, 5.2 and 6.3). </a></div>
+      <div class="Heading_5"><a name="266910">Optimization Algorithm</a></div>
+      <div class="Body_Text"><a name="266911">In general, the choice of optimization algorithm should have little effect on the computation of estimates. That said, if you are experiencing trouble, you may wish to experiment with different methods. In addition, you may wish to experiment with different optimizers to ensure that your estimates are robust to the choice of optimization method.</a></div>
+      <div class="Body_Text"><a name="266912">Note that EViews legacy is a particular implementation of Gauss-Newton with Marquardt or line search steps, and is provided for backward estimation compatibility.</a></div>
+      <div class="Body_Text"><a name="266916">See </a><span class="Link"><a href="#266766" title="Nonlinear Least Squares">&#8220;Optimization&#8221;</a></span> for discussion.</div>
+      <div class="Heading_5"><a name="266918">Convergence Criterion</a></div>
+      <div class="Body_Text"><a name="266919">EViews may report that it is unable to improve the sums-of-squares. This result may be evidence of non-identification or model misspecification. Alternatively, it may be the result of setting your convergence criterion too low, which can occur if your nonlinear specification is particularly complex.</a></div>
+      <div class="Body_Text"><a name="266920">If you wish to change the convergence criterion, enter the new value in the </a><span class="Menu_Item">Options</span> tab. Be aware that increasing this value increases the possibility that you will stop at a local minimum, and may hide misspecification or non-identification of your model. </div>
+      <div class="Body_Text"><a name="266924">See </a><span class="Link"><a href="optimize-Setting_Estimation_Options.html#137039" title="Setting Estimation Options">&#8220;Setting Estimation Options&#8221;</a></span>, for related discussion.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

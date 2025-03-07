@@ -1,0 +1,594 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Customizing Tables</title>
+    <link rel="StyleSheet" href="css/ctables.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="ctables-Assigning_Table_Values.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="ctables-Labeling_Tables.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="ctables-Working_with_Tables_and_Spreadsheets.html">Working with Tables and Spreadsheets</a> : Customizing Tables</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="55732">Customizing Tables</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#55280">Column Width and Row Height</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#56060">Cell Formatting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#56194">Content Formatting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#55591">Justification and Indentation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#55554">Fonts</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#55579">Background and Borders</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#95417">Cell Annotation and Merging</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#70290">Conditional Table Cells</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#78864">Target Range Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#77802">Boolean Expression</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#81106">Basic Comparisons</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#89277">Comparisons using Expressions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#80635">Find Expression</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="55273">EViews provides considerable control over the appearance of table objects, providing a variety of table procedures allowing you specify row heights and column widths, content formatting, justification, font face, size, and color, cell background color and borders. Cell merging and annotation are also supported.</a></div>
+      <div class="Heading_4"><a name="55280">Column Width and Row Height</a></div>
+      <div class="Body_Text"><a name="56523">We begin by noting that if the contents of a cell are wider or taller than the display width or height of the cell, part of the cell contents may not be visible. You may use the </a><span class="In-line_command_link"><a href="tablecmd-setwidth.html#255602" title="setwidth">Table::setwidth</a></span> and <span class="In-line_command_link"><a href="tablecmd-setheight.html#255284" title="setheight">Table::setheight</a></span> table procedures to change the dimensions of a column or row of table cells.</div>
+      <div class="Body_Text"><a name="56519">To change the column widths for a set of columns in a table, use the </a><span class="In-line_input">setwidth</span> keyword followed by a column range specification in parentheses, and a desired width. </div>
+      <div class="Body_Text"><a name="56038">The column range should be either a single column number or letter (</a><span class="Emphasis">e.g.</span>, &#8220;5&#8221;, &#8220;E&#8221;), a colon delimited range of columns (from low to high, <span class="Emphasis">e.g.</span>, &#8220;3:5&#8221;, &#8220;C:E&#8221;), or the keyword &#8220;@ALL&#8221;. The width unit is computed from representative characters in the default font for the current table (the EViews table default font at the time the table was created), and corresponds roughly to a single character. Width values may be non-integer values with resolution up to 1/10 of a unit. The default width value for columns in an unmodified table is 10.</div>
+      <div class="Body_Text"><a name="55940">For example, both commands</a></div>
+      <div class="Multi-line_Input"><a name="55950">tab1.setwidth(2) 12</a></div>
+      <div class="Multi-line_Input"><a name="55959">tab1.setwidth(B) 12</a></div>
+      <div class="Body_Text"><a name="55951">set the width of column 2 to 12 width units, while the command</a></div>
+      <div class="Input"><a name="55953">tab1.setwidth(2:10) 20</a></div>
+      <div class="Body_Text"><a name="55954">sets the widths for columns 2 through 10 to 20 width units. To set all of the column widths, use the &#8220;@ALL&#8221; keyword.</a></div>
+      <div class="Input"><a name="55989">tab1.setwidth(@all) 20</a></div>
+      <div class="Body_Text"><a name="55864">Similarly, you may specify row heights using the </a><span class="In-line_input">setheight</span> keyword, followed by a row specification in parentheses, and a desired row height.</div>
+      <div class="Body_Text"><a name="56058">Rows are specified either as a single row number (</a><span class="Emphasis">e.g.</span>, &#8220;5&#8221;), as a colon delimited range of rows (from low to high, <span class="Emphasis">e.g.</span>, &#8220;3:5&#8221;), or using the keyword &#8220;@ALL&#8221;. Row heights are given in height unit values, where height units are in character heights. The character height is given by the font-specific sum of the units above and below the baseline and the leading in the default font for the current table. Height values may be non-integer values with resolution up to 1/10 of a height unit. The default row height value is 1.</div>
+      <div class="Body_Text"><a name="56100">For example,</a></div>
+      <div class="Input"><a name="56090">tab1.setheight(2) 1</a></div>
+      <div class="Body_Text"><a name="56091">sets the height of row 2 to match the table default font character height, while</a></div>
+      <div class="Input"><a name="56092">tab1.setheight(2) 3.5</a></div>
+      <div class="Body_Text"><a name="56093">increases the row height to 3-1/2 character heights.</a></div>
+      <div class="Body_Text"><a name="56094">Similarly, the command:</a></div>
+      <div class="Input"><a name="56096">tab1.setheight(2:7) 1.5</a></div>
+      <div class="Body_Text"><a name="56097">sets the heights for rows 2 through 7 to 1-1/2 character heights.</a></div>
+      <div class="Body_Text"><a name="94535">We may set the row height conditionally. The command</a></div>
+      <div class="Input"><a name="94537">tab1.setheight(2:7 if [a2:a7]&gt;0.5) 1.5</a></div>
+      <div class="Body_Text"><a name="94539">will set the heights of row 2 through 7 to 1-1/2 character heights if the additional condition is true. In this case, if the value of cell A2 is greater than 0.5, the height of row will be set to 1.5 character. If the value of cell A3 is greater than 0.5, the height of row 3 will be set to 1.5 character and so forth through row 7. For more information on using table ranges and expressions see </a><span class="Link"><a href="#70290" title="Customizing Tables">&#8220;Conditional Table Cells&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="94531">Lastly the command,</a></div>
+      <div class="Input"><a name="56105">tab1.setheight(@all) 2</a></div>
+      <div class="Body_Text"><a name="56106">sets all row heights to twice the default height.</a></div>
+      <div class="Body_Text"><a name="56059">Earlier versions of EViews supported the setting of column widths using the </a><span class="In-line_command_link"><a href="commandcmd-setcolwidth.html#2017143" title="setcolwidth">setcolwidth</a></span> command. This command, which is provided for backward compatibility, offers only a subset of the capabilities of <span class="In-line_command_link"><a href="tablecmd-setwidth.html#255602" title="setwidth">Table::setwidth</a></span>.</div>
+      <div class="Heading_4"><a name="56060">Cell Formatting</a></div>
+      <div class="Body_Text"><a name="56124">A host of cell characteristics may be set using table procedures. Each procedure is designed to work on individual cells, ranges of cells, or the entire table.</a></div>
+      <div class="Heading_5"><a name="56194">Content Formatting</a></div>
+      <div class="Body_Text"><a name="56200">Cell content formatting allows you to alter the appearance of the data in a table cell without changing the contents of the cell. Using the table proc </a><span class="In-line_command_link"><a href="tablecmd-setformat.html#254929" title="setformat">Table::setformat</a></span>, you may, for example, instruct EViews to change the format of a number to scientific or fixed decimal, or to display a date number in a different date format. These changes in display format do not alter the cell values.</div>
+      <div class="Body_Text"><a name="56245">To format the contents of table cells, simply follow the table name with a period and the </a><span class="In-line_input">setformat</span> proc keyword, followed by a cell range specification in parentheses, and then a valid numeric or date format string. The cell range may be specified in a number of ways, including individual cells, cell rectangles, row or column ranges or the entire table. See <span class="In-line_command_link"><a href="tablecmd-setformat.html#254929" title="setformat">Table::setformat</a></span> for a description of cell range specification and numeric and date format string syntax.</div>
+      <div class="Body_Text"><a name="56258">For example, to set the format for the fifth column of a matrix to fixed 5-digit precision, you may provide the format specification:</a></div>
+      <div class="Input"><a name="56259">tab1.setformat(e) f.5</a></div>
+      <div class="Body_Text"><a name="56341">To set a format for the cell in the third row of the fifth column to scientific notation with 5 digits of precision, specify the individual cell, as in:</a></div>
+      <div class="Multi-line_Input"><a name="56408">tab1.setformat(3,e) e.5</a></div>
+      <div class="Multi-line_Input"><a name="56342">tab1.setformat(e3) e.5</a></div>
+      <div class="Body_Text"><a name="56260">To specify the format for a rectangle of cells, specify the upper left and lower right cells in the rectangle. The following commands set cells in the same region to show 3-significant digits, with negative numbers in parentheses:</a></div>
+      <div class="Multi-line_Input"><a name="56301">tab1.setformat(2,B,10,D) g(.3)</a></div>
+      <div class="Multi-line_Input"><a name="56314">tab1.setformat(r2c2:r10c4) g(.3)</a></div>
+      <div class="Multi-line_Input"><a name="56373">tab1.setformat(b2:d10) g(.3)</a></div>
+      <div class="Body_Text"><a name="56302">The rectangle of cells is delimited by row 2, column 2, and row 10, column 4.</a></div>
+      <div class="Body_Text"><a name="94676">To conditionally set the format of cells, you can provide a conditional cell range argument. For example, using the following 2 commands in sequence</a></div>
+      <div class="Multi-line_Input"><a name="94678">tab1.setformat(r2c2:r10c4 if [r2c2:r10c4]&lt;10000) g(.2)</a></div>
+      <div class="Multi-line_Input"><a name="94680">tab1.setformat(r2c2:r10c4 if [r2c2:r10c4]&lt;1000) g(.3)</a></div>
+      <div class="Body_Text"><a name="56353">will set the format of cells row 2, column 2, to row 10, column 4 based on their cell values. If the cell values are less than 10000 only 2 significant digits will be displayed but if the cell values are less than 1000, 3 significant digits will be displayed. For more information on using table ranges and expressions see </a><span class="Link"><a href="#70290" title="Customizing Tables">&#8220;Conditional Table Cells&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="94769">Alternately you may provide a date format for the table cells. The command:</a></div>
+      <div class="Multi-line_Input"><a name="56323">tab1.setformat(@all) "dd/MM/YY HH:MI:SS.SSS"</a></div>
+      <div class="Body_Text"><a name="56298">will display numeric values in the entire table using formatted date strings containing days followed by months, years, hours, minutes and seconds, to a resolution of thousandths of a second.</a></div>
+      <div class="Body_Text"><a name="56214">Note that changing the display format of a cell that contains a string will have no effect unless the cell is later changed to contain a numerical value. </a></div>
+      <div class="Heading_5"><a name="55591">Justification and Indentation</a></div>
+      <div class="Body_Text"><a name="55827">The cell justification and indentation control the position of the table cell contents within the table cell itself.</a></div>
+      <div class="Body_Text"><a name="56659">You may use the </a><span class="In-line_command_link"><a href="tablecmd-setjust.html#255349" title="setjust">Table::setjust</a></span> proc to position the cell contents in the cell. Simply use the <span class="In-line_input">setjust</span> keyword, followed by a cell range specification in parentheses, and one or more keywords describing a vertical or horizontal position for the cell contents. You may use the keywords <span class="In-line_input">auto</span>, <span class="In-line_input">left</span>, <span class="In-line_input">right</span>, and <span class="In-line_input">center</span> to control horizontal positioning, and <span class="In-line_input">top</span>, <span class="In-line_input">middle</span>, and <span class="In-line_input">bottom</span> to control vertical positioning. You may use the <span class="In-line_input">auto</span> keyword to specify left justification for string cells and right justification for numeric cells.</div>
+      <div class="Body_Text"><a name="56562">For example,</a></div>
+      <div class="Input"><a name="56576">tab1.setjust(@all) top left</a></div>
+      <div class="Body_Text"><a name="56580">sets the justification for all cells in the table to top left, while</a></div>
+      <div class="Input"><a name="56581">tab1.setjust(2,B,10,D) center</a></div>
+      <div class="Body_Text"><a name="56583">horizontally centers the cell contents in the rectangle from B2 to D10, while leaving the vertical justification unchanged.</a></div>
+      <div class="Body_Text"><a name="55663">In addition, you may use </a><span class="In-line_command_link"><a href="tablecmd-setindent.html#209308" title="setindent">Table::setindent</a></span> to specify a left or right indentation from the edge of the cell for cells that are left or right justified, respectively. You should use the <span class="In-line_command">setindent</span> keyword followed by a cell range in parentheses, and an indentation unit, specified in 1/5 of a width unit. Indentation is only relevant for non-center justified cells.</div>
+      <div class="Body_Text"><a name="56621">For example:</a></div>
+      <div class="Multi-line_Input"><a name="56625">tab1.setjust(2,B,10,D) left</a></div>
+      <div class="Multi-line_Input"><a name="56630">tab1.indent(2,B,10,D) 2</a></div>
+      <div class="Body_Text"><a name="56631">left-justifies, then indents the specified cells by 2/5 of a width unit from the left-hand side of the cell.</a></div>
+      <div class="Body_Text"><a name="94784">It may be useful to adjust the justification based on the contents of the cell. To change vertical justification based on the length of the string cell in the cell you could use a conditional range. For example,</a></div>
+      <div class="Input"><a name="94786">tab1.setjust(b2:d10 if @length([b2:d10])&gt;15) top</a></div>
+      <div class="Body_Text"><a name="56623">will individually set the vertical justification to be top justified for cells b2 through d10 if the cells contain a string longer than 15. For more information on using table ranges and expressions see </a><span class="Link"><a href="#70290" title="Customizing Tables">&#8220;Conditional Table Cells&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="94832">Alternatively, </a></div>
+      <div class="Multi-line_Input"><a name="56638">tab2.setjust(@all) center</a></div>
+      <div class="Multi-line_Input"><a name="56639">tab2.indent(@all) 3</a></div>
+      <div class="Body_Text"><a name="56640">will set the indentation for all cells in the table to 3/5 of a width unit, but this will have no effect on the center justified cells. If the cells are later modified to be left or right justified, the indentation will be used. If you subsequently issue the command</a></div>
+      <div class="Input"><a name="56642">tab2.indent(@all) right</a></div>
+      <div class="Body_Text"><a name="56643">the cells will be indented 3/5 of a width unit from the right-hand edges.</a></div>
+      <div class="Heading_5"><a name="55554">Fonts</a></div>
+      <div class="Body_Text"><a name="56690">You may specify font face and characteristics, and the font color for table cells using the </a><span class="In-line_command_link"><a href="tablecmd-setfont.html#208860" title="setfont">Table::setfont</a></span> and <span class="In-line_command_link"><a href="tablecmd-settextcolor.html#255529" title="settextcolor">Table::settextcolor</a></span> table procs.</div>
+      <div class="Body_Text"><a name="55627">The </a><span class="In-line_input">setfont</span> proc should be used to set the font face, size, boldface, italic, strikethrough and underline characteristics for table cells. You should provide a cell range specification, and one or more font arguments corresponding to font characteristics that you wish to modify. For example:</div>
+      <div class="Input"><a name="56743">tab1.setfont(3,B,10,D) "Times New Roman" +u 8pt</a></div>
+      <div class="Body_Text"><a name="56744">changes the text in the specified cells to Times New Roman, 8 point, underline. Similarly,</a></div>
+      <div class="Input"><a name="56745">tab1.setfont(4,B) -b +i -s</a></div>
+      <div class="Body_Text"><a name="56746">adds the italic to and removes boldface and strikethrough from the B4 cell.</a></div>
+      <div class="Body_Text"><a name="56705">To set the color of your text, use </a><span class="In-line_input">settextcolor</span> with a cell range specification and a color specification. Color specifications may be provided using the @RGB or @HEX settings, or using one of the EViews predefined colors keywords:</div>
+      <div class="Multi-line_Input"><a name="56798">tab1.settextcolor(f2:g10) @rgb(255, 128, 0)</a></div>
+      <div class="Multi-line_Input"><a name="56801">tab1.settextcolor(f2:g10) orange</a></div>
+      <div class="Body_Text"><a name="56812">sets the text color for the specified cells to orange. </a></div>
+      <div class="Body_Text"><a name="94846">See </a><span class="In-line_command_link"><a href="tablecmd-setfillcolor.html#254748" title="setfillcolor">Table::setfillcolor</a></span> for a complete description of color specifications.</div>
+      <div class="Body_Text"><a name="94853">One practical text coloring application is to highlight negative cell values in a table by changing the text color. Using </a><span class="In-line_command">settextcolor</span>, you may use a colormap (see <span class="Link"><a href="Basedata-Value-Based_Text_and_Fill_Coloring.html#277333" title="Value-Based Text and Fill Coloring">&#8220;Value-Based Text and Fill Coloring&#8221;</a></span>) or you can manually set the text color with a Boolean expression. </div>
+      <div class="Body_Text"><a name="94855">To set the text color of negative values in your table for the cell range A1:G10, you can either use a positive-negative colormap,</a></div>
+      <div class="Multi-line_Input"><a name="94857">tab1.settextcolor(t=posneg, A1:G10) posclr(@RGB(0,0,0)) negclr(@RGB(255,0,0))naclr(@RGB(0,0,0))</a></div>
+      <div class="Body_Text"><a name="94859">or manually set the text color via</a></div>
+      <div class="Input"><a name="94861">tab1.settextcolor(A1:G10 if [A1:G10]&lt;0) red</a></div>
+      <div class="Body_Text"><a name="95136">For more information on using table ranges and expressions see</a><span class="Link"><a href="#70290" title="Customizing Tables">&#8220;Conditional Table Cells&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="94849">(Note that both commands set negative values to red. The difference between the two methods is colormaps dynamically determines the text color during rendering. Therefore, if the cell value is changed so will the color. Whereas when manually setting the text color, the color becomes fixed and will not change regardless of the cell value. While the use of colormaps is more flexible and dynamic, defining a colormap is more difficult. Manually setting the color is easier and faster and recommended when the cell values in the table are not expected to change.)</a></div>
+      <div class="Heading_5"><a name="55579">Background and Borders</a></div>
+      <div class="Body_Text"><a name="55588">You may set the background color for cells using the </a><span class="In-line_command_link"><a href="tablecmd-setfillcolor.html#254748" title="setfillcolor">Table::setfillcolor</a></span> table procedure. Specify the cell range and provide a color specification using @RGB or @HEX settings or one of the predefined color keywords. The commands:</div>
+      <div class="Multi-line_Input"><a name="56863">tab1.setfillcolor(R2C3:R3C6) ltgray</a></div>
+      <div class="Multi-line_Input"><a name="56865">tab1.setfillcolor(2,C,3,F) @rgb(192, 192, 192)</a></div>
+      <div class="Body_Text"><a name="57156">both set the background color of the specified cells to light gray.</a></div>
+      <div class="Body_Text"><a name="57160">The </a><span class="In-line_command_link"><a href="tablecmd-setlines.html#255421" title="setlines">Table::setlines</a></span> table proc may be used to draw borders or lines around specified table cells. If a single cell is specified, you may draw borders around the cell or a double line through the center of the cell. If multiple columns or rows is selected, you may, in addition, add borders between cells. </div>
+      <div class="Body_Text"><a name="56906">Follow the name of the table object with a period, the </a><span class="In-line_input">setlines</span> keyword, a cell range specification, and one or more line arguments describing the lines and borders you wish to draw. For example:</div>
+      <div class="Input"><a name="56910">tab1.setlines(b2:d6) +a -h -v</a></div>
+      <div class="Body_Text"><a name="56911">first adds all borders (&#8220;a&#8221;) to the cells in the rectangle defined by B2 and D6, then removes the inner horizontal (&#8220;h&#8221;), and inner vertical (&#8220;v&#8221;) borders. The command</a></div>
+      <div class="Input"><a name="56912">tab1.setlines(2,b) +o</a></div>
+      <div class="Body_Text"><a name="55667">adds borders to the outside (&#8220;o&#8221;), all four borders, of the B2 cell.</a></div>
+      <div class="Body_Text"><a name="56931">You may also use the </a><span class="In-line_command">setlines</span> command to place double horizontal separator lines in the table. Enter the <span class="In-line_command">setlines</span> keyword, followed by the name of the table, and a row number, both in parentheses. For example,</div>
+      <div class="Input"><a name="56682">bestres.setlines(8) +d</a></div>
+      <div class="Body_Text"><a name="56683">places a separator line in the eighth row of the table </a><span class="EViews_Name">BESTRES</span>. The command:</div>
+      <div class="Input"><a name="56960">bestres.setlines(8) -d</a></div>
+      <div class="Body_Text"><a name="56961">removes the double separator lines from all of the cells in the eighth row of the table.</a></div>
+      <div class="Body_Text"><a name="95195">You may also apply a conditional expression when activating borders. Let&#8217;s assume we have a table that contains quarterly data by row, whereby the first column has the date (similar to a series spreadsheet) and we would like to visually indicate the starts and ends of years. We will accomplish this effect by applying a conditional expression to add a bottom border to the rows which contain the fourth quarter. </a></div>
+      <div class="Body_Text"><a name="95307">By default, quarterly workfile dates in EViews are denoted by year followed by quarter. The fourth quarter of the 2020 would appear as &#8216;2020Q4&#8217;. With this information, we can use the command:</a></div>
+      <div class="Input"><a name="95197">tab1.setlines(a1:d50 if @right([a1:a50], 2)=="Q4")</a></div>
+      <div class="Body_Text"><a name="55573">This command will add, for each row from 1 to 50, a bottom border from column A to D if the first cell in their respective row ends in &#8220;Q4&#8221;. For more information on using table ranges and expressions see </a><span class="Link"><a href="#70290" title="Customizing Tables">&#8220;Conditional Table Cells&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="95417">Cell Annotation and Merging</a></div>
+      <div class="Body_Text"><a name="57023">Each cell in a table object is capable of containing a comment. Cell comments contain text that is hidden until the mouse cursor is placed over the cell containing the comment. Comments are useful for adding notes to a table without changing the appearance of the table. </a></div>
+      <div class="Body_Text"><a name="57030">To add a comment with the </a><span class="In-line_command_link"><a href="tablecmd-comment.html#208125" title="comment">Table::comment</a></span> table proc, follow the name of the table object with a period, a single cell identifier (in parentheses), and the comment text enclosed in double quotes. If no comment text is provided, a previously defined comment will be removed.</div>
+      <div class="Body_Text"><a name="57035">To add a comment &#8220;hello world&#8221; to the cell in the second row, fourth column, you may use the command:</a></div>
+      <div class="Multi-line_Input"><a name="57036">tab1.comment(d2) "hello world"</a></div>
+      <div class="Body_Text"><a name="57040">To remove the comment simply repeat the command, omitting the text:</a></div>
+      <div class="Input"><a name="57041">tab1.comment(d2)</a></div>
+      <div class="Body_Text"><a name="57074">In addition, EViews permits you to merge cells horizontally in a table object. To merge multiple cells in a row or to un-merge previously merged cells, you should use the </a><span class="In-line_command_link"><a href="tablecmd-setmerge.html#209516" title="setmerge">Table::setmerge</a></span> table proc. Enter the name of the table object, a period, followed by a cell range describing the cells in a single row that are to be merged.</div>
+      <div class="Body_Text"><a name="57113">If the first specified column is less than the last specified column (left specified before right), the cells in the row will be merged left to right, otherwise, the cells will be merged from right to left. The contents of the merged cell will be taken from the first cell in the merged region. If merging from left to right, the leftmost cell contents will be used; if merging from right to left, the rightmost cell contents will be displayed.</a></div>
+      <div class="Body_Text"><a name="57122">For example,</a></div>
+      <div class="Multi-line_Input"><a name="57076">tab1.setmerge(a2:d2)</a></div>
+      <div class="Body_Text"><a name="57078">merges the cells in row 2, columns 1 to 4, from left to right, while</a></div>
+      <div class="Input"><a name="57079">tab2.setmerge(d2:a2)</a></div>
+      <div class="Body_Text"><a name="57080">merges the cells in row 2, columns 2 to 5, from right to left. The cell display will use the leftmost cell in the first example, and the rightmost in the second.</a></div>
+      <div class="Body_Text"><a name="57128">If you specify a merge involving previously merged cells, EViews will unmerge all cells within the specified range. We may then unmerge cells by issuing the </a><span class="In-line_command_link"><a href="tablecmd-setmerge.html#209516" title="setmerge">Table::setmerge</a></span> command using any of the previously merged cells. The command:</div>
+      <div class="Input"><a name="57081">tab2.setmerge(r2c4)</a></div>
+      <div class="Body_Text"><a name="57082">unmerges the previously merged cells.</a></div>
+      <div class="Body_Text"><a name="70289">When modifying a characteristic of a table via command, the section of the table to be modified must be specified. This section or range can be a set of cells, rows, or columns. You could for example the set fill color of row or column or rectangular area within the table. It may also be desirable to set remove a row or delete a column. EViews has numerous commands for customizing a table.</a></div>
+      <div class="Heading_4"><a name="70290">Conditional Table Cells</a></div>
+      <div class="Body_Text"><a name="73134">Many EViews table customization procedures allow you to specify ranges of cells. For example, </a><span class="In-line_command_link"><a href="tablecmd-setfillcolor.html#254748" title="setfillcolor">Table::setfillcolor</a></span> allows you to specify the background color for the specified cells, while <span class="In-line_command_link"><a href="tablecmd-setformat.html#254929" title="setformat">Table::setformat</a></span> allows you to apply custom formatting to the contents of the specified cells.</div>
+      <div class="Body_Text"><a name="70291">There are cases when you may wish to perform operations on cells in a table, but only under certain conditions. Suppose, for example, that you have a table with annual data on each row and you want to identify each row where there is a decrease in value in column 3 when compared to the value for the previous row (year). The goal is to apply custom text or cell formatting to these rows.</a></div>
+      <div class="Body_Text"><a name="70466">Fortunately, EViews allows you to identify the desired cells using a conditional target range specification comprised of a </a><span class="Argument_Opt">target_range</span> and a <span class="Argument_Opt">boolean_expression</span>. You may specify the conditional target cells using the syntax:</div>
+      <div class="Indented"><span class="Argument_Opt"><a name="78103">target_range </a></span><span class="Command_Summary">if</span><span class="Argument_Opt" style="font-weight: normal"> boolean_expression</span></div>
+      <div class="Body_Text"><a name="77899">where </a><span class="Argument">target_range</span> gives the range of potential cells of interest, &#8220;if&#8221; is a keyword, and <span class="Argument_Opt">boolean_expression </span>provides indicators for which of the <span class="Argument">target_range</span> cells to use.</div>
+      <div class="Body_Text"><a name="79142">Similarly, the table </a><span class="In-line_command">@find</span> data member (<span class="Link"><a href="tablecmd-Table.html#208051" title="Table">&#8220;Table Data Members&#8221;</a></span>) allows you to obtain a string list containing the cells in a table range that satisfy a condition. </div>
+      <div class="Body_Text"><a name="80481">The syntax for </a><span class="In-line_command">@find</span> requires a <span class="Argument_Opt">find_expression</span>:</div>
+      <div class="Indented"><span class="Argument"><a name="79026">table_name</a></span>.<span class="Command_Summary">@find</span>(<span class="Argument_Opt">find_expression</span>)</div>
+      <div class="Body_Text"><a name="79092">where </a><span class="Argument_Opt">find_expression </span>simultaneously specifies the range of cells to consider and the boolean expression for whether each cell should be used. </div>
+      <div class="Body_Text"><a name="80579">Note that in contrast to the conditional target syntax above, </a><span class="In-line_command">@find</span> does not require an explicit <span class="Argument">target_specification</span> since the <span class="Argument_Opt">find_expression</span> implicitly defines the range of cells to consider.</div>
+      <div class="Heading_5"><a name="78864">Target Range Specification</a></div>
+      <div class="Body_Text"><a name="73703">The </a><span class="Argument">target_range</span> of potential cells to consider consists of the rectangle of cells defined by <span class="Argument">first_cell </span>and <span class="Argument">last_cell</span>:</div>
+      <div class="Input"><span class="Argument"><a name="73642">first_cell</a></span>:<span class="Argument">last_cell</span></div>
+      <div class="Body_Text"><a name="78337">where </a><span class="Argument">first_cell</span> and <span class="Argument">last_cell</span> are cell identifiers (separated by &#8220;:&#8221;) specified using either a column letter and row number (e.g., &#8220;A2&#8221;), or using &#8220;R&#8221; (for row) followed by the row number followed by &#8220;C&#8221; (for column) and the column number (e.g., &#8220;R1C2&#8221;).</div>
+      <div class="Body_Text"><a name="88138">You may also use the special keyword &#8220;@all&#8221; to refer to every cell in the table.</a></div>
+      <div class="Body_Text"><a name="70435">It is useful to consider simple examples of an unconditional </a><span class="Argument">target_range</span> in action. Suppose that we wish to set the fill color for a collection of cells. The command</div>
+      <div class="Input"><a name="70979">tab1.setfillcolor(A2:A7) red </a></div>
+      <div class="Body_Text"><a name="70982">will set the fill color of all the cells in the target region from A2 (top left cell) to A7 (bottom right cell) in table TAB1 to red. In this case, the target cell range is &#8220;A2:A7&#8221; and EViews will set the fill color for every cell from A2 to A7 to red.</a></div>
+      <div class="Body_Text"><a name="88306">Similarly,</a></div>
+      <div class="Input"><a name="88319">tab1.setfillcolor(@all) red</a></div>
+      <div class="Body_Text"><a name="88348">sets the background color in all of cells of the table to red.</a></div>
+      <div class="Heading_5"><a name="77802">Boolean Expression</a></div>
+      <div class="Body_Text"><a name="70805">The </a><span class="Argument_Opt">boolean_expression</span> defines a comparison producing indicators corresponding to the elements of the <span class="Argument">target_range</span>. </div>
+      <div class="Heading_6"><a name="81106">Basic Comparisons</a></div>
+      <div class="Body_Text"><a name="83284">The </a><span class="Argument_Opt">boolean_expression </span>syntax consists of</div>
+      <div class="Indented"><span class="Argument"><a name="80740">left_spec</a></span> &#8220;operator&#8221; <span class="Argument">right_spec</span></div>
+      <div class="Body_Text"><a name="80789">where &#8220;operator&#8221; is a standard EViews comparison operator such as &#8220;&gt;&#8221;, &#8220;&lt;&gt;&#8221; &#8220;&lt;=&#8221;, &#8220;=&#8221;, </a><span class="Emphasis">etc.</span>, and where the <span class="Argument">left_spec</span> and <span class="Argument">right_spec </span>consist of one of:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="81190">a literal value, </a><span class="Emphasis">e.g.</span>, the number 37, or the string &#8220;Kansas&#8221; or &#8220;New Mexico&#8221;.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="81300">a cell range, enclosed in &#8220;[]&#8221;, </a><span class="Emphasis">e.g. </span>&#8220;[A1:C9]&#8221;, &#8220;[R1C1:R10C30]&#8221;.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="88460">where for purposes of the boolean comparison, the cell range is refers to the contents of the corresponding cells in the table.</a></div>
+      <div class="Body_Text"><a name="84222">For example, for a </a><span class="Argument">target_range</span> of size <img class="Default EquationGraphic" src="images/ctables.084.4.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> we may specify the <span class="Argument_Opt">boolean_expressions</span>:</div>
+      <div class="Multi-line_Input"><a name="83300">[A1:C5] &lt; 3</a></div>
+      <div class="Multi-line_Input"><a name="84277">[A1:C5] = [B1:B5]</a></div>
+      <div class="Multi-line_Input"><a name="84303">[C2] &gt; [A1:C1]</a></div>
+      <div class="Multi-line_Input"><a name="84320">[E1:E5] &lt;&gt; "Out of Stock"</a></div>
+      <div class="Body_Text"><a name="89571">where we see that the </a><span class="Argument">specs</span> can be rectangles, columns, and rows of cells, literal numbers, and literal strings.</div>
+      <div class="Body_Text"><a name="84490">Conceptually, EViews takes the </a><span class="Argument">left_spec</span> and creates an implicit table of values that is the same size as <span class="Argument">target_range</span>, then compares it to a similarly constructed table of <span class="Argument">right_spec </span>values<span class="Argument">. </span>The<span class="Argument"> </span>pairwise comparison of the cells of the two implicit tables produces the boolean indicators for the conditional target range.</div>
+      <div class="Body_Text"><a name="84717">The rules for forming the implicit tables are straightforward:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="84922">if the </a><span class="Argument">spec</span> is a numeric or string literal, or a single cell, the value will be repeated for each element of the implicit table</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="85102">if </a><span class="Argument">spec</span> is a row of cells, it must have the same number of columns as <span class="Argument">target_range</span>; the values in <span class="Argument">spec</span> will be repeated for each row of the implicit table</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="85363">if the </a><span class="Argument">spec</span> is a column of cells, it must have the same number of rows as <span class="Argument">target_range</span>; the values in <span class="Argument">spec</span> will be repeated for each column of the implicit table</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="83274">if the </a><span class="Argument">spec</span> is a rectangle of cells, it must be of the same dimension as <span class="Argument">target_range</span>; the implicit table uses the values in <span class="Argument">spec</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="85420">These concepts are most easily illustrated via examples, in which we assume a <img class="Default EquationGraphic" src="images/ctables.084.4.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> </a><span class="Argument">target_range</span>. </div>
+      <div class="Body_Text"><a name="87449">The boolean comparison,</a></div>
+      <div class="Input"><a name="86370">[A1:C5] &lt; 3</a></div>
+      <div class="Body_Text"><a name="86504">compares every element of </a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="88793">the <img class="Default EquationGraphic" src="images/ctables.084.4.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> rectangle of the values in the table cells from A1 to C5 </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="88800">(an implicit <img class="Default EquationGraphic" src="images/ctables.084.4.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> table of) the number 3</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="88803">producing a TRUE if an element of the former is less than the latter, and a FALSE otherwise. </a></div>
+      <div class="Input"><a name="86371">[A1:C5] = [B1:B5]</a></div>
+      <div class="Body_Text"><a name="86878">compares every element of </a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="88809">the <img class="Default EquationGraphic" src="images/ctables.084.4.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> rectangle of the values in the table cells from A1 to C5 </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="88818">an implicit <img class="Default EquationGraphic" src="images/ctables.084.4.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> table constructed by repeating horizontally the column of values in B1 to B5</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="88823">producing a TRUE if an element of the former is equal to the latter, and a FALSE otherwise.</a></div>
+      <div class="Input"><a name="86372">[C2] &gt; [A1:C1]</a></div>
+      <div class="Body_Text"><a name="87152">compares every element of </a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="88830">(a <img class="Default EquationGraphic" src="images/ctables.084.4.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> implicit table filled with the value in C2</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="88836">an implicit <img class="Default EquationGraphic" src="images/ctables.084.4.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> table constructed by repeating vertically the row of values in A1 to C1</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="88839">producing a TRUE if an element of the former is greater than the latter, and a FALSE otherwise.</a></div>
+      <div class="Input"><a name="86373">[E1:E5] &lt;&gt; "Out of Stock"</a></div>
+      <div class="Body_Text"><a name="87275">compares every element of </a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="88845">the <img class="Default EquationGraphic" src="images/ctables.084.4.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> implicit table filled with the column of valuesin E1 to E5 repeated horizontally </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="88859">(an implicit <img class="Default EquationGraphic" src="images/ctables.084.4.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> table of) the string value &#8220;Out of Stock&#8221;</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="88853">producing a TRUE if the element of the former is not equal to the latter, and a FALSE otherwise.</a></div>
+      <div class="Body_Text"><a name="78795">We can illustrate the use boolean expressions by modifying our earlier command that </a><span class="In-line_command">setfillcolor</span> using an unconditional <span class="Argument">target_range</span>. Suppose that we add an &#8220;if&#8221; condition, for whether the cells are decreasing in value, to the earlier command. The command</div>
+      <div class="Input"><a name="71218">tab1.setfillcolor(A2:A7 if [A2:A7]&lt;[A1:A6]) red </a></div>
+      <div class="Body_Text"><a name="71214">will only set the fill color to red for the target cell range, if the decreasing value condition holds. </a></div>
+      <div class="Heading_6"><a name="89277">Comparisons using Expressions</a></div>
+      <div class="Body_Text"><a name="89310">Earlier, we saw how to use the </a><span class="Argument_Opt">boolean_expression</span> to define simple comparisons of cell values and literals (<span class="Link"><a href="#81106" title="Customizing Tables">&#8220;Basic Comparisons&#8221;</a></span>). </div>
+      <div class="Body_Text"><a name="90106">EViews expression and function language can be used with the numeric and string literals in and cell expressions in </a><span class="Argument">left_spec</span> and <span class="Argument">right_spec</span>. We may have quite complicated boolean expressions as in:</div>
+      <div class="Multi-line_Input"><a name="90240">[A1:C5]^2+log(@pi*[A1:C5]) &lt; 3</a></div>
+      <div class="Multi-line_Input"><a name="90241">[A1:C5]/3 = [B1:B5]</a></div>
+      <div class="Multi-line_Input"><a name="90242">@tdist([C2], [C4]) &gt; [A1:C1]/100</a></div>
+      <div class="Multi-line_Input"><a name="90243">@length([E1:E5]) &lt;&gt; "Out of Stock"</a></div>
+      <div class="Body_Text"><a name="89995">where a function or expression involving a cell range is interpreted as applying the function or expression to each element of the range after expansion into implicit tables.</a></div>
+      <div class="Body_Text"><a name="92297">For the most part, interpreting the expressions is straightforward, as we can simply evaluate the expressions for each element of the implicit tables. The power of this type of evaluation can, however, lead to potentially useful but at first glance odd specifications, as in</a></div>
+      <div class="Input"><a name="90975">tab1.setfillcolor(A1:B2 if @log([A1:A2]^2+[A1:B1])/10 &lt; @floor(3+[C1:D2])) red </a></div>
+      <div class="Body_Text"><a name="90971">While interpreting this expression without invoking the concept of implicit tables is quite difficult, in practice, evaluation is reasonably straightforward:</a></div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="91186">the </a><span class="Argument">target_range</span> is &#8220;A1:B2&#8221; which defines a <img class="Default EquationGraphic" src="images/ctables.084.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> target and size for the implicit tables</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="91285">&#8220;[A1:A2]&#8221; is a <img class="Default EquationGraphic" src="images/ctables.084.4.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> row range which is repeated vertically to yield a <img class="Default EquationGraphic" src="images/ctables.084.4.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> implicit table; each element of the table is squared</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="91426">&#8220;[A1:B1]&#8221; is a <img class="Default EquationGraphic" src="images/ctables.084.4.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> column range which is repeated horizontally to yield a <img class="Default EquationGraphic" src="images/ctables.084.4.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> implicit table; each element is divided by 10</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">4.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="92727">the results in the previous two steps are added together cell-by-cell to yield a <img class="Default EquationGraphic" src="images/ctables.084.4.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> implicit table; the natural logarithm is taken of each cell</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">5.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="92920">&#8220;[C1:D2] is a <img class="Default EquationGraphic" src="images/ctables.084.4.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> range; the number 3 is added to the values in the table for this range, forming a <img class="Default EquationGraphic" src="images/ctables.084.4.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> implicit table; the floor function is used to find the nearest integer less than, for each cell.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Number_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Number_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">6.	</div>
+            </td>
+            <td width="100%">
+              <div class="Number_List_inner"><a name="93232">the elements of the two implicit tables are compared element-by-element, with TRUE given if the element of the first is strictly less than than the element of the second.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="80635">Find Expression</a></div>
+      <div class="Body_Text"><a name="77857">The </a><span class="Argument">find_expression</span> is a conditional table cell specification in which the set of cells to consider is part of the boolean expression. The syntax for this expression is:</div>
+      <div class="Indented"><span class="Argument"><a name="93804">left_spec</a></span> &#8220;operator&#8221; <span class="Argument">right_spec</span></div>
+      <div class="Body_Text"><a name="93850">where &#8220;operator&#8221; is a standard EViews comparison operator such as &#8220;&gt;&#8221;, &#8220;&lt;&gt;&#8221; &#8220;&lt;=&#8221;, &#8220;=&#8221;, </a><span class="Emphasis">etc.</span>, and where the <span class="Argument">left_spec</span> and <span class="Argument">right_spec </span>consist of one of:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="93827">a literal value, </a><span class="Emphasis">e.g.</span>, the number 37, or the string &#8220;Kansas&#8221; or &#8220;New Mexico&#8221;.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="93828">a cell range, enclosed in &#8220;[]&#8221;, </a><span class="Emphasis">e.g. </span>&#8220;[A1:C9]&#8221;, &#8220;[R1C1:R10C30]&#8221;.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="93800">Most of the discussion in </a><span class="Link"><a href="#77802" title="Customizing Tables">&#8220;Boolean Expression&#8221;</a></span> applies here, with the only difference being that the target range will be the larger of the <span class="Argument">left_spec</span> and <span class="Argument">right_spec</span> ranges.</div>
+      <div class="Body_Text"><a name="94358">For example,</a></div>
+      <div class="Input"><span class="In-line_command"><a name="94336">string s = tab1.@find("[b1:c15]&gt;0.3")</a></span> </div>
+      <div class="Body_Text"><a name="94337">returns a list of cells between B1 and C15 greater than 0.3,</a></div>
+      <div class="Input"><span class="In-line_command"><a name="94340">string s = tab1.@find("[@all]=0.5")</a></span> </div>
+      <div class="Body_Text"><a name="94341">returns a list of cells in the table equal to 0.5,</a></div>
+      <div class="Input"><span class="In-line_command"><a name="94463">string s = t.@find("[b3:c5]&lt;[d5]")</a></span> </div>
+      <div class="Body_Text"><a name="94464">returns a list of cells between B3 and C5 less than cell D5.</a></div>
+      <div class="Body_Text"><a name="94048">Note that since the </a><span class="Argument">find_expression</span> must be enclosed in double-quotes inside the <span class="In-line_command">@find</span> function, the use of string literals will require &#8220;""&#8221; escape sequences to include the actual quotes in the comparison.</div>
+      <div class="Input"><span class="In-line_command"><a name="94338">string s = tabl1.@find("[a1:e67]= ""1949q4""")</a></span> </div>
+      <div class="Body_Text"><a name="94339">returns a list of cells between A1 and E67 matching the string &#8220;1949q4&#8221; (string comparisons in find ignore case); </a></div>
+      <div class="Input"><span class="In-line_command"><a name="94342">string s = t.@find("@instr([@all],""in"")")</a></span> </div>
+      <div class="Body_Text"><a name="94343">returns a list of cells in the table containing the substring &#8220;in&#8221;; </a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

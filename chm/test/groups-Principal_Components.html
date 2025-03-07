@@ -1,0 +1,845 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Principal Components</title>
+    <link rel="StyleSheet" href="css/groups.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="groups-Tests_of_Equality.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="groups-Correlograms.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_data.html">Basic Data Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="groups-Groups.html">Groups</a> : Principal Components</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="171275">Principal Components</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#171280">Performing Principal Components</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#171292">Viewing the Components</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#171299">Table</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#171324">Eigenvalues Plots</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#171334">Other Graphs (Variable Loadings, Component Scores, Biplots)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#171337">Components to Plot</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#171360">Graph Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#171371">Saving Component Scores</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#171385">Covariance Calculation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#171399">Technical Discussion</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#171545">Loading Weights</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#171657">Observation Scaling</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#190376">Determining the Number of Components</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190476">Simple Rules</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190512">Bai and Ng</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#190649">Ahn and Horenstein </a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="171276">Principal components analysis models the variance structure of a set of observed variables using linear combinations of the variables. These linear combinations, or </a><span class="Definition">components,</span> may be used in subsequent analysis, and the combination coefficients, or <span class="Definition">loadings</span>, may be used in interpreting the components. While we generally require as many components as variables to reproduce the original variance structure, we usually hope to account for most of the original variability using a relatively small number of components.</div>
+      <div class="Body_Text"><a name="171277">We may, for example, have a very large number of variables describing individual health status that we wish to reduce to a manageable set. By forming linear combinations of the observed variables we may achieve data reduction by creating a handful of measures that describe overall health (</a><span class="Emphasis">e.g.</span>, &#8220;strength,&#8221; &#8220;fitness,&#8221; &#8220;disabilities&#8221;). The coefficients in these linear combinations may be used to provide interpretation to the newly constructed health measures.</div>
+      <div class="Body_Text"><a name="171278">The principal components of a set of variables are obtained by computing the eigenvalue decomposition of the observed variance matrix. The first principal component is the unit-length linear combination of the original variables with maximum variance. Subsequent principal components maximize variance among unit-length linear combinations that are orthogonal to the previous components.</a></div>
+      <div class="Body_Text"><a name="171279">For additional details see Johnson and Wichtern (1992).</a></div>
+      <div class="Heading_4"><a name="171280">Performing Principal Components</a></div>
+      <div class="Body_Text"><a name="171281">EViews allows you to compute the principal components of the estimated correlation or covariance matrix of a group of series, and to display your results in a variety of ways. You may display the table of eigenvalues and eigenvectors, display line graphs of the ordered eigenvalues, and examine scatterplots of the loadings and component scores. Furthermore you may save the component scores and corresponding loadings to the workfile.</a></div>
+      <div class="Body_Text"><a name="171282">As an illustration, we again consider the stock price example from Johnson and Wichtern (1992) in which 100 observations on weekly rates of return for Allied Chemical, DuPont, Union Carbide, Exxon, and Texaco were examined over the period from January 1975 to December 1976 (&#8220;Stocks.WF1&#8221;).</a></div>
+      <div class="Body_Text"><a name="171283">To perform principal components on these data, we open the group G1 containing the series and select </a><span class="Menu_Item">View/Principal Components... </span>to open the dialog:</div>
+      <div class="Picture"><a name="171287"><img class="Default" src="images/groups.018.11.001.jpg" width="100%" style="left: 0.0pt; max-height: 473px; max-width: 523px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="171288">The principal components dialog has two tabs. Here, we have selected the first tab, labeled </a><span class="Menu_Item">Components</span>. The second tab, labeled <span class="Menu_Item">Calculation, </span>controls the computation of the dispersion matrix from the series in the group. By default, EViews will perform principal components on the ordinary (Pearson) <span class="Emphasis">correlation</span> matrix, but you may use the settings on this tab to modify the preliminary calculation. We will examine this tab in greater detail in <span class="Link"><a href="#171385" title="Principal Components">&#8220;Covariance Calculation&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="171292">Viewing the Components</a></div>
+      <div class="Body_Text"><a name="171293">The </a><span class="Menu_Item">Components</span> tab is used to specify options for displaying the components or saving the eigenvalues and eigenvectors of the variances. </div>
+      <div class="Picture"><a name="171297"><img class="Default" src="images/groups.018.11.002.jpg" width="100%" style="left: 0.0pt; max-height: 243px; max-width: 215px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="171298">The </a><span class="Menu_Item">Display</span> box allows you to choose between showing the eigenvalues and eigenvectors in a tabular form, or displaying line graphs of the ordered eigenvalues, or scatterplots of the loadings, scores, or both (biplot). As you select different display methods, the remainder of the dialog will change to provide you with different settings. </div>
+      <div class="Heading_5"><a name="171299">Table</a></div>
+      <div class="Body_Text"><a name="171300">In the figure above, the </a><span class="Menu_Item">Table</span> display setting is chosen. There are two sets of fields that you may wish to modify.</div>
+      <div class="Body_Text"><a name="171305">First, EViews provides you with a number of settings for controlling the number of components to be displayed. </a></div>
+      <div class="Picture"><a name="192679"><img class="Default" src="images/groups.018.11.003.jpg" width="100%" style="left: 0.0pt; max-height: 357px; max-width: 287px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="191528">The </a><span class="Menu_Item">Method</span> dropdown lets you choose between the <span class="Menu_Item">Simple</span>, <span class="Menu_Item">Bai and Ng</span>, and <span class="Menu_Item">Ahn and Horenstein</span>. In turn, each of these choices offers different options.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="191529">If you select </a><span class="Menu_Item">Simple</span>, you will choose a <span class="Menu_Item">Criterion</span> from the dropdown. You may choose from the following selections: <span class="Menu_Item">Minimum of...</span>, <span class="Menu_Item">Maximum of...</span>, <span class="Menu_Item">Average of criteria</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="191534">For the first two selections, the number of factors is determined as the minimum or maximum of the </a><span class="Menu_Item">Max. Factors</span> (discussed below), the specified <span class="Menu_Item">Minimum eigenvalue</span>, and <span class="Menu_Item">Cumulative proportion</span> of eigenvalues. The <span class="Menu_Item">Average of criteria</span> will use the average of the other two results.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="191535">If you select </a><span class="Menu_Item">Bai and Ng</span>, EViews will employ the Bai and Ng (2002) method as discussed in <span class="Link"><a href="#190512" title="Principal Components">&#8220;Bai and Ng&#8221;</a></span>. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="191545"><img class="Default" src="images/groups.018.11.004.jpg" width="100%" style="left: 0.0pt; max-height: 357px; max-width: 287px; top: 0.0pt" alt="" /></a></div>
+      <div class="Bullet_List_Continue"><a name="191546">The </a><span class="Menu_Item">Criterion</span> dropdown offers all of the information criteria described by Bai and Ng (<span class="Menu_Item">ICP1</span>, <span class="Menu_Item">ICP2</span>, <span class="Menu_Item">ICP3</span>, <span class="Menu_Item">PCP1</span>, <span class="Menu_Item">PCP2</span>, <span class="Menu_Item">PCP3</span>) as well as the <span class="Menu_Item">Average of criteria</span> which averages the criteria prior to determining the optimal number of factors.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="191547">If you select </a><span class="Menu_Item">Ahn and Horenstein</span>, EViews will compute the Ahn and Horenstein (2013) number of factor determination procedure (<span class="Link"><a href="#190649" title="Principal Components">&#8220;Ahn and Horenstein&#8221;</a></span>). The dialog looks the same as for <span class="Menu_Item">Bai and Ng</span>, but the <span class="Menu_Item">Criterion</span> dropdown now offers <span class="Menu_Item">Eigenvalue Ratio</span>, <span class="Menu_Item">Growth ratio</span>, and <span class="Menu_Item">Average of criteria</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="191554">For </a><span class="Menu_Item">User</span>, the number of factors is specified by the user in the edit box</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="191555">In all of the automatic factor selection procedures above is the selection of maximum factors to be considered. While ultimately an arbitrary selection, EViews offers some suggestions typically seen in the literature. In particular, as in the case of ADF selection, l consider the </a><span class="Menu_Item">Max. factors</span> dropdown which provides the following options:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="191559">Schwert</a></span>: let there be a lag choice function <img class="Default EquationGraphic" src="images/groups.018.11.005.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 160px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/groups.018.11.006.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 167px; top: 0.0pt" alt="" /> and let <img class="Default EquationGraphic" src="images/groups.018.11.007.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 126px; top: 0.0pt" alt="" />; then returns the value <img class="Default EquationGraphic" src="images/groups.018.11.008.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 222px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="191569">Ahn and Horenstein</a></span>: uses the suggestion made on page 1208 in Ahn and Horenstein (2013).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="191573">min(root(N), root(T))</a></span>: uses <img class="Default EquationGraphic" src="images/groups.018.11.009.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 101px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="191577">min(N,T):</a></span> uses <img class="Default EquationGraphic" src="images/groups.018.11.010.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="191578">User</a></span>: users can specify an arbitrary value in the <span class="Menu_Item">User maximum factors</span> edit field.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="191579">Furthermore, as discussed in Bai and Ng (2002) and Ahn and Horenstein (2013), factor selection procedures can be improved dramatically if time and/or cross-section dimensions are demeaned and/or standardized. To allow for these possibilities, there are four checkboxes associated with each of these options and combinations:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="191580">Time-demean</a></span>: demeans the time dimension.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="191581">Time-standardize</a></span>: standardizes the time dimension.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="191582">Cross-demean</a></span>: demeans the cross-section dimension.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><span class="Menu_Item"><a name="191471">Cross-standardize</a></span>: standardizes the cross-section dimension.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="171309">The </a><span class="Menu_Item">Output</span> fields allow you to save the eigenvalues and eigenvectors to the workfile. Simply enter a valid name in the corresponding field if you wish EViews to save your results.</div>
+      <div class="Body_Text"><a name="171310">If we leave the default settings as is and click </a><span class="Menu_Item">OK</span>, EViews will display a spool containing the results of the principal components analysis and the results of the factor selection procedure:</div>
+      <div class="Picture"><a name="192876"><img class="Default" src="images/groups.018.11.011.jpg" width="100%" style="left: 0.0pt; max-height: 757px; max-width: 794px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="192965">The first node of the spool contains the table of principal components results:</a></div>
+      <div class="Table"><a name="171314"><img class="Default" src="images/groups.018.11.012.jpg" width="100%" style="left: 0.0pt; max-height: 524px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="171315">Here we show the top two sections of the table. The header describes the sample of observations, the method used to compute the dispersion matrix, and information about the number of components retained (in this case, all five). </a></div>
+      <div class="Body_Text"><a name="171316">The next section summarizes the eigenvalues, showing the values, the forward difference in the eigenvalues, the proportion of total variance explained, </a><span class="Emphasis">etc</span>. Since we are performing principal components on a correlation matrix, the sum of the scaled variances for the five variables is equal to 5. The first principal component accounts for 57% of the total variance (2.856/5.00 = 0.5713), while the second accounts for 16% (0.809/5.00 = 0.1618) of the total. The first two components account for over 73% of the total variation.</div>
+      <div class="Body_Text"><a name="171317">The second section describes the linear combination coefficients. We see that the first principal component (labeled &#8220;PC1&#8221;) is a roughly-equal linear combination of all five of the stock returns; it might reasonably be interpreted as a general stock return index. The second principal component (labeled &#8220;PC2&#8221;) has negative loadings for the three chemical firms (Allied, du&nbsp;Pont and Union Carbide), and positive loadings for the oil firms (Exxon and Texaco). This loading appears to represent an industry specific component.</a></div>
+      <div class="Body_Text"><a name="171318">The third section of the output displays the calculated correlation matrix:</a></div>
+      <div class="Table"><a name="171322"><img class="Default" src="images/groups.018.11.013.jpg" width="100%" style="left: 0.0pt; max-height: 182px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="193094">The second node contains results for the number of components selection procedure:</a></div>
+      <div class="Picture"><a name="193200"><img class="Default" src="images/groups.018.11.014.jpg" width="100%" style="left: 0.0pt; max-height: 326px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="193250">Here, we see that the number of components suggested for each of the simple criteria is 5. The overall criterion uses the minimum of the individual selections, and the number of components selected is also 5.</a></div>
+      <div class="Heading_5"><a name="171324">Eigenvalues Plots</a></div>
+      <div class="Picture"><a name="171328"><img class="Default" src="images/groups.018.11.015.jpg" width="100%" style="left: 0.0pt; max-height: 557px; max-width: 558px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="171329">You may elect to display line graphs of the ordered eigenvalues by selecting </a><span class="Menu_Item">Eigenvalues plots</span> in the <span class="Menu_Item">Display</span> portion of the main dialog. The dialog will change to offer you the choice of displaying plots of any of: the eigenvalues (scree plot), the eigenvalues difference, the cumulative proportion of variance explained. By default, EViews will only display the scree plot of ordered eigenvalues.</div>
+      <div class="Body_Text"><a name="171330">For the stock data, displaying the scree and cumulative proportion graphs yields the graph depicted here. The scree plot in the upper portion of the view shows the sharp decline between the first and second eigenvalues. Also depicted in the graph is a horizontal line marking the mean value of the eigenvalues (which is always 1 for eigenvalue analysis conducted on correlation matrices).</a></div>
+      <div class="Body_Text"><a name="171331">The lower portion of the graph shows the cumulative proportion of the total variance. As we saw in the table, the first two components account for about 73% of the total variation. The diagonal reference line offers an alternative method of evaluating the size of the eigenvalues. The slope of the reference line may be compared with the slope of the cumulative proportion; segments of the latter that are steeper than the reference line have eigenvalues that exceed the mean. </a></div>
+      <div class="Heading_5"><a name="171334">Other Graphs (Variable Loadings, Component Scores, Biplots)</a></div>
+      <div class="Body_Text"><a name="171335">The remaining three graphs selections produce graphs of the loadings (variables) and scores (observations): the variable loadings plots (</a><span class="Menu_Item">Variable loadings plot</span>) produce component-wise plots of the eigenvectors (factor loading coefficients), allowing you to visualize the composition of the components in terms of the original variables; the scores plot (<span class="Menu_Item">Component scores plot</span>) shows the actual values of the components for the observations in the sample; the biplot (<span class="Menu_Item">Biplots (scores &amp; loadings)</span>) combines the loadings and scores plots in one display.</div>
+      <div class="Body_Text"><a name="171336">We continue our example by displaying the biplot graph since it includes the options for both the loadings and scores plots. If we select the </a><span class="Menu_Item">Biplots (scores and loadings)</span> entry, the right side of the dialog changes to provide additional plot options.</div>
+      <div class="Heading_6"><a name="171337">Components to Plot</a></div>
+      <div class="Picture"><a name="171341"><img class="Default" src="images/groups.018.11.016.jpg" width="100%" style="left: 0.0pt; max-height: 469px; max-width: 520px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="171342">The top right portion of the dialog, labeled </a><span class="Menu_Item">Components to plot,</span> is where you will provide the basic specification for the graphs that you want to display. </div>
+      <div class="Body_Text"><a name="171343">First, you must provide a list of components to plot. Here, the default setting &#8220;1 2&#8221; instructs EViews to place the first component on the </a><span class="Argument">x</span>-axis and the second component on the <span class="Argument">y</span>-axis. You may reverse the order of the axes by reversing the indices.</div>
+      <div class="Body_Text"><a name="171344">You may add indices for additional components. When more than two indices are provided, the </a><span class="Menu_Item">Multiple graphs</span> setting provides choices for how you wish to process the indices. You may elect to plot the first listed component against the remaining components (<span class="Menu_Item">First vs. All</span>), to use successive pairs of indices to form plots (<span class="Menu_Item">XY pairs</span>), or to plot each component against the others (<span class="Menu_Item">Lower triangular matrix</span>).</div>
+      <div class="Body_Text"><a name="171345">The </a><span class="Menu_Item">Scaling</span> options determine the weights to be applied to eigenvalues in the scores and the loadings (see <span class="Link"><a href="#171399" title="Principal Components">&#8220;Technical Discussion&#8221;</a></span> for details). By default, the loadings are normalized so the observation scores have norms proportional to the eigenvalues (<span class="Menu_Item">Normalize loadings</span>). You may instead choose to normalize the scores instead of the loadings (<span class="Menu_Item">Normalize scores</span>) so that the observation score norms are proportional to unity, to apply symmetric weighting (<span class="Menu_Item">Symmetric weights</span>), or to specify a user-supplied loading weight (<span class="Menu_Item">User loading weight</span>). </div>
+      <div class="Body_Text"><a name="171349">In the latter three cases, you will be prompted to indicate whether you wish to adjust the results account for the sample size (</a><span class="Menu_Item">Adjust scores &amp; loadings for sample size</span>). By default, EViews uses this setting and scales the loadings and scores so that the variances of the scores (instead of the norms) have the desired structure (see <span class="Link"><a href="#171657" title="Principal Components">&#8220;Observation Scaling&#8221;</a></span>). Setting this option may improve the interpretability of the plot. For example, when normalizing scores, the weight adjustment scales the results so that the Euclidean distances between observations are the Mahalanobis distances and the cosines of the angles between variables are the covariances.</div>
+      <div class="Body_Text"><a name="171353">Using the default settings and clicking on </a><span class="Menu_Item">OK</span>, EViews produces the view:</div>
+      <div class="Picture"><a name="171357"><img class="Default" src="images/groups.018.11.017.jpg" width="100%" style="left: 0.0pt; max-height: 471px; max-width: 559px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="171358">The component scores are displayed as circles and the variable loadings are displayed as lines from the origin with variable labels. The biplot clearly shows us that the first component has positive loadings for all five variables (the general stock return index interpretation). The second component has positive variable loadings for the energy stocks, and negative loadings for the chemical stocks; when the energy stocks do well relative to the chemical stocks, the second specific component will be positive, and vice versa.</a></div>
+      <div class="Body_Text"><a name="171359">The scores labels show us that observation 3 is an outlier, with a high value for the general stock market index, and a relatively neutral value for the sector index. Observation 37 shows a poor return for the general market but is relatively sector neutral. In contrast, observation 20 is a period in which the overall market return was positive, with high returns to the energy sector relative to the chemical sector.</a></div>
+      <div class="Heading_6"><a name="171360">Graph Options</a></div>
+      <div class="Picture"><a name="171364"><img class="Default" src="images/groups.018.11.018.jpg" width="100%" style="left: 0.0pt; max-height: 148px; max-width: 302px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="171365">There are three additional options provided under </a><span class="Menu_Item">Graph options</span>. The first option is to <span class="Menu_Item">Center graphs around zero</span>. Unchecking this box will generally enlarge the graph within the frame at the expense of making it somewhat more difficult to quickly discern the signs of scores and loadings in a given dimension.</div>
+      <div class="Body_Text"><a name="171366">The </a><span class="Menu_Item">Obs. labels</span> dropdown allows you to choose the style of text labeling for observations. By default, EViews will <span class="Menu_Item">Label outliers</span>, but you may instead choose to <span class="Menu_Item">Label all obs.</span> or to display <span class="Menu_Item">Symbols only</span>. If you choose to label outliers, EViews will use a cutoff based on the specified probability value for the Mahalanobis distance of the observation from 0. The default is 0.1 so that labeled observations differ from the 0 with probability less than 0.1.</div>
+      <div class="Body_Text"><a name="171367">The last option, </a><span class="Menu_Item">Loadings axis scaling</span>, is available only for biplot graphs. Note that the observations and variables in a biplot will generally have very different data scales. Instead of displaying biplots with dual scales, EViews applies a constant scaling factor to the loadings axes to make the graph easier-to-read. <span class="Menu_Item">Loadings axis scaling </span>allows you to override the EViews default scale for the loadings in two distinct ways.</div>
+      <div class="Body_Text"><a name="171368">First, you may instruct EViews to apply a scale factor to the automatically chosen factor. This method is useful if you would like to stretch or shrink the EViews default axes. With the </a><span class="Menu_Item">Loadings axis scaling</span> set to <span class="Menu_Item">Automatic</span>, simply enter your desired adjustment factor. The automatically determined loadings will be scaled by this factor.</div>
+      <div class="Body_Text"><a name="171369">Alternatively, if you wish to assign an </a><span class="Emphasis">absolute</span> scaling factor, select <span class="Menu_Item">User-specified</span> for the axis scaling, and enter your scale factor. The original loadings will be scaled by this factor.</div>
+      <div class="Heading_4"><a name="171371">Saving Component Scores</a></div>
+      <div class="Body_Text"><a name="171372">EViews provides easy-to-use tools for saving the principal components scores and scaled loadings matrices in the workfile. Simply select</a><span class="Menu_Item"> Proc/Make Principal Components...</span> from the main group menu to display the dialog.</div>
+      <div class="Table"><a name="171376"><img class="Default" src="images/groups.018.11.019.jpg" width="100%" style="left: 0.0pt; max-height: 403px; max-width: 421px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="171377">As with the main principal components view, the dialog has two tabs. The second tab controls the calculation of the dispersion matrix. The first describes the results that you wish to save.</a></div>
+      <div class="Body_Text"><a name="171378">The first option, </a><span class="Menu_Item">Scaling</span>, specifies the weights to be applied to eigenvalues in the scores and the loadings (see <span class="Link"><a href="#171399" title="Principal Components">&#8220;Technical Discussion&#8221;</a></span> for details). By default, EViews will save the scores associated with normalized loadings (<span class="Menu_Item">Normalize loadings</span>), but you may elect to save normalized scores (<span class="Menu_Item">Normalize scores</span>), equal weighted scores and loadings (<span class="Menu_Item">Symmetric weights</span>), or user weighted loadings (<span class="Menu_Item">User loading weight</span>), and the eigenvalues (<span class="Menu_Item">Eigenvalues vector</span>) and eigenvectors (<span class="Menu_Item">Eigenvectors matrix</span>). The default normalized loadings scores will have variances equal to the corresponding eigenvalues; the normalized scores will have unit variance.</div>
+      <div class="Body_Text"><a name="171382">For the latter three selections, you are also given the option of adjusting the scores and loadings for the sample size. If </a><span class="Menu_Item">Adjust scores &amp; loadings for sample size</span> is selected, the scores are scaled so that their variance rather than the sums-of-squares (norms) match the desired value. In this example, the sample variances of the component scores will equal 1. </div>
+      <div class="Body_Text"><a name="171383">Next, you should enter names for the score series, one name per component score you wish to save. Here we enter two component names, &#8220;Market&#8221; and &#8220;Industry,&#8221; corresponding to the interpretation of our components given above. You may optionally save the loadings corresponding to the saved scores, eigenvalues, and eigenvectors to the workfile.</a></div>
+      <div class="Heading_4"><a name="171385">Covariance Calculation</a></div>
+      <div class="Body_Text"><a name="171386">The EViews routines for principal components allow you to compute the dispersion matrix for the series in a group in a number of ways. Simply click on the </a><span class="Menu_Item">Calculation</span> tab to display the preliminary calculation settings.</div>
+      <div class="Picture"><a name="171390"><img class="Default" src="images/groups.018.11.020.jpg" width="100%" style="left: 0.0pt; max-height: 476px; max-width: 520px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="171391">The </a><span class="Menu_Item">Type</span> dropdown allows you to choose between computing a <span class="Menu_Item">Correlation</span> or a <span class="Menu_Item">Covariance</span> matrix. </div>
+      <div class="Body_Text"><a name="171392">The </a><span class="Menu_Item">Method</span> dropdown specifies computation of <span class="Menu_Item">Ordinary</span>, <span class="Menu_Item">Ordinary (uncentered)</span>, <span class="Menu_Item">Spearman rank-order</span> or <span class="Menu_Item">Kendall&#8217;s tau-a</span>, or <span class="Menu_Item">Kendall&#8217;s tau-b</span> measures. The <span class="Menu_Item">Type</span> selection dropdown is not applicable if you select <span class="Menu_Item">Kendall&#8217;s tau-a</span> or <span class="Menu_Item">Kendall&#8217;s tau-b</span> as your method.</div>
+      <div class="Body_Text"><a name="171393">The remaining settings should be familiar from the covariance analysis view (</a><span class="Link"><a href="groups-Covariance_Analysis.html#170464" title="Covariance Analysis">&#8220;Covariance Analysis&#8221;</a></span>). You may, for example, specify the sample of observations to be used and perform listwise exclusion of cases with missing values to balance the sample if necessary. Or you can perform partial and/or weighted analysis.</div>
+      <div class="Body_Text"><a name="171397">Note that component scores may not be computed for dispersion matrices estimated using Kendall&#8217;s tau-a and tau-b.</a></div>
+      <div class="Heading_4"><a name="171399">Technical Discussion</a></div>
+      <div class="Body_Text"><a name="171406">From the singular value decomposition, we may represent a <img class="Default EquationGraphic" src="images/groups.018.11.021.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 56px; top: 0.0pt" alt="" /> data matrix <img class="Default EquationGraphic" src="images/groups.018.11.022.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> of rank <img class="Default EquationGraphic" src="images/groups.018.11.023.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.024.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.27)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171423">where <img class="Default EquationGraphic" src="images/groups.018.11.025.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/groups.018.11.026.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> are orthonormal matrices of the left and right singular vectors, and <img class="Default EquationGraphic" src="images/groups.018.11.027.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is a diagonal matrix containing the singular values.</a></div>
+      <div class="Body_Text"><a name="171424">More generally, we may write:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.028.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.28)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171445">where <img class="Default EquationGraphic" src="images/groups.018.11.029.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is an <img class="Default EquationGraphic" src="images/groups.018.11.030.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/groups.018.11.031.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/groups.018.11.032.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> matrix, both of rank <img class="Default EquationGraphic" src="images/groups.018.11.033.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, and</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.034.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.29)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171454">so that <img class="Default EquationGraphic" src="images/groups.018.11.035.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 70px; top: 0.0pt" alt="" /> is a factor which adjusts the relative weighting of the left (observations) and right (variables) singular vectors, and the terms involving <img class="Default EquationGraphic" src="images/groups.018.11.036.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> are scaling factors where <img class="Default EquationGraphic" src="images/groups.018.11.037.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 83px; top: 0.0pt" alt="" />. The basic options in computing the scores <img class="Default EquationGraphic" src="images/groups.018.11.038.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> and the corresponding loadings <img class="Default EquationGraphic" src="images/groups.018.11.039.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> involve the choice of (loading) weight parameter <img class="Default EquationGraphic" src="images/groups.018.11.040.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> and (observation) scaling parameter <img class="Default EquationGraphic" src="images/groups.018.11.041.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="171476">In the principal components context, let <img class="Default EquationGraphic" src="images/groups.018.11.042.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> be the cross-product moment (dispersion) matrix of <img class="Default EquationGraphic" src="images/groups.018.11.043.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, and perform the eigenvalue decomposition:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.044.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.30)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171493">where <img class="Default EquationGraphic" src="images/groups.018.11.045.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is the <img class="Default EquationGraphic" src="images/groups.018.11.046.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> matrix of eigenvectors and <img class="Default EquationGraphic" src="images/groups.018.11.047.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is the diagonal matrix with eigenvalues on the diagonal. The eigenvectors, which are given by the columns of <img class="Default EquationGraphic" src="images/groups.018.11.048.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, are identified up to the choice of sign. Note that since the eigenvectors are by construction orthogonal, <img class="Default EquationGraphic" src="images/groups.018.11.049.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 134px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="171509">We may set <img class="Default EquationGraphic" src="images/groups.018.11.050.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 97px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/groups.018.11.051.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 57px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/groups.018.11.052.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 103px; top: 0.0pt" alt="" />, so that:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.053.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.31)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171521"><img class="Default EquationGraphic" src="images/groups.018.11.054.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> may be interpreted as the </a><span class="Definition">weighted principal components scores</span>, and <img class="Default EquationGraphic" src="images/groups.018.11.055.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> as the <span class="Definition">weighted principal components loadings</span>. Then the scores and loadings have the following properties:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.056.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.32)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171533">Through appropriate choice of the weight parameter <img class="Default EquationGraphic" src="images/groups.018.11.057.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> and the scaling parameter <img class="Default EquationGraphic" src="images/groups.018.11.058.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />, you may construct scores and loadings with various properties (see </a><span class="Link"><a href="#171545" title="Principal Components">&#8220;Loading Weights&#8221;</a></span> and <span class="Link"><a href="#171657" title="Principal Components">&#8220;Observation Scaling&#8221;</a></span>). EViews provides you with the opportunity to choose appropriate values for these parameters when displaying graphs of principal component scores and loadings and when saving scores and loadings to the workfile.</div>
+      <div class="Body_Text"><a name="171543">Note that when computing scores using </a><span class="Link">Equation&nbsp;(12.33)</span>, EViews will transform the <img class="Default EquationGraphic" src="images/groups.018.11.059.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> to match the data used in the original computation. For example, the data will be scaled for analysis of correlation matrices, and partialing will remove means and any conditioning variables. Similarly, if the preliminary analysis involves Spearman rank-order correlations, the data are transformed to ranks prior to partialing. Scores may not be computed for dispersion matrices estimated using Kendall&#8217;s tau.</div>
+      <div class="Heading_5"><a name="171545">Loading Weights</a></div>
+      <div class="Body_Text"><a name="171546">At one extreme, we define the </a><span class="Emphasis">normalized loadings</span> (also termed the <span class="Definition">form, </span>or <span class="Definition">JK</span>) decomposition where <img class="Default EquationGraphic" src="images/groups.018.11.060.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 91px; top: 0.0pt" alt="" />. The scores formed from the normalized loadings decomposition will have variances equal to the corresponding eigenvalues. To see this, substituting into <span class="Link"><a href="#171514" title="Principal Components">Equation&nbsp;(12.31)</a></span>, and using <span class="Link"><a href="#171429" title="Principal Components">Equation&nbsp;(12.28)</a></span> we have <img class="Default EquationGraphic" src="images/groups.018.11.061.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 74px; top: 0.0pt" alt="" />, where:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.062.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.33)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171572">From </a><span class="Link"><a href="#171526" title="Principal Components">Equation&nbsp;(12.32)</a></span>, the scores <img class="Default EquationGraphic" src="images/groups.018.11.063.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> and loadings <img class="Default EquationGraphic" src="images/groups.018.11.064.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> have the norms:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.065.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.34)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171583">The rows of <img class="Default EquationGraphic" src="images/groups.018.11.066.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> are said to be in </a><span class="Definition">principal coordinates</span>, since the norm of <img class="Default EquationGraphic" src="images/groups.018.11.067.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> is the diagonal matrix with the eigenvalues on the diagonal. The columns of <img class="Default EquationGraphic" src="images/groups.018.11.068.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> are in <span class="Definition">standard coordinates</span> since <img class="Default EquationGraphic" src="images/groups.018.11.069.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is orthonormal<span class="Definition"> </span>(Aitchison and Greenwood, 2002, p. 378). The JK specification has a <span class="Definition">row preserving metric</span> (RPM) since the observations in <img class="Default EquationGraphic" src="images/groups.018.11.070.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> retain their original scale.</div>
+      <div class="Body_Text"><a name="171593">At the other extreme, we define the </a><span class="Definition">normalized scores</span> (also referred to as the <span class="Definition">covariance </span>or<span class="Definition"> GH) </span>decomposition where <img class="Default EquationGraphic" src="images/groups.018.11.071.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 53px; top: 0.0pt" alt="" />. Then we may write <img class="Default EquationGraphic" src="images/groups.018.11.072.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 78px; top: 0.0pt" alt="" /> where:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.073.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.35)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171607">Evaluating the norms using </a><span class="Link"><a href="#171526" title="Principal Components">Equation&nbsp;(12.32)</a></span>, we have:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.074.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.36)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171619">For this factorization, <img class="Default EquationGraphic" src="images/groups.018.11.075.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is orthonormal (up to a scale factor) and the norm of <img class="Default EquationGraphic" src="images/groups.018.11.076.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is proportional to the diagonal matrix with the <img class="Default EquationGraphic" src="images/groups.018.11.077.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> times the eigenvalues on the diagonal. Thus, the specification is said to favor display of the variables since the <img class="Default EquationGraphic" src="images/groups.018.11.078.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> loadings are in principal coordinates and the scores <img class="Default EquationGraphic" src="images/groups.018.11.079.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> are in standard coordinates (so that their variances are identical). The GH specification is sometimes referred to as the </a><span class="Definition">column metric preserving</span> (CMP) specification.</div>
+      <div class="Body_Text"><a name="171629">In interpreting results for the GH decomposition, bear in mind that the Euclidean distances between observations are proportional to Mahalanobis distances. Furthermore, the norms of the columns of <img class="Default EquationGraphic" src="images/groups.018.11.080.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> are proportional to the factor covariances, and the cosines of the angles between the vectors approximate the correlations between variables. </a></div>
+      <div class="Body_Text"><a name="171633">Obviously, there are an infinite number of alternative scalings lying between the extremes. One popular alternative is to weight the scores and the loadings equally by setting <img class="Default EquationGraphic" src="images/groups.018.11.081.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" />: This specification is the </a><span class="Definition">SQ</span> or <span class="Definition">symmetric biplot,</span> where <img class="Default EquationGraphic" src="images/groups.018.11.082.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 75px; top: 0.0pt" alt="" />:<span class="Definition"> </span></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.083.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.37)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171650">Evaluating the norms of the scores <img class="Default EquationGraphic" src="images/groups.018.11.084.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> and loadings <img class="Default EquationGraphic" src="images/groups.018.11.085.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, we have:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.086.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.38)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171655">so that the norms of both the observations and the variables are proportional to the square roots of the eigenvalues.</a></div>
+      <div class="Heading_5"><a name="171657">Observation Scaling</a></div>
+      <div class="Body_Text"><a name="171658">In the decompositions above, we allow for observation scaling of the scores and loadings parameterized by <img class="Default EquationGraphic" src="images/groups.018.11.087.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. There are two obvious choices for the scaling parameter <img class="Default EquationGraphic" src="images/groups.018.11.088.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="171668">First, we could ignore sample size by setting <img class="Default EquationGraphic" src="images/groups.018.11.089.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 52px; top: 0.0pt" alt="" /> so that:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.090.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.39)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171676">With no observation adjustment, the norm of the scores equals <img class="Default EquationGraphic" src="images/groups.018.11.091.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 67px; top: 0.0pt" alt="" />, the variance of the scores equals <img class="Default EquationGraphic" src="images/groups.018.11.092.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 73px; top: 0.0pt" alt="" />, and the norm of the variables equals <img class="Default EquationGraphic" src="images/groups.018.11.093.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 23px; top: 0.0pt" alt="" /> times the eigenvalues raised to the <img class="Default EquationGraphic" src="images/groups.018.11.094.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> power. Note that the observed </a><span class="Emphasis">variance</span> of the scores is not equal to, but is instead proportional to <img class="Default EquationGraphic" src="images/groups.018.11.095.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 43px; top: 0.0pt" alt="" />, and that the norm of the loadings is only proportional to <img class="Default EquationGraphic" src="images/groups.018.11.096.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="171695">Alternately, we may set <img class="Default EquationGraphic" src="images/groups.018.11.097.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 54px; top: 0.0pt" alt="" />, yielding:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.098.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.40)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171703">With this sample size adjustment, the variance of the scores equals <img class="Default EquationGraphic" src="images/groups.018.11.099.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 43px; top: 0.0pt" alt="" /> and the norm of the variables equals <img class="Default EquationGraphic" src="images/groups.018.11.100.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 24px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="171707">Gabriel (1971), for example, recommends employing a </a><span class="Definition">principal components decomposition</span> for biplots that sets <span class="Definition"><img class="Default EquationGraphic" src="images/groups.018.11.101.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 91px; top: 0.0pt" alt="" /></span>. From <span class="Link"><a href="#171526" title="Principal Components">Equation&nbsp;(12.32)</a></span> the relevant norms are given by:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.102.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.41)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="171718">By performing observation scaling, the scores are normalized so that their variances (instead of their norms) are equal to 1. Furthermore the Euclidean distances between points are equal to the Mahalanobis distances (using <img class="Default EquationGraphic" src="images/groups.018.11.103.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 28px; top: 0.0pt" alt="" />), the norms of the columns of <img class="Default EquationGraphic" src="images/groups.018.11.104.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> are equal to the eigenvalues, and the cosines of the angles between the vectors equal the correlations between variables. Without observation scaling, these results only hold up to a constant of proportionality.</a></div>
+      <div class="Body_Text"><a name="171728">By default, EViews performs observation scaling, setting <img class="Default EquationGraphic" src="images/groups.018.11.105.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 54px; top: 0.0pt" alt="" />. To remove this adjustment, simply uncheck the </a><span class="Menu_Item">Adjust scores &amp; loadings for sample size </span>checkbox. Note that when EViews performs this adjustment, it employs the denominator from the original dispersion calculation which will differ from <img class="Default EquationGraphic" src="images/groups.018.11.106.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> if any degrees-of-freedom adjustment has been applied.</div>
+      <div class="Heading_5"><a name="190376">Determining the Number of Components</a></div>
+      <div class="Body_Text"><a name="190377">The use of principal components factors has become an important feature of modern econometric analysis, with applications in areas such as data-rich forecasting, unit root testing, and VAR estimation.</a></div>
+      <div class="Body_Text"><a name="190378">A central task in using components (factors) is the choice of the number of factors to be employed in analysis. While there are a number of approaches to answering this question, we focus here on easy-to-compute methods that focus on eigenvalue heuristics, as well as data-driven approaches proposed by Bai and Ng (2002) and Ahn and Horenstein (2013).</a></div>
+      <div class="Body_Text"><a name="190379">Approaches to selecting numbers of components center around the idea of optimal dimensionality reduction. Recall that every <img class="Default EquationGraphic" src="images/groups.018.11.107.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 49px; top: 0.0pt" alt="" /> symmetric matrix <img class="Default EquationGraphic" src="images/groups.018.11.108.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> with rank <img class="Default EquationGraphic" src="images/groups.018.11.109.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> may be diagonalized orthogonally so that</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.110.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.42)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190399">where <img class="Default EquationGraphic" src="images/groups.018.11.111.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 129px; top: 0.0pt" alt="" /> is the diagonalizing matrix spanned by the <img class="Default EquationGraphic" src="images/groups.018.11.112.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />-element eigenvectors <img class="Default EquationGraphic" src="images/groups.018.11.113.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> of <img class="Default EquationGraphic" src="images/groups.018.11.114.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/groups.018.11.115.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 156px; top: 0.0pt" alt="" /> is a diagonal matrix with elements <img class="Default EquationGraphic" src="images/groups.018.11.116.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> denoting the eigenvalues associated with the corresponding <img class="Default EquationGraphic" src="images/groups.018.11.117.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Body_Text"><a name="190421">Suppose, that we have data for <img class="Default EquationGraphic" src="images/groups.018.11.118.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> for variable <img class="Default EquationGraphic" src="images/groups.018.11.119.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 95px; top: 0.0pt" alt="" /> and periods <img class="Default EquationGraphic" src="images/groups.018.11.120.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 95px; top: 0.0pt" alt="" />, respectively, and define the vectors and matrices <img class="Default EquationGraphic" src="images/groups.018.11.121.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 143px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/groups.018.11.122.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 128px; top: 0.0pt" alt="" />. When <img class="Default EquationGraphic" src="images/groups.018.11.123.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 95px; top: 0.0pt" alt="" /> is the covariance matrix of <img class="Default EquationGraphic" src="images/groups.018.11.124.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, the diagonalization is an orthogonal decomposition of the correlation structure among the <img class="Default EquationGraphic" src="images/groups.018.11.125.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> variables. It turns out that this procedure also preserves that the correlation dynamics of the variables.</a></div>
+      <div class="Body_Text"><a name="190449">It can be shown that the linear combination of all <img class="Default EquationGraphic" src="images/groups.018.11.126.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> columns of <img class="Default EquationGraphic" src="images/groups.018.11.127.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> in the direction of <img class="Default EquationGraphic" src="images/groups.018.11.128.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />, termed the </a><span class="In-line_math">i</span>-th principal component or factor contributes to</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.129.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.43)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190457">of total system variation. Accordingly, if we arrange the eigenvalues from largest to smallest, say <img class="Default EquationGraphic" src="images/groups.018.11.130.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 156px; top: 0.0pt" alt="" /> the corresponding principal components are arranged from most principal to least in the proportion of total system variation contributed by that direction.</a></div>
+      <div class="Body_Text"><a name="190464">Dimensionality reduction may then be attained by discarding the <img class="Default EquationGraphic" src="images/groups.018.11.131.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 43px; top: 0.0pt" alt="" /> least important principal components until the desired degree of reduction is attained. The retained <img class="Default EquationGraphic" src="images/groups.018.11.132.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> principal components contribute to the cumulative proportion</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.133.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.44)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190475">of the original variation in <img class="Default EquationGraphic" src="images/groups.018.11.134.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. </a></div>
+      <div class="Heading_6"><a name="190476">Simple Rules</a></div>
+      <div class="Body_Text"><a name="190477">One approach to selecting the number of retained components is to use simple heuristics. The strategies discussed here, while in the spirit of optimal dimensionality reduction, rely entirely on arbitrarily selected criteria.</a></div>
+      <div class="Body_Text"><a name="190481">In particular, the following eigenvalue based rules are often employed to select <img class="Default EquationGraphic" src="images/groups.018.11.135.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />,</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="190485">Maximum components: specifies <img class="Default EquationGraphic" src="images/groups.018.11.136.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> directly and arbitrarily.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="190486">Minimum eigenvalue: retained components must be associated with directions that have <img class="Default EquationGraphic" src="images/groups.018.11.137.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 44px; top: 0.0pt" alt="" /> for some arbitrary minimum <img class="Default EquationGraphic" src="images/groups.018.11.138.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="190493">Minimum eigenvalue cumulative proportion: retained components must have eigenvalues satisfying</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.139.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.45)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="190504">for a specified <img class="Default EquationGraphic" src="images/groups.018.11.140.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 77px; top: 0.0pt" alt="" />. This rule retains the first <img class="Default EquationGraphic" src="images/groups.018.11.141.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> principal components that capture at least <img class="Default EquationGraphic" src="images/groups.018.11.142.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 99px; top: 0.0pt" alt="" />% of the original variation.</a></div>
+      <div class="Body_Text"><a name="190508">Slightly more complex decision rules involve combinations of the three decision rules from above. Two very simple ones are:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="190509">Minimum rule: selects the minimum number of components satisfying the three rules above.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="190510">Maximum rule: selects the maximum number of components satisfying the three rules above.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_6"><a name="190512">Bai and Ng</a></div>
+      <div class="Body_Text"><a name="190513">Bai and Ng (2002) cast the number of components selection problem in terms of model selection. Consider the following factor model,</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.143.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.46)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190524">where the cross-section data depends on a set of <img class="Default EquationGraphic" src="images/groups.018.11.144.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> common factors <img class="Default EquationGraphic" src="images/groups.018.11.145.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> and individual cross-section weights, or loadings, <img class="Default EquationGraphic" src="images/groups.018.11.146.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />. Note that the number of components is given by the number of elements of <img class="Default EquationGraphic" src="images/groups.018.11.147.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="190531">Consider the optimization problem </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.148.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.47)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190545">subject to the normalization <img class="Default EquationGraphic" src="images/groups.018.11.149.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 126px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/groups.018.11.150.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> is the identity matrix, <img class="Default EquationGraphic" src="images/groups.018.11.151.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/groups.018.11.152.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 43px; top: 0.0pt" alt="" /> matrix of of <img class="Default EquationGraphic" src="images/groups.018.11.153.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 137px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/groups.018.11.154.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/groups.018.11.155.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" /> matrix of variable specific of loadings <img class="Default EquationGraphic" src="images/groups.018.11.156.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 134px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="190561">The factor matrix may be estimated as</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.157.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.48)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190578">where <img class="Default EquationGraphic" src="images/groups.018.11.158.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 40px; top: 0.0pt" alt="" /> is the <img class="Default EquationGraphic" src="images/groups.018.11.159.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 43px; top: 0.0pt" alt="" /> matrix of the first <img class="Default EquationGraphic" src="images/groups.018.11.160.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> principal eigenvectors of <img class="Default EquationGraphic" src="images/groups.018.11.161.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 28px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="190588">The corresponding loading matrix <img class="Default EquationGraphic" src="images/groups.018.11.162.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is then estimated by regressing <img class="Default EquationGraphic" src="images/groups.018.11.163.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/groups.018.11.164.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 16px; top: 0.0pt" alt="" />, yielding </a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.165.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.49)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190593">Since the objective is to identify the optimal number of factors, we would like to give consideration to the full set of possible outcomes. The maximum number of factors that can be estimated is <img class="Default EquationGraphic" src="images/groups.018.11.166.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 137px; top: 0.0pt" alt="" />, so we consider <img class="Default EquationGraphic" src="images/groups.018.11.167.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 134px; top: 0.0pt" alt="" /> (though typically one imposes <img class="Default EquationGraphic" src="images/groups.018.11.168.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 112px; top: 0.0pt" alt="" /> for some known number <img class="Default EquationGraphic" src="images/groups.018.11.169.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 36px; top: 0.0pt" alt="" /> of maximum factors under consideration).</a></div>
+      <div class="Body_Text"><a name="190609">For a given <img class="Default EquationGraphic" src="images/groups.018.11.170.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />, we may define the objective function for obtaining loadings as the regression problem:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.171.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.50)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190620">where <img class="Default EquationGraphic" src="images/groups.018.11.172.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 28px; max-width: 38px; top: 0.0pt" alt="" /> is the matrix of factors formed from the <img class="Default EquationGraphic" src="images/groups.018.11.173.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> largest eigenvalues, and then compare results for the different <img class="Default EquationGraphic" src="images/groups.018.11.174.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> using conventional model selection tools.</a></div>
+      <div class="Body_Text"><a name="190627">Bai and Ng (2002) propose six loss functions that yield consistent estimates of <img class="Default EquationGraphic" src="images/groups.018.11.175.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />. The first three employ the objective function in levels</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.176.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.51)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190632">while the remainder use logarithms</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.177.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.52)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190640">where <img class="Default EquationGraphic" src="images/groups.018.11.178.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 176px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="190647">The selected optimal number of factors <img class="Default EquationGraphic" src="images/groups.018.11.179.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 21px; top: 0.0pt" alt="" /> is the <img class="Default EquationGraphic" src="images/groups.018.11.180.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 98px; top: 0.0pt" alt="" /> yielding the smallest loss function value.</a></div>
+      <div class="Heading_6"><a name="190649">Ahn and Horenstein </a></div>
+      <div class="Body_Text"><a name="190650">Ahn and Horenstein (AH, 2013) propose a method for obtaining the number of factors that exploits the fact that the <img class="Default EquationGraphic" src="images/groups.018.11.181.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> largest eigenvalues of a given matrix grow without bounds as the rank of the matrix increases, whereas the other eigenvalues remain bounded. The optimization strategy is then simply to find the maximum of the ratio of two adjacent eigenvalues. One of the advantages of this approach is that it is far less sensitive to the choice of <img class="Default EquationGraphic" src="images/groups.018.11.182.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 36px; top: 0.0pt" alt="" /> than is Bai and Ng (2002). Furthermore, the AH procedure is significantly easier to compute, requiring only the computation of eigenvalues. </a></div>
+      <div class="Body_Text"><a name="190657">As before, the model under consideration is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.183.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.53)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190671">Let <img class="Default EquationGraphic" src="images/groups.018.11.184.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> denote the <img class="Default EquationGraphic" src="images/groups.018.11.185.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" />-th largest eigenvalue of <img class="Default EquationGraphic" src="images/groups.018.11.186.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 117px; top: 0.0pt" alt="" />. Further, define</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.187.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.54)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190679">AH propose two estimators for the optimal number of factors. For optimal <img class="Default EquationGraphic" src="images/groups.018.11.188.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 21px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/groups.018.11.189.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 98px; top: 0.0pt" alt="" />, we have</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="190683">Eigenvalue ratio (ER)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.190.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.55)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="190688">Growth ratio (GR)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.191.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.56)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="190693">where</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.192.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.57)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190701">Furthermore, AH propose a simple rule for selecting <img class="Default EquationGraphic" src="images/groups.018.11.193.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 36px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.194.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.58)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190706">where</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/groups.018.11.195.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(12.59)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="190717">is the number of <img class="Default EquationGraphic" src="images/groups.018.11.196.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> for which <img class="Default EquationGraphic" src="images/groups.018.11.197.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 45px; top: 0.0pt" alt="" /> exceeds its average.</a></div>
+      <div class="Body_Text"><a name="190371">Lastly, we note that AH suggest that the data should be demeaned in both the time and cross-section dimensions. While this step is not necessary for consistency, it is useful in small samples. As a final caveat, AH warn against using their procedures in cases where some factors are <img class="Default EquationGraphic" src="images/groups.018.11.198.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" /> while others are <img class="Default EquationGraphic" src="images/groups.018.11.199.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 35px; top: 0.0pt" alt="" />. When this is the case, factors should be differenced first, as in Bai and Ng (2004).</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

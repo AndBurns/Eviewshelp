@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Matrix Expressions</title>
+    <link rel="StyleSheet" href="css/cmatrix.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cmatrix-Copying_Data_Between_Objects.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cmatrix-Matrix_Commands_and_Functions.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cmatrix-Matrix_Language.html">Matrix Language</a> : Matrix Expressions</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="68822">Matrix Expressions</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#68843">Matrix Operators</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#68848">Negation (&#8211;)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#68854">Addition (+)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#68863">Subtraction (&#8211;)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#68872">Multiplication (*)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#154238">Division (/)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#68912">Relational Operators (=, &gt;, &gt;=, &lt;, &lt;=, &lt;&gt;)</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="68823">A </a><span class="Definition">matrix expression</span> is an expression which combines matrix objects with mathematical operators or relations, functions, and parentheses. While we discuss matrix functions in great detail below, some examples will demonstrate the relevant concepts.</div>
+      <div class="Body_Text"><a name="68824">Examples:</a></div>
+      <div class="Multi-line_Input"><a name="68825">@inner(@convert(grp, s1))</a></div>
+      <div class="Multi-line_Input"><a name="68826">mat1*vec1</a></div>
+      <div class="Multi-line_Input"><a name="68827">@inverse(mat1+mat2)*vec1</a></div>
+      <div class="Multi-line_Input"><a name="68828">mat1 &gt; mat2</a></div>
+      <div class="Body_Text"><a name="68830">EViews uses the following rules to determine the order in which the expression will be evaluated:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68832">You may nest any number of pairs of parentheses to clarify the order of operations in a matrix expression.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="68833">If you do not use parentheses, the operations are applied in the following order:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Number_0029_outer" style="margin-left: 56px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Number_0029_inner" style="width: 18pt; white-space: nowrap">1.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Number_0029_inner"><a name="68834">Unary negation operator and functions.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Number_0029_outer" style="margin-left: 56px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Number_0029_inner" style="width: 18pt; white-space: nowrap">2.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Number_0029_inner"><a name="68835">Multiplication and division operators.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Number_0029_outer" style="margin-left: 56px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Number_0029_inner" style="width: 18pt; white-space: nowrap">3.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Number_0029_inner"><a name="68836">Addition and subtraction operators.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Indent__0028Number_0029_outer" style="margin-left: 56px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List_Indent__0028Number_0029_inner" style="width: 18pt; white-space: nowrap">4.	</div>
+            </td>
+            <td width="100%">
+              <div class="List_Indent__0028Number_0029_inner"><a name="68837">Comparison operators: &#8220;&gt;=&#8221;, &#8220;&gt;&#8221;, &#8220;&lt;=&#8221;, &#8220;&lt;&#8221;, &#8220;&lt;&gt;&#8221;.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="68838">Examples:</a></div>
+      <div class="Multi-line_Input"><a name="68839">@inverse(mat1+mat2)+@inverse(mat3+mat4)</a></div>
+      <div class="Multi-line_Input"><a name="68840">vec1*@inverse(mat1+mat2)*@transpose(vec1)</a></div>
+      <div class="Body_Text"><a name="68841">In the first example, the matrices </a><span class="EViews_Name">MAT1</span> and <span class="EViews_Name">MAT2</span> will be added and then inverted. Similarly the matrices <span class="EViews_Name">MAT3</span> and <span class="EViews_Name">MAT4</span> are added and then inverted. Finally, the two inverses will be added together. In the second example, EViews first inverts <span class="EViews_Name">MAT1+MAT2</span> and uses the result to calculate a quadratic form with VEC1. </div>
+      <div class="Heading_4"><a name="68843">Matrix Operators</a></div>
+      <div class="Body_Text"><a name="68844">EViews provides standard mathematical operators for matrix objects. </a></div>
+      <div class="Body_Text"><a name="148175">(Note that element multiplication, division, inverse, and powers are not available using operators, but are instead supported via functions).</a></div>
+      <div class="Heading_5"><a name="68848">Negation (&#8211;)</a></div>
+      <div class="Body_Text"><a name="68849">The unary minus changes the sign of every element of a matrix object, yielding a matrix or vector of the same dimension. Example:</a></div>
+      <div class="Input"><a name="68850">matrix jneg = -jpos</a></div>
+      <div class="Heading_5"><a name="68854">Addition (+)</a></div>
+      <div class="Body_Text"><a name="68855">You can add two matrix objects of the same type and size. The result is a matrix object of the same type and size. Example:</a></div>
+      <div class="Multi-line_Input"><a name="68856">matrix(3,4) a</a></div>
+      <div class="Multi-line_Input"><a name="68857">matrix(3,4) b</a></div>
+      <div class="Multi-line_Input"><a name="68858">matrix sum = a + b</a></div>
+      <div class="Body_Text"><a name="68859">You can add a square matrix and a sym of the same dimension. The upper triangle of the sym is taken to be equal to the lower triangle. Adding a scalar to a matrix object adds the scalar value to each element of the matrix or vector object.</a></div>
+      <div class="Heading_5"><a name="68863">Subtraction (&#8211;)</a></div>
+      <div class="Body_Text"><a name="68864">The rules for subtraction are the same as the rules for addition. Example:</a></div>
+      <div class="Multi-line_Input"><a name="68865">matrix(3,4) a</a></div>
+      <div class="Multi-line_Input"><a name="68866">matrix(3,4) b</a></div>
+      <div class="Multi-line_Input"><a name="68867">matrix dif = a - b</a></div>
+      <div class="Body_Text"><a name="68868">Subtracting a scalar object from a matrix object subtracts the scalar value from every element of the matrix object.</a></div>
+      <div class="Heading_5"><a name="68872">Multiplication (*)</a></div>
+      <div class="Body_Text"><a name="68873">You can multiply two matrix objects if the number of columns of the first matrix is equal to the number of rows of the second matrix. </a></div>
+      <div class="Body_Text"><a name="68874">Example:</a></div>
+      <div class="Multi-line_Input"><a name="68875">matrix(5,9) a</a></div>
+      <div class="Multi-line_Input"><a name="68876">matrix(9,22) b</a></div>
+      <div class="Multi-line_Input"><a name="68877">matrix prod = a * b</a></div>
+      <div class="Body_Text"><a name="68878">In this example, </a><span class="EViews_Name">PROD</span> will have 5 rows and 22 columns.</div>
+      <div class="Body_Text"><a name="68879">One or both of the matrix objects can be a sym. Note that the product of two sym objects is a matrix, not a sym. The </a><span class="In-line_command">@inner</span> function will produce a sym by multiplying a matrix by its own transpose.</div>
+      <div class="Body_Text"><a name="68880">You can premultiply a matrix or a sym by a vector if the number of columns of the matrix is the same as the number of elements of the vector. The result is a vector whose dimension is equal to the number of rows of the matrix. </a></div>
+      <div class="Body_Text"><a name="68881">Example:</a></div>
+      <div class="Multi-line_Input"><a name="68882">matrix(5,9) mat</a></div>
+      <div class="Multi-line_Input"><a name="68883">vector(9) vec</a></div>
+      <div class="Multi-line_Input"><a name="68884">vector res = mat * vec</a></div>
+      <div class="Body_Text"><a name="68885">In this example, </a><span class="EViews_Name">RES</span> will have 5 elements.</div>
+      <div class="Body_Text"><a name="68886">You can premultiply a rowvector by a matrix or a sym if the number of elements of the rowvector is the same as the number of rows of the matrix. The result is a rowvector whose dimension is equal to the number of columns of the matrix. </a></div>
+      <div class="Body_Text"><a name="68887">Example:</a></div>
+      <div class="Multi-line_Input"><a name="68888">rowvector rres</a></div>
+      <div class="Multi-line_Input"><a name="68889">matrix(5,9) mat</a></div>
+      <div class="Multi-line_Input"><a name="68890">rowvector(5) row</a></div>
+      <div class="Multi-line_Input"><a name="68891">rres = row * mat</a></div>
+      <div class="Body_Text"><a name="68892">In this example, </a><span class="EViews_Name">RRES</span> will have 9 elements.</div>
+      <div class="Body_Text"><a name="68893">You can multiply a matrix object by a scalar. Each element of the original matrix is multiplied by the scalar. The result is a matrix object of the same type and dimensions as the original matrix. The scalar can come before or after the matrix object. Examples:</a></div>
+      <div class="Multi-line_Input"><a name="68894">matrix prod = 3.14159*orig</a></div>
+      <div class="Multi-line_Input"><a name="68895">matrix xxx = d_mat*7</a></div>
+      <div class="Body_Text"><a name="68899">To perform element multiplication where you multiply every element of a matrix by very element of another matrix, you should use the </a><span class="In-line_command_link"><a href="functionref_e-@emult.html#1260592" title="@emult">@emult</a></span> function.</div>
+      <div class="Heading_5"><a name="154238">Division (/)</a></div>
+      <div class="Body_Text"><a name="68900">You can divide a matrix object by a scalar. Example:</a></div>
+      <div class="Input"><a name="68901">matrix z = orig/3</a></div>
+      <div class="Body_Text"><a name="68902">Each element of the object </a><span class="EViews_Name">ORIG</span> will be divided by 3. </div>
+      <div class="Body_Text"><a name="154247">To perform element division where you divide every element of a matrix by very element of another matrix, you should use the </a><span class="In-line_command_link"><a href="functionref_e-@ediv.html#1260064" title="@ediv">@ediv</a></span> function.</div>
+      <div class="Heading_5"><a name="68912">Relational Operators (=, &gt;, &gt;=, &lt;, &lt;=, &lt;&gt;)</a></div>
+      <div class="Body_Text"><a name="68913">Two matrix objects of the same type and size may be compared using the comparison operators (=, &gt;, &gt;=, &lt;, &lt;=, &lt;&gt;). The result is a </a><span class="Emphasis">scalar</span> logical value. Every pair of corresponding elements is tested, and if <span class="Emphasis">any pair</span> fails the test, the value 0 (FALSE) is returned; otherwise, the value 1 (TRUE) is returned.</div>
+      <div class="Body_Text"><a name="68914">For example,</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="68915">if result &lt;&gt; value then </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="68916">	run crect </a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="68917">endif</a></div>
+      <div class="Body_Text"><a name="68918">It is possible for a vector to be not greater than, not less than, and not equal to a second vector. For example:</a></div>
+      <div class="Multi-line_Input"><a name="68919">vector(2) v1</a></div>
+      <div class="Multi-line_Input"><a name="68920">vector(2) v2</a></div>
+      <div class="Multi-line_Input"><a name="68921">v1(1) = 1</a></div>
+      <div class="Multi-line_Input"><a name="68922">v1(2) = 2</a></div>
+      <div class="Multi-line_Input"><a name="68923">v2(1) = 2</a></div>
+      <div class="Multi-line_Input"><a name="68924">v2(2) = 1</a></div>
+      <div class="Body_Text"><a name="68925">Since the first element of </a><span class="EViews_Name">V1</span> is smaller than the first element of <span class="EViews_Name">V2</span>, <span class="EViews_Name">V1</span> is not greater than <span class="EViews_Name">V2</span>. Since the second element of V1 is larger than the second element of <span class="EViews_Name">V2</span>, <span class="EViews_Name">V1</span> is not less than <span class="EViews_Name">V2</span>. The two vectors are not equal.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

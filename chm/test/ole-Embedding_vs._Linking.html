@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Embedding vs. Linking</title>
+    <link rel="StyleSheet" href="css/ole.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="ole-Object_Linking_and_Embedding_(OLE).html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="ole-Using_OLE.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_external-Extending_EViews.html">Extending EViews</a> : <a class="WebWorks_Breadcrumb_Link" href="ole-Object_Linking_and_Embedding_(OLE).html">Object Linking and Embedding (OLE)</a> : Embedding vs. Linking</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="232953">Embedding vs. Linking</a></div>
+      <div class="Body_Text"><a name="200183">Before continuing, it is important that we distinguish clearly between the two basic methods of using OLE to copy an EViews object to an external document:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Emphasis"><a name="228350">Embedding</a></span> an EViews object is akin to taking a snapshot of your object and storing it in a document along with information connecting the output to the EViews application. The embedded snapshot contains the graph or table data, which can be edited to a limited degree by reopening it from within the external application. Embedded objects need not be connected to their EViews source.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Emphasis"><a name="234112">Linking</a></span> an EViews object stores a <span class="Emphasis">reference</span> to the information needed to rebuild the object in EViews. All data remains within EViews. Links should remain connected to their EViews source since the linked object will look to EViews and the linked data for updating when the underlying EViews data or attributes change.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="234113">The primary distinction between embedded and linked objects lies in which application owns the data. Linked objects are pointers to information that exists solely within EViews, while embedded objects are self-contained within the document. Making a choice between these methods really depends on who you consider to be the owner of the object and the types of updating that you anticipate requiring.</a></div>
+      <div class="Body_Text"><a name="233492">An object which will require periodic updating, say from new addition of data or periodic recalculation, should be pasted as a linked object. Pasting as a link fully utilizes the power of OLE by keeping the object connected to the original data.</a></div>
+      <div class="Body_Text"><a name="271660">An object whose data will not change, but might require customizing by EViews, is probably best suited to be an embedded object. The output behaves as a static picture until reopened for modification in EViews by the external application. Embedding objects means that the output is not connected to the original data, so that only a limited amount of modification is possible.</a></div>
+      <div class="Body_Text"><a name="234095">One advantage of linking objects is that your document size can be much smaller, as linked objects contain only references to the information needed to rebuild the object in EViews. The downside to linking is that a link should remain connected to its EViews source. You cannot move or delete the original workfile if you wish to have automatic updating of the object in the external document. </a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

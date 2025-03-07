@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>How to Estimate an Elastic Net Specification in EViews</title>
+    <link rel="StyleSheet" href="css/enet.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="enet-Background.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="enet-Working_with_Elastic_Net_Equations.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="enet-Elastic_Net_and_Lasso.html">Elastic Net and Lasso</a> : How to Estimate an Elastic Net Specification in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="440156">How to Estimate an Elastic Net Specification in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#440163">The Specification Tab</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#440165">Equation Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#440188">Parameter Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#440194">Type and Alpha</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#440232">Lambda</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#440254">The Penalty Tab</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#440264">Penalty Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#489355">Individual Penalty Weights</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#489423">Cross-validation Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#489387">Variable Scaling</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#440302">Automatic Path Definition </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#440346">Path Stopping Rules</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#443912">The Options Tab</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#478524">Coefficient Limits</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#444047">Weights</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#448224">Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#455602">Optimization Method</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#455649">Iteration and Convergence</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#498484">Coefficient Name</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="440157">To estimate a elastic net (Enet) specification in EViews you must first create an equation object. You may select </a><span class="Menu_Item">Object/New Object.../Equation</span> or <span class="Menu_Item">Quick/Estimate Equation&#8230;</span> from the main menu, or enter the keyword <span class="In-line_input">equation</span> in the command window. Next, select <span class="Menu_Item">ENET - Elastic Net Regularization </span>in the <span class="Menu_Item">Method</span> drop-down menu. Alternately, entering the keyword <span class="In-line_input">enet</span> in the command window will create a new equation object and automatically set the estimation method. </div>
+      <div class="Body_Text"><a name="440158">EViews will open a dialog showing settings appropriate an elastic net specification:</a></div>
+      <div class="Picture"><a name="440162"><img class="Default" src="images/enet.047.3.01.jpg" width="100%" style="left: 0.0pt; max-height: 565px; max-width: 541px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="440163">The Specification Tab</a></div>
+      <div class="Body_Text"><a name="440164">The </a><span class="Menu_Item">Specification</span> tab displays settings for the variables in the equation specification, basic penalty definition, and the estimation sample. As the <span class="Menu_Item">Sample specification </span>should be familiar, we focus our attention on the first two sections</div>
+      <div class="Heading_5"><a name="440165">Equation Specification</a></div>
+      <div class="Body_Text"><a name="440166">You should enter the dependent variable followed by a list of regressor series or group objects in the </a><span class="Menu_Item">Equation specification</span> edit field. The special &#8220;C&#8221; regressor variable keyword may be used to include an unpenalized intercept in the specification.</div>
+      <div class="Body_Text"><a name="440167">Note that PDL and ARMA terms are not permitted in ENET estimation.</a></div>
+      <div class="Body_Text"><a name="440174">If you wish to specify individual regressors with penalty weight <img class="Default EquationGraphic" src="images/enet.047.3.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" /> in </a><span class="Link"><a href="enet-Background.html#439587" title="Background">Equation&nbsp;(37.1)</a></span>, or wish to place inequality restrictions on the coefficient values, you may do so using special expressions of the form:</div>
+      <div class="Indented"><span class="Command_Summary"><a name="440175">@vw</a></span>(<span class="Argument">series_name</span>, <span class="Argument">weight_value)</span></div>
+      <div class="Body_Text"><a name="503649">or</a></div>
+      <div class="Indented"><span class="Command_Summary"><a name="503460">@vw(</a></span><span class="Argument" style="font-weight: normal">series_name[, </span><span class="Command_Summary">wgt=</span><span class="Argument" style="font-weight: normal">weight_value,</span> <span class="Command_Summary">cmin=</span><span class="Argument" style="font-weight: normal">coef_min, </span><span class="Command_Summary">cmax=</span><span class="Argument" style="font-weight: normal">coef_max]</span>)</div>
+      <div class="Body_Text"><a name="440176">where </a><span class="Argument">weight_value</span> is a non-negative value, <span class="Argument">coef_min </span>is a non-positive minimum coefficient value, and <span class="Argument">coef_max </span>is a non-negative maximum coefficient value. </div>
+      <div class="Body_Text"><a name="503512">There are two forms of the special expression. In the specialized abbreviated form, you specify the variable name followed by the penalty weight value. In the more general form, you may specify the variable name followed by one or more keyword expressions in arbitrary order, with the &#8220;</a><span class="In-line_command">wgt=</span>&#8221; argument specifying the penalty weight, &#8220;<span class="In-line_command">cmin=</span>&#8221; giving a non-positive minimum coefficient value, and &#8220;<span class="In-line_command">cmax=</span>&#8221; providing a non-negative maximum coefficient value.</div>
+      <div class="Body_Text"><a name="477808">As an example,</a></div>
+      <div class="Input"><a name="440177">y c x @vw(z, cmax=10, wgt=0.5) @vw(w, 0.0)</a></div>
+      <div class="Body_Text"><a name="440178">specifies an elastic net model with dependent variable Y, unpenalized intercept C, penalized variable X with default weight <img class="Default EquationGraphic" src="images/enet.047.3.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" />, Z with individual weight <img class="Default EquationGraphic" src="images/enet.047.3.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 65px; top: 0.0pt" alt="" /> and maximum value of 10, and unpenalized W. </a></div>
+      <div class="Body_Text"><a name="476522">When specifying individual regressor behavior using </a>@vw, keep in mind that:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="476834">The intercept variable &#8220;C&#8221; is always non-penalized so that it has an implicit weight of 0.0.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="476655">Individual penalty weights may also be specified using a vector in the </a><span class="Menu_Item">Individual lambda wgts. vector</span> edit field on the <span class="Menu_Item">Penalty</span> dialog page (or using the command estimation option &#8220;<span class="Command_Summary">lambdawgt=</span><span class="Argument" style="font-weight: normal">vector_name</span>&#8221;). If the vector weights are specified and individual weights are specified using the @vw keyword, the vector weights will be applied first, followed by the individual variable weights.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="477359">Individual coefficient limit values may also be specified using vectors in the </a><span class="Menu_Item">Min values vector</span> and <span class="Menu_Item">Max values vector</span> edit fields on the <span class="Menu_Item">Options</span> dialog page (or the command estimation options &#8220;<span class="Command_Summary">coefmin=</span><span class="Argument" style="font-weight: normal">vector_name</span>&#8221; and &#8220;<span class="Command_Summary">coefmax =</span><span class="Argument" style="font-weight: normal">vector_name</span>&#8221;). If vector coefficient limits are specified and individual regressor limits are specified using the @vw keyword, the vector limits will be applied first, followed by the individual limits weights.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="524142">EViews will normalize the individual penalty weights so that they sum to the number of non-zero weights: <img class="Default EquationGraphic" src="images/enet.047.3.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 39px; max-width: 95px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/enet.047.3.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 22px; top: 0.0pt" alt="" /> is the number of non-zero <img class="Default EquationGraphic" src="images/enet.047.3.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Heading_5"><a name="440188">Parameter Specification</a></div>
+      <div class="Body_Text"><a name="440189">The </a><span class="Menu_Item">Penalty specification</span> section may be used to specify the penalty component:</div>
+      <div class="Picture"><a name="440193"><img class="Default" src="images/enet.047.3.08.jpg" width="100%" style="left: 0.0pt; max-height: 163px; max-width: 526px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_6"><a name="440194">Type and Alpha</a></div>
+      <div class="Body_Text"><a name="440195">The </a><span class="Menu_Item">Type</span> drop-down menu and <span class="Menu_Item">Alpha</span> edit field specify the mixing parameter. You may use the <span class="Menu_Item">Type</span> to choose between the default <span class="Menu_Item">Elastic net</span> estimator, or the <span class="Menu_Item">Lasso</span> or <span class="Menu_Item">Ridge regression</span> presets. </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440196">For the </a><span class="Menu_Item">Elastic net</span> estimator, you will be prompted to specify a value for the mixing parameter <img class="Default EquationGraphic" src="images/enet.047.3.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> in the <span class="Menu_Item">Alpha</span> edit field, <img class="Default EquationGraphic" src="images/enet.047.3.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 70px; top: 0.0pt" alt="" />. By default, <img class="Default EquationGraphic" src="images/enet.047.3.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is set to 0.9.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="440209">EViews does not allow you to specify multiple values of the <img class="Default EquationGraphic" src="images/enet.047.3.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> parameter.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440213">For the </a><span class="Menu_Item">Lasso</span> preset, the mixing parameter <img class="Default EquationGraphic" src="images/enet.047.3.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is fixed at 1.0.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440217">For the </a><span class="Menu_Item">Ridge regression</span> preset, the mixing parameter <img class="Default EquationGraphic" src="images/enet.047.3.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is fixed at 0.0. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="440218">Bear in mind that the </a><span class="Menu_Item">Ridge regression</span> preset corresponds to a specialized ridge regression estimator that employs a closed-form solution. The penalty parameters should be specified in the traditional parameterization <img class="Default EquationGraphic" src="images/enet.047.3.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 74px; top: 0.0pt" alt="" />, and not in the elastic net parameterization, <img class="Default EquationGraphic" src="images/enet.047.3.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> (see <span class="Link"><a href="enet-Background.html#439909" title="Background">&#8220;The Mixing Parameter&#8221;</a></span> for discussion).</div>
+      <div class="Bullet_List_Continue"><a name="440225">If you wish to estimate ridge regression as a special case of elastic net you should specify your </a><span class="Menu_Item">Type</span> as <span class="Menu_Item">Elastic net</span> and enter &#8220;0&#8221; for <img class="Default EquationGraphic" src="images/enet.047.3.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />, and specify the parameter <img class="Default EquationGraphic" src="images/enet.047.3.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> in using the elastic net parameterization.</div>
+      <div class="Heading_6"><a name="440232">Lambda</a></div>
+      <div class="Body_Text"><a name="440236">The </a><span class="Menu_Item">Lambda</span> edit field controls the overall penalty parameter <img class="Default EquationGraphic" src="images/enet.047.3.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. You may enter a single value, multiple values in the form of a list of values and/or vector objects, or you may leave the edit field blank to have EViews automatically determine a list of values.</div>
+      <div class="Body_Text"><a name="440240">If there are multiple <img class="Default EquationGraphic" src="images/enet.047.3.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values, EViews will sort the values from high-to-low, and perform path estimation using values from the higher <img class="Default EquationGraphic" src="images/enet.047.3.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> estimates as &#8220;warm&#8221; starting values for the next lower <img class="Default EquationGraphic" src="images/enet.047.3.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. EViews will perform cross-validation model selection to identify a &#8220;best&#8221; <img class="Default EquationGraphic" src="images/enet.047.3.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> from among the specified values. </a></div>
+      <div class="Body_Text"><a name="440253">Additional options for the specification of <img class="Default EquationGraphic" src="images/enet.047.3.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values and options controlling cross-validation model selection are specified in the </a><span class="Menu_Item">Penalty</span> tab of the dialog.</div>
+      <div class="Heading_4"><a name="440254">The Penalty Tab</a></div>
+      <div class="Body_Text"><a name="440255">Additional options related to the computation of the coefficient penalty are specified in the </a><span class="Menu_Item">Penalty</span> tab of the dialog:</div>
+      <div class="Picture"><a name="440259"><img class="Default" src="images/enet.047.3.25.jpg" width="100%" style="left: 0.0pt; max-height: 569px; max-width: 533px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="440260">There are three sections in this dialog: a </a><span class="Menu_Item">Penalty options</span> section which contains options that affect the penalty calculations, a <span class="Menu_Item">Path definition</span> section which controls the automatic determination of a list of penalty values, and a <span class="Menu_Item">Path stopping rules</span> section which controls the computation of estimates along the <img class="Default EquationGraphic" src="images/enet.047.3.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />-path.</div>
+      <div class="Heading_5"><a name="440264">Penalty Options</a></div>
+      <div class="Body_Text"><a name="440265">The </a><span class="Menu_Item">Penalty options</span> section provides settings related to the computation and selection of penalty values.</div>
+      <div class="Picture"><a name="478055"><img class="Default" src="images/enet.047.3.27.jpg" width="100%" style="left: 0.0pt; max-height: 259px; max-width: 270px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_6"><a name="489355">Individual Penalty Weights</a></div>
+      <div class="Body_Text"><a name="477972">Individual penalty weights <img class="Default EquationGraphic" src="images/enet.047.3.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> may be specified using a vector in the workfile by entering the vector name in the </a><span class="Menu_Item">Individual lambda wgts. vector</span> edit field. The vector containing non-negative values should be sized to match the number of coefficients in the specification. </div>
+      <div class="Body_Text"><a name="524459">If vector weights are specified here, and individual weights are specified in the </a><span class="Menu_Item">Specification</span> dialog page using the @vw keyword (<span class="Link"><a href="#440165" title="How to Estimate an Elastic Net Specification in EViews">&#8220;Equation Specification&#8221;</a></span>), the vector weights will be applied first, followed by the individual variable weights.</div>
+      <div class="Heading_6"><a name="489423">Cross-validation Options</a></div>
+      <div class="Body_Text"><a name="440269">There is a </a><span class="Menu_Item">Cross-validation options</span> button that is enabled if you have specified multiple <img class="Default EquationGraphic" src="images/enet.047.3.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values in the <span class="Menu_Item">Specification</span> tab. These options provide settings for controlling the cross-validation model selection procedure which computes an optimal value of <img class="Default EquationGraphic" src="images/enet.047.3.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. See <span class="Link"><a href="enet-Cross-validation_Settings.html#492162" title="Cross-validation Settings">&#8220;Cross-validation Settings&#8221;</a></span> for details.</div>
+      <div class="Heading_6"><a name="489387">Variable Scaling</a></div>
+      <div class="Body_Text"><a name="440273">The </a><span class="Menu_Item">Regressor scaling</span> and <span class="Menu_Item">Dependent scaling </span>drop-down menus control settings for the automatic scaling of your data. You may choose between: <span class="Menu_Item">None</span>, <span class="Menu_Item">Std. dev. (pop.)</span>, <span class="Menu_Item">Std. dev. (sample)</span>, <span class="Menu_Item">Absolute value (L1)</span>, <span class="Menu_Item">Squared value (L2)</span>, and <span class="Menu_Item">Min-max</span> scaling:</div>
+      <div class="Picture"><a name="476139">&nbsp;</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="440281">The </a><span class="Menu_Item">Std. dev. (pop.)</span> and <span class="Menu_Item">Std. dev. (sample)</span> scales specify whether to use the biased population (division by <img class="Default EquationGraphic" src="images/enet.047.3.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />) or unbiased sample (division by <img class="Default EquationGraphic" src="images/enet.047.3.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 44px; top: 0.0pt" alt="" />) estimates of the data variance. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="498055">The </a><span class="Menu_Item">Absolute value (L1)</span> setting employs the <img class="Default EquationGraphic" src="images/enet.047.3.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />-norm divided by <img class="Default EquationGraphic" src="images/enet.047.3.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />, </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="498044">The </a><span class="Menu_Item">Squared value (L2)</span> setting uses the <img class="Default EquationGraphic" src="images/enet.047.3.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" />-norm divided by <img class="Default EquationGraphic" src="images/enet.047.3.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="498042">The </a><span class="Menu_Item">Min-max</span> setting corresponds to using the range of the data as the scale.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="440297">By default, the regressors will be scaled using the square root of the biased estimator of the data variance: </a><span class="Menu_Item">Std. dev. (pop.)</span>, and the dependent variable will be unscaled.</div>
+      <div class="Body_Text"><a name="455093">The choice of data scaling can be an important one. Regressor scaling will generally alter the relative values of estimated coefficients, and dependent variable scaling will affect relative coefficient values in some specifications (see </a><span class="Link"><a href="enet-Background.html#440041" title="Background">&#8220;Data scaling&#8221;</a></span> for discussion).</div>
+      <div class="Body_Text"><a name="479762">Further, note that:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="454507">If you specify automatic dependent variable scaling, EViews will scale user-provided, original scale <img class="Default EquationGraphic" src="images/enet.047.3.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values to account for the automatic adjustment. EViews determined <img class="Default EquationGraphic" src="images/enet.047.3.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> path values will be obtained using the scaled data,. All </a><span class="Emphasis"><img class="Default EquationGraphic" src="images/enet.047.3.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values will be reported on the original scale</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="454314">When you specify automatic dependent or regressor scaling, EViews will estimate the elastic net model using the scaled data as specified, and the </a><span class="Emphasis">coefficient results will be reported in the original scale</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="440302">Automatic Path Definition </a></div>
+      <div class="Body_Text"><a name="440303">When the </a><span class="Menu_Item">Lambda</span> text box on the main <span class="Menu_Item">Specification</span> tab is left blank, EViews will automatically determine a grid of <img class="Default EquationGraphic" src="images/enet.047.3.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values using the approach outlined in <span class="Link"><a href="enet-Background.html#439653" title="Background">&#8220;Automatic Lambda Grid&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="440651">Two options for the automatic construction of this path are contained in the </a><span class="Menu_Item">Path definition</span> section:</div>
+      <div class="Picture"><a name="440313"><img class="Default" src="images/enet.047.3.41.jpg" width="100%" style="left: 0.0pt; max-height: 121px; max-width: 286px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="440824">First, </a><span class="Menu_Item">Path length</span> is the maximum number of <img class="Default EquationGraphic" src="images/enet.047.3.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> values to specify along the path. The default length of the path is 100.</div>
+      <div class="Body_Text"><a name="440322">Second, the </a><span class="Menu_Item">Path min/max ratio</span> is the ratio of the largest value of <img class="Default EquationGraphic" src="images/enet.047.3.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> to the smallest value of <img class="Default EquationGraphic" src="images/enet.047.3.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> along the path. The largest value is determined by using the data to compute the smallest <img class="Default EquationGraphic" src="images/enet.047.3.45.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> penalty for which all of the estimated coefficients are 0. (For ridge regression specifications, coefficients are not easily pushed to zero, so we arbitrarily use an elastic net model with <img class="Default EquationGraphic" src="images/enet.047.3.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 82px; top: 0.0pt" alt="" /> to determine this penalty.) The resulting <img class="Default EquationGraphic" src="images/enet.047.3.47.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> will be the largest value of <img class="Default EquationGraphic" src="images/enet.047.3.48.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> considered. The smallest value is <img class="Default EquationGraphic" src="images/enet.047.3.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" /> times the value of this parameter. The default value is 0.001.</div>
+      <div class="Heading_6"><a name="440346">Path Stopping Rules</a></div>
+      <div class="Body_Text"><a name="440353">Given a set of <img class="Default EquationGraphic" src="images/enet.047.3.50.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> sorted from high to low, <img class="Default EquationGraphic" src="images/enet.047.3.51.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 172px; top: 0.0pt" alt="" />, path estimation begins by estimating a model with <img class="Default EquationGraphic" src="images/enet.047.3.52.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 35px; top: 0.0pt" alt="" /> (the most penalized specification) and continuing to estimate successively less penalized models, using the results from the previous <img class="Default EquationGraphic" src="images/enet.047.3.53.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> as starting values. EViews will stop path estimation in the event that convergence is not achieved for a given <img class="Default EquationGraphic" src="images/enet.047.3.54.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="440360">In practice, we may find that estimating additional models along the path provides little additional benefit in terms of model fit, or that there are excessively large numbers of non-zero estimated coefficients at the given <img class="Default EquationGraphic" src="images/enet.047.3.55.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. In these cases, continuing along the path to estimate additional models at lower <img class="Default EquationGraphic" src="images/enet.047.3.56.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> offers little benefit at considerable computational cost.</a></div>
+      <div class="Body_Text"><a name="442171">To account for this possibility, you may specify </a><span class="Menu_Item">Path stopping rules</span> so that path estimation will stop when certain criteria are reached:</div>
+      <div class="Picture"><a name="440367"><img class="Default" src="images/enet.047.3.57.jpg" width="100%" style="left: 0.0pt; max-height: 248px; max-width: 292px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="440890">The first two options describe stopping rules associated with the model fit: path estimation will stop when the current model R-squared exceeds the value in the </a><span class="Menu_Item">Max. R-squared</span>, or when the<span class="Menu_Item"> </span>change in the sum-of-squared residuals (deviance) between the prior <img class="Default EquationGraphic" src="images/enet.047.3.58.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> model and the current <img class="Default EquationGraphic" src="images/enet.047.3.59.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> model is less than the <span class="Menu_Item">Min. change in deviance</span> value.</div>
+      <div class="Body_Text"><a name="442975">The </a><span class="Menu_Item">Min. path length</span> option is a modifier to the path stopping rules, specifying the minimum number of path lambda to estimate before applying any stopping rules.</div>
+      <div class="Body_Text"><a name="443163">The remaining optional edit fields allow you to stop the path estimation when the number of non-zero coefficients becomes large. You may specify the limit on the number of coefficients as an explicit value (</a><span class="Menu_Item">Number of coefficients</span>) or as a fraction of the number of observations in estimation (<span class="Menu_Item">Fraction of observations</span>), or both. If specified, the coefficient restrictions are evaluated once the minimum path length requirement is satisfied.</div>
+      <div class="Heading_4"><a name="443912">The Options Tab</a></div>
+      <div class="Body_Text"><a name="442938">The </a><span class="Menu_Item">Options</span> tab contains the remaining estimation settings. There are four sections: <span class="Menu_Item">Coefficient limits</span>, <span class="Menu_Item">Weights</span>, <span class="Menu_Item">Estimation</span>, and <span class="Menu_Item">Coefficient name</span>.</div>
+      <div class="Picture"><a name="440374"><img class="Default" src="images/enet.047.3.60.jpg" width="100%" style="left: 0.0pt; max-height: 577px; max-width: 538px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_5"><a name="478524">Coefficient Limits</a></div>
+      <div class="Body_Text"><a name="478563">Coefficient minimum and maximum values may be specified using vectors or a scalar in the </a><span class="Menu_Item">Min values vector</span> and <span class="Menu_Item">Max values vector</span> edit fields. </div>
+      <div class="Body_Text"><a name="498334">The vectors containing the minimum non-positive and the maximum non-negative values should be sized to match the number of coefficients in the specification. Non-restricted coefficients are indicated using a NA in the corresponding vector element.</a></div>
+      <div class="Body_Text"><a name="478752">If vector coefficient limits are specified and individual regressor limits are specified using individual variables with the </a>@vw keyword in the <span class="Numbers" style="font-weight: bold">Specification</span> page (see <span class="Link"><a href="#440165" title="How to Estimate an Elastic Net Specification in EViews">&#8220;Equation Specification&#8221;</a></span>), the vector limits will be applied first, followed by the individual limits.</div>
+      <div class="Heading_5"><a name="444047">Weights</a></div>
+      <div class="Body_Text"><a name="448212">The familiar </a><span class="Menu_Item">Weights</span> section allows you to specify individual estimation weights. </div>
+      <div class="Picture"><a name="444580"><img class="Default" src="images/enet.047.3.61.jpg" width="100%" style="left: 0.0pt; max-height: 160px; max-width: 261px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="444629">The </a><span class="Menu_Item">Type</span> dropdown menu is used to specify the form of the data in the specified weight series: <span class="Menu_Item">None</span>, <span class="Menu_Item">Inv. std. dev.</span>, <span class="Menu_Item">Inverse variance</span>, <span class="Menu_Item">Std. dev.</span>, or <span class="Menu_Item">Variance</span>. If you select a <span class="Menu_Item">Type</span> other than <span class="Menu_Item">None</span>, EViews will prompt you to provide a weight series name. The <span class="Menu_Item">Scaling</span> dropdown menu allows you to specify a scale to apply to the values in the weight series. By default EViews scales the weights so the square roots sum to <img class="Default EquationGraphic" src="images/enet.047.3.62.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="449908">See </a><span class="Link"><a href="Regress2-Weighted_Least_Squares.html#266407" title="Weighted Least Squares">&#8220;Weighted Least Squares&#8221;</a></span> of <span class="Manual_Titles">User&#8217;s Guide I</span> for further discussion.</div>
+      <div class="Heading_5"><a name="448224">Estimation</a></div>
+      <div class="Body_Text"><a name="444873">The </a><span class="Menu_Item">Estimation</span> section offers settings for controlling iterative estimation. </div>
+      <div class="Picture"><a name="445061"><img class="Default" src="images/enet.047.3.63.jpg" width="100%" style="left: 0.0pt; max-height: 195px; max-width: 286px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_6"><a name="455602">Optimization Method</a></div>
+      <div class="Body_Text"><a name="445059">For the ridge regression method, the iterative optimization options will be disabled since EViews estimates the coefficients using the closed form estimator. </a></div>
+      <div class="Body_Text"><a name="445562">For elastic net and Lasso estimation, the </a><span class="Menu_Item">Optimization</span> <span class="Menu_Item">method</span> allows you to choose between the <span class="Menu_Item">EViews</span>, <span class="Menu_Item">Covariance</span>, and <span class="Menu_Item">Naive</span> methods. Discussion of the choice requires a bit of background.</div>
+      <div class="Body_Text"><a name="445962">Briefly, iterative estimation of these penalized regression models is performed by EViews using the active-set cyclical coordinate descent algorithm as described in detail by Hastie, Tibshirani, and Friedman (2010). Within this framework, the authors outline two approaches to cyclical coordinate descent which they term the </a><span class="Definition">naive</span> and the <span class="Definition">covariance update</span> methods. </div>
+      <div class="Body_Text"><a name="445940">When updating a coefficient using cyclical coordinate descent, the &#8220;naive&#8221; method computes the gradients of the loss with respect to an individual coefficient using the residuals computed at current residuals. Thus, a full update cycle with respect to all of the coefficients requires <img class="Default EquationGraphic" src="images/enet.047.3.64.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" /> residual updates; one full computation of the residuals as each coefficient is updated.</a></div>
+      <div class="Body_Text"><a name="446472">In contrast, the &#8220;covariance&#8221; method computes the inner product between all of the regressors and both the dependent variable and all regressors prior to beginning estimate. These moments are held for the remainder of the procedure and accessed in each coefficient update.</a></div>
+      <div class="Body_Text"><a name="447106">In most cases, the covariance method offers considerable efficiencies relative to the naive method as it does not require computation of residuals for each coefficient. Note however, that the covariance algorithm does require inner products for all regressors against all other regressors, the number of which increases with the square of the number of regressors. For very large numbers of coefficients, the computational and storage costs may make this approach impractical.</a></div>
+      <div class="Body_Text"><a name="447615">To balance these competing burdens, the </a><span class="Menu_Item">EViews</span> setting offers a default estimation method which uses covariance updates if the number of variables is less than or equal to 200, and naive updates if the number of variables is greater than 200. You may use the <span class="Menu_Item">Covariance</span>, and <span class="Menu_Item">Naive</span> settings to specify a method in place of this EViews default.</div>
+      <div class="Heading_6"><a name="455649">Iteration and Convergence</a></div>
+      <div class="Body_Text"><a name="448246">The </a><span class="Menu_Item">Max iterations</span> and <span class="Menu_Item">Convergence</span> tolerance edit fields control those two aspects of estimation. The <span class="Menu_Item">Max iterations</span> option is self-explanatory. The <span class="Menu_Item">Convergence</span> setting needs a bit of discussion.</div>
+      <div class="Body_Text"><a name="455684">Convergence for the EViews cyclical coordinate descent algorithm is defined in terms of changes in coefficients. We follow Hastie, Tibshirani, and Friedman (2010) in defining the scaled coefficient difference for a coefficient update as the squared change in the coefficient divided by the average of the squared values of the corresponding regressor. Convergence is achieved when the maximum of the scaled coefficient differences falls below the specified value.</a></div>
+      <div class="Heading_5"><a name="498484">Coefficient Name</a></div>
+      <div class="Body_Text"><a name="498480">Enter the name of a coefficient vector to replace the default &#8220;C&#8221; used in estimation. The Coef object will be created and sized, or resized as needed.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

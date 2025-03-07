@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Post-Estimation Views and Procs</title>
+    <link rel="StyleSheet" href="css/funccoef.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="funccoef-Estimating_Functional_Coefficients_Models_in_EVi.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="funccoef-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="funccoef-Functional_Coefficient_Regression.html">Functional Coefficient Regression</a> : Post-Estimation Views and Procs</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="281041">Post-Estimation Views and Procs</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281043">Functional Residuals</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281049">Functional Bias</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281067">Functional Covariance/Correlation Matrix</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281086">Bandwidth Views</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#281088">Estimation Bandwidth</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#281101">Pilot Bandwidth</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281112">Confidence Intervals</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281137">Stability and Significance Tests</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281170">Forecasting</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281191">Setting and Clearing the Local Pilot Bandwidth</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281213">Output Objects to Workfile</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="281042">After estimating the model, EViews offers several post-estimation views. </a></div>
+      <div class="Heading_4"><a name="281043">Functional Residuals</a></div>
+      <div class="Body_Text"><a name="281044">You may examine the fitted values and residuals from the fitted model by clicking on </a><span class="Menu_Item">View/Actual, Fitted, Residual</span> and then choosing to display a graph or table view of the residuals, actuals, and fitted values, or a residual graph:</div>
+      <div class="Picture"><a name="281048"><img class="Default" src="images/funccoef.048.4.01.jpg" width="100%" style="left: 0.0pt; max-height: 400px; max-width: 522px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="281049">Functional Bias</a></div>
+      <div class="Body_Text"><a name="281050">To display estimates of the functional bias, select </a><span class="Menu_Item">View/Functional Bias...</span> from the equation menu. EViews will open a dialog showing you options associated with estimating the bias:</div>
+      <div class="Picture"><a name="281054"><img class="Default" src="images/funccoef.048.4.02.jpg" width="100%" style="left: 0.0pt; max-height: 489px; max-width: 266px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281057">Functional biases must be estimated using a pilot bandwidth (</a><span class="Link"><a href="funccoef-Background.html#280705" title="Background">&#8220;Pilot Bandwidth&#8221;</a></span>). The method of selecting a pilot bandwidth for the bias calculation may be specified by selecting desired options. The <span class="Menu_Item">Update local pilot bandwidth</span> checkbox may be used to control whether the results of the bandwidth computation are saved as the local pilot.</div>
+      <div class="Body_Text"><a name="281296">Alternately, if a pilot bandwidth has previously been set, it may be used for this calculation by clicking on the </a><span class="Menu_Item">Use local pilot bandwidth</span> checkbox (see <span class="Link"><a href="#281191" title="Post-Estimation Views and Procs">&#8220;Setting and Clearing the Local Pilot Bandwidth&#8221;</a></span>). </div>
+      <div class="Body_Text"><a name="281062">Once your settings have been chosen, click on </a><span class="Menu_Item">OK</span>.</div>
+      <div class="Picture"><a name="281066"><img class="Default" src="images/funccoef.048.4.03.jpg" width="100%" style="left: 0.0pt; max-height: 488px; max-width: 560px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="281067">Functional Covariance/Correlation Matrix</a></div>
+      <div class="Body_Text"><a name="281068">Selecting </a><span class="Menu_Item">View/Functional Covariances...</span> brings up a dialog with options associated with estimating the functional covariance functions:</div>
+      <div class="Picture"><a name="281072"><img class="Default" src="images/funccoef.048.4.04.jpg" width="100%" style="left: 0.0pt; max-height: 522px; max-width: 265px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281456">Functional covariances estimated using a pilot bandwidth (</a><span class="Link"><a href="funccoef-Background.html#280705" title="Background">&#8220;Pilot Bandwidth&#8221;</a></span>). A pilot bandwidth for the covariance calculation may be specified using options specified in this dialog. The <span class="Menu_Item">Update local pilot bandwidth</span> checkbox may be used to control whether the results of the bandwidth computation are saved as the local pilot.</div>
+      <div class="Body_Text"><a name="281076">Alternately, if a pilot bandwidth has previously been set, it may be used for this calculation by clicking on</a><span class="Menu_Item"> Use local pilot bandwidth</span> (see <span class="Link"><a href="#281191" title="Post-Estimation Views and Procs">&#8220;Setting and Clearing the Local Pilot Bandwidth&#8221;</a></span>). </div>
+      <div class="Body_Text"><a name="281080">If you wish to compute correlations instead of covariances, select the </a><span class="Menu_Item">Functional correlations</span> checkbox. Click on <span class="Menu_Item">OK</span> to display the graphs.</div>
+      <div class="Picture"><a name="281084"><img class="Default" src="images/funccoef.048.4.05.jpg" width="100%" style="left: 0.0pt; max-height: 401px; max-width: 597px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="281086">Bandwidth Views</a></div>
+      <div class="Body_Text"><a name="281087">Bandwidth selection is a critical part of functional coefficient estimation. EViews offers views for examining your estimation and pilot bandwidth choices.</a></div>
+      <div class="Heading_5"><a name="281088">Estimation Bandwidth</a></div>
+      <div class="Body_Text"><a name="281089">To see how the estimation objective function changes along the bandwidth search grid, select </a><span class="Menu_Item">View/Estimation Bandwidth/Criteria Graph</span> or <span class="Menu_Item">Criteria Table</span>. Selecting the graph, we have:</div>
+      <div class="Picture"><a name="281093"><img class="Default" src="images/funccoef.048.4.06.jpg" width="100%" style="left: 0.0pt; max-height: 450px; max-width: 536px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281094">shows the graph displaying the relationship between the final bandwidth and the value of the objective. </a></div>
+      <div class="Body_Text"><a name="281095">The table display provides an alternative view of the relationship:</a></div>
+      <div class="Picture"><a name="281099"><img class="Default" src="images/funccoef.048.4.07.jpg" width="100%" style="left: 0.0pt; max-height: 408px; max-width: 406px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281100">If the estimation required computation of a pilot bandwidth, the graph or table will also display the relationship between </a><span class="Emphasis">both</span> the final and the pilot bandwidths and the objective.</div>
+      <div class="Heading_5"><a name="281101">Pilot Bandwidth</a></div>
+      <div class="Body_Text"><a name="281102">To see how the estimation objective function changes along the pilot search grid, select </a><span class="Menu_Item">View/Pilot Bandwidth/Criteria Graph</span> or <span class="Menu_Item">Criteria Table</span>. </div>
+      <div class="Picture"><a name="281106"><img class="Default" src="images/funccoef.048.4.08.jpg" width="100%" style="left: 0.0pt; max-height: 459px; max-width: 533px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281107">These views will display the pilot bandwidth from estimation, if available, and the local pilot bandwidth, if available (see </a><span class="Link"><a href="#281191" title="Post-Estimation Views and Procs">&#8220;Setting and Clearing the Local Pilot Bandwidth&#8221;</a></span>). </div>
+      <div class="Heading_4"><a name="281112">Confidence Intervals</a></div>
+      <div class="Body_Text"><a name="281113">Clicking on </a><span class="Menu_Item">View/Coefficient Diagnostics/Confidence Intervals...</span> brings up a dialog prompting you to specify options for computing the confidence interval and the pilot bandwidth:</div>
+      <div class="Picture"><a name="281117"><img class="Default" src="images/funccoef.048.4.09.jpg" width="100%" style="left: 0.0pt; max-height: 463px; max-width: 497px; top: 0.0pt" alt="" /></a></div>
+      <div class="Picture"><a name="281118">&nbsp;</a></div>
+      <div class="Body_Text"><a name="281119">The left-hand side of the dialog contains options associated with computation of the confidence intervals. </a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281120">If you prefer to compute standard error bands in place of confidence intervals, click on the </a></span><span class="Menu_Item">Make SE bands</span> checkbox and select the number of standard error bands to display in the <span class="Menu_Item">Standard deviations</span> dropbox. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281121">If instead you are computing confidence intervals, you may specify one or more levels in the </a></span><span class="Menu_Item">Confidence levels</span> textbox. The default value is 0.95. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281122">If critical values are to be computed from Gaussian critical values as opposed to the true limiting distribution, check the </a></span><span class="Menu_Item">Use Gaussian critical values</span> box. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281123">Finally, if bias is to be ignored in deriving confidence intervals, select the </a></span><span class="Menu_Item">Don&#8217;t account for bias</span> setting. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="281482">The right portion of the dialog shows options associated with the required pilot stage estimation. You may specify pilot bandwidth options in this dialog or choose to use a previously determined local pilot bandwidth (see </a><span class="Link"><a href="#281191" title="Post-Estimation Views and Procs">&#8220;Setting and Clearing the Local Pilot Bandwidth&#8221;</a></span>). </div>
+      <div class="Picture"><a name="281131"><img class="Default" src="images/funccoef.048.4.10.jpg" width="100%" style="left: 0.0pt; max-height: 465px; max-width: 491px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281132">Click on </a><span class="Menu_Item">OK</span> to display the output.</div>
+      <div class="Picture"><a name="281136"><img class="Default" src="images/funccoef.048.4.11.jpg" width="100%" style="left: 0.0pt; max-height: 541px; max-width: 551px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="281137">Stability and Significance Tests</a></div>
+      <div class="Body_Text"><a name="281138">Selecting </a><span class="Menu_Item">View/Coefficient Diagnostics/Stability and Significance Tests...</span> brings up a dialog prompting you specify the tests and options of interest:</div>
+      <div class="Picture"><a name="281142"><img class="Default" src="images/funccoef.048.4.12.jpg" width="100%" style="left: 0.0pt; max-height: 462px; max-width: 507px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281143">You may provide one or more restrictions specify a test for:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281147">whether coefficient <img class="Default EquationGraphic" src="images/funccoef.048.4.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> is functionally equivalent to a specific numeric value (example, &#8220;c(1) = 2&#8221;).</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281151">whether coefficient <img class="Default EquationGraphic" src="images/funccoef.048.4.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> is constant on the estimated grid (using the </a></span><span class="Menu_Item">@const</span> keyword; example, &#8220;c(1)=@const&#8221;).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281155">whether coefficient <img class="Default EquationGraphic" src="images/funccoef.048.4.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> is equal to the values in a series in the workfile (example, &#8220;c(1)=s1&#8221;).</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281159">whether coefficient <img class="Default EquationGraphic" src="images/funccoef.048.4.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" /> is equal to the values in a vector in the workfile (for estimation on a custom grid; example &#8220;c(1)=v1&#8221;).</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281160">whether all coefficients are restricted (using the </a></span><span class="Menu_Item">@all</span> keyword; examples, &#8220;@all=2&#8221;, &#8220;@all=@const&#8221;).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="281161">The remainder of the dialog is reserved for options associated with the pilot stage estimation. You may specify pilot options in this dialog or choose to use a previously determined local pilot bandwidth (see </a><span class="Link"><a href="#281191" title="Post-Estimation Views and Procs">&#8220;Setting and Clearing the Local Pilot Bandwidth&#8221;</a></span>). </div>
+      <div class="Body_Text"><a name="281165">When all options have been specified, click on </a><span class="Menu_Item">OK</span> to display the table of results:</div>
+      <div class="Picture"><a name="281169"><img class="Default" src="images/funccoef.048.4.17.jpg" width="100%" style="left: 0.0pt; max-height: 343px; max-width: 358px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="281170">Forecasting</a></div>
+      <div class="Body_Text"><a name="281171">To perform a forecast using the estimated functional coefficient model, click on the </a><span class="Menu_Item">Forecast</span> button in the equation object, or click on <span class="Menu_Item">Proc/Forecast...</span> to display the forecast dialog:</div>
+      <div class="Picture"><a name="281175"><img class="Default" src="images/funccoef.048.4.18.jpg" width="100%" style="left: 0.0pt; max-height: 409px; max-width: 509px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281176">Most of these options should be familiar from typical forecast dialogs. The most important difference lies in the choice of forecast </a><span class="Menu_Item">Stochastic method</span>. You may use the <span class="Menu_Item">Type</span> dropdown to choose between <span class="Menu_Item">Plug-in</span>, <span class="Menu_Item">Monte Carlo (asymptotic)</span>, <span class="Menu_Item">Monte Carlo (bootstrap)</span>, and <span class="Menu_Item">Full bootstrap</span> methods (see <span class="Link"><a href="funccoef-Background.html#280799" title="Background">&#8220;Point Forecasts&#8221;</a></span> for discussion).</div>
+      <div class="Body_Text"><a name="281180">The available computation options depend on the type selected:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281181">For the Monte Carlo and bootstrap methods, the number of simulations may be set in the </a></span><span class="Menu_Item">Replications</span> textbox.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281182">When the stochastic method employs a bootstrap, problematic re-sampling of the functional coefficient variable values can be mitigated by selecting the lower and upper data proportions to conform re-sampled observations to said range of original observations. </a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281183">For the full bootstrap, computationally complexity can be achieved by choosing to bootstrap only the dependent variable by ensuring the </a></span><span class="Menu_Item">Bootstrap response only</span> box is checked.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281184">Finally, when any of the stochastic methods is employed (other than </a></span><span class="Menu_Item">Plug-in</span>) is chosen, forecast confidence levels will be derived from the distribution of the simulation results. You may specify the confidence interval level in the <span class="Menu_Item">Confidence level</span> edit field. You will also be prompted to enter a name in the <span class="Menu_Item">CI prefix (optional)</span> edit field to save the confidence intervals in the workfile using names formed by appending &#8220;_LWR&#8221; and &#8220;_UPR&#8221; to the specified prefix).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="281185">Once all the options are specified, click on </a><span class="Menu_Item">OK</span> to compute the forecasts and display the results.</div>
+      <div class="Picture"><a name="281189"><img class="Default" src="images/funccoef.048.4.19.jpg" width="100%" style="left: 0.0pt; max-height: 495px; max-width: 612px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="281191">Setting and Clearing the Local Pilot Bandwidth</a></div>
+      <div class="Body_Text"><a name="281192">Many of the functional coefficient equation views and procedures rely on preliminary computation using a pilot bandwidth. For each of those views and procs, the corresponding dialog offers settings which allow you to specify a method for computing the pilot bandwidth.</a></div>
+      <div class="Body_Text"><a name="281193">A pilot bandwidth may, however, be expensive to compute, and it makes sense to allow users to define a </a><span class="Definition">local pilot bandwidth</span> that is computed once and then made available for use in all of subsequent views and procedures.</div>
+      <div class="Body_Text"><a name="281194">The local pilot bandwidth may be set in two distinct ways:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281195">By default, when a estimation final stage bandwidth procedure such as MSE, LOO, or non-parametric AIC is employed, the local pilot bandwidth will be initialized to the pilot bandwidth obtained in that procedure.</a></span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281196">(For other estimation methods, no pilot bandwidth is computed so the local pilot bandwidth is not initially defined.)</a></span></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281197">You may use the </a></span><span class="Menu_Item">Set Local Pilot Bandwidth...</span> proc to initialize (or replace) the local pilot bandwidth. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="281198">To set the local pilot bandwidth, click on </a><span class="Menu_Item">Proc/Set Local Pilot Bandwidth...</span> from the equation menu to display the dialog:</div>
+      <div class="Picture"><a name="281202"><img class="Default" src="images/funccoef.048.4.20.jpg" width="100%" style="left: 0.0pt; max-height: 416px; max-width: 266px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281203">From here, select the desired options and click on </a><span class="Menu_Item">OK</span> to compute and save a local pilot bandwidth and to display a summary of the bandwidth selection results:</div>
+      <div class="Picture"><a name="281207"><img class="Default" src="images/funccoef.048.4.21.jpg" width="100%" style="left: 0.0pt; max-height: 410px; max-width: 360px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281208">The local pilot bandwidth will be available in all views and procs that employ a pilot bandwidth. You may elect to use this bandwidth in those cases by selecting the </a><span class="Menu_Item">Use existing local pilot bandwidth</span> checkbox.</div>
+      <div class="Body_Text"><a name="281209">You may display a table or a graph of both the estimation pilot bandwidth (if available) and the local pilot bandwidth results by clicking on </a><span class="Menu_Item">View/Pilot Bandwidth</span> and selecting either <span class="Menu_Item">Criteria Graph</span> or <span class="Menu_Item">Criteria Table</span> (<span class="Link"><a href="#281086" title="Post-Estimation Views and Procs">&#8220;Bandwidth Views&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="281516">To clear the local pilot bandwidth, select </a><span class="Menu_Item">Proc/Clear Local Pilot Bandwidth.</span></div>
+      <div class="Heading_4"><a name="281213">Output Objects to Workfile</a></div>
+      <div class="Body_Text"><a name="281214">Selecting </a><span class="Menu_Item">Proc/Make Functional Objects...</span> allows you to export various functional coefficients results to the workfile:</div>
+      <div class="Picture"><a name="281218"><img class="Default" src="images/funccoef.048.4.22.jpg" width="100%" style="left: 0.0pt; max-height: 573px; max-width: 461px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="281219">The type of functional object to be saved may be chosen from the </a><span class="Menu_Item">Type</span> dropdown. In most cases, you will be prompted for an <span class="Menu_Item">Output name </span>to be used in saving the object to the workfile.</div>
+      <div class="Body_Text"><a name="281220">The output of the functional object is saved to a matrix in the workfile where the rows correspond to the evaluation points specified in estimation. If estimation uses the default evaluation grid, functional values will be computed at the data values of the functional coefficient series for each observation in the estimation sample. Alternately, if you specified a uniform grid or provided a workfile vector, the rows will correspond to the elements of that custom grid.</a></div>
+      <div class="Body_Text"><a name="281221">There are several options associated with the composition of this matrix:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281222">You should check </a></span><span class="Menu_Item">Align to sample length </span>box if you the wish to expand the number of rows of the output matrix are to match the workfile length. Aligning the rows of the output matrix to match the workfile will make it easier to export the results to series.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281223">Duplicate evaluation points are sometimes present in series or vector-based functional coefficient evaluation. If you wish to only evaluate the functional values at unique points, you should click on the </a></span><span class="Menu_Item">Remove duplicate grid obs.</span> checkbox.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281224">By default, the rows of the matrix will contain evaluation point values as they are observed. For series or vector-based functional coefficient evaluation, the rows will therefore be unordered with respect to these values. If you wish to sort the rows by the evaluation point values, select the </a></span><span class="Menu_Item">Sort grid obs</span> checkbox. The rows of the output matrix will be ordered from low to high values of the evaluation points.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="281228">Recall that the Taylor expansion in </a><span class="Link"><a href="funccoef-Background.html#280620" title="Background">Equation&nbsp;(38.5)</a></span> creates coefficients associated with the degree of the expansion. By default EViews will save only the original equation coefficients, but you may elect to save results associated these derivatives:</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281229">To include derivative coefficient results in the output, check the</a></span><span class="Menu_Item"> Include derivative coefs.</span> box. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="281230">For each output type, there will be different available options:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281231">When the output object requires a pilot bandwidth for computation, the </a></span><span class="Menu_Item">Pilot bandwidth options</span> will be displayed. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281232">Covariances and correlations are produced with respect to some reference coefficient which should be specified in the </a></span><span class="Menu_Item">Reference coef.</span> dropdown. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px; vertical-align: baseline">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap; color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner" style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none"><span style="color: #000000; font-style: normal; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><a name="281233">For confidence intervals, the options associated with computation of confidence intervals or standard errors will be displayed (</a></span><span class="Link"><a href="#281112" title="Post-Estimation Views and Procs">&#8220;Confidence Intervals&#8221;</a></span>). Note that the confidence intervals for coefficients will be saved in pairs to adjacent columns of the output matrix.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="281694">The remaining portion of the dialog shows options associated with the required pilot stage estimation. You may specify pilot bandwidth options in this dialog or choose to use a previously determined local pilot bandwidth (see </a><span class="Link"><a href="#281191" title="Post-Estimation Views and Procs">&#8220;Setting and Clearing the Local Pilot Bandwidth&#8221;</a></span>). </div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

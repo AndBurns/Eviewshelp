@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Maintaining the Database</title>
+    <link rel="StyleSheet" href="css/database.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="database-Object_Aliases_and_Illegal_Names.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="database-Foreign_Format_Databases.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="database-EViews_Databases.html">EViews Databases</a> : Maintaining the Database</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="37599">Maintaining the Database</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37601">Database File Operations</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37614">Packing the Database</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#37621">Dealing with Errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#60705">Rebuilding the Database</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="37600">In many cases an EViews database should function adequately without any explicit maintenance. Where maintenance is necessary, EViews provides a number of procedures to help you perform common tasks.</a></div>
+      <div class="Heading_4"><a name="37601">Database File Operations</a></div>
+      <div class="Body_Text"><a name="37602">Because EViews databases are spread across multiple files, all of which have the same name but different extensions, simple file operations like copy, rename and delete require multiple actions if performed outside of EViews. The </a><span class="Menu_Item">Proc</span> button in the database window toolbar contains the procedures <span class="Menu_Item">Copy the database</span>, <span class="Menu_Item">Rename the database</span>, and <span class="Menu_Item">Delete the database</span> that carry out the chosen operation on all of the files that make up the database.</div>
+      <div class="Body_Text"><a name="37609">Note that file operations do not automatically update the database registry. If you delete or rename a database that is registered, you should either create a new database with the same name and location, or edit the registry.</a></div>
+      <div class="Heading_4"><a name="37614">Packing the Database</a></div>
+      <div class="Body_Text"><a name="37615">If many objects are deleted from an EViews database without new objects being inserted, a large amount of unused space will be left in the database. In addition, if objects are frequently overwritten in the database, there will be a tendency for the database to grow gradually in size. The extent of growth will depend on the circumstances, but a typical database is likely to stabilize at a size around 60% larger than what it would be if it were written in a single pass.</a></div>
+      <div class="Body_Text"><a name="37616">A database can be compacted down to its minimum size by using the pack procedure. Simply click on the button marked </a><span class="Menu_Item">Proc</span> in the toolbar at the top of the database window, then select the menu item <span class="Menu_Item">Pack the Database</span>. Depending on the size of the database and the speed of the computer which you are using, performing this operation may take a significant amount of time.</div>
+      <div class="Body_Text"><a name="66392">You can get some idea of the amount of space that will be reclaimed during a pack by looking at the Packable Space percentage displayed in the top right corner of the database window. A figure of 30%, for example, indicates that roughly a third of the database file consists of unused space. A more precise figure can be obtained from the </a><span class="Menu_Item">Database Statistics</span> view of a database. The number following the label &#8220;unused space&#8221; gives the number of unused bytes contained in the main database file.</div>
+      <div class="Heading_4"><a name="37621">Dealing with Errors</a></div>
+      <div class="Body_Text"><a name="37622">EViews databases are quite robust, so you should not experience problems working with them on a regular basis. However, as with all computer files, hardware or operating system problems may produce conditions under which your database is damaged.</a></div>
+      <div class="Body_Text"><a name="151602">The best way to protect against damage to a database is to make regular backup copies of the database. This can be performed easily using the </a><span class="Menu_Item">Copy the Database</span> procedure documented above. EViews provides a number of other features to help you deal with damaged databases.</div>
+      <div class="Body_Text"><a name="37623">Damaged databases can be divided into two basic categories depending on how severely the database has been damaged. A database which can still be opened in a database window but generates an error when performing some operations may not be severely damaged and may be reparable. A database which can no longer be opened in a database window is severely damaged and will need to be rebuilt as a new database.</a></div>
+      <div class="Body_Text"><a name="37624">EViews has two procedures designed for working with databases which can be opened: </a><span class="Menu_Item">Test Database Integrity</span> and <span class="Menu_Item">Repair Database</span>. Both procedures are accessed by clicking on the button marked <span class="Menu_Item">Proc</span> in the database window toolbar, then selecting the appropriate menu item.</div>
+      <div class="Body_Text"><span class="Menu_Item"><a name="37627">Test Database Integrity</a></span> conducts a series of validity checks on the main database and index files. If an error is detected, a message box will be displayed, providing some information as to the type of error found and a suggestion as to how it might be dealt with. Because testing performs a large number of consistency checks on the database files, it may take considerable time to complete. You can monitor its progress by watching the messages displayed in the status line at the bottom of the EViews window. Testing a database does not modify the database in any way, and will never create additional damage to a database.</div>
+      <div class="Body_Text"><span class="Menu_Item"><a name="37630">Repair Database</a></span> will attempt to automatically detect and correct simple problems in the database. Although care has been taken to make this command as safe as possible, it will attempt to modify a damaged database, so it is probably best to make a back up copy of a damaged database before running this procedure.</div>
+      <div class="Heading_4"><a name="60705">Rebuilding the Database</a></div>
+      <div class="Body_Text"><a name="101554">If the database is badly corrupted, it may not be possible for it to be repaired. In this case, EViews gives you the option of building a new database from the old one using the </a><span class="In-line_input">dbrebuild</span> command. This operation can only be performed from the command line (since it may be impossible to open the database). The command is:</div>
+      <div class="Input"><a name="37634">dbrebuild old_dbname new_dbname</a></div>
+      <div class="Body_Text"><a name="37635">The </a><span class="In-line_input">dbrebuild</span> command does a low level scan through the main data file of the database <span class="In-line_input">old_dbname</span> looking for any objects which can be recovered. Any such objects are copied into the new database <span class="In-line_input">new_dbname</span>. This is a very time consuming process, but it will recover as much data as possible from even heavily damaged files.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

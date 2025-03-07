@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Example</title>
+    <link rel="StyleSheet" href="css/btvcVAR.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="btvcVAR-Implementation_Details.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="btvcVAR-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="btvcVAR-Bayesian_Time-varying_Coefficients_VAR_Models.html">Bayesian Time-varying Coefficients VAR Models</a> : Example</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="278665">Example</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281185">Estimation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#281295">Impulse Response</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="278666">We demonstrate the EViews implementation of BTVCVAR using a data set from Chan &amp; Jeliazkov (2009). Open the EViews workfile &#8220;cj09.wf1&#8221; containing the series GDP (output growth), UNEMP (unemployment rate), INTEREST (interest rate), and INFLATION (inflation rate). Set the workfile sample to &#8220;1948Q4 2009Q4&#8221; to match the sample used by the code accompanying the paper.</a></div>
+      <div class="Heading_4"><a name="281185">Estimation</a></div>
+      <div class="Body_Text"><a name="281183">To estimate the BTVCVAR, run the following in the command window.</a></div>
+      <div class="In-line_command_outer" style="margin-left: 43.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="In-line_command_inner" style="width: 14.399999999999998pt; white-space: nowrap"></div>
+            </td>
+            <td width="100%">
+              <div class="In-line_command_inner"><a name="278667">var myvar.btvcvar(nu1=7, nu2=6, size=20000, burn=1000, usemean) 1 1 gdp unemp interest inflation</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="278668">in the command window. EViews will indicate the progress of the sampler in the bottom left corner of the window.</a></div>
+      <div class="Picture"><a name="278672"><img class="Default" src="images/btvcVAR.060.6.1.jpg" width="100%" style="left: 0.0pt; max-height: 26px; max-width: 295px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="278673">Once complete, double click on MYVAR to view the estimation output.</a></div>
+      <div class="Picture"><a name="278677"><img class="Default" src="images/btvcVAR.060.6.2.jpg" width="100%" style="left: 0.0pt; max-height: 703px; max-width: 680px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="278678">Estimation output for the BTVCVAR is presented as a spool object. A summary is provided at the top, followed by graphs showing the evolution of coefficients over time for each equation.</a></div>
+      <div class="Body_Text"><a name="278679">To change display options, click on the </a><span class="Menu_Item">Estimate</span> button in the VAR toolbar and go to the <span class="Menu_Item">Options</span> tab. As an example, to show shaded 30% credibility bands, check the box next to <span class="Menu_Item">Show credibility intervals</span> and enter 0.3 for <span class="Menu_Item">Credibility levels</span>. Click <span class="Menu_Item">OK</span>. The estimation output will update to look like this:</div>
+      <div class="Picture"><a name="278683"><img class="Default" src="images/btvcVAR.060.6.3.jpg" width="100%" style="left: 0.0pt; max-height: 691px; max-width: 678px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="278684">Note that changing display options will not prompt the posterior simulator to run if posterior draws are already available.</a></div>
+      <div class="Heading_4"><a name="281295">Impulse Response</a></div>
+      <div class="Body_Text"><a name="282332">Once estimated, click on </a><span class="Menu_Item">View/Impulse Responses...</span> or click on the <span class="Menu_Item">Impulse</span> button on the toolbar to display the dialog:</div>
+      <div class="Picture"><a name="282336"><img class="Default" src="images/btvcVAR.060.6.4.jpg" width="100%" style="left: 0.0pt; max-height: 583px; max-width: 656px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="282337">Fill out the dialog as depicted by specifying </a><span class="Menu_Item">Dates</span> in the <span class="Menu_Item">Fixed period type</span> dropdown menu, and enter &#8220;1948q4 2009q4&#8221; in the <span class="Menu_Item">Dates</span> edit field. Click on <span class="Menu_Item">OK</span> to continue.</div>
+      <div class="Body_Text"><a name="282338">Alternately, you can enter</a></div>
+      <div class="In-line_command_outer" style="margin-left: 43.2pt">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="In-line_command_inner" style="width: 14.399999999999998pt; white-space: nowrap"></div>
+            </td>
+            <td width="100%">
+              <div class="In-line_command_inner"><a name="282339">myvar.impulse(dates="1948q4 2009q4")</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="282340">in the command line.</a></div>
+      <div class="Body_Text"><a name="282341">EViews will compute and display impulse responses for all of the variables using both the 1948Q2 and 2009Q4 posterior median coefficient values:</a></div>
+      <div class="Picture"><a name="282345"><img class="Default" src="images/btvcVAR.060.6.5.jpg" width="100%" style="left: 0.0pt; max-height: 562px; max-width: 756px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="282346">We may use the interactive panel on the left to customize the display. Click on the &#8220;+&#8221; icons next to </a><span style="font-weight: bold">Impulses</span> and <span style="font-weight: bold">Responses</span> to expand the impulse and response lists. Deselect INTEREST and INFLATION from both lists so that only results for GDP and UNEMP are shown:.</div>
+      <div class="Picture"><a name="282350"><img class="Default" src="images/btvcVAR.060.6.6.jpg" width="100%" style="left: 0.0pt; max-height: 562px; max-width: 757px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="282351">The graph on the top-left (titled &#8220;Response of GDP to GDP Innovation&#8221;) suggests that the way GDP reacts to its own shock is not significantly different between the start and end of the data sample, at least with the kind of shock and horizon length under consideration. In contrast, the response of GDP to UNEMP, UNEMP to GDP and UNEMP to UNEMP all differ significantly between 1948Q2 and 2009Q4.</a></div>
+      <div class="Body_Text"><a name="282352">Next, we compute fixed horizon impulse responses. Click on the </a><span style="font-weight: bold">Impulse</span> button to reopen the <span style="font-weight: bold">Impulse Responses</span> dialog, select <span style="font-weight: bold">Horizons</span> as the <span class="Menu_Item">Fixed period type</span>, enter &#8220;5 9&#8221; in the <span style="font-weight: bold">Horizons</span> field, click on <span class="Menu_Item">Show credibility intervals</span>, and click on <span class="Menu_Item">OK</span> to continue:</div>
+      <div class="Picture"><a name="282356"><img class="Default" src="images/btvcVAR.060.6.7.jpg" width="100%" style="left: 0.0pt; max-height: 583px; max-width: 656px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="282357">Alternately, you can enter</a></div>
+      <div class="Input"><a name="282358">myvar.impulse(se=bayes, horizons="5 9", showci) gdp unemp @imp gdp unemp</a></div>
+      <div class="Body_Text"><a name="282359">in the command line.</a></div>
+      <div class="Body_Text"><a name="282360">Note that the computation of the BTVCVAR IRs takes considerably longer since EViews is computing 245 impulse responses up to the maximum specified horizon, one for every date in the estimation sample.</a></div>
+      <div class="Body_Text"><a name="282361">Upon completion, EViews will display IRs at horizon lengths 5 and 9:</a></div>
+      <div class="Picture"><a name="282365"><img class="Default" src="images/btvcVAR.060.6.8.jpg" width="100%" style="left: 0.0pt; max-height: 569px; max-width: 757px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="282366">In the left panel, deselect &#8220;5&#8221; from the Horizons list, and click on </a><span class="Menu_Item">Combined graphs</span> in the <span class="Menu_Item">Output Views</span> to show only the medium-term 2 year responses are displayed in grouped graphs:</div>
+      <div class="Picture"><a name="282370"><img class="Default" src="images/btvcVAR.060.6.9.jpg" width="100%" style="left: 0.0pt; max-height: 569px; max-width: 757px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="282445">The bottom-left graph (titled &#8220;Response of UNEMP to GDP Innovation at Horizon 9&#8221;) suggests that the effect of a GDP shock on UNEMP wore off more quickly before the year 2000 than after that date, though the credibility bands are quite wide at the later dates.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

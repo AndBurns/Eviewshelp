@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Add-ins Design Support</title>
+    <link rel="StyleSheet" href="css/addins.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="addins-Creating_an_Add-in.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="userobj-User_Objects.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="addins-Add-ins.html">Add-ins</a> : Add-ins Design Support</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="395090">Add-ins Design Support</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#407604">Add-ins Registration Command</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#395093">The Active Object Keyword</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#395181">&#8220;_this&#8221; Keyword</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#395108">Custom Object Output</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="395180">EViews offers several programming language features that will aid you in developing and working with Add-ins.</a></div>
+      <div class="Heading_4"><a name="407604">Add-ins Registration Command</a></div>
+      <div class="Body_Text"><a name="395176">The </a><span class="In-line_command">addin</span> command may be used to register an EViews program file as an Add-in. You may use the command to specify the Add-in file, Add-in type, menu text, user-defined command name, description, version number, documentation file, XML file, <span class="Emphasis">etc.</span></div>
+      <div class="Body_Text"><a name="395171">See </a><span class="In-line_command_link"><a href="commandcmd-addin.html#2699316" title="addin">addin</a></span> for details.</div>
+      <div class="Heading_4"><a name="395093">The Active Object Keyword</a></div>
+      <div class="Heading_4"><a name="395181">&#8220;_this&#8221; Keyword</a></div>
+      <div class="Body_Text"><a name="395094">Central to the construction of an object-specific Add-in program is the ability to reference the object on which the program should act. If, for example, you wish to write an Add-in that computes a statistic based on the data in a series object, you must have a convenient method of referring to the series. </a></div>
+      <div class="Body_Text"><a name="395095">Accordingly, EViews provides an object placeholder keyword, </a><span class="In-line_command">_this</span>, which refers to the currently active object upon which a program may operate. Typically the use of <span class="In-line_command">_this</span> in an EViews program indicates that it has been designed to work with a single object. </div>
+      <div class="Body_Text"><a name="421077">There are three ways in which the identity of the </a><span class="In-line_command">_this</span> object may be set:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="421078">_this</a></span> refers to the active object whose window was last active in the workfile; when used in a program, <span class="In-line_command">_this</span> refers to the active object at the time the program was run.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="421074">executing an Add-in using the object-command syntax, </a><span class="Argument">obj_name.proc, </span>sets <span class="In-line_command">_this</span> to <span class="Argument">obj_name.</span></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="In-line_command"><a name="421289">_this</a></span> can be set to a specific object using the &#8220;this=&#8221; option in an <span class="In-line_command">exec</span> or <span class="In-line_command">run</span> command.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="395097">While the above description is a bit abstract, a simple example should illustrate the concepts that lay behind the three methods. Suppose we have the trivial (silly) program &#8220;Myline.PRG&#8221; which consists of the command:</a></div>
+      <div class="Input"><a name="395098">_this.line</a></div>
+      <div class="Body_Text"><a name="395099">First, if we register this program as a global Add-in with menu item text &#8220;Show line&#8221;, we can display a line graph of a series or group object by opening the series or group and selecting </a><span class="Menu_Item">Show line</span> from the Add-in menu. From the program&#8217;s point of view, the <span class="In-line_command">_this</span> object is simply the opened series or group whose menu we are using (the last one active in the workfile).</div>
+      <div class="Body_Text"><a name="395100">Alternately, if we had registered the program as a series-specific Add-in with proc name &#8220;myl&#8221;, the command:</a></div>
+      <div class="Input"><a name="395101">ser01.myl</a></div>
+      <div class="Body_Text"><a name="395102">identifies SER01 as the </a><span class="In-line_command">_this</span> object, so that the object used by the Add-in will be the series SER01, regardless of which object is active in the workfile.</div>
+      <div class="Body_Text"><a name="395103">Lastly, you may specify </a><span class="In-line_command">_this</span> explicitly when using the <span class="In-line_input">exec</span> or <span class="In-line_input">run</span> command to run the program by including the &#8220;this=&#8221; option to identify an object by name. The command:</div>
+      <div class="Input"><a name="395104">exec(this=ser01) myline.prg</a></div>
+      <div class="Body_Text"><a name="395105">explicitly specifies SER01 as the </a><span class="In-line_command">_this</span> object.</div>
+      <div class="Heading_4"><a name="395108">Custom Object Output</a></div>
+      <div class="Body_Text"><a name="395109">EViews allows you to display the contents of a table, graph, or spool object in the window of another object. This feature will undoubtedly most often be used to mimic the behavior of EViews views and procedures in Add-ins programs.</a></div>
+      <div class="Body_Text"><a name="395110">Suppose, for example, that your Add-in program performs some calculations and constructs an output table TABLE_OUT. You may instruct EViews to display the contents of TABLE_OUT in the object OBJECT_01 using the </a><span class="In-line_command">display</span> command:</div>
+      <div class="Input"><a name="395111">object_01.display table_out</a></div>
+      <div class="Body_Text"><a name="395112">Thus, a useful approach to constructing an object-specific Add-in involves creating a program of the form:</a></div>
+      <div class="Input"><span class="Argument"><a name="395113">[use </a></span>_this<span class="Argument"> to perform various calculations]</span></div>
+      <div class="Input"><span class="Argument"><a name="395114">[create an output table or graph, say the table </a></span>TABLE01<span class="Argument">]</span></div>
+      <div class="Input"><a name="395115">&#8217; put the output in the _this window</a></div>
+      <div class="Input"><a name="395116">_this.display table01</a></div>
+      <div class="Input"><a name="395117">delete table01</a></div>
+      <div class="Body_Text"><a name="395118">Note that we delete the TABLE01 after we put it in the window of </a><span class="In-line_command">_this</span>. (You may instead wish to employ local subroutine to enable automatic cleanup of the temporary table.)</div>
+      <div class="Body_Text"><a name="395119">If the above program is registered as a series-specific Add-in with the command &#8220;FOO&#8221;, then you may run it by issuing the command</a></div>
+      <div class="Input"><a name="395120">series01.foo</a></div>
+      <div class="Body_Text"><a name="395121">which will display the output in the SERIES01 window.</a></div>
+      <div class="Body_Text"><a name="395122">The </a><span class="In-line_command">display</span> object command is a documented view for each supported object. See for example, <span class="In-line_command_link"><a href="seriescmd-display.html#201761" title="display">Series::display</a></span>.</div>
+      <div class="Body_Text"><a name="395133">&nbsp;</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

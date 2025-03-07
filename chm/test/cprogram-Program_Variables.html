@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Program Variables</title>
+    <link rel="StyleSheet" href="css/cprogram.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cprogram-Simple_Programs.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-Program_Modes.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cprogram-EViews_Programming.html">EViews Programming</a> : Program Variables</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="172745">Program Variables</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#332">Control Variables</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#131590">String Variables</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#41251">Replacement Variables</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="320">While you can use programs just to run, and re-run collections of EViews commands, the real power of the EViews programming language comes from the use of </a><span class="Definition">program variables</span> and <span class="Definition">program control statements</span>.</div>
+      <div class="Body_Text"><a name="199593">Program variables are variables that you may use in place of numeric or string values in your EViews programs. Accordingly, there are two basic types of program variables: </a><span class="Emphasis">control</span> (numeric) <span class="Emphasis">variables</span> and <span class="Emphasis">string variables</span>.</div>
+      <div class="Body_Text"><a name="200024">In the remainder of this section we describe the use of these two types of program variables.</a></div>
+      <div class="Heading_4"><a name="332">Control Variables</a></div>
+      <div class="Body_Text"><span class="Definition"><a name="334">Control variables</a></span> are program variables that you can use in place of numeric values in your EViews programs. Once a control variable is assigned a value, you can use it anywhere in a program that you would normally use a number. </div>
+      <div class="Body_Text"><a name="180167">It is important to note that control variables do not exist outside of your program and are automatically deleted after a program finishes. In this regard, control variables should not be confused with scalar objects as the former are not saved when you save the workfile. You can save the values of control variables by creating new EViews objects which contain the values of the control variable. </a></div>
+      <div class="Body_Text"><a name="336">The name of a control variable starts with an &#8220;!&#8221; character. After the &#8220;!&#8221;, the name should be a legal EViews name of 23 characters or fewer (leading numbers are allowed). Examples of control variable names are:</a></div>
+      <div class="Multi-line_Input"><a name="338">!x</a></div>
+      <div class="Multi-line_Input"><a name="340">!1</a></div>
+      <div class="Multi-line_Input"><a name="342">!counter</a></div>
+      <div class="Body_Text"><a name="344">You need not declare control variables, but you must assign them values before use. Control variable values are assigned in the usual way, with the control variable name on the left of an &#8220;=&#8221; sign and a numerical value or expression on the right. For example:</a></div>
+      <div class="Multi-line_Input"><a name="346">!x = 7</a></div>
+      <div class="Multi-line_Input"><a name="348">!12345 = 0</a></div>
+      <div class="Multi-line_Input"><a name="350">!counter = 12</a></div>
+      <div class="Multi-line_Input"><a name="131577">!pi = 3.14159</a></div>
+      <div class="Body_Text"><a name="131578">Once assigned a value, a control variable may appear in an expression. For example:</a></div>
+      <div class="Multi-line_Input"><a name="131579">!counter = !counter + 1</a></div>
+      <div class="Multi-line_Input"><a name="358">genr dnorm = 1/sqr(2*!pi)*exp(-1/2*epsilon^2)</a></div>
+      <div class="Multi-line_Input"><a name="360">scalar stdx = x/sqr(!varx)</a></div>
+      <div class="Multi-line_Input"><a name="362">smpl 1950q1+!i 1960q4+!i</a></div>
+      <div class="Body_Text"><a name="102506">For example, the following commands:</a></div>
+      <div class="Multi-line_Input"><a name="102507">scalar stdx = sqr(!varx)</a></div>
+      <div class="Multi-line_Input"><a name="370">c(100) = !length</a></div>
+      <div class="Multi-line_Input"><a name="372">sample years 1960+!z 1990</a></div>
+      <div class="Body_Text"><a name="102501">use the numeric values assigned to the control variables !VARX, !LENGTH, and !Z.</a></div>
+      <div class="Body_Text"><a name="139301">It is important to note that control variables are used in programs via text substitution. Whenever EViews encounters a control variable in a program it substitutes the text value of that variable into the program. </a><span class="Emphasis">One of the implications of the text substitution is that you may lose some numeric accuracy when using a program variable due to the conversion in to and out of a text representation of the number.</span> </div>
+      <div class="Body_Text"><a name="149933">A second unintended consequence of text substitution can arise when raising a negative control variable to a power:</a></div>
+      <div class="Multi-line_Input"><a name="139864">!a = -3</a></div>
+      <div class="Multi-line_Input"><a name="139878">!b = !a^2</a></div>
+      <div class="Body_Text"><a name="139866">When evaluating these lines, EViews will substitute the value of !A in the second line, leaving the line:</a></div>
+      <div class="Multi-line_Input"><a name="140006">!b = -3^2</a></div>
+      <div class="Body_Text"><a name="140021">Which it then evaluates as &#8211;9 (since the square operator takes precedence over the negation operator), rather than the expected 9. </a></div>
+      <div class="Body_Text"><a name="150750">You should also take care to avoid inadvertent replacement of program variables, as outlined in </a><span class="Link"><a href="#41251" title="Program Variables">&#8220;Replacement Variables&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="131590">String Variables</a></div>
+      <div class="Body_Text"><a name="131591">A </a><span class="Definition">string expression </span>or<span class="Definition"> strin</span>g is text enclosed in double quotes:</div>
+      <div class="Multi-line_Input"><a name="131592">"gross domestic product"</a></div>
+      <div class="Multi-line_Input"><a name="396">"3.14159"</a></div>
+      <div class="Multi-line_Input"><a name="398">"ar(1) ar(2) ma(1) ma(2)"</a></div>
+      <div class="Body_Text"><a name="101837">A </a><span class="Definition">string program variable</span> is a program variable whose value is a string of text. String variables, which exist only during the time that your program is executing, have names that begin with a &#8220;%&#8221; symbol. String variables should not be confused with <span class="Link"><a href="dataapp-Strings.html#132356" title="Strings">&#8220;String Objects&#8221;</a></span> which are objects that exist in a workfile. </div>
+      <div class="Body_Text"><a name="131597">String variables are assigned by putting the string variable name on the left of an &#8220;=&#8221; sign and a string expression on the right. For example, the following lines assign values to string variables:</a></div>
+      <div class="Multi-line_Input"><a name="402">%value = "value in millions of u.s. dollars"</a></div>
+      <div class="Multi-line_Input"><a name="404">%armas = "ar(1) ar(2) ma(1) ma(2)"</a></div>
+      <div class="Multi-line_Input"><a name="406">%mysample = " 83m1 96m12"</a></div>
+      <div class="Multi-line_Input"><a name="408">%dep = " hs"</a></div>
+      <div class="Multi-line_Input"><a name="410">%pi = " 3.14159"</a></div>
+      <div class="Body_Text"><a name="101754">You may use strings variables to help you build up command text, variable names, or other string values. EViews provides a number of operators and functions for manipulating strings; a complete list is provided in </a><span class="Link"><a href="dataapp-Strings.html#127285" title="Strings">&#8220;Strings&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="101783">Once assigned a value, a string variable may appear in any expression in place of the underlying string. When substituted for, the string variable will be replaced by the contents of the string variable, enclosed in double quotes.</a></div>
+      <div class="Body_Text"><a name="101746">Here is a simple example where we use string operations to concatenate the contents of three string variables.</a></div>
+      <div class="Multi-line_Input"><a name="424">!repeat = 500</a></div>
+      <div class="Multi-line_Input"><a name="426">%st1 = " draws from the normal"</a></div>
+      <div class="Multi-line_Input"><a name="428">%st2 = "Cauchy "</a></div>
+      <div class="Multi-line_Input"><a name="41163">%st3 = @str(!repeat) + @left(%st1,16) + %st2 + "distribution"</a></div>
+      <div class="Body_Text"><a name="101771">In this example </a><span class="EViews_Name">%st3</span> is set to the value &#8220;500 draws from the Cauchy distribution&#8221;. Note the spaces before &#8220;draws&#8221; and after &#8220;Cauchy&#8221; in the string variable assignments. After string variable substitution, the latter assignment is equivalent to entering </div>
+      <div class="Input"><a name="101787">%st3 = "500" + " draws from the " + "Cauchy " + "distribution"</a></div>
+      <div class="Body_Text"><a name="101786">Similarly, the table assignment statement</a></div>
+      <div class="Multi-line_Input"><a name="101759">table1(1,1) = %st3</a></div>
+      <div class="Body_Text"><a name="101729">is equivalent to entering the command</a></div>
+      <div class="Input"><a name="101730">table(1,1) = "500 draws from the Cauchy distribution"</a></div>
+      <div class="Body_Text"><a name="101956">One important use for string variables is assigning string values to string objects, string vectors, or Alpha series. For example, we may have the assignment statement</a></div>
+      <div class="Multi-line_Input"><a name="101961">%z = "Ralph"</a></div>
+      <div class="Multi-line_Input"><a name="101960">alpha full_name = %z + last_name</a></div>
+      <div class="Body_Text"><a name="101965">which is equivalent to the expression</a></div>
+      <div class="Multi-line_Input"><a name="101981">alpha full_name = "Ralph" + last_name</a></div>
+      <div class="Body_Text"><a name="120448">We again emphasize that string variable substitution involves replacing the string variable by its string value contents, enclosed in double quotes.</a></div>
+      <div class="Body_Text"><a name="120451">As with any string value, you may convert a string variable containing the text representation of a number into a number by using the </a><span class="In-line_command">@val</span> function. For example,</div>
+      <div class="Multi-line_Input"><a name="442">%str = ".05"</a></div>
+      <div class="Multi-line_Input"><a name="444">!level = @val(%str)</a></div>
+      <div class="Body_Text"><a name="446">creates a control variable </a><span class="EViews_Name">!LEVEL</span>=0.05. If the string cannot be evaluated to a number, <span class="In-line_input">@val</span> returns the value &#8220;NA&#8221;.</div>
+      <div class="Body_Text"><a name="120802">String variables are closely related to the concept of a string object (</a><span class="Link"><a href="dataapp-Strings.html#132356" title="Strings">&#8220;String Objects&#8221;</a></span>). A <span class="Definition">string object</span> is an EViews workfile object that holds a string:</div>
+      <div class="Multi-line_Input"><a name="120803">string a = "Hello World"</a></div>
+      <div class="Multi-line_Input"><a name="120804">string b = """First Name"" Middle ""Last Name"""</a></div>
+      <div class="Body_Text"><a name="120805">Unlike string variables, string objects are named objects in the workfile that may exist apart from a running program.</a></div>
+      <div class="Body_Text"><a name="121086">In programming applications, string variables and string objects are sometimes defined using string literal expressions as illustrated above. However, in most settings, string variables and objects are defined using results from string functions, or by manipulation of string lists and string vectors. For example, you could use the </a><span class="In-line_command">@wlookup</span> and <span class="In-line_command">@wsplit</span> functions to obtain a set of strings corresponding to the names of all of the series in a workfile. See <span class="Link"><a href="dataapp-Strings.html#127285" title="Strings">&#8220;Strings&#8221;</a></span> for a full discussion.</div>
+      <div class="Heading_4"><a name="41251">Replacement Variables</a></div>
+      <div class="Body_Text"><a name="466">When working with EViews commands, you may wish to use a string variable, not simply to refer to a string value, but as </a><span class="Emphasis">an indirect way of referring to something else</span>, perhaps a command, or an object name, or portion of names for one or more items.</div>
+      <div class="Body_Text"><a name="102350">Suppose, for example, that we assign the string variable %X the value &#8220;GDP&#8221;:</a></div>
+      <div class="Input"><a name="102061">%x = "gdp"</a></div>
+      <div class="Body_Text"><a name="120472">We may be interested, however, not in the actual string variable </a><span class="Emphasis">value </span>&#8220;gdp&#8221;, but rather in an EViews <span class="Emphasis">object named</span> &#8220;GDP&#8221;. Accordingly, we require a method of distinguishing between a string value and the item corresponding to the string value.</div>
+      <div class="Body_Text"><a name="120499">If you enclose a string variable in curly braces (&#8220;{ &#8221; and &#8220;}&#8221;) EViews will replace the expression with the name, names, or name fragment given by the string value. In this context we refer to the expression &#8220;{</a><span class="EViews_Name">%x}&#8221;</span> as a <span class="Definition">replacement variable</span> since the string variable %X is replaced in the command line by the name or names of objects to which the string refers. </div>
+      <div class="Body_Text"><a name="120515">Suppose we want to create the series Y and set it equal to the values in the series GDP. Given the string variable %X defined above, the series declaration,</a></div>
+      <div class="Input"><a name="120516">series y = %x</a></div>
+      <div class="Body_Text"><a name="120517">creates a numeric series Y and sets it equal to the string value &#8220;gdp&#8221;,</a></div>
+      <div class="Input"><a name="102049">series y = "gdp"</a></div>
+      <div class="Body_Text"><a name="102046">which generates an error since the </a><span class="In-line_input">series</span> declaration expects the <span class="Emphasis">name</span> of a series or a numeric value, not a string value. In this circumstance, we would like to replace the string value with the name of an object. With the replacement variable &#8220;{%X}&#8221;, the command</div>
+      <div class="Input"><a name="120533">series y = {%x}</a></div>
+      <div class="Body_Text"><a name="120534">is properly interpreted as</a></div>
+      <div class="Input"><a name="120552">series y = gdp</a></div>
+      <div class="Body_Text"><a name="120514">Similarly, the program line using replacement variables,</a></div>
+      <div class="Input"><a name="472">equation eq1.ls {%x} c {%x}(-1)</a></div>
+      <div class="Body_Text"><a name="474">would be interpreted by EViews as</a></div>
+      <div class="Input"><a name="476">equation eq1.ls gdp c gdp(-1)</a></div>
+      <div class="Body_Text"><a name="478">Changing the contents of </a><span class="EViews_Name">%x</span> to &#8220;M1&#8221; changes the interpretation of the original program line to </div>
+      <div class="Input"><a name="480">equation eq1.ls m1 c m1(-1)</a></div>
+      <div class="Body_Text"><a name="101945">since the replacement variable uses the name obtained from the new value of %X.</a></div>
+      <div class="Body_Text"><a name="102366">To take another example, when trying to find the number of valid (non-missing) observations in a series named INCOME, you may use the </a><span class="In-line_command">@obs</span> function along with the name of the series:</div>
+      <div class="Input"><a name="102367">@obs(income)</a></div>
+      <div class="Body_Text"><a name="102368">If you wish to use a string variable </a><span class="EViews_Name">%VAR</span> to refer to the INCOME series, you must use the replacement variable in the <span class="In-line_command">@obs</span> function, as in</div>
+      <div class="Multi-line_Input"><a name="102369">%var = "income"</a></div>
+      <div class="Multi-line_Input"><a name="102574">@obs({%var})</a></div>
+      <div class="Body_Text"><a name="102575">since you wish to refer indirectly to the object named in %VAR. Note that the expression</a></div>
+      <div class="Input"><a name="102576">@obs(%var)</a></div>
+      <div class="Body_Text"><a name="102381">will return an error since </a><span class="In-line_command">@obs</span> requires a series or matrix object name as an argument.</div>
+      <div class="Body_Text"><a name="486">Any string variable may be used as the basis of a replacement variable. Simply form your string using one or more string operations</a></div>
+      <div class="Multi-line_Input"><a name="102540">%object = "group"</a></div>
+      <div class="Multi-line_Input"><a name="102177">%space = " "</a></div>
+      <div class="Multi-line_Input"><a name="102182">%reg1 = "gender"</a></div>
+      <div class="Multi-line_Input"><a name="102156">%reg2 = "income"</a></div>
+      <div class="Multi-line_Input"><a name="102165">%reg3 = "age"</a></div>
+      <div class="Multi-line_Input"><a name="102176">%regs = %reg1 + %space + %reg2 + %space + %reg3</a></div>
+      <div class="Body_Text"><a name="102190">then enclose the string variable in braces. In the expression,</a></div>
+      <div class="Multi-line_Input"><a name="102191">{%object} g1 {%regs}</a></div>
+      <div class="Body_Text"><a name="506">EViews will substitute the names found in %OBJECT and %REGS so that the resulting command is</a></div>
+      <div class="Input"><a name="102204">group g1 gender income age</a></div>
+      <div class="Body_Text"><a name="102333">It is worth noting that replacement variables may be used as building blocks to form object names. For example, the commands</a></div>
+      <div class="Multi-line_Input"><a name="102334">%b = "2"</a></div>
+      <div class="Multi-line_Input"><a name="102335">%c = "temp"</a></div>
+      <div class="Multi-line_Input"><a name="102336">series z{%b} </a></div>
+      <div class="Multi-line_Input"><a name="102337">matrix(2, 2) x{%b}</a></div>
+      <div class="Multi-line_Input"><a name="102338">vector(3) x_{%c}_y</a></div>
+      <div class="Body_Text"><a name="102342">declare a series named </a><span class="EViews_Name">Z2</span>, a <img class="Default EquationGraphic" src="images/cprogram.087.04.1.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> matrix named <span class="EViews_Name">X2</span>, and a vector named <span class="EViews_Name">X_TEMP_Y</span>.</div>
+      <div class="Body_Text"><a name="102275">Up to this point, we have focused on replacement variables formed from string variables. However, control variables may also be used to form replacement variables. For example, the commands</a></div>
+      <div class="Multi-line_Input"><a name="102276">!i = 1</a></div>
+      <div class="Multi-line_Input"><a name="510">series y{!i} = nrnd</a></div>
+      <div class="Multi-line_Input"><a name="512">!j = 0</a></div>
+      <div class="Multi-line_Input"><a name="514">series y{!j}{!i} = nrnd</a></div>
+      <div class="Body_Text"><a name="516">are equivalent to </a></div>
+      <div class="Multi-line_Input"><a name="518">series y1 = nrnd</a></div>
+      <div class="Multi-line_Input"><a name="520">series y01 = nrnd</a></div>
+      <div class="Body_Text"><a name="522">and will create two series </a><span class="EViews_Name">Y1</span> and <span class="EViews_Name">Y01</span> that contain a set of (pseudo-)random draws from a standard normal distribution. Conveniently, in cases where there is no possibility of ambiguity, EViews will treat a control variable as a replacement variable, even if the braces are not provided. For example:</div>
+      <div class="Multi-line_Input"><a name="103238">!x = 3</a></div>
+      <div class="Multi-line_Input"><a name="103242">series y!x = 4</a></div>
+      <div class="Body_Text"><a name="103239">will generate the series Y3 containing the value 4.</a></div>
+      <div class="Body_Text"><a name="150219">While convenient, this loose interpretation of control variables can, however, lead to unexpected results if one is not careful. Take the following program:</a></div>
+      <div class="Multi-line_Input"><a name="150326">!x1 = 10</a></div>
+      <div class="Multi-line_Input"><a name="150339">series y = !x1</a></div>
+      <div class="Body_Text"><a name="119047">This program will create a series equal to the value of !X1 (i.e. 10). However if you were to mis-type the program slightly:</a></div>
+      <div class="Multi-line_Input"><a name="150509">!x = 10</a></div>
+      <div class="Multi-line_Input"><a name="150510">series y = !x1</a></div>
+      <div class="Body_Text"><a name="150511">where the first line has </a><span class="In-line_command">!X</span> rather than <span class="In-line_command">!X1</span>, EViews will not generate an error due to the missing <span class="In-line_command">!X1</span> variable, but will instead evaluate the second line by substituting <span class="In-line_command">!X </span>into the expression, and evaluating the result as 101.</div>
+      <div class="Body_Text"><a name="150518">Replacement variables may be constructed using nested evaluation of replacement variables. Suppose we have the strings:</a></div>
+      <div class="Multi-line_Input"><a name="120594">%str1 = "x"</a></div>
+      <div class="Multi-line_Input"><a name="120605">%name = "%str1"</a></div>
+      <div class="Body_Text"><a name="120623">Then we can declare the series X and fill it with random normals using the command</a></div>
+      <div class="Multi-line_Input"><a name="120610">series {{%name}} = nrnd</a></div>
+      <div class="Body_Text"><a name="123940">After evaluation of the innermost replacement variable, the expression reduces to </a></div>
+      <div class="Input"><a name="123966">series {%str1} = nrnd</a></div>
+      <div class="Body_Text"><a name="123967">and then to</a></div>
+      <div class="Input"><a name="131624">series x = nrnd</a></div>
+      <div class="Body_Text"><a name="131625">when we evaluate the remaining brace. The double braces allow us perform a double replacement in which the string variable used to form a replacement variable is itself obtained as a replacement variable.</a></div>
+      <div class="Body_Text"><a name="131626">The double nested braces need not be adjacent. For example:</a></div>
+      <div class="Multi-line_Input"><a name="119054">%x1 = "x"</a></div>
+      <div class="Multi-line_Input"><a name="119085">%x2 = "y"</a></div>
+      <div class="Multi-line_Input"><a name="119100">scalar x = 10</a></div>
+      <div class="Multi-line_Input"><a name="119103">scalar y = 20</a></div>
+      <div class="Multi-line_Input"><a name="180893">!y = 1</a></div>
+      <div class="Multi-line_Input"><a name="119101">scalar r1 = {%x{!y}}</a></div>
+      <div class="Multi-line_Input"><a name="180902">!y = 2</a></div>
+      <div class="Multi-line_Input"><a name="180911">scalar r2 = {%x{!y}}</a></div>
+      <div class="Body_Text"><a name="119052">First we create two string variables, %X1 and %X2, and three scalar objects, X, Y, and R. First, the control variable is !Y is set to 1 and the replacement variable {!Y} is used to construct the name &#8220;%X1&#8221; of a string variable. The resulting replacement variable {%X1} refers to the scalar object X. We assign the scalar X value of 10 to the scalar R1. Next, we set !Y to 2, the replacement variable {%X{!Y}} evaluates to Y, and we assign the Y value of 20 to the scalar R2.</a></div>
+      <div class="Body_Text"><a name="119239">Multiple sets of braces may be used to create various string names:</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="119245">string uslabel = "USA"</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="119269">string nzlabel = "New Zealand"</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="119249">%a1 = "US"</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="119277">%a2 = "NZ"</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="119262">%b = "LABEL"</a></div>
+      <div class="Multi-line_Input"><a name="181106">!y = 1</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="119267">string label1 = {%a{!y}}{%b}</a></div>
+      <div class="Multi-line_Input"><a name="181133">!y = 2</a></div>
+      <div class="Multi-line_Input_With_Tabs"><a name="181145">string label2 = {%a{!y}}{%b}</a></div>
+      <div class="Body_Text"><a name="119240">First we create two string objects, USLABEL and NZLABEL, which hold the label we wish to assign to each country. Then we create the string variables %A1 and %A2 to hold the country abbreviations. When the control variable !Y=1, {%A{!Y}}{%B} evaluates to the object USLABEL and when !Y=2, {%A{!Y}}{%B} evaluates to the object NZLABEL. Then the string LABEL1 contains &#8220;USA&#8221; and LABEL2 contains &#8220;New Zealand&#8221;.</a></div>
+      <div class="Body_Text"><a name="120892">Replacement variables may also be formed using string objects in place of string variables. To use a string object as a replacement variable, simply surround it with curly braces (&#8220;{&#8221; and &#8220;}&#8221;). For example,</a></div>
+      <div class="Multi-line_Input"><a name="120893">string LAGGDP = "GDP(-1) GDP(-2) GDP(-4)"</a></div>
+      <div class="Multi-line_Input"><a name="120894">equation eq1.ls GDP C {LAGGDP}</a></div>
+      <div class="Body_Text"><a name="120895">executes the command</a></div>
+      <div class="Input"><a name="120896">equation eq1.ls GDP C GDP(-1) GDP(-2) GDP(-4)</a></div>
+      <div class="Body_Text"><a name="120942">In most respects, there is no difference between using a string object or a string variable in a program. String objects have the advantage that they may be used interactively, outside of programs, while string variables may not. This can be useful when debugging a program; string variables disappear once the program has finished, making it difficult to identify problems in their construction. Note that string objects do, however, go out-of-scope when the active workfile page changes, while string variables are always in scope.</a></div>
+      <div class="Body_Text"><a name="120864">Lastly, while replacement variables provide you with great flexibility in referencing objects in your programs, used carelessly, they can lead to confusion. We suggest, for example, that you avoid using similar base names to refer to different objects. Consider the following program:</a></div>
+      <div class="Program_Comment"><a name="546">' possibly confusing commands (avoid)</a></div>
+      <div class="Multi-line_Input"><a name="548">!a = 1</a></div>
+      <div class="Multi-line_Input"><a name="550">series x{!a}</a></div>
+      <div class="Multi-line_Input"><a name="552">!a = 2</a></div>
+      <div class="Multi-line_Input"><a name="554">matrix x{!a} </a></div>
+      <div class="Body_Text"><a name="556">In this code snippet, it is easy to see that </a><span class="EViews_Name">X1</span> is the series and <span class="EViews_Name">X2</span> is the matrix. But in a more complicated program, where the control variable assignment <span class="EViews_Name">!A=1</span> may be separated from the declaration by many program lines, it may be difficult to tell at a glance what kind of object X1 represents. A better approach might be to use different names for different kinds of variables:</div>
+      <div class="Multi-line_Input"><a name="558">!a = 1</a></div>
+      <div class="Multi-line_Input"><a name="560">series ser{!a}</a></div>
+      <div class="Multi-line_Input"><a name="562">!a = 2</a></div>
+      <div class="Multi-line_Input"><a name="102283">matrix mat{!a}</a></div>
+      <div class="Body_Text"><a name="102414">so that the meaning of replacement variable names are more apparent from casual examination of the program.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

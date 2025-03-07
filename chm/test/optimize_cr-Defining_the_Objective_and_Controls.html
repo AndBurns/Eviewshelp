@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Defining the Objective and Controls</title>
+    <link rel="StyleSheet" href="css/optimize_cr.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="optimize_cr-User-Defined_Optimization.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="optimize_cr-The_Optimize_Command.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="optimize_cr-User-Defined_Optimization.html">User-Defined Optimization</a> : Defining the Objective and Controls</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="239561">Defining the Objective and Controls</a></div>
+      <div class="Body_Text"><a name="239562">To use </a><span class="In-line_command">optimize</span>, you must first construct an EViews subroutine with arguments to define an output <span class="Definition">objective</span> which depends on input <span class="Definition">controls</span>.</div>
+      <div class="Body_Text"><a name="239563">Recall that a subroutine with arguments is simply a set of commands in a program that can be called one or more times within the program (</a><span class="Link"><a href="cprogram-Subroutines.html#1228" title="Subroutines">&#8220;Subroutine with Arguments&#8221;</a></span>). The arguments of the subroutine will correspond to the objective and to inputs that are required to calculate the objective. Each time the subroutine is called, the objective will be computed using the current values of the input controls.</div>
+      <div class="Body_Text"><a name="239567">The objective, which must be associated with an argument of the subroutine, may be a scalar, or may consist of many values stored in an EViews object such as a vector, matrix, or series. </a></div>
+      <div class="Body_Text"><a name="239568">The controls, which may be thought of as input parameters, are passed into the subroutine as an argument. As with the objective, the controls may be a scalar value, or a multi-valued object such as a vector, matrix, or series. </a></div>
+      <div class="Body_Text"><span class="Emphasis"><a name="239569">Note that when series objects are employed as either the objective or control, only the corresponding elements in the current workfile sample will be used.</a></span></div>
+      <div class="Body_Text"><span class="In-line_command"><a name="239570">optimize</a></span> will determine the values of the controls that optimize the objective. If the objective is many-valued, EViews will optimize the sum or sum-of-squares of the values, with respect to the control elements. </div>
+      <div class="Body_Text"><a name="239571">Since the objective is defined using an EViews subroutine, you may optimize almost anything that may be computed using EViews commands. Notable, you may use </a><span class="In-line_command">optimize</span> to optimize general functions as well as likelihoods involving matrix computations (neither of which may be optimized using the Logl object).</div>
+      <div class="Body_Text"><a name="239572">Consider, for example, the simple quadratic function defined as an EViews subroutine:</a></div>
+      <div class="Multi-line_Input"><a name="239573">subroutine f(scalar !y, scalar !x)</a></div>
+      <div class="Multi-line_Input"><a name="239574">	!y = 5*!x^2 - 3*!x - 2</a></div>
+      <div class="Multi-line_Input"><a name="239575">endsub</a></div>
+      <div class="Body_Text"><a name="239576">This subroutine has one output and one input, the program variable scalars !X and !Y, respectively. For a given control value for !X, the subroutine computes the value of the scalar objective !Y.</a></div>
+      <div class="Body_Text"><a name="239577">In its simplest form, a subroutine designed to work with </a><span class="In-line_command">optimize</span> requires only two arguments&#8212;an objective and control parameters. However you may include additional arguments, some of which may be used by optimize, while others are ignored. For example, the subroutine,</div>
+      <div class="Multi-line_Input"><a name="239578">subroutine SqDev(series out, scalar in, series y)</a></div>
+      <div class="Multi-line_Input"><a name="239579">	out = (y - in)^2</a></div>
+      <div class="Multi-line_Input"><a name="239580">endsub</a></div>
+      <div class="Body_Text"><a name="239581">computes the squared deviations of the argument series Y from the control scalar, and places the element results in the output objective series OUT. The subroutine argument for the series Y will not be used by </a><span class="In-line_command">optimize</span>, but allows optimization to be performed on arbitrary series without re-coding the subroutine.</div>
+      <div class="Body_Text"><a name="239582">By default, </a><span class="In-line_command">optimize</span> will assume that the first subroutine argument corresponds to the objective and the second argument corresponds to the controls. As we will see, the default associations may be changed through the use of options in the <span class="In-line_command">optimize</span> command (<span class="Link"><a href="optimize_cr-The_Optimize_Command.html#239206" title="The Optimize Command">&#8220;The Optimize Command&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="239586">Typically, multiple control values are passed into the subroutine in the form of a vector or matrix, as in</a></div>
+      <div class="Multi-line_Input"><a name="239587">subroutine local loglike(series logl, vector beta, series dep, group regs)</a></div>
+      <div class="Multi-line_Input"><a name="239588">	!pi = @acos(-1)</a></div>
+      <div class="Multi-line_Input"><a name="239589">	series r = dep - beta(1) - beta(2)*regs(1) - beta(3)*regs(2) - &nbsp;&nbsp;&nbsp;beta(4)*regs(3)</a></div>
+      <div class="Multi-line_Input"><a name="239590">	logl = @log((1/beta(5)*@dnorm(r/beta(5))</a></div>
+      <div class="Multi-line_Input"><a name="239591">endsub</a></div>
+      <div class="Body_Text"><a name="239592">where the control vector BETA and the auxiliary arguments for the dependent variable series DEP and the regressors group REGS are used as inputs for the computation of the normal log-likelihood contributions in the objective series LOGL. Note that the first four elements of the vector BETA correspond to the mean regression coefficients, and the last element is the parameter for the standard deviation of the error distribution.</a></div>
+      <div class="Body_Text"><a name="239593">Lastly, when designing your subroutine, you should always define the objective to return NA values for bad control values, since returning an arbitrary value may make numeric derivatives unreliable at points close to the invalid region.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

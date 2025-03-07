@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>VARs With Linear Constraints</title>
+    <link rel="StyleSheet" href="css/VAR.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="VAR-Unrestricted_VARs.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="VAR-Views_and_Procs_of_a_VAR.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="VAR-Vector_Autoregression_(VAR)_Models.html">Vector Autoregression (VAR) Models</a> : VARs With Linear Constraints</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="233906">VARs With Linear Constraints</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#246965">Estimating a VAR with Linear Restrictions in EViews</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#252685">Estimation Output (Linear Restrictions)</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="235838">The basic <img class="Default EquationGraphic" src="images/VAR.056.3.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />-variable VAR(</a><span class="In-line_math">p</span>) specification has <img class="Default EquationGraphic" src="images/VAR.056.3.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 73px; top: 0.0pt" alt="" /> coefficients so that even moderate sized VARs require estimation of a large number of parameters. When VARs are applied to macroeconomic data with limited sample sizes, model over-parameterization is a frequent problem as there are too few observations to estimate precisely the VAR parameters.</div>
+      <div class="Body_Text"><a name="236365">EViews offers two approaches to handling this over-parameterization problem:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="238343">One approach, Bayesian estimation, is described in detail below (</a><span class="Link"><a href="bVAR-Bayesian_VAR_Models.html#36959" title="Bayesian VAR Models">&#8220;Bayesian VAR Models&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="236377">Alternately, you may reduce the number of free parameters by imposing linear constraints on the elements of <img class="Default EquationGraphic" src="images/VAR.056.3.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="238574">We outline here EViews&#8217;s tools for imposing linear restrictions. Note that we previously explored a variant of the constraint approach where specification of the VAR lag structure using multiple lag pairs sets a subset of lag matrices <img class="Default EquationGraphic" src="images/VAR.056.3.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> to zero (</a><span class="Link"><a href="VAR-Unrestricted_VARs.html#36995" title="Unrestricted VARs">&#8220;Estimating a VAR in EViews&#8221;</a></span>). In contrast, the more general methods described in this section permit finely targeted restriction on the parameters, allowing us to incorporate <span class="Emphasis">a priori</span> information about the parameters of the model which does not fit into the lag exclusion framework.</div>
+      <div class="Body_Text"><a name="239582">Briefly, to echo the discussion in Lütkepohl (2006), suppose we have linear restrictions of the form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.3.05.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.14)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="240466">where <img class="Default EquationGraphic" src="images/VAR.056.3.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 89px; top: 0.0pt" alt="" /> is the <img class="Default EquationGraphic" src="images/VAR.056.3.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 100px; top: 0.0pt" alt="" /> vector of VAR coefficients, <img class="Default EquationGraphic" src="images/VAR.056.3.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/VAR.056.3.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 106px; top: 0.0pt" alt="" /> restriction matrix, <img class="Default EquationGraphic" src="images/VAR.056.3.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/VAR.056.3.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 47px; top: 0.0pt" alt="" /> vector of unconstrained parameters and <img class="Default EquationGraphic" src="images/VAR.056.3.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is a <img class="Default EquationGraphic" src="images/VAR.056.3.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 100px; top: 0.0pt" alt="" /> vector of known constants.</a></div>
+      <div class="Body_Text"><a name="240482">Note that while this is not the most common form for expressing linear restrictions, the conventional (<img class="Default EquationGraphic" src="images/VAR.056.3.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 31px; top: 0.0pt" alt="" />) form of linear restrictions, <img class="Default EquationGraphic" src="images/VAR.056.3.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 61px; top: 0.0pt" alt="" />, may readily be transformed to the (<img class="Default EquationGraphic" src="images/VAR.056.3.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 34px; top: 0.0pt" alt="" />) form (see Lütkepohl 2006, p. 195).</a></div>
+      <div class="Body_Text"><a name="240349">Substituting </a><span class="Link"><a href="#239676" title="VARs With Linear Constraints">Equation&nbsp;(44.14)</a></span> into <span class="Link"><a href="VAR-Unrestricted_VARs.html#237103" title="Unrestricted VARs">Equation&nbsp;(44.5)</a></span> produces an unrestricted regression specification</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.3.17.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.15)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="240397">where <img class="Default EquationGraphic" src="images/VAR.056.3.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 143px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="240494">The OLS estimator for <img class="Default EquationGraphic" src="images/VAR.056.3.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.3.20.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="240538">and a estimator of the variance of <img class="Default EquationGraphic" src="images/VAR.056.3.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.3.22.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="240642">for the consistent estimator</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.3.23.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.18)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="240766">Note that we employ the unadjusted residual variance matrix estimator since the presence of restrictions produces ambiguity in the finite sample correction.</a></div>
+      <div class="Body_Text"><a name="241082">Efficiency gains may be realized by accounting for the contemporaneous correlation in the errors. For <img class="Default EquationGraphic" src="images/VAR.056.3.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 21px; top: 0.0pt" alt="" />, a consistent estimator of <img class="Default EquationGraphic" src="images/VAR.056.3.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> the estimated GLS estimator is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.3.26.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="233911">Note that any consistent estimator for <img class="Default EquationGraphic" src="images/VAR.056.3.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> may be employed. By default, EViews will iterate over estimates of <img class="Default EquationGraphic" src="images/VAR.056.3.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 40px; top: 0.0pt" alt="" /> and the <img class="Default EquationGraphic" src="images/VAR.056.3.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" /> obtained using the current residuals until convergence, or the maximum number of iterations is reached. Alternately, you may elect to perform only a single GLS iteration.</a></div>
+      <div class="Body_Text"><a name="242561">A consistent estimator of the coefficient covariance is given by</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.3.30.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="242526">The corresponding estimators and covariances for the full coefficient vector <img class="Default EquationGraphic" src="images/VAR.056.3.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> are then</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.3.32.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="242686">and</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/VAR.056.3.33.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(44.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="242948">Bear in mind that by construction, <img class="Default EquationGraphic" src="images/VAR.056.3.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 68px; top: 0.0pt" alt="" /> has reduced rank.</a></div>
+      <div class="Heading_4"><a name="246965">Estimating a VAR with Linear Restrictions in EViews</a></div>
+      <div class="Body_Text"><a name="242949">Select </a><span class="Menu_Item">Quick/Estimate VAR...</span> or type <span class="In-line_input">var</span> in the command window to display the estimation dialog. </div>
+      <div class="Body_Text"><a name="243192">The </a><span class="Dialog_Item">Basics</span> tab of the VAR Specification dialog outlines the basic specification, and should be filled out as for a basic specification (<span class="Link"><a href="VAR-Unrestricted_VARs.html#36995" title="Unrestricted VARs">&#8220;Estimating a VAR in EViews&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="242950">Click on the </a><span class="Dialog_Item">VAR Restrictions </span>tab to specify your restrictions:</div>
+      <div class="Picture"><a name="243384"><img class="Default" src="images/VAR.056.3.35.jpg" width="100%" style="left: 0.0pt; max-height: 488px; max-width: 507px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="242942">The </a><span class="Menu_Item">Restrictions</span> section on the left should be used to select the VAR elements that you wish to restrict. You may click on the entries for the lag matrices (<span class="Menu_Item">L1</span>, <span class="Menu_Item">L2</span>, <span class="Menu_Item">L3</span>, <span class="Menu_Item">L4</span>) and the vectors of coefficients associated with each exogenous variable (<span class="Menu_Item">C</span>) to select an element to restrict. The right side of the dialog will change to show the current settings for the selected element. </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="245938">If the </a><span class="Menu_Item">Manual</span> method is selected, you will place restrictions on the selection by editing its matrix representation in the dialog (rows of the matrix represent VAR equations while columns represent the endogenous variable). The ordering of the matrix elements follows the order of the endogenous variables in the original specification. Elements of the matrix or vector that are NA will be estimated while the remaining elements will be restricted to the specified value.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="245945">Here, we have selected the matrix for the first lag of the endogenous variables (</a><span class="Menu_Item">L1</span>) and set two elements to zero so that the lag of the first endogenous variable has no effect on the second and third endogenous variables.</div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="244960">If the </a><span class="Menu_Item">Workfile matrix</span> method is selected, you should enter the name of a matrix object in the workfile containing the restriction matrix for the selection. The matrix should be of the correct dimension and should have NAs for unrestricted elements and numeric values for restricted elements.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="246351">In settings where restricting a large number individual elements is inconvenient, or where you wish to impose restrictions across lag or exogenous variable coefficients, you may find it more convenient to specify restrictions using text expressions. In this case, click on the </a><span class="Menu_Item">Text</span> node of the <span class="Menu_Item">Restrictions</span> tree to display the <span class="Menu_Item">Restriction Text</span> edit field.</div>
+      <div class="Picture"><a name="247203"><img class="Default" src="images/VAR.056.3.36.jpg" width="100%" style="left: 0.0pt; max-height: 486px; max-width: 507px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="247275">Text expressions allow you to use a function-like syntax to employ text to specify restrictions on one or more matrix elements. The text restrictions will use the following &#8220;@&#8221; keywords that you may use to refer to individual coefficient matrix elements,</a></div>
+      <div class="Table"><a name="249992">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 324pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 108pt">
+            <div class="Table_Text"><a name="249981">@l#(</a><span class="In-line_math">r, c</span>)</div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 216pt">
+            <div class="Table_Text"><a name="249983">Element </a><span class="Argument">(r, c)</span> of the lag # coefficient matrix.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="249985">@e#(</a><span class="In-line_math">r</span>)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="249987">Element </a><span class="Argument">r</span><span class="In-line_math"> </span>of the exogenous variable # coefficient vector.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="249989">@e(</a><span class="In-line_math">X</span>, <span class="In-line_math">r</span>) </div>
+          </td>
+          <td style="border-bottom-color: #000000; border-bottom-style: solid; border-bottom-width: 0.5pt; border-left-color: #000000; border-left-style: solid; border-left-width: 0.5pt; border-right-color: #000000; border-right-style: solid; border-right-width: 0.5pt; border-top-color: #000000; border-top-style: solid; border-top-width: 0.5pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="249991">Element </a><span class="Argument">r</span><span class="In-line_math"> </span>of the exogenous variable <span class="In-line_math">X</span> coefficient vector</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="249993">Note that in this syntax, the canonical names (&#8220;L#&#8221;, &#8220;E#&#8221;, &#8220;E(</a><span class="In-line_math">X</span>)&#8221;) that refer to lag matrices and exogenous variable vectors are preceded by &#8220;@&#8221; to avoid ambiguity.</div>
+      <div class="Body_Text"><a name="250174">For example, we may have:</a></div>
+      <div class="Multi-line_Input"><a name="250175">@L1(1,1) = 0</a></div>
+      <div class="Multi-line_Input"><a name="250176">@L2(2,2) = @L1(3,3) / 2</a></div>
+      <div class="Multi-line_Input"><a name="250177">@L2(1,1) + @L4(2,1) = 1</a></div>
+      <div class="Multi-line_Input"><a name="250233">@E(C, 1) = 0</a></div>
+      <div class="Multi-line_Input"><a name="250353">@E(X, 2) = @E(C, 2)</a></div>
+      <div class="Multi-line_Input"><a name="250216">@E1(1) + @E1(2) = 1</a></div>
+      <div class="Body_Text"><a name="249951">In addition, you may use text expressions to refer to parts of lag coefficient matrices and to impose specialized restrictions,</a></div>
+      <div class="Table"><a name="248760">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 324pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 108pt">
+            <div class="Table_Text"><a name="248686">@vec(</a><span class="In-line_math">W</span>)=<img class="Default EquationGraphic" src="images/VAR.056.3.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/VAR.056.3.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/VAR.056.3.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />, ...</div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 216pt">
+            <div class="Table_Text"><a name="248688">Restricts all elements of matrix </a><span class="In-line_math">W</span> similar to a pattern matrix. Element ordering matches the vectorization of the matrix, <span class="Emphasis">i.e.</span>, the elements of the first column, followed by the second column, followed by the third column, <span class="Emphasis">etc.</span></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248690">@diag(</a><span class="In-line_math">W</span>)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248692">Restricts </a><span class="In-line_math">W </span>to be a diagonal matrix, <span class="Emphasis">i.e.</span>, off-diagonal elements are zero. The diagonal elements are unrestricted.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248694">@diag(</a><span class="In-line_math">W</span>) = <span class="In-line_math">n</span></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248696">Restricts </a><span class="In-line_math">W</span> to be a diagonal matrix with elements on the diagonal restricted to be <span class="In-line_math">n</span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248698">@lower(</a><span class="In-line_math">W</span>)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248700">Restricts </a><span class="In-line_math">W </span>to be a lower triangular matrix, <span class="Emphasis">i.e.</span>, elements above the diagonal are zero.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248702">@unitlower(</a><span class="In-line_math">W</span>)</div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248704">Restricts </a><span class="In-line_math">W</span> to be a unit lower triangular matrix, <span class="Emphasis">i.e.</span>, elements above the diagonal are zero and elements on the diagonal are one.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248706">@upper(</a><span class="In-line_math">W</span>)</div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248708">Restricts </a><span class="In-line_math">W</span> to be an upper triangular matrix, <span class="Emphasis">i.e.</span>, elements below the diagonal are zero.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248710">@unitupper(</a><span class="In-line_math">W</span>)</div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248712">Restricts </a><span class="In-line_math">W</span> to be a unit upper triangular matrix, <span class="Emphasis">i.e.</span>, elements below the diagonal are zero and elements on the diagonal are one.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248714">@row(</a><span class="In-line_math">W</span>, <span class="In-line_math">r</span>) = <span class="In-line_math">n</span></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="250407">Restricts the elements in row </a><span class="In-line_math">r</span> of <span class="In-line_math">W</span> to be <span class="In-line_math">n</span>.</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248718">@col(</a><span class="In-line_math">W</span>, <span class="In-line_math">c</span>) = <span class="In-line_math">n</span></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="248720">Restricts the elements in column </a><span class="In-line_math">c</span> of <span class="In-line_math">W</span> to be <span class="In-line_math">n</span>.</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="248680">where <img class="Default EquationGraphic" src="images/VAR.056.3.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 22px; top: 0.0pt" alt="" /> is a reference to a canonical matrix name (</a><span class="Emphasis">e.g.</span>, &#8220;L1&#8221;, &#8220;L3&#8221;).</div>
+      <div class="Body_Text"><a name="248834">For example:</a></div>
+      <div class="Multi-line_Input"><a name="249223">@row(L1, 2) = 0</a></div>
+      <div class="Multi-line_Input"><a name="250155">@lower(L5)</a></div>
+      <div class="Body_Text"><a name="249194">You may specify your restrictions with any combination of direct assignment or text expressions. EViews will analyze the specification and determine if there are any restrictions that are incompatible.</a></div>
+      <div class="Body_Text"><a name="249339">If restrictions have been applied to any elements, the left side of the dialog will note this fact with the line of text &#8220;* restrictions applied&#8221;, and the </a><span class="Menu_Item">Clear All </span>button will be enabled. The button allows you to easily remove all of the current restrictions.</div>
+      <div class="Body_Text"><a name="251647">When restrictions have been applied, the </a><span class="Menu_Item">Basics</span> tab of the dialog will change to offer additional options. In the newly displayed <span class="Menu_Item">Restriction estimation section</span> in the bottom left o the dialog, you will be prompted to specify the method of estimating your restricted coefficients:</div>
+      <div class="Picture"><a name="251897"><img class="Default" src="images/VAR.056.3.41.jpg" width="100%" style="left: 0.0pt; max-height: 483px; max-width: 503px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="251769">In you do not select the </a><span class="Menu_Item">Iterate GLS weighting</span> option, EViews will estimate the parameters of the model using one-step GLS estimation. If you do select <span class="Menu_Item">Iterate GLS weighting you will be prompted </span>to specify the iteration and convergence properties of the estimation. To estimate with OLS, you may select <span class="Menu_Item">Iterate GLS weighting</span> and specify a <span class="Menu_Item">Max Iterations</span> of 0.</div>
+      <div class="Heading_4"><a name="252685">Estimation Output (Linear Restrictions)</a></div>
+      <div class="Body_Text"><a name="252816">Following estimation, EViews will display the results of restricted estimation. For the most part, the results are as described in </a><span class="Link"><a href="VAR-Unrestricted_VARs.html#241895" title="Unrestricted VARs">&#8220;Estimation Output&#8221;</a></span>, but there are some differences of note.</div>
+      <div class="Table"><a name="252974"><img class="Default" src="images/VAR.056.3.42.jpg" width="100%" style="left: 0.0pt; max-height: 551px; max-width: 488px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="252678">First, the top of the estimation output shows that the VAR estimates were estimated with restrictions, and provides a text description of the restrictions. Here we see that in our illustration, we have placed zero restrictions on the first lag coefficients for IP in the M1 equation, and for IP and M1 in the TB3 equation.</a></div>
+      <div class="Body_Text"><a name="253536">Just below the restrictions specification, EViews displays information about the restricted estimation method. Here, we see that EViews estimated the VAR using iterated GLS and that the coefficients and GLS weight matrix converged after 11 iterations.</a></div>
+      <div class="Body_Text"><a name="253819">The coefficients display shows the full set of VAR coefficient estimates with restrictions imposed as appropriate. In cases, where the estimated standard error of the coefficient is zero, the display will show &#8220;---&#8221; and the </a><span class="In-line_math">t</span>-statistic is suppressed.</div>
+      <div class="Body_Text"><a name="254140">As for unrestricted VARs, the bottom of the output show additional information on the individual equations and summary statistics for the VAR as a whole:</a></div>
+      <div class="Picture"><a name="254175"><img class="Default" src="images/VAR.056.3.43.jpg" width="100%" style="left: 0.0pt; max-height: 442px; max-width: 486px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="254530">As before, there are standard OLS regression summary statistics at the bottom of the column for the corresponding equation. Since linearly restricted VAR regression is not computed on an equation by equation basis, EViews only displays a subset of the equation specific statistics that are available for unrestricted VAR estimation.</a></div>
+      <div class="Body_Text"><a name="254531">The remaining output consists of summary statistics for the VAR system as a whole. These statistics include the determinant of the residual covariance (non-d.f. corrected), log-likelihood and associated information criteria, the number of coefficients, and number of restrictions.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Forecasting from Equations with Expressions</title>
+    <link rel="StyleSheet" href="css/Forecast.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="Forecast-Forecasting_with_ARMA_Errors.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="Forecast-Forecasting_with_Nonlinear_and_PDL_Specification.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_basc.html">Basic Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="Forecast-Forecasting_from_an_Equation.html">Forecasting from an Equation</a> : Forecasting from Equations with Expressions</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="181899">Forecasting from Equations with Expressions</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#181904">Forecasting using Auto-series Expressions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#181906">Point Forecasts</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#181935">Plotted Standard Errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#181940">Saved Forecast Standard Errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#181967">Forecasting with Auto-updating series</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="181900">One of the most useful EViews innovations is the ability to estimate and forecast from equations that are specified using expressions or auto-updating series. You may, for example, specify your dependent variable as LOG(X), or use an auto-updating regressor series EXPZ that is defined using the expression EXP(Z). Using expressions or auto-updating series in equations creates no added complexity for estimation since EViews simply evaluates the implicit series prior to computing the equation estimator.</a></div>
+      <div class="Body_Text"><a name="181901">The use of expressions in equations does raise issues when computing forecasts from equations. While not particularly complex or difficult to address, the situation does require a basic understanding of the issues involved, and some care must be taken when specifying your forecast. </a></div>
+      <div class="Body_Text"><a name="181902">In discussing the relevant issues, we distinguish between specifications that contain only auto-series expressions such as LOG(X), and those that contain auto-updating series such as EXPZ.</a></div>
+      <div class="Heading_4"><a name="181904">Forecasting using Auto-series Expressions</a></div>
+      <div class="Body_Text"><a name="181905">When forecasting from an equation that contains only ordinary series or auto-series expressions such as LOG(X), issues arise only when the dependent variable is specified using an expression.</a></div>
+      <div class="Heading_5"><a name="181906">Point Forecasts</a></div>
+      <div class="Body_Text"><a name="181907">EViews always provides you with the option to forecast the dependent variable expression. If the expression can be normalized (solved for the first series in the expression), EViews also provides you with the option to forecast the normalized series. </a></div>
+      <div class="Body_Text"><a name="181908">For example, suppose you estimated an equation with the specification:</a></div>
+      <div class="Input"><a name="181909">(log(hs)+sp) c hs(-1) </a></div>
+      <div class="Body_Text"><a name="181910">If you press the </a><span class="Menu_Item">Forecast</span> button, EViews will open a dialog prompting you for your forecast specification.</div>
+      <div class="Picture"><a name="181914"><img class="Default" src="images/Forecast.034.7.1.jpg" width="100%" style="left: 0.0pt; max-height: 442px; max-width: 446px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="181915">The resulting </a><span class="Menu_Item">Forecast</span> dialog is a slightly more complex version of the basic dialog, providing you with a new section allowing you to choose between two series to forecast: the normalized series, HS, or the equation dependent variable, LOG(HS)+SP. </div>
+      <div class="Body_Text"><a name="181916">Simply select the radio button for the desired forecast series. Note that you are not provided with the opportunity to forecast SP directly since HS, the first series that appears on the left-hand side of the estimation equation, is offered as the choice of normalized series.</a></div>
+      <div class="Body_Text"><a name="181917">It is important to note that the </a><span class="Menu_Item">Dynamic forecast</span> method is available since EViews is able to determine that the forecast equation has dynamic elements, with HS appearing on the left-hand side of the equation (either directly as HS or in the expression LOG(HS)+SP) and on the right-hand side of the equation in lagged form. If you select dynamic forecasting, previously forecasted values for HS(-1) will be used in forming forecasts of either HS or LOG(HS)+SP.</div>
+      <div class="Body_Text"><a name="181918">If the formula can be normalized, EViews will compute the forecasts of the transformed dependent variable by first forecasting the normalized series and then transforming the forecasts of the normalized series. This methodology has important consequences when the formula includes lagged series. For example, consider the following two models:</a></div>
+      <div class="Multi-line_Input"><a name="181919">series dhs = d(hs)</a></div>
+      <div class="Multi-line_Input"><a name="181920">equation eq1.ls d(hs) c sp</a></div>
+      <div class="Multi-line_Input"><a name="181921">equation eq2.ls dhs c sp</a></div>
+      <div class="Body_Text"><a name="181922">The dynamic forecasts of the first difference D(HS) from the first equation will be numerically identical to those for DHS from the second equation. However, the static forecasts for D(HS) from the two equations will not be identical. In the first equation, EViews knows that the dependent variable is a transformation of HS, so it will use the actual lagged value of HS in computing the static forecast of the first difference D(HS). In the second equation, EViews simply views DY as an ordinary series, so that only the estimated constant and SP are used to compute the static forecast.</a></div>
+      <div class="Body_Text"><a name="181923">One additional word of caution&#8211;when you have dependent variables that use lagged values of a series, you should avoid referring to the lagged series before the current series in a dependent variable expression. For example, consider the two equation specifications:</a></div>
+      <div class="Multi-line_Input"><a name="181924">d(hs) c sp</a></div>
+      <div class="Multi-line_Input"><a name="181925">(-hs(-1)+hs) c sp</a></div>
+      <div class="Body_Text"><a name="181926">Both specifications have the first difference of HS as the dependent variable and the estimation results are identical for the two models. However, if you forecast HS from the second model, EViews will try to calculate the forecasts of HS using leads of the actual series HS. These forecasts of HS will differ from those produced by the first model, which may not be what you expected.</a></div>
+      <div class="Body_Text"><a name="181927">In some cases, EViews will not be able to normalize the dependent variable expression. In this case, the </a><span class="Menu_Item">Forecast</span> dialog will only offer you the option of forecasting the entire expression. If, for example, you specify your equation as:</div>
+      <div class="Input"><a name="181928">log(hs)+1/log(hs) = c(1) + c(2)*hs(-1)</a></div>
+      <div class="Body_Text"><a name="181929">EViews will not be able to normalize the dependent variable for forecasting. The corresponding </a><span class="Menu_Item">Forecast</span> dialog will reflect this fact.</div>
+      <div class="Picture"><a name="181933"><img class="Default" src="images/Forecast.034.7.2.jpg" width="100%" style="left: 0.0pt; max-height: 397px; max-width: 444px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="181934">This version of the dialog only allows you to forecast the dependent variable expression, since EViews is unable to normalize and solve for HS. Note also that only static forecasts are available for this case since EViews is unable to solve for lagged values of HS on the right hand-side. </a></div>
+      <div class="Heading_5"><a name="181935">Plotted Standard Errors</a></div>
+      <div class="Body_Text"><a name="181936">When you select </a><span class="Dialog_Item">Forecast graph</span> in the forecast dialog, EViews will plot the forecasts, along with plus and minus two standard error bands. When you estimate an equation with an expression for the left-hand side, EViews will plot the standard error bands for either the normalized or the unnormalized expression, depending upon which term you elect to forecast.</div>
+      <div class="Body_Text"><a name="181937">If you elect to predict the normalized dependent variable, EViews will automatically account for any nonlinearity in the standard error transformation. The next section provides additional details on the procedure used to normalize the upper and lower error bounds.</a></div>
+      <div class="Heading_5"><a name="181940">Saved Forecast Standard Errors</a></div>
+      <div class="Body_Text"><a name="181941">If you provide a name in this edit box, EViews will store the standard errors of the underlying series or expression that you chose to forecast. </a></div>
+      <div class="Body_Text"><a name="181942">When the dependent variable of the equation is a simple series or an expression involving only </a><span class="Emphasis">linear</span> transformations, the saved standard errors will be exact (except where the forecasts do not account for coefficient uncertainty, as described below). If the dependent variable involves nonlinear transformations, the saved forecast standard errors will be exact if you choose to forecast the entire formula. If you choose to forecast the underlying endogenous series, the forecast uncertainty cannot be computed exactly, and EViews will provide a linear (first-order) approximation to the forecast standard errors.</div>
+      <div class="Body_Text"><a name="181943">Consider the following equations involving a formula dependent variable:</a></div>
+      <div class="Multi-line_Input"><a name="181944">d(hs) c sp</a></div>
+      <div class="Multi-line_Input"><a name="181945">log(hs) c sp</a></div>
+      <div class="Body_Text"><a name="181946">For the first equation, you may choose to forecast either HS or D(HS). In both cases, the forecast standard errors will be exact, since the expression involves only linear transformations. The two standard errors will, however, differ in dynamic forecasts since the forecast standard errors for HS take into account the forecast uncertainty from the lagged value of HS. In the second example, the forecast standard errors for LOG(HS) will be exact. If, however, you request a forecast for HS itself, the standard errors saved in the series will be the approximate (linearized) forecast standard errors for HS.</a></div>
+      <div class="Body_Text"><a name="181947">Note that when EViews displays a graph view of the forecasts together with standard error bands, the standard error bands are always exact. Thus, in forecasting the underlying dependent variable in a nonlinear expression, the standard error bands will not be the same as those you would obtain by constructing series using the linearized standard errors saved in the workfile.</a></div>
+      <div class="Body_Text"><a name="181948">Suppose in our second example above that you store the forecast of HS and its standard errors in the workfile as the series HSHAT and SE_HSHAT. Then the </a><span class="Emphasis">approximate</span> two standard error bounds can be generated manually as:</div>
+      <div class="Multi-line_Input"><a name="181949">series hshat_high1 = hshat + 2*se_hshat</a></div>
+      <div class="Multi-line_Input"><a name="181950">series hshat_low1 = hshat - 2*se_hshat</a></div>
+      <div class="Body_Text"><a name="181951">These forecast error bounds will be symmetric about the point forecasts HSHAT.</a></div>
+      <div class="Body_Text"><a name="181952">On the other hand, when EViews plots the forecast error bounds of HS, it proceeds in two steps. It first obtains the forecast of LOG(HS) and its standard errors (named, say, LHSHAT and SE_LHSHAT) and forms the forecast error bounds on LOG(HS):</a></div>
+      <div class="Multi-line_Input"><a name="181953">lhshat + 2*se_lhshat</a></div>
+      <div class="Multi-line_Input"><a name="181954">lhshat - 2*se_lhshat</a></div>
+      <div class="Body_Text"><a name="181955">It then normalizes (inverts the transformation) of the two standard error bounds to obtain the prediction interval for HS:</a></div>
+      <div class="Multi-line_Input"><a name="181956">series hshat_high2 = exp(hshat + 2*se_hshat)</a></div>
+      <div class="Multi-line_Input"><a name="181957">series hshat_low2 = exp(hshat - 2*se_hshat)</a></div>
+      <div class="Body_Text"><a name="181958">Because this transformation is a non-linear transformation, these bands will not be symmetric around the forecast. </a></div>
+      <div class="Body_Text"><a name="181959">To take a more complicated example, suppose that you generate the series DLHS and LHS, and then estimate three equivalent models:</a></div>
+      <div class="Multi-line_Input"><a name="181960">series dlhs = dlog(hs)</a></div>
+      <div class="Multi-line_Input"><a name="181961">series lhs = log(hs)</a></div>
+      <div class="Multi-line_Input"><a name="181962">equation eq1.ls dlog(hs) c sp</a></div>
+      <div class="Multi-line_Input"><a name="181963">equation eq2.ls d(lhs) c sp</a></div>
+      <div class="Multi-line_Input"><a name="181964">equation eq3.ls dlhs c sp</a></div>
+      <div class="Body_Text"><a name="181965">The estimated equations from the three models are numerically identical. If you choose to forecast the underlying dependent (normalized) series from each model, EQ1 will forecast HS, EQ2 will forecast LHS (the log of HS), and EQ3 will forecast DLHS (the first difference of the logs of HS, LOG(HS)&#8211;LOG(HS(&#8211;1)). The forecast standard errors saved from EQ1 will be linearized approximations to the forecast standard error of HS, while those from the latter two will be exact for the forecast standard error of LOG(HS) and the first difference of the logs of HS.</a></div>
+      <div class="Body_Text"><a name="181966">Static forecasts from all three models are identical because the forecasts from previous periods are not used in calculating this period's forecast when performing static forecasts. For dynamic forecasts, the log of the forecasts from EQ1 will be identical to those from EQ2 and the log first difference of the forecasts from EQ1 will be identical to the first difference of the forecasts from EQ2 and to the forecasts from EQ3. For static forecasts, the log first difference of the forecasts from EQ1 will be identical to the first difference of the forecasts from EQ2. However, these forecasts differ from those obtained from EQ3 because EViews does not know that the generated series DLY is actually a difference term so that it does not use the dynamic relation in the forecasts.</a></div>
+      <div class="Heading_4"><a name="181967">Forecasting with Auto-updating series</a></div>
+      <div class="Body_Text"><a name="181968">When forecasting from an equation that contains auto-updating series defined by formulae, the central question is whether EViews interprets the series as ordinary series, or whether it treats the auto-updating series as expressions. </a></div>
+      <div class="Body_Text"><a name="181969">Suppose for example, that we have defined auto-updating series LOGHS and LOGHSLAG, for the log of HAS and the log of HS(-1), respectively,</a></div>
+      <div class="Multi-line_Input"><a name="181970">frml loghs = log(hs)</a></div>
+      <div class="Multi-line_Input"><a name="181971">frml loghslag = log(hs(-1))</a></div>
+      <div class="Body_Text"><a name="181972">and that we employ these auto-updating series in estimating an equation specification:</a></div>
+      <div class="Input"><a name="181973">loghs c loghslag</a></div>
+      <div class="Body_Text"><a name="181974">It is worth pointing out this specification yields results that are identical to those obtained from estimating an equation using the expressions directly using LOG(HS) and LOG(HS(-1)):</a></div>
+      <div class="Input"><a name="181975">log(hs) c log(hs(-1))</a></div>
+      <div class="Body_Text"><a name="181976">The </a><span class="Menu_Item">Forecast</span> dialog for the first equation specification (using LOGHS and LOGHSLAG) contains an additional dropdown menu allowing you to specify whether to interpret the auto-updating series as ordinary series, or whether to look inside LOGHS and LOGHSLAG to use their expressions.</div>
+      <div class="Picture"><a name="181980"><img class="Default" src="images/Forecast.034.7.3.jpg" width="100%" style="left: 0.0pt; max-height: 440px; max-width: 445px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="181981">By default, the dropdown menu is set to </a><span class="Menu_Item">Ignore formulae within series</span>, so that LOGHS and LOGHSLAG are viewed as ordinary series. Note that since EViews ignores the expressions underlying the auto-updating series, you may only forecast the dependent series LOGHS, and there are no dynamics implied by the equation.</div>
+      <div class="Body_Text"><a name="181982">Alternatively, you may instruct EViews to use the expressions in place of all auto-updating series by changing the dropdown menu setting to </a><span class="Menu_Item">Substitute formulae within series</span>.</div>
+      <div class="Picture"><a name="181986"><img class="Default" src="images/Forecast.034.7.4.jpg" width="100%" style="left: 0.0pt; max-height: 443px; max-width: 445px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="181987">If you elect to substitute the formulae, the </a><span class="Menu_Item">Forecast</span> dialog will change to reflect the use of the underlying expressions as you may now choose between forecasting HS or LOG(HS). We also see that when you use the substituted expressions you are able to perform either dynamic or static forecasting. </div>
+      <div class="Body_Text"><a name="181988">It is worth noting that substituting expressions yields a </a><span class="Menu_Item">Forecast</span> dialog that offers the same options as if you were to forecast from the second equation specification above&#8212;using LOG(HS) as the dependent series expression, and LOG(HS(-1)) as an independent series expression.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Nonlinear Equation Solution Methods</title>
+    <link rel="StyleSheet" href="css/optimize.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="optimize-Optimization_Algorithms.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="optimize-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="optimize-Estimation_and_Solution_Options.html">Estimation and Solution Options</a> : Nonlinear Equation Solution Methods</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="137255">Nonlinear Equation Solution Methods</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#137261">Gauss-Seidel</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#137295">Newton's Method</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#139777">Broyden's Method</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="137256">When solving a nonlinear equation system, EViews first analyzes the system to determine if the system can be separated into two or more blocks of equations which can be solved sequentially rather than simultaneously. Technically, this is done by using a graph representation of the equation system where each variable is a vertex and each equation provides a set of edges. A well known algorithm from graph theory is then used to find the strongly connected components of the directed graph.</a></div>
+      <div class="Body_Text"><a name="137257">Once the blocks have been determined, each block is solved for in turn. If the block contains no simultaneity, each equation in the block is simply evaluated once to obtain values for each of the variables.</a></div>
+      <div class="Body_Text"><a name="137258">If a block contains simultaneity, the equations in that block are solved by either a Gauss-Seidel or Newton method, depending on how the solver options have been set.</a></div>
+      <div class="Heading_4"><a name="137261">Gauss-Seidel</a></div>
+      <div class="Body_Text"><a name="137262">By default, EViews uses the Gauss-Seidel method when solving systems of nonlinear equations. Suppose the system of equations is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize.077.4.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(60.16)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="137273">where <img class="Default EquationGraphic" src="images/optimize.077.4.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> are the endogenous variables and <img class="Default EquationGraphic" src="images/optimize.077.4.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> are the exogenous variables.</a></div>
+      <div class="Body_Text"><a name="137277">The problem is to find a fixed point such that <img class="Default EquationGraphic" src="images/optimize.077.4.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 86px; top: 0.0pt" alt="" />. Gauss-Seidel employs an iterative updating rule of the form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize.077.4.05.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(60.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="137282">to find the solution. At each iteration, EViews solves the equations in the order that they appear in the model. If an endogenous variable that has already been solved for in that iteration appears later in some other equation, EViews uses the value as solved in that iteration. For example, the </a><span class="In-line_math">k</span>-th variable in the <span class="In-line_math">i</span>-th iteration is solved by:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize.077.4.06.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(60.18)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="137293">The performance of the Gauss-Seidel method can be affected be reordering of the equations. If the Gauss-Seidel method converges slowly or fails to converge, you should try moving the equations with relatively few and unimportant right-hand side endogenous variables so that they appear early in the model.</a></div>
+      <div class="Heading_4"><a name="137295">Newton's Method</a></div>
+      <div class="Body_Text"><a name="137296">Newton&#8217;s method for solving a system of nonlinear equations consists of repeatedly solving a local linear approximation to the system.</a></div>
+      <div class="Body_Text"><a name="137297">Consider the system of equations written in implicit form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize.077.4.07.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(60.19)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="137311">where <img class="Default EquationGraphic" src="images/optimize.077.4.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is the set of equations, <img class="Default EquationGraphic" src="images/optimize.077.4.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the vector of endogenous variables and <img class="Default EquationGraphic" src="images/optimize.077.4.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> is the vector of exogenous variables.</a></div>
+      <div class="Body_Text"><a name="137312">In Newton&#8217;s method, we take a linear approximation to the system around some values <img class="Default EquationGraphic" src="images/optimize.077.4.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 21px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/optimize.077.4.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 24px; max-width: 20px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize.077.4.13.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(60.20)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="137323">and then use this approximation to construct an iterative procedure for updating our current guess for <img class="Default EquationGraphic" src="images/optimize.077.4.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize.077.4.15.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(60.21)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="137331">where raising to the power of -1 denotes matrix inversion.</a></div>
+      <div class="Body_Text"><a name="137335">The procedure is repeated until the changes in <img class="Default EquationGraphic" src="images/optimize.077.4.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> between periods are smaller than a specified tolerance.</a></div>
+      <div class="Body_Text"><a name="137336">Note that in contrast to Gauss-Seidel, the ordering of equations under Newton does not affect the rate of convergence of the algorithm.</a></div>
+      <div class="Heading_4"><a name="139777">Broyden's Method</a></div>
+      <div class="Body_Text"><a name="139779">Broyden's Method is a modification of Newton's method which tries to decrease the calculational cost of each iteration by using an approximation to the derivatives of the equation system rather than the true derivatives of the equation system when calculating the Newton step. That is, at each iteration, Broyden's method takes a step:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize.077.4.17.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(60.22)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="139783">where <img class="Default EquationGraphic" src="images/optimize.077.4.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" /> is the current approximation to the matrix of derivatives of the equation system.</a></div>
+      <div class="Body_Text"><a name="139785">As well as updating the value of <img class="Default EquationGraphic" src="images/optimize.077.4.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> at each iteration, Broyden's method also updates the existing Jacobian approximation, <img class="Default EquationGraphic" src="images/optimize.077.4.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, at each iteration based on the difference between the observed change in the residuals of the equation system and the change in the residuals predicted by a linear approximation to the equation system based on the current Jacobian approximation.</a></div>
+      <div class="Body_Text"><a name="139787">In particular, Broyden's method uses the following equation to update <img class="Default EquationGraphic" src="images/optimize.077.4.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 14px; top: 0.0pt" alt="" />:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/optimize.077.4.22.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(60.23)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="139792">where <img class="Default EquationGraphic" src="images/optimize.077.4.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 116px; top: 0.0pt" alt="" />. This update has a number of desirable properties (see Chapter 8 of Dennis and Schnabel (1983) for details).</a></div>
+      <div class="Body_Text"><a name="139794">In EViews, the Jacobian approximation is initialized by taking the true derivatives of the equation system at the starting values of <img class="Default EquationGraphic" src="images/optimize.077.4.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. The updating procedure given above is repeated until changes in <img class="Default EquationGraphic" src="images/optimize.077.4.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> between periods become smaller than a specified tolerance. In some cases the method may stall before reaching a solution, in which case a fresh set of derivatives of the equation system is taken at the current values of <img class="Default EquationGraphic" src="images/optimize.077.4.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />, and the updating is continued using these derivatives as the new Jacobian approximation.</a></div>
+      <div class="Body_Text"><a name="139796">Broyden's method shares many of the properties of Newton's method including the fact that it is not dependent on the ordering of equations in the system and that it will generally converge quickly in the vicinity of a solution. In comparison to Newton's method, Broyden's method will typically take less time to perform each iteration, but may take more iterations to converge to a solution. In most cases Broyden's method will take less overall time to solve a system than Newton's method, but the relative performance will depend on the structure of the derivatives of the equation system.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

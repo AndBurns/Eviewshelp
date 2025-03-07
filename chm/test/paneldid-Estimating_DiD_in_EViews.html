@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Estimating DiD in EViews</title>
+    <link rel="StyleSheet" href="css/paneldid.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="paneldid-Background.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="paneldid-Examples.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="paneldid-Difference-in-Difference_Estimation.html">Difference-in-Difference Estimation</a> : Estimating DiD in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="405027">Estimating DiD in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="paneldid-Background.html#998390">Multiple Treatment DatesPost-Estimation Views and Procs</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#406539">Trends Summary</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#412690">Goodman-Bacon Decomposition</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#406624">Group-Time Effects (Callaway-Sant&#8217;Anna)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#432092">Borusyak, Jaravel, and Spiess Imputed Estimator</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#431459">Make Underlying Equation Proc</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="405080">The panel data TWFE model may be estimated using EViews&#8217; built-in estimator for least squares regression with fixed effects. However, EViews also offers a simple interface for estimating the panel TWFE model, featuring tools for performing post-estimation diagnostics such as parallel trends tests, the Goodman-Bacon decomposition and the Callaway-Sant&#8217;Anna estimation diagnostic.</a></div>
+      <div class="Body_Text" style="color: #000000; font-style: italic; font-variant: normal; font-weight: normal; text-transform: none; vertical-align: baseline"><span class="Emphasis"><a name="405081">(To estimate DiD models on non-panel workfiles, you will need to specify the appropriate least squares model manually using standard least squares regression.)</a></span></div>
+      <div class="Body_Text"><a name="405082">To estimate a DiD model in EViews, bring up the equation dialog by clicking on </a><span class="Menu_Item">Object/New Object&#8230;/Equation</span> or <span class="Menu_Item">Quick/Estimate Equation&#8230;</span> from the main menu bar in your panel workfile. EViews will detect the presence of your panel structure and in place of the standard equation dialog will open the panel equation estimation dialog. Select <span style="font-weight: bold">DiD &#8211; Difference-in-Difference</span> in the <span style="font-weight: bold">Method</span> dropdown display the DiD dialog:</div>
+      <div class="Picture"><a name="405401"><img class="Default" src="images/paneldid.069.3.01.jpg" width="100%" style="left: 0.0pt; max-height: 417px; max-width: 490px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="998390">In the </a><span class="Menu_Item">Equation specification </span>edit field you should enter the dependent variable followed by any exogenous regressors <span class="Emphasis">apart from the treatment variable</span>. </div>
+      <div class="Body_Text"><a name="998396">The treatment variable should be entered in the </a><span class="Menu_Item">Treatment Variable</span><span style="font-weight: bold"> </span>edit field. The treatment series should be a binary variable indicating whether the individual has been treated (<span class="Emphasis">i.e.</span>, is 1 if the observation in a treatment group which is post-treatment date for that group, and 0 otherwise).</div>
+      <div class="Body_Text"><a name="998407">The </a><span class="Menu_Item">Options</span> tab contains a single <span class="Menu_Item">Coefficient name</span> edit field that allows you to change the default coefficient vector.</div>
+      <div class="Body_Text"><a name="405403">Click on </a><span class="Menu_Item">OK</span> to perform the difference-in-difference estimation and display the output: </div>
+      <div class="Picture"><a name="406131"><img class="Default" src="images/paneldid.069.3.02.jpg" width="100%" style="left: 0.0pt; max-height: 420px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="405416">The basic equation output for a DiD estimation is identical to that of least squares estimation, but with the display of only the single treatment coefficient. Also, the test statistic and associated </a><span class="In-line_math">p</span>-value of a test of the parallel trends assumption is displayed with the summary statistics at the bottom of the estimation. This test is a simple Wald-test run on the auxiliary regression:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/paneldid.069.3.03.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(56.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="405418">where <img class="Default EquationGraphic" src="images/paneldid.069.3.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 25px; top: 0.0pt" alt="" /> is a trend term, and the test evaluates <img class="Default EquationGraphic" src="images/paneldid.069.3.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 81px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="405420">It should also be noted that when performing difference-in-difference estimation, EViews uses cross-section cluster-robust standard errors.</a></div>
+      <div class="Heading_4"><a name="998390">Post-Estimation Views and Procs</a></div>
+      <div class="Body_Text"><a name="998395">Since the TWFE model of DiD is a simple regression model, the standard views and procs available for least squares models are also available for DiD estimation. </a></div>
+      <div class="Body_Text"><a name="406428">There are a set of DiD specific views available under the </a><span class="Menu_Item">Difference-in-Difference Diagnostics </span>view menu entry.</div>
+      <div class="Heading_5"><a name="406539">Trends Summary</a></div>
+      <div class="Body_Text"><a name="998406">The </a><span class="Menu_Item">Trends Summary Table</span><span style="font-weight: bold"> </span>and <span class="Menu_Item">Trends Summary Graph</span> views display the average of the outcome variable by year, categorized by treatment group (<span class="Emphasis">i.e.</span>, the date at which treatment occurs).</div>
+      <div class="Table"><a name="431723"><img class="Default" src="images/paneldid.069.3.06.jpg" width="100%" style="left: 0.0pt; max-height: 410px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431720">This trends summary graph offers a quick visual representation of the means by treatment group to check whether the different groups have similar trends.</a></div>
+      <div class="Picture"><a name="431791"><img class="Default" src="images/paneldid.069.3.07.jpg" width="100%" style="left: 0.0pt; max-height: 366px; max-width: 586px; top: 0.0pt" alt="" /></a></div>
+      <div class="Table"><a name="430297">&nbsp;</a></div>
+      <div class="Heading_5"><a name="412690">Goodman-Bacon Decomposition</a></div>
+      <div class="Body_Text"><a name="412429">Recent research has noted that the TWFE model is not suitable in multiple-timing DiD models if the impact of treatment changes as time from treatment increases. In this case, the TWFE estimator will exhibit bias since using observations from an already-treated group as the comparison violates the parallel trends assumption.</a></div>
+      <div class="Body_Text"><a name="414112">The </a><span class="Menu_Item">Goodman-Bacon Decomposition</span><span style="font-weight: bold"> </span>view calculates the treatment effects for individual pairs of treatment groups. By focusing on results for different categories of comparisons, the Goodman-Bacon decomposition looks for the presence of parallel trends bias in the computation of the multiple-timing TWFE.</div>
+      <div class="Body_Text"><a name="425187">Goodman-Bacon (2021) shows that the TWFE estimator is a weighted average of DiD estimators for every combination of two groups of observations defined by two treatment dates (<img class="Default EquationGraphic" src="images/paneldid.069.3.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> comparisons). The weights used in the average are based upon the number of observations and the variance of the estimated treatment effect in these individual DiD comparisons.</a></div>
+      <div class="Body_Text"><a name="437586">Specifically, for every treatment group with a given treatment date (group <img class="Default EquationGraphic" src="images/paneldid.069.3.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />), we compute all <img class="Default EquationGraphic" src="images/paneldid.069.3.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> comparisons with:</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="432821">observations treated at later dates (<img class="Default EquationGraphic" src="images/paneldid.069.3.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> groups)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="432886">observations treated at earlier dates (<img class="Default EquationGraphic" src="images/paneldid.069.3.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> groups)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="432920">never treated observations (group <img class="Default EquationGraphic" src="images/paneldid.069.3.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="432986">always treated observations (group <img class="Default EquationGraphic" src="images/paneldid.069.3.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" />)</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="433389">For the first set of cases where <img class="Default EquationGraphic" src="images/paneldid.069.3.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is an early treatment group (<img class="Default EquationGraphic" src="images/paneldid.069.3.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />) compared with a later group (<img class="Default EquationGraphic" src="images/paneldid.069.3.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />), we employ only </a><span class="Emphasis">untreated</span> <img class="Default EquationGraphic" src="images/paneldid.069.3.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> observations from periods up to the beginning of the treatment date, so that the <img class="Default EquationGraphic" src="images/paneldid.069.3.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> can serve as a non-changing control.</div>
+      <div class="Body_Text"><a name="434253">For the second set of cases where <img class="Default EquationGraphic" src="images/paneldid.069.3.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is a later treatment group (<img class="Default EquationGraphic" src="images/paneldid.069.3.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" />) compared with an earlier group (<img class="Default EquationGraphic" src="images/paneldid.069.3.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />), we employ only </a><span class="Emphasis">treated</span> <img class="Default EquationGraphic" src="images/paneldid.069.3.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> observations from periods following the treatment date, so that the <img class="Default EquationGraphic" src="images/paneldid.069.3.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> can serve as a non-changing control.</div>
+      <div class="Body_Text"><a name="427218">It is important to note that both the <img class="Default EquationGraphic" src="images/paneldid.069.3.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> against <img class="Default EquationGraphic" src="images/paneldid.069.3.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" />, and the <img class="Default EquationGraphic" src="images/paneldid.069.3.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> against <img class="Default EquationGraphic" src="images/paneldid.069.3.28.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> comparisons employ control groups that consist of previously treated observations. These comparisons are particularly susceptible to parallel trends bias when the treatment effect varies from the date of treatment.</a></div>
+      <div class="Body_Text"><a name="413325">To display the decomposition, click on </a><span class="Menu_Item">View/Difference-in-Difference Diagnostics/Goodman-Bacon decomposition</span>. EViews will display a spool view of output divided into three sections. </div>
+      <div class="Body_Text"><a name="414205">The first section shows weighted means of the treatment effect categorized by the type of <img class="Default EquationGraphic" src="images/paneldid.069.3.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> group comparison:</a></div>
+      <div class="Table"><a name="413643"><img class="Default" src="images/paneldid.069.3.30.jpg" width="100%" style="left: 0.0pt; max-height: 312px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="416734">The</a><span class="Menu_Item"> Cases</span> column shows the number of year pairs used in the comparison. In this example, there are 66 treatment date pairs in which <img class="Default EquationGraphic" src="images/paneldid.069.3.31.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> and untreated <img class="Default EquationGraphic" src="images/paneldid.069.3.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> observations are compared, and 12 years in which both the <img class="Default EquationGraphic" src="images/paneldid.069.3.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/paneldid.069.3.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> observations are compared with the <img class="Default EquationGraphic" src="images/paneldid.069.3.35.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> observations.</div>
+      <div class="Body_Text"><a name="417659">The </a><span class="Menu_Item">Mean Coef</span> column the estimate of the ATET, while the <span class="Menu_Item">Weight</span> column contains the weights used in forming the overall ATET estimate. Here the estimated ATET across <img class="Default EquationGraphic" src="images/paneldid.069.3.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> vs. untreated <img class="Default EquationGraphic" src="images/paneldid.069.3.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> comparisons is -0.1868 with a weight of 0.1107. The estimated ATET for the <img class="Default EquationGraphic" src="images/paneldid.069.3.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/paneldid.069.3.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> observations vs. <img class="Default EquationGraphic" src="images/paneldid.069.3.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 18px; top: 0.0pt" alt="" /> observations is -7.0437, with a weight of 0.3844.</div>
+      <div class="Body_Text"><a name="418903">Each of the ATET components in this table is itself a weighted average of individual treatment-year pair comparisons. The second section of the spool displays the individual <img class="Default EquationGraphic" src="images/paneldid.069.3.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> coefficient estimates and weights for every comparison. For example, the first few lines of a Goodman-Bacon decomposition are given by:</a></div>
+      <div class="Table"><a name="414524"><img class="Default" src="images/paneldid.069.3.42.jpg" width="100%" style="left: 0.0pt; max-height: 399px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="419092">The labeling of the individual components indicates the nature of the group comparison. For example, the &#8220;1969 vs. 1970&#8221; comparison is an <img class="Default EquationGraphic" src="images/paneldid.069.3.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> against <img class="Default EquationGraphic" src="images/paneldid.069.3.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> comparison, while the &#8220;1970 vs. 1969&#8221; is the <img class="Default EquationGraphic" src="images/paneldid.069.3.45.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> against <img class="Default EquationGraphic" src="images/paneldid.069.3.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> comparison.</a></div>
+      <div class="Body_Text"><a name="998448">The final section in the spool contains a graph of the individual <img class="Default EquationGraphic" src="images/paneldid.069.3.47.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 41px; top: 0.0pt" alt="" /> component results, with different symbols and colors indicating the type of comparison. The graphical representation of the individual effects shown in the third section allows a quick visualization of the effects:</a></div>
+      <div class="Picture"><a name="414637"><img class="Default" src="images/paneldid.069.3.48.jpg" width="100%" style="left: 0.0pt; max-height: 401px; max-width: 565px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_5"><a name="406624">Group-Time Effects (Callaway-Sant&#8217;Anna)</a></div>
+      <div class="Body_Text"><a name="405422">The Group-Time Average Treatment Effects (Callaway-Sant&#8217;Anna)</a><span style="font-weight: bold"> </span>view computes the Callaway and Sant&#8217;Anna (2021) estimator of the average treatment effects. </div>
+      <div class="Body_Text"><a name="404740">A study by Callaway and Sant&#8217;Anna (2020, CS) derives a new estimator for the DiD model with multiple treatment time periods, breaking away from the TWFE estimator by using weighted averages of the differences model </a><span class="Link"><a href="paneldid-Background.html#403122" title="Background">Equation&nbsp;(56.1)</a></span> with appropriate comparison pairings.</div>
+      <div class="Body_Text"><a name="404733">Their estimator is robust to the treatment effect changing as time from treatment increases so that the CS estimator can be useful as a diagnostic comparison to the TWFE estimator to judge the reliability of the TWFE estimates.</a></div>
+      <div class="Body_Text"><a name="430458">To display the view select </a><span class="Menu_Item">View/Difference-in-Difference Diagnostics/CS Group-Time Effects...</span> from the equation menu. EViews displays a dialog:</div>
+      <div class="Picture"><a name="430644"><img class="Default" src="images/paneldid.069.3.49.jpg" width="100%" style="left: 0.0pt; max-height: 288px; max-width: 320px; top: 0.0pt" alt="" /></a></div>
+      <div class="Picture"><a name="406148">&nbsp;</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="406397">The </a><span style="font-weight: bold">Additional regressors</span> edit field allows you to estimate the Callaway and Sant&#8217;Anna model on the underlying estimated TWFE model, but with additional regressors. This allows you to estimate models via Callaway and Sant&#8217;Anna that may be impossible to estimate via TWFE due to perfect collinearity. Simply enter the name of series, or series expressions, you wish to add to the estimation in the edit field.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="430709">By default the CS estimator compares treated individuals grouped by treatment date against a control group of individuals who never receive treatment. However these comparisons could be modified to include individuals who have not yet been treated as the control group.</a></div>
+      <div class="Body_Text"><a name="430710">Each pairing compares groups the treated into year-of-treatment groups, and then compares the difference between the output variable in each year after treatment with the year prior to treatment. This difference is compared for the treatment group and the comparison group.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="406398">The </a><span style="font-weight: bold">Comparison group</span> radio buttons specify whether the comparison/control groups in the Callaway-Sant&#8217;Anna model will be only those individuals who never receive treatment (<span style="font-weight: bold">Never treated</span>), or those who have yet to receive treatment in the current time period (<span style="font-weight: bold">Not yet treated</span>), or either (<span style="font-weight: bold">Both</span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="406399">Clicking </a><span style="font-weight: bold">OK</span> will estimate the Callaway and Sant&#8217;Anna model. The output is in the form of a spool with five sections.</div>
+      <div class="Body_Text"><a name="406400">The first section provides a summary view of the CS results, including the overall average treatment effect of the treated (calculated as the weighted average of the individual pairing calculations), along with its standard-error, </a><span class="In-line_math">z</span>-statistic and associated <span class="In-line_math">p</span>-value.</div>
+      <div class="Picture"><a name="430858"><img class="Default" src="images/paneldid.069.3.50.jpg" width="100%" style="left: 0.0pt; max-height: 248px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="406401">The second section provides each of the individual pairings used in the weighted average ATET estimation, including the estimated coefficient for the pairing, and its weight.</a></div>
+      <div class="Picture"><a name="430855"><img class="Default" src="images/paneldid.069.3.51.jpg" width="100%" style="left: 0.0pt; max-height: 370px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="405424">The remaining sections computes aggregations of the individual pairings, where the aggregations are over treatment date (group), observation date (date), and time-since treatment (duration). For each aggregation, the coefficients, standard errors, z-Statistics and associated p-values are tabulated, along with a graph of the coefficients and a 95% confidence interval.</a></div>
+      <div class="Body_Text"><a name="406402">For example, the group effects consist of the weighted averages of the ATET coefficients</a></div>
+      <div class="Picture"><a name="431334"><img class="Default" src="images/paneldid.069.3.52.jpg" width="100%" style="left: 0.0pt; max-height: 192px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431336">and the corresponding plot</a></div>
+      <div class="Picture"><a name="431372"><img class="Default" src="images/paneldid.069.3.53.jpg" width="100%" style="left: 0.0pt; max-height: 274px; max-width: 476px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="431400">shows the values along with 95% confidence intervals</a></div>
+      <div class="Heading_5"><a name="432092">Borusyak, Jaravel, and Spiess Imputed Estimator</a></div>
+      <div class="Body_Text"><a name="432090">A third study by Borusyak, Jaravel and Spiess (2021, BJS) describes a number of potential issues with the TWFE estimator and derives an estimator that alleviates these issues. They term their estimator an &#8220;imputation&#8221; estimator, since it uses estimates from untreated observations to forecast the outcome variable for observations for which individuals have been treated, and then for each treated observation they impute the impact of treatment as the difference between the forecast of the outcome, and the observed outcome. This series of differences can then be averaged over to compute the average treatment effect.</a></div>
+      <div class="Body_Text"><a name="432177">To display the view select </a><span class="Menu_Item">View/Difference-in-Difference Diagnostics/BJS Imputed Estimator</span> from the equation menu.</div>
+      <div class="Body_Text"><a name="432221">EViews estimates the BJS estimator and displays the output in a spool. As with the Group-Time Effects view (</a><span class="Link"><a href="#406624" title="Estimating DiD in EViews">&#8220;Group-Time Effects (Callaway-Sant&#8217;Anna)&#8221;</a></span>), there are five sections in the output: the summary view with the overall ATET, its standard-error, <span class="In-line_math">z</span>-statistic and associated <span class="In-line_math">p</span>-value, the individual pairings used in the weighted average ATET estimation, and sections for aggregations over treatment date (group), observation date (date), and time-since treatment (duration). </div>
+      <div class="Heading_5"><a name="431459">Make Underlying Equation Proc</a></div>
+      <div class="Body_Text"><a name="431032">One additional DiD-specific tool is the </a><span class="Menu_Item">Make Underlying Equation</span><span class="Default_Paragraph_Font"> proc</span><span class="Default_Paragraph_Font">. </span>Clicking on <span class="Menu_Item">Proc/Make Underlying Equation</span> will produce a <span class="Emphasis">new equation object </span>in which the difference-in-difference model as a standard least squares equation. Having an equation with the DiD specification estimated by least squares may prove useful for performing diagnostics or additional analysis.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

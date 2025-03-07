@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Models</title>
+    <link rel="StyleSheet" href="css/wnew14.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="wnew14-Econometrics_and_Statistics.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="wnew14-Command_Language.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">EViews 14 Help Topics : <a class="WebWorks_Breadcrumb_Link" href="wnew14-New_Features_in_EViews_14.html">New Features in EViews 14</a> : Models</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="432535">Models</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#439225">Models Containing Future Endogenous Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#438934">Gauss-Seidel</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#438940">E-Newton and E-QNewton</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#438952">Forward Solution Options</a>
+        </div>
+      </div>
+      <div class="Heading_4"><a name="439225">Models Containing Future Endogenous Values</a></div>
+      <div class="Body_Text"><a name="438852">EViews 14 allows you to solve models which contain future values of endogenous variables using standard Gauss-Seidel, and E-Newton or E-QNewton methods (</a>Brayton, 2011).This new capability is central finding solutions to models involving rational expectations.</div>
+      <div class="Body_Text"><a name="438881">Consider a model where the equations have the form:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/wnew14.003.5.01.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(0.5)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="438892">where <img class="Default EquationGraphic" src="images/wnew14.003.5.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 16px; top: 0.0pt" alt="" /> is the complete set of equations of the model, <img class="Default EquationGraphic" src="images/wnew14.003.5.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a vector of all the endogenous variables, <img class="Default EquationGraphic" src="images/wnew14.003.5.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is a vector of all the exogenous variables, and the parentheses follow the usual EViews syntax to indicate leads and lags.</a></div>
+      <div class="Body_Text"><a name="438896">Since solving the model for any particular period requires both past and future values of the endogenous variables, it is not possible to solve the model recursively in one pass. Instead, the equations from all the periods across which the model is to be solved must be treated as a simultaneous system, and solving the model will require terminal as well as initial conditions. </a></div>
+      <div class="Body_Text"><a name="438900">For example, in the case with a single lead and a single lag and a sample that runs from <img class="Default EquationGraphic" src="images/wnew14.003.5.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 12px; top: 0.0pt" alt="" /> to <img class="Default EquationGraphic" src="images/wnew14.003.5.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, we must effectively solve the entire stacked system:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/wnew14.003.5.07.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(0.6)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="438920">where the unknowns are <img class="Default EquationGraphic" src="images/wnew14.003.5.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/wnew14.003.5.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" />, ..., <img class="Default EquationGraphic" src="images/wnew14.003.5.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> the initial conditions are given by <img class="Default EquationGraphic" src="images/wnew14.003.5.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 38px; top: 0.0pt" alt="" /> and the terminal conditions are used to determine <img class="Default EquationGraphic" src="images/wnew14.003.5.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 37px; top: 0.0pt" alt="" />. Note that if the leads or lags extend more than one period, we will require multiple periods of initial or terminal conditions.</a></div>
+      <div class="Body_Text"><a name="438924">EViews provides three methods for solving this class of models: Gauss-Seidel, E-Newton, and E-QNewton. All three are iterative procedures that attempt to reduce the change in the endogenous variables, <img class="Default EquationGraphic" src="images/wnew14.003.5.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 31px; top: 0.0pt" alt="" />, <img class="Default EquationGraphic" src="images/wnew14.003.5.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 50px; top: 0.0pt" alt="" />, ..., <img class="Default EquationGraphic" src="images/wnew14.003.5.15.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 30px; top: 0.0pt" alt="" />, to zero as the model's equations are solved repeatedly. </a></div>
+      <div class="Heading_5"><a name="438934">Gauss-Seidel</a></div>
+      <div class="Body_Text"><a name="438935">The first algorithm, Gauss-Seidel, loops through every observation in the forecast sample and at each observation solves the model while treating the past and future values as fixed. The loop is repeated until changes in the values of the endogenous variables between successive iterations become less than a specified tolerance. In essence, discrepancies between the future value of each endogenous variable and the recalculated value of that variable are diffused forwards and backwards through the observations until the discrepancies vanish, assuming the algorithm converges. </a></div>
+      <div class="Body_Text"><a name="438936">Although the Gauss-Seidel method is not guaranteed to converge, failure to converge is often a sign of model instability which results when the influence of the past or the future on the present does not die out as the length of time considered is increased. Such instability is often undesirable for other reasons and may indicate a poorly specified model.</a></div>
+      <div class="Body_Text"><a name="438938">This method is often referred to as the Fair-Taylor method, although the Fair-Taylor algorithm includes a particular handling of terminal conditions (the extended path method) that is slightly different from the options provided by EViews. When solving the model, EViews allows the user to specify fixed end conditions by providing values for the endogenous variables beyond the end of the forecast sample, or to determine the terminal conditions endogenously by adding extra equations for the terminal periods which impose either a constant level, a linear trend, or a constant growth rate on the endogenous variables for values beyond the end of the forecast period.</a></div>
+      <div class="Heading_5"><a name="438940">E-Newton and E-QNewton</a></div>
+      <div class="Body_Text"><a name="438941">The second and third methods, E-Newton and E-QNewton (</a>Brayton, 2011), apply the well-known Newton and Broyden methods (respectively) to the problem of finding endogenous variable values such that <img class="Default EquationGraphic" src="images/wnew14.003.5.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 63px; top: 0.0pt" alt="" />. Both algorithms repeatedly construct a linear approximation to the stacked system, use that approximation to adjust the endogenous variables, and update the approximation. These methods involve calculation of the Jacobian of <img class="Default EquationGraphic" src="images/wnew14.003.5.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 26px; top: 0.0pt" alt="" />, or an approximation thereof, and are thus more computationally taxing than Gauss-Seidel. </div>
+      <div class="Body_Text"><a name="438948">Weighted against the additional computational cost, these two approaches have the advantage of robustness and applicability to a broader range of models. Small models and those with few future values are frequently solved more efficiently by E-Newton, while large models or those with many future values are solved more efficiently by E-QNewton.</a></div>
+      <div class="Body_Text"><a name="438949">The E-Newton and E-QNewton methods have been implemented as EViews programs and distributed as part of the Federal Reserve's large-scale economic model, FRB/US, in the form of the MCE_SOLVE_LIBRARY. There are a few notable differences between the MCE_SOLVE_LIBRARY and the EViews implementations.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="438950">The MCE_SOLVE_LIBRARY implementation uses a simplifying assumption that future value expressions in the model are strictly linear (option </a><span style="font-style: italic">jinit</span> set to "linear"). This option enables Jacobian matrix construction to be performed in a particularly efficient way. However, EViews allows for more general future dependence and currently does not support this feature so that it may take substantially longer to solve this class of linear models.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="438951">The MCE_SOLVE_LIBRARY implementation allows for changing of endogenous variable values at observations outside the solve sample. EViews follows its standard approach and only solves for endogenous variable values at observations within the solve sample.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="438952">Forward Solution Options</a></div>
+      <div class="Body_Text"><a name="438953">You may click on the </a><span class="Menu_Item">Solve</span> button on the model toolbar, or select <span class="Menu_Item">Proc/Solve Model...</span> from the main model object menu to display the solution options.</div>
+      <div class="Body_Text"><a name="438954">Click on the </a><span class="Menu_Item">Solve</span> tab to display the corresponding dialog page. The <span class="Menu_Item">Solver</span> dialog page sets options relating to the non-linear equation solver which is applied to the model:</div>
+      <div class="Picture"><a name="438958"><img class="Default" src="images/wnew14.003.5.18.jpg" width="100%" style="left: 0.0pt; max-height: 505px; max-width: 562px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="438960">The </a><span style="font-weight: bold">Solution algorithm</span> box lets you select the algorithm that will be used to solve simultaneous blocks within each period and futures values across all periods (if present). The following choices are available:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="438962">Gauss-Seidel</a></span>: the Gauss-Seidel algorithm is an iterative algorithm, where at each iteration we solve each equation in the model for the value of its associated endogenous variable, treating all other endogenous variables as fixed. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="438963">The Gauss-Seidel algorithm requires little working memory and has fairly low computational costs, but requires the equation system to have certain stability properties for it to converge. Although it is easy to construct models that do not satisfy these properties, in practice, the algorithm generally performs well on most econometric models. If you are having difficulties with the algorithm, you may try reordering the equations, or rewriting the equations to change the assignment of endogenous variables, since these changes can affect the stability of the Gauss-Seidel iterations. (See </a><span class="Link"><a href="optimize-Nonlinear_Equation_Solution_Methods.html#137261" title="Nonlinear Equation Solution Methods">&#8220;Gauss-Seidel&#8221;</a></span>.)</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="438968">Newton</a></span>: Newton's method is an iterative method, where at each iteration we take a linear approximation to the model, then solve the linear system to find a root of the model.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="438969">The Newton algorithm can handle a wider class of problems than Gauss-Seidel, but requires considerably more working memory and has a much greater computational cost when applied to large models. Newton's method is invariant to equation reordering or rewriting. (See </a><span class="Link"><a href="optimize-Nonlinear_Equation_Solution_Methods.html#137295" title="Nonlinear Equation Solution Methods">&#8220;Newton's Method&#8221;</a></span>.) </div>
+      <div class="Bullet_List_Continue"><a name="438973">When this method is selected, Newton's method is used to solve simultaneous blocks but Gauss-Seidel is used to solve future values. (See </a><span class="Link"><a href="#439225" title="Models">&#8220;Models Containing Future Endogenous Values&#8221;</a></span>.)</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="438978">Broyden</a></span>: Broyden's method is a modification of Newton's method (often referred to as a quasi-Newton or secant method) where an approximation to the Jacobian is used when linearizing the model rather than the true Jacobian which is used in Newton's method. This approximation is updated at each iteration by comparing the equation residuals obtained at the new trial values of the endogenous variables with the equation residuals predicted by the linear model based on the current Jacobian approximation. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="438979">Because each iteration in Broyden's method is based on less information than in Newton's method, Broyden's method typically requires more iterations to converge to a solution. Since each iteration will generally be cheaper to calculate, however, the total time required for solving a model by Broyden's method will often be less than that required to solve the model by Newton's method. </a></div>
+      <div class="Bullet_List_Continue"><a name="438980">Note that Broyden's method retains many of the desirable properties of Newton's method, such as being invariant to equation reordering or rewriting. (See </a><span class="Link"><a href="optimize-Nonlinear_Equation_Solution_Methods.html#139777" title="Nonlinear Equation Solution Methods">&#8220;Broyden's Method&#8221;</a></span>.) </div>
+      <div class="Bullet_List_Continue"><a name="438984">When this method is selected, Broyden's method is used to solve simultaneous blocks but Gauss-Seidel is used to solve future values.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span style="font-weight: bold"><a name="438986">E-Newton</a></span>: Simultaneous blocks are solved using Broyden's method and future values are solved using Newton's method.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span style="font-weight: bold"><a name="438988">E-QNewton</a></span>: Both simultaneous blocks and future values are solved using Broyden's method.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="439067">The </a><span class="Dialog_Item">Forward solution</span> section allows you to adjust options that affect how the model is solved when one or more equations in the model contain future (forward) values of the endogenous variables. </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="439068">The </a><span class="Dialog_Item">Terminal conditions</span> section lets you specify how the values of the endogenous variables are determined for leads that extend past the end of the forecast period:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="439069">If </a><span class="Dialog_Item">User supplied in Actuals</span> is selected, the values contained in the Actuals series after the end of the forecast sample will be used as fixed terminal values. If no values are available, the solver will be unable to proceed.</div>
+      <div class="Bullet_List_Continue"><a name="439070">If </a><span class="Dialog_Item">Constant level</span> is selected, the terminal values are determined endogenously by adding the condition to the model that the values of the endogenous variables are constant over the post-forecast period at the same level as the final forecasted values (<img class="Default EquationGraphic" src="images/wnew14.003.5.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 78px; top: 0.0pt" alt="" /> for <img class="Default EquationGraphic" src="images/wnew14.003.5.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 200px; top: 0.0pt" alt="" />), where <img class="Default EquationGraphic" src="images/wnew14.003.5.21.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 17px; top: 0.0pt" alt="" /> is the first observation past the end of the forecast sample, and <img class="Default EquationGraphic" src="images/wnew14.003.5.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is the maximum lead in the model). This option may be a good choice if the model converges to a stationary state. </div>
+      <div class="Bullet_List_Continue"><a name="439083">If </a><span class="Dialog_Item">Constant difference</span> is selected, the terminal values are determined endogenously by adding the condition that the values of the endogenous variables follow a linear trend over the post forecast period, with a slope given by the difference between the last two forecasted values:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/wnew14.003.5.23.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(0.7)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="439091">for <img class="Default EquationGraphic" src="images/wnew14.003.5.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 200px; top: 0.0pt" alt="" />). This option may be a good choice if the model is in log form and tends to converge to a steady state. </a></div>
+      <div class="Bullet_List_Continue"><a name="439092">If </a><span class="Dialog_Item">Constant growth rate</span> is selected, the terminal values are determined endogenously by adding the condition to the model that the endogenous variables grow exponentially over the post-forecast period, with the growth rate given by the growth between the final two forecasted values:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/wnew14.003.5.25.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(0.8)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Bullet_List_Continue"><a name="439100">for <img class="Default EquationGraphic" src="images/wnew14.003.5.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 200px; top: 0.0pt" alt="" />). </a></div>
+      <div class="Bullet_List_Continue"><a name="439101">This latter option may be a good choice if the model tends to produce forecasts for the endogenous variables which converge to constant growth paths.</a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="439102">The </a><span class="Dialog_Item">Solve in both directions</span> option affects how the solver loops over periods when calculating forward solutions. When the box is not checked, the solver always proceeds from the beginning to the end of the forecast period during the Gauss-Seidel iterations. When the box is checked, the solver alternates between moving forwards and moving backwards through the forecast period. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_Continue"><a name="439103">The two approaches will generally converge at slightly different rates depending on the level of forward or backward persistence in the model. You should choose whichever setting results in a lower iteration count for your particular model.</a></div>
+      <div class="Body_Text"><a name="438854">Updated command documentation may be found at:</a></div>
+      <div class="Object_Reference"><span class="Command_Name_link"><a href="modelcmd-solveopt.html#343137" title="solveopt" name="438861">solveopt</a></span>	set solve options for model.<span style="font-style: italic"> (updated)</span></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

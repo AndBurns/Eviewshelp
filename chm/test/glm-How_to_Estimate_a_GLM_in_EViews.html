@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>How to Estimate a GLM in EViews</title>
+    <link rel="StyleSheet" href="css/glm.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="glm-Overview.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="glm-Examples.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="glm-Generalized_Linear_Models.html">Generalized Linear Models</a> : How to Estimate a GLM in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="291649">How to Estimate a GLM in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#301573">Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#301586">Dependent Variable and Linear Predictor </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#302067">Family</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#301933">Link</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#301520">Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#302092">Specification Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#302341">Dispersion Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#326411">Coefficient Covariance Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#302426">Estimation Options</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#321267">Coefficient Name</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="301522">To estimate a GLM model in EViews you must first create an equation object. You may select </a><span class="Menu_Item">Object/New Object.../Equation</span> or <span class="Menu_Item">Quick/Estimate Equation&#8230;</span> from the main menu, or enter the keyword <span class="In-line_input">equation</span> in the command window. Next select <span class="Menu_Item">GLM - Generalized Linear Model </span>in the <span class="Menu_Item">Method</span> dropdown menu. Alternately, entering the keyword <span class="In-line_input">glm </span>in the command window will both create the object and automatically set the estimation method. The dialog will change to show settings appropriate for specifying a GLM.</div>
+      <div class="Picture"><a name="301565"><img class="Default" src="images/glm.042.3.01.jpg" width="100%" style="left: 0.0pt; max-height: 456px; max-width: 507px; top: 0.0pt" alt="" /></a></div>
+      <div class="Heading_4"><a name="301573">Specification</a></div>
+      <div class="Body_Text"><a name="301582">The main page of the dialog is used to describe the basic GLM specification. </a></div>
+      <div class="Body_Text"><a name="303650">We will focus attention on the </a><span class="Menu_Item">GLM Equation specification</span> section since the <span class="Menu_Item">Estimation settings</span> section in the bottom of the dialog is should be self-explanatory.</div>
+      <div class="Heading_5"><a name="301586">Dependent Variable and Linear Predictor </a></div>
+      <div class="Body_Text"><a name="301629">In the main edit field you should specify your dependent variable and the linear predictor.</a></div>
+      <div class="Body_Text"><a name="301640">There are two ways in which you may enter this information. The easiest method is to list the dependent response variable followed by all of the regressors that enter into the predictor. PDL specifications are permitted in this list, but ARMA terms are not. If you wish to include an offset in your predictor, it should be entered on the </a><span class="Menu_Item">Options</span> page (see <span class="Link"><a href="#302092" title="How to Estimate a GLM in EViews">&#8220;Specification Options&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="301700">Alternately, you may enter an explicit </a><span class="Emphasis">linear</span> specification like &#8220;Y=C(1)+C(2)*X&#8221;. The response variable will be taken to be the variable on the left-hand side of the equality (&#8220;Y&#8221;) and the linear predictor will be taken from the right-hand side of the expression (&#8220;C(1)+C(2)*X&#8221;). Offsets may be entered directly in the expression or they may be entered on the <span class="Menu_Item">Options</span> page. Note that this specification should not be taken as a literal description of the mean equation; it is merely a convenient syntax for specifying both the response and the linear predictor. </div>
+      <div class="Heading_5"><a name="302067">Family</a></div>
+      <div class="Picture"><a name="301567"><img class="Default" src="images/glm.042.3.02.jpg" width="100%" style="left: 0.0pt; max-height: 158px; max-width: 176px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="303515">Next, you should use the </a><span class="Menu_Item">Family</span> dropdown to specify your distribution. The default family is the <span class="Menu_Item">Normal</span> distribution, but you are free to choose from the list of linear exponential family and quasi-likelihood distributions. Note that the last three entries (<span class="Menu_Item">Exponential Mean</span>, <span class="Menu_Item">Power Mean (p)</span>, <span class="Menu_Item">Binomial Squared</span>) are for quasi-likelihood specifications not associated with exponential families.</div>
+      <div class="Picture"><a name="301870"><img class="Default" src="images/glm.042.3.03.jpg" width="100%" style="left: 0.0pt; max-height: 89px; max-width: 437px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="303582">If the selected distribution requires specification of an ancillary parameter, you will be prompted to provide the values. For example, the </a><span class="Menu_Item">Binomial Count</span> and <span class="Menu_Item">Binomial Proportion</span> distributions both require specification of the number of trials <img class="Default EquationGraphic" src="images/glm.042.3.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />, while the <span class="Menu_Item">Negative Binomial</span> requires specification of the excess-variance parameter <img class="Default EquationGraphic" src="images/glm.042.3.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" />.</div>
+      <div class="Body_Text"><a name="308173">For descriptions of the various exponential and quasi-likelihood families, see </a><span class="Link"><a href="glm-Technical_Details.html#293638" title="Technical Details">&#8220;Distribution&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="301933">Link</a></div>
+      <div class="Picture"><a name="302071"><img class="Default" src="images/glm.042.3.06.jpg" width="100%" style="left: 0.0pt; max-height: 183px; max-width: 176px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="303491">Lastly, you should use the </a><span class="Menu_Item">Link</span> dropdown to specify a link function.</div>
+      <div class="Body_Text"><a name="303457">EViews will initialize the </a><span class="Menu_Item">Link</span> setting to the default for to the selected family. In general, the canonical link is used as the default link, however, the <span class="Menu_Item">Log</span> link is used as the default for the <span class="Menu_Item">Negative Binomial</span> family. The <span class="Menu_Item">Exponential Mean</span>, <span class="Menu_Item">Power Mean (p)</span>, and <span class="Menu_Item">Binomial Squared</span> quasi-likelihood families will default to use the <span class="Menu_Item">Identity</span>, <span class="Menu_Item">Log</span>, and <span class="Menu_Item">Logit</span> links, respectively.</div>
+      <div class="Body_Text"><a name="301982">If the link that you select requires specification of parameter values, you will be prompted to enter the values.</a></div>
+      <div class="Body_Text"><a name="308164">For detailed descriptions of the link functions, see </a><span class="Link"><a href="glm-Technical_Details.html#306448" title="Technical Details">&#8220;Link&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="301520">Options</a></div>
+      <div class="Body_Text"><a name="302022">Click on the </a><span class="Menu_Item">Options</span> tab to display additional settings for the GLM specification. You may use this page to augment the equation specification, to choose a dispersion estimator, to specify the estimation algorithm and associated settings, or to define a coefficient covariance estimator.</div>
+      <div class="Heading_5"><a name="302092">Specification Options</a></div>
+      <div class="Picture"><a name="302141"><img class="Default" src="images/glm.042.3.07.jpg" width="100%" style="left: 0.0pt; max-height: 202px; max-width: 220px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="302150">The </a><span class="Menu_Item">Specification Options</span> section of the <span class="Menu_Item">Options</span> tab allows you to augment the GLM specification.</div>
+      <div class="Body_Text"><a name="302162">To include an offset in your linear predictor, simply enter a series name or expression in the </a><span class="Menu_Item">Offset</span> edit field. </div>
+      <div class="Body_Text"><a name="302169">The </a><span class="Menu_Item">Frequency weights</span> edit field should be used to specify replicates for each observation in the workfile. In practical terms, the frequency weights act as a form of variance weighting and inflate the number of &#8220;observations&#8221; associated with the data records.</div>
+      <div class="Body_Text"><a name="302226">You may also specify prior variance weights in the using the </a><span class="Menu_Item">Weights</span> dropdown and associated edit fields. To specify your weights, simply select a description for the form of the weighting series (<span class="Menu_Item">Inverse std. dev.</span>, <span class="Menu_Item">Inverse variance</span>, <span class="Menu_Item">Std. deviation</span>, <span class="Menu_Item">Variance</span>), then enter the corresponding weight series name or expression. EViews will translate the values in the weighting series into the appropriate values for <img class="Default EquationGraphic" src="images/glm.042.3.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" />. For example, to specify <img class="Default EquationGraphic" src="images/glm.042.3.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> directly, you should select <span class="Menu_Item">Inverse variance</span> then enter the series or expression containing the <img class="Default EquationGraphic" src="images/glm.042.3.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> values. If you instead choose <span class="Menu_Item">Variance</span>, EViews will set <img class="Default EquationGraphic" src="images/glm.042.3.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 21px; top: 0.0pt" alt="" /> to the inverse of the values in the weight series. <span class="Link"><a href="Regress2-Weighted_Least_Squares.html#266407" title="Weighted Least Squares">&#8220;Weighted Least Squares&#8221;</a></span> for additional discussion.</div>
+      <div class="Heading_5"><a name="302341">Dispersion Options</a></div>
+      <div class="Picture"><a name="303936"><img class="Default" src="images/glm.042.3.12.jpg" width="100%" style="left: 0.0pt; max-height: 92px; max-width: 137px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="317809">The </a><span class="Menu_Item">Method</span> dropdown may be used to select the dispersion computation method. You will always be given the opportunity to choose between the <span class="Menu_Item">Default</span> setting or <span class="Menu_Item">Pearson Chi-Sq.</span>, <span class="Menu_Item">Fixed at 1</span>, and <span class="Menu_Item">User-Specified</span>. Additionally, if the specified distribution is in the linear exponential family, you may choose to use the <span class="Menu_Item">Deviance</span> statistic.</div>
+      <div class="Picture"><a name="302704"><img class="Default" src="images/glm.042.3.13.jpg" width="100%" style="left: 0.0pt; max-height: 105px; max-width: 218px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="303907">The </a><span class="Menu_Item">Default</span> entry instructs EViews to use the default method for computing the dispersion, which will depend on the specified family. For families with a free dispersion parameter, the default is to use the <span class="Menu_Item">Pearson Chi-Sq.</span> statistic, otherwise the default is <span class="Menu_Item">Fixed at 1</span>. The current default setting will be displayed directly below the dropdown.</div>
+      <div class="Heading_5"><a name="326411">Coefficient Covariance Options</a></div>
+      <div class="Picture"><a name="326415"><img class="Default" src="images/glm.042.3.14.jpg" width="100%" style="left: 0.0pt; max-height: 144px; max-width: 265px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="326416">The </a><span class="Menu_Item">Covariance method</span> dropdown specifies the estimator for the coefficient covariance matrix. You may choose between the <span class="Menu_Item">Ordinary</span> method, which uses the inverse of the estimated information matrix, or you may elect to use <span class="Menu_Item">Huber/White</span> sandwich estimator, the heteroskedasticity and auto-correlation consistent <span class="Menu_Item">HAC (Newey-West)</span> approach, or a Cluster-robust QML sandwich estimator.</div>
+      <div class="Body_Text"><a name="326624">If you select the HAC covariance method, a HAC options button will appear prompting so that you may customize the whitening and kernel settings. By default, EViews HAC estimation will employ a Bartlett kernel with fixed Newey-West sample-size based bandwidth and no pre-whitening (see </a><span class="Link"><a href="Regress2-Robust_Standard_Errors.html#266356" title="Robust Standard Errors">&#8220;HAC Consistent Covariances (Newey-West)&#8221;</a></span> for additional discussion).</div>
+      <div class="Body_Text"><a name="330810">If you select the cluster-robust method, an edit field will prompt you for the cluster identifier variable.</a></div>
+      <div class="Body_Text"><a name="326426">The </a><span class="Menu_Item">Information matrix</span> dropdown allows you to specify the method for estimating the information matrix. For covariances computed in the standard fashion, you may choose between the default <span class="Menu_Item">Hessian - observed</span>, <span class="Menu_Item">Hessian - expected</span>, and <span class="Menu_Item">OPG - BHHH</span>. If you are computing Huber/White covariances, only the two Hessian based selections will be displayed.</div>
+      <div class="Body_Text"><a name="326540">(Note that in some earlier versions of EViews, the information matrix default method was tied in with the optimization method. This default dependence has been eliminated.)</a></div>
+      <div class="Body_Text"><a name="326536">Lastly you may use the </a><span class="Menu_Item">d.f. Adjustment</span> checkbox choose whether to apply a degree-of-freedom correction to the coefficient covariance. By default, EViews will perform this adjustment.</div>
+      <div class="Heading_5"><a name="302426">Estimation Options</a></div>
+      <div class="Picture"><a name="303015"><img class="Default" src="images/glm.042.3.15.jpg" width="100%" style="left: 0.0pt; max-height: 217px; max-width: 260px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="304114">The </a><span class="Menu_Item">Estimation </span>section of the page lets you specify the optimization algorithm, starting values, and other estimation settings.</div>
+      <div class="Body_Text"><a name="304140">The </a><span class="Menu_Item">Optimization Algorithm</span> and <span class="Menu_Item">Step method</span> dropdown menus control your estimation method. </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="325448">The default </a><span class="Menu_Item">Optimization Algorithm</span> is <span class="Menu_Item">Newton-Raphson</span>, but you may instead select <span class="Menu_Item">BFGS</span>, <span class="Menu_Item">OPG - BHHH</span>, <span class="Menu_Item">Fisher Scoring</span> (IRLS), or <span class="Menu_Item">EViews legacy</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="325601">The default </a><span class="Menu_Item">Step method</span> is <span class="Menu_Item">Marquardt</span>, but you may use the menu to select <span class="Menu_Item">Dogleg</span> or <span class="Menu_Item">Line search</span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="325737">If you select optimization using </a><span class="Menu_Item">EViews legacy</span>, you will be prompted to select a legacy method in place of a step method. The <span class="Menu_Item">Legacy method</span> dropdown offers the choice of the default <span class="Menu_Item">Quadratic Hill Climbing</span> (Newton-Raphson with Marquardt steps), <span class="Menu_Item">Newton-Raphson</span> with line search, <span class="Menu_Item">IRLS - Fisher Scoring</span>, and <span class="Menu_Item">BHHH</span> (OPG with line search).</div>
+      <div class="Body_Text"><a name="304187">By default, the </a><span class="Menu_Item">Starting Values</span> dropdown is set to <span class="Menu_Item">EViews Supplied</span>. The EViews default starting values for <img class="Default EquationGraphic" src="images/glm.042.3.16.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> are obtained using the suggestion of McCullagh and Nelder to initialize the IRLS algorithm at <img class="Default EquationGraphic" src="images/glm.042.3.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 196px; top: 0.0pt" alt="" /> for the binomial proportion family, and <img class="Default EquationGraphic" src="images/glm.042.3.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 122px; top: 0.0pt" alt="" /> otherwise, then running a single IRLS coefficient update to obtain the initial <img class="Default EquationGraphic" src="images/glm.042.3.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. Alternately, you may specify starting values that are a fraction of the default values, or you may instruct EViews to use your own values.</div>
+      <div class="Body_Text"><a name="304212">You may use the </a><span class="Menu_Item">IRLS iterations</span> edit field to instruct EViews to perform a fixed number of additional IRLS updates to refine coefficient values prior to starting the specified estimation algorithm.</div>
+      <div class="Body_Text"><a name="304107">The </a><span class="Menu_Item">Max Iterations</span> and <span class="Menu_Item">Convergence</span> edit fields are self-explanatory. Selecting the <span class="Menu_Item">Display settings</span> checkbox instructs EViews to show detailed information on tolerances and initial values in the equation output.</div>
+      <div class="Heading_5"><a name="321267">Coefficient Name</a></div>
+      <div class="Body_Text"><a name="321262">You may use the Coefficient name section of the dialog to change the coefficient vector from the default C. EViews will create and resize the vector if necessary.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

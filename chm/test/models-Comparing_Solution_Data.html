@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Comparing Solution Data</title>
+    <link rel="StyleSheet" href="css/models.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="models-Working_with_the_Model_Data.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="models-References.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="models-Models.html">Models</a> : Comparing Solution Data</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="109391">Comparing Solution Data</a></div>
+      <div class="Body_Text"><a name="109248">The </a><span class="Menu_Item">Compare solutions</span> menu item, available from the <span class="Menu_Item">View</span> menu, allows you to quickly view any differences between the solution values for different scenarios.</div>
+      <div class="Picture"><a name="109252"><img class="Default" src="images/models.064.11.1.jpg" width="100%" style="left: 0.0pt; max-height: 340px; max-width: 516px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="109253">Once you have solved your model for different scenarios, you may wish to quickly compare the results between those scenarios to see which variables differ. Clicking on the menu item </a><span class="Menu_Item">View/Compare solutions</span>... brings up a dialog that allows you to do this. The first part of the dialog is similar to that of the data display dialog above. Select which variables you would like to compare by using the <span class="Menu_Item">Select</span> drop-down box, and the <span class="Menu_Item">From</span> edit field. </div>
+      <div class="Body_Text"><a name="109254">Having selected your variable, you may select which scenarios to compare using the </a><span class="Menu_Item">Series to compare</span> area. The first choice, using the <span class="Menu_Item">Solution series</span> drop-down is whether you wish to compare the deterministic solutions, or compare the means from a stochastic solve. Note you must have already performed the type of solve you choose prior to comparing it.</div>
+      <div class="Body_Text"><a name="109255">The </a><span class="Menu_Item">Compare the Active Scenario</span> drop-down lets you choose the set of variables for comparison. By default the drop-down will be set at the model&#8217;s current active scenario. Note changing this drop-down to another entry will change the active scenario for the model, as well as for comparison.</div>
+      <div class="Body_Text"><a name="109340">There are two choices for specifying the second set of variables. You may either select a comparison scenario (by selecting the </a><span class="Menu_Item">Scenario</span> radio button, and then selecting the scenario in the drop-down), or you may specify a pattern matching scheme by selecting the <span class="Menu_Item">Pattern</span> radio button. With pattern matching, you should use the &#8220;*&#8221; wildcard to represent the variable names in the pattern. For example, if you wish to compare I_0 (the current active scenario) with a series called I_OLD, you would enter a pattern of &#8220;*_OLD&#8221;, having specified I as the variable to compare. Note that you may reference series stored in a database using the standard <span class="In-line_command">dbname::</span> syntax, or series in another page using the standard <span class="In-line_command">pagename\</span> syntax. </div>
+      <div class="Body_Text"><a name="109344">The series used for comparison should already exist in the workfile (or storage location if you specified another container with pattern matching). Note this means that you should have already solved the model for the specified scenario if applicable.</a></div>
+      <div class="Body_Text"><a name="109261">The </a><span class="Menu_Item">Include threshold </span>edit box lets you set the tolerance level for detecting differences between the solutions. By default it is set to 0.1% - i.e. any relative difference less than 0.001 will be ignored. You can specify a value of 0 to tell EViews to show all differences, no matter how small.</div>
+      <div class="Body_Text"><a name="109262">Finally the </a><span class="Menu_Item">Comparison sample</span> edit field lets you set the sample over which you wish to compare the series.</div>
+      <div class="Body_Text"><a name="110381">Clicking </a><span class="Menu_Item">OK</span> produces the comparison table:</div>
+      <div class="Picture"><a name="110382"><img class="Default" src="images/models.064.11.2.jpg" width="100%" style="left: 0.0pt; max-height: 304px; max-width: 493px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="109268">The table lists any variables for which the percentage difference between the two series for each scenario is greater than the specified tolerance. </a></div>
+      <div class="Body_Text"><a name="109328">In this case we are comparing the solution between the Baseline scenario (_0) and Scenario&nbsp;1 (_1), and two variables, M and G, have a difference greater than the specified tolerance of 1e-04. The four columns in the table show details about the variables. The first shows the variable name. The second, Delta%, shows the maximum difference between the two series for each variable. The third and fourth columns, &#8220;First&#8221; and &#8220;Last&#8221;, give the date (or observation number) of the first period in which the two series differ and the last period in which the two series differ. Here, the first period in which M_0 differs from M_1 is 1960Q1, and the last period in which they differ is 1999Q4.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

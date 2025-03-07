@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Specifying a State Space Model in EViews</title>
+    <link rel="StyleSheet" href="css/sspace.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="sspace-Background.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="sspace-Working_with_the_State_Space.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_mult.html">Multiple Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="sspace-State_Space_Models_and_the_Kalman_Filter.html">State Space Models and the Kalman Filter</a> : Specifying a State Space Model in EViews</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="25689">Specifying a State Space Model in EViews</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#36985">Specification Syntax</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#36999">State Equations</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#38824">Examples</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#38950">Observation/Signal Equations</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#38996">Examples</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37048">Errors and Variances</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#159573">A Note on Correlated Errors</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#39942">Specification Examples</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#39600">ARMAX(2, 3) with a Random Coefficient</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#148766">Recursive and Random Coefficients</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#37009">Parameter Starting Values</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#39793">Specifying Initial Conditions</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#39896">Specification Views</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#40124">Auto-Specification</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#43820">Estimating a State Space Model </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#40373">Interpreting the estimation results</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="23276">EViews handles a wide range of single and multiple-equation state space models, providing you with detailed control over the specification of your system equations, covariance matrices, and initial conditions.</a></div>
+      <div class="Body_Text"><a name="36920">The first step in specifying and estimating a state space model is to create a state space object. Select </a><span class="Menu_Item">Object/New Object.../Sspace</span> from the main toolbar or type <span class="In-line_input">sspace</span> in the command window. EViews will create a state space object and open an empty state space specification window.</div>
+      <div class="Body_Text"><a name="36916">There are two ways to specify your state space model. The easiest is to use EViews&#8217; special &#8220;auto-specification&#8221; features to guide you in creating some of the standard forms for these models. Simply select </a><span class="Menu_Item">Proc/Define State Space...</span> from the sspace object menu. Specialized dialogs will open to guide you through the specification process. We will describe this method in greater detail in <span class="Link"><a href="#40124" title="Specifying a State Space Model in EViews">&#8220;Auto-Specification&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="154743">The more general method of describing your state space model uses keywords and text to describe the signal equations, state equations, error structure, initial conditions, and if desired, parameter starting values for estimation. Note that you can insert a state space specification from an existing text file by clicking on the Spec button to display the state space specification, then pressing the right-mouse button menu and selecting </a><span class="Menu_Item">Insert Text File...</span></div>
+      <div class="Body_Text"><a name="154744">The next section describes the general syntax for the state space object.</a></div>
+      <div class="Heading_4"><a name="36985">Specification Syntax</a></div>
+      <div class="Heading_5"><a name="36999">State Equations</a></div>
+      <div class="Body_Text"><a name="37038">A state equation contains the &#8220;@STATE&#8221; keyword followed by a valid state equation specification. Bear in mind that:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37100">Each equation must have a unique dependent variable name; expressions are not allowed. Since EViews does not automatically create workfile series for the states, you may use the name of an existing (non-series) EViews object.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="38804">State equations may not contain signal equation dependent variables, or leads or lags of these variables.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37136">Each state equation must be linear in the one-period lag of the states. Nonlinearities in the states, or the presence of contemporaneous, lead, or multi-period lag states will generate an error message. We emphasize the point that the one-period lag restriction on states</a><span class="Emphasis"> is not restrictive</span> since higher order lags may be written as new state variables. An example of this technique is provided in the example <span class="Link"><a href="#39600" title="Specifying a State Space Model in EViews">&#8220;ARMAX(2, 3) with a Random Coefficient&#8221;</a></span>.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="37142">State equations may contain exogenous variables and unknown coefficients, and may be nonlinear in these elements.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="38727">In addition, state equations may contain an optional error or error variance specification. If there is no error or error variance, the state equation is assumed to be deterministic. Specification of the error structure of state space models is described in greater detail in </a><span class="Link"><a href="#37048" title="Specifying a State Space Model in EViews">&#8220;Errors and Variances&#8221;</a></span>.</div>
+      <div class="Heading_6"><a name="38824">Examples</a></div>
+      <div class="Body_Text"><a name="38883">The following two state equations define an unobserved error with an AR(2) process:</a></div>
+      <div class="Multi-line_Input"><a name="37094">@state sv1 = c(2)*sv1(-1) + c(3)*sv2(-1) + [var = exp(c(5))]</a></div>
+      <div class="Multi-line_Input"><a name="37095">@state sv2 = sv1(-1)</a></div>
+      <div class="Body_Text"><a name="37007">The first equation parameterizes the AR(2) for SV1 in terms of an AR(1) coefficient, C(2), and an AR(2) coefficient, C(3). The error variance specification is given in square brackets. Note that the state equation for SV2 defines the lag of SV1 so that SV2(-1) is the two period lag of SV1.</a></div>
+      <div class="Body_Text"><a name="38954">Similarly, the following are valid state equations:</a></div>
+      <div class="Multi-line_Input"><a name="38938">@state sv1 = sv1(-1) + [var = exp(c(3))]</a></div>
+      <div class="Multi-line_Input"><a name="38877">@state sv2 = c(1) + c(2)*sv2(-1) + [var = exp(c(3))]</a></div>
+      <div class="Multi-line_Input"><a name="38895">@state sv3 = c(1) + exp(c(3)*x/z) + c(2)*sv3(-1) + [var = exp(c(3))]</a></div>
+      <div class="Body_Text"><a name="38733">describing a random walk, and an AR(1) with drift (without/with exogenous variables).</a></div>
+      <div class="Body_Text"><a name="38971">The following are </a><span class="Emphasis">not</span> valid state equations:</div>
+      <div class="Multi-line_Input"><a name="38966">@state exp(sv1) = sv1(-1) + [var = exp(c(3))]</a></div>
+      <div class="Multi-line_Input"><a name="38967">@state sv2 = log(sv2(-1)) + [var = exp(c(3))]</a></div>
+      <div class="Multi-line_Input"><a name="38968">@state sv3 = c(1) + c(2)*sv3(-2) + [var=exp(c(3))]</a></div>
+      <div class="Body_Text"><a name="38980">since they violate at least one of the conditions described above (in order: expression for dependent state variable, nonlinear in state, multi-period lag of state variables).</a></div>
+      <div class="Heading_5"><a name="38950">Observation/Signal Equations</a></div>
+      <div class="Body_Text"><a name="37042">By default, if an equation specification is not specifically identified as a state equation using the &#8220;@STATE&#8221; keyword, it will be treated by EViews as an observation or signal equation. Signal equations may also be identified explicitly by the keyword &#8220;@SIGNAL&#8221;. There are some aspects of signal equation specification to keep in mind:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="38761">Signal equation dependent variables may involve expressions.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="38846">Signal equations may not contain current values or leads of signal variables. You should be aware that any lagged signals are treated as predetermined for purposes of multi-step ahead forecasting (for discussion and alternative specifications, see Harvey 1989, p. 367-368).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="38775">Signal equations must be linear in the contemporaneous states. Nonlinearities in the states, or the presence of leads or lags of states will generate an error message. Again, the restriction that there are no state lags is not restrictive since additional deterministic states may be created to represent the lagged values of the states.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="38764">Signal equations may have exogenous variables and unknown coefficients, and may be nonlinear in these elements.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="39038">Signal equations may also contain an optional error or error variance specification. If there is no error or error variance, the equation is assumed to be deterministic. Specification of the error structure of state space models is described in greater detail in </a><span class="Link"><a href="#37048" title="Specifying a State Space Model in EViews">&#8220;Errors and Variances&#8221;</a></span>.</div>
+      <div class="Heading_6"><a name="38996">Examples</a></div>
+      <div class="Body_Text"><a name="38999">The following are valid signal equation specifications:</a></div>
+      <div class="Multi-line_Input"><a name="39053">log(passenger) = c(1) + c(3)*x + sv1 + c(4)*sv2</a></div>
+      <div class="Multi-line_Input"><a name="39011">@signal y = sv1 + sv2*x1 + sv3*x2 + sv4*y(-1) + [var=exp(c(1))]</a></div>
+      <div class="Multi-line_Input"><a name="39012">z = sv1 + sv2*x1 + sv3*x2 + c(1) + [var=exp(c(2))]</a></div>
+      <div class="Body_Text"><a name="39058">The following are invalid equations:</a></div>
+      <div class="Multi-line_Input"><a name="39071">log(passenger) = c(1) + c(3)*x + sv1(-1)</a></div>
+      <div class="Multi-line_Input"><a name="39072">@signal y = sv1*sv2*x1 + [var = exp(c(1))]</a></div>
+      <div class="Multi-line_Input"><a name="39073">z = sv1 + sv2*x1 + z(1) + c(1) + [var = exp(c(2))]</a></div>
+      <div class="Body_Text"><a name="39062">since they violate at least one of the conditions described above (in order: lag of state variable, nonlinear in a state variable, lead of signal variable).</a></div>
+      <div class="Heading_5"><a name="37048">Errors and Variances</a></div>
+      <div class="Body_Text"><a name="39149">While EViews always adds an implicit error term to each equation in an equation or system object, the handling of error terms differs in a sspace object. In a sspace object, the equation specifications in a signal or state equation do not contain error terms unless specified explicitly.</a></div>
+      <div class="Body_Text"><a name="39211">The easiest way to add an error to a state space equation is to specify an implied error term using its variance. You can simply add an error variance expression, consisting of the keyword &#8220;VAR&#8221; followed by an assignment statement (all enclosed in square brackets), to the existing equation:</a></div>
+      <div class="Multi-line_Input"><a name="39216">@signal y = c(1) + sv1 + sv2 + [var = 1]</a></div>
+      <div class="Multi-line_Input"><a name="39217">@state sv1 = sv1(-1) + [var = exp(c(2))]</a></div>
+      <div class="Multi-line_Input"><a name="39218">@state sv2 = c(3) + c(4)*sv2(-1) + [var = exp(c(2)*x)]</a></div>
+      <div class="Body_Text"><a name="39175">The specified variance may be a known constant value, or it can be an expression containing unknown parameters to be estimated. You may also build time-variation into the variances using a series expression. Variance expressions may not, however, contain state or signal variables.</a></div>
+      <div class="Body_Text"><a name="39319">While straightforward, this direct variance specification method does not admit correlation between errors in different equations (by default, EViews assumes that the covariance between error terms is 0). If you require a more flexible variance structure, you will need to use the &#8220;named error&#8221; approach to define named errors with variances and covariances, and then to use these named errors as parts of expressions in the signal and state equations. </a></div>
+      <div class="Body_Text"><a name="149582">The first step of this general approach is to define your named errors. You may declare a named error by including a line with the keyword &#8220;@ENAME&#8221; followed by the name of the error:</a></div>
+      <div class="Multi-line_Input"><a name="149607">@ename e1</a></div>
+      <div class="Multi-line_Input"><a name="149608">@ename e2</a></div>
+      <div class="Body_Text"><a name="149631">Once declared, a named error may enter linearly into state and signal equations. In this manner, one can build correlation between the equation errors. For example, the errors in the state and signal equations in the sspace specification:</a></div>
+      <div class="Multi-line_Input"><a name="149657">y = c(1) + sv1*x1 + e1</a></div>
+      <div class="Multi-line_Input"><a name="149658">@state sv1 = sv1(-1) + e2 + c(2)*e1</a></div>
+      <div class="Multi-line_Input"><a name="149659">@ename e1</a></div>
+      <div class="Multi-line_Input"><a name="149660">@ename e2</a></div>
+      <div class="Body_Text"><a name="149629">are, in general, correlated since the named error E1 appears in both equations.</a></div>
+      <div class="Body_Text"><a name="149626">In the special case where a named error is the only error in a given equation, you can both declare and use the named residual by adding an error expression consisting of the keyword &#8220;ENAME&#8221; followed by an assignment and a name identifier:</a></div>
+      <div class="Multi-line_Input"><a name="149617">y = c(1) + sv1*x1 + [ename = e1]</a></div>
+      <div class="Multi-line_Input"><a name="149618">@state sv1 = sv1(-1) + [ename = e2]</a></div>
+      <div class="Body_Text"><a name="149623">The final step in building a general error structure is to define the variances and covariances associated with your named errors. You should include a sspace line comprised of the keyword &#8220;@EVAR&#8221; followed by an assignment statement for the variance of the error or the covariance between two errors:</a></div>
+      <div class="Multi-line_Input"><a name="39413">@evar cov(e1, e2) = c(2)</a></div>
+      <div class="Multi-line_Input"><a name="39414">@evar var(e1) = exp(c(3))</a></div>
+      <div class="Multi-line_Input"><a name="39411">@evar var(e2) = exp(c(4))*x</a></div>
+      <div class="Body_Text"><a name="43713">The syntax for the @EVAR assignment statements should be self-explanatory. Simply indicate whether the term is a variance or covariance, identify the error(s), and enter the specification for the variance or covariance. There should be a separate line for each named error covariance or variance that you wish to specify. If an error term is named, but there are no corresponding &#8220;VAR=&#8221; or @EVAR specifications, the missing variance or covariance specifications will remain at the default values of &#8220;NA&#8221; and &#8220;0&#8221;, respectively. </a></div>
+      <div class="Body_Text"><a name="149699">As you might expect, in the special case where an equation contains a single error term, you may combine the named error and direct variance assignment statements:</a></div>
+      <div class="Multi-line_Input"><a name="149700">@state sv1 = sv1(-1) + [ename = e1, var = exp(c(3))]</a></div>
+      <div class="Multi-line_Input"><a name="149769">@state sv2 = sv2(-1) + [ename = e2, var = exp(c(4))]</a></div>
+      <div class="Multi-line_Input"><a name="149701">@evar cov(e1, e2) = c(5)</a></div>
+      <div class="Heading_6"><a name="159573">A Note on Correlated Errors</a></div>
+      <div class="Body_Text"><a name="159764">We caution that you should think very carefully about the timing of your errors if you allow for correlation between errors in the state and signal equations. The timing in the signal equation and state equation updates specified in </a><span class="Link"><a href="sspace-Background.html#32501" title="Background">Equation&nbsp;(51.2)</a></span> and <span class="Link"><a href="sspace-Background.html#24486" title="Background">Equation&nbsp;(51.1)</a></span>, implies that correlation between the signal and state errors is defined to be between the errors in the signal at time <img class="Default EquationGraphic" src="images/sspace.063.3.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, and the errors in the states dated in <img class="Default EquationGraphic" src="images/sspace.063.3.02.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 38px; top: 0.0pt" alt="" />. This timing may not be what you intend. To allow for correlation in the contemporaneous states and signals in time <img class="Default EquationGraphic" src="images/sspace.063.3.03.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 11px; top: 0.0pt" alt="" />, you will need to specify errors in the lagged states, and define correlation between the lagged state errors and the errors in the signal equation.</div>
+      <div class="Heading_4"><a name="39942">Specification Examples</a></div>
+      <div class="Heading_5"><a name="39600">ARMAX(2, 3) with a Random Coefficient</a></div>
+      <div class="Body_Text"><a name="39641">We can use the syntax described above to define an ARMAX(2,3) with a random coefficient for the regression variable X:</a></div>
+      <div class="Multi-line_Input"><a name="39628">y = c(1) + sv5*x + sv1 + c(4)*sv2 + c(5)*sv3 + c(6)*sv4</a></div>
+      <div class="Multi-line_Input"><a name="39593">@state sv1 = c(2)*sv1(-1) + c(3)*sv2(-1) + [var=exp(c(7))]</a></div>
+      <div class="Multi-line_Input"><a name="39594">@state sv2 = sv1(-1)</a></div>
+      <div class="Multi-line_Input"><a name="39595">@state sv3 = sv2(-1)</a></div>
+      <div class="Multi-line_Input"><a name="39559">@state sv4 = sv3(-1)</a></div>
+      <div class="Multi-line_Input"><a name="41034">@state sv5 = sv5(-1) + [var=3]</a></div>
+      <div class="Body_Text"><a name="39588">The AR coefficients are parameterized in terms of C(2) and C(3), while the MA coefficients are given by C(4), C(5) and C(6). The variance of the innovation is restricted to be a positive function of C(7). SV5 is the random coefficient on X, with variance restricted to be 3.</a></div>
+      <div class="Heading_5"><a name="148766">Recursive and Random Coefficients</a></div>
+      <div class="Body_Text"><a name="39699">The following example describes a model with one random coefficient (SV1), one recursive coefficient (SV2), and possible correlation between the errors for SV1 and Y:</a></div>
+      <div class="Multi-line_Input"><a name="39653">y = c(1) + sv1*x1 + sv2*x2 + [ename = e1, var = exp(c(2))]</a></div>
+      <div class="Multi-line_Input"><a name="39654">@state sv1 = sv1(-1) + [ename = e2, var = exp(c(3)*x)]</a></div>
+      <div class="Multi-line_Input"><a name="39655">@state sv2 = sv2(-1)</a></div>
+      <div class="Multi-line_Input"><a name="39656">@evar cov(e1,e2) = c(4)</a></div>
+      <div class="Body_Text"><a name="39657">The variances and covariances in the model are parameterized in terms of the coefficients C(2), C(3) and C(4), with the variances of the observed Y and the unobserved state SV1 restricted to be non-negative functions of the parameters.</a></div>
+      <div class="Heading_5"><a name="37009">Parameter Starting Values</a></div>
+      <div class="Body_Text"><a name="37010">Unless otherwise instructed, EViews will initialize all parameters to the current values in the corresponding coefficient vector or vectors. As in the system object, you may override this default behavior by specifying explicitly the desired values of the parameters using a PARAM or @PARAM statement. For additional details, see </a><span class="Link"><a href="system-How_to_Create_and_Specify_a_System.html#37129" title="How to Create and Specify a System">&#8220;Starting Values&#8221;</a></span>.</div>
+      <div class="Heading_5"><a name="39793">Specifying Initial Conditions</a></div>
+      <div class="Body_Text"><a name="39799">By default, EViews will handle the initial conditions for you. For some stationary models, steady-state conditions allow us to solve for the values of <img class="Default EquationGraphic" src="images/sspace.063.3.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 22px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.3.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" />. For cases where it is not possible to solve for the initial conditions, EViews will treat the initial values as diffuse, setting <img class="Default EquationGraphic" src="images/sspace.063.3.06.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 71px; top: 0.0pt" alt="" />, and <img class="Default EquationGraphic" src="images/sspace.063.3.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 35px; top: 0.0pt" alt="" /> to an arbitrarily high number to reflect our uncertainty about the values (see </a><span class="Link"><a href="sspace-Technical_Discussion.html#139140" title="Technical Discussion">&#8220;Technical Discussion&#8221;</a></span>).</div>
+      <div class="Body_Text"><a name="40921">You may, however have prior information about the values of <img class="Default EquationGraphic" src="images/sspace.063.3.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 34px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.3.09.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 35px; top: 0.0pt" alt="" />. In this case, you can create a vector or matrix that contains the appropriate values, and use the &#8220;@MPRIOR&#8221; or &#8220;@VPRIOR&#8221; keywords to perform the assignment. </a></div>
+      <div class="Body_Text"><a name="40922">To set the initial states, enter &#8220;@MPRIOR&#8221; followed by the name of a vector object. The length of the vector object must match the state dimension. The order of elements should follow the order in which the states were introduced in the specification screen.</a></div>
+      <div class="Multi-line_Input"><a name="39858">@mprior v1</a></div>
+      <div class="Multi-line_Input"><a name="40937">@vprior m1</a></div>
+      <div class="Body_Text"><a name="40938">To set the initial state variance matrix, enter &#8220;@VPRIOR&#8221; followed by the name of a sym object (note that it must be a sym object, and not an ordinary matrix object). The dimensions of the sym must match the state dimension, with the ordering following the order in which the states appear in the specification. If you wish to set a specific element to be diffuse, simply assign the element the &#8220;NA&#8221; missing value. EViews will reset all of the corresponding variances and covariances to be diffuse.</a></div>
+      <div class="Body_Text"><a name="40857">For example, suppose you have a two equation state space object named SS1 and you want to set the initial values of the state vector and the state variance matrix as:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/sspace.063.3.10.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(51.17)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="40862">First, create a named vector object, say SVEC0, to hold the initial values. Click </a><span class="Menu_Item">Object/New Object</span>, choose <span class="Dialog_Item">Matrix-Vector-Coef</span> and enter the name SVEC0. Click <span class="Dialog_Item">OK</span>, and then choose the type <span class="Dialog_Item">Vector</span> and specify the size of the vector (in this case 2 rows). When you click <span class="Dialog_Item">OK</span>, EViews will display the spreadsheet view of the vector SVEC0. Click the <span class="Menu_Item">Edit +/&#8211;</span> button to toggle on edit mode and type in the desired values. Then create a named symmetric matrix object, say SVAR0, in an analogous fashion.</div>
+      <div class="Body_Text"><a name="40863">Alternatively, you may find it easier to create and initialize the vector and matrix using commands. You can enter the following commands in the command window:</a></div>
+      <div class="Multi-line_Input"><a name="40864">vector(2) svec0</a></div>
+      <div class="Multi-line_Input"><a name="40865">svec0.fill 1, 0</a></div>
+      <div class="Multi-line_Input"><a name="40980">sym(2) svar0</a></div>
+      <div class="Multi-line_Input"><a name="40866">svar0.fill 1, 0.5, 2</a></div>
+      <div class="Body_Text"><a name="40904">Then, simply add the lines:</a></div>
+      <div class="Multi-line_Input"><a name="40948">@mprior svec0</a></div>
+      <div class="Multi-line_Input"><a name="40952">@vprior svar0</a></div>
+      <div class="Body_Text"><a name="40966">to your sspace object by editing the specification window. Alternatively, you can type the following commands in the command window:</a></div>
+      <div class="Multi-line_Input"><a name="40875">ss1.append @mprior svec0</a></div>
+      <div class="Multi-line_Input"><a name="40876">ss1.append @vprior svar0</a></div>
+      <div class="Body_Text"><a name="40991">For more details on matrix objects and the </a><span class="In-line_input">fill</span> and <span class="In-line_input">append</span> commands, see <span class="Link"><a href="cmatrix-Matrix_Language.html#68482" title="Matrix Language">&#8220;Matrix Language&#8221;</a></span>.</div>
+      <div class="Heading_4"><a name="39896">Specification Views</a></div>
+      <div class="Body_Text"><a name="39900">State space models may be very complex. To aid you in examining your specification, EViews provides views which allow you to view the text specification in a more compact form, and to examine the numerical values of your system matrices evaluated at current parameter values.</a></div>
+      <div class="Body_Text"><a name="43787">Click on the </a><span class="Menu_Item">View</span> menu and select <span class="Menu_Item">Specification...</span> The following Specification views are always available, regardless of whether the sspace has previously been estimated:</div>
+      <div class="Table"><a name="111197"><img class="Default" src="images/sspace.063.3.11.jpg" width="100%" style="left: 0.0pt; max-height: 269px; max-width: 456px; top: 0.0pt" alt="" /></a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="43788">Text Screen</a></span>. This is the familiar text view of the specification. You should use this view when you create or edit the state space specification. This view may also be accessed by clicking on the <span class="Menu_Item">Spec</span> button on the sspace toolbar.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="60207">Coefficient Description</a></span>. Text description of the structure of your state space specification. The variables on the left-hand side, representing <img class="Default EquationGraphic" src="images/sspace.063.3.12.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 39px; top: 0.0pt" alt="" /> and <img class="Default EquationGraphic" src="images/sspace.063.3.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />, are expressed as linear functions of the state variables <img class="Default EquationGraphic" src="images/sspace.063.3.14.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 20px; top: 0.0pt" alt="" />, and a remainder term CONST. The elements of the matrix are the corresponding coefficients. For example, the ARMAX example has the following Coefficient Description view:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="60220"><img class="Default" src="images/sspace.063.3.15.jpg" width="100%" style="left: 0.0pt; max-height: 277px; max-width: 543px; top: 0.0pt" alt="" /></a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="60221">Covariance Description</a></span>. Text description of the covariance matrix of the state space specification. For example, the ARMAX example has the following Covariance Description view:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Picture"><a name="40083"><img class="Default" src="images/sspace.063.3.16.jpg" width="100%" style="left: 0.0pt; max-height: 272px; max-width: 544px; top: 0.0pt" alt="" /></a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="40149">Coefficient Values</a></span>. Numeric description of the structure of the signal and the state equations evaluated at current parameter values. If the system coefficient matrix is time-varying, EViews will prompt you for a date/observation at which to evaluate the matrix.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="40150">Covariance Values</a></span>. Numeric description of the structure of the state space specification evaluated at current parameter values. If the system covariance matrix is time-varying, EViews will prompt you for a date/observation at which to evaluate the matrix.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_4"><a name="40124">Auto-Specification</a></div>
+      <div class="Body_Text"><a name="43537">To aid you in creating a state space specification, EViews provides you with &#8220;auto-specification&#8221; tools which will create the text representation of a model that you specify using dialogs. This tool may be very useful if your model is a standard regression with fixed, recursive, and various random coefficient specifications, and/or your errors have a general ARMA structure.</a></div>
+      <div class="Body_Text"><a name="163290">When you select </a><span class="Menu_Item">Proc/Define State Space...</span> from the menu, EViews opens a three tab dialog. The first tab is used to describe the basic regression portion of your specification. Enter the dependent variable, and any regressors which have fixed or recursive coefficients. You can choose which COEF object EViews uses for indicating unknowns when setting up the specification. At the bottom, you can specify an ARMA structure for your errors. Here, we have specified a simple ARMA(2,1) specification for LOG(PASSENGER).</div>
+      <div class="Picture"><a name="54719"><img class="Default" src="images/sspace.063.3.17.jpg" width="100%" style="left: 0.0pt; max-height: 408px; max-width: 443px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="163312">The second tab of the dialog is used to add any regressors which have random coefficients. Simply enter the appropriate regressors in each of the four edit fields. EViews allows you to define regressors with any combination of constant mean, AR(1), random walk, or random walk (with drift) coefficients.</a></div>
+      <div class="Picture"><a name="163306"><img class="Default" src="images/sspace.063.3.18.jpg" width="100%" style="left: 0.0pt; max-height: 407px; max-width: 446px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="43878">Lastly, the </a><span class="Menu_Item">Auto-Specification</span> dialog allows you to choose between basic variance structures for your state space model. Click on the <span class="Menu_Item">Variance Specification</span> tab, and choose between an <span class="Menu_Item">Identity</span> matrix, <span class="Menu_Item">Common Diagonal</span> (diagonal with common variances), <span class="Menu_Item">Diagonal</span>, or general (<span class="Menu_Item">Unrestricted</span>) variance matrix for the signals and for the states. The dialog also allows you to allow the signal equation(s) and state equations(s) to have non-zero error covariances. </div>
+      <div class="Picture"><a name="163364"><img class="Default" src="images/sspace.063.3.19.jpg" width="100%" style="left: 0.0pt; max-height: 407px; max-width: 447px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="43904">We emphasize the fact that your sspace object is not restricted to the choices provided in this dialog. If you find that the set of specifications supported by </a><span class="Menu_Item">Auto-Specification</span> is too restrictive, you may use it the dialogs as a tool to build a basic specification, and then edit the specification to describe your model.</div>
+      <div class="Heading_4"><a name="43820">Estimating a State Space Model </a></div>
+      <div class="Body_Text"><a name="40192">Once you have specified a state space model and verified that your specification is correct, you are ready to estimate the model. To open the estimation dialog, simply click on the </a><span class="Menu_Item">Estimate</span> button on the toolbar or select <span class="Menu_Item">Proc/Estimate&#8230;</span></div>
+      <div class="Picture"><a name="111201"><img class="Default" src="images/sspace.063.3.20.jpg" width="100%" style="left: 0.0pt; max-height: 329px; max-width: 452px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="40209">As with other estimation objects, EViews allows you to set the estimation sample, optimization and coefficient covariance methods, the maximum number of iterations, convergence tolerance, the estimation algorithm, derivative settings and whether to display the starting values. </a></div>
+      <div class="Body_Text"><a name="162829">The default optimization method for new sspace objects is BFGS, but you may also select Newton-Raphson, OPG - BHHH, or EViews legacy. For non-legacy estimation, the </a><span class="Menu_Item">Step method</span> allows you to choose between the default <span class="Menu_Item">Marquardt</span>, <span class="Menu_Item">Dogleg</span>, and Line search determined steps.</div>
+      <div class="Body_Text"><a name="162830">The </a><span class="Menu_Item">Ordinary</span> default <span class="Menu_Item">Covariance method</span> employs the inverse of the matrix specified in the<span class="Menu_Item"> Information matrix</span> dropdown menu. Alternately, you may compute the sandwich covariance by selecting <span class="Menu_Item">Huber &#8211; White</span> in the <span class="Menu_Item">Covariance method</span> menu. </div>
+      <div class="Body_Text"><a name="163070">The outer-product of the gradients (</a><span class="Menu_Item">OPG</span>) is the default information matrix estimator. If you are performing non-legacy optimization, you may use the observed Hessian by selecting <span class="Menu_Item">Hessian &#8211; Observed</span>.</div>
+      <div class="Body_Text"><a name="162760">The default settings should provide a good start for most problems; if you choose to change the settings, see </a><span class="Link"><a href="optimize-Setting_Estimation_Options.html#137039" title="Setting Estimation Options">&#8220;Setting Estimation Options&#8221;</a></span> for related discussion of estimation options. </div>
+      <div class="Body_Text"><a name="163021">When you click on </a><span class="Menu_Item">OK</span>, EViews will begin estimation using the specified settings.</div>
+      <div class="Body_Text"><a name="130374">There are two additional things to keep in mind when estimating your model:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="130411">Although the EViews Kalman filter routines will automatically handle any missing values in your sample, EViews does require that your estimation sample be contiguous, with no gaps between successive observations. </a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="130399">If there are no unknown coefficients in your specification, you will still have to &#8220;estimate&#8221; your sspace to run the Kalman filter and initialize elements that EViews needs in order to perform further analysis.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_4"><a name="40373">Interpreting the estimation results</a></div>
+      <div class="Body_Text"><a name="23471">After you choose the variance options and click </a><span class="Dialog_Item">OK</span>, EViews presents the estimation results in the state space window. For example, if we specify an ARMA(2,1) for the log of the monthly international airline passenger totals from January 1949 to December 1960 (from Box and Jenkins, 1976, series G, p. 531, in the example workfile &#8220;Airline.wf1&#8220;):</div>
+      <div class="Multi-line_Input"><a name="40688">log(passenger) = c(1) + sv1 + c(4)*sv2</a></div>
+      <div class="Multi-line_Input"><a name="40689">@state sv1 = c(2)*sv1(-1) + c(3)*sv2(-1) + [var=exp(c(5))]</a></div>
+      <div class="Multi-line_Input"><a name="40690">@state sv2 = sv1(-1)</a></div>
+      <div class="Body_Text"><a name="40684">and estimate the model, EViews will display the estimation output view:</a></div>
+      <div class="Table"><a name="40649"><img class="Default" src="images/sspace.063.3.21.jpg" width="100%" style="left: 0.0pt; max-height: 512px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="41051">The bulk of the output view should be familiar from other EViews estimation objects. The information at the top describes the basics of the estimation: the name of the sspace object, estimation method, the date and time of estimation, sample and number of objects in the sample, convergence information, and the coefficient estimates. The bottom part of the view reports the maximized log likelihood value, the number of estimated parameters, and the associated information criteria.</a></div>
+      <div class="Body_Text"><a name="40836">Some parts of the output, however, are new and may require discussion. The bottom section provides additional information about the handling of missing values in estimation. &#8220;Likelihood observations&#8221; reports the actual number of observations that are used in forming the likelihood. This number (which is the one used in computing the information criteria) will differ from the &#8220;Included observations&#8221; reported at the top of the view when EViews drops an observation from the likelihood calculation because all of the signal equations have missing values. The number of omitted observations is reported in &#8220;Missing observations&#8221;. &#8220;Partial observations&#8221; reports the number of observations that are included in the likelihood, but for which some equations have been dropped. &#8220;Diffuse priors&#8221; indicates the number of initial state covariances for which EViews is unable to solve and for which there is no user initialization. EViews&#8217; handling of initial states and covariances is described in greater detail in </a><span class="Link"><a href="sspace-Technical_Discussion.html#24325" title="Technical Discussion">&#8220;Initial Conditions&#8221;</a></span>.</div>
+      <div class="Body_Text"><a name="60183">EViews also displays the final one-step ahead values of the state vector, <img class="Default EquationGraphic" src="images/sspace.063.3.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 58px; top: 0.0pt" alt="" />, and the corresponding RMSE values (square roots of the diagonal elements of <img class="Default EquationGraphic" src="images/sspace.063.3.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 59px; top: 0.0pt" alt="" />). For settings where you may care about the entire path of the state vector and covariance matrix, EViews provides you with a variety of views and procedures for examining the state results in greater detail.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

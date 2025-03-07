@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Creating an Add-in</title>
+    <link rel="StyleSheet" href="css/addins.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="addins-Managing_Add-ins.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="addins-Add-ins_Design_Support.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="addins-Add-ins.html">Add-ins</a> : Creating an Add-in</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="408298">Creating an Add-in</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#400950">Registering an Add-in</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#394020">Add-ins Design Issues</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#394005">Command Masking</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#394011">Menu Congestion</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#394014">Multiple Object Add-ins</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#394054">Creating an Add-in Package</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#419253">Table of Contents</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#395251">Installer Program</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#395278">Documentation</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#395288">Version</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#394085">XML File Specification</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="401303">You can use Add-ins developed by others without ever having to create one yourself. Indeed, many users will never need to go beyond running Add-ins downloaded from the EViews website or other repositories. </a></div>
+      <div class="Body_Text"><a name="414720">You may find, however, that creating your own Add-ins is both useful, if only to add a menu item or assign a one-word command for running your favorite EViews program, and easy-to-do.</a></div>
+      <div class="Body_Text"><a name="414876">Assuming that you already have an EViews program, creating an Add-in requires at most two steps:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="401028">Register the program as an Add-in. Registering an Add-in is the process of defining the Add-in type and assigning menu entry and command keywords to an EViews program.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="404879">(</a><span class="Emphasis">optional</span>) Create an Add-in package for distribution. Bundling your program files into a self-installing package file and providing a program for automatically registering the Add-in means that others can more easily incorporate your Add-in into their EViews environment.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="414903">While only the first step is required, you should consider the optional step of creating a self-installing Add-in package if you wish to distribute your Add-ins more widely. </a></div>
+      <div class="Body_Text"><a name="415417">In the remainder of this section we describe the steps required to register an Add-in. In addition, we provide design tips and describe additional programming tools that will aid you in writing sophisticated Add-in programs.</a></div>
+      <div class="Heading_4"><a name="400950">Registering an Add-in</a></div>
+      <div class="Body_Text"><a name="400951">The process of defining the Add-in type and assigning menu entry and command keywords to an EViews program is termed </a><span class="Definition">registration</span>. The Add-in registration process may also be used to associate documentation with the Add-in. </div>
+      <div class="Body_Text"><a name="415698">To register an EViews program file as an new Add-in, click on the </a><span class="Menu_Item">Add-ins/Manage Add-ins...</span> menu entry in the main EViews menu. The top portion of the management dialog shows the list of currently registered Add-ins:</div>
+      <div class="Picture"><a name="415784"><img class="Default" src="images/addins.089.7.1.jpg" width="100%" style="left: 0.0pt; max-height: 346px; max-width: 635px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="415786">Click on the </a><span class="Menu_Item">Add</span> button to display a standard file <span class="Menu_Item">Open</span> dialog. Navigate to the program file you wish to register and click on <span class="Menu_Item">OK</span> to continue.</div>
+      <div class="Body_Text"><a name="415771">EViews will display the </a><span class="Menu_Item">Add/Edit Program</span> dialog with various default settings. </div>
+      <div class="Picture"><a name="415709"><img class="Default" src="images/addins.089.7.2.jpg" width="100%" style="left: 0.0pt; max-height: 445px; max-width: 487px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="400957">The dialog allows you to specify a command keyword for the Add-in, to add menu items for point-and-click access to the Add-in, and to attach documentation and descriptions. </a></div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="400958">The </a><span class="Menu_Item">Program file</span> edit field in the dialog should be used to specify the program to be used as an Add-in. You may enter the name of a file (with an absolute or Add-ins directory relative path, if necessary) or you may click on the button to the right-hand side of the edit field to navigate to the file. </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="400959">The </a><span class="Menu_Item">Documentation file </span>edit field allows you specify a PDF, Text, RTF, Microsoft Word file, or URL containing documentation for the Add-in. Note that relative paths are evaluated with respect to the directory of the Add-in program, not the default Add-in directory.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="400960">The </a><span class="Menu_Item">Menu/Procedure type</span> dropdown setting determines whether the program is a global or an object specific Add-in. (Recall that global Add-ins are those designed to work with multiple objects or object types, while object-specific Add-ins work with a single object and object type.)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="400961">If you check </a><span class="Menu_Item">Assign as Command or Proc</span>, EViews will add the specified single-word command or proc keyword to the EViews language, so you may run the Add-in using a global or object command. Names for the keyword must follow standard EViews command naming convention. Global Add-ins should not be given the same name as built-in EViews commands. (See <span class="Link"><a href="#394005" title="Creating an Add-in">&#8220;Command Masking&#8221;</a></span> below, for additional discussion.)</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="400965">If you check </a><span class="Menu_Item">Include in Add-ins menu</span>, EViews will add the specified <span class="Menu_Item">Menu text</span> to the appropriate menus.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="400966">You may use the </a><span class="Menu_Item">Brief description</span> edit field to describe the purpose of the Add-in.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Bullet_List_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="Bullet_List_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="Bullet_List_inner"><a name="427884">You may enter a </a><span class="Menu_Item">Version</span> number for your Add-in and an <span class="Menu_Item">Update URL</span> indicating where to find the update XML file (see <span class="Link"><a href="#394085" title="Creating an Add-in">&#8220;XML File Specification&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="400967">In the example above, we instruct EViews to use the file &#8220;Rtf_out.PRG&#8221;, which is located in the default Add-ins directory, as an Add-in program. We indicate that the program is a global Add-in that may be run from the main EViews menu by selecting the Add-ins menu item </a><span class="Menu_Item">Output to RTF</span> or by issuing the command <span class="In-line_command">rtf_out</span>. There is no documentation file. </div>
+      <div class="Heading_4"><a name="394020">Add-ins Design Issues</a></div>
+      <div class="Body_Text"><a name="394001">For the most part, defining commands and menu items for an Add-ins is straightforward. There are, however, a few issues that you should bear in mind when designing your Add-in.</a></div>
+      <div class="Heading_5"><a name="394005">Command Masking</a></div>
+      <div class="Body_Text"><a name="394006">Allowing you to define user-specified Add-in command names opens up the possibility that an Add-in will be assigned the same command as an existing EViews command, or that multiple Add-in programs will be assigned the same name. Duplicate command names will generate an error or will lead to command masking where some of the instances will be ignored.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="394007">If you specify a </a><span class="EmphasisIX">global</span> Add-in command name that is identical to an EViews command or a previously defined global Add-in command, EViews will issue an error message, and will display the <span class="Menu_Item">Add/Edit Program</span> dialog so you can provide a different name. EViews will not, for example, permit you to register an Add-in with the global command <span class="In-line_command">copy</span> since this conflicts with the built-in command.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="394008">EViews will not generate an error message if you provide an </a><span class="Emphasis">object-specific</span> command name that is identical to a <span class="Emphasis">built-in</span> command, but the EViews command will mask the user-defined command. EViews will, for example, permit you to register an equation command with the name <span class="In-line_command">resid</span>, but if you enter the equation command &#8220;eq01.resid&#8221;, EViews will display the built-in <span class="In-line_command">resid</span> view of equation EQ01, instead of running the user-defined Add-in.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="394009">If you specify an </a><span class="Emphasis">object-specific</span> Add-in command name that is identical to another <span class="Emphasis">object-specific</span> command, EViews will not error. When multiple Add-ins are assigned the same object-specific command, the first Add-in listed in the list of registered Add-ins will be used and the remainder will be masked. To eliminate masking, you must edit the conflicting Add-in command definitions. If you wish to retain the same command name for multiple Add-ins, you should use the Add-ins management dialog to reorder the Add-ins list so that the desired Add-in has priority (<span class="Link"><a href="addins-Managing_Add-ins.html#393888" title="Managing Add-ins">&#8220;Managing Add-ins&#8221;</a></span>).</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="394010">We emphasize that masking only occurs within like Add-ins. You may have a global, series, and group Add-in that each use the same command without experience masking, but two global Add-ins or two series Add-ins with the same name will lead to masking.</a></div>
+      <div class="Heading_5"><a name="394011">Menu Congestion</a></div>
+      <div class="Body_Text"><a name="394012">While you may define as many Add-in menu items as you like, EViews does place limits on the number of menu items that may be displayed by default. If you have more than 10 global menu entries or more than 10 object-specific menus of a given type, the corresponding menus will display the first 10 entries, along with an 11th menu entry, </a><span class="Menu_Item">More...</span> Clicking on <span class="Menu_Item">More...</span> displays a listbox showing the full set of entries. In such circumstances, we recommend that you reorder your Add-ins so that the most used Add-ins are given priority.</div>
+      <div class="Heading_5"><a name="394014">Multiple Object Add-ins</a></div>
+      <div class="Body_Text"><a name="417015">You may wish to use a single program file to define Add-ins for several object types. Since it is not possible to use a single Add-in entry to define multiple object-specific types, you must create separate entries for each object-type which point to the single program file. </a><span class="Emphasis">For each relevant object type,</span> select <span class="Menu_Item">Add-ins/Manage Add-ins...</span> from the main EViews menu, then navigate to and select the program file. Use the <span class="Menu_Item">Add/Edit Program</span> dialog to define the object-specific entry.</div>
+      <div class="Heading_4"><a name="394054">Creating an Add-in Package</a></div>
+      <div class="Body_Text"><a name="394055">If you are developing Add-ins for use by others, we recommend that you create a self-installing package so that users may easily incorporate your Add-ins in their EViews environment. You can then host your package on a company intranet or perhaps submit your package to be hosted on the EViews.com website for wide distribution.</a></div>
+      <div class="Body_Text"><a name="417518">The process of creating an Add-in package is straightforward, requiring at most two steps:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="417699">(</a><span class="Emphasis">optional</span>) Create a table of contents (TOC) information file and installer program file.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="417668">Create a self-extracting Add-in package file containing the program and support files (including the TOC and installer program file, if available).</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Body_Text"><a name="417670">The second step, creating the self-extracting package, is trivial. Simply create a standard ZIP archive file containing all of the files for your Add-in, then rename the ZIP file so that it has the extension &#8220;AIPZ&#8221;. You now have an self-extracting Add-in package file. </a></div>
+      <div class="Body_Text"><a name="418146">Opening a self-extracting package file, either automatically by a browser after completing the download, by double clicking on the file, or by dropping it onto EViews, will prompt you to unpack and copy the files to the location of your choice. </a></div>
+      <div class="Body_Text"><a name="417635">The Add-in will not, however, automatically be installed and registered unless you include a table of contents (TOC) information file and installer program along with your program files. Creating the TOC and installer program files takes only a few minutes and allows you to automate the Add-in installation and allow for automatic updating of your Add-in as you provide newer versions. We strongly recommend that package distributors take the time to create these files as described below.</a></div>
+      <div class="Heading_5"><a name="419253">Table of Contents</a></div>
+      <div class="Body_Text"><a name="419255">First, you should create a table-of-contents file named &#8220;Toc.INI&#8221; for inclusion in your package. The TOC file should contain setup information which describes the directory in which the Add-in files should be installed, and if appropriate, the name of an EViews installer program for registering the Add-in. The format of the TOC file is:</a></div>
+      <div class="Input"><a name="394071">[package]</a></div>
+      <div class="Input"><a name="394072">installer = </a><span class="Argument">&lt;name of installer file&gt;</span></div>
+      <div class="Input"><a name="419261">folder = </a><span class="Argument">&lt;name of folder to create&gt;</span></div>
+      <div class="Body_Text"><a name="419262">A TOC file should always begin with the line &#8220;[package]&#8221;, followed by lines which give the directory and installer information.</a></div>
+      <div class="Body_Text"><a name="419263">The </a><span class="In-line_command">installer</span> keyword is used to indicate the name of the EViews program file, if one exists, that should be run to register the Add-in (see <span class="Link"><a href="#395251" title="Creating an Add-in">&#8220;Installer Program&#8221;</a></span>). If, for example, a registration program file named &#8220;Recession shade install.PRG&#8221; is included in your package, you should include the line</div>
+      <div class="Input"><a name="394075">installer = recession shade install.prg</a></div>
+      <div class="Body_Text"><a name="394076">If you include this line in your TOC, EViews will automatically run the installer program when it opens the AIPZ package. If you do not wish to provide an installer program, you should include the line &#8220;installer=none&#8221; in the TOC file.</a></div>
+      <div class="Body_Text"><a name="394077">The </a><span class="In-line_command">folder</span> keyword may be used to indicate a subfolder of the default Add-ins directory into which you will extract the packaged files. Thus,</div>
+      <div class="Input"><a name="394078">folder = RecShade</a></div>
+      <div class="Body_Text"><a name="394079">tells EViews to extract the contents of the AIPZ file into the &#8220;RecShade&#8221; folder of the Add-ins directory. If no folder is specified, the name of the AIPZ file will be used as the target folder name. Additionally, you may use the special folder name &#8220;&lt;addins&gt;&#8221; to indicate that the contents of the AIPZ archive should be placed in the main Add-ins directory. (Note, however, that only folders in an AIPZ archive may be written to the main Add-ins directory in this fashion; individual files in AIPZ files must be written into subdirectories.</a></div>
+      <div class="Body_Text"><a name="426528">We emphasize that creating a TOC file and providing an installer program are not required. In the absence of a TOC file or an </a><span class="In-line_command">installer=</span> specification, EViews will, after unpacking the AIPZ files, simply display a message reminding the user that the installed programs may be registered manually using the Add-ins management dialog.</div>
+      <div class="Body_Text"><a name="402550">Nevertheless, we strongly recommend that package distributors provide both a TOC file and installation program to facilitate use of their Add-ins. Packages hosted on the EViews website must include both a TOC and an installer.</a></div>
+      <div class="Heading_5"><a name="395251">Installer Program</a></div>
+      <div class="Body_Text"><a name="407516">Next, you should create a simple EViews program that uses the </a><span class="In-line_command_link"><a href="commandcmd-addin.html#2699316" title="addin">addin</a></span> command to register the Add-in with appropriate type, menu, and command settings. Note that the TOC file <span class="In-line_command">installer=</span> specification should point to this installer program.</div>
+      <div class="Body_Text"><a name="403919">For example, the graph-specific Add-in described in </a><span class="Link"><a href="addins-Add-ins_Examples.html#393758" title="Add-ins Examples">&#8220;U.S. Recession Graph Shading&#8221;</a></span> may be registered by including the following command in a program file:</div>
+      <div class="Input"><a name="395256">addin(type="graph", menu="Add USA Recession Shading", proc="recshade", docs=".\recession shade.txt", desc="Applies US recession shading to a graph object.") ./recshade.prg</a></div>
+      <div class="Body_Text"><a name="407415">The options in this example should be self-explanatory. The command registers the program &#8220;./recshade.PRG&#8221; as a graph-specific Add-in with menu item &#8220;Add USA Recession Shading&#8221;, command name &#8220;recshade&#8221;, and description text &#8220;Applied US Recession shading to a graph object&#8221;.</a></div>
+      <div class="Body_Text"><a name="403518">See </a><span class="In-line_command_link"><a href="commandcmd-addin.html#2699316" title="addin">addin</a></span> for details and a complete list of options. Use of the following <span class="In-line_input">addin</span> options is highly recommended:</div>
+      <div class="Heading_6"><a name="395278">Documentation</a></div>
+      <div class="Body_Text"><a name="395269">We recommend that you provide documentation for your Add-in, and use the &#8220;docs=&#8221; option to point to the documentation file.</a></div>
+      <div class="Body_Text"><a name="404033">Documentation could be anything from a simple text file with some syntax hints, to a lengthy PDF document that describes the Add-in features in detail. </a></div>
+      <div class="Heading_6"><a name="395288">Version</a></div>
+      <div class="Body_Text"><a name="404371">EViews allows Add-ins to have a version number which allows the users of your Add-in to use automatic updating to ensure they have the latest version of the Add-in. When a user uses the </a><span class="Menu_Item">Update</span> button on the <span class="Menu_Item">Manage Add-ins </span>dialog to check for Add-in updates, EViews will compare the hosted version number with the currently registered version number and download the latest version if necessary.</div>
+      <div class="Body_Text"><a name="404097">You may use the &#8220;version=&#8221; option to specify the version number. If omitted, EViews will assume that the Add-in version number is 1.0.</a></div>
+      <div class="Heading_6"><a name="394085">XML File Specification</a></div>
+      <div class="Body_Text"><a name="404258">One of the most useful Add-ins management features is the ability of users to automatically update their installed Add-ins as newer versions become available. To support this feature, EViews must know where to look to determine the most recent version of the Add-in and where to download any updates.</a></div>
+      <div class="Body_Text"><a name="406537">This information is communicated in an XML file, typically located on the Add-ins package hosting site. If you will be hosting this file, you should use the </a><span class="In-line_command">addin</span> option &#8220;url=&#8221; to specify the URL for the XML file. If this option is not supplied, EViews will look for the XML file on EViews.com.</div>
+      <div class="Body_Text"><a name="394087">The XML file should contain one or more item definitions, where each item contains information on a specific Add-in. An item definition is contained in the lines between an </a><span class="In-line_input">&lt;item&gt;</span> and <span class="In-line_input">&lt;/item&gt;</span> tag. An example of the full specification of an item is as follows:</div>
+      <div class="Multi-line_Input"><a name="394088">&lt;item&gt;</a></div>
+      <div class="Multi-line_Input"><a name="394089">&lt;title&gt;BMA&lt;/title&gt;</a></div>
+      <div class="Multi-line_Input"><a name="394090">&lt;path&gt;bma\bma.prg&lt;/path&gt;</a></div>
+      <div class="Multi-line_Input"><a name="394091">&lt;path&gt;bma\bmamlogit.prg&lt;/path&gt;</a></div>
+      <div class="Multi-line_Input"><a name="394092">&lt;version&gt;1.0&lt;/version&gt;</a></div>
+      <div class="Multi-line_Input"><a name="394093">&lt;description&gt;Computes different Bayesian Model Averaging methods including LM, GLM and Multinomial Logit models.&lt;/description&gt;</a></div>
+      <div class="Multi-line_Input"><a name="394094">&lt;link&gt;http://eviews.com/Addins/BMA.aipz&lt;/link&gt;</a></div>
+      <div class="Multi-line_Input"><a name="394095">&lt;pubDate&gt;13 Mar 2012&lt;/pubDate&gt;</a></div>
+      <div class="Multi-line_Input"><a name="394096">&lt;/item&gt;</a></div>
+      <div class="Body_Text"><a name="394098">Note that the only required specifications are the </a><span class="In-line_input">&lt;title&gt;</span> and <span class="In-line_input">&lt;link&gt;</span>. </div>
+      <div class="Body_Text"><a name="423533">The </a><span class="In-line_input">&lt;path&gt;</span> specification is used to identify the paths and file names of the main program files used by the Add-in, with the path location specified relative to the Add-ins directory. Automatic updating will update these files when a newer Add-in version is available. If <span class="In-line_input">&lt;path&gt;</span> is not specified, EViews will use the <span class="In-line_input">&lt;title&gt;</span> specification to determine the relevant Add-in proc name, and use registration information for the proc name to determine the files to update.</div>
+      <div class="Body_Text"><a name="423548">When an add-in package has multiple main program files, a </a><span class="In-line_input">&lt;path&gt;</span> statement is required. You should list each file using a separate <span class="In-line_input">&lt;path&gt;</span> entry. In the example above, the BMA Add-in has two program files, called &#8220;bma.PRG&#8221;, and &#8220;bmalogit.PRG&#8221; that are associated with procs. EViews will update all of the files associated with these procs when updating the Add-in.</div>
+      <div class="Body_Text"><a name="394100">The </a><span class="In-line_input">&lt;version&gt;</span> is used to specify the current Add-in version number. When the user checks for updates, EViews will download the updated version if the version number they have currently installed is lower than the one given in the <span class="In-line_input">&lt;version&gt;</span> tag.</div>
+      <div class="Body_Text"><a name="394101">Finally, the </a><span class="In-line_input">&lt;link&gt;</span> specification contains the URL (or network file location) of the AIPZ file containing the Add-in. This is the location from which EViews will download the updated Add-in package should the user request an update.</div>
+      <div class="Body_Text"><a name="422800">The </a><span class="In-line_input">&lt;description&gt;</span> and <span class="In-line_input">&lt;pubDate&gt;</span> specifications should be self-explanatory.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

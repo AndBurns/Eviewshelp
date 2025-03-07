@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Count Models</title>
+    <link rel="StyleSheet" href="css/limdep.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="limdep-Heckman_Selection_Model.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="limdep-Technical_Notes.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_adv.html">Advanced Single Equation Analysis</a> : <a class="WebWorks_Breadcrumb_Link" href="limdep-Discrete_and_Limited_Dependent_Variable_Models.html">Discrete and Limited Dependent Variable Models</a> : Count Models</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="189095">Count Models</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#38305">Estimating Count Models in EViews </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#38320">Poisson Model</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#38364">Negative Binomial (ML)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#172126">Quasi-maximum Likelihood (QML)</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#38411">Poisson</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#38416">Exponential </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#38430">Normal </a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level3">
+          <a class="WebWorks_MiniTOC_Link" href="#38459">Negative Binomial</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#38475">Views of Count Models</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#38496">Procedures for Count Models</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#38555">Demonstrations</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#38558">A Specification Test for Overdispersion</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#38617">Quasi-likelihood Ratio Statistic</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="38301">Count models are employed when <img class="Default EquationGraphic" src="images/limdep.041.7.01.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> takes integer values that represent the number of events that occur&#8212;examples of count data include the number of patents filed by a company, and the number of spells of unemployment experienced over a fixed time interval. </a></div>
+      <div class="Body_Text"><a name="38302">EViews provides support for the estimation of several models of count data. In addition to the standard poisson and negative binomial maximum likelihood (ML) specifications, EViews provides a number of quasi-maximum likelihood (QML) estimators for count data.</a></div>
+      <div class="Heading_4"><a name="38305">Estimating Count Models in EViews </a></div>
+      <div class="Body_Text"><a name="42993">To estimate a count data model, select </a><span class="Menu_Item">Quick/Estimate Equation&#8230;</span> from the main menu, and select <span class="Menu_Item">COUNT - Integer Count Data </span>as the estimation method. EViews displays the count estimation dialog into which you will enter the dependent and explanatory variable regressors, select a type of count model, and if desired, set estimation options.</div>
+      <div class="Picture"><a name="42997"><img class="Default" src="images/limdep.041.7.02.jpg" width="100%" style="left: 0.0pt; max-height: 478px; max-width: 542px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="42998">There are three parts to the specification of the count model:</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="38312">In the upper edit field, you should list the dependent variable and the independent variables or you should provide an explicit expression for the index. The list of explanatory variables specifies a model for the conditional mean of the dependent variable:</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.03.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.50)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="38317">Next, click on </a><span class="Dialog_Item">Options</span> and, if desired, change the default estimation algorithm, convergence criterion, starting values, and method of computing the coefficient covariance.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="38318">Lastly, select one of the entries listed under count estimation method, and if appropriate, specify a value for the variance parameter. Details for each method are provided in the following discussion.</a></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Heading_5"><a name="38320">Poisson Model</a></div>
+      <div class="Body_Text"><a name="38327">For the Poisson model, the conditional density of <img class="Default EquationGraphic" src="images/limdep.041.7.04.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> given <img class="Default EquationGraphic" src="images/limdep.041.7.05.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 17px; top: 0.0pt" alt="" /> is:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.06.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.51)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38335">where <img class="Default EquationGraphic" src="images/limdep.041.7.07.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is a non-negative integer valued random variable. The maximum likelihood estimator (MLE) of the parameter <img class="Default EquationGraphic" src="images/limdep.041.7.08.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> is obtained by maximizing the log likelihood function:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.09.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.52)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="64221">Provided the conditional mean function is correctly specified and the conditional distribution of <img class="Default EquationGraphic" src="images/limdep.041.7.10.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is Poisson, the MLE <img class="Default EquationGraphic" src="images/limdep.041.7.11.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 15px; top: 0.0pt" alt="" /> is consistent, efficient, and asymptotically normally distributed, with coefficient variance matrix consistently estimated by the inverse of the Hessian:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.12.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.53)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38355">where <img class="Default EquationGraphic" src="images/limdep.041.7.13.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 111px; top: 0.0pt" alt="" />. Alternately, one could estimate the coefficient covariance using the inverse of the outer-product of the scores:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.14.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.54)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38356">The Poisson assumption imposes restrictions that are often violated in empirical applications. The most important restriction is the equality of the (conditional) mean and variance:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.15.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.55)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38361">If the mean-variance equality does not hold, the model is misspecified. EViews provides a number of other estimators for count data which relax this restriction.</a></div>
+      <div class="Body_Text"><a name="38362">We note here that the Poisson estimator may also be interpreted as a quasi-maximum likelihood estimator. The implications of this result are discussed below.</a></div>
+      <div class="Heading_5"><a name="38364">Negative Binomial (ML)</a></div>
+      <div class="Body_Text"><a name="38365">One common alternative to the Poisson model is to estimate the parameters of the model using maximum likelihood of a negative binomial specification. The log likelihood for the negative binomial distribution is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.16.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.56)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38374">where <img class="Default EquationGraphic" src="images/limdep.041.7.17.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> is a variance parameter to be jointly estimated with the conditional mean parameters <img class="Default EquationGraphic" src="images/limdep.041.7.18.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. EViews estimates the log of <img class="Default EquationGraphic" src="images/limdep.041.7.19.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" />, and labels this parameter as the &#8220;SHAPE&#8221; parameter in the output. Standard errors are computed using the inverse of the information matrix.</a></div>
+      <div class="Body_Text"><a name="38379">The negative binomial distribution is often used when there is </a><span class="Definition">overdispersion</span> in the data, so that <img class="Default EquationGraphic" src="images/limdep.041.7.20.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 137px; top: 0.0pt" alt="" />, since the following moment conditions hold:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.21.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.57)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38390"><img class="Default EquationGraphic" src="images/limdep.041.7.22.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> is therefore a measure of the extent to which the conditional variance exceeds the conditional mean. </a></div>
+      <div class="Body_Text"><a name="38391">Consistency and efficiency of the negative binomial ML requires that the conditional distribution of <img class="Default EquationGraphic" src="images/limdep.041.7.23.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> be negative binomial.</a></div>
+      <div class="Heading_5"><a name="172126">Quasi-maximum Likelihood (QML)</a></div>
+      <div class="Body_Text"><a name="38397">We can perform maximum likelihood estimation under a number of alternative distributional assumptions. These </a><span class="Definition">quasi-maximum likelihood (QML) estimators </span>are robust in the sense that they produce consistent estimates of the parameters of a correctly specified conditional mean, even if the distribution is incorrectly specified.</div>
+      <div class="Body_Text"><a name="38398">This robustness result is exactly analogous to the situation in ordinary regression, where the normal ML estimator (least squares) is consistent, even if the underlying error distribution is not normally distributed. In ordinary least squares, all that is required for consistency is a correct specification of the conditional mean <img class="Default EquationGraphic" src="images/limdep.041.7.24.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 121px; top: 0.0pt" alt="" />. For QML count models, all that is required for consistency is a correct specification of the conditional mean <img class="Default EquationGraphic" src="images/limdep.041.7.25.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 65px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="38405">The estimated standard errors computed using the inverse of the information matrix will not be consistent unless the conditional distribution of <img class="Default EquationGraphic" src="images/limdep.041.7.26.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is correctly specified. However, it is possible to estimate the standard errors in a robust fashion so that we can conduct valid inference, even if the distribution is incorrectly specified. </a></div>
+      <div class="Body_Text"><a name="38406">EViews provides options to compute two types of robust standard errors. Click </a><span class="Dialog_Item">Options</span> in the Equation Specification dialog box and mark the <span class="Dialog_Item">Robust Covariance</span> option. The <span class="Dialog_Item">Huber/White</span> option computes QML standard errors, while the <span class="Dialog_Item">GLM</span> option computes standard errors corrected for overdispersion. See <span class="Link"><a href="limdep-Technical_Notes.html#38646" title="Technical Notes">&#8220;Technical Notes&#8221;</a></span> for details on these options.</div>
+      <div class="Body_Text"><a name="38410">Further details on QML estimation are provided by Gourioux, Monfort, and Trognon (1994a, 1994b). Wooldridge (1997) provides an excellent summary of the use of QML techniques in estimating parameters of count models. See also the extensive related literature on Generalized Linear Models (McCullagh and Nelder, 1989). </a></div>
+      <div class="Heading_6"><a name="38411">Poisson</a></div>
+      <div class="Body_Text"><a name="38412">The Poisson MLE is also a QMLE for data from alternative distributions. Provided that the conditional mean is correctly specified, it will yield consistent estimates of the parameters <img class="Default EquationGraphic" src="images/limdep.041.7.27.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> of the mean function. By default, EViews reports the ML standard errors. If you wish to compute the QML standard errors, you should click on </a><span class="Dialog_Item">Options</span>, select <span class="Dialog_Item">Robust Covariances</span>, and select the desired covariance matrix estimator.</div>
+      <div class="Heading_6"><a name="38416">Exponential </a></div>
+      <div class="Body_Text"><a name="38418">The log likelihood for the exponential distribution is given by:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.28.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.58)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38423">As with the other QML estimators, the exponential QMLE is consistent even if the conditional distribution of <img class="Default EquationGraphic" src="images/limdep.041.7.29.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> is not exponential, provided that <img class="Default EquationGraphic" src="images/limdep.041.7.30.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is correctly specified. By default, EViews reports the robust QML standard errors.</a></div>
+      <div class="Heading_6"><a name="38430">Normal </a></div>
+      <div class="Body_Text"><a name="38432">The log likelihood for the normal distribution is:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.31.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.59)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38443">For </a><span class="Emphasis">fixed</span> <img class="Default EquationGraphic" src="images/limdep.041.7.32.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> and correctly specified <img class="Default EquationGraphic" src="images/limdep.041.7.33.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" />, maximizing the normal log likelihood function provides consistent estimates even if the distribution is not normal. Note that maximizing the normal log likelihood for a fixed <img class="Default EquationGraphic" src="images/limdep.041.7.34.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> is equivalent to minimizing the sum of squares for the nonlinear regression model:</div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.35.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.60)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38457">EViews sets <img class="Default EquationGraphic" src="images/limdep.041.7.36.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 57px; top: 0.0pt" alt="" /> by default. You may specify any other (positive) value for <img class="Default EquationGraphic" src="images/limdep.041.7.37.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" /> by changing the number in the </a><span class="Dialog_Item">Fixed variance parameter</span> field box. By default, EViews reports the robust QML standard errors when estimating this specification.</div>
+      <div class="Heading_6"><a name="38459">Negative Binomial</a></div>
+      <div class="Body_Text"><a name="38463">If we maximize the negative binomial log likelihood, given above, for </a><span class="Emphasis">fixed</span> <img class="Default EquationGraphic" src="images/limdep.041.7.38.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 20px; top: 0.0pt" alt="" />, we obtain the QMLE of the conditional mean parameters <img class="Default EquationGraphic" src="images/limdep.041.7.39.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" />. This QML estimator is consistent even if the conditional distribution of <img class="Default EquationGraphic" src="images/limdep.041.7.40.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" /> is not negative binomial, provided that <img class="Default EquationGraphic" src="images/limdep.041.7.41.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 23px; top: 0.0pt" alt="" /> is correctly specified. </div>
+      <div class="Body_Text"><a name="38473">EViews sets <img class="Default EquationGraphic" src="images/limdep.041.7.42.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 57px; top: 0.0pt" alt="" /> by default, which is a special case known as the geometric distribution. You may specify any other (positive) value by changing the number in the </a><span class="Dialog_Item">Fixed variance parameter</span> field box. For the negative binomial QMLE, EViews by default reports the robust QMLE standard errors. </div>
+      <div class="Heading_4"><a name="38475">Views of Count Models</a></div>
+      <div class="Body_Text"><a name="38476">EViews provides a full complement of views of count models. You can examine the estimation output, compute frequencies for the dependent variable, view the covariance matrix, or perform coefficient tests. Additionally, you can select </a><span class="Menu_Item">View/Actual, Fitted, Residual&#8230;</span> and pick from a number of views describing the ordinary residuals <img class="Default EquationGraphic" src="images/limdep.041.7.43.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 143px; top: 0.0pt" alt="" />, or you can examine the correlogram and histogram of these residuals. For the most part, all of these views are self-explanatory. </div>
+      <div class="Body_Text"><a name="38480">Note, however, that the LR test statistics presented in the summary statistics at the bottom of the equation output, or as computed under the </a><span class="Menu_Item">View/Coefficient Diagnostics/Redundant Variables - Likelihood Ratio&#8230;</span> have a known asymptotic distribution only if the conditional distribution is correctly specified. Under the weaker GLM assumption that the true variance is proportional to the nominal variance, we can form a quasi-likelihood ratio, <img class="Default EquationGraphic" src="images/limdep.041.7.44.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 123px; top: 0.0pt" alt="" />, where <img class="Default EquationGraphic" src="images/limdep.041.7.45.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 20px; top: 0.0pt" alt="" /> is the estimated proportional variance factor. This QLR statistic has an asymptotic <img class="Default EquationGraphic" src="images/limdep.041.7.46.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 21px; top: 0.0pt" alt="" />distribution under the assumption that the mean is correctly specified and that the variances follow the GLM structure. EViews does not compute the QLR statistic, but it can be estimated by computing an estimate of <img class="Default EquationGraphic" src="images/limdep.041.7.47.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 20px; top: 0.0pt" alt="" /> based upon the standardized residuals. We provide an example of the use of the QLR test statistic below.</div>
+      <div class="Body_Text"><a name="38495">If the GLM assumption does not hold, then there is no usable QLR test statistic with a known distribution; see Wooldridge (1997). </a></div>
+      <div class="Heading_4"><a name="38496">Procedures for Count Models</a></div>
+      <div class="Body_Text"><a name="38497">Most of the procedures are self-explanatory. Some details are required for the forecasting and residual creation procedures.</a></div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="38502">Forecast&#8230;</a></span> provides you the option to forecast the dependent variable <img class="Default EquationGraphic" src="images/limdep.041.7.48.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> or the predicted linear index <img class="Default EquationGraphic" src="images/limdep.041.7.49.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 33px; top: 0.0pt" alt="" />. Note that for all of these models the forecasts of <img class="Default EquationGraphic" src="images/limdep.041.7.50.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" /> are given by <img class="Default EquationGraphic" src="images/limdep.041.7.51.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 27px; max-width: 106px; top: 0.0pt" alt="" /> where <img class="Default EquationGraphic" src="images/limdep.041.7.52.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 163px; top: 0.0pt" alt="" />.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><span class="Menu_Item"><a name="147119">Make Residual Series&#8230;</a></span> provides the following three types of residuals for count models:</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Table"><a name="147157">&nbsp;</a></div>
+      <table class="EViews_Table" style="width: 252pt" cellspacing="0" summary="">
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 108pt">
+            <div class="Table_Text"><a name="147124">Ordinary</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top; width: 144pt">
+            <div class="Table_Multi-Line_Equation"><a name="147129"><img class="Default EquationGraphic" src="images/limdep.041.7.53.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 135px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="147133">Standardized (Pearson)</a></div>
+          </td>
+          <td style="background-color: #F7F7F7; border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="147138"><img class="Default EquationGraphic" src="images/limdep.041.7.54.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 54px; max-width: 137px; top: 0.0pt" alt="" /></a></div>
+          </td>
+        </tr>
+        <tr>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Text"><a name="147142">Generalized</a></div>
+          </td>
+          <td style="border-bottom-color: none; border-bottom-style: none; border-bottom-width: 0.0pt; border-left-color: none; border-left-style: none; border-left-width: 0.0pt; border-right-color: none; border-right-style: none; border-right-width: 0.0pt; border-top-color: none; border-top-style: none; border-top-width: 0.0pt; padding-bottom: 3pt; padding-left: 2pt; padding-right: 2pt; padding-top: 3pt; vertical-align: top">
+            <div class="Table_Multi-Line_Equation"><a name="147147"><img class="Default EquationGraphic" src="images/limdep.041.7.55.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 19px; top: 0.0pt" alt="" />=(varies)</a></div>
+          </td>
+        </tr>
+      </table>
+      <div class="List_Continue"><a name="147148">where the <img class="Default EquationGraphic" src="images/limdep.041.7.56.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 15px; top: 0.0pt" alt="" /> represents any additional parameters in the variance specification. Note that the specification of the variances may vary significantly between specifications. For example, the Poisson model has <img class="Default EquationGraphic" src="images/limdep.041.7.57.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 29px; max-width: 147px; top: 0.0pt" alt="" />, while the exponential has <img class="Default EquationGraphic" src="images/limdep.041.7.58.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 32px; max-width: 153px; top: 0.0pt" alt="" />.</a></div>
+      <div class="List_Continue"><a name="38554">The generalized residuals can be used to obtain the score vector by multiplying the generalized residuals by each variable in <img class="Default EquationGraphic" src="images/limdep.041.7.59.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 13px; top: 0.0pt" alt="" />. These scores can be used in a variety of LM or conditional moment tests for specification testing; see Wooldridge (1997).</a></div>
+      <div class="Heading_4"><a name="38555">Demonstrations</a></div>
+      <div class="Heading_5"><a name="38558">A Specification Test for Overdispersion</a></div>
+      <div class="Body_Text"><a name="38559">Consider the model:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/limdep.041.7.60.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(31.61)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="38564">where the dependent variable NUMB is the number of strikes, IP is a measure of industrial production, and FEB is a February dummy variable, as reported in Kennan (1985, Table 1) and provided in the workfile &#8220;Strike.WF1&#8221;. </a></div>
+      <div class="Body_Text"><a name="38568">The results from Poisson estimation of this model are presented below:</a></div>
+      <div class="Table"><a name="180001"><img class="Default" src="images/limdep.041.7.61.jpg" width="100%" style="left: 0.0pt; max-height: 478px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Table"><a name="177125">&nbsp;</a></div>
+      <div class="Body_Text"><a name="38569">Cameron and Trivedi (1990) propose a regression based test of the Poisson restriction <img class="Default EquationGraphic" src="images/limdep.041.7.62.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 147px; top: 0.0pt" alt="" />. To carry out the test, first estimate the Poisson model and obtain the fitted values of the dependent variable. Click </a><span class="Menu_Item">Forecast</span> and provide a name for the forecasted dependent variable, say NUMB_F. The test is based on an auxiliary regression of <img class="Default EquationGraphic" src="images/limdep.041.7.63.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 55px; top: 0.0pt" alt="" /> on <img class="Default EquationGraphic" src="images/limdep.041.7.64.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 31px; max-width: 20px; top: 0.0pt" alt="" /> and testing the significance of the regression coefficient. For this example, the test regression can be estimated by the command:</div>
+      <div class="Input"><a name="38579">equation testeq.ls (numb-numb_f)^2-numb numb_f^2 </a></div>
+      <div class="Body_Text"><a name="38580">yielding the following results:</a></div>
+      <div class="Table"><a name="38584"><img class="Default" src="images/limdep.041.7.65.jpg" width="100%" style="left: 0.0pt; max-height: 345px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="38585">The </a><span class="In-line_math">t</span>-statistic of the coefficient is highly significant, leading us to reject the Poisson restriction. Moreover, the estimated coefficient is significantly positive, indicating overdispersion in the residuals.</div>
+      <div class="Body_Text"><a name="38592">An alternative approach, suggested by Wooldridge (1997), is to regress <img class="Default EquationGraphic" src="images/limdep.041.7.66.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 50px; top: 0.0pt" alt="" />, on <img class="Default EquationGraphic" src="images/limdep.041.7.67.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 18px; top: 0.0pt" alt="" />. To perform this test, select </a><span class="Menu_Item">Proc/Make Residual Series&#8230;</span> and select <span class="Dialog_Item">Standardized</span>. Save the results in a series, say SRESID. Then estimating the regression specification:</div>
+      <div class="Input"><a name="38593">sresid^2-1 numbf</a></div>
+      <div class="Body_Text"><a name="38594">yields the results:</a></div>
+      <div class="Table"><a name="38598"><img class="Default" src="images/limdep.041.7.68.jpg" width="100%" style="left: 0.0pt; max-height: 343px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="38599">Both tests suggest the presence of overdispersion, with the variance approximated by roughly <img class="Default EquationGraphic" src="images/limdep.041.7.69.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 22px; max-width: 141px; top: 0.0pt" alt="" />.</a></div>
+      <div class="Body_Text"><a name="38603">Given the evidence of overdispersion and the rejection of the Poisson restriction, we will re-estimate the model, allowing for mean-variance inequality. Our approach will be to estimate the two-step negative binomial QMLE specification (termed the </a><span class="Definition">quasi-generalized pseudo-maximum likelihood estimator</span> by Gourieroux, Monfort, and Trognon (1984a, 1984b)) using the estimate of <img class="Default EquationGraphic" src="images/limdep.041.7.70.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 26px; max-width: 20px; top: 0.0pt" alt="" /> from the Wooldridge test derived above. To compute this estimator, simply select <span class="Dialog_Item">Negative Binomial (QML)</span> and enter &#8220;0.221238&#8221; in the edit field for <span class="Dialog_Item">Fixed variance parameter</span>.</div>
+      <div class="Body_Text"><a name="180072">We will use the GLM variance calculations, so you should click on </a><span class="Dialog_Item">Option</span> in the <span class="Menu_Item">Equation Specification</span> dialog and choose the <span class="Dialog_Item">GLM</span> option in the Covariance method dropdown menu. The estimation results are shown below:</div>
+      <div class="Table"><a name="180073"><img class="Default" src="images/limdep.041.7.71.jpg" width="100%" style="left: 0.0pt; max-height: 510px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="180075">The negative binomial QML should be consistent, and under the GLM assumption, the standard errors should be consistently estimated. It is worth noting that the coefficient on FEB, which was strongly statistically significant in the Poisson specification, is no longer significantly different from zero at conventional significance levels.</a></div>
+      <div class="Heading_5"><a name="38617">Quasi-likelihood Ratio Statistic</a></div>
+      <div class="Body_Text"><a name="38618">As described by Wooldridge (1997), specification testing using likelihood ratio statistics requires some care when based upon QML models. We illustrate here the differences between a standard LR test for significant coefficients and the corresponding QLR statistic.</a></div>
+      <div class="Body_Text"><a name="38619">From the results above, we know that the overall likelihood ratio statistic for the Poisson model is 16.85, with a corresponding </a><span class="In-line_math">p</span>-value of 0.0002. This statistic is valid under the assumption that <img class="Default EquationGraphic" src="images/limdep.041.7.72.jpg" width="100%" style="display: inline; left: 0.0pt; max-height: 25px; max-width: 65px; top: 0.0pt" alt="" /> is specified correctly and that the mean-variance equality holds.</div>
+      <div class="Body_Text"><a name="38623">We can decisively reject the latter hypothesis, suggesting that we should derive the QML estimator with consistently estimated covariance matrix under the GLM variance assumption. While EViews currently does not automatically adjust the LR statistic to reflect the QML assumption, it is easy enough to compute the adjustment by hand. Following Wooldridge, we construct the QLR statistic by dividing the original LR statistic by the estimated GLM variance factor. (Alternately, you may use the GLM estimators for count models described in </a><span class="Link"><a href="glm-Generalized_Linear_Models.html#260260" title="Generalized Linear Models">&#8220;Generalized Linear Models&#8221;</a></span>, which do compute the QLR statistics automatically.)</div>
+      <div class="Body_Text"><a name="189581">Suppose that the estimated QML equation is named EQ1 and that the results are given by:</a></div>
+      <div class="Picture"><a name="189713"><img class="Default" src="images/limdep.041.7.73.jpg" width="100%" style="left: 0.0pt; max-height: 429px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="189714">Note that when you select the GLM robust standard errors, EViews reports the estimated, here d.f. corrected, variance factor. Then you can use EViews to compute </a><span class="In-line_math">p</span>-value associated with this statistic, placing the results in scalars using the following commands:</div>
+      <div class="Multi-line_Input"><a name="38625">scalar qlr = eq1.@lrstat/2.226420477</a></div>
+      <div class="Multi-line_Input"><a name="38626">scalar qpval = 1-@cchisq(qlr, 2)</a></div>
+      <div class="Body_Text"><a name="38627">You can examine the results by clicking on the scalar objects in the workfile window and viewing the results. The QLR statistic is 7.5666, and the </a><span class="In-line_math">p</span>-value is 0.023. The statistic and <span class="In-line_math">p</span>-value are valid under the weaker conditions that the conditional mean is correctly specified, and that the conditional variance is proportional (but not necessarily equal) to the conditional mean.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

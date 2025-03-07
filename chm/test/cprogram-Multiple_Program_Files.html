@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Multiple Program Files</title>
+    <link rel="StyleSheet" href="css/cprogram.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="cprogram-Control_of_Execution.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="cprogram-Subroutines.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="cpreface.html">Command Reference</a> : Object and Command Basics : <a class="WebWorks_Breadcrumb_Link" href="cprogram-EViews_Programming.html">EViews Programming</a> : Multiple Program Files</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="189991">Multiple Program Files</a></div>
+      <div class="Body_Text"><a name="133836">When working with long programs, you may wish to organize your code using multiple files. For example, suppose you have a program file named &#8220;Powers.PRG&#8221; which contains a set of program lines that you wish to use. </a></div>
+      <div class="Body_Text"><a name="43270">While you may be tempted to string files together using the </a><span class="In-line_command">run</span> command, we caution you that EViews will stop after executing the commands in a run-referenced file. Thus, a program containing the lines</div>
+      <div class="Multi-line_Input"><a name="43271">run powers.prg</a></div>
+      <div class="Multi-line_Input"><a name="43273">series x = nrnd</a></div>
+      <div class="Body_Text"><a name="135451">will only execute the commands in the file &#8220;Powers.PRG&#8221;, and will stop before generating the series </a><span class="EViews_Name">X</span>. This behavior is probably not what you intended.</div>
+      <div class="Body_Text"><a name="135462">The </a><span class="In-line_command">exec</span> command may be used execute commands in a file in place of the <span class="In-line_command">run</span> command. Though <span class="In-line_command">exec</span> is quite similar to the <span class="In-line_command">run</span> command, there are important differences between the two commands:</div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="135463">First, </a><span class="In-line_command">exec</span> allows you to write general programs that execute other programs, something that is difficult to do using <span class="In-line_command">run</span>, since the <span class="In-line_command">run</span> command ends all program execution when processing of the named file is completed. In contrast, once <span class="In-line_command">exec</span> processing completes, the calling program will continue to run.</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List__0028Bullet_0029_outer" style="margin-left: 65.6px">
+        <table border="0" cellspacing="0" cellpadding="0" summary="" role="presentation">
+          <tr style="vertical-align: baseline">
+            <td>
+              <div class="List__0028Bullet_0029_inner" style="width: 10.799999999999997pt; white-space: nowrap">&#8226;	</div>
+            </td>
+            <td width="100%">
+              <div class="List__0028Bullet_0029_inner"><a name="135464">Second, the default directory for </a><span class="In-line_command">exec</span> is the Add-ins directory (in contrast with both <span class="In-line_command">run</span> and <span class="In-line_command">include</span> which defaults to using the EViews default directory). Thus, the command</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="List_Input"><a name="135465">exec myprog1.prg</a></div>
+      <div class="List_Continue"><a name="135466">will run the program file &#8220;Myprog1.prg&#8221; located in the default Add-ins directory. You may specify files using relative paths in the standard fashion. The command:</a></div>
+      <div class="List_Input"><a name="135467">exec MyAddIn\myprog2.prg</a></div>
+      <div class="List_Continue"><a name="135452">runs the program &#8220;Myprog2.prg&#8221; located in the &#8220;MyAddIn&#8221; subdirectory of the Add-ins directory. </a></div>
+      <div class="Body_Text"><a name="175335">If you wish to run a program that is located in the same directory as the calling program, simply issue a &#8220;.\&#8221; at the start of the program name:</a></div>
+      <div class="Input"><a name="175489">exec .\myprog2.prg</a></div>
+      <div class="Body_Text"><a name="135456">Alternatively you may use the </a><span class="In-line_command">include</span> keyword to include the contents of a program file in another program file. For example, you can place the line</div>
+      <div class="Input"><a name="42749">include powers</a></div>
+      <div class="Body_Text"><a name="42750">at the top of any other program that needs to use the commands in </a><span class="EViews_Name">POWERS</span>. <span class="In-line_input">include</span> also accepts a full path to the program file, and you may have more than one <span class="In-line_input">include</span> statement in a program. For example, the lines,</div>
+      <div class="Multi-line_Input"><a name="42751">include c:\programs\powers.prg</a></div>
+      <div class="Multi-line_Input"><a name="42752">include durbin_h</a></div>
+      <div class="Multi-line_Input"><span class="Argument"><a name="42753">[more lines]</a></span> </div>
+      <div class="Body_Text"><a name="9326">will first execute all of the commands in &#8220;C:\Programs\Powers.PRG</a><span class="EViews_Name">&#8221;</span>, will execute the commands in &#8220;Durbin_h.PRG&#8221;, and then will execute the remaining lines in the program file.</div>
+      <div class="Body_Text"><a name="118258">If you do not provide an absolute path for your include file, EViews will use the location of the executing program file as the base location. In the example above, EViews will search for the &#8220;Durbin_h.PRG&#8221; file in the directory containing the executing program.</a></div>
+      <div class="Body_Text"><a name="190205">Note that in contrast to using </a><span class="In-line_command">exec</span> to execute another program, <span class="In-line_command">include</span> simply inserts the child program into the parent. This insertion is done prior to executing any lines in either program. One important consequence of this behavior is that any program variables that are declared in the parent program will not be available in the child/included program, even if they are declared prior to the <span class="In-line_command">include</span> statement.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

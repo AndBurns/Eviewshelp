@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Working with Links</title>
+    <link rel="StyleSheet" href="css/links.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="links-Creating_a_Link.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="workadv-Advanced_Workfiles.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="links-Series_Links.html">Series Links</a> : Working with Links</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="174381">Working with Links</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#174385">Using links</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#174414">Modifying links</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#174429">Breaking links</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="174382">Once a link is defined, you may, for all intents and purposes, use it as though it were an ordinary series or an alpha series.</a></div>
+      <div class="Body_Text"><a name="174383">Links may be identified in the workfile directory by the presence of a pink series or alpha series icon, or by an icon containing a &#8220;?&#8221;. If a link definition uses an ordinary source series, it will appear in the workfile directory with a pink version of the series icon. If a link uses an alpha source series, it will appear with a pink alpha series icon. In both cases, the link may be used as though it were a series of the specified type.</a></div>
+      <div class="Body_Text"><a name="174384">If the link source series is not specified or if its type cannot be identified, the link icon will feature a &#8220;?&#8221; indicating that the link is unavailable. Undefined links will be classified as numeric series that generate NA values for every observation.</a></div>
+      <div class="Heading_4"><a name="174385">Using links</a></div>
+      <div class="Body_Text"><a name="174386">Links use virtually no memory until used. A link goes into use either when you are examining the contents of the link, when it is placed in a group which evaluates the link, or when the link is used in a series expression. Once a link goes out of use, the memory for the link is cleared and made available for other uses. In this way, links take up only the minimum amount of memory required to perform a given operation.</a></div>
+      <div class="Body_Text"><a name="174387">When links are in use, any modification to the data underlying the link will lead to a reevaluation of the link values. If you modify either the source series, or the source or destination ID series, EViews will automatically recompute the link values. In this way, you may use the link to define an automatically updating match merge or frequency conversion.</a></div>
+      <div class="Picture"><a name="174391"><img class="Default" src="images/links.013.4.1.jpg" width="100%" style="left: 0.0pt; max-height: 292px; max-width: 408px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="174392">For example, suppose that we open a workfile containing the state and individual pages. Here we see the individual page containing the state TAXRATE data linked into the link series TAXRATE2. From the (colored) series icon, we see that TAXRATE2 is a link of a numeric series.</a></div>
+      <div class="Body_Text"><a name="174393">If the TAXRATE2 link is not in use, the link series contains no values and takes up no memory. Links are placed in use either by opening the link window, by placing the link in a group object, or by using the link in a series expression. Whenever the link comes into use, or one of the link components is changed, the link is evaluated, and its values updated as necessary.</a></div>
+      <div class="Picture"><a name="174397"><img class="Default" src="images/links.013.4.2.jpg" width="100%" style="left: 0.0pt; max-height: 302px; max-width: 413px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="174398">For example, if we double click on the TAXRATE2 icon, we open a standard series spreadsheet view. At this point, EViews evaluates the link, performing the match merge operation, and assigning the values to the TAXRATE2 link. Note that the &#8220;Last updated&#8221; line will show the time that the link values were evaluated. </a></div>
+      <div class="Body_Text"><a name="174399">All of the menus and toolbars are those found in ordinary series&#8212;you may work with this link as though it were any ordinary series. Indeed, the only hint you will have that TAXRATE2 is not an ordinary series or alpha series is in the titlebar, which will indicate that we are working with a link object. For example, if you select </a><span class="Menu_Item">View/One-way tabulation...</span> uncheck the grouping settings, and click on <span class="Menu_Item">OK</span> to continue, EViews will display a frequency tabulation of the contents of the link, just as it would for an ordinary series.</div>
+      <div class="Table"><a name="174403"><img class="Default" src="images/links.013.4.3.jpg" width="100%" style="left: 0.0pt; max-height: 293px; max-width: 1000px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="174404">If you then close the link window, EViews will examine any open windows or existing group objects to see whether the link is still in use. If the link is no longer used, its contents will be cleared and memory will be released. The next time you use the link, it will come into use and will be reevaluated.</a></div>
+      <div class="Body_Text"><a name="174405">Similarly, you may use TAXRATE2 in any place that a series may be used. For example, we may generate a new series, TAXPCT that contains the values of TAXRATE2 expressed in percentage terms:</a></div>
+      <div class="Input"><a name="174406">series taxpct = taxrate2 * 100</a></div>
+      <div class="Body_Text"><a name="174407">Assuming that TAXRATE2 is not currently in use, EViews will evaluate the link and assign values to each observation, then will multiply each of these values by 100 and assign them to TAXPCT. When the series assignment operation is completed, the values of TAXRATE2 will no longer be used, so that EViews will clear the link contents.</a></div>
+      <div class="Picture"><a name="174411"><img class="Default" src="images/links.013.4.4.jpg" width="100%" style="left: 0.0pt; max-height: 257px; max-width: 391px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="174412">If you attempt to open a link that is improperly defined, either because the source or ID series are not found, or because the observed data require a contraction or frequency conversion method that has been disallowed, EViews will display a link view showing the definition of the link and the error encountered. If you attempt to use this link, you will find that all of the link values are set to NA.</a></div>
+      <div class="Heading_4"><a name="174414">Modifying links</a></div>
+      <div class="Body_Text"><a name="174415">You may, at any time, modify the definition of a link by dialog or command.</a></div>
+      <div class="Body_Text"><a name="174416">To modify a link interactively, we must open the </a><span class="Menu_Item">Link Spec </span>dialog page. First open the desired link by double clicking on the icon in the workfile directory. Then click on the <span class="Menu_Item">Properties</span> toolbar button, or select <span class="Menu_Item">View/Properties...</span> from the main menu to bring up the link properties dialog. Lastly, select the <span class="Menu_Item">Link Spec</span> tab.</div>
+      <div class="Picture"><a name="174420"><img class="Default" src="images/links.013.4.5.jpg" width="100%" style="left: 0.0pt; max-height: 422px; max-width: 567px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="174421">The </a><span class="Menu_Item">Link Spec</span> property page is a slightly modified version of the original <span class="Menu_Item">Paste Special </span>dialog used to create links. While the majority of the dialog is unchanged, in place of the destination name, we now have edit fields in which you specify the names of the source series and the source workfile page.</div>
+      <div class="Body_Text"><a name="174422">Here we see that the current link uses the PROFIT series in the QUARTERLY page as the source. The link is performed by general match merge, using date matching to link the quarterly dates to the destination series DT. The match merge first performs a mean contraction of the PROFIT series over the entire sample, and then performs the match merge.</a></div>
+      <div class="Body_Text"><a name="174423">To modify the link using the dialog, simply alter any of the dialog settings. For example, we may change the link contraction method from </a><span class="Menu_Item">Mean</span> to <span class="Menu_Item">Minimum</span> by changing the selection in the <span class="Menu_Item">Contraction method</span> dropdown menu, or we may change the source sample by entering a new sample in the edit box. More fundamental changes in the link will result from changing the source series or workfile page, or any of the match merge identifiers.</div>
+      <div class="Body_Text"><a name="174426">To modify a link by command, you may use the </a><span class="In-line_command">linkto</span> proc. See <span class="Link"><a href="links-Creating_a_Link.html#174333" title="Creating a Link">&#8220;Creating a link by command&#8221;</a></span> for details. Issuing a <span class="In-line_command">linkto</span> proc command for an existing link will replace the existing values with the new specification.</div>
+      <div class="Heading_4"><a name="174429">Breaking links</a></div>
+      <div class="Body_Text"><a name="174430">The auto-updating feature is one of the most important characteristics of links. Given the live nature of links, changes to either the source series, or the source or destination IDs will lead EViews to recalculate the values of the link. Links may be used to create auto-updating match merges or frequency conversion of series between workfile pages.</a></div>
+      <div class="Body_Text"><a name="174431">Suppose, for example, that while displaying the TAXRATE2 spreadsheet view, you elect to edit the values in the individual STATE2 ID series. Changing Mark&#8217;s value for STATE2 from &#8220;Texas&#8221; to &#8220;Arkansas&#8221; changes the values of an ID series used to compute the values in TAXRATE2. EViews automatically recomputes TAXRATE2, changing the value for Mark from 0.35 to 0.30, and updates the open spreadsheet view accordingly. Furthermore, any future use of the TAXRATE2 link will use the updated values.</a></div>
+      <div class="Body_Text"><a name="174432">In some circumstances, you may wish to fix the values of the link so that future changes to the source or ID series do not alter the existing values. There are two ways in which you may achieve this result. First, you may simply generate a new series that contains the current values of the link, as in:</a></div>
+      <div class="Input"><a name="174433">series fixrate = taxrate2</a></div>
+      <div class="Body_Text"><a name="174434">The new ordinary series FIXRATE contains the current values of TAXRATE2. Furthermore, FIXRATE remains unchanged in the face of changes in TAXRATE2. With this method, both the original link series and a new series will be kept in the workfile.</a></div>
+      <div class="Body_Text"><a name="174435">The second method of fixing values is to convert the link into a series. We term this process </a><span class="Definition">unlinking</span> or <span class="Definition">breaking the link</span>. In this case, the existing link is replaced by a series with the same name, containing the values in the link at the time the link is broken. </div>
+      <div class="Picture"><a name="177454"><img class="Default" src="images/links.013.4.6.jpg" width="100%" style="left: 0.0pt; max-height: 420px; max-width: 643px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="164698">To break a link, simply select </a><span class="Menu_Item">Object/Manage Links &amp; Formulae&#8230;</span> from the workfile window. EViews will display a dialog allowing you to specify the linked objects you wish to break. Either select the source above (to break all objects that use that source) or select the specific objects below then click the associated <span class="Menu_Item">Break</span> button. Bear in mind that the process of unlinking a series link object is irreversible.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

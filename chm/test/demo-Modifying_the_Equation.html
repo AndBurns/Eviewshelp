@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Modifying the Equation</title>
+    <link rel="StyleSheet" href="css/demo.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="demo-Specification_and_Hypothesis_Tests.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="demo-Forecasting_from_an_Estimated_Equation.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="demo-A_Demonstration.html">A Demonstration</a> : Modifying the Equation</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="131471">Modifying the Equation</a></div>
+      <div class="Body_Text"><a name="131472">The test results suggest that we need to modify our original specification to take account of the serial correlation. </a></div>
+      <div class="Body_Text"><a name="131473">One approach is to include lags of the independent variables. To add variables to the existing equation, click on the </a><span class="Menu_Item">Estimate</span> button in the equation toolbar and edit the specification to include lags for each of the original explanatory variables: </div>
+      <div class="Input"><a name="131474">log(m1) c log(gdp) rs dlog(pr) log(m1(-1)) log(gdp(-1)) rs(-1) dlog(pr(-1))</a></div>
+      <div class="Body_Text"><a name="131475">Note that lags are specified by including a negative number, enclosed in parentheses, following the series name. Click on </a><span class="Menu_Item">OK</span> to estimate the new specification and to display the results:</div>
+      <div class="Table"><a name="131479"><img class="Default" src="images/demo.007.6.1.jpg" width="100%" style="left: 0.0pt; max-height: 488px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="131480">Note that EViews has automatically adjusted the estimation sample to accommodate the additional lagged variables. We will save this equation in the workfile for later use. Press the </a><span class="Menu_Item">Name</span> button in the toolbar and name the equation EQLAGS.</div>
+      <div class="Picture"><a name="131484"><img class="Default" src="images/demo.007.6.2.jpg" width="100%" style="left: 0.0pt; max-height: 295px; max-width: 442px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="131485">The EQLAGS equation object will be placed in the workfile.</a></div>
+      <div class="Body_Text"><a name="131486">One common method of accounting for serial correlation is to include autoregressive (AR) and/or moving average (MA) terms in the equation. To estimate the model with an AR(1) error specification, you should make a copy of the EQLAGS equation by clicking </a><span class="Menu_Item">Object/Copy Object&#8230;</span> in the EQLAGS window. EViews will create a new untitled equation containing all of the information from the previous equation. Press <span class="Menu_Item">Estimate</span> on the toolbar of the copy and modify the specification to read</div>
+      <div class="Input"><a name="131487">log(m1) c log(gdp) rs dlog(pr) ar(1)</a></div>
+      <div class="Body_Text"><a name="131488">This specification removes the lagged terms, replacing them with an AR(1) specification:</a></div>
+      <table style="width: 90%; margin-left: 80px; margin-right: 80px;">
+        <tr>
+          <td style="padding-left: 5%; text-align: left;">
+            <img src="images/demo.007.6.3.jpg" class="EquationGraphic" style="border: 0px; vertical-align: baseline;" />
+          </td>
+          <td style="padding-right: 20px; text-align: right;">
+            <div style="font-weight: normal; font-size: small; font-family: Verdana, Serif;">(2.2)</div>
+          </td>
+        </tr>
+      </table>
+      <div class="Body_Text"><a name="131493">Click </a><span class="Menu_Item">OK</span> to accept the new specification. EViews will estimate the equation and will report the estimation results, including the estimated first-order autoregressive coefficient of the error term:</div>
+      <div class="Table"><a name="131497"><img class="Default" src="images/demo.007.6.4.jpg" width="100%" style="left: 0.0pt; max-height: 479px; max-width: 1004px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="131498">The fit of the AR(1) model is roughly comparable to the lag model, but its somewhat higher values for both the Akaike and the Schwarz information criteria indicate that the previous lag model may be preferred. Accordingly, we will work with the lag model in EQLAGS for the remainder of the demonstration.</a></div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

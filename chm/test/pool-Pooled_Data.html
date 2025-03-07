@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Pooled Data</title>
+    <link rel="StyleSheet" href="css/pool.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="pool-The_Pool_Object.html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="pool-Setting_up_a_Pool_Workfile.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_panel.html">Panel and Pooled Data</a> : <a class="WebWorks_Breadcrumb_Link" href="pool-Pooled_Time_Series,_Cross-Section_Data.html">Pooled Time Series, Cross-Section Data</a> : Pooled Data</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="186697">Pooled Data</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186700">Ordinary Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186704">Cross-section Specific Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#186716">Pool Series</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="186698">As noted previously, all of your pooled data will be held in ordinary EViews series. These series can be used in all of the usual ways: they may, among other things, be tabulated, graphed, used to generate new series, or used in estimation. You may also use a pool object to work with sets of the individual series. </a></div>
+      <div class="Body_Text"><a name="186699">There are two classes of series in a pooled workfile: </a><span class="Definition">ordinary series</span> and <span class="Definition">cross-section specific series</span>.</div>
+      <div class="Heading_4"><a name="186700">Ordinary Series</a></div>
+      <div class="Body_Text"><a name="186701">An ordinary series is one that has common values across all cross-sections. A single series may be used to hold the data for each variable, and these data may be applied to every cross-section. For example, in a pooled workfile with firm cross-section identifiers, data on overall economic conditions such as GDP or money supply do not vary across firms. You need only create a single series to hold the GDP data, and a single series to hold the money supply variable.</a></div>
+      <div class="Body_Text"><a name="186702">Since ordinary series do not interact with cross-sections, they may be defined without reference to a pool object. Most importantly, there are no naming conventions associated with ordinary series beyond those for ordinary EViews objects.</a></div>
+      <div class="Heading_4"><a name="186704">Cross-section Specific Series</a></div>
+      <div class="Body_Text"><a name="186705">Cross-section specific series are those that have values that differ between cross-sections. A set of these series are required to hold the data for a given variable, with each series corresponding to data for a specific cross-section. </a></div>
+      <div class="Body_Text"><a name="186706">Since cross-section specific series interact with cross-sections, they should be defined in conjunction with the identifiers in pool objects. Suppose, for example, that you have a pool object that contains the identifiers &#8220;_USA,&#8221; &#8220;_KOR,&#8221; &#8220;_JPN,&#8221; and &#8220;_UK&#8221;, and that you have time series data on GDP for each of the cross-section units. In this setting, you should have a four cross-section specific GDP series in your workfile.</a></div>
+      <div class="Body_Text"><a name="186708">The key to naming your cross-section specific series is to use names that are a combination of a </a><span class="Definition">base name</span> and a cross-section identifier. The cross-section identifiers may be embedded at an arbitrary location in the series name, so long as this is done consistently across identifiers.</div>
+      <div class="Body_Text"><a name="186710">You may elect to place the identifier at the end of the base name, in which case, you should name your series &#8220;GDP_USA,&#8221; &#8220;GDP_KOR,&#8221; &#8220;GDP_JPN,&#8221; and &#8220;GDP_UK&#8221;. Alternatively, you may choose to put the section identifiers in front of the name, so that you have the names &#8220;_USAGDP,&#8221; &#8220;_KORGDP,&#8221; &#8220;_JPNGDP,&#8221; and &#8220;_UKGDP&#8221;. The identifiers may also be placed in the middle of series names&#8212;for example, using the names &#8220;GDP_USAINF,&#8221; &#8220;GDP_KORIN,&#8221; &#8220;GDP_JPNIN,&#8221; &#8220;GDP_UKIN&#8221;.</a></div>
+      <div class="Body_Text"><a name="186711">It really doesn&#8217;t matter whether the identifiers are used at the beginning, middle, or end of your cross-section specific names; you should adopt a naming style that you find easiest to manage. Consistency in the naming of the set of cross-section series is, however, absolutely essential. You should not, for example, name your four GDP series &#8220;GDP_USA&#8221;, &#8220;GDP_KOR&#8221;, &#8220;_JPNGDPIN&#8221;, &#8220;_UKGDP&#8221;, as this will make it impossible for EViews to refer to the set of series using a pool object.</a></div>
+      <div class="Heading_4"><a name="186716">Pool Series</a></div>
+      <div class="Body_Text"><a name="186717">Once your series names have been chosen to correspond with the identifiers in your pool, the pool object can be used to work with a set of series as though it were a single item. The key to this processing is the concept of a </a><span class="Definition">pool series</span>.</div>
+      <div class="Body_Text"><a name="186718">A pool series is actually a set of series defined by a base name and the entire list of cross-section identifiers in a specified pool. Pool series are specified using the base name, and a &#8220;?&#8221; character placeholder for the cross-section identifier. If your series are named &#8220;GDP_USA&#8221;, &#8220;GDP_KOR&#8221;, &#8220;GDP_JPN&#8221;, and &#8220;GDP_UK&#8221;, the corresponding pool series may be referred to as &#8220;GDP?&#8221;. If the names of your series are &#8220;_USAGDP&#8221;, &#8220;_KORGDP&#8221;, &#8220;_JPNGDP&#8221;, and &#8220;_UKGDP&#8221;, the pool series is &#8220;?GDP&#8221;.</a></div>
+      <div class="Body_Text"><a name="186721">When you use a pool series name, EViews understands that you wish to work with all of the series in the workfile that match the pool series specification. EViews loops through the list of cross-section identifiers in the specified pool, and substitutes each identifier in place of the &#8220;?&#8221;. EViews then uses the complete set of cross-section specific series formed in this fashion.</a></div>
+      <div class="Body_Text"><a name="186724">In addition to pool series defined with &#8220;?&#8221;, EViews provides a special function, @INGRP, that you may use to generate a group identity pool series that takes the value 1 if an observation is in the specified group, and 0 otherwise. </a></div>
+      <div class="Body_Text"><a name="186725">Consider, for example, the @GROUP for &#8220;ASIA&#8221; defined using the identifiers &#8220;_KOR&#8221; and &#8220;_JPN&#8221;, and suppose that we wish to create a dummy variable series for whether an observation is in the group. One approach to representing these data is to create the following four cross-section specific series:</a></div>
+      <div class="Multi-line_Input"><a name="186726">series asia_usa = 0</a></div>
+      <div class="Multi-line_Input"><a name="186727">series asia_kor = 1</a></div>
+      <div class="Multi-line_Input"><a name="186728">series asia_jpn = 1</a></div>
+      <div class="Multi-line_Input"><a name="186729">series asia_uk = 0</a></div>
+      <div class="Body_Text"><a name="186730">and to refer to them collectively as the pool series &#8220;ASIA_?&#8221;. While not particularly difficult to do, this direct approach becomes more cumbersome the greater the number of cross-section identifiers.</a></div>
+      <div class="Body_Text"><a name="186731">More easily, we may use the special pool series expression:</a></div>
+      <div class="Input"><a name="186732">@ingrp(asia)</a></div>
+      <div class="Body_Text"><a name="186733">to define a special virtual pool series in which each observation takes a 0 or 1 indicator for whether an observation is in the specified group. This expression is equivalent to creating the four cross-section specific series, and referring to them as &#8220;ASIA_?&#8221;.</a></div>
+      <div class="Body_Text"><a name="186734">We must emphasize that pool series specifiers using the &#8220;?&#8221; and the @INGRP function may only be used through a pool object, since they have no meaning without a list of cross-section identifiers. If you attempt to use a pool series outside the context of a pool object, EViews will attempt to interpret the &#8220;?&#8221; as a wildcard character (see </a><span class="Link"><a href="wildcards-Wildcards.html#92046" title="Wildcards">Appendix&nbsp;A. &#8220;Wildcards&#8221;</a></span> ). The result, most often, will be an error message saying that your variable is not defined.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>

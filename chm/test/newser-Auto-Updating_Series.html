@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <title>Auto-Updating Series</title>
+    <link rel="StyleSheet" href="css/newser.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/seealso.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/popup.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/page.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        function  WWNoOp() {}
+        function  WWNoValue() { return ""; }
+
+
+        var  WebWorksHTMLHelp;
+        var  WebWorksSeeAlso;
+        var  WebWorksDropDown;
+
+
+        if (typeof(HTMLHelp_Object) != "undefined")
+        {
+          WebWorksHTMLHelp = new HTMLHelp_Object();
+          WebWorksSeeAlso  = new WebWorksSeeAlso_Object();
+          WebWorksDropDown = new WebWorksDropDown_Object();
+        }
+        else
+        {
+          WebWorksHTMLHelp = new Object();
+          WebWorksHTMLHelp.fNotifyClicked = WWNoOp;
+          WebWorksHTMLHelp.fPopupDivTag   = WWNoValue;
+
+          WebWorksSeeAlso = new Object();
+
+          WebWorksDropDown = new Object();
+          WebWorksDropDown.fWriteArrow  = WWNoOp;
+          WebWorksDropDown.fWriteDIVOpen  = WWNoOp;
+          WebWorksDropDown.fWriteDIVClose = WWNoOp;
+        }
+      // -->
+    </script>
+  </head>
+  <body onclick="javascript:WebWorksHTMLHelp.fNotifyClicked();">
+    <table cellspacing="0" align="left">
+      <tr>
+        <td>
+          <a href="newser-Working_with_Data_(Advanced).html"><img src="images/prev.gif" alt="Previous" border="0" /></a>
+        </td>
+        <td>
+          <a href="newser-Alpha_Series.html"><img src="images/next.gif" alt="Next" border="0" /></a>
+        </td>
+      </tr>
+    </table>
+    <br clear="all" />
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="preface.html">User&#8217;s Guide</a> : <a class="WebWorks_Breadcrumb_Link" href="sec_fund.html">EViews Fundamentals</a> : <a class="WebWorks_Breadcrumb_Link" href="newser-Working_with_Data_(Advanced).html">Working with Data (Advanced)</a> : Auto-Updating Series</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading_3"><a name="134974">Auto-Updating Series</a></div>
+      <div class="WebWorks_MiniTOC">
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#134981">Defining an Auto-Updating Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#134982">Using the Dialog</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135001">Issuing a Command</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level2">
+          <a class="WebWorks_MiniTOC_Link" href="#135042">Naming an Auto-Series</a>
+        </div>
+        <div class="WebWorks_MiniTOC_Level1">
+          <a class="WebWorks_MiniTOC_Link" href="#135045">Additional Issues</a>
+        </div>
+      </div>
+      <div class="Body_Text"><a name="134975">One of the most powerful features of EViews is the ability to use a series expression in place of an existing series. These expressions generate auto-series in which the expression is calculated when in use, and automatically recalculated whenever the underlying data change, so that the values are never out of date. </a></div>
+      <div class="Body_Text"><a name="134976">Auto-series are designed to be discarded after use. The resulting downside to auto-series is that they are quite transitory. You must, for example, enter the expression wherever it is used; for example, you must type &#8220;LOG(X)&#8221; every time you wish to use an auto-series for the logarithm of X. For a single use of a simple expression, this requirement may not be onerous, but for more complicated expressions used in multiple settings, repeatedly entering the expression quickly becomes tedious.</a></div>
+      <div class="Body_Text"><a name="134977">For more permanent series expression handling, EViews provides you with the ability to define a series or alpha object that uses a formula. The resulting auto-updating series is simply an EViews numeric series or alpha series that is defined, not by the values currently in the object, but rather by an expression that is used to compute the values. In most respects, an auto-updating series may simply be thought of as a named auto-series. Indeed, naming an auto-series is one way to create an auto-updating series.</a></div>
+      <div class="Body_Text"><a name="134978">The formula used to define an auto-series may contain any of the standard EViews series expressions, and may refer to series data in the current workfile page, or in EViews databases on disk. It is worth emphasizing that in contrast with link objects, which also provide dynamic updating capabilities, auto-updating series are designed to work with data in a single workfile page.</a></div>
+      <div class="Body_Text"><a name="134979">Auto-updating series appear in the workfile with a modified version of the series or alpha series icon, with the numeric series icon augmented by an &#8220;=&#8221; sign to show that it depends upon a formula.</a></div>
+      <div class="Heading_4"><a name="134981">Defining an Auto-Updating Series</a></div>
+      <div class="Heading_5"><a name="134982">Using the Dialog</a></div>
+      <div class="Picture"><a name="134986"><img class="Default" src="images/newser.012.2.1.jpg" width="100%" style="left: 0.0pt; max-height: 424px; max-width: 569px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="134987">To turn a ordinary series into an auto-updating series, you will assign an expression to the series and tell EViews to use this expression to determine the series values. Simply click on the </a><span class="Menu_Item">Properties</span> button on the series or alpha series object toolbar, or select <span class="Menu_Item">View/Properties...</span> from the main menu, then select the <span class="Menu_Item">Values</span> tab. </div>
+      <div class="Body_Text"><a name="134988">There are three radio buttons which control the values that will be placed in the numeric or alpha series (</a><span class="Link"><a href="newser-Alpha_Series.html#135053" title="Alpha Series">&#8220;Alpha Series&#8221;</a></span>). The default setting is either <span class="Menu_Item">Numeric data</span> or <span class="Menu_Item">Alphanumeric (text) data </span>(depending on the series type) in which the series is defined by the values currently in the series; this is the traditional way that one thinks of defining a numeric or alpha series.</div>
+      <div class="Body_Text"><a name="134992">If instead you select </a><span class="Menu_Item">Formula</span>, enter a valid series expression in the dialog box, and click on <span class="Menu_Item">OK</span>, EViews will treat the series as an auto-updating series and will evaluate the expression, putting the resulting values in the series. Auto-updating numeric series appear with a new icon in the workfile&#8212;a slightly modified version of the standard series icon, featuring the series line with an extra equal sign, all on an orange background.</div>
+      <div class="Body_Text"><a name="138501">Lastly, </a><span class="Menu_Item">External link</span> indicates that the series is linked to data found outside of EViews as described in the link specification. You will be prompted to update data in external links whenever the workfile is opened, and you may update the external series links on demand by right-clicking on the series, and selecting <span class="Menu_Item">Update... </span>or clicking on CTRL-F5.</div>
+      <div class="Picture"><a name="134996"><img class="Default" src="images/newser.012.2.2.jpg" width="100%" style="left: 0.0pt; max-height: 298px; max-width: 458px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="134997">In this example, we instruct EViews that the existing series LOGTAXRT should be an auto-updating series that contains the natural logarithm of the TAXRATE2 series. As with an auto-series expression, the values in LOGTAXRT will never be out of date since they will change to reflect changes in TAXRATE2. In contrast to an auto-series, however, LOGTAXRT is a permanent series in the workfile which may be used like any other series.</a></div>
+      <div class="Body_Text"><a name="138973">Alternately, you may create an auto-updating series that links to a series in a external file or database by selecting </a><span class="Menu_Item">External link</span>. In contrast to an auto-updating series based on a formula which updates whenever the underlying data change, an auto-updating series based on an external link will update only when the workfile is first loaded (you will be prompted for whether to refresh the data series or not) or when you manually update the links by clicking on <span class="Menu_Item">Object/Manage Links &amp; Formulae...</span> in the workfile window, then either selecting the source database above or selecting the individual objects that are linked to that database and then clicking the associated <span class="Menu_Item">Refresh</span> button. You may also update the link by selecting <span class="Menu_Item">Update...</span> in the series <span class="Menu_Item">Object</span> menu.</div>
+      <div class="Body_Text"><a name="134999">You may, at any time, change an auto-updating series into an standard numeric series by bringing up the </a><span class="Menu_Item">Values</span> page of the <span class="Menu_Item">Properties</span> dialog, and clicking on the <span class="Menu_Item">Numeric data</span> setting. EViews will define then define the series by its current values. In this way you may freeze the formula series values at their existing values, a procedure that is equivalent to performing a standard series assignment using the provided expression.</div>
+      <div class="Body_Text"><a name="135000">Note that once an expression is entered as a formula in a series, EViews will keep the definition even if you specify the series by value. Thus, you make take a series that has previously been frozen, and return it to auto-updating by selecting </a><span class="Menu_Item">Formula</span> definition.</div>
+      <div class="Heading_5"><a name="135001">Issuing a Command</a></div>
+      <div class="Body_Text"><a name="135002">To create an auto-updating series using commands, you should use the formula keyword, </a><span class="In-line_input">frml</span>, followed by an assignment statement. The following example creates a series named <span class="EViews_Name">LOW</span> that uses a formula to compute values. The auto-updating series takes the value 1 if either <span class="EViews_Name">INC</span> is less than or equal to 5000 or EDU is less than 13, and takes the value 0 otherwise:</div>
+      <div class="Multi-line_Input"><a name="135003">frml low = inc&lt;=5000 or edu&lt;13</a></div>
+      <div class="Body_Text"><a name="135004">LOW is now an auto-updating series that will be reevaluated whenever INC or EDU change.</a></div>
+      <div class="Body_Text"><a name="135005">You may also define auto-updating alpha series using the </a><span class="In-line_input">frml</span> keyword. If FIRST_NAME and LAST_NAME are alpha series, then the declaration:</div>
+      <div class="Input"><a name="135006">frml full_name = first_name + " " + last_name</a></div>
+      <div class="Body_Text"><a name="135007">creates an auto-updating alpha series, FULL_NAME.</a></div>
+      <div class="Body_Text"><a name="135008">The same syntax should be used when you wish to apply a formula to an existing series.</a></div>
+      <div class="Multi-line_Input"><a name="135009">series z = rnd</a></div>
+      <div class="Input"><a name="135010">frml z =(x+y)/2</a></div>
+      <div class="Body_Text"><a name="135011">makes Z an auto-updating series that contains the average of series </a><span class="EViews_Name">X</span> and <span class="EViews_Name">Y</span>. Note that the previous values of Z are replaced, and obviously lost. Similarly, we may first define an alpha series and then apply an updating formula:</div>
+      <div class="Multi-line_Input"><a name="135012">alpha a = "initial value"</a></div>
+      <div class="Multi-line_Input"><a name="135013">frml a = @upper(first_name)</a></div>
+      <div class="Body_Text"><a name="135014">You may not, however, apply an alpha series expression to a numeric series, or vice versa. Given the series Z and A defined above, the following two statements:</a></div>
+      <div class="Multi-line_Input"><a name="135015">frml z = @upper(first_name)</a></div>
+      <div class="Multi-line_Input"><a name="135016">frml a = (x+y)/2</a></div>
+      <div class="Body_Text"><a name="135017">will generate errors.</a></div>
+      <div class="Body_Text"><a name="135018">Note that once a numeric series or alpha series is defined to be auto-updating, its values may not be modified directly, since they are determined from the formula. Thus, if Z is an auto-updating series, the assignment command:</a></div>
+      <div class="Input"><a name="135019">z = log(x)</a></div>
+      <div class="Body_Text"><a name="135020">will generate an error since an auto-updating series may not be modified. To modify Z you must either issue a new </a><span class="In-line_input">frml</span> assignment or you must first set the values of Z to their current values by turning off auto-updating, and then issue the assignment statement. </div>
+      <div class="Body_Text"><a name="135021">To reset the formula in Z, you may simply issue the command:</a></div>
+      <div class="Input"><a name="135022">frml z = log(x)</a></div>
+      <div class="Body_Text"><a name="135023">to replace the formula currently in the series.</a></div>
+      <div class="Body_Text"><a name="135025">To turn off auto-updating for a series, you may use the special expression &#8220;@CLEAR&#8221; in your </a><span class="In-line_input">frml</span> assignment. When you turn off auto-updating, EViews freezes the numbers or strings in the series at their current values. Once the series is set to current values, it is treated as an ordinary series, and may be modified as desired. Thus, the commands:</div>
+      <div class="Multi-line_Input"><a name="135027">frml z = @clear</a></div>
+      <div class="Multi-line_Input"><a name="135028">z = log(x)</a></div>
+      <div class="Body_Text"><a name="139146">are allowed since Z is converted into an ordinary series prior to performing the series assignment.</a></div>
+      <div class="Picture"><a name="139147"><img class="Default" src="images/newser.012.2.3.jpg" width="100%" style="left: 0.0pt; max-height: 422px; max-width: 642px; top: 0.0pt" alt="" /></a></div>
+      <div class="Body_Text"><a name="139148">Alternately, you may convert a named auto-updating series into an ordinary series by selecting </a><span class="Menu_Item">Object/Manage Links &amp; Formulae...</span> from the workfile window and using the dialog to break the links in the auto-updating series.</div>
+      <div class="Body_Text"><a name="135036">One particularly useful feature of auto-updating series is the ability to reference series in databases. The command:</a></div>
+      <div class="Input"><a name="135037">frml gdp = usdata::gdp</a></div>
+      <div class="Body_Text"><a name="135038">creates a series in the workfile called GDP that gets its values from the series GDP in the database USDATA. Similarly:</a></div>
+      <div class="Input"><a name="135039">frml lgdp = log(usdata::gdp)</a></div>
+      <div class="Body_Text"><a name="135040">creates an auto-updating series named LGDP that contains the log of the values of GDP in the database USDATA.</a></div>
+      <div class="Body_Text"><a name="135041">Series that reference data in databases may be </a><span class="Emphasis">refreshed each time a workfile is loaded from disk</span>. Thus, it is possible to setup a workfile so that its data are current relative to a shared database.</div>
+      <div class="Heading_5"><a name="135042">Naming an Auto-Series</a></div>
+      <div class="Body_Text"><a name="135043">If you have previously opened a window containing an ordinary auto-series, you may convert the auto-series into an auto-updating series by assigning a name. To turn an auto-series into an auto-updating series, simply click on the </a><span class="Menu_Item">Name</span> button on the toolbar, or select <span class="Menu_Item">Object/Name...</span> from the main menu, and enter a name. EViews will assign the name to the series object, and will apply the auto-series definition as the formula to use for auto-updating.</div>
+      <div class="Body_Text"><a name="135044">Suppose, for example, that you have opened a series window containing an auto-series for the logarithm of the series CP by clicking on the </a><span class="Menu_Item">Show</span> button on the toolbar, or selecting <span class="Menu_Item">Quick/Show&#8230;</span> and entering &#8220;LOG(CP)&#8221;. Then, simply click on the <span class="Menu_Item">Name</span> button in the auto-series toolbar, and assign a name to the temporary object to create an auto-updating series in the workfile.</div>
+      <div class="Heading_4"><a name="135045">Additional Issues</a></div>
+      <div class="Body_Text"><a name="135046">Auto-updating series are designed to calculate their values when in use, and automatically update values whenever the underlying data change. An auto-updating series will assign a value to every observation in the current workfile, irrespective of the current values of the workfile sample.</a></div>
+      <div class="Body_Text"><a name="135047">In most cases, there is no ambiguity in this operation. For example, if we have an auto-updating series containing the expression &#8220;LOG(CP)&#8221;, we simply take each observation on CP in the workfile, evaluate the log of the value, and use this as the corresponding auto-updating series value.</a></div>
+      <div class="Body_Text"><a name="135048">However, in cases where the auto-updating series contains an expression involving descriptive statistics, there is ambiguity as to whether the sample used to calculate the values is the sample at the time the auto-updating series was created, the sample at the time the series is evaluated, the entire workfile range, or some other sample.</a></div>
+      <div class="Body_Text"><a name="135049">To resolve this ambiguity, EViews will enter the current workfile sample into the expression at the time the auto-updating series is defined. Thus, if you enter &#8220;@MEAN(CP)&#8221; as your auto-updating series expression, EViews will substitute an expression of the form &#8220;@MEAN(CP, </a><span class="Argument">smpl</span>)&#8221; into the definition. If you wish to evaluate the descriptive statistics for a given sample, you should enter an explicit sample in your expression.</div>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+      document.write(WebWorksHTMLHelp.fPopupDivTag());
+     // -->
+    </script>
+  </body>
+</html>
