@@ -31,26 +31,28 @@ try:
     # Open the Naukri Gulf "Top Jobs by Designation" page
     #url = "https://www.naukrigulf.com/top-jobs-by-designation"
     url = "https://www.eviews.com/help/helpintro.html"
+    
+    
+    
     driver.get(url)
     
     # Wait for the required section to load (with the correct class name)
-    WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "soft-link"))
-    )
+    
+    WebDriverWait(driver, 100).until(lambda driver: driver.execute_script('return document.readyState') == 'complete')
     
     # Get the page source
     html = driver.page_source
     
     # Parse the HTML with BeautifulSoup
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "html.parser")      
     
+    with open("eviews.txt", "w") as file:
+        file.write(str(soup))
+
     # Locate the section containing job titles
-    job_profiles_section = soup.find_all('a')
     
-    # Extract and print top job profiles
-    print("Top Job Profiles:")
-    for i, job in enumerate(job_profiles_section[:10], start=1):  # Limit to top 10
-        print(f"{i}. {job.text.strip()}")
+
+#    print(f"{i}. {r.text.strip()}")
     
 finally:
     # Close the WebDriver
